@@ -32,12 +32,12 @@
     }
     .fixed-box ul { list-style: none; padding: 0; margin: 0; }
     .fixed-box li { margin: 10px 0; }
-
-    a {
+    .fixed-box a {
       text-decoration: none;
+      font-size: 18px;
       color: #1a56db;
     }
-    a:hover { text-decoration: underline; }
+    .fixed-box a:hover { text-decoration: underline; }
 
     #post-list { list-style: none; padding: 0; }
     #post-list li {
@@ -46,19 +46,8 @@
       border: 1px solid #e0e0e0;
       border-radius: 10px;
     }
-
-    .meta {
-      font-size: 13px;
-      color: #666;
-      margin-top: 4px;
-    }
-
-    .series {
-      font-size: 12px;
-      margin-left: 6px;
-      color: #999;
-    }
-
+    .book { font-size: 12px; color: #999; margin-left: 6px; }
+    .date { font-size: 13px; color: #666; margin-top: 4px; }
     .note { font-size: 14px; color: #444; }
   </style>
 </head>
@@ -67,82 +56,104 @@
 
 <h1>新徒然ブログ</h1>
 <hr>
-
-<!-- 読み方 -->
+<!-- 序 -->
 <div class="fixed-box">
-  <h3>🧭 このブログの読み方</h3>
-  <ul>
-    <li>📘 <b>bookシリーズ</b>：問いを立てる（Why）</li>
-    <li>📄 <b>research paperシリーズ</b>：論文で理解する（How）</li>
-    <li>🚀 <b>最先端科学技術情報</b>：現実とつなぐ（Now）</li>
-  </ul>
-  <p class="note">👉 推奨順：book → research paper → 最先端科学技術</p>
+
+  <h3>📖新徒然ブログ</h3>
+
+  <p>
+    <a href="./preface.html">序</a>、
+    <a href="./Note5.html">編集記５</a>、
+    <a href="./Note6.html">編集記６</a>
+  </p>
 </div>
-
-<!-- はじめて -->
+<!-- 編集記 -->
 <div class="fixed-box">
-  <h3>🔥 はじめての方へ</h3>
-  <ul>
-    <li><a href="./book001.html">① 問いから始める（book）</a></li>
-    <li><a href="./research001.html">② 論文で理解する（research）</a></li>
-    <li><a href="./tech001.html">③ 現実を見る（最先端）</a></li>
-  </ul>
+  <h3>📌 編集記</h3>
+  <p>
+    <a href="./Note1.html">編集記１</a>、
+    <a href="./Note2.html">編集記２</a>、
+    <a href="./Note3.html">編集記３</a>、
+    <a href="./Note4.html">編集記４</a>、
+    <a href="./Note5.html">編集記５</a>、
+    <a href="./Note6.html">編集記６</a>
+  </p>
+
 </div>
-
-<!-- シリーズ -->
+<!-- 科学技術 -->
 <div class="fixed-box">
-  <h3>📘 bookシリーズ</h3>
-  <ul>
-    <li><a href="./book_index.html">一覧へ</a></li>
-  </ul>
-</div>
+  <h3>🔬 科学技術情報提供ページ</h3>
 
-<div class="fixed-box">
-  <h3>📄 research paperシリーズ</h3>
   <ul>
-    <li><a href="./research_index.html">一覧へ</a></li>
+    <li><a href="./2026.05.16.html">本日の世界最先端10選＋日本10選</a></li>
+    <li><a href="./science_archive.html">科学技術情報アーカイブ</a></li>
+    <li><a href="./book113.html">AIはどのようにして最先端技術10選を選ぶのか？</a></li>
   </ul>
 </div>
 
+<!-- research -->
 <div class="fixed-box">
-  <h3>🚀 最先端科学技術情報</h3>
+  <h3>
+    🔬AIと共に論文を読む
+    <a href="./research_index.html">（論文はこちら➡）</a>
+  </h3>
+
   <ul>
-    <li><a href="./tech_index.html">一覧へ</a></li>
+    <li>
+      <a href="./method.html">
+      論文解読法
+      </a>
+    </li>
   </ul>
 </div>
 
-<!-- 記事一覧 -->
-<h2>📚 最新記事</h2>
+<!-- book -->
+<div class="fixed-box">
+  <h3>📚 ブログ -bookシリーズ-</h3>
+
+  <ul>
+    <li><a href="./book_index.html">bookシリーズ一覧へ</a></li>
+  </ul>
+</div>
+<h2>📚 ブログ記事一覧</h2>
+
 <ul id="post-list"></ul>
 
-<p class="note">※ 公開済みの記事のみ表示</p>
+<p class="note">
+※ 公開済みの記事のみ、新しい順に表示されます。
+</p>
 
 <script src="posts.js"></script>
+
 <script>
 const list = document.getElementById("post-list");
 
-posts
-  .filter(p => p.published)
-  .sort((a, b) => new Date(b.date) - new Date(a.date))
-  .forEach(p => {
+if (typeof posts === "undefined") {
 
-    let seriesLabel = "";
-    if (p.series === "book") seriesLabel = "📘 book";
-    if (p.series === "research") seriesLabel = "📄 research";
-    if (p.series === "tech") seriesLabel = "🚀 tech";
+  list.innerHTML = "<li>posts.js が読み込めていません。</li>";
 
-    const li = document.createElement("li");
+} else {
 
-    li.innerHTML = `
-      <a href="${p.file}">
-        ${p.title}
-        <span class="series">[${seriesLabel}]</span>
-      </a>
-      <div class="meta">${p.date}</div>
-    `;
+  posts
+    .filter(p => p.published)
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .forEach(p => {
 
-    list.appendChild(li);
-  });
+      const li = document.createElement("li");
+
+      li.innerHTML = `
+        <a href="${p.file}">
+          ${p.title}
+          <span class="book">-book${p.book}-</span>
+        </a>
+
+        <div class="date">${p.date}</div>
+      `;
+
+      list.appendChild(li);
+
+    });
+}
 </script>
 
 </body>
