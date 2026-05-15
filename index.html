@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新徒然ブログ</title>
+
+  <style>
+    body {
+      font-family: "Yu Mincho","Hiragino Mincho ProN","MS Mincho",serif;
+      margin: 40px;
+      line-height: 1.9;
+      background: #ffffff;
+      color: #222;
+    }
+    h1 { font-size: 28px; margin-bottom: 10px; }
+    h2 { font-size: 22px; margin-top: 36px; }
+    hr { margin: 14px 0 26px; }
+
+    .fixed-box {
+      border: 2px solid #c7d2fe;
+      background: #f5f7ff;
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin: 28px 0 36px;
+      max-width: 900px;
+    }
+    .fixed-box h3 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      color: #1e3a8a;
+    }
+    .fixed-box ul { list-style: none; padding: 0; margin: 0; }
+    .fixed-box li { margin: 10px 0; }
+
+    a {
+      text-decoration: none;
+      color: #1a56db;
+    }
+    a:hover { text-decoration: underline; }
+
+    #post-list { list-style: none; padding: 0; }
+    #post-list li {
+      padding: 14px;
+      margin-bottom: 12px;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+    }
+
+    .meta {
+      font-size: 13px;
+      color: #666;
+      margin-top: 4px;
+    }
+
+    .series {
+      font-size: 12px;
+      margin-left: 6px;
+      color: #999;
+    }
+
+    .note { font-size: 14px; color: #444; }
+  </style>
+</head>
+
+<body>
+
+<h1>新徒然ブログ</h1>
+<hr>
+
+<!-- 読み方 -->
+<div class="fixed-box">
+  <h3>🧭 このブログの読み方</h3>
+  <ul>
+    <li>📘 <b>bookシリーズ</b>：問いを立てる（Why）</li>
+    <li>📄 <b>research paperシリーズ</b>：論文で理解する（How）</li>
+    <li>🚀 <b>最先端科学技術情報</b>：現実とつなぐ（Now）</li>
+  </ul>
+  <p class="note">👉 推奨順：book → research paper → 最先端科学技術</p>
+</div>
+
+<!-- はじめて -->
+<div class="fixed-box">
+  <h3>🔥 はじめての方へ</h3>
+  <ul>
+    <li><a href="./book001.html">① 問いから始める（book）</a></li>
+    <li><a href="./research001.html">② 論文で理解する（research）</a></li>
+    <li><a href="./tech001.html">③ 現実を見る（最先端）</a></li>
+  </ul>
+</div>
+
+<!-- シリーズ -->
+<div class="fixed-box">
+  <h3>📘 bookシリーズ</h3>
+  <ul>
+    <li><a href="./book_index.html">一覧へ</a></li>
+  </ul>
+</div>
+
+<div class="fixed-box">
+  <h3>📄 research paperシリーズ</h3>
+  <ul>
+    <li><a href="./research_index.html">一覧へ</a></li>
+  </ul>
+</div>
+
+<div class="fixed-box">
+  <h3>🚀 最先端科学技術情報</h3>
+  <ul>
+    <li><a href="./tech_index.html">一覧へ</a></li>
+  </ul>
+</div>
+
+<!-- 記事一覧 -->
+<h2>📚 最新記事</h2>
+<ul id="post-list"></ul>
+
+<p class="note">※ 公開済みの記事のみ表示</p>
+
+<script src="posts.js"></script>
+<script>
+const list = document.getElementById("post-list");
+
+posts
+  .filter(p => p.published)
+  .sort((a, b) => new Date(b.date) - new Date(a.date))
+  .forEach(p => {
+
+    let seriesLabel = "";
+    if (p.series === "book") seriesLabel = "📘 book";
+    if (p.series === "research") seriesLabel = "📄 research";
+    if (p.series === "tech") seriesLabel = "🚀 tech";
+
+    const li = document.createElement("li");
+
+    li.innerHTML = `
+      <a href="${p.file}">
+        ${p.title}
+        <span class="series">[${seriesLabel}]</span>
+      </a>
+      <div class="meta">${p.date}</div>
+    `;
+
+    list.appendChild(li);
+  });
+</script>
+
+</body>
+</html>
