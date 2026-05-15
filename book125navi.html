@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOOK125 NAVIGATION</title>
+  <style>
+    :root{
+      --bg:#eef6ff;
+      --ink:#1f2a37;
+      --blue:#2563eb;
+      --light:#ffffffcc;
+      --line:#334155;
+      --accent:#0f766e;
+      --shadow:0 14px 35px rgba(15,23,42,.16);
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:"Hiragino Mincho ProN","Yu Mincho",serif;
+      color:var(--ink);
+      background:linear-gradient(135deg,#eaf4ff 0%,#f7fbff 48%,#e8fff8 100%);
+    }
+    header{
+      text-align:center;
+      padding:34px 18px 10px;
+    }
+    h1{
+      margin:0;
+      font-family:Georgia,"Times New Roman",serif;
+      letter-spacing:.08em;
+      font-size:clamp(34px,6vw,68px);
+      color:#102a43;
+      text-shadow:0 2px 0 #fff;
+    }
+    .subtitle{
+      margin:12px auto 0;
+      max-width:850px;
+      line-height:1.8;
+      font-size:17px;
+    }
+    .stage{
+      width:min(1180px,96vw);
+      margin:24px auto 44px;
+      padding:24px;
+      border-radius:30px;
+      background:rgba(255,255,255,.62);
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .main-grid{
+      display:grid;
+      grid-template-columns:1fr minmax(280px,380px) 1fr;
+      gap:22px;
+      align-items:center;
+    }
+    .portrait-wrap{
+      text-align:center;
+      position:relative;
+      z-index:2;
+    }
+    .portrait{
+      width:min(330px,88vw);
+      border-radius:28px;
+      box-shadow:0 16px 40px rgba(2,6,23,.25);
+      border:8px solid #fff;
+      display:block;
+      margin:0 auto;
+    }
+    .name{
+      display:inline-block;
+      margin-top:14px;
+      padding:8px 18px;
+      border-radius:999px;
+      background:#fff;
+      font-weight:bold;
+      box-shadow:0 6px 18px rgba(15,23,42,.12);
+    }
+    .column{
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      min-height:520px;
+      justify-content:space-around;
+    }
+    .card{
+      position:relative;
+      display:block;
+      text-decoration:none;
+      color:var(--ink);
+      background:var(--light);
+      border:2px solid rgba(37,99,235,.14);
+      border-radius:22px;
+      padding:18px 20px;
+      box-shadow:0 8px 22px rgba(15,23,42,.09);
+      transition:.2s ease;
+    }
+    .card:hover{
+      transform:translateY(-4px);
+      border-color:rgba(37,99,235,.48);
+      box-shadow:0 13px 30px rgba(15,23,42,.16);
+    }
+    .card strong{
+      display:block;
+      font-size:21px;
+      margin-bottom:6px;
+      color:#0f172a;
+    }
+    .card span{
+      font-family:Arial,sans-serif;
+      font-size:14px;
+      color:#475569;
+    }
+    .num{
+      display:inline-grid;
+      place-items:center;
+      width:28px;height:28px;
+      border-radius:50%;
+      background:#dbeafe;
+      color:#1d4ed8;
+      font-family:Arial,sans-serif;
+      font-weight:bold;
+      margin-right:7px;
+    }
+    .youtube-card{
+      border-color:rgba(220,38,38,.28);
+    }
+    .youtube-card .num{background:#fee2e2;color:#dc2626;}
+    .flow-title{
+      text-align:center;
+      margin:34px 0 18px;
+      font-size:24px;
+      font-weight:bold;
+      color:#102a43;
+    }
+    .flow{
+      display:flex;
+      flex-wrap:wrap;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      padding:18px;
+      border-radius:24px;
+      background:rgba(255,255,255,.54);
+    }
+    .pill{
+      padding:12px 16px;
+      background:#fff;
+      border-radius:999px;
+      box-shadow:0 6px 16px rgba(15,23,42,.08);
+      font-weight:bold;
+      text-decoration:none;
+      color:#0f172a;
+      border:1px solid #e2e8f0;
+    }
+    .arrow{font-size:25px;color:var(--line);font-weight:bold;}
+    .video{
+      margin:28px auto 4px;
+      max-width:860px;
+      border-radius:24px;
+      overflow:hidden;
+      box-shadow:0 14px 34px rgba(15,23,42,.20);
+      background:#000;
+      aspect-ratio:16/9;
+    }
+    iframe{width:100%;height:100%;border:0;display:block;}
+    footer{
+      text-align:center;
+      padding:0 18px 36px;
+      color:#475569;
+      font-family:Arial,"Hiragino Sans",sans-serif;
+      font-size:13px;
+    }
+    @media (max-width:900px){
+      .main-grid{grid-template-columns:1fr;}
+      .column{min-height:auto;}
+      .portrait-wrap{order:-1;}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>BOOK125 NAVIGATION</h1>
+    <p class="subtitle">
+      グリンパティックシステムをめぐる本文・対比読解・批判・原論文・日本語訳・TPAI解析結果を、ひとつの入口から読むためのホームページです。
+    </p>
+  </header>
+
+  <main class="stage">
+    <section class="main-grid" aria-label="Book125 navigation links">
+      <nav class="column left" aria-label="Left navigation">
+        <a class="card" href="book125paper1.html">
+          <strong><span class="num">6</span>論文</strong>
+          <span>book125paper1.html</span>
+        </a>
+        <a class="card" href="book125jap.html">
+          <strong><span class="num">7</span>日本語訳</strong>
+          <span>book125jap.html</span>
+        </a>
+        <a class="card" href="book125sol1.html">
+          <strong><span class="num">8</span>TPAI法解析結果</strong>
+          <span>book125sol1.html</span>
+        </a>
+      </nav>
+
+      <section class="portrait-wrap">
+        <img class="portrait" src="Maiken.jpeg" alt="Maiken Nedergaard" />
+        <div class="name">Maiken Nedergaard</div>
+      </section>
+
+      <nav class="column right" aria-label="Right navigation">
+        <a class="card youtube-card" href="https://youtu.be/He6HMnMbxAc" target="_blank" rel="noopener">
+          <strong><span class="num">2</span>YouTube動画</strong>
+          <span>https://youtu.be/He6HMnMbxAc</span>
+        </a>
+        <a class="card" href="book125.html">
+          <strong><span class="num">3</span>ブログ</strong>
+          <span>book125.html</span>
+        </a>
+        <a class="card" href="book125contrast.html">
+          <strong><span class="num">4</span>対比ブログ</strong>
+          <span>book125contrast.html</span>
+        </a>
+        <a class="card" href="book125objection.html">
+          <strong><span class="num">5</span>批判ブログ</strong>
+          <span>book125objection.html</span>
+        </a>
+      </nav>
+    </section>
+
+    <div class="flow-title">読む順番の例</div>
+    <section class="flow" aria-label="Recommended reading flow">
+      <a class="pill" href="book125paper1.html">論文</a><span class="arrow">→</span>
+      <a class="pill" href="book125jap.html">日本語訳</a><span class="arrow">→</span>
+      <a class="pill" href="book125sol1.html">TPAI法解析結果</a><span class="arrow">→</span>
+      <a class="pill" href="book125.html">ブログ</a><span class="arrow">→</span>
+      <a class="pill" href="book125contrast.html">対比ブログ</a><span class="arrow">→</span>
+      <a class="pill" href="book125objection.html">批判ブログ</a>
+    </section>
+
+    <section class="video" aria-label="YouTube video embed">
+      <iframe src="https://www.youtube.com/embed/He6HMnMbxAc" title="YouTube video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </section>
+  </main>
+
+  <footer>
+    BOOK125 NAVIGATION / Maiken Nedergaard / Glymphatic System
+  </footer>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>対比読解ブログ：グリンパティックシステム</title>
+<style>
+:root{
+  --bg:#f5f7fb;--paper:#fff;--ink:#182033;--muted:#667085;--line:#d9e2ef;
+  --blue:#2563eb;--navy:#0f172a;--green:#16a34a;--amber:#f59e0b;--rose:#e11d48;
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(180deg,#eef6ff 0%,#f8fafc 45%,#f5f7fb 100%);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic","Meiryo",sans-serif;line-height:1.85;font-size:16px}
+a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+header{max-width:1180px;margin:0 auto;padding:34px 18px 18px}
+.hero{background:radial-gradient(circle at 18% 18%,#dbeafe 0,#fff 44%,#f8fafc 100%);border:1px solid var(--line);border-radius:28px;padding:34px 32px;box-shadow:0 18px 50px rgba(15,23,42,.08)}
+.badge{display:inline-block;background:#dbeafe;color:#1d4ed8;border:1px solid #bfdbfe;border-radius:999px;padding:5px 13px;font-weight:800;font-size:.9rem}
+h1{font-size:clamp(1.65rem,4vw,2.65rem);line-height:1.35;margin:.4em 0 .25em;color:var(--navy)}
+.subtitle{color:var(--muted);margin:.4em 0 0;font-size:1.03rem}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px 70px}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:22px;margin:22px 0;box-shadow:0 8px 28px rgba(15,23,42,.045)}
+h2{font-size:1.45rem;border-left:7px solid var(--blue);padding-left:12px;margin:0 0 14px;color:var(--navy)}
+h3{font-size:1.1rem;margin:18px 0 8px;color:#172033}.mini{color:var(--muted);font-size:.92rem}.note{background:#fffbeb;border-left:6px solid var(--amber);border-radius:14px;padding:14px 16px;margin:14px 0}.point{background:#ecfdf5;border-left:6px solid var(--green);border-radius:14px;padding:14px 16px;margin:14px 0}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card{border:1px solid #e2e8f0;background:#f8fafc;border-radius:18px;padding:16px}.card strong{color:#0f172a}.quote{background:#fff;border:1px solid #dbe4ef;border-radius:14px;padding:12px 14px;margin:10px 0;color:#1f2937}
+.toc{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.toc a{display:block;background:#eff6ff;border:1px solid #bfdbfe;border-radius:14px;padding:10px 12px;font-weight:700;color:#1e40af;font-size:.92rem}.toc a:hover{background:#dbeafe;text-decoration:none}
+.reader{position:sticky;top:0;z-index:10;background:rgba(245,247,251,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:12px 0;margin:0 -18px 22px}.reader-inner{max-width:1180px;margin:0 auto;padding:0 18px}.buttons{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}button{appearance:none;border:1px solid #bfdbfe;background:#eff6ff;color:#1e40af;border-radius:999px;padding:7px 12px;font-weight:800;cursor:pointer}button:hover{background:#dbeafe}.frames{display:grid;grid-template-columns:1fr 1fr;gap:12px}.framebox{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 8px 26px rgba(15,23,42,.05)}.framehead{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;border-bottom:1px solid var(--line);background:#f8fafc;font-weight:800;color:#0f172a}.framehead span{font-size:.88rem;color:var(--muted);font-weight:600}.framebox iframe{width:100%;height:58vh;border:0;background:white}.compare-table{width:100%;border-collapse:separate;border-spacing:0 10px}.compare-table th{font-size:.9rem;color:#475569;text-align:left;padding:0 12px}.compare-table td{vertical-align:top;background:#fff;border-top:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0;padding:14px}.compare-table td:first-child{border-left:1px solid #e2e8f0;border-radius:14px 0 0 14px}.compare-table td:last-child{border-right:1px solid #e2e8f0;border-radius:0 14px 14px 0}.tag{display:inline-block;border-radius:999px;padding:2px 9px;font-size:.78rem;font-weight:800;background:#e0f2fe;color:#0369a1;margin-bottom:6px}.footer{text-align:center;color:var(--muted);padding:30px 0}
+@media(max-width:900px){.grid,.frames{grid-template-columns:1fr}.toc{grid-template-columns:1fr 1fr}.framebox iframe{height:50vh}.reader{position:relative}.compare-table,.compare-table tbody,.compare-table tr,.compare-table td{display:block}.compare-table th{display:none}.compare-table td{border:1px solid #e2e8f0!important;border-radius:14px!important;margin:8px 0}}
+@media(max-width:560px){.toc{grid-template-columns:1fr}.hero,.panel{padding:18px}.wrap{padding-left:12px;padding-right:12px}.reader{margin-left:-12px;margin-right:-12px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="hero">
+    <span class="badge">対比読解ブログ</span>
+    <h1>グリンパティックシステムを<br>「解説ブログ」と「原典論文」で読む</h1>
+    <p class="subtitle">左に中学生向け解説、右に英語原典。専門論文がどのように「理解できる知識」へ変換されるかを、スクロールしながら読み比べる教材型HTMLです。</p>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="panel" id="top">
+    <h2>このHTMLの使い方</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>左側：解説ブログ</h3>
+        <p>日常語・比喩・図解で、グリンパティックシステムを「脳のおそうじ」として理解します。</p>
+        <p class="mini">元ファイル：<a href="book125(6).html" target="_blank">book125(6).html</a></p>
+      </div>
+      <div class="card">
+        <h3>右側：原典論文</h3>
+        <p>専門用語・研究文脈・引用構造を持つ原典を読み、解説の根拠を確認します。</p>
+        <p class="mini">元ファイル：<a href="book125paper1.html" target="_blank">book125paper1.html</a></p>
+      </div>
+    </div>
+    <div class="note"><strong>ねらい：</strong>「ブログだけ読む」「論文だけ読む」ではなく、両者を往復することで、専門知識の変換過程そのものを学びます。</div>
+    <nav class="toc">
+      <a href="#reader">左右対比ビューへ</a>
+      <a href="#pair1">第1対比：脳の掃除</a>
+      <a href="#pair2">第2対比：リンパ管問題</a>
+      <a href="#pair3">第3対比：AQP4</a>
+      <a href="#pair4">第4対比：睡眠</a>
+      <a href="#pair5">第5対比：老化・病気</a>
+      <a href="#meaning">この方法の意味</a>
+      <a href="#links">元ファイルリンク</a>
+    </nav>
+  </section>
+
+  <section class="reader" id="reader">
+    <div class="reader-inner">
+      <div class="buttons" aria-label="対比ジャンプボタン">
+        <button onclick="jumpBoth('intro','abstract')">概要</button>
+        <button onclick="jumpBoth('sec1','introduction')">リンパ管問題</button>
+        <button onclick="jumpBoth('sec2','the-glymphatic-system')">グリンパティック</button>
+        <button onclick="jumpBoth('sec3','brain-vasculature-and-the-perivascular-space')">血管周囲・CSF</button>
+        <button onclick="jumpBoth('sec4','the-glymphatic-system-is-turned-on-during-sleep')">睡眠</button>
+        <button onclick="jumpBoth('sec5','convective-csf-fluxes-in-aging-and-pathology')">病気・老化</button>
+        <button onclick="jumpBoth('sec7','future-perspectives')">未解決問題</button>
+      </div>
+      <div class="frames">
+        <div class="framebox">
+          <div class="framehead">左：解説ブログ <span>book125(6).html</span></div>
+          <iframe id="leftFrame" src="book125(6).html#intro" title="解説ブログ"></iframe>
+        </div>
+        <div class="framebox">
+          <div class="framehead">右：原典論文 <span>book125paper1.html</span></div>
+          <iframe id="rightFrame" src="book125paper1.html#abstract" title="原典論文"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="pair1">
+    <h2>第1対比：脳の「掃除」はどう説明されるか</h2>
+    <table class="compare-table">
+      <tr><th>解説ブログ</th><th>原典論文</th><th>読み解き</th></tr>
+      <tr>
+        <td><span class="tag">日常語</span><div class="quote">睡眠は「何もしない時間」ではなく、脳にとって夜の大掃除の時間である。</div></td>
+        <td><span class="tag">専門語</span><div class="quote">The glymphatic system functions mainly during sleep and is largely disengaged during wakefulness.</div></td>
+        <td>ブログは「掃除」という生活感覚へ置き換えています。論文は、睡眠中に働き、覚醒中には低下するシステムとして記述しています。</td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="panel" id="pair2">
+    <h2>第2対比：脳には普通のリンパ管がない、という出発点</h2>
+    <table class="compare-table">
+      <tr><th>解説ブログ</th><th>原典論文</th><th>読み解き</th></tr>
+      <tr>
+        <td><span class="tag">問い</span><div class="quote">脳にはリンパ管が少ない。では、老廃物はどこへ行くのか？</div></td>
+        <td><span class="tag">前提</span><div class="quote">The central nervous system lacks conventional lymphatic vessels.</div></td>
+        <td>論文では前提として出る内容を、ブログは「不思議な問題」として提示しています。ここで読者の理解の入口が作られます。</td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="panel" id="pair3">
+    <h2>第3対比：AQP4をどう理解するか</h2>
+    <table class="compare-table">
+      <tr><th>解説ブログ</th><th>原典論文</th><th>読み解き</th></tr>
+      <tr>
+        <td><span class="tag">比喩</span><div class="quote">AQP4は、水道管のような水の通り道として説明される。</div></td>
+        <td><span class="tag">構造</span><div class="quote">Astroglial cells form perivascular channels involved in fluid movement and solute clearance.</div></td>
+        <td>AQP4は単独で働く魔法の装置ではなく、アストロサイト・血管周囲腔・脳脊髄液の流れとセットで理解する必要があります。</td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="panel" id="pair4">
+    <h2>第4対比：睡眠の意味</h2>
+    <table class="compare-table">
+      <tr><th>解説ブログ</th><th>原典論文</th><th>読み解き</th></tr>
+      <tr>
+        <td><span class="tag">生活への接続</span><div class="quote">十分に眠ることは、脳を守る生活習慣として説明される。</div></td>
+        <td><span class="tag">生物学的仮説</span><div class="quote">The biological need for sleep may reflect the need to eliminate potentially neurotoxic waste products.</div></td>
+        <td>論文は「睡眠の生物学的必要性」という大きな仮説へ向かいます。ブログはそれを「寝る意味」として生活に引き寄せています。</td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="panel" id="pair5">
+    <h2>第5対比：老化・病気との関係</h2>
+    <table class="compare-table">
+      <tr><th>解説ブログ</th><th>原典論文</th><th>読み解き</th></tr>
+      <tr>
+        <td><span class="tag">警告</span><div class="quote">掃除されないと、アミロイドβなどの老廃物がたまる可能性がある。</div></td>
+        <td><span class="tag">研究課題</span><div class="quote">Glymphatic dysfunction may contribute to neurodegenerative disorders, traumatic brain injury, and stroke.</div></td>
+        <td>ブログは認知症との関係をわかりやすく示します。論文は、老化・外傷・脳卒中を含む広い病理学的文脈で論じています。</td>
+      </tr>
+    </table>
+  </section>
+
+  <section class="panel" id="meaning">
+    <h2>この対比読解が生む学習効果</h2>
+    <div class="point"><strong>結論：</strong>対比読解は、論文の内容を「ただ要約する」のではなく、専門知識が理解可能な形へ変換される過程を見えるようにします。</div>
+    <p>原典論文は、専門家同士のために圧縮された言語です。一方、解説ブログは、読者が初めてその概念に出会うことを前提に、問い・比喩・図解・生活への接続を使います。</p>
+    <p>左右に並べることで、どの専門表現がどの説明に変換されたのかがわかります。これは、AI時代の「個人による知識世界の再構成」にとって、とても重要な形式です。</p>
+  </section>
+
+  <section class="panel" id="links">
+    <h2>元ファイルリンク</h2>
+    <ul>
+      <li><a href="book125(6).html" target="_blank">解説ブログ：book125(6).html</a></li>
+      <li><a href="book125paper1.html" target="_blank">原典論文HTML：book125paper1.html</a></li>
+    </ul>
+    <p class="mini">このHTMLは上記2ファイルを同じフォルダに置くと、左右対比ビューがそのまま動作します。</p>
+  </section>
+
+  <div class="footer">book125compare.html / 対比読解ブログ</div>
+</main>
+
+<script>
+function jumpBoth(leftId,rightId){
+  document.getElementById('leftFrame').src = 'book125(6).html#' + leftId;
+  document.getElementById('rightFrame').src = 'book125paper1.html#' + rightId;
+}
+</script>
+</body>
+</html>
