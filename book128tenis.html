@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>テニスの試合におけるナッシュと角谷の理論</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Hiragino Kaku Gothic ProN','Yu Gothic','Meiryo',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  line-height:1.9;color:#172033;background:linear-gradient(135deg,#ecfdf5 0%,#eff6ff 45%,#fff7ed 100%);
+  padding:24px 12px;
+}
+a{color:#065f46;text-decoration:none;font-weight:700} a:hover{text-decoration:underline}
+.wrapper{max-width:1120px;margin:0 auto;background:#fff;border-radius:28px;box-shadow:0 24px 70px rgba(15,23,42,.16);overflow:hidden;border:1px solid rgba(15,23,42,.08)}
+.hero{background:radial-gradient(circle at top left,#34d399 0,#0f766e 44%,#0f172a 100%);color:#fff;text-align:center;padding:54px 24px 44px;position:relative;overflow:hidden}
+.hero:before{content:'🎾';font-size:9rem;position:absolute;right:28px;top:10px;opacity:.16;transform:rotate(-18deg)}
+.hero:after{content:'NASH × KAKUTANI';position:absolute;left:20px;bottom:16px;letter-spacing:.16em;font-size:.82rem;opacity:.28;font-weight:800}
+.hero h1{font-size:clamp(1.75rem,4.7vw,3rem);line-height:1.28;margin-bottom:14px;text-shadow:0 3px 12px rgba(0,0,0,.24)}
+.hero p{font-size:1.06rem;opacity:.95;max-width:820px;margin:0 auto}.badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.34);padding:7px 14px;border-radius:999px;margin-bottom:16px;font-weight:800;backdrop-filter:blur(5px)}
+.nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;background:#f8fafc;padding:16px 20px;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:5}.nav a{background:#fff;border:1px solid #dbeafe;border-radius:999px;padding:7px 12px;font-size:.92rem;box-shadow:0 2px 8px rgba(15,23,42,.05)}
+.content{padding:34px clamp(18px,4vw,46px)}
+section{margin:0 0 42px}h2{font-size:clamp(1.45rem,3.2vw,2.05rem);color:#0f766e;margin:0 0 16px;border-left:8px solid #f59e0b;padding-left:14px;line-height:1.35}h3{font-size:1.24rem;color:#1e3a8a;margin:24px 0 10px;border-bottom:2px dashed #bfdbfe;display:inline-block;padding-bottom:3px}p{margin:0 0 1rem}.lead{font-size:1.08rem;font-weight:600;color:#1e293b}.box{background:#f8fafc;border:1px solid #e2e8f0;border-radius:22px;padding:18px 20px;margin:18px 0;box-shadow:0 8px 24px rgba(15,23,42,.04)}.green{background:#ecfdf5;border-color:#bbf7d0}.orange{background:#fff7ed;border-color:#fed7aa}.blue{background:#eff6ff;border-color:#bfdbfe}.red{background:#fef2f2;border-color:#fecaca}.math{font-family:Georgia,'Times New Roman',serif;font-size:1.4rem;text-align:center;background:#0f172a;color:#fff;border-radius:18px;padding:18px;margin:18px 0;letter-spacing:.02em}.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:20px 0}.three{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}.card{background:#fff;border:1px solid #e5e7eb;border-radius:20px;padding:17px;box-shadow:0 8px 22px rgba(15,23,42,.06)}.card strong{color:#0f766e}ul,ol{margin-left:1.25rem;margin-bottom:1rem}li{margin:.35rem 0}.tablewrap{overflow-x:auto;margin:18px 0;border-radius:18px;border:1px solid #e2e8f0}table{width:100%;border-collapse:collapse;min-width:760px;background:#fff}th{background:#0f766e;color:#fff;padding:12px;text-align:left}td{padding:12px;border-top:1px solid #e2e8f0;vertical-align:top}tr:nth-child(even) td{background:#f8fafc}.quote{border-left:6px solid #0f766e;background:#f0fdfa;padding:14px 16px;border-radius:14px;margin:16px 0;font-weight:600}.small{font-size:.92rem;color:#475569}.diagram{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin:22px 0}.pill{background:#fff;border:2px solid #99f6e4;border-radius:999px;padding:10px 15px;font-weight:800;color:#134e4a}.arrow{font-size:1.6rem;color:#f59e0b;font-weight:900}.practice{counter-reset:item}.practice li{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:12px 14px;margin:10px 0;list-style-position:inside}.footer{background:#0f172a;color:#dbeafe;padding:24px;text-align:center;font-size:.93rem}.footer a{color:#fbbf24}
+@media(max-width:760px){body{padding:0}.wrapper{border-radius:0}.two,.three{grid-template-columns:1fr}.content{padding:24px 16px}.hero{padding:42px 18px}.nav{position:static;justify-content:flex-start;overflow:auto;flex-wrap:nowrap}.hero:before{font-size:6rem;right:8px}}
+</style>
+</head>
+<body>
+<div style="position:sticky;top:0;z-index:999;background:#ffffffee;padding:16px;border-bottom:2px solid #dbeafe;backdrop-filter:blur(8px);display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+<a href="book128.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">総論</a> <a href="book128answer.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">質疑応答</a> <a href="book128contrast.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">対比読解</a> <a href="book128jap1.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">ナッシュ論文日本語訳</a> <a href="book128paper1.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">ナッシュ論文原文</a> <a href="book128navi.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">NAVI</a> <a href="book128tenis.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">テニス解説</a> <a href="book128sol3.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">角谷論文TPAI解析</a> <a href="book128sol1.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">ナッシュ論文TPAI解析</a> <span style="background:#f59e0b;color:white;padding:8px 12px;border-radius:999px;font-weight:bold;">角谷論文原文</span> <a href="book128jap3.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">角谷論文日本語訳</a>
+</div>
+<div class="wrapper">
+<header class="hero">
+<div class="badge">中学生向け解説</div>
+<h1>テニスの試合における<br/>ナッシュと角谷の理論</h1>
+<p>サーブ、リターン、読み合い、確率の混ぜ方。テニスの作戦を通して、ナッシュ均衡と角谷の不動点定理のつながりをわかりやすく読む。</p>
+</header>
+<nav class="nav">
+<a href="#intro">はじめに</a>
+<a href="#tennis">テニスの読み合い</a>
+<a href="#nash">ナッシュ均衡</a>
+<a href="#kakutani">角谷の不動点</a>
+<a href="#bridge">二人の関係</a>
+<a href="#examples">試合例</a>
+<a href="#summary">まとめ</a>
+</nav>
+<main class="content">
+<section id="intro">
+<h2>はじめに：テニスは「数学の戦い」でもある</h2>
+<p class="lead">テニスの試合では、ボールを強く打つだけでは勝てません。相手がどこに動くかを読み、自分がどこに打つかを読まれないようにする必要があります。</p>
+<p>たとえばサーブを打つとき、毎回同じコースに打てば、相手はそこを待ちます。逆に、レシーバーがいつも同じ方向に動けば、サーバーは反対側を狙います。つまりテニスでは、力や技術だけでなく、<strong>「相手に読まれない作戦のバランス」</strong>がとても重要になります。</p>
+<div class="quote">この「もうこれ以上、自分だけ作戦を変えても得しない」という落ち着きどころが、ナッシュ均衡です。</div>
+<p>そしてナッシュは、「そのような落ち着きどころは本当に存在するのか」を数学的に証明したかった。そのときに必要だった数学の道具が、日本人数学者・角谷静夫の<strong>不動点定理</strong>でした。</p>
+</section>
+<section id="tennis">
+<h2>第1章：テニスの基本構図</h2>
+<p>ここでは、まず単純化して考えます。登場人物は二人です。</p>
+<div class="two">
+<div class="card"><strong>サーバー</strong><br/>サービスを打つ人。左・右・センター・ボディなど、どこに打つかを選ぶ。</div>
+<div class="card"><strong>レシーバー</strong><br/>サービスを受ける人。サーバーがどこに打つかを予想して動く。</div>
+</div>
+<h3>いちばん簡単な例：左か右か</h3>
+<p>最初は、サーバーが「左」か「右」に打つだけのゲームとして考えます。レシーバーも「左」か「右」に動きます。</p>
+<div class="tablewrap"><table><thead><tr><th>場面</th><th>何が起きるか</th><th>有利な人</th></tr></thead><tbody><tr><td>サーバーが左、レシーバーも左</td><td>レシーバーが読みに成功し、返しやすい</td><td>レシーバー</td></tr><tr><td>サーバーが左、レシーバーが右</td><td>レシーバーの読みが外れ、サーバーが有利</td><td>サーバー</td></tr><tr><td>サーバーが右、レシーバーも右</td><td>レシーバーが読みに成功し、返しやすい</td><td>レシーバー</td></tr><tr><td>サーバーが右、レシーバーが左</td><td>レシーバーの読みが外れ、サーバーが有利</td><td>サーバー</td></tr></tbody></table></div>
+<p>このゲームでは、サーバーは「読まれたくない」。レシーバーは「読み当てたい」。二人の目的がぶつかるため、作戦は簡単には決まりません。</p>
+<div class="box orange"><strong>ポイント：</strong>テニスは、ただの運動ではなく、相手の頭の中を読むゲームでもあります。</div>
+</section>
+<section id="nash">
+<h2>第2章：ナッシュ均衡とは何か</h2>
+<p>ナッシュ均衡とは、簡単に言えば、<strong>「お互いが相手の作戦を見たうえで、自分だけ作戦を変えても得しない状態」</strong>です。</p>
+<p>テニスで言えば、サーバーとレシーバーがそれぞれ作戦を選んでいて、どちらも「自分だけ変えても勝率は上がらない」と感じている状態です。</p>
+<div class="math">ナッシュ均衡 ＝ 誰も一人だけでは作戦変更したくない状態</div>
+<h3>なぜ「混ぜる」必要があるのか</h3>
+<p>もしサーバーが毎回左に打てば、レシーバーは左を待てばよい。もし毎回右に打てば、右を待てばよい。だからサーバーは、相手に読まれないように、左と右を<strong>確率で混ぜる</strong>必要があります。</p>
+<div class="three">
+<div class="card"><strong>例1</strong><br/>左50％、右50％</div>
+<div class="card"><strong>例2</strong><br/>ワイド40％、センター35％、ボディ25％</div>
+<div class="card"><strong>例3</strong><br/>相手の癖に合わせて少しずつ変える</div>
+</div>
+<p>このように、何かを必ず選ぶのではなく、確率で選ぶ作戦を<strong>混合戦略</strong>といいます。</p>
+<div class="box blue"><strong>混合戦略：</strong>「毎回同じ作戦」ではなく、「ある確率でいくつかの作戦を混ぜる」こと。テニスでは、サーブコースやリターン位置を混ぜることがこれにあたります。</div>
+<h3>ナッシュのすごさ</h3>
+<p>ナッシュのすごさは、「うまく混ぜれば均衡があるかもしれない」と言っただけではありません。<strong>有限のゲームでは、混合戦略を考えれば、少なくとも一つはナッシュ均衡が存在する</strong>と示したことです。</p>
+<p>テニス風に言えば、「サーバーとレシーバーの読み合いが永遠にぐるぐる回っているように見えても、数学的にはどこかに落ち着きどころがある」と示したのです。</p>
+</section>
+<section id="kakutani">
+<h2>第3章：角谷の不動点定理とは何か</h2>
+<p>ナッシュが均衡の存在を証明するために使ったのが、角谷静夫の不動点定理です。</p>
+<h3>不動点とは？</h3>
+<p>不動点とは、あるルールで動かしても、結局そこに戻ってくる点のことです。</p>
+<div class="math">f(x)=x</div>
+<p>これは「xをルールfで動かしたら、またxになった」という意味です。たとえば地図の上に同じ地図を置いたとき、どこか一か所は現実の場所と地図上の場所がぴったり重なる、というイメージです。</p>
+<h3>角谷の発想：「点」ではなく「集合」を返してよい</h3>
+<p>普通の不動点では、1つの入力に対して1つの答えが返ります。しかしテニスやゲームでは、最適な答えが1つとは限りません。</p>
+<p>たとえば相手の位置によっては、「ワイドもよい」「センターもよい」というように、複数の良い作戦が同時に存在することがあります。</p>
+<div class="box green"><strong>角谷の重要ポイント：</strong>1つの点に対して、1つの答えではなく、複数の候補からなる「集合」を返すルールでも、不動点を考えられる。</div>
+<p>このときの核心が、次の形です。</p>
+<div class="math">x ∈ Φ(x)</div>
+<p>これは、「x が、x から返ってくる候補の集合 Φ(x) の中に入っている」という意味です。</p>
+<h3>テニスで訳すと</h3>
+<div class="tablewrap"><table><thead><tr><th>数学</th><th>テニスでの意味</th></tr></thead><tbody><tr><td>x</td><td>今のサーブ配分・リターン配分など、全体の作戦</td></tr><tr><td>Φ(x)</td><td>その作戦状況に対して、最適だと考えられる作戦の集合</td></tr><tr><td>x ∈ Φ(x)</td><td>今の作戦そのものが、最適な作戦候補の中に入っている状態</td></tr></tbody></table></div>
+<p>つまり、角谷の式をテニスで言えば、<strong>「今やっている作戦が、今の状況での最適な作戦の一つになっている」</strong>ということです。</p>
+</section>
+<section id="bridge">
+<h2>第4章：ナッシュと角谷はどうつながるのか</h2>
+<p>ナッシュは、ゲームの作戦全体を一つの「点」として考えました。テニスなら、サーバーのサーブ配分とレシーバーの動き方をまとめたものが一つの点です。</p>
+<div class="diagram"><span class="pill">現在の作戦 x</span><span class="arrow">→</span><span class="pill">最適反応の集合 Φ(x)</span><span class="arrow">→</span><span class="pill">x ∈ Φ(x)</span><span class="arrow">→</span><span class="pill">ナッシュ均衡</span></div>
+<p>プレイヤーが相手の作戦を見たとき、自分にとって一番よい返し方を考えます。これを<strong>最適反応</strong>と呼びます。</p>
+<p>しかし最適反応は一つとは限りません。ワイドもセンターも同じくらい良い、という場合があるからです。だから「点から点」ではなく、<strong>点から集合</strong>へのルールが必要になります。</p>
+<p>ここで角谷の定理が登場します。角谷の不動点定理は、一定の条件を満たせば、点から集合へのルールにも不動点が存在すると教えてくれます。</p>
+<div class="quote">ナッシュは角谷の定理を使って、「最適反応の集合」の中に、現在の作戦そのものが入っている点が存在することを示した。これがナッシュ均衡の存在証明です。</div>
+<h3>二人の役割を一言で</h3>
+<div class="two">
+<div class="card"><strong>角谷静夫</strong><br/>「複数の最適解があっても、不動点が存在する」という数学の道具を用意した。</div>
+<div class="card"><strong>ジョン・ナッシュ</strong><br/>その道具を使って、「ゲームには均衡が存在する」と証明した。</div>
+</div>
+</section>
+<section id="examples">
+<h2>第5章：テニスの試合で見る具体例</h2>
+<h3>例1：サーブコース</h3>
+<p>サーバーが毎回ワイドに打てば、レシーバーはワイドを待ちます。するとサーバーは不利になります。だからサーバーは、ワイド・センター・ボディを混ぜます。</p>
+<div class="box orange"><strong>ナッシュ的に見ると：</strong>サーバーがコースを混ぜ、レシーバーも位置取りを混ぜる。どちらも一人だけ変更しても得しない配分が、ナッシュ均衡です。</div>
+<h3>例2：リターン位置</h3>
+<p>レシーバーがいつも前に詰めると、サーバーは深いサーブやボディサーブを狙います。逆に、レシーバーが下がりすぎると、角度のあるサーブを使われます。</p>
+<p>そこでレシーバーも、前に出る・普通に構える・少し下がる、という選択を状況に応じて混ぜます。</p>
+<h3>例3：ネットに出るか、ベースラインに残るか</h3>
+<p>ラリー中にネットへ出る作戦もあります。しかし毎回ネットへ出れば、相手はロブで抜こうとします。毎回ベースラインに残れば、相手は短いボールを使いやすくなります。</p>
+<p>ここでも重要なのは、<strong>相手に読まれない割合</strong>です。</p>
+<h3>例4：強い選手ほど「完全なワンパターン」ではない</h3>
+<p>強い選手は、同じフォームから違うコースに打ったり、同じ場面でも違う選択を混ぜたりします。これは単なる気まぐれではありません。相手に予測されると不利になるため、作戦を混ぜる必要があるのです。</p>
+</section>
+<section id="comparison">
+<h2>第6章：中学生向け対応表</h2>
+<div class="tablewrap"><table><thead><tr><th>考え方</th><th>数学の言葉</th><th>テニスの言葉</th><th>意味</th></tr></thead><tbody><tr><td>作戦の状態</td><td>x</td><td>サーブ配分・リターン位置</td><td>いま選んでいる全体の作戦</td></tr><tr><td>最適な返し方</td><td>Φ(x)</td><td>相手の作戦に対して有利な打ち方の候補</td><td>ベストな作戦が複数ある場合も含む</td></tr><tr><td>不動点</td><td>x ∈ Φ(x)</td><td>今の作戦が最適候補に入っている</td><td>変えても得しない状態</td></tr><tr><td>均衡</td><td>Nash equilibrium</td><td>お互いに作戦変更したくない状態</td><td>読み合いの落ち着きどころ</td></tr></tbody></table></div>
+</section>
+<section id="practice">
+<h2>第7章：自分の試合で考える練習</h2>
+<p>実際のテニスでも、次のように考えるとナッシュと角谷の理論を体感できます。</p>
+<ol class="practice">
+<li><strong>自分がよく使うサーブコースを書き出す。</strong><br/>ワイド、センター、ボディの割合をざっくり考える。</li>
+<li><strong>相手がどこを待っているかを観察する。</strong><br/>相手が先に動く方向、立ち位置、苦手なリターンを確認する。</li>
+<li><strong>同じ作戦を続けすぎていないか確認する。</strong><br/>読まれているなら、確率の混ぜ方を変える。</li>
+<li><strong>「自分だけ変えたら本当に得か？」と考える。</strong><br/>変えても得しないなら、その場面では均衡に近い。</li>
+</ol>
+<div class="box red"><strong>注意：</strong>ナッシュ均衡は「必ず勝てる作戦」ではありません。「相手も最善を尽くしているとき、自分だけ変えても得しにくい状態」です。勝利保証ではなく、読み合いの安定点です。</div>
+</section>
+<section id="summary">
+<h2>まとめ：テニスで一言</h2>
+<div class="box green"><p><strong>ナッシュ：</strong>テニスの読み合いには、「お互いにこれ以上変えても得しない作戦のバランス」がある。</p><p><strong>角谷：</strong>そのバランスが存在することを支える数学の定理を与えた。</p></div>
+<p>テニスの試合では、強いショットを打つことだけでなく、相手に読まれないことが大切です。サーブコース、リターン位置、ネットに出るタイミングなど、あらゆる場面に読み合いがあります。</p>
+<p>ナッシュ均衡は、その読み合いの中で「誰も自分だけ作戦を変えたくない状態」を表します。そして角谷の不動点定理は、そのような状態が存在することを数学的に支えるエンジンです。</p>
+<div class="quote">テニスの試合は、体力と技術の勝負であると同時に、「相手に読まれない作戦のバランス」を探す数学の勝負でもある。</div>
+<p class="small">作成ファイル名：book128tenis.html</p>
+</section>
+</main>
+<footer class="footer">
+<p>参考：添付PDF「ナッシュと角谷の理論をテニスの試合で説明して（中学生向けに）」をもとに再構成。<br/>テーマ：テニスの試合におけるナッシュ均衡と角谷の不動点定理。</p>
+</footer>
+</div>
+</body>
+</html>

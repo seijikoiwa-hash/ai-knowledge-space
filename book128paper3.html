@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>A Generalization of Brouwer's Fixed Point Theorem - Shizuo Kakutani</title>
+<style>
+  body{margin:0;background:#f3f0e8;color:#1f2933;font-family: Georgia,'Times New Roman',serif;line-height:1.75;}
+  .wrap{max-width:900px;margin:0 auto;padding:42px 22px 80px;}
+  article{background:#fffdf8;border:1px solid #ded6c8;border-radius:18px;padding:48px;box-shadow:0 14px 38px rgba(0,0,0,.08);}
+  h1{font-size:2.1rem;text-align:center;letter-spacing:.04em;margin:0 0 10px;text-transform:uppercase;line-height:1.25;}
+  .author{text-align:center;font-size:1.05rem;margin-bottom:30px;letter-spacing:.03em;}
+  .meta{text-align:center;color:#6b5f4f;font-size:.95rem;border-top:1px solid #e8dfd0;border-bottom:1px solid #e8dfd0;padding:12px;margin-bottom:28px;}
+  h2{font-size:1.35rem;margin:32px 0 14px;border-left:6px solid #8a6f4d;padding-left:12px;}
+  p{margin:0 0 1.05em;}
+  .theorem,.corollary,.remark,.proof,.refs{background:#faf7ef;border-left:5px solid #b59b70;padding:16px 18px;margin:18px 0;border-radius:10px;}
+  .label{font-weight:bold;text-transform:uppercase;letter-spacing:.04em;}
+  .proof .label,.remark .label{font-style:italic;text-transform:none;}
+  .formula{font-family:'Times New Roman',serif;text-align:center;margin:18px 0;font-size:1.08rem;}
+  ol{padding-left:1.4em;}
+  li{margin-bottom:.8em;}
+  .note{font-size:.92rem;color:#5f574f;}
+</style>
+<script>
+window.MathJax = {tex:{inlineMath:[['\\(','\\)'],['$','$']],displayMath:[['\\[','\\]']]}, svg:{fontCache:'global'}};
+</script>
+<script async="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+<div style="position:sticky;top:0;z-index:999;background:#ffffffee;padding:16px;border-bottom:2px solid #dbeafe;backdrop-filter:blur(8px);display:flex;flex-wrap:wrap;gap:10px;justify-content:center;">
+<a href="book128.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">総論</a> <a href="book128answer.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">質疑応答</a> <a href="book128contrast.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">対比読解</a> <a href="book128jap1.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">ナッシュ論文日本語訳</a> <a href="book128paper1.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">ナッシュ論文原文</a> <a href="book128navi.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">NAVI</a> <a href="book128tenis.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">テニス解説</a> <a href="book128sol3.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">角谷論文TPAI解析</a> <a href="book128sol1.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">ナッシュ論文TPAI解析</a> <span style="background:#f59e0b;color:white;padding:8px 12px;border-radius:999px;font-weight:bold;">角谷論文原文</span> <a href="book128jap3.html" style="text-decoration:none;background:#1d4ed8;color:white;padding:8px 12px;border-radius:999px;">角谷論文日本語訳</a>
+</div>
+
+<div class="wrap">
+<article>
+<h1>A Generalization of Brouwer's Fixed Point Theorem</h1>
+<div class="author">By Shizuo Kakutani</div>
+<div class="meta">Received January 21, 1941  |  Institute for Advanced Study</div>
+<p>The purpose of the present paper is to give a generalization of Brouwer's fixed point theorem, and to show that this generalized theorem implies the theorems of J. von Neumann obtained by him in connection with the theory of games and mathematical economics.</p>
+<h2>1. Generalized Fixed Point Theorem</h2>
+<p>The fixed point theorem of Brouwer reads as follows: if \(x \mapsto \varphi(x)\) is a continuous point-to-point mapping of an \(r\)-dimensional closed simplex \(S\) into itself, then there exists an \(x_0 \in S\) such that \(x_0=\varphi(x_0)\).</p>
+<p>This theorem can be generalized in the following way. Let \(\mathcal{S}(S)\) be the family of all closed convex subsets of \(S\). A point-to-set mapping \(x \mapsto \Phi(x)\) of \(S\) into \(\mathcal{S}(S)\) is called upper semi-continuous if \(x_n \to x_0\), \(y_n \in \Phi(x_n)\), and \(y_n \to y_0\) imply \(y_0 \in \Phi(x_0)\). This condition is equivalent to saying that the graph of \(\Phi(x)\), namely \(\sum_x x\times \Phi(x)\), is a closed subset of \(S\times S\).</p>
+<div class="theorem"><p><span class="label">Theorem 1.</span> If \(x\mapsto \Phi(x)\) is an upper semi-continuous point-to-set mapping of an \(r\)-dimensional closed simplex \(S\) into \(\mathcal{S}(S)\), then there exists an \(x_0\in S\) such that \(x_0\in \Phi(x_0)\).</p></div>
+<div class="proof"><p><span class="label">Proof.</span> Let \(S^{(n)}\) be the \(n\)-th barycentric simplicial subdivision of \(S\). For each vertex \(x_n\) of \(S^{(n)}\), take an arbitrary point \(y_n\) from \(\Phi(x_n)\). The mapping \(x_n\mapsto y_n\), defined on all vertices of \(S^{(n)}\), extends linearly inside each simplex of \(S^{(n)}\) and gives a continuous point-to-point mapping \(x\mapsto \varphi_n(x)\) of \(S\) into itself. By Brouwer's fixed point theorem, there exists \(x_n\in S\) such that \(x_n=\varphi_n(x_n)\).</p>
+<p>Taking a subsequence of \(\{x_n\}\) converging to a point \(x_0\in S\), Kakutani shows that this \(x_0\) is the required point. Let \(\Delta_n\) be an \(r\)-dimensional simplex of \(S^{(n)}\) containing \(x_n\), with vertices \(x_n^0,x_n^1,\ldots,x_n^r\). Then \(x_n^i\to x_0\) for each \(i\), and</p>
+<div class="formula">\[x_n=\sum_{i=0}^{r}\lambda_n^i x_n^i,\qquad \lambda_n^i\ge 0,
+\qquad \sum_{i=0}^{r}\lambda_n^i=1.\]</div>
+<p>Putting \(y_n^i=\varphi_n(x_n^i)\), one has \(y_n^i\in\Phi(x_n^i)\) and</p>
+<div class="formula">\[x_n=\varphi_n(x_n)=\sum_{i=0}^{r}\lambda_n^i y_n^i.\]</div>
+<p>After passing to a further subsequence, assume that \(y_n^i\to y^i\) and \(\lambda_n^i\to\lambda^i\). Then \(\lambda^i\ge0\), \(\sum_i\lambda^i=1\), and \(x_0=\sum_i\lambda^i y^i\). Since \(x_n^i\to x_0\), \(y_n^i\in\Phi(x_n^i)\), and \(y_n^i\to y^i\), upper semi-continuity gives \(y^i\in\Phi(x_0)\). By convexity of \(\Phi(x_0)\), \(x_0\in\Phi(x_0)\). This completes the proof.</p></div>
+<div class="remark"><p><span class="label">Remark.</span> Brouwer's fixed point theorem is a special case of Theorem 1 when each \(\Phi(x)\) consists of only one point \(\varphi(x)\). In that case, upper semi-continuity of \(\Phi\) is simply continuity of \(\varphi\).</p></div>
+<div class="corollary"><p><span class="label">Corollary.</span> Theorem 1 is also valid when \(S\) is an arbitrary bounded closed convex set in a Euclidean space.</p>
+<p><span class="label">Proof.</span> Take a closed simplex \(S'\) containing \(S\), and consider a continuous retracting point-to-point mapping \(x\mapsto \psi(x)\) of \(S'\) onto \(S\). Then \(x\mapsto \Phi(\psi(x))\) is an upper semi-continuous point-to-set mapping of \(S'\) into \(\mathcal{S}(S')\). Applying Theorem 1 gives the desired fixed point in \(S\).</p></div>
+<h2>2. Common Point Theorem</h2>
+<div class="theorem"><p><span class="label">Theorem 2.</span> Let \(K\) and \(L\) be two bounded closed convex sets in Euclidean spaces \(R^m\) and \(R^n\), respectively, and consider their Cartesian product \(K\times L\). Let \(U\) and \(V\) be two closed subsets of \(K\times L\) such that for any \(x_0\in K\), the section \(U_{x_0}\) of all \(y\in L\) with \((x_0,y)\in U\) is non-empty, closed, and convex; and for any \(y_0\in L\), the section \(V_{y_0}\) of all \(x\in K\) with \((x,y_0)\in V\) is non-empty, closed, and convex. Under these assumptions, \(U\) and \(V\) have a common point.</p></div>
+<div class="proof"><p><span class="label">Proof.</span> Put \(S=K\times L\), and define a point-to-set mapping \(z\mapsto\Phi(z)\) by \(\Phi(z)=V_y\times U_x\) if \(z=(x,y)\). Since \(U\) and \(V\) are closed, \(\Phi(z)\) is upper semi-continuous. By the corollary to Theorem 1, there exists \(z_0=(x_0,y_0)\in K\times L\) such that \(z_0\in\Phi(z_0)\). Hence \(x_0\in V_{y_0}\) and \(y_0\in U_{x_0}\), which means \((x_0,y_0)\in U\cap V\). Thus the proof is completed.</p></div>
+<div class="remark"><p><span class="label">Remark.</span> Theorem 2 is due to J. von Neumann, who proved it by using a notion of integral in Euclidean spaces. Kakutani notes that the proof above is simpler. This theorem has applications to mathematical economics.</p></div>
+<h2>3. Minimax Theorem</h2>
+<div class="theorem"><p><span class="label">Theorem 3.</span> Let \(f(x,y)\) be a continuous real-valued function defined for \(x\in K\) and \(y\in L\), where \(K\) and \(L\) are arbitrary bounded closed convex sets in two Euclidean spaces. If for every \(x_0\in K\) and every real number \(\alpha\), the set of all \(y\in L\) such that \(f(x_0,y)\le \alpha\) is convex, and if for every \(y_0\in L\) and every real number \(\beta\), the set of all \(x\in K\) such that \(f(x,y_0)\ge \beta\) is convex, then</p>
+<div class="formula">\[\max_{x\in K}\min_{y\in L} f(x,y)=\min_{y\in L}\max_{x\in K} f(x,y).\]</div></div>
+<div class="proof"><p><span class="label">Proof.</span> Let \(U\) be the set of all \((x_0,y_0)\in K\times L\) such that \(f(x_0,y_0)=\min_{y\in L}f(x_0,y)\), and let \(V\) be the set of all \((x_0,y_0)\in K\times L\) such that \(f(x_0,y_0)=\max_{x\in K}f(x,y_0)\). These sets satisfy the hypotheses of Theorem 2. Therefore, there is a point \((x_0,y_0)\in U\cap V\), so</p>
+<div class="formula">\[f(x_0,y_0)=\min_{y\in L} f(x_0,y)=\max_{x\in K} f(x,y_0).\]</div>
+<p>It follows that</p>
+<div class="formula">\[\min_{y\in L}\max_{x\in K} f(x,y)
+\le \max_{x\in K}f(x,y_0)=f(x_0,y_0)=\min_{y\in L}f(x_0,y)
+\le \max_{x\in K}\min_{y\in L}f(x,y).\]</div>
+<p>Since the reverse inequality \(\min_y\max_x f(x,y)\ge\max_x\min_y f(x,y)\) is clear, equality follows.</p></div>
+<div class="remark"><p><span class="label">Remark.</span> Theorem 3 is one of the fundamental theorems in the theory of games developed by J. von Neumann.</p></div>
+<p>In concluding this paper, Kakutani expresses his hearty thanks to Dr. A. D. Wallace for kind discussions on this problem. Wallace had also obtained analogous results for trees.</p>
+<h2>References</h2>
+<div class="refs">
+<ol>
+<li>B. Knaster, C. Kuratowski and S. Mazurkiewicz, <em>Ein Beweis des Fixpunktsatzes für n-dimensionale Simplexe</em>, Fund. Math., vol. 14 (1929), pp. 132-137.</li>
+<li>J. von Neumann, <em>Zur Theorie der Gesellschaftsspiele</em>, Math. Ann., vol. 100 (1928), pp. 295-320.</li>
+<li>J. von Neumann, <em>Über ein ökonomisches Gleichungssystem und eine Verallgemeinerung des Brouwerschen Fixpunktsatzes</em>, Erg. Math. Kolloqu., vol. 8 (1937), pp. 73-83.</li>
+<li>A. D. Wallace, <em>A fixed point theorem for trees</em>, forthcoming in Bull. Amer. Math. Soc., vol. 47 (1941).</li>
+</ol>
+</div>
+<p class="note">HTML conversion based on the uploaded PDF. Mathematical notation has been lightly regularized for readability.</p>
+</article>
+</div>
+</body>
+</html>
