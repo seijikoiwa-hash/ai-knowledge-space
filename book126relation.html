@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>book126relasion｜進化するがん細胞・10人の相関図</title>
+  <style>
+    :root{
+      --bg:#f4f7fb;
+      --paper:#ffffff;
+      --ink:#1f2933;
+      --muted:#617083;
+      --line:#d8e0ea;
+      --blue:#2f5fb3;
+      --green:#2f9e44;
+      --orange:#f08c00;
+      --red:#c92a2a;
+      --purple:#7048e8;
+      --teal:#0b7285;
+      --soft-blue:#eef4ff;
+      --soft-green:#ecfdf3;
+      --soft-orange:#fff4e6;
+      --soft-red:#fff1f1;
+      --soft-purple:#f3f0ff;
+      --soft-teal:#e3fafc;
+    }
+    *{box-sizing:border-box;}
+    html{scroll-behavior:smooth;}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#f7faff 0%,#eef2f7 100%);
+      color:var(--ink);
+      font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
+      line-height:1.95;
+      font-size:17px;
+    }
+    .container{max-width:1080px;margin:0 auto;padding:28px 18px 80px;}
+    header.hero{
+      background:radial-gradient(circle at 15% 20%,#e3fafc 0%,transparent 32%),linear-gradient(135deg,#1d2733 0%,#34495e 58%,#607d8b 100%);
+      color:white;
+      border-radius:30px;
+      padding:54px 38px;
+      box-shadow:0 18px 48px rgba(20,40,80,.18);
+      margin:22px 0 30px;
+      border:1px solid rgba(255,255,255,.24);
+    }
+    .eyebrow{display:inline-block;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);padding:5px 13px;border-radius:999px;font-weight:700;font-size:.9rem;margin-bottom:16px;}
+    h1{font-size:2.55rem;line-height:1.35;margin:0 0 12px;letter-spacing:.04em;}
+    .subtitle{font-size:1.16rem;max-width:880px;opacity:.93;margin:0;}
+    h2{font-size:1.72rem;line-height:1.45;margin:58px 0 18px;padding:13px 17px;border-left:7px solid var(--blue);background:var(--soft-blue);border-radius:13px;color:#203040;}
+    h3{font-size:1.27rem;margin:34px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--line);color:#26384a;}
+    p{margin:13px 0;}
+    strong{color:#17202a;}
+    a{color:#1c5fb7;text-decoration:none;border-bottom:1px solid rgba(28,95,183,.35);}
+    a:hover{border-bottom-color:#1c5fb7;}
+    .card,.toc,.note,.summary,.warning,.relation-box{
+      background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin:24px 0;box-shadow:0 8px 24px rgba(30,50,90,.06);
+    }
+    .lead{background:#eef3f6;border-left:7px solid #607d8b;border-radius:16px;padding:24px 26px;font-size:1.08rem;}
+    .toc ol{margin:10px 0 0;padding-left:1.4em;}
+    .toc li{margin:5px 0;}
+    .summary{background:var(--soft-green);border-left:7px solid var(--green);}
+    .note{background:var(--soft-orange);border-left:7px solid var(--orange);}
+    .warning{background:var(--soft-red);border-left:7px solid var(--red);}
+    .relation-box{background:#fbfcff;}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin:20px 0;}
+    .mini{background:white;border:1px solid var(--line);border-radius:16px;padding:17px;}
+    .mini h3{margin-top:0;}
+    table{width:100%;border-collapse:collapse;margin:22px 0;background:white;border-radius:14px;overflow:hidden;}
+    th,td{border:1px solid var(--line);padding:11px 12px;vertical-align:top;}
+    th{background:#eef4ff;color:#21364f;text-align:left;}
+    .tag{display:inline-block;padding:2px 8px;margin:0 2px;border-radius:999px;background:#eef4ff;color:#254f9a;font-weight:700;font-size:.88em;}
+    .diagram-wrap{background:white;border:1px solid var(--line);border-radius:22px;margin:28px 0;padding:18px;box-shadow:0 10px 28px rgba(30,50,90,.07);overflow:auto;}
+    svg{max-width:100%;height:auto;display:block;margin:auto;}
+    .node-title{font-weight:800;font-size:14px;fill:#1f2933;}
+    .node-sub{font-size:11px;fill:#425466;}
+    .edge{stroke:#67798f;stroke-width:2.2;fill:none;marker-end:url(#arrow);}
+    .edge-soft{stroke:#91a2b7;stroke-width:1.8;stroke-dasharray:6 5;fill:none;marker-end:url(#arrow-soft);}
+    .node rect{stroke-width:2.2;}
+    .section-label{font-weight:800;font-size:13px;fill:#566273;letter-spacing:.05em;}
+    blockquote{margin:24px 0;padding:17px 21px;border-left:7px solid var(--purple);background:var(--soft-purple);border-radius:13px;font-weight:700;color:#343a40;}
+    footer{margin-top:70px;text-align:center;color:#667085;font-size:.92rem;}
+    @media(max-width:820px){body{font-size:16px;}h1{font-size:2rem;}h2{font-size:1.42rem;}.grid{grid-template-columns:1fr;}header.hero{padding:34px 22px;}.container{padding:18px 12px 60px;}}
+  </style>
+</head>
+<body>
+<!-- BOOK126 共通ナビゲーション -->
+<nav style="
+position:sticky;
+top:0;
+z-index:9999;
+background:#111827;
+padding:12px 10px;
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+justify-content:center;
+box-shadow:0 2px 10px rgba(0,0,0,0.15);
+">
+
+<a href="book126navi.html" style="color:white;text-decoration:none;padding:8px 14px;background:#2563eb;border-radius:8px;">NAVI</a>
+
+<a href="book126.html" style="color:white;text-decoration:none;padding:8px 14px;background:#374151;border-radius:8px;">総論</a>
+
+<a href="book126ten.html" style="color:white;text-decoration:none;padding:8px 14px;background:#059669;border-radius:8px;">10人紹介</a>
+
+<a href="book126relation.html" style="color:white;text-decoration:none;padding:8px 14px;background:#7c3aed;border-radius:8px;">相関図</a>
+
+<a href="book126paper.html" style="color:white;text-decoration:none;padding:8px 14px;background:#b45309;border-radius:8px;">論文英語</a>
+
+<a href="book126jap.html" style="color:white;text-decoration:none;padding:8px 14px;background:#dc2626;border-radius:8px;">日本語訳</a>
+
+<a href="book126sol.html" style="color:white;text-decoration:none;padding:8px 14px;background:#0f766e;border-radius:8px;">TPAI解析</a>
+
+<a href="book126objection.html" style="color:white;text-decoration:none;padding:8px 14px;background:#92400e;border-radius:8px;">反論</a>
+
+<a href="https://youtu.be/JDldE3RnGfw" target="_blank"
+style="color:white;text-decoration:none;padding:8px 14px;background:#ff0000;border-radius:8px;">
+YouTube
+</a>
+
+</nav>
+  <main class="container">
+    <header class="hero">
+      <div class="eyebrow">BOOK126 RELASION MAP</div>
+      <h1>進化するがん細胞<br>10人の相関図</h1>
+      <p class="subtitle">Otto Warburg、Thomas Seyfried、Lewis Cantley、Maiken Nedergaard、Eileen White、George Brooks、中山敬一、垣内伸之、辻哲也、小川誠司を、「代謝」「ゲノム」「環境」「臨床」の4層でつなぐ。</p>
+    </header>
+
+    <section class="lead">
+      <p>この相関図の中心にある問いは、単純です。<strong>がんとは、遺伝子の病気なのか、代謝の病気なのか、それとも環境へ適応する進化的な細胞集団なのか。</strong>結論から言えば、この3つは対立するだけではありません。むしろ、がん細胞が時間の中で変化し、生き残り、治療から逃げ、体内環境に適応する過程では、遺伝子、代謝、微小環境、全身状態が互いに絡み合います。</p>
+      <p>ここでは10人を「正しい・間違い」で並べるのではなく、<strong>知的な役割</strong>で配置します。Warburgは起点、Cantleyは分子機構、Seyfriedは代謝中心説の挑戦者、Whiteは飢餓適応、Brooksは乳酸の再定義、Nedergaardは脳の代謝循環、中山敬一は低酸素応答、小川誠司はがんゲノムとクローン進化、垣内伸之は正常組織から発がんへ至る時間軸、辻哲也は運動による全身代謝への臨床介入を担います。</p>
+    </section>
+
+    <nav class="toc">
+      <h2>目次</h2>
+      <ol>
+        <li><a href="#map">全体相関図</a></li>
+        <li><a href="#axis">4つの軸で読む</a></li>
+        <li><a href="#persons">10人の位置づけ</a></li>
+        <li><a href="#relations">主要な関係線</a></li>
+        <li><a href="#chapter1">第1章 Warburgを中心に置く理由</a></li>
+        <li><a href="#chapter2">第2章 CantleyとWhite――糖利用と飢餓適応</a></li>
+        <li><a href="#chapter3">第3章 Seyfried――対抗軸としての代謝中心説</a></li>
+        <li><a href="#chapter4">第4章 BrooksとNedergaard――乳酸と循環</a></li>
+        <li><a href="#chapter5">第5章 中山・小川・垣内――低酸素、ゲノム、時間軸</a></li>
+        <li><a href="#chapter6">第6章 辻哲也――運動療法という臨床的結節点</a></li>
+        <li><a href="#conclusion">結論：がんは進化する細胞である</a></li>
+      </ol>
+    </nav>
+
+    <section id="map">
+      <h2>1. 全体相関図</h2>
+      <p>下の図では、10人を大きく4つの層に分けています。上段は<strong>代謝の起点</strong>、中央は<strong>分子機構と適応戦略</strong>、右側は<strong>ゲノム進化と時間軸</strong>、下段は<strong>環境・運動・循環</strong>です。矢印は「直接の師弟関係」ではなく、知的な接続、理論的な発展、概念上の橋渡しを表しています。</p>
+      <div class="diagram-wrap">
+        <svg width="1050" height="720" viewBox="0 0 1050 720" role="img" aria-label="10人の研究者の相関図">
+          <defs>
+            <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#67798f"/></marker>
+            <marker id="arrow-soft" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#91a2b7"/></marker>
+            <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#1f2933" flood-opacity="0.14"/></filter>
+          </defs>
+
+          <text x="35" y="45" class="section-label">代謝の起点</text>
+          <text x="330" y="45" class="section-label">分子機構・生存戦略</text>
+          <text x="710" y="45" class="section-label">ゲノム進化・時間軸</text>
+          <text x="35" y="648" class="section-label">環境・運動・循環</text>
+
+          <path class="edge" d="M 218 135 C 285 130, 310 125, 365 125"/>
+          <path class="edge" d="M 220 175 C 298 220, 300 285, 365 310"/>
+          <path class="edge" d="M 500 150 C 560 185, 580 205, 645 220"/>
+          <path class="edge" d="M 502 125 C 575 105, 660 115, 725 132"/>
+          <path class="edge" d="M 500 335 C 568 330, 585 300, 645 275"/>
+          <path class="edge" d="M 218 205 C 280 400, 375 495, 475 540"/>
+          <path class="edge" d="M 620 548 C 705 510, 745 420, 780 320"/>
+          <path class="edge" d="M 620 565 C 720 585, 790 555, 860 505"/>
+          <path class="edge" d="M 585 490 C 600 420, 625 360, 665 300"/>
+          <path class="edge" d="M 820 280 C 875 305, 905 355, 910 415"/>
+          <path class="edge" d="M 865 470 C 780 462, 735 425, 700 355"/>
+          <path class="edge-soft" d="M 795 170 C 880 185, 925 235, 930 320"/>
+          <path class="edge-soft" d="M 595 585 C 650 630, 750 640, 850 600"/>
+          <path class="edge-soft" d="M 735 250 C 645 245, 590 205, 515 150"/>
+
+          <g class="node" filter="url(#shadow)">
+            <rect x="45" y="80" width="175" height="145" rx="18" fill="#fff4e6" stroke="#f08c00"/>
+            <text x="65" y="112" class="node-title">Otto Warburg</text>
+            <text x="65" y="138" class="node-sub">ワールブルグ効果</text>
+            <text x="65" y="160" class="node-sub">好気的解糖</text>
+            <text x="65" y="182" class="node-sub">がん代謝の起点</text>
+          </g>
+
+          <g class="node" filter="url(#shadow)">
+            <rect x="365" y="85" width="150" height="105" rx="18" fill="#ecfdf3" stroke="#2f9e44"/>
+            <text x="385" y="118" class="node-title">Lewis Cantley</text>
+            <text x="385" y="144" class="node-sub">PI3K-AKT-mTOR</text>
+            <text x="385" y="166" class="node-sub">糖取り込み</text>
+          </g>
+
+          <g class="node" filter="url(#shadow)">
+            <rect x="365" y="280" width="150" height="115" rx="18" fill="#fff1f1" stroke="#c92a2a"/>
+            <text x="385" y="314" class="node-title">Thomas Seyfried</text>
+            <text x="385" y="340" class="node-sub">ミトコンドリア</text>
+            <text x="385" y="362" class="node-sub">代謝障害説</text>
+          </g>
+
+          <g class="node" filter="url(#shadow)">
+            <rect x="645" y="200" width="175" height="112" rx="18" fill="#f3f0ff" stroke="#7048e8"/>
+            <text x="665" y="234" class="node-title">Eileen White</text>
+            <text x="665" y="260" class="node-sub">オートファジー</text>
+            <text x="665" y="282" class="node-sub">飢餓適応・生存</text>
+          </g>
+
+          <g class="node" filter="url(#shadow)">
+            <rect x="725" y="95" width="170" height="105" rx="18" fill="#ecfdf3" stroke="#2f9e44"/>
+            <text x="745" y="128" class="node-title">中山敬一</text>
+            <text x="745" y="154" class="node-sub">HIF-1 / mTOR</text>
+            <text x="745" y="176" class="node-sub">低酸素応答</text>
+          </g>
+
+          <g class="node" filter="url(#shadow)">
+            <rect x="865" y="330" width="150" height="115" rx="18" fill="#eef4ff" stroke="#2f5fb3"/>
+            <text x="885" y="364" class="node-title">小川誠司</text>
+            <text x="885" y="390" class="node-sub">がんゲノム</text>
+            <text x="885" y="412" class="node-sub">クローン進化</text>
+          </g>
+
+          <g class="node" filter="url(#shadow)">
+            <rect x="850" y="500" width="155" height="112" rx="18" fill="#eef4ff" stroke="#2f5fb3"/>
+            <text x="870" y="534" class="node-title">垣内伸之</text>
+            <text x="870" y="560" class="node-sub">正常組織</text>
+            <text x="870" y="582" class="node-sub">変異蓄積・自然史</text>
+          </g>
+
+          <g class="node" filter="url(#shadow)">
+            <rect x="470" y="500" width="155" height="112" rx="18" fill="#e3fafc" stroke="#0b7285"/>
+            <text x="490" y="534" class="node-title">George Brooks</text>
+            <text x="490" y="560" class="node-sub">乳酸シャトル</text>
+            <text x="490" y="582" class="node-sub">運動代謝</text>
+          </g>
+
+          <g class="node" filter="url(#shadow)">
+            <rect x="235" y="545" width="170" height="112" rx="18" fill="#e3fafc" stroke="#0b7285"/>
+            <text x="255" y="579" class="node-title">Maiken Nedergaard</text>
+            <text x="255" y="605" class="node-sub">グリンパティック系</text>
+            <text x="255" y="627" class="node-sub">脳代謝循環</text>
+          </g>
+
+          <g class="node" filter="url(#shadow)">
+            <rect x="670" y="595" width="150" height="105" rx="18" fill="#ecfdf3" stroke="#2f9e44"/>
+            <text x="690" y="628" class="node-title">辻哲也</text>
+            <text x="690" y="654" class="node-sub">がんリハビリ</text>
+            <text x="690" y="676" class="node-sub">運動療法</text>
+          </g>
+        </svg>
+      </div>
+      <div class="summary"><strong>図の要点：</strong>Warburgを中心に置くと、がん代謝の問いは、Cantleyのシグナル伝達、Seyfriedの代謝中心説、Whiteの飢餓適応、Brooksの乳酸、Nedergaardの脳循環、中山の低酸素応答、小川・垣内のゲノム進化、辻の運動療法へと枝分かれする。</div>
+    </section>
+
+    <section id="axis">
+      <h2>2. 4つの軸で読む</h2>
+      <p>10人を単に時代順に並べると、関係は見えにくくなります。そこで、この相関図では4つの軸を置きます。第一は<strong>代謝軸</strong>です。Warburg、Seyfried、Brooksはここに強く関わります。第二は<strong>シグナル・細胞内制御軸</strong>です。Cantley、White、中山敬一がここに入ります。第三は<strong>ゲノム・進化軸</strong>です。小川誠司、垣内伸之が中心です。第四は<strong>全身環境・臨床軸</strong>です。辻哲也とNedergaardが、運動、睡眠、循環、老廃物処理という観点から、この軸を広げます。</p>
+      <table>
+        <tr><th>軸</th><th>中心人物</th><th>キーワード</th><th>がん理解への意味</th></tr>
+        <tr><td>代謝軸</td><td>Warburg / Seyfried / Brooks</td><td>解糖系、ミトコンドリア、乳酸</td><td>がん細胞がどうエネルギーと材料を得るかを見る。</td></tr>
+        <tr><td>シグナル軸</td><td>Cantley / White / 中山</td><td>PI3K、mTOR、HIF-1、オートファジー</td><td>細胞が糖を取り込み、飢餓や低酸素に適応する仕組みを見る。</td></tr>
+        <tr><td>ゲノム進化軸</td><td>小川 / 垣内</td><td>変異、クローン進化、正常組織、時間軸</td><td>がんが突然ではなく、時間の中で選択される過程を見る。</td></tr>
+        <tr><td>全身環境軸</td><td>辻 / Nedergaard</td><td>運動、筋肉、睡眠、脳循環、代謝環境</td><td>がん細胞だけでなく、宿主側の環境を変える可能性を見る。</td></tr>
+      </table>
+      <p>この4軸は独立していません。たとえば低酸素はHIF-1を通じて糖代謝を変えます。糖代謝の変化は乳酸を増やします。乳酸は微小環境や免疫に影響します。遺伝子変異は代謝回路を変え、代謝環境はどのクローンが生き残るかを左右します。つまり、相関図の本質は、人物同士の紹介ではなく、<strong>生命現象を横断的に見るための地図</strong>にあります。</p>
+    </section>
+
+    <section id="persons">
+      <h2>3. 10人の位置づけ</h2>
+      <div class="grid">
+        <div class="mini"><h3>Otto Warburg</h3><p>出発点。酸素があるにもかかわらず、がん細胞が解糖系を強く使い、乳酸を産生する現象を示した。がんを代謝から見る視点の原点である。</p></div>
+        <div class="mini"><h3>Lewis Cantley</h3><p>Warburgが観察した糖利用の異常に、PI3K-AKT-mTORという分子機構の道筋を与える人物。増殖シグナルと糖取り込みを接続する。</p></div>
+        <div class="mini"><h3>Thomas Seyfried</h3><p>がんをミトコンドリア代謝障害として捉える立場を強く打ち出す。主流の遺伝子中心説に対する批判的な鏡として機能する。</p></div>
+        <div class="mini"><h3>Eileen White</h3><p>オートファジーを通じて、がん細胞が飢餓やストレス下でどのように生き残るかを示す。代謝と生存戦略を結ぶ。</p></div>
+        <div class="mini"><h3>George Brooks</h3><p>乳酸を単なる疲労物質ではなく、エネルギー輸送と情報伝達に関わる物質として再定義した。がん代謝と運動代謝をつなぐ鍵。</p></div>
+        <div class="mini"><h3>Maiken Nedergaard</h3><p>グリンパティックシステムを通じて、脳を老廃物排出と代謝循環の器官として捉え直した。睡眠、循環、代謝の視点を広げる。</p></div>
+        <div class="mini"><h3>中山敬一</h3><p>低酸素応答、HIF-1、mTOR、細胞周期、代謝制御の接点に位置する。がんが酸素不足に適応する仕組みを考える上で重要。</p></div>
+        <div class="mini"><h3>小川誠司</h3><p>がんゲノム、血液がん、クローン進化の視点から、がんを遺伝子変異の時間的蓄積として読む。代謝変化を進化の中に置く。</p></div>
+        <div class="mini"><h3>垣内伸之</h3><p>正常に見える組織に変異クローンが広がるという、発がん以前の時間軸を見せる。がんの自然史を理解する上で重要。</p></div>
+        <div class="mini"><h3>辻哲也</h3><p>がんリハビリテーションと運動療法を臨床へつなぐ。筋肉、糖代謝、炎症、体力を通じて、患者側の環境を変える役割を持つ。</p></div>
+      </div>
+    </section>
+
+    <section id="relations">
+      <h2>4. 主要な関係線</h2>
+      <p>相関図で重要なのは、単に「誰が有名か」ではありません。どの人物が、どの概念を次の人物へ橋渡ししているかです。ここでは主要な関係線を整理します。</p>
+      <table>
+        <tr><th>関係線</th><th>意味</th></tr>
+        <tr><td>Warburg → Cantley</td><td>「がん細胞は糖を食う」という観察から、「なぜ糖を食うのか」という分子機構へ進む。</td></tr>
+        <tr><td>Warburg → Seyfried</td><td>がんを代謝から見る視点が、ミトコンドリア代謝障害説として再解釈される。</td></tr>
+        <tr><td>Cantley → White</td><td>増殖シグナルと栄養利用の問題が、飢餓時のオートファジーと細胞生存へ広がる。</td></tr>
+        <tr><td>Cantley → 中山</td><td>PI3K、mTOR、HIF-1が、糖取り込み、低酸素応答、細胞成長を結ぶ。</td></tr>
+        <tr><td>Warburg → Brooks</td><td>乳酸を「がんの副産物」と見るだけでなく、代謝ネットワークの中心物質として考える。</td></tr>
+        <tr><td>Brooks → 辻</td><td>運動における乳酸・糖代謝の理解が、がんリハビリと全身代謝介入の背景になる。</td></tr>
+        <tr><td>中山 → 小川</td><td>低酸素や代謝応答が、遺伝子変異を持つクローンの選択環境として働く。</td></tr>
+        <tr><td>小川 → 垣内</td><td>がんゲノム研究が、発がん前の正常組織における変異蓄積へ拡張される。</td></tr>
+        <tr><td>辻 → 小川・垣内</td><td>運動療法は、がん細胞の進化を直接操作するというより、宿主環境を変える可能性を持つ。</td></tr>
+        <tr><td>Nedergaard → 全体</td><td>睡眠、脳循環、老廃物処理という視点が、生命を代謝循環として見る立場を補強する。</td></tr>
+      </table>
+    </section>
+
+    <section id="chapter1">
+      <h2>第1章 Warburgを中心に置く理由</h2>
+      <p>この相関図でOtto Warburgを中心に置く理由は、彼が「がん細胞の奇妙なエネルギー利用」を発見したからです。通常、酸素が十分にある細胞は、ミトコンドリアで酸化的リン酸化を行い、効率よくATPを作ります。ところが、がん細胞は酸素があっても糖を大量に取り込み、解糖系を強く使い、乳酸を作ります。この現象がワールブルグ効果です。</p>
+      <p>一見すると、これは非効率です。解糖系だけでは、ミトコンドリアを使う場合に比べて得られるATPが少ないからです。しかし、急速に増える細胞にとって大事なのは、ATPだけではありません。DNA、RNA、脂質、タンパク質など、新しい細胞を作る材料が必要です。糖代謝を強めることは、細胞の材料工場を動かす意味を持ちます。</p>
+      <blockquote>Warburgの本当の重要性は、「がんを代謝の異常として見る」扉を開いたことにある。</blockquote>
+      <p>この扉から入ると、がん研究は遺伝子だけではなく、エネルギー、材料、乳酸、酸素、ミトコンドリア、免疫、運動、睡眠へ広がります。つまりWarburgは、単なる歴史上の発見者ではなく、この相関図全体の入口です。</p>
+    </section>
+
+    <section id="chapter2">
+      <h2>第2章 CantleyとWhite――糖利用と飢餓適応</h2>
+      <p>Lewis Cantleyは、Warburgの観察に分子生物学的な説明を与える位置にいます。PI3K-AKT-mTOR経路は、細胞増殖、糖取り込み、タンパク質合成、代謝制御に深く関わります。がん細胞が糖を大量に取り込むのは、単なる偶然ではありません。増殖シグナルが細胞内の回路を動かし、糖を取り込み、材料を作り、成長する方向へ誘導しているのです。</p>
+      <p>ここでEileen Whiteが重要になります。がん細胞は、いつも栄養たっぷりの環境にいるわけではありません。腫瘍の内部では血流が不十分になり、酸素も栄養も足りなくなることがあります。そのような環境で、がん細胞はオートファジーを利用して、自分の一部を分解し、再利用し、生き残ることがあります。</p>
+      <p>Cantleyが「増殖するがん細胞の代謝」を示すなら、Whiteは「飢餓に耐えるがん細胞の代謝」を示します。この2人を並べると、がん細胞は単に増えるだけではなく、環境が悪くなったときにも生き残る戦略を持つことが見えてきます。</p>
+      <div class="relation-box"><strong>関係の核心：</strong>糖を取り込んで増えるがんと、栄養不足でも生き残るがん。この2つは矛盾ではなく、がん細胞の適応能力の両面である。</div>
+    </section>
+
+    <section id="chapter3">
+      <h2>第3章 Seyfried――対抗軸としての代謝中心説</h2>
+      <p>Thomas Seyfriedは、この相関図の中で少し特別な位置にいます。彼は、がんの本質をミトコンドリア代謝障害として捉える立場を強く打ち出します。これは、がんを遺伝子変異の病気として理解する主流派に対する挑戦です。</p>
+      <p>ここで大切なのは、Seyfriedの立場を「完全に正しい」または「完全に間違い」と処理しないことです。むしろ彼の役割は、がん研究が遺伝子中心に偏りすぎたとき、代謝とミトコンドリアの重要性を強く思い出させることにあります。</p>
+      <p>がん細胞には多くの遺伝子変異があります。しかし、それらの変異が細胞の代謝を変え、ミトコンドリア機能を変え、乳酸産生や糖依存性を生み出すなら、遺伝子と代謝は切り離せません。Seyfriedは、遺伝子中心説への反論者であると同時に、Warburg的視点を現代へ再召喚する人物です。</p>
+      <div class="note"><strong>注意点：</strong>この相関図では、Seyfriedを「主流派への対抗軸」として扱う。つまり、がんを理解するための刺激的な視点であって、他の研究者全員を否定する立場としては置かない。</div>
+    </section>
+
+    <section id="chapter4">
+      <h2>第4章 BrooksとNedergaard――乳酸と循環</h2>
+      <p>George Brooksは、乳酸の意味を大きく変えた人物です。乳酸はかつて、疲労物質、代謝のゴミ、副産物のように扱われることがありました。しかしBrooksのラクトシャトル理論によって、乳酸はエネルギー輸送物質であり、細胞間・臓器間で使われる重要な代謝物として理解されるようになりました。</p>
+      <p>この視点は、がん研究にも響きます。ワールブルグ効果では乳酸が作られます。以前なら「がん細胞が出すゴミ」と見えた乳酸も、現在では微小環境を酸性化し、免疫応答に影響し、他の細胞の燃料になり、情報伝達にも関わる可能性があるものとして見られます。</p>
+      <p>Maiken Nedergaardは、直接のがん代謝研究者というより、脳を代謝循環の器官として捉え直した研究者です。グリンパティックシステムは、脳脊髄液の流れと老廃物除去をめぐる概念です。ここで重要なのは、生命を「情報」だけでなく、「流れ」「循環」「排出」「交換」として見る視点です。</p>
+      <p>Brooksが乳酸の流れを示し、Nedergaardが脳内の液体循環を示すと、生命は固定された構造ではなく、流れるシステムとして見えてきます。がんもまた、孤立した細胞塊ではありません。糖、乳酸、酸素、免疫、血流、炎症、老廃物処理と関わる動的な場です。</p>
+    </section>
+
+    <section id="chapter5">
+      <h2>第5章 中山・小川・垣内――低酸素、ゲノム、時間軸</h2>
+      <p>中山敬一の位置は、代謝とシグナル伝達と環境応答の交差点です。腫瘍が大きくなると、内部では酸素が不足しやすくなります。低酸素になると、HIF-1などの応答経路が働き、細胞は糖代謝を高め、血管新生や生存に関わる仕組みを動かします。ここで低酸素は、単なる悪条件ではなく、がん細胞を選別し、代謝を書き換える環境圧になります。</p>
+      <p>小川誠司は、がんをゲノムとクローン進化から読む研究者です。がん細胞集団は一様ではありません。ある細胞は薬に弱く、ある細胞は薬に強い。ある細胞は低酸素に弱く、ある細胞は低酸素でも生き残る。治療や環境変化は、どのクローンが残るかを決める選択圧として働きます。</p>
+      <p>垣内伸之は、さらに時間軸を前へ伸ばします。がんになる前の正常に見える組織にも、年齢とともに遺伝子変異を持つ細胞集団が広がっていることがあります。つまり、がんは突然現れる怪物ではなく、正常組織の中で少しずつ変異と選択が積み重なった結果として理解できます。</p>
+      <div class="relation-box"><strong>この章の核心：</strong>中山は「環境応答」、小川は「クローン進化」、垣内は「発がん前からの時間軸」を示す。3人をつなぐと、がんは時間の中で選ばれていく細胞集団として見える。</div>
+    </section>
+
+    <section id="chapter6">
+      <h2>第6章 辻哲也――運動療法という臨床的結節点</h2>
+      <p>辻哲也は、この相関図の中で、研究室の理論を患者の身体へつなぐ人物として位置づけられます。がんリハビリテーションや運動療法は、がん細胞を直接殺す治療ではありません。しかし、筋肉、糖代謝、炎症、体力、倦怠感、治療継続能力に関わるため、がん医療の中で重要な意味を持ちます。</p>
+      <p>運動をすると筋肉が糖を使います。ミトコンドリア機能にも影響します。炎症やインスリン抵抗性にも関係します。これは、Warburg、Cantley、Brooksの議論とつながります。がん細胞が糖代謝に依存するなら、患者側の全身代謝を整えることは、がん細胞の住む環境を変えることにつながる可能性があります。</p>
+      <p>もちろん、「運動すればがんが治る」という単純な話ではありません。骨転移、貧血、感染リスク、治療副作用、体力低下などを考える必要があります。けれども、がん治療を薬だけでなく、筋肉、活動量、栄養、炎症、睡眠、生活機能まで含めて考える時代には、辻の位置は非常に重要です。</p>
+      <div class="warning"><strong>臨床上の注意：</strong>運動療法は患者ごとの状態に合わせて行う必要がある。自己判断の強い運動ではなく、医師、理学療法士、作業療法士など専門職との連携が前提となる。</div>
+    </section>
+
+    <section id="conclusion">
+      <h2>結論：がんは進化する細胞である</h2>
+      <p>10人を一本の線でつなぐと、がんの姿は大きく変わります。がんは単なる「壊れた細胞」ではありません。遺伝子を変え、糖を使い、乳酸を出し、低酸素に耐え、飢餓をしのぎ、治療圧の中で選択され、全身環境の影響を受けながら変化する細胞集団です。</p>
+      <p>Warburgは代謝の入口を開きました。Cantleyは糖利用の分子機構を示しました。Whiteは飢餓に耐える細胞の生存戦略を示しました。Seyfriedはミトコンドリア代謝を中心に据えることで、主流派に問いを投げました。Brooksは乳酸をゴミから燃料へ変えました。Nedergaardは脳を代謝循環器官として捉え直しました。中山は低酸素環境で細胞が代謝を変える仕組みを見せました。小川はがんゲノムとクローン進化を読みました。垣内は正常組織から発がんへ至る長い時間軸を示しました。辻は運動を通じて、患者側の環境に介入する道を示しました。</p>
+      <blockquote>がんを理解するとは、遺伝子、代謝、環境、時間、臨床を一つの地図に重ねることである。</blockquote>
+      <p>この相関図の最終的なメッセージは、対立する理論を無理に一つに潰さないことです。遺伝子中心説と代謝中心説は、互いに競合するだけではありません。遺伝子変異が代謝を変え、代謝環境がクローン選択を変え、低酸素や乳酸が微小環境を変え、運動や睡眠が宿主側の条件を変える。がんは、そうした多層的な関係の中で進化します。</p>
+      <p>したがって、10人の相関図は人物紹介ではなく、がんを読むための思考地図です。がん細胞は進化する。ならば、私たちの理解も進化しなければなりません。</p>
+    </section>
+
+    <footer>
+      <p>book126relasion.html｜進化するがん細胞・10人の相関図</p>
+    </footer>
+  </main>
+<!-- BOOK126 共通ナビゲーション -->
+<nav style="
+position:sticky;
+top:0;
+z-index:9999;
+background:#111827;
+padding:12px 10px;
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+justify-content:center;
+box-shadow:0 2px 10px rgba(0,0,0,0.15);
+">
+
+<a href="book126navi.html" style="color:white;text-decoration:none;padding:8px 14px;background:#2563eb;border-radius:8px;">NAVI</a>
+
+<a href="book126.html" style="color:white;text-decoration:none;padding:8px 14px;background:#374151;border-radius:8px;">総論</a>
+
+<a href="book126ten.html" style="color:white;text-decoration:none;padding:8px 14px;background:#059669;border-radius:8px;">10人紹介</a>
+
+<a href="book126relation.html" style="color:white;text-decoration:none;padding:8px 14px;background:#7c3aed;border-radius:8px;">相関図</a>
+
+<a href="book126paper.html" style="color:white;text-decoration:none;padding:8px 14px;background:#b45309;border-radius:8px;">論文英語</a>
+
+<a href="book126jap.html" style="color:white;text-decoration:none;padding:8px 14px;background:#dc2626;border-radius:8px;">日本語訳</a>
+
+<a href="book126sol.html" style="color:white;text-decoration:none;padding:8px 14px;background:#0f766e;border-radius:8px;">TPAI解析</a>
+
+<a href="book126objection.html" style="color:white;text-decoration:none;padding:8px 14px;background:#92400e;border-radius:8px;">反論</a>
+
+<a href="https://youtu.be/JDldE3RnGfw" target="_blank"
+style="color:white;text-decoration:none;padding:8px 14px;background:#ff0000;border-radius:8px;">
+YouTube
+</a>
+
+</nav>
+</body>
+</html>

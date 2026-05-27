@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>book126sol - Otto Warburg論文 TPAI法解析</title>
+<style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fb;
+      color: #222;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 40px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      border-bottom: 3px solid #333;
+      padding-bottom: 16px;
+    }
+    h2 {
+      font-size: 1.45rem;
+      margin-top: 44px;
+      padding: 12px 16px;
+      background: #eef3ff;
+      border-left: 6px solid #4b6cb7;
+      border-radius: 8px;
+    }
+    h3 {
+      font-size: 1.18rem;
+      margin-top: 32px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #ddd;
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    li {
+      margin: 8px 0;
+    }
+    .note {
+      background: #fff8df;
+      border-left: 5px solid #e0b100;
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 6px;
+    }
+    .answer-line {
+      display: inline-block;
+      min-width: 260px;
+      border-bottom: 1px solid #aaa;
+      height: 1.2em;
+      vertical-align: middle;
+    }
+    .arrow {
+      font-weight: bold;
+      color: #333;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 32px 0;
+    }
+    .section-box {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 22px;
+      background: #fcfcff;
+    }
+    footer {
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 50px;
+    }
+    @media print {
+      body { background: #fff; }
+      .container { box-shadow: none; margin: 0; max-width: none; }
+    }
+  
+    .answer-line { line-height:1.7; }
+    strong { color:#1f3a5f; }
+</style>
+</head>
+<body>
+<!-- BOOK126 共通ナビゲーション -->
+<nav style="
+position:sticky;
+top:0;
+z-index:9999;
+background:#111827;
+padding:12px 10px;
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+justify-content:center;
+box-shadow:0 2px 10px rgba(0,0,0,0.15);
+">
+
+<a href="book126navi.html" style="color:white;text-decoration:none;padding:8px 14px;background:#2563eb;border-radius:8px;">NAVI</a>
+
+<a href="book126.html" style="color:white;text-decoration:none;padding:8px 14px;background:#374151;border-radius:8px;">総論</a>
+
+<a href="book126ten.html" style="color:white;text-decoration:none;padding:8px 14px;background:#059669;border-radius:8px;">10人紹介</a>
+
+<a href="book126relation.html" style="color:white;text-decoration:none;padding:8px 14px;background:#7c3aed;border-radius:8px;">相関図</a>
+
+<a href="book126paper.html" style="color:white;text-decoration:none;padding:8px 14px;background:#b45309;border-radius:8px;">論文英語</a>
+
+<a href="book126jap.html" style="color:white;text-decoration:none;padding:8px 14px;background:#dc2626;border-radius:8px;">日本語訳</a>
+
+<a href="book126sol.html" style="color:white;text-decoration:none;padding:8px 14px;background:#0f766e;border-radius:8px;">TPAI解析</a>
+
+<a href="book126objection.html" style="color:white;text-decoration:none;padding:8px 14px;background:#92400e;border-radius:8px;">反論</a>
+
+<a href="https://youtu.be/JDldE3RnGfw" target="_blank"
+style="color:white;text-decoration:none;padding:8px 14px;background:#ff0000;border-radius:8px;">
+YouTube
+</a>
+
+</nav>
+<main class="container">
+<h1>Otto Warburg「On the Origin of Cancer Cells」TPAI法解析</h1>
+<section>
+<h2>■ 基本情報</h2>
+<ul>
+<li>論文タイトル：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">On the Origin of Cancer Cells（がん細胞の起源について）</span></li>
+<li>著者：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">Otto Warburg</span></li>
+<li>分野：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">がん代謝・細胞生理学・腫瘍学</span></li>
+<li>発表年・雑誌：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">1956年・Science 123(3191), 309–314</span></li>
+</ul>
+</section>
+<hr/>
+<section>
+<h2>■ A：論文本文の論理構造（ストーリー）</h2>
+<h3>1. 目的（Objective）</h3>
+<ul>
+<li>目的a：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">がん細胞の発生を、損傷した呼吸と過剰な発酵という代謝変化から説明する。</span></li>
+<li>目的b：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">腹水がん細胞を用い、腫瘍全体ではなくがん細胞そのものの代謝を定量的に扱う。</span></li>
+<li>目的c：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">発がんの潜伏期間、脱分化、休眠がん細胞、放射線感受性を一つの代謝モデルで説明する。</span></li>
+</ul>
+<hr/>
+<h3>2. 仮説（Hypothesis）</h3>
+<p class="note">※明示されていない場合は推定する</p>
+<ul>
+<li>仮説a：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">がん細胞の本質的変化は、不可逆的な呼吸障害と、それを補う発酵能の増大である。</span></li>
+<li>仮説b：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">酸素欠乏や呼吸毒は、細胞の呼吸を傷害し、その後の発酵増大を通じてがん化へ向かわせる。</span></li>
+<li>仮説c：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">呼吸由来ATPと発酵由来ATPは化学的には同じでも、細胞構造維持への効果は同じではない。</span></li>
+</ul>
+<hr/>
+<h3>3. 実験・方法（Methods）</h3>
+<ul>
+<li>実験a：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">腹水がん細胞を「ほぼ純粋ながん細胞集団」として扱い、酸素消費と乳酸産生を測定する。</span></li>
+<li>実験b：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">正常組織、再生肝、胎児組織、酵母、腹水がん細胞の呼吸・発酵を比較する。</span></li>
+<li>実験c：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">酸素欠乏、呼吸毒、照射、潜伏期間、発酵増大を結び、発がん過程の因果モデルを組み立てる。</span></li>
+</ul>
+<hr/>
+<h3>4. 結果（Results）</h3>
+<ul>
+<li>結果a：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">腹水がん細胞は強い乳酸発酵を示し、正常肝・腎などより発酵依存のエネルギー比率が著しく高い。</span></li>
+<li>結果b：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">呼吸障害は細胞死を起こすほど強すぎてはならず、不可逆的で、発酵による代償が必要とされる。</span></li>
+<li>結果c：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">発酵による代償が進む間が潜伏期間であり、その途中には「休眠」または未完成のがん細胞段階が想定される。</span></li>
+</ul>
+<hr/>
+<h3>5. 検証（目的との対応）</h3>
+<ul>
+<li>目的a → 結果a → 支持：がん細胞では呼吸が損傷し、発酵が大きいという中心命題に対応する。</li>
+<li>目的b → 結果b → 支持：腹水がん細胞の定量測定により、従来の腫瘍塊観察より強い根拠を与える。</li>
+<li>目的c → 結果c → 部分的支持：潜伏期間・脱分化・休眠の説明は説得的だが、現代的には補足検証が必要。</li>
+</ul>
+<hr/>
+<h3>6. 結論（Conclusion）</h3>
+<ul>
+<li>結論：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">がん細胞の起源は、呼吸障害と発酵増大の連鎖として理解できる、という主張である。</span></li>
+<li>著者の主張の要約：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">Warburgは、がんを遺伝子異常よりもまずエネルギー代謝の病として捉え、呼吸から発酵への置換を中心原因とした。</span></li>
+</ul>
+<hr/>
+<h3>7. 限界・未解決問題（Limitations）</h3>
+<ul>
+<li>限界a：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">1956年論文であり、分子遺伝学・がんゲノム・シグナル伝達の知見はほぼ含まれない。</span></li>
+<li>限界b：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">腹水がん細胞など限られた系の代謝測定から、すべてのがんの起源へ一般化している。</span></li>
+<li>未解決問題：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">呼吸障害が原因か結果か、また突然変異・選択・微小環境との関係は未解決である。</span></li>
+</ul>
+<hr/>
+<h3>8. 新規性（Novelty）</h3>
+<p class="note">※既存研究と何が違うか</p>
+<ul>
+<li>新規性：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">がん細胞の「発酵」を単なる随伴現象ではなく、発がん機構そのものの中心に置いた点。</span></li>
+<li>従来との差分：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">腫瘍塊の曖昧な測定ではなく、腹水がん細胞の定量代謝から論理を組み立てた点。</span></li>
+</ul>
+</section>
+<hr/>
+<section>
+<h2>■ B：図・表の解析（エビデンス）</h2>
+<div class="section-box">
+<h3>図1（Figure 1）</h3>
+<p>A. 対応箇所（目的 / 仮説 / 実験 / 結果）：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">論文には通常の図表はほぼない。図1相当は「腹水がん細胞の呼吸・発酵の定量比較」とみなす。</span></p>
+<p>B. 何を証明しようとしているか：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">がん細胞が正常細胞より発酵に強く依存することを示す。</span></p>
+<p>C. 図から分かること：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">酸素消費と乳酸産生の比較から、がん細胞では発酵が主要なエネルギー源に近づく。</span></p>
+<p>D. 結果への影響：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">Warburg効果を論文全体の出発点にする基礎証拠である。</span></p>
+<p>E. この図がないと何が崩れるか：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">がん細胞の発酵が高いという中心事実が弱まり、論文の骨格が崩れる。</span></p>
+</div>
+<hr/>
+<div class="section-box">
+<h3>図2（Figure 2）</h3>
+<p>A. 対応箇所：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">図2相当は「酸素欠乏・呼吸毒・照射による呼吸障害モデル」とみなす。</span></p>
+<p>B. 何を証明しようとしているか：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">呼吸障害が不可逆的に残り、発酵代償が進むことでがん化が説明できることを示す。</span></p>
+<p>C. 図から分かること：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">酸素欠乏や呼吸毒により呼吸が傷害され、細胞は生存のため発酵依存へ傾く。</span></p>
+<p>D. 結果への影響：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">発がんの潜伏期間、放射線選択性、休眠がん細胞という議論を支える。</span></p>
+<p>E. この図がないと何が崩れるか：<span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">呼吸障害からがん化へ進む因果説明が弱まり、単なる相関の議論になる。</span></p>
+</div>
+<p>（必要に応じて図を追加）</p>
+</section>
+<hr/>
+<section>
+<h2>■ C：論文の本質（最重要まとめ）</h2>
+<h3>1. この論文は一言で何をしたか</h3>
+<p>→ <span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">がん細胞の起源を、不可逆的な呼吸障害と発酵増大によるエネルギー代謝の転換として説明した。</span></p>
+<h3>2. なぜ重要か</h3>
+<p>→ <span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">現在の「Warburg効果」研究の古典的出発点であり、がんを代謝から読む視点を決定的にしたため。</span></p>
+<h3>3. どこが一番強い証拠か（キーフィギュア）</h3>
+<p>→ <span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">腹水がん細胞で呼吸と発酵を定量し、正常細胞とのエネルギー獲得様式の差を示した部分。</span></p>
+<h3>4. どこが一番怪しいか（弱点）</h3>
+<p>→ <span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">代謝変化を発がんの一次原因と強く主張し、遺伝子変異・微小環境・腫瘍多様性を十分扱っていない点。</span></p>
+<h3>5. 次にやるべき研究は何か</h3>
+<p>→ <span class="answer-line" style="display:inline; border-bottom:none; min-width:0; height:auto; vertical-align:baseline; font-weight:600; color:#1f3a5f;">呼吸障害、発酵依存、遺伝子変異、がん幹細胞性、低酸素環境を統合して、因果順序を検証する研究。</span></p>
+</section>
+<section><h2>■ 参照した原資料</h2>
+<ul>
+<li>解析対象：book126paper(5).html（Otto Warburg, “On the Origin of Cancer Cells”）</li>
+<li>使用テンプレート：template(39).html（論文分解テンプレート）</li>
+<li>注：本論文には現代的な意味での図表がほぼないため、B欄では本文中の定量比較と因果モデルを「図相当の証拠」として整理した。</li>
+</ul></section><footer>論文分解テンプレート</footer>
+</main>
+<!-- BOOK126 共通ナビゲーション -->
+<nav style="
+position:sticky;
+top:0;
+z-index:9999;
+background:#111827;
+padding:12px 10px;
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+justify-content:center;
+box-shadow:0 2px 10px rgba(0,0,0,0.15);
+">
+
+<a href="book126navi.html" style="color:white;text-decoration:none;padding:8px 14px;background:#2563eb;border-radius:8px;">NAVI</a>
+
+<a href="book126.html" style="color:white;text-decoration:none;padding:8px 14px;background:#374151;border-radius:8px;">総論</a>
+
+<a href="book126ten.html" style="color:white;text-decoration:none;padding:8px 14px;background:#059669;border-radius:8px;">10人紹介</a>
+
+<a href="book126relation.html" style="color:white;text-decoration:none;padding:8px 14px;background:#7c3aed;border-radius:8px;">相関図</a>
+
+<a href="book126paper.html" style="color:white;text-decoration:none;padding:8px 14px;background:#b45309;border-radius:8px;">論文英語</a>
+
+<a href="book126jap.html" style="color:white;text-decoration:none;padding:8px 14px;background:#dc2626;border-radius:8px;">日本語訳</a>
+
+<a href="book126sol.html" style="color:white;text-decoration:none;padding:8px 14px;background:#0f766e;border-radius:8px;">TPAI解析</a>
+
+<a href="book126objection.html" style="color:white;text-decoration:none;padding:8px 14px;background:#92400e;border-radius:8px;">反論</a>
+
+<a href="https://youtu.be/JDldE3RnGfw" target="_blank"
+style="color:white;text-decoration:none;padding:8px 14px;background:#ff0000;border-radius:8px;">
+YouTube
+</a>
+
+</nav>
+</body>
+</html>
