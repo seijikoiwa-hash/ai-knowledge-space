@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>生命が左型アミノ酸を選んだ流れ</title>
+  <style>
+    :root {
+      --bg1: #06111f;
+      --bg2: #0d2238;
+      --card: rgba(255,255,255,0.08);
+      --line: rgba(255,255,255,0.18);
+      --text: #eef6ff;
+      --sub: #bdd4f0;
+      --l: #63d46b;
+      --d: #ff6b6b;
+      --gold: #ffd166;
+      --blue: #74c0fc;
+      --earth: #4dabf7;
+      --mineral: #c0f5d7;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 20% 10%, rgba(116,192,252,0.16), transparent 25%),
+        radial-gradient(circle at 80% 20%, rgba(255,209,102,0.10), transparent 20%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      min-height: 100vh;
+    }
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 18px 40px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+    }
+    .lead {
+      margin: 0 0 24px;
+      color: var(--sub);
+      font-size: clamp(15px, 2vw, 18px);
+      line-height: 1.8;
+    }
+    .panel {
+      border: 1px solid var(--line);
+      background: var(--card);
+      backdrop-filter: blur(6px);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 18px 50px rgba(0,0,0,0.28);
+    }
+    .caption {
+      padding: 14px 18px 0;
+      color: var(--sub);
+      font-size: 14px;
+    }
+    svg { display: block; width: 100%; height: auto; }
+    .notes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .note {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+    }
+    .note h2 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+    .note p {
+      margin: 0;
+      color: var(--sub);
+      line-height: 1.75;
+      font-size: 14px;
+    }
+    .footer {
+      margin-top: 18px;
+      color: var(--sub);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    @media (max-width: 900px) {
+      .notes { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>生命が「左型アミノ酸」のみを使うまで</h1>
+    <p class="lead">① 宇宙の円偏光が最初のわずかな偏りをつくり、② 地球の鉱物表面がL体をさらに選び、③ 化学反応の増幅でその差が決定的になって、やがて「Lだけの世界」に近づく――という仮説を模式図で示しました。</p>
+
+    <div class="panel">
+      <div class="caption">模式図：<span style="color:#fff">偏りを作る → 選ぶ → 増やす</span></div>
+      <svg viewBox="0 0 1200 760" role="img" aria-label="宇宙の円偏光、地球の鉱物表面、化学反応の増幅によって左型アミノ酸が選ばれていく模式図">
+        <defs>
+          <linearGradient id="spaceGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0a1930" />
+            <stop offset="100%" stop-color="#132b4b" />
+          </linearGradient>
+          <linearGradient id="earthGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0f2740" />
+            <stop offset="100%" stop-color="#153a54" />
+          </linearGradient>
+          <linearGradient id="chemGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#1a2038" />
+            <stop offset="100%" stop-color="#342041" />
+          </linearGradient>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="6" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+          <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+            <path d="M0,0 L12,6 L0,12 z" fill="#ffd166"/>
+          </marker>
+          <marker id="arrowWhite" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+            <path d="M0,0 L12,6 L0,12 z" fill="#dbeafe"/>
+          </marker>
+        </defs>
+
+        <rect x="20" y="30" width="360" height="650" rx="28" fill="url(#spaceGrad)" stroke="rgba(255,255,255,0.18)" />
+        <rect x="420" y="30" width="360" height="650" rx="28" fill="url(#earthGrad)" stroke="rgba(255,255,255,0.18)" />
+        <rect x="820" y="30" width="360" height="650" rx="28" fill="url(#chemGrad)" stroke="rgba(255,255,255,0.18)" />
+
+        <text x="50" y="82" fill="#ffffff" font-size="30" font-weight="700">① 宇宙（円偏光）</text>
+        <text x="450" y="82" fill="#ffffff" font-size="30" font-weight="700">② 地球（鉱物）</text>
+        <text x="850" y="82" fill="#ffffff" font-size="30" font-weight="700">③ 化学反応（増幅）</text>
+
+        <text x="50" y="120" fill="#bdd4f0" font-size="18">円偏光の光が L と D にわずかな差を与える</text>
+        <text x="450" y="120" fill="#bdd4f0" font-size="18">鉱物表面が L をより強く選び取る</text>
+        <text x="850" y="120" fill="#bdd4f0" font-size="18">小さな差が反応の繰り返しで大差になる</text>
+
+        <!-- Step 1: space -->
+        <circle cx="120" cy="210" r="34" fill="#fff4b3" filter="url(#glow)" />
+        <g stroke="#74c0fc" stroke-width="5" fill="none" opacity="0.9">
+          <path d="M72,210 C92,162 148,162 168,210 C148,258 92,258 72,210Z" />
+          <path d="M56,210 C88,138 152,138 184,210 C152,282 88,282 56,210Z" opacity="0.65"/>
+          <path d="M38,210 C80,116 160,116 202,210 C160,304 80,304 38,210Z" opacity="0.35"/>
+        </g>
+        <path d="M205,210 C248,210 282,238 314,278" stroke="#dbeafe" stroke-width="7" fill="none" marker-end="url(#arrowWhite)" />
+        <text x="48" y="300" fill="#dbeafe" font-size="22" font-weight="700">円偏光</text>
+        <text x="48" y="330" fill="#bdd4f0" font-size="16">回転しながら進む光</text>
+
+        <g transform="translate(90 410)">
+          <text x="0" y="-18" fill="#ffffff" font-size="20" font-weight="700">最初の偏り</text>
+          <rect x="0" y="0" width="240" height="30" rx="15" fill="rgba(255,255,255,0.12)" />
+          <rect x="0" y="0" width="132" height="30" rx="15" fill="#63d46b" />
+          <text x="8" y="22" fill="#08240d" font-size="16" font-weight="700">L体 55%</text>
+          <text x="162" y="22" fill="#ffe3e3" font-size="16" font-weight="700">D体 45%</text>
+        </g>
+
+        <!-- tiny molecules -->
+        <g transform="translate(78 520)">
+          <g transform="translate(0 0)">
+            <circle cx="32" cy="32" r="18" fill="#222" />
+            <circle cx="12" cy="16" r="10" fill="#63d46b" />
+            <circle cx="56" cy="12" r="10" fill="#ff6b6b" />
+            <circle cx="56" cy="54" r="10" fill="#dbeafe" />
+            <line x1="32" y1="32" x2="12" y2="16" stroke="#dbeafe" stroke-width="4" />
+            <line x1="32" y1="32" x2="56" y2="12" stroke="#dbeafe" stroke-width="4" />
+            <line x1="32" y1="32" x2="56" y2="54" stroke="#dbeafe" stroke-width="4" />
+            <text x="6" y="82" fill="#8ce99a" font-size="20" font-weight="700">L</text>
+          </g>
+          <g transform="translate(110 0) scale(-1,1) translate(-64,0)">
+            <circle cx="32" cy="32" r="18" fill="#222" />
+            <circle cx="12" cy="16" r="10" fill="#63d46b" />
+            <circle cx="56" cy="12" r="10" fill="#ff6b6b" />
+            <circle cx="56" cy="54" r="10" fill="#dbeafe" />
+            <line x1="32" y1="32" x2="12" y2="16" stroke="#dbeafe" stroke-width="4" />
+            <line x1="32" y1="32" x2="56" y2="12" stroke="#dbeafe" stroke-width="4" />
+            <line x1="32" y1="32" x2="56" y2="54" stroke="#dbeafe" stroke-width="4" />
+            <text x="0" y="82" fill="#ffb3b3" font-size="20" font-weight="700" transform="scale(-1,1) translate(-28,0)">D</text>
+          </g>
+        </g>
+
+        <!-- Step 2 Earth -->
+        <g transform="translate(450 160)">
+          <path d="M0,210 C90,130 160,120 265,40 L300,80 C220,140 150,186 56,260 Z" fill="#9be7c4" opacity="0.2"/>
+          <path d="M18,220 C108,142 180,128 282,52" stroke="#c0f5d7" stroke-width="3" opacity="0.6" />
+          <path d="M36,230 C130,150 198,142 300,70" stroke="#c0f5d7" stroke-width="3" opacity="0.45" />
+          <path d="M54,240 C152,164 220,154 318,92" stroke="#c0f5d7" stroke-width="3" opacity="0.30" />
+          <text x="0" y="300" fill="#ffffff" font-size="22" font-weight="700">鉱物表面</text>
+          <text x="0" y="328" fill="#bdd4f0" font-size="16">L体がよりフィットしやすい</text>
+
+          <!-- L on crystal -->
+          <g transform="translate(188 116)">
+            <circle cx="32" cy="32" r="18" fill="#222" />
+            <circle cx="12" cy="16" r="10" fill="#63d46b" />
+            <circle cx="56" cy="12" r="10" fill="#ff6b6b" />
+            <circle cx="56" cy="54" r="10" fill="#dbeafe" />
+            <line x1="32" y1="32" x2="12" y2="16" stroke="#dbeafe" stroke-width="4" />
+            <line x1="32" y1="32" x2="56" y2="12" stroke="#dbeafe" stroke-width="4" />
+            <line x1="32" y1="32" x2="56" y2="54" stroke="#dbeafe" stroke-width="4" />
+            <text x="78" y="36" fill="#8ce99a" font-size="20" font-weight="700">ぴったり</text>
+          </g>
+
+          <!-- D rejected -->
+          <g transform="translate(232 226) scale(-1,1) translate(-64,0)">
+            <circle cx="32" cy="32" r="18" fill="#222" opacity="0.55" />
+            <circle cx="12" cy="16" r="10" fill="#63d46b" opacity="0.55" />
+            <circle cx="56" cy="12" r="10" fill="#ff6b6b" opacity="0.55" />
+            <circle cx="56" cy="54" r="10" fill="#dbeafe" opacity="0.55" />
+            <line x1="32" y1="32" x2="12" y2="16" stroke="#dbeafe" stroke-width="4" opacity="0.55" />
+            <line x1="32" y1="32" x2="56" y2="12" stroke="#dbeafe" stroke-width="4" opacity="0.55" />
+            <line x1="32" y1="32" x2="56" y2="54" stroke="#dbeafe" stroke-width="4" opacity="0.55" />
+          </g>
+          <line x1="252" y1="265" x2="312" y2="232" stroke="#ffb3b3" stroke-width="5" marker-end="url(#arrowWhite)" opacity="0.85"/>
+          <text x="254" y="300" fill="#ffb3b3" font-size="18" font-weight="700">合いにくい</text>
+        </g>
+
+        <g transform="translate(490 560)">
+          <text x="0" y="-18" fill="#ffffff" font-size="20" font-weight="700">地球でさらに選別</text>
+          <rect x="0" y="0" width="240" height="30" rx="15" fill="rgba(255,255,255,0.12)" />
+          <rect x="0" y="0" width="180" height="30" rx="15" fill="#63d46b" />
+          <text x="8" y="22" fill="#08240d" font-size="16" font-weight="700">L体 75%</text>
+          <text x="162" y="22" fill="#ffe3e3" font-size="16" font-weight="700">D体 25%</text>
+        </g>
+
+        <!-- Step 3 chemistry -->
+        <g transform="translate(850 170)">
+          <circle cx="110" cy="112" r="80" fill="rgba(255,209,102,0.10)" stroke="#ffd166" stroke-width="4" />
+          <circle cx="110" cy="112" r="52" fill="rgba(255,209,102,0.16)" stroke="#ffd166" stroke-width="3" />
+          <text x="46" y="108" fill="#ffffff" font-size="22" font-weight="700">反応が</text>
+          <text x="32" y="136" fill="#ffffff" font-size="22" font-weight="700">くり返される</text>
+
+          <path d="M220,74 C278,80 318,122 318,182" stroke="#ffd166" stroke-width="6" fill="none" marker-end="url(#arrow)"/>
+          <path d="M304,204 C280,252 226,278 166,270" stroke="#ffd166" stroke-width="6" fill="none" marker-end="url(#arrow)"/>
+          <path d="M134,258 C74,242 42,200 42,138" stroke="#ffd166" stroke-width="6" fill="none" marker-end="url(#arrow)"/>
+          <path d="M52,102 C78,54 136,34 194,40" stroke="#ffd166" stroke-width="6" fill="none" marker-end="url(#arrow)"/>
+
+          <g transform="translate(34 330)">
+            <text x="0" y="-18" fill="#ffffff" font-size="20" font-weight="700">増幅の結果</text>
+            <rect x="0" y="0" width="240" height="30" rx="15" fill="rgba(255,255,255,0.12)" />
+            <rect x="0" y="0" width="232" height="30" rx="15" fill="#63d46b" />
+            <text x="8" y="22" fill="#08240d" font-size="16" font-weight="700">L体 97% 以上</text>
+            <text x="184" y="22" fill="#ffe3e3" font-size="14" font-weight="700">D体 ごく少量</text>
+          </g>
+
+          <g transform="translate(58 432)">
+            <circle cx="24" cy="20" r="12" fill="#222" />
+            <circle cx="10" cy="8" r="7" fill="#63d46b" />
+            <circle cx="40" cy="8" r="7" fill="#ff6b6b" />
+            <circle cx="40" cy="34" r="7" fill="#dbeafe" />
+            <line x1="24" y1="20" x2="10" y2="8" stroke="#dbeafe" stroke-width="3" />
+            <line x1="24" y1="20" x2="40" y2="8" stroke="#dbeafe" stroke-width="3" />
+            <line x1="24" y1="20" x2="40" y2="34" stroke="#dbeafe" stroke-width="3" />
+            <circle cx="84" cy="20" r="12" fill="#222" />
+            <circle cx="70" cy="8" r="7" fill="#63d46b" />
+            <circle cx="100" cy="8" r="7" fill="#ff6b6b" />
+            <circle cx="100" cy="34" r="7" fill="#dbeafe" />
+            <line x1="84" y1="20" x2="70" y2="8" stroke="#dbeafe" stroke-width="3" />
+            <line x1="84" y1="20" x2="100" y2="8" stroke="#dbeafe" stroke-width="3" />
+            <line x1="84" y1="20" x2="100" y2="34" stroke="#dbeafe" stroke-width="3" />
+            <circle cx="144" cy="20" r="12" fill="#222" />
+            <circle cx="130" cy="8" r="7" fill="#63d46b" />
+            <circle cx="160" cy="8" r="7" fill="#ff6b6b" />
+            <circle cx="160" cy="34" r="7" fill="#dbeafe" />
+            <line x1="144" y1="20" x2="130" y2="8" stroke="#dbeafe" stroke-width="3" />
+            <line x1="144" y1="20" x2="160" y2="8" stroke="#dbeafe" stroke-width="3" />
+            <line x1="144" y1="20" x2="160" y2="34" stroke="#dbeafe" stroke-width="3" />
+            <circle cx="204" cy="20" r="12" fill="#222" />
+            <circle cx="190" cy="8" r="7" fill="#63d46b" />
+            <circle cx="220" cy="8" r="7" fill="#ff6b6b" />
+            <circle cx="220" cy="34" r="7" fill="#dbeafe" />
+            <line x1="204" y1="20" x2="190" y2="8" stroke="#dbeafe" stroke-width="3" />
+            <line x1="204" y1="20" x2="220" y2="8" stroke="#dbeafe" stroke-width="3" />
+            <line x1="204" y1="20" x2="220" y2="34" stroke="#dbeafe" stroke-width="3" />
+            <text x="0" y="78" fill="#8ce99a" font-size="22" font-weight="700">Lだけの世界へ近づく</text>
+          </g>
+        </g>
+
+        <!-- connectors -->
+        <line x1="382" y1="355" x2="408" y2="355" stroke="#ffd166" stroke-width="8" marker-end="url(#arrow)"/>
+        <line x1="782" y1="355" x2="808" y2="355" stroke="#ffd166" stroke-width="8" marker-end="url(#arrow)"/>
+
+        <!-- bottom summary -->
+        <rect x="70" y="700" width="1060" height="34" rx="17" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.16)" />
+        <text x="100" y="723" fill="#dbeafe" font-size="18" font-weight="700">偏りを作る（宇宙）</text>
+        <text x="328" y="723" fill="#ffd166" font-size="18" font-weight="700">→</text>
+        <text x="374" y="723" fill="#dbeafe" font-size="18" font-weight="700">偏りを選ぶ（地球）</text>
+        <text x="604" y="723" fill="#ffd166" font-size="18" font-weight="700">→</text>
+        <text x="648" y="723" fill="#dbeafe" font-size="18" font-weight="700">偏りを増やす（化学反応）</text>
+        <text x="930" y="723" fill="#ffd166" font-size="18" font-weight="700">→</text>
+        <text x="970" y="723" fill="#8ce99a" font-size="18" font-weight="700">L優勢の生命世界</text>
+      </svg>
+    </div>
+
+    <div class="notes">
+      <section class="note">
+        <h2>① 宇宙（円偏光）</h2>
+        <p>円偏光は、右回り・左回りの向きをもつ特別な光です。もしこの光がL体とD体に少し違う作用を与えるなら、最初にごく小さな偏りが生まれます。</p>
+      </section>
+      <section class="note">
+        <h2>② 地球（鉱物）</h2>
+        <p>鉱物表面には、分子の片方だけがより吸着しやすい場所があるかもしれません。すると最初の小さな偏りが、地球上でさらに大きくなります。</p>
+      </section>
+      <section class="note">
+        <h2>③ 化学反応（増幅）</h2>
+        <p>不斉増幅では、ほんの少しのL優勢が反応を通じて大きく育ちます。こうして最終的に「ほぼLだけ」の世界へ近づく、という考え方です。</p>
+      </section>
+    </div>
+
+    <div class="footer">この図は模式図です。数値（55%→75%→97%以上）は概念説明のためのイメージであり、特定の単一実験値をそのまま表すものではありません。</div>
+  </div>
+</body>
+</html>
