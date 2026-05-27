@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>進化するがん細胞</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      line-height: 1.9;
+      margin: 0;
+      background: #f5f7fa;
+      color: #222;
+    }
+    header {
+      background: linear-gradient(135deg, #1d2733, #455a64);
+      color: white;
+      padding: 56px 24px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.4rem;
+      margin: 0 0 12px;
+      letter-spacing: 0.05em;
+    }
+    header p {
+      max-width: 900px;
+      margin: 0 auto;
+      opacity: 0.92;
+      font-size: 1.05rem;
+    }
+    main {
+      max-width: 980px;
+      margin: 36px auto;
+      background: #fff;
+      padding: 48px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      border-radius: 18px;
+    }
+    h2 {
+      margin-top: 56px;
+      padding-bottom: 10px;
+      border-bottom: 3px solid #607d8b;
+      color: #263238;
+      font-size: 1.65rem;
+    }
+    h3 {
+      margin-top: 34px;
+      color: #37474f;
+      font-size: 1.25rem;
+    }
+    p { margin: 1em 0; }
+    .lead {
+      font-size: 1.12rem;
+      background: #eef3f6;
+      padding: 22px 26px;
+      border-left: 6px solid #607d8b;
+      border-radius: 10px;
+    }
+    .flow {
+      background: #fafafa;
+      border: 1px solid #ddd;
+      padding: 22px 28px;
+      border-radius: 14px;
+      margin: 24px 0;
+      font-weight: 600;
+      text-align: center;
+      color: #37474f;
+    }
+    .note {
+      background: #fff8e1;
+      border-left: 6px solid #ffb300;
+      padding: 18px 22px;
+      border-radius: 10px;
+    }
+    .person-list {
+      columns: 2;
+      background: #f7f9fb;
+      border-radius: 14px;
+      padding: 20px 28px;
+    }
+    .person-list li { margin-bottom: 8px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.95rem;
+    }
+    th, td {
+      border: 1px solid #d8dfe3;
+      padding: 12px;
+      vertical-align: top;
+    }
+    th {
+      background: #eef3f6;
+      color: #263238;
+    }
+    footer {
+      max-width: 980px;
+      margin: 24px auto 50px;
+      color: #666;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+    @media (max-width: 720px) {
+      main { padding: 24px; margin: 18px; }
+      header h1 { font-size: 1.8rem; }
+      .person-list { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+<!-- BOOK126 共通ナビゲーション -->
+<nav style="
+position:sticky;
+top:0;
+z-index:9999;
+background:#111827;
+padding:12px 10px;
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+justify-content:center;
+box-shadow:0 2px 10px rgba(0,0,0,0.15);
+">
+
+<a href="book126navi.html" style="color:white;text-decoration:none;padding:8px 14px;background:#2563eb;border-radius:8px;">NAVI</a>
+
+<a href="book126.html" style="color:white;text-decoration:none;padding:8px 14px;background:#374151;border-radius:8px;">総論</a>
+
+<a href="book126ten.html" style="color:white;text-decoration:none;padding:8px 14px;background:#059669;border-radius:8px;">10人紹介</a>
+
+<a href="book126relation.html" style="color:white;text-decoration:none;padding:8px 14px;background:#7c3aed;border-radius:8px;">相関図</a>
+
+<a href="book126paper.html" style="color:white;text-decoration:none;padding:8px 14px;background:#b45309;border-radius:8px;">論文英語</a>
+
+<a href="book126jap.html" style="color:white;text-decoration:none;padding:8px 14px;background:#dc2626;border-radius:8px;">日本語訳</a>
+
+<a href="book126sol.html" style="color:white;text-decoration:none;padding:8px 14px;background:#0f766e;border-radius:8px;">TPAI解析</a>
+
+<a href="book126objection.html" style="color:white;text-decoration:none;padding:8px 14px;background:#92400e;border-radius:8px;">反論</a>
+
+<a href="https://youtu.be/JDldE3RnGfw" target="_blank"
+style="color:white;text-decoration:none;padding:8px 14px;background:#ff0000;border-radius:8px;">
+YouTube
+</a>
+
+</nav>
+<header>
+  <h1>進化するがん細胞</h1>
+  <p>Otto Warburgから辻哲也まで――「代謝」から読み直される生命とがんの知的系譜</p>
+</header>
+
+<main>
+  <p class="lead">
+    1920年代、Otto Warburgは、がん細胞が酸素のある環境でも大量の糖を消費し、解糖系を優先するという奇妙な現象を発見した。これが「ワールブルグ効果」である。そこから約100年、がん研究は遺伝子、ミトコンドリア、乳酸、免疫、脳、睡眠、運動、腫瘍進化を巻き込みながら、生命そのものを「代謝するネットワーク」として捉え直す方向へ進んでいる。
+  </p>
+
+  <h2>登場する10人</h2>
+  <ul class="person-list">
+    <li>Otto Warburg</li>
+    <li>Thomas Seyfried</li>
+    <li>Lewis Cantley</li>
+    <li>Maiken Nedergaard</li>
+    <li>Eileen White</li>
+    <li>George Brooks</li>
+    <li>中山敬一</li>
+    <li>垣内伸之</li>
+    <li>辻哲也</li>
+    <li>小川誠司</li>
+  </ul>
+
+  <h2>第1章　ワールブルグ効果――がん研究の原点</h2>
+  <p>
+    ワールブルグ効果とは、がん細胞が酸素の十分ある環境でも、ミトコンドリアによる効率的なエネルギー産生よりも、細胞質での解糖系を優先する現象である。通常の細胞なら、酸素があればミトコンドリアで酸化的リン酸化を行い、少ない糖から多くのATPを得る。しかし、がん細胞は大量のグルコースを取り込み、乳酸を産生する方向へ進む。
+  </p>
+  <div class="flow">グルコース → ピルビン酸 → 乳酸</div>
+  <p>
+    これは一見、非効率に見える。だが、急速に増殖するがん細胞にとっては、単なるATP量よりも、核酸、脂質、アミノ酸など、細胞を増やす材料をすばやく確保することが重要になる。つまり、ワールブルグ効果は「エネルギーの無駄遣い」ではなく、「増殖する細胞のための代謝再設計」と見ることができる。
+  </p>
+
+  <h2>第2章　Otto Warburg――代謝からがんを見た先駆者</h2>
+  <p>
+    Otto Warburgの偉大さは、がんを単なる形態異常や増殖異常としてではなく、代謝異常として見た点にある。彼は、がん細胞が酸素のある環境でも解糖系を強く使うことを示した。この発見は、後のPET検査、がん代謝研究、糖依存性、ミトコンドリア研究へつながった。
+  </p>
+  <p>
+    彼の視点は長い間、遺伝子中心のがん研究の中でやや脇に置かれた。しかし現在、がん細胞の代謝、免疫、微小環境、乳酸、運動療法が注目されるにつれて、Warburgの問いは再び中心へ戻ってきた。がんとは何か。それは遺伝子の病気なのか、代謝の病気なのか。それとも、その両方が絡み合った進化現象なのか。
+  </p>
+
+  <h2>第3章　Lewis Cantley――糖を食う理由を分子化した研究者</h2>
+  <p>
+    Warburgは「がん細胞は糖を大量に使う」と発見した。しかし、なぜそうなるのかは分からなかった。ここに分子生物学の道を開いたのがLewis Cantleyである。CantleyはPI3K経路の研究で知られ、PI3K-AKT-mTOR経路が細胞増殖、糖取り込み、代謝制御に深く関わることを明らかにした。
+  </p>
+  <div class="flow">増殖シグナル → PI3K-AKT-mTOR → 糖取り込み増加 → 解糖系活性化</div>
+  <p>
+    つまり、Warburgが観察した現象に、Cantleyは分子機構を与えた。がん細胞は勝手に糖を食べているのではない。増殖シグナルのネットワークが、糖を取り込み、代謝を切り替え、細胞の増殖材料を確保する方向へ細胞を誘導しているのである。
+  </p>
+
+  <h2>第4章　Eileen White――飢餓に耐えるがん</h2>
+  <p>
+    Eileen Whiteは、がんとオートファジー、栄養欠乏、腫瘍生存の研究で重要な人物である。がん細胞は、ただ増殖するだけではない。栄養が足りない、酸素が足りない、免疫に攻撃される、薬剤にさらされる。そのような過酷な環境でも生き延びる能力を持っている。
+  </p>
+  <p>
+    オートファジーは、細胞が自分の一部を分解し、再利用する仕組みである。飢餓状態に置かれた細胞は、この仕組みによって内部資源を確保する。がん細胞もまた、この仕組みを利用して生き延びる場合がある。ここでがんは、単なる暴走細胞ではなく、「生態系の中で生き残る細胞」として理解されるようになる。
+  </p>
+
+  <h2>第5章　Thomas Seyfried――遺伝子中心説への挑戦</h2>
+  <p>
+    Thomas Seyfriedは、がんの本質をミトコンドリア代謝障害として捉える立場で知られる。彼の主張は、現代がん研究の主流である「がん＝遺伝子変異の病気」という見方に対する強い対抗軸である。
+  </p>
+  <table>
+    <tr><th>立場</th><th>中心概念</th></tr>
+    <tr><td>主流派</td><td>遺伝子変異、ゲノム異常、クローン進化</td></tr>
+    <tr><td>Seyfriedの立場</td><td>ミトコンドリア代謝障害、エネルギー代謝の崩壊</td></tr>
+  </table>
+  <p>
+    この対立は単純にどちらか一方が正しいというものではない。むしろ重要なのは、がんを遺伝子だけでなく、代謝、ミトコンドリア、細胞環境から見る必要があるという点である。Seyfriedの存在によって、Warburg的視点は現代に再召喚された。
+  </p>
+
+  <h2>第6章　George Brooks――乳酸はゴミではなく燃料である</h2>
+  <p>
+    かつて乳酸は、疲労物質、不要な副産物、代謝のゴミのように理解されていた。しかしGeorge Brooksは、その理解を大きく変えた。彼はラクトシャトル理論を提唱し、乳酸をエネルギー輸送物質として捉えた。
+  </p>
+  <p>
+    乳酸は、運動中の筋肉だけでなく、脳、心臓、免疫細胞、がん微小環境でも重要な役割を果たす。がん研究においても、乳酸は単なる排泄物ではない。周囲の酸性環境を作り、免疫応答を変え、細胞間の情報伝達に関わる可能性がある。
+  </p>
+  <div class="flow">乳酸＝疲労物質　から　乳酸＝エネルギー・情報の運搬体へ</div>
+
+  <h2>第7章　Maiken Nedergaard――脳を代謝循環器官として見る</h2>
+  <p>
+    Maiken Nedergaardは、グリンパティックシステムの研究で知られる。グリンパティックシステムとは、脳脊髄液が脳内を流れ、老廃物を洗い流す仕組みとして提案された概念である。ここでは、アストロサイトやAQP4が重要な役割を担う。
+  </p>
+  <p>
+    この考え方の革命性は、脳を単なる情報処理器官ではなく、代謝循環器官として捉える点にある。脳は閉じた箱ではない。睡眠中に老廃物を処理し、代謝環境を整える動的な器官である。
+  </p>
+  <p>
+    Warburgががん細胞を代謝から見たように、Nedergaardは脳を代謝循環から見た。ここで、がん代謝と神経代謝は遠い話ではなくなる。生命は情報だけではなく、流れ、交換、排出、再利用によって成り立っている。
+  </p>
+
+  <h2>第8章　中山敬一――低酸素が代謝を書き換える</h2>
+  <p>
+    がん組織の内部では、しばしば低酸素状態が生じる。細胞が増えすぎると、血管から十分な酸素が届きにくくなるからである。この低酸素環境に適応するために重要なのがHIF-1であり、細胞増殖や代謝を支えるmTOR経路である。
+  </p>
+  <div class="flow">低酸素 → HIF-1活性化 → 解糖系促進 → ワールブルグ化</div>
+  <p>
+    中山敬一の研究は、低酸素応答、mTOR、細胞周期、代謝再編成と関わる。ここで見えてくるのは、がん細胞が環境に合わせて代謝を切り替えるという姿である。がんは、ただ壊れているのではない。環境に適応するために、代謝回路を作り替えている。
+  </p>
+
+  <h2>第9章　小川誠司――ゲノムと代謝の統合</h2>
+  <p>
+    小川誠司は、がんゲノム、血液がん、腫瘍進化、クローン進化の研究で知られる。彼の研究は、がんを「遺伝子変異の積み重ね」として読むだけでなく、その変異がどのように細胞集団の進化を生むかを明らかにする方向へ進んでいる。
+  </p>
+  <p>
+    ワールブルグ効果との接点は、遺伝子変異が代謝変化を生み、その代謝変化ががん細胞の生存戦略になるという点にある。がん細胞は、変異によって増殖のルールを変え、代謝を変え、周囲の微小環境へ適応する。
+  </p>
+  <div class="flow">遺伝子変異 → クローン進化 → 代謝再編成 → 腫瘍の適応</div>
+  <p>
+    ここで、遺伝子中心説と代謝中心説は対立するだけではなく、統合される。がんは遺伝子の病気であり、同時に代謝の病気でもある。そして、それらは時間の中で進化する。
+  </p>
+
+  <h2>第10章　垣内伸之――正常組織からがんへの時間軸</h2>
+  <p>
+    垣内伸之は、がんの自然史、変異蓄積、発がんの起点、クローン進化に関わる研究者である。重要なのは、がんが突然現れるのではなく、正常に見える組織の中でも、長い時間をかけて遺伝子変異を持つ細胞集団が広がっていくという視点である。
+  </p>
+  <p>
+    一見正常な組織にも、年齢とともに変異を蓄積したクローンが存在する。その中の一部が、環境に適応し、増殖能力を高め、代謝を変え、がんへ近づいていく。ワールブルグ効果は、その過程のどこかで現れる「代謝の転換点」と考えることができる。
+  </p>
+  <div class="flow">正常細胞 → 変異蓄積 → クローン拡大 → 代謝転換 → がん化</div>
+
+  <h2>第11章　辻哲也――運動による代謝介入</h2>
+  <p>
+    辻哲也は、がんリハビリテーション、運動療法、Exercise Oncologyを臨床の中で体系化してきた人物である。従来、がん患者には安静が重視されがちだった。しかし現在では、適切な運動は治療の一部として位置づけられつつある。
+  </p>
+  <p>
+    ワールブルグ効果との関係で見ると、運動は全身代謝を変える手段である。筋肉は糖を大量に消費し、ミトコンドリア機能を高め、炎症を抑え、インスリン抵抗性を改善する。これは、糖依存的ながん細胞にとって不利な環境を作る可能性がある。
+  </p>
+  <div class="flow">運動 → 筋肉が糖を使う → 代謝環境改善 → がんに不利な体内環境</div>
+  <p>
+    もちろん、運動がすべてのがんを直接抑えるという単純な話ではない。しかし、がん治療を薬、手術、放射線だけで考える時代から、代謝、筋肉、炎症、生活機能を含めて考える時代へ移りつつあることは重要である。
+  </p>
+
+  <h2>第12章　10人を一本の線でつなぐ</h2>
+  <table>
+    <tr><th>人物</th><th>位置づけ</th><th>キーワード</th></tr>
+    <tr><td>Otto Warburg</td><td>出発点</td><td>好気的解糖、がん代謝</td></tr>
+    <tr><td>Lewis Cantley</td><td>分子機構</td><td>PI3K-AKT-mTOR、糖取り込み</td></tr>
+    <tr><td>Eileen White</td><td>生存戦略</td><td>オートファジー、飢餓適応</td></tr>
+    <tr><td>Thomas Seyfried</td><td>代謝中心説</td><td>ミトコンドリア、代謝障害</td></tr>
+    <tr><td>George Brooks</td><td>乳酸革命</td><td>ラクトシャトル、運動代謝</td></tr>
+    <tr><td>Maiken Nedergaard</td><td>脳代謝循環</td><td>グリンパティック、睡眠、AQP4</td></tr>
+    <tr><td>中山敬一</td><td>低酸素応答</td><td>HIF-1、mTOR、代謝再編成</td></tr>
+    <tr><td>小川誠司</td><td>ゲノム統合</td><td>がんゲノム、クローン進化</td></tr>
+    <tr><td>垣内伸之</td><td>発がんの時間軸</td><td>変異蓄積、正常組織、腫瘍進化</td></tr>
+    <tr><td>辻哲也</td><td>臨床介入</td><td>運動療法、がんリハビリ</td></tr>
+  </table>
+
+  <h2>第13章　がんは「進化する細胞」である</h2>
+  <p>
+    この10人を並べると、がん細胞の姿が変わって見える。がんは、ただ壊れた細胞ではない。遺伝子を変え、代謝を変え、環境に適応し、飢餓に耐え、乳酸を利用し、低酸素に反応し、全身の代謝環境と相互作用する存在である。
+  </p>
+  <p>
+    つまり、がんは「進化する細胞」である。進化とは、単に強くなることではない。環境に応じて生き残る仕組みを変えることである。がん細胞は、体内という環境の中で、酸素、糖、免疫、炎症、薬剤、筋肉、血管、脳、睡眠と関わりながら進化する。
+  </p>
+  <p class="note">
+    ここで重要なのは、がんを一つの原因で説明しようとしないことである。遺伝子だけでもない。代謝だけでもない。免疫だけでもない。がんは、それらが絡み合った動的ネットワークとして理解する必要がある。
+  </p>
+
+  <h2>第14章　生命観の変化</h2>
+  <p>
+    昔の生命観では、生命は遺伝子プログラムとして理解されることが多かった。もちろん、遺伝子は重要である。しかし現在、生命はそれだけでは説明できない。生命とは、代謝、循環、情報、環境の動的ネットワークである。
+  </p>
+  <div class="flow">昔：生命＝遺伝子プログラム<br>現在：生命＝代謝・循環・情報・環境の動的ネットワーク</div>
+  <p>
+    Warburgの問いは、実はこの生命観の転換の入口だった。がん細胞が糖を食べるという現象は、単なる代謝異常ではない。細胞が生き延びるために、体内の環境に対してどのように応答しているかを示している。
+  </p>
+
+  <h2>終章　進化するがん細胞、進化する知識</h2>
+  <p>
+    Warburgが見つけたのは、がん細胞の奇妙な糖代謝だった。Cantleyはその分子機構を示した。Whiteは飢餓に耐えるがんを見た。Seyfriedはミトコンドリア代謝を中心に据えた。Brooksは乳酸を再定義した。Nedergaardは脳を代謝循環器官として見た。中山敬一は低酸素応答を明らかにした。小川誠司と垣内伸之は、がんが時間の中で進化することを示した。辻哲也は、運動によって全身代謝へ介入する道を開いた。
+  </p>
+  <p>
+    この10人を結ぶと、がん研究は単なる医学の一分野ではなく、生命理解そのものの変化として見えてくる。
+  </p>
+  <p>
+    がん細胞は進化する。だからこそ、私たちの理解も進化しなければならない。遺伝子だけを見るのではなく、代謝を見る。細胞だけを見るのではなく、環境を見る。腫瘍だけを見るのではなく、身体全体を見る。
+  </p>
+ </main>
+
+<footer>
+  <p>book126ten.html</p>
+</footer>
+
+<!-- BOOK126 共通ナビゲーション -->
+<nav style="
+position:sticky;
+top:0;
+z-index:9999;
+background:#111827;
+padding:12px 10px;
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+justify-content:center;
+box-shadow:0 2px 10px rgba(0,0,0,0.15);
+">
+<a href="book126navi.html" style="color:white;text-decoration:none;padding:8px 14px;background:#2563eb;border-radius:8px;">NAVI</a>
+
+<a href="book126.html" style="color:white;text-decoration:none;padding:8px 14px;background:#374151;border-radius:8px;">総論</a>
+
+<a href="book126ten.html" style="color:white;text-decoration:none;padding:8px 14px;background:#059669;border-radius:8px;">10人紹介</a>
+
+<a href="book126relation.html" style="color:white;text-decoration:none;padding:8px 14px;background:#7c3aed;border-radius:8px;">相関図</a>
+
+<a href="book126paper.html" style="color:white;text-decoration:none;padding:8px 14px;background:#b45309;border-radius:8px;">論文英語</a>
+
+<a href="book126jap.html" style="color:white;text-decoration:none;padding:8px 14px;background:#dc2626;border-radius:8px;">日本語訳</a>
+
+<a href="book126sol.html" style="color:white;text-decoration:none;padding:8px 14px;background:#0f766e;border-radius:8px;">TPAI解析</a>
+
+<a href="book126objection.html" style="color:white;text-decoration:none;padding:8px 14px;background:#92400e;border-radius:8px;">反論</a>
+
+<a href="https://youtu.be/JDldE3RnGfw" target="_blank"
+style="color:white;text-decoration:none;padding:8px 14px;background:#ff0000;border-radius:8px;">
+YouTube
+</a>
+
+</nav>
+</body>
+</html>

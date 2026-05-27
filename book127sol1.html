@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>論文分解テンプレート</title>
+<style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fb;
+      color: #222;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 40px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      border-bottom: 3px solid #333;
+      padding-bottom: 16px;
+    }
+    h2 {
+      font-size: 1.45rem;
+      margin-top: 44px;
+      padding: 12px 16px;
+      background: #eef3ff;
+      border-left: 6px solid #4b6cb7;
+      border-radius: 8px;
+    }
+    h3 {
+      font-size: 1.18rem;
+      margin-top: 32px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #ddd;
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    li {
+      margin: 8px 0;
+    }
+    .note {
+      background: #fff8df;
+      border-left: 5px solid #e0b100;
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 6px;
+    }
+    .answer-line {
+      display: inline-block;
+      min-width: 260px;
+      border-bottom: 1px solid #aaa;
+      height: 1.2em;
+      vertical-align: middle;
+    }
+    .arrow {
+      font-weight: bold;
+      color: #333;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 32px 0;
+    }
+    .section-box {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 22px;
+      background: #fcfcff;
+    }
+    footer {
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 50px;
+    }
+    @media print {
+      body { background: #fff; }
+      .container { box-shadow: none; margin: 0; max-width: none; }
+    }
+  </style>
+
+<style>
+.global-nav{
+position:sticky;
+top:0;
+z-index:9999;
+background:rgba(15,23,42,0.95);
+backdrop-filter:blur(8px);
+padding:10px;
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+justify-content:center;
+border-bottom:2px solid #38bdf8;
+}
+.global-nav a{
+color:white;
+text-decoration:none;
+padding:8px 14px;
+border-radius:999px;
+background:#2563eb;
+font-weight:bold;
+font-family:sans-serif;
+font-size:14px;
+}
+.global-nav a:hover{
+background:#0ea5e9;
+}
+</style>
+</head>
+<body><div class="global-nav"><a href="book127navi.html">総合ナビ</a><a href="book127.html">高校生向け解説</a><a href="book127contrast.html">対比ドキュメント</a><a href="book127paper.html">英語論文</a><a href="book127paper2.html">関連論文</a><a href="book127paperjap.html">日本語訳</a><a href="book127sol1.html">TPAI解析1</a><a href="book127sol2.html">TPAI解析2</a></div>
+<main class="container">
+<h1>論文分解テンプレート</h1>
+<section>
+<h2>■ 基本情報</h2>
+<ul>
+<li>論文タイトル：<span class="answer-line">Cartilage conduction as the third pathway for sound transmission</span></li>
+<li>著者：<span class="answer-line">Hiroshi Hosoi, Tadashi Nishimura, Ryota Shimokura, Tadashi Kitahara</span></li>
+<li>分野：<span class="answer-line">耳鼻咽喉科学・聴覚科学・音響工学・補聴デバイス</span></li>
+<li>発表年・雑誌：<span class="answer-line">2019年・Auris Nasus Larynx 46:151–159</span></li>
+</ul>
+</section>
+<hr/>
+<section>
+<h2>■ A：論文本文の論理構造（ストーリー）</h2>
+<h3>1. 目的（Objective）</h3>
+<ul>
+<li>目的a：<span class="answer-line">空気伝導・骨伝導に加え、耳介軟骨振動による第三の音伝導路を整理する。</span></li>
+<li>目的b：<span class="answer-line">軟骨伝導の主要経路が何かを、既存研究と実験結果から明らかにする。</span></li>
+<li>目的c：<span class="answer-line">軟骨伝導を補聴器・スマートフォン等へ応用できるかを示す。</span></li>
+</ul>
+<hr/>
+<h3>2. 仮説（Hypothesis）</h3>
+<p class="note">※明示されていない場合は推定する</p>
+<ul>
+<li>仮説a：<span class="answer-line">正常耳では軟骨振動が外耳道内に音を作る「軟骨—空気経路」が主経路である。</span></li>
+<li>仮説b：<span class="answer-line">外耳道閉鎖などでは軟骨—骨経路や線維組織経路も聴覚に寄与する。</span></li>
+<li>仮説c：<span class="answer-line">軟骨は骨より軽く、弱い圧で効率よく音響デバイス化できる。</span></li>
+</ul>
+<hr/>
+<h3>3. 実験・方法（Methods）</h3>
+<ul>
+<li>実験a：<span class="answer-line">耳珠・耳介周辺など接触位置を変え、聴取閾値・振動加速度・外耳道音圧を測定。</span></li>
+<li>実験b：<span class="answer-line">軟骨伝導と骨伝導をラウドネスマッチングし、外耳道内SPLとの対応を比較。</span></li>
+<li>実験c：<span class="answer-line">押し付け力、耳栓・閉塞、外耳道閉鎖患者、補聴器・スマートフォン応用を検討。</span></li>
+</ul>
+<hr/>
+<h3>4. 結果（Results）</h3>
+<ul>
+<li>結果a：<span class="answer-line">耳珠など軟骨部刺激は低周波域で閾値が下がり、外耳道内音圧も増大した。</span></li>
+<li>結果b：<span class="answer-line">正常耳では軟骨伝導の大きさが外耳道内SPLと一致し、軟骨—空気経路優位を示した。</span></li>
+<li>結果c：<span class="answer-line">CC補聴器は外耳道閉鎖患者に有用で、強い骨圧迫なしに聴取改善が期待できた。</span></li>
+</ul>
+<hr/>
+<h3>5. 検証（目的との対応）</h3>
+<ul>
+<li>目的a <span class="arrow">→</span> 結果a <span class="arrow">→</span> 支持：CCはAC・BCとは異なる経路として整理された。</li>
+<li>目的b <span class="arrow">→</span> 結果b <span class="arrow">→</span> 支持：正常耳では軟骨—空気経路が優位と示された。</li>
+<li>目的c <span class="arrow">→</span> 結果c <span class="arrow">→</span> 支持：補聴器・スマートフォン等の応用可能性が提示された。</li>
+</ul>
+<hr/>
+<h3>6. 結論（Conclusion）</h3>
+<ul>
+<li>結論：<span class="answer-line">軟骨伝導はAC・BCに属さない第三の音伝達概念として提案できる。</span></li>
+<li>著者の主張の要約：<span class="answer-line">耳介軟骨を振動させると外耳道内に音が生じ、正常耳ではそれが鼓膜へ届く。</span></li>
+</ul>
+<hr/>
+<h3>7. 限界・未解決問題（Limitations）</h3>
+<ul>
+<li>限界a：<span class="answer-line">レビュー論文であり、著者らの一連の研究に依拠するため、単独の新規大規模試験ではない。</span></li>
+<li>限界b：<span class="answer-line">周波数、耳形状、外耳道疾患の種類により最適条件と支配経路が変わる。</span></li>
+<li>未解決問題：<span class="answer-line">標準化された出力測定法、患者群別の長期有効性、実用機器の普及条件が残る。</span></li>
+</ul>
+<hr/>
+<h3>8. 新規性（Novelty）</h3>
+<p class="note">※既存研究と何が違うか</p>
+<ul>
+<li>新規性：<span class="answer-line">空気・骨だけでなく「耳介軟骨」を第三の音伝導媒体として体系化した点。</span></li>
+<li>従来との差分：<span class="answer-line">骨を強く押す従来の骨伝導と異なり、軽い軟骨接触で外耳道内に音を作る。</span></li>
+</ul>
+</section>
+<hr/>
+<section>
+<h2>■ B：図・表の解析（エビデンス）</h2>
+<div class="section-box">
+<h3>図1（Figure 1）</h3>
+<p>A. 対応箇所（目的 / 仮説 / 実験 / 結果）：<span class="answer-line">目的・仮説・結果：AC/BCと異なる第三経路としてCCを位置づける概念図。</span></p>
+<p>B. 何を証明しようとしているか：<span class="answer-line">AC・BC・CCの入力部位と経路が異なることを視覚的に示す。</span></p>
+<p>C. 図から分かること：<span class="answer-line">CCはスピーカーの空気振動でも頭蓋骨振動でもなく、耳介軟骨入力から始まる。</span></p>
+<p>D. 結果への影響：<span class="answer-line">論文全体の分類提案を支える導入的・統合的証拠となる。</span></p>
+<p>E. この図がないと何が崩れるか：<span class="answer-line">CCを独立経路として扱う論理の出発点が弱くなる。</span></p>
+</div>
+<hr/>
+<div class="section-box">
+<h3>図2（Figure 2）</h3>
+<p>A. 対応箇所：<span class="answer-line">仮説・方法：CCにあり得る三つの経路を分け、以後の実験の検証対象を定める。</span></p>
+<p>B. 何を証明しようとしているか：<span class="answer-line">直接空気経路、軟骨—空気経路、軟骨—骨経路のどれが主かを問う。</span></p>
+<p>C. 図から分かること：<span class="answer-line">正常耳では三候補のうち、外耳道内に音を作る軟骨—空気経路が主要候補となる。</span></p>
+<p>D. 結果への影響：<span class="answer-line">後続の音圧測定・ラウドネス比較の意味づけを決める。</span></p>
+<p>E. この図がないと何が崩れるか：<span class="answer-line">経路分解ができず、CCがACやBCと本当に違うのか判定しにくくなる。</span></p>
+</div>
+<p>（必要に応じて図を追加）</p>
+</section>
+<hr/>
+<section>
+<h2>■ C：論文の本質（最重要まとめ）</h2>
+<h3>1. この論文は一言で何をしたか</h3>
+<p>→ <span class="answer-line">耳介軟骨振動による音伝達を、空気伝導・骨伝導に続く第三の経路として整理した。</span></p>
+<h3>2. なぜ重要か</h3>
+<p>→ <span class="answer-line">鼓膜や外耳道に問題がある人向け補聴器、スマートフォン、ウェアラブル音響機器に新設計原理を与える。</span></p>
+<h3>3. どこが一番強い証拠か（キーフィギュア）</h3>
+<p>→ <span class="answer-line">図4・図5・ラウドネスマッチング結果。軟骨刺激が外耳道内音圧と聴感に対応する点。</span></p>
+<h3>4. どこが一番怪しいか（弱点）</h3>
+<p>→ <span class="answer-line">多くが著者グループの研究の総説で、標準化・臨床長期データはまだ発展途上。</span></p>
+<h3>5. 次にやるべき研究は何か</h3>
+<p>→ <span class="answer-line">患者タイプ別の比較試験、出力校正標準、眼鏡型・腕時計型など実機での実用評価。</span></p>
+</section>
+<footer>論文分解テンプレート</footer>
+</main>
+</body>
+</html>

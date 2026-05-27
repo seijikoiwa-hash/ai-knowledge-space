@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>book127sol2：TPAI法による論文分解</title>
+<style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fb;
+      color: #222;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 40px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      border-bottom: 3px solid #333;
+      padding-bottom: 16px;
+    }
+    h2 {
+      font-size: 1.45rem;
+      margin-top: 44px;
+      padding: 12px 16px;
+      background: #eef3ff;
+      border-left: 6px solid #4b6cb7;
+      border-radius: 8px;
+    }
+    h3 {
+      font-size: 1.18rem;
+      margin-top: 32px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #ddd;
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    li {
+      margin: 8px 0;
+    }
+    .note {
+      background: #fff8df;
+      border-left: 5px solid #e0b100;
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 6px;
+    }
+    .answer-line {
+      display: inline-block;
+      min-width: 260px;
+      border-bottom: 1px solid #aaa;
+      height: 1.2em;
+      vertical-align: middle;
+    }
+    .arrow {
+      font-weight: bold;
+      color: #333;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 32px 0;
+    }
+    .section-box {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 22px;
+      background: #fcfcff;
+    }
+    footer {
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 50px;
+    }
+    @media print {
+      body { background: #fff; }
+      .container { box-shadow: none; margin: 0; max-width: none; }
+    }
+  </style>
+
+<style>
+.global-nav{
+position:sticky;
+top:0;
+z-index:9999;
+background:rgba(15,23,42,0.95);
+backdrop-filter:blur(8px);
+padding:10px;
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+justify-content:center;
+border-bottom:2px solid #38bdf8;
+}
+.global-nav a{
+color:white;
+text-decoration:none;
+padding:8px 14px;
+border-radius:999px;
+background:#2563eb;
+font-weight:bold;
+font-family:sans-serif;
+font-size:14px;
+}
+.global-nav a:hover{
+background:#0ea5e9;
+}
+</style>
+</head>
+<body><div class="global-nav"><a href="book127navi.html">総合ナビ</a><a href="book127.html">高校生向け解説</a><a href="book127contrast.html">対比ドキュメント</a><a href="book127paper.html">英語論文</a><a href="book127paper2.html">関連論文</a><a href="book127paperjap.html">日本語訳</a><a href="book127sol1.html">TPAI解析1</a><a href="book127sol2.html">TPAI解析2</a></div>
+<main class="container">
+<h1>TPAI法による論文分解：骨導の時代から軟骨伝導の時代へ</h1>
+<section>
+<h2>■ 基本情報</h2>
+<ul>
+<li>論文タイトル：<span class="answer-line">骨導の時代から軟骨伝導の時代へ―軟骨伝導の基礎・応用と軟骨伝導補聴器―</span></li>
+<li>著者：<span class="answer-line">細井裕司・西村忠己・下倉良太</span></li>
+<li>分野：<span class="answer-line">聴覚医学・耳鼻咽喉科学・補聴器工学・音響コミュニケーション工学</span></li>
+<li>発表年・雑誌：<span class="answer-line">2020年・Audiology Japan 63, 217～225</span></li>
+</ul>
+</section>
+<hr/>
+<section>
+<h2>■ A：論文本文の論理構造（ストーリー）</h2>
+<h3>1. 目的（Objective）</h3>
+<ul>
+<li>目的a：<span class="answer-line">軟骨伝導が骨導・気導に次ぐ第3の聴覚経路であることを整理する。</span></li>
+<li>目的b：<span class="answer-line">軟骨伝導補聴器が骨導補聴器より実用面で優れる理由を示す。</span></li>
+<li>目的c：<span class="answer-line">軟骨伝導の補聴器・スマートフォン・イヤホン等への応用可能性を示す。</span></li>
+</ul>
+<hr/>
+<h3>2. 仮説（Hypothesis）</h3>
+<p class="note">※明示されていない場合は推定する</p>
+<ul>
+<li>仮説a：<span class="answer-line">耳軟骨への振動は、外耳道内に明瞭な音を生成し、気導・骨導と同等に音声を内耳へ伝える。</span></li>
+<li>仮説b：<span class="answer-line">外耳道正常耳では軟骨気導経路が主経路で、外耳道閉鎖症では軟骨骨導経路または軟部組織経路が働く。</span></li>
+<li>仮説c：<span class="answer-line">軟骨伝導補聴器は痛み・固定・消費電力・手術不要性の点で骨導補聴器より有利である。</span></li>
+</ul>
+<hr/>
+<h3>3. 実験・方法（Methods）</h3>
+<ul>
+<li>実験a：<span class="answer-line">既報14編の研究を総説し、軟骨伝導の基礎・応用・補聴器臨床を整理した。</span></li>
+<li>実験b：<span class="answer-line">骨導補聴器使用者41名に軟骨伝導補聴器をフィッティングし、切替状況を検討した。</span></li>
+<li>実験c：<span class="answer-line">外耳道閉鎖症・BAHA使用例などの症例で、聴力・語音明瞭度・装用効果を比較した。</span></li>
+</ul>
+<hr/>
+<h3>4. 結果（Results）</h3>
+<ul>
+<li>結果a：<span class="answer-line">軟骨伝導は気導・骨導と異なる第3の主要音伝達経路として位置づけられる。</span></li>
+<li>結果b：<span class="answer-line">骨導補聴器使用者41名中39名が軟骨伝導補聴器へ切り替えた。</span></li>
+<li>結果c：<span class="answer-line">症例では裸耳・気導補聴器・骨導補聴器・BAHAと比較して、軟骨伝導補聴器が同等または良好な結果を示した。</span></li>
+</ul>
+<hr/>
+<h3>5. 検証（目的との対応）</h3>
+<ul>
+<li>目的a <span class="arrow">→</span> 結果a <span class="arrow">→</span>（支持：図1・図2と総説本文により、軟骨伝導は気導・骨導と異なる経路として整理される）</li>
+<li>目的b <span class="arrow">→</span> 結果b <span class="arrow">→</span>（支持：41名中39名の切替結果と症例提示が実用上の優位性を示す）</li>
+<li>目的c <span class="arrow">→</span> 結果c <span class="arrow">→</span>（支持：スマートフォン・イヤホン・メガネ型・腕時計型・ペン型・ロボット応用が提示される）</li>
+</ul>
+<hr/>
+<h3>6. 結論（Conclusion）</h3>
+<ul>
+<li>結論：<span class="answer-line">外耳道正常耳では軟骨気導、骨性閉鎖では軟骨骨導、軟性閉鎖では軟部組織経路が重要である。</span></li>
+<li>著者の主張の要約：<span class="answer-line">軟骨伝導は骨導の代替にとどまらず、補聴器・通信機器・ロボット等へ広がる実用的な第3経路である。</span></li>
+</ul>
+<hr/>
+<h3>7. 限界・未解決問題（Limitations）</h3>
+<ul>
+<li>限界a：<span class="answer-line">著者は、骨導中心の時代から、痛みが少なく手術不要で応用範囲の広い軟骨伝導の時代へ移行すると主張する。</span></li>
+<li>限界b：<span class="answer-line">本稿は総説であり、新規実験そのものではなく、既報研究・症例・臨床経験の統合である。</span></li>
+<li>未解決問題：<span class="answer-line">感音難聴者向け軟骨伝導補聴器や海外臨床研究は開発・普及途上である。</span></li>
+</ul>
+<hr/>
+<h3>8. 新規性（Novelty）</h3>
+<p class="note">※既存研究と何が違うか</p>
+<ul>
+<li>新規性：<span class="answer-line">軟骨伝導の未知部分、標準化、長期使用成績、適応範囲の明確化が今後の課題である。</span></li>
+<li>従来との差分：<span class="answer-line">耳軟骨を音伝達媒体として明確に位置づけ、第3の主要聴覚経路として実用化した点。</span></li>
+</ul>
+</section>
+<hr/>
+<section>
+<h2>■ B：図・表の解析（エビデンス）</h2>
+<div class="section-box">
+<h3>図1（Figure 1）</h3>
+<p>A. 対応箇所（目的 / 仮説 / 実験 / 結果）：<span class="answer-line">従来の骨導は頭蓋骨振動を前提としたが、軟骨伝導は耳軟骨接触で明瞭な聴覚を得る点が異なる。</span></p>
+<p>B. 何を証明しようとしているか：<span class="answer-line">目的・仮説・結果：気導・骨導・軟骨伝導の経路分類を示す基礎図。</span></p>
+<p>C. 図から分かること：<span class="answer-line">軟骨伝導が既存の気導・骨導と異なる経路であること。</span></p>
+<p>D. 結果への影響：<span class="answer-line">外耳道正常耳では、軟骨伝導振動子が耳軟骨を振動させ、外耳道内に音を生成する。</span></p>
+<p>E. この図がないと何が崩れるか：<span class="answer-line">第3の聴覚経路という中心主張の土台になる。</span></p>
+</div>
+<hr/>
+<div class="section-box">
+<h3>図2（Figure 2）</h3>
+<p>A. 対応箇所：<span class="answer-line">軟骨伝導が骨導や気導とどう違うのかを視覚的に説明できなくなる。</span></p>
+<p>B. 何を証明しようとしているか：<span class="answer-line">仮説・方法・結果：軟骨伝導振動子から内耳までの3経路を整理する図。</span></p>
+<p>C. 図から分かること：<span class="answer-line">軟骨気導・軟骨骨導・直接気導という3経路の存在と役割分担。</span></p>
+<p>D. 結果への影響：<span class="answer-line">正常耳では軟骨気導が主経路、外耳道閉鎖症では軟骨骨導などが重要になる。</span></p>
+<p>E. この図がないと何が崩れるか：<span class="answer-line">症例や補聴器応用の解釈を支える。</span></p>
+</div>
+<p>（必要に応じて図を追加）</p>
+</section>
+<hr/>
+<section>
+<h2>■ C：論文の本質（最重要まとめ）</h2>
+<h3>1. この論文は一言で何をしたか</h3>
+<p>→ <span class="answer-line">どの患者でどの経路が働くかという臨床応用の根拠が弱くなる。</span></p>
+<h3>2. なぜ重要か</h3>
+<p>→ <span class="answer-line">軟骨伝導を第3の主要聴覚経路として整理し、補聴器・通信機器への応用を示した。</span></p>
+<h3>3. どこが一番強い証拠か（キーフィギュア）</h3>
+<p>→ <span class="answer-line">痛みや手術を伴う骨導補聴器に代わる選択肢を示し、聴覚医学の発見を産業応用へ広げるから。</span></p>
+<h3>4. どこが一番怪しいか（弱点）</h3>
+<p>→ <span class="answer-line">骨導補聴器使用者41名中39名が軟骨伝導補聴器へ切り替えた臨床結果と、図1・図2の経路整理。</span></p>
+<h3>5. 次にやるべき研究は何か</h3>
+<p>→ <span class="answer-line">総説中心であり、製品普及・海外臨床・感音難聴への有効性はなお発展段階にある点。</span></p>
+</section>
+<footer>論文分解テンプレート</footer>
+</main>
+</body>
+</html>
