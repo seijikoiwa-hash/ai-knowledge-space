@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>book129sol1：TPAI法解析</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fb;
+      color: #222;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 40px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      border-bottom: 3px solid #333;
+      padding-bottom: 16px;
+    }
+    h2 {
+      font-size: 1.45rem;
+      margin-top: 44px;
+      padding: 12px 16px;
+      background: #eef3ff;
+      border-left: 6px solid #4b6cb7;
+      border-radius: 8px;
+    }
+    h3 {
+      font-size: 1.18rem;
+      margin-top: 32px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #ddd;
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    li {
+      margin: 8px 0;
+    }
+    .note {
+      background: #fff8df;
+      border-left: 5px solid #e0b100;
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 6px;
+    }
+    .answer-line {
+      display: inline-block;
+      min-width: 260px;
+      border-bottom: 1px solid #aaa;
+      height: auto;
+      min-height: 1.2em;
+      vertical-align: baseline;
+      padding: 0 4px;
+      color: #123;
+      font-weight: 600;
+    }
+    .arrow {
+      font-weight: bold;
+      color: #333;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 32px 0;
+    }
+    .section-box {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 22px;
+      background: #fcfcff;
+    }
+    footer {
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 50px;
+    }
+    @media print {
+      body { background: #fff; }
+      .container { box-shadow: none; margin: 0; max-width: none; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>TPAI法による解析：Yoichiro Nambu: breaking the symmetry</h1>
+
+    <section>
+      <h2>■ 基本情報</h2>
+      <ul>
+        <li>論文タイトル：<span class="answer-line">Yoichiro Nambu: breaking the symmetry</span></li>
+        <li>著者：<span class="answer-line">Sumit R Das（University of Kentucky）／Spenta R Wadia（ICTS-TIFR, Bangalore）</span></li>
+        <li>分野：<span class="answer-line">理論物理学、素粒子物理学、場の量子論、科学史・追悼記事</span></li>
+        <li>発表年・雑誌：<span class="answer-line">2015年・CERN Courier December 2015, Volume 55 Number 10</span></li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>■ A：論文本文の論理構造（ストーリー）</h2>
+
+      <h3>1. 目的（Objective）</h3>
+      <ul>
+        <li>目的a：<span class="answer-line">南部陽一郎の生涯と研究業績を、20世紀物理学の発展史の中で整理する。</span></li>
+        <li>目的b：<span class="answer-line">自発的対称性の破れが、超伝導から素粒子物理・標準模型へ拡張された意味を説明する。</span></li>
+        <li>目的c：<span class="answer-line">色荷・QCD・弦理論における南部の先駆性と「境界のない物理」の思想を示す。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>2. 仮説（Hypothesis）</h3>
+      <p class="note">※明示されていない場合は推定する</p>
+      <ul>
+        <li>仮説a：<span class="answer-line">南部の独創性は、異なる分野の概念を結び、物理学の基礎概念を再構成した点にある。</span></li>
+        <li>仮説b：<span class="answer-line">超伝導における対称性の破れを素粒子の質量起源へ移すことで、真空の構造を理解できる。</span></li>
+        <li>仮説c：<span class="answer-line">クォークに色という自由度を与えれば、強い相互作用とハドロン構造の矛盾を説明できる。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>3. 実験・方法（Methods）</h3>
+      <ul>
+        <li>実験a：<span class="answer-line">南部の学歴・大阪時代・プリンストン・シカゴでの研究環境を時系列に整理する。</span></li>
+        <li>実験b：<span class="answer-line">超伝導、カイラル対称性の破れ、南部＝ヨナラシニオ理論、ヒッグス機構との関係を解説する。</span></li>
+        <li>実験c：<span class="answer-line">色荷、量子色力学、弦理論への展開を、後続研究者の成果と照合して説明する。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>4. 結果（Results）</h3>
+      <ul>
+        <li>結果a：<span class="answer-line">南部は、真空が自発的に対称性を破るという革命的な概念を素粒子物理に導入した。</span></li>
+        <li>結果b：<span class="answer-line">この概念は、ゴールドストーン粒子、ヒッグス機構、標準模型の理解につながった。</span></li>
+        <li>結果c：<span class="answer-line">色荷の提案はQCDへ、弦的描像は弦理論の形成へつながり、後の理論物理に大きく影響した。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>5. 検証（目的との対応）</h3>
+      <ul>
+        <li>目的a <span class="arrow">→</span> 結果a <span class="arrow">→</span>（支持：南部の業績と独創性が本文で明確に説明されている）</li>
+        <li>目的b <span class="arrow">→</span> 結果b <span class="arrow">→</span>（支持：自発的対称性の破れから標準模型への展開が示されている）</li>
+        <li>目的c <span class="arrow">→</span> 結果c <span class="arrow">→</span>（支持：色荷・QCD・弦理論への貢献が整理されている）</li>
+      </ul>
+
+      <hr>
+
+      <h3>6. 結論（Conclusion）</h3>
+      <ul>
+        <li>結論：<span class="answer-line">南部の最大の貢献は、真空・対称性・質量・強い相互作用を一つの概念連鎖で結び直したことである。</span></li>
+        <li>著者の主張の要約：<span class="answer-line">著者らは、南部を「physics without boundaries」を体現した、20世紀物理学の預言的研究者として描いている。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>7. 限界・未解決問題（Limitations）</h3>
+      <ul>
+        <li>限界a：<span class="answer-line">本記事は追悼・解説記事であり、原著論文のような数式展開や実験データによる直接検証は含まない。</span></li>
+        <li>限界b：<span class="answer-line">業績評価は著者らの視点に依存し、南部の各理論の技術的詳細は大幅に要約されている。</span></li>
+        <li>未解決問題：<span class="answer-line">南部の各原論文、特に1960年論文、南部＝ヨナラシニオ論文、Han-Nambu論文、弦モデル論文との直接対比が必要である。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>8. 新規性（Novelty）</h3>
+      <p class="note">※既存研究と何が違うか</p>
+      <ul>
+        <li>新規性：<span class="answer-line">南部の業績を、超伝導から標準模型、QCD、弦理論まで連続する「概念移植の歴史」として描く点。</span></li>
+        <li>従来との差分：<span class="answer-line">単なる経歴紹介ではなく、異分野を横断する発想が物理学の中心概念を生んだ過程に焦点を当てている点。</span></li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>■ B：図・表の解析（エビデンス）</h2>
+
+      <div class="section-box">
+        <h3>図1（Figure 1）</h3>
+        <p>A. 対応箇所（目的 / 仮説 / 実験 / 結果）：<span class="answer-line">第1頁の南部陽一郎肖像写真：基本情報・目的・結論に対応。</span></p>
+        <p>B. 何を証明しようとしているか：<span class="answer-line">記事の中心人物が南部陽一郎であり、追悼記事として彼の人格と業績を回顧することを示す。</span></p>
+        <p>C. 図から分かること：<span class="answer-line">南部がノーベル賞受賞者として扱われ、記事全体が彼の科学的遺産を検討していることが分かる。</span></p>
+        <p>D. 結果への影響：<span class="answer-line">読者に、抽象理論だけでなく、一人の科学者の知的軌跡として内容を理解させる。</span></p>
+        <p>E. この図がないと何が崩れるか：<span class="answer-line">人物中心の追悼記事としての入口が弱まり、理論史だけの無機質な説明になりやすい。</span></p>
+      </div>
+
+      <hr>
+
+      <div class="section-box">
+        <h3>図2（Figure 2）</h3>
+        <p>A. 対応箇所：<span class="answer-line">第2頁のBelur templeでの南部写真：方法・結果・結論に対応。</span></p>
+        <p>B. 何を証明しようとしているか：<span class="answer-line">南部の国際的活動、人間的側面、インドの研究者たちへの影響を示す。</span></p>
+        <p>C. 図から分かること：<span class="answer-line">南部の影響が日本・米国だけでなく、インドを含む国際的な理論物理コミュニティに及んだことが分かる。</span></p>
+        <p>D. 結果への影響：<span class="answer-line">記事後半の「science is without boundaries」「physics without boundaries」という主張を補強する。</span></p>
+        <p>E. この図がないと何が崩れるか：<span class="answer-line">南部の思想的・人的影響の広がりが見えにくくなり、業績評価が理論上の貢献だけに縮小される。</span></p>
+      </div>
+
+      <div class="section-box">
+        <h3>図3（Figure 3）</h3>
+        <p>A. 対応箇所：第3頁の「Nambu and Abdus Salam at ICTP」写真。結果・結論に対応。</p>
+        <p>B. 何を証明しようとしているか：南部が国際的な理論物理コミュニティの中心人物であったこと。</p>
+        <p>C. 図から分かること：アブドゥス・サラムら標準模型に関わる研究者との知的交流があったこと。</p>
+        <p>D. 結果への影響：南部の業績を孤立した発見ではなく、20世紀物理学全体の連鎖の中に置く。</p>
+        <p>E. この図がないと何が崩れるか：国際共同体の中で南部の影響を読む視点が弱くなる。</p>
+      </div>
+
+      <div class="section-box">
+        <h3>表・広告等について</h3>
+        <p>本PDFには通常の研究論文の図表・データ表は存在しない。掲載写真は人物・文脈提示のための証拠であり、実験結果を示すキーフィギュアではない。</p>
+      </div>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>■ C：論文の本質（最重要まとめ）</h2>
+
+      <h3>1. この論文は一言で何をしたか</h3>
+      <p>→ <span class="answer-line">南部陽一郎の自発的対称性の破れ、色荷、弦理論への貢献を、物理学史の証拠連鎖として整理した。</span></p>
+
+      <h3>2. なぜ重要か</h3>
+      <p>→ <span class="answer-line">「真空は空っぽではなく構造を持ちうる」という考えが、素粒子の質量と標準模型理解の鍵になったから。</span></p>
+
+      <h3>3. どこが一番強い証拠か（キーフィギュア）</h3>
+      <p>→ <span class="answer-line">第2〜3頁の「Breaking symmetry」部分。超伝導から真空の対称性破れへ進む論理が中心証拠である。</span></p>
+
+      <h3>4. どこが一番怪しいか（弱点）</h3>
+      <p>→ <span class="answer-line">原著論文ではなく追悼記事なので、記事自体は実験・数式による証明ではなく歴史的評価に依存している点。</span></p>
+
+      <h3>5. 次にやるべき研究は何か</h3>
+      <p>→ <span class="answer-line">南部の1960年論文、南部＝ヨナラシニオ論文、Han-Nambu論文、Duality and hadrodynamicsを原文で比較する研究。</span></p>
+    </section>
+
+    <footer>book129sol1.html：TPAI法解析結果</footer>
+  </main>
+</body>
+</html>

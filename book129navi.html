@@ -1,0 +1,315 @@
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>book129navi｜南部陽一郎ナビゲーション</title>
+<style>
+body{
+    margin:0;
+    padding:0;
+    background:#eef2f7;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic",sans-serif;
+    color:#111827;
+    line-height:1.8;
+}
+header{
+    background:linear-gradient(135deg,#0f172a,#1e3a8a);
+    color:white;
+    padding:48px 24px;
+    text-align:center;
+}
+header h1{
+    margin:0;
+    font-size:2.3rem;
+}
+header p{
+    margin-top:14px;
+    font-size:1.08rem;
+    opacity:0.92;
+}
+.container{
+    max-width:1100px;
+    margin:0 auto;
+    padding:36px 18px 80px;
+}
+.hero{
+    background:white;
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:0 8px 28px rgba(0,0,0,.08);
+    margin-bottom:36px;
+}
+.hero img{
+    width:100%;
+    max-height:300px;
+    object-fit:contain;
+    display:block;
+    background:#f8fafc;
+}
+.hero-text{
+    padding:28px;
+}
+.hero-text h2{
+    margin-top:0;
+    font-size:1.8rem;
+    color:#0f172a;
+}
+.section-title{
+    font-size:1.7rem;
+    margin:48px 0 22px;
+    padding-left:14px;
+    border-left:6px solid #2563eb;
+    color:#1e293b;
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:22px;
+}
+.card{
+    background:white;
+    border-radius:22px;
+    padding:22px;
+    box-shadow:0 4px 18px rgba(0,0,0,.07);
+    transition:transform .15s ease, box-shadow .15s ease;
+}
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 26px rgba(0,0,0,.12);
+}
+.card h3{
+    margin-top:0;
+    font-size:1.2rem;
+    color:#1d4ed8;
+}
+.card p{
+    font-size:0.96rem;
+    color:#374151;
+}
+.card a{
+    display:inline-block;
+    margin-top:14px;
+    padding:10px 16px;
+    border-radius:999px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    font-weight:700;
+}
+.card a:hover{
+    background:#1d4ed8;
+}
+.youtube{
+    background:linear-gradient(135deg,#fee2e2,#ffffff);
+}
+.youtube h3{
+    color:#dc2626;
+}
+.timeline{
+    background:white;
+    border-radius:24px;
+    padding:28px;
+    margin-top:48px;
+    box-shadow:0 4px 18px rgba(0,0,0,.07);
+}
+.timeline ul{
+    padding-left:1.2rem;
+}
+.timeline li{
+    margin:10px 0;
+}
+footer{
+    margin-top:70px;
+    text-align:center;
+    color:#475569;
+    font-size:0.92rem;
+}
+@media(max-width:700px){
+    header h1{
+        font-size:1.8rem;
+    }
+    .hero-text h2{
+        font-size:1.45rem;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>book129navi</h1>
+    <p>
+        南部陽一郎博士・自発的対称性の破れ・ノーベル講演をめぐる
+        「ブログ」「原論文」「対比」「TPAI解析」「Q&A」「動画」を横断するナビゲーションページ
+    </p>
+</header>
+
+<div class="container">
+
+    <section class="hero">
+        <img src="nanbu.jpeg" alt="南部陽一郎博士">
+        <div class="hero-text">
+            <h2>南部陽一郎博士とは？</h2>
+            <p>
+                「自発的対称性の破れ（SSB）」という概念を素粒子物理学へ導入し、
+                現代物理学の標準模型・ヒッグス機構・宇宙論へ巨大な影響を与えた理論物理学者。
+                本ナビゲーションでは、中学生向けブログから原論文、日本語訳、TPAI法解析、
+                Q&A、対比解説、関連YouTube動画までを一気にたどることができます。
+            </p>
+        </div>
+    </section>
+
+    <h2 class="section-title">📚 メイン記事・解説</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>book129.html</h3>
+            <p>
+                中学生向けブログ版。南部陽一郎博士と「対称性が壊れる」という不思議を、
+                日常の例えを使いながら大きな物語として解説。
+            </p>
+            <a href="book129.html">読む</a>
+        </div>
+
+        <div class="card">
+            <h3>book129contrast.html</h3>
+            <p>
+                ブログ記事とノーベル講演・論文内容を左右対比で比較。
+                「どこが対応しているか」を視覚的に理解できる構成。
+            </p>
+            <a href="book129contrast.html">読む</a>
+        </div>
+
+        <div class="card">
+            <h3>book129qa.html</h3>
+            <p>
+                Q1〜Q6形式で、「対称性」「SSB」「超伝導」「ノーベル賞の意味」などを
+                中学生向けに再説明した質疑応答集。
+            </p>
+            <a href="book129qa.html">読む</a>
+        </div>
+
+    </div>
+
+    <h2 class="section-title">🧪 原論文・ノーベル講演</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>book129paper1.html</h3>
+            <p>
+                CERN Courier掲載「Yoichiro Nambu: breaking the symmetry」日本語訳。
+                南部理論の歴史的意味と物理学への影響をたどる。
+            </p>
+            <a href="book129paper1.html">読む</a>
+        </div>
+
+        <div class="card">
+            <h3>book129paper2.html</h3>
+            <p>
+                CERN Courier原文PDFのHTML化版。
+                写真・誌面レイアウトを含めて資料として参照可能。
+            </p>
+            <a href="book129paper2.html">読む</a>
+        </div>
+
+        <div class="card">
+            <h3>book129jap1.html</h3>
+            <p>
+                2008年ノーベル講演「自発的対称性の破れ」の日本語訳。
+                南部博士自身の言葉で語られるSSB理論。
+            </p>
+            <a href="book129jap1.html">読む</a>
+        </div>
+
+        <div class="card">
+            <h3>book129jap2.html</h3>
+            <p>
+                ノーベル講演英語原文HTML版。
+                原典そのものを読みたい人向け。
+            </p>
+            <a href="book129jap2.html">読む</a>
+        </div>
+
+    </div>
+
+    <h2 class="section-title">🧠 TPAI法解析</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>book129sol1.html</h3>
+            <p>
+                CERN Courier記事をTPAI法で解析。
+                「目的・論理構造・重要概念」を整理。
+            </p>
+            <a href="book129sol1.html">読む</a>
+        </div>
+
+        <div class="card">
+            <h3>book129sol2.html</h3>
+            <p>
+                ノーベル講演をTPAI法で解析。
+                「超伝導→素粒子物理への応用」という思想の流れを追跡。
+            </p>
+            <a href="book129sol2.html">読む</a>
+        </div>
+
+    </div>
+
+    <h2 class="section-title">🎥 YouTube動画ナビゲーション</h2>
+
+    <div class="grid">
+
+        <div class="card youtube">
+            <h3>動画①：南部陽一郎と対称性</h3>
+            <p>
+                自発的対称性の破れやノーベル賞理論を映像で学べる関連動画。
+            </p>
+            <a href="https://youtu.be/BpdQNhGMtaI" target="_blank">YouTubeを見る</a>
+        </div>
+
+        <div class="card youtube">
+            <h3>動画②：SSBと現代物理学</h3>
+            <p>
+                ヒッグス機構や標準模型とのつながりを理解するための補助動画。
+            </p>
+            <a href="https://youtu.be/Cegc-Febk-o" target="_blank">YouTubeを見る</a>
+        </div>
+
+        <div class="card youtube">
+            <h3>動画③：南部理論の歴史</h3>
+            <p>
+                南部博士の人生・理論・ノーベル賞までの流れを映像で追う。
+            </p>
+            <a href="https://youtu.be/XlKCIGtU3w4" target="_blank">YouTubeを見る</a>
+        </div>
+
+    </div>
+
+    <section class="timeline">
+        <h2>🧭 おすすめ読書ルート</h2>
+        <ul>
+            <li>① <strong>book129.html</strong> で全体像をつかむ</li>
+            <li>② <strong>book129qa.html</strong> で疑問点を整理する</li>
+            <li>③ <strong>book129contrast.html</strong> で「ブログ ↔ 原論文」の対応を見る</li>
+            <li>④ <strong>book129paper1.html</strong> と <strong>book129jap1.html</strong> で原典を読む</li>
+            <li>⑤ <strong>book129sol1.html / sol2.html</strong> でTPAI法解析を確認する</li>
+            <li>⑥ 最後にYouTube動画で立体的に理解する</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>
+            book129シリーズ ナビゲーションページ ｜ Yoichiro Nambu / Spontaneous Symmetry Breaking Navigator
+        </p>
+    </footer>
+
+</div>
+
+</body>
+</html>
+```
