@@ -129,6 +129,10 @@ const posts = [
 { file: "book123.html", title: "高齢者における水と塩分", book: 123, date: "2026-05-10", published: true, series: "book" },
 { file: "book124.html", title: "「言葉」って実はすごい仕組みーAIと共に異分野の論文を読み解く(6)ー", book: 124, date: "2026-05-11", published: true, series: "book" },
 { file: "book125navi.html", title: "異分野の論文を読み解く(8)-グリンパティックシステム", book: 125, date: "2026-05-14", published: true, series: "book" },
-{ file: "book126.html", title: "", book: 106, date: "2026-03-31", published: false, series: "book" },
-{ file: "book127.html", title: "", book: 106, date: "2026-03-31", published: false, series: "book" },
+{ file: "book126navi.html", title: "異分野の論文を読み解く(9)-進化するがん細胞", book: 126, date: "2026-05-17", published: true, series: "book" },
+{ file: "book127navi.html", title: "軟骨伝導（Cartilage Conduction）", book: 127, date: "2026-05-21", published: true, series: "book" },
+{ file: "book128navi.html", title: "異分野の論文を読み解く(10)-ナッシュ均衡", book: 128, date: "2026-05-23", published: true, series: "book" },
+{ file: "book129navi.html", title: "異分野の論文を読み解く（11）-南部陽一郎博士-", book: 129, date: "2026-05-26", published: true, series: "book" },
+{ file: "book130navi.html", title: "異分野の論文を読み解く(12)-人工筋肉-", book: 130, date: "2026-05-28", published: true, series: "book" },
+{ file: "book127navi.html", title: "軟骨伝導（Cartilage Conduction）", book: 127, date: "2026-05-21", published: false, series: "book" },
 ];
