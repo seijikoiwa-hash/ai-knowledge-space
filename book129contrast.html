@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>対比でわかる！南部陽一郎博士の対称性の破れ｜解説記事 vs ノーベル講演</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+      background: #f1f5f9;
+      color: #0f172a;
+      line-height: 1.7;
+      padding: 24px 16px;
+    }
+
+    .contrast-container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    /* ヘッダー */
+    .contrast-header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: white;
+      padding: 2rem 2rem 1.8rem;
+      border-radius: 32px;
+      margin-bottom: 2rem;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+    }
+    .contrast-header h1 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+      border-bottom: none;
+      color: white;
+    }
+    .contrast-header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 85%;
+    }
+    .badge {
+      background: #f59e0b;
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-top: 12px;
+    }
+
+    /* カード対比レイアウト */
+    .compare-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 48px;
+      background: transparent;
+    }
+    .card {
+      flex: 1;
+      min-width: 280px;
+      background: white;
+      border-radius: 28px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.05);
+      overflow: hidden;
+      transition: transform 0.1s ease;
+      border: 1px solid #e2e8f0;
+    }
+    .card-header {
+      padding: 1.2rem 1.5rem;
+      font-weight: bold;
+      font-size: 1.3rem;
+      border-bottom: 3px solid;
+    }
+    .card-header.article-header {
+      background: #eef2ff;
+      color: #1e40af;
+      border-bottom-color: #3b82f6;
+    }
+    .card-header.paper-header {
+      background: #fef3c7;
+      color: #b45309;
+      border-bottom-color: #f97316;
+    }
+    .card-content {
+      padding: 1.5rem;
+    }
+    .quote {
+      background: #f8fafc;
+      padding: 1rem;
+      border-radius: 20px;
+      margin: 1rem 0;
+      border-left: 4px solid #94a3b8;
+      font-style: normal;
+      font-size: 0.95rem;
+    }
+    .highlight {
+      background: #fff9e6;
+      padding: 0.8rem;
+      border-radius: 16px;
+      margin-top: 1rem;
+      border: 1px solid #fde68a;
+    }
+    .match-icon {
+      display: inline-block;
+      background: #10b981;
+      color: white;
+      border-radius: 30px;
+      padding: 0.2rem 0.8rem;
+      font-size: 0.7rem;
+      font-weight: bold;
+      margin-right: 8px;
+    }
+    .arrow-symbol {
+      font-size: 1.8rem;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+      font-weight: 300;
+    }
+    @media (max-width: 780px) {
+      .arrow-symbol { display: none; }
+      .compare-row { flex-direction: column; }
+    }
+    .footnote {
+      background: #e6f0fa;
+      border-radius: 24px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+    hr {
+      margin: 2rem 0;
+      border: none;
+      height: 1px;
+      background: #cbd5e1;
+    }
+    .glossary {
+      background: #f1f5f9;
+      border-radius: 24px;
+      padding: 1.3rem;
+      margin-top: 2rem;
+    }
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      color: #475569;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+<div class="contrast-container">
+  <div class="contrast-header">
+    <h1>🧩 対比でわかる！南部陽一郎博士の「対称性の破れ」</h1>
+    <p>📖 左：中学生でも読める解説記事 (book129.html) ／ 🎓 右：ノーベル賞講演の内容 (2008年) ／ 同じアイデアがどう現れている？ ひとつひとつ照らし合わせてみよう！</p>
+    <div class="badge">🔬 対称性・超伝導・真空のふしぎ</div>
+  </div>
+
+  <!-- 対比セクション 1: 対称性ってなに？ -->
+  <div class="compare-row">
+    <div class="card">
+      <div class="card-header article-header">📘 解説記事のここ</div>
+      <div class="card-content">
+        <div class="quote">「対称性とは、ある操作をしても姿が変わらない性質のこと。<br>サッカーボールは回しても同じ形 → 回転対称性」</div>
+        <p>💡 記事では「回転対称性」「鏡像対称性」の例で、対称性の基本をやさしく紹介。<br>
+        <strong>「なぜルールは対称なのに現実はごちゃごちゃ？」</strong> という疑問を投げかけています。</p>
+      </div>
+    </div>
+    <div class="arrow-symbol">➡️ ➡️</div>
+    <div class="card">
+      <div class="card-header paper-header">🎤 ノーベル講演の対応箇所</div>
+      <div class="card-content">
+        <div class="quote">「物理学において対称性は保存則を生み出します。エネルギー保存や電荷保存のように…<br>
+        自発的対称性の破れ(SSB)とは、本来は対称である物理法則が、実際には対称性を失って見える現象です。」</div>
+        <div class="highlight">✅ 対応ポイント：<br>
+        → 講演でも「対称性→保存則」と説明したあと、「自発的対称性の破れ」の定義をしています。<br>
+        → 記事の「なぜ現実は複雑なのか？」という問いは、まさにSSBが答えの一つだと南部博士は講演で説いています。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 対比セクション 2: 鉛筆が倒れる！ 自発的対称性の破れのイメージ -->
+  <div class="compare-row">
+    <div class="card">
+      <div class="card-header article-header">✏️ 鉛筆のたとえ (記事から)</div>
+      <div class="card-content">
+        <div class="quote">「机の上に鉛筆を立てる。どの方向にも倒れそう → 回転対称性。でも実際に離すとどれか一つの方向に倒れる。倒れた瞬間『特別な方向』ができて対称性が壊れた。自分から勝手に倒れた → 自発的対称性の破れ」</div>
+        <p>🎯 中学生でもイメージしやすい具体例。これが南部博士の発想の原点です。</p>
+      </div>
+    </div>
+    <div class="arrow-symbol">🔁</div>
+    <div class="card">
+      <div class="card-header paper-header">📜 ノーベル講演の同じ例</div>
+      <div class="card-content">
+        <div class="quote">「例えば、垂直に立った細長い棒を考えてください。どの方向から見ても同じなので回転対称性があります。しかし圧力を加えていくと、ある方向へ曲がります。すると対称性は失われます。ただし、どの方向にも曲がれる可能性があります。これが自発的対称性の破れです。」</div>
+        <div class="highlight">✅ 完全に同じアイデア！ 記事は「鉛筆」、講演では「細長い棒」。どちらも同じ物理イメージです。<br>
+        ✨ 南部博士自身がノーベル賞講演で使った例を、記事ではわかりやすくアレンジしています。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 対比セクション 3: 超伝導からヒントを得た -->
+  <div class="compare-row">
+    <div class="card">
+      <div class="card-header article-header">⚡ 超伝導というヒント (BCS理論)</div>
+      <div class="card-content">
+        <div class="quote">「BCS理論(超伝導)では電子がペアを作ることで抵抗がなくなる。もともとの対称性が自発的に壊れていることがわかった。南部博士は『電子ペアを作る“のり”(ギャップ)が、素粒子の質量に対応するのでは？』と考えた。」</div>
+        <p>🏊 プールの水のたとえ: 「真空も水のように詰まっていて、粒子に重さを与える」という発想。</p>
+      </div>
+    </div>
+    <div class="arrow-symbol">🌀</div>
+    <div class="card">
+      <div class="card-header paper-header">🔭 講演での超伝導と質量の対応</div>
+      <div class="card-content">
+        <div class="quote">「1956年、シュリーファーがBCS理論について講演したことが大きな影響を与えました。BCS理論とディラック方程式の類似性から、超伝導理論を素粒子物理学へ応用できると考えました。ギャップΔは質量Mに対応します。」</div>
+        <div class="quote">「もしカイラル対称性が破れているなら、質量ゼロの粒子が現れるはずです。現実には、それがπ中間子でした。」</div>
+        <div class="highlight">✅ 記事の「超伝導のギャップ = 質量」は講演の核心そのもの！<br>
+        講演ではさらに「カイラル対称性とパイ中間子」へ展開。南部博士の独創的アイデアの根っこです。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 対比セクション 4: 真空は空っぽじゃない！ NJL模型 -->
+  <div class="compare-row">
+    <div class="card">
+      <div class="card-header article-header">🌌 「真空」って何もないの？</div>
+      <div class="card-content">
+        <div class="quote">「南部博士は真空も『見えないゼリー』のようなもので満たされていると考えた。真空の凝縮。1960年にNJL模型(ナンブ・ジョナ＝ラシニオ模型)を作り、真空の中の『のり』が陽子や中性子に質量を与え、同時にパイ中間子が自然に現れることを示した。」</div>
+        <p>🧪 コードブロックでも「のりのようなもの → 質量を与える」と説明。後のヒッグス粒子の考え方のもとになりました。</p>
+      </div>
+    </div>
+    <div class="arrow-symbol">✨</div>
+    <div class="card">
+      <div class="card-header paper-header">📐 講演のNJL模型とヒッグス機構</div>
+      <div class="card-content">
+        <div class="quote">「その後、ジョナ＝ラシニオと共に、NJL模型を構築しました。この模型はBCS理論に非常によく似ています。この理論では、粒子は自発的対称性の破れによって質量を獲得します。また、ヒッグス機構とも深い関係があります。ワインバーグ＝サラム理論では、弱い相互作用のゲージ場へ応用され、電弱統一理論の基礎となりました。」</div>
+        <div class="highlight">✅ 記事の「真空ゼリー」や「NJL模型」は講演でしっかり名称とともに紹介されています。<br>
+        👑 南部博士の研究が「ヒッグス機構」「標準模型」に直結していることが講演で明言されています！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 対比セクション 5: 宇宙全体の対称性の破れ -->
+  <div class="compare-row">
+    <div class="card">
+      <div class="card-header article-header">🌠 宇宙の始まりと対称性</div>
+      <div class="card-content">
+        <div class="quote">「『宇宙が誕生してから冷えていく過程で、対称性が次々に壊れた』という説も南部博士のアイデアから生まれた。」（ノーベルインパクトのコラムより）</div>
+        <p>➕ 記事のノーベル影響コラムで「現代宇宙論への影響」として紹介されています。</p>
+      </div>
+    </div>
+    <div class="arrow-symbol">🌌</div>
+    <div class="card">
+      <div class="card-header paper-header">☀️ 講演での「宇宙の冷却」</div>
+      <div class="card-content">
+        <div class="quote">「相対論的量子場理論では、この現象は真空全体でも起こります。真空は『何もない空間』ではなく、多くの自由度を持っています。宇宙が冷却される過程で、より高い対称性から低い対称性への相転移が起こり、それによって物理法則が変化した可能性があります。」</div>
+        <div class="highlight">✅ 直接対応！ 講演で「宇宙の冷却と対称性の破れ」を語っています。記事はそのエッセンスをわかりやすく伝えています。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 対比セクション 6: 質量階層問題 (少し発展) -->
+  <div class="compare-row">
+    <div class="card">
+      <div class="card-header article-header">🧬 質量のなぞ (記事で触れられている箇所)</div>
+      <div class="card-content">
+        <p>記事内で「素粒子の質量はなぜこんなにバラバラ？」という深い問いには直接触れていませんが、後半の「いろんな重さの粒子が存在するのは対称性の破れのため」というヒントがあります。</p>
+        <div class="quote">「南部博士は『真空が粒子に重さを与える』と考えた。それによって陽子や中性子などの質量が生まれる」</div>
+      </div>
+    </div>
+    <div class="arrow-symbol">⚖️</div>
+    <div class="card">
+      <div class="card-header paper-header">📊 講演「質量階層問題」</div>
+      <div class="card-content">
+        <div class="quote">「最後に、私は質量階層問題について述べたいと思います。宇宙には階層構造があります。素粒子の質量も11桁以上にわたる巨大な階層を持っています。質量は電荷やスピンのように単純には量子化されません。質量は相互作用から生じる動的な量です。BCS機構は、この問題にも関係している可能性があります。」</div>
+        <div class="highlight">🔍 ここは講演の後半の深いテーマ。南部博士は「なぜ質量にこれほど開きがあるのか」という現代物理学の難問を自らの理論の延長に位置づけています。記事では中学生向けに「対称性が壊れることで多様な世界が生まれる」とまとめています。</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- さらに + 南部博士が「分野を超えた」という視点 -->
+  <div class="compare-row">
+    <div class="card">
+      <div class="card-header article-header">🧠 異分野融合の大切さ</div>
+      <div class="card-content">
+        <div class="quote">「専門バカにならない：超伝導の研究が素粒子物理学の革命を生んだ」「南部博士は固体物理学（超伝導）の知識を素粒子に持ち込んだ」</div>
+        <p>🎓 記事の最後で「異分野の力」を強調。中学生へのメッセージになっています。</p>
+      </div>
+    </div>
+    <div class="arrow-symbol">🔄</div>
+    <div class="card">
+      <div class="card-header paper-header">🎓 講演のはじめの背景</div>
+      <div class="card-content">
+        <div class="quote">「私は東京大学で物理学を学びました。一方で、東京大学では固体物理学が非常に盛んでした。若い頃に固体物理学へ触れていた経験は、非常に有益だったと思います。」</div>
+        <div class="highlight">✅ 南部博士自身が講演で「固体物理（超伝導など）が素粒子研究に役立った」と明かしています。まさに分野を越えた発想の実例です！</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 記事だけの話題：クォークの色・弦理論  → 補足説明（講演にはないが南部博士の偉業） -->
+  <hr>
+  <div style="background: #fef9e3; border-radius: 28px; padding: 1rem 1.8rem; margin: 1rem 0;">
+    <h3 style="display: flex; align-items: center; gap: 10px;">🎨 補足：記事で紹介されていて講演では語られなかった南部博士の功績</h3>
+    <p><strong>● 「クォークに色を付けた男」</strong> : 南部博士はクォークに「赤・青・緑」というカラー自由度を導入し、量子色力学(QCD)の基礎を作りました。このアイデアも対称性の破れとは別の大きな発見です。<br>
+    <strong>● 「弦理論の先駆け」</strong> : 点粒子ではなく「ひも」の振動で物質を説明する弦理論の原型も南部博士が提唱。こちらは講演では触れられていませんが、南部博士のもう一つの独創的な業績です。</p>
+    <div class="highlight">📚 記事では南部博士の多彩な業績をバランスよく紹介。ノーベル講演は「自発的対称性の破れ」に焦点を当てた内容です。</div>
+  </div>
+
+  <!-- 対応表形式のまとめ (中学校のレポート風) -->
+  <div class="glossary">
+    <h3>📌 クイック対応表 (記事のキーワード ⇔ 講演の内容)</h3>
+    <ul style="margin-top: 0.8rem; list-style: none; padding-left: 0;">
+      <li>🔹 <strong>鉛筆が倒れる例</strong> → 講演「細長い棒が曲がる例」 (同じ自発的対称性の破れのイメージ)</li>
+      <li>🔹 <strong>超伝導 / BCS理論 / ギャップ</strong> → 講演「BCS理論とディラック方程式の類似、ギャップΔ = 質量M」</li>
+      <li>🔹 <strong>パイ中間子(π中間子)の出現</strong> → 講演「カイラル対称性の破れで質量ゼロの粒子→それがπ中間子」</li>
+      <li>🔹 <strong>NJL模型 / 真空の凝縮</strong> → 講演「ジョナ＝ラシニオとのNJL模型、質量獲得の動的起源」</li>
+      <li>🔹 <strong>ヒッグス粒子のヒント</strong> → 講演「ヒッグス機構と電弱統一理論への応用」</li>
+      <li>🔹 <strong>宇宙の冷却と対称性の破れ</strong> → 講演「宇宙の冷却過程での相転移と真空の対称性変化」</li>
+      <li>🔹 <strong>異分野融合 (固体物理→素粒子)</strong> → 講演「若い頃の固体物理学の経験が非常に有益だった」</li>
+    </ul>
+  </div>
+
+  <!-- 実際の引用対比：南部博士の言葉 -->
+  <div class="footnote">
+    <h3>💬 南部博士の言葉で締めくくる</h3>
+    <p>記事でも紹介されていた名言：<br>
+    <em>「The basic laws are very simple, yet this world is not boring; that is, I think, an ideal combination.」</em><br>
+    (基本法則はとても単純なのに、この世界は退屈じゃない。それが理想的な組み合わせだ)</p>
+    <p>🎯 ノーベル講演でも、南部博士はこの“単純な対称性”と“壊れて生まれる多様性”への賞賛を貫いています。対比を通して、中学生の皆さんも「対称性の破れ」が現代物理学の心臓部だと感じられたら嬉しいです。</p>
+    <p style="margin-top: 12px;">✅ <strong>まとめ</strong>：『book129.html』の楽しい例え話や図解は、南部博士自身のノーベル講演のアイデアを正確にやさしく伝えています。この対比を見ると、難しい論文も「身近なたとえ」で読み解けることがわかりますね。</p>
+  </div>
+
+  <footer>
+    🧪 異分野の論文を読み解く（１１）対比スペシャル — 南部陽一郎博士の「自発的対称性の破れ」を解説記事とノーベル講演で比較しました。<br>
+    参考文献: 南部陽一郎ノーベル講演(2008) 「自発的対称性の破れ ― 素粒子物理学における異分野融合」 ／ TPAI法による論文分解 book129sol
+  </footer>
+</div>
+</body>
+</html>
