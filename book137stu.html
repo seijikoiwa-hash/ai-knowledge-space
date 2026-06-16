@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>久山町研究：認知症予防の希望 | 中学生向けまとめ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f8faf4 0%, #ecf5e9 100%);
+            font-family: 'Segoe UI', 'Noto Sans JP', 'Roboto', 'Helvetica Neue', sans-serif;
+            padding: 2rem 1rem;
+            color: #1a3b2f;
+        }
+
+        .book {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #fffef7;
+            border-radius: 36px;
+            box-shadow: 0 30px 45px -20px rgba(0, 0, 0, 0.3), 0 8px 18px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            padding: 2rem 2rem 3rem;
+            border: 1px solid #e5e0c5;
+        }
+
+        .hero {
+            text-align: center;
+            border-bottom: 3px solid #c8e0b0;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2.6rem;
+            background: linear-gradient(135deg, #1f6e43, #2b8c5e);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.3rem;
+        }
+
+        .sub {
+            font-size: 1.1rem;
+            color: #5f7b66;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: #ffe5b4;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #9b6f2c;
+        }
+
+        .card {
+            background: #ffffffdc;
+            backdrop-filter: blur(2px);
+            border-radius: 32px;
+            padding: 1.5rem 1.8rem;
+            margin: 1.8rem 0;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e9f0e2;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: #bbdaa2;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            border-left: 6px solid #48a76a;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+            color: #1c4e34;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            margin: 1rem 0 0.5rem 0;
+            color: #2c6e49;
+            display: inline-block;
+            background: #eef7e5;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+        }
+
+        .highlight {
+            background: #fff1c1;
+            padding: 0.1rem 0.3rem;
+            border-radius: 12px;
+            font-weight: 600;
+            color: #a5672f;
+        }
+
+        .stats {
+            font-size: 1.3rem;
+            font-weight: 800;
+            background: #1e462e;
+            display: inline-block;
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 60px;
+            margin: 0.3rem 0;
+        }
+
+        .grid-2 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .info-box {
+            flex: 1;
+            min-width: 200px;
+            background: #f8ffef;
+            border-radius: 28px;
+            padding: 1.2rem;
+            border: 1px solid #cde2bb;
+        }
+
+        .key-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #388e3c;
+            line-height: 1;
+        }
+
+        hr {
+            margin: 1rem 0;
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, #d4e6c0, transparent);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 2.5rem;
+            padding-top: 1rem;
+            font-size: 0.85rem;
+            color: #7c8f78;
+            border-top: 1px solid #e0ebd3;
+        }
+
+        @media (max-width: 700px) {
+            .book {
+                padding: 1.5rem;
+            }
+            h1 {
+                font-size: 1.9rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        .quote {
+            font-style: italic;
+            background: #f1f9ea;
+            border-radius: 20px;
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-left: 8px solid #82b74e;
+        }
+
+        .tip {
+            background: #e6f3ff;
+            border-radius: 20px;
+            padding: 1rem 1.5rem;
+            color: #025d8c;
+        }
+    </style>
+</head>
+<body>
+<div style="background:#0f4c81;color:white;padding:12px 16px;margin:0;text-align:center;font-size:14px;line-height:2;">
+<b>Book137シリーズ</b> ｜
+<a href="book137navi.html" style="color:#fff;">NAVI</a> ｜
+<a href="book137.html" style="color:#fff;">本編</a> ｜
+<a href="book137history.html" style="color:#fff;">歴史</a> ｜
+<a href="book137net.html" style="color:#fff;">ネットワーク説</a> ｜
+<a href="book137stu.html" style="color:#fff;">中学生版</a> ｜
+<a href="book137qa.html" style="color:#fff;">Q&amp;A</a> ｜
+<a href="book137sol.html" style="color:#fff;">総括</a> ｜
+<a href="book137sol1.html" style="color:#fff;">論文1</a> ｜
+<a href="book137sol2.html" style="color:#fff;">論文2</a> ｜
+<a href="book137sol3.html" style="color:#fff;">論文3</a> ｜
+<a href="book137sol4.html" style="color:#fff;">論文4</a> ｜
+<a href="book137sol5.html" style="color:#fff;">論文5</a>　｜
+<a href="book125navi.html" style="color:#fff;">グリンパティックシステム</a>　｜
+<a href="book8.html" style="color:#fff;">認知機能検査</a>
+</div>
+
+<div class="book">
+    <div class="hero">
+        <h1>🧠 久山町研究</h1>
+        <div class="sub">
+            <span>🏆 日本の認知症研究の「金字塔」</span>
+            <span class="badge">📘 中学生でもわかる！やさしい解説</span>
+        </div>
+        <p style="margin-top: 12px;">福岡県の小さな町から世界へ発信された、「認知症は予防できる」という希望の物語。</p>
+    </div>
+
+    <!-- 久山町研究とは -->
+    <div class="card">
+        <h2>🔍 久山町研究ってなに？</h2>
+        <p>1961年から九州大学が福岡県<span class="highlight">久山町</span>（人口約9,000人）で続けている、とても丁寧な「健康調査」です。<br>
+        特に1985年からは、65歳以上の高齢者を対象に「なぜ認知症になる人がいるのか、ならない人がいるのか」を徹底的に調べてきました。<br><br>
+        🧪 <strong>どこがすごいの？</strong><br>
+        ✅ <strong>受診率が驚異的に高い</strong>：どの調査も92%以上が参加！<br>
+        ✅ <strong>追跡できない人がほぼゼロ</strong>：828人を7年間追跡して、連絡が取れなくなったのはたった2人！<br>
+        ✅ <strong>高い剖検率（脳の解剖）</strong>：亡くなった方の脳を調べて、生きているときの診断が正しいか確認。これで信頼度が格段にアップ。<br>
+        この完璧さから、世界中の研究者が「日本版フラミンガム研究」「金字塔」と絶賛しています。</p>
+    </div>
+
+    <!-- なぜ一般に知られていないの？ -->
+    <div class="card">
+        <h2>🤔 なぜ「すごい研究」が知られていないの？</h2>
+        <div class="grid-2">
+            <div class="info-box">🌟 スター研究者がいない<br>← 山中伸弥さん（iPS細胞）のような有名人がおらず、何世代にもわたる多くの研究者のチーム成果だから。</div>
+            <div class="info-box">📢 地味だけど大切な成果<br>← 「新薬発見！」ではなく「糖尿病・高血圧をコントロールしましょう」という予防の話。派手じゃないけれど超重要。</div>
+            <div class="info-box">🗺️ 小さな町の研究？<br>← 久山町は小さくても、年齢構成や暮らしが日本の平均とほとんど同じ「日本の縮図」。だから全国に当てはまる。</div>
+            <div class="info-box">⏳ 何十年もかかる<br>← 「40歳の血糖値が20年後の認知症にどう影響するか」を調べるので、毎日のニュースにはなりにくい。</div>
+        </div>
+    </div>
+
+    <!-- 糖尿病・高血圧と認知症の関係 -->
+    <div class="card">
+        <h2>🍚💉 重大発見：糖尿病・高血圧が認知症リスクを上げる！</h2>
+        <p>久山町研究ではっきりわかったこと：<strong>「生活習慣病（糖尿病・高血圧）」を放っておくと、将来認知症になるリスクがぐんと上がる</strong>。でも、逆に生活習慣を改善すればリスクを下げられます。</p>
+        <div class="grid-2">
+            <div class="info-box">
+                <span class="key-number">📈 糖尿病</span>
+                <p>• 認知症リスクが<span class="highlight">約2倍</span>に！<br>
+                • とくに<span class="highlight">「食後の高血糖」</span>（血糖値が急に上がる）が危険。脳に「老人斑」という悪いシミを作り、アルツハイマー病を引き起こす原因に。<br>
+                • 「アルツハイマー病は脳の糖尿病」という考え方も生まれました。</p>
+            </div>
+            <div class="info-box">
+                <span class="key-number">❤️ 高血圧</span>
+                <p>• 特に<span class="highlight">中年（40～50代）の高血圧</span>がとても危険。後年の「血管性認知症」のリスクを最大<span class="highlight">10.1倍</span>も上げる！<br>
+                • 脳の血管が傷つき、認知機能が低下します。<br>
+                • だから「若いうちから血圧をコントロール」が大切。</p>
+            </div>
+        </div>
+        <div class="quote">
+            💡 まとめ：<strong>血糖と血圧をうまく管理することが、未来の自分の脳を守る第一歩！</strong>
+        </div>
+    </div>
+
+    <!-- 牛乳・運動・食事 -->
+    <div class="card">
+        <h2>🥛🚶‍♂️ うれしいニュース：牛乳と運動は脳の味方！</h2>
+        <h3>🥛 なぜ牛乳・乳製品が認知症リスクを下げるの？</h3>
+        <p>ヨーロッパの研究では「乳製品はほどほどに」と言われます。でも日本人はもともと牛乳の摂取量が少ない。<br>
+        久山町研究でわかったこと：<br>
+        ✅ 大豆・野菜・海藻を増やし、ごはんを減らす「和食ベース」の食事の中で、<strong>牛乳・乳製品だけが認知症リスク低下にっながる</strong>という結果が出ました。<br>
+        ✅ 牛乳を飲めば飲むほど、アルツハイマー病と血管性認知症のリスクが下がる傾向。<br>
+        🥛 <strong>「牛乳に特別な力がある」というより、日本人は慢性的に不足しているから、適量をプラスすることで予防効果がバッチリ出る</strong>というのが理由です。</p>
+        
+        <h3>🏃 運動も強い味方</h3>
+        <p>• 久山町研究では<span class="highlight">「適度な身体活動（ウォーキング、体操など）」がアルツハイマー病を予防する</span>と証明済み。<br>
+        • 運動そのものが脳を守る効果を持ち、さらに血圧を下げ、血糖コントロールをよくして、間接的にも認知症を防ぎます。<br>
+        • 「具体的に何％下がるか」は資料にありませんが、とにかく運動は認知症予防の重要なカギです。</p>
+        
+        <div class="tip">
+            ⚡ おまけ：お酒の飲みすぎは血管性認知症のリスクを上げます。中学生はもちろん、大人もほどほどにね。
+        </div>
+    </div>
+
+    <!-- 最新の明るい未来図 -->
+    <div class="card">
+        <h2>✨ 日本の未来は明るい！ 認知症が減り始めた ✨</h2>
+        <p>これまで「2050年には認知症患者が1000万人」「5人に1人が認知症」と悲観的な予測がされていました。<br>
+        しかし！<strong>久山町研究の最新データ（1985〜2022年）は驚きの事実を示しました。</strong></p>
+        <div class="stats">📊 認知症の有病率（65歳以上の割合）の推移</div>
+        <ul style="margin-top: 0.8rem; margin-left: 1.5rem;">
+            <li>1985年：<strong>6.7%</strong> → だんだん増える</li>
+            <li>2012年：ピークの<strong>17.9%</strong> （約5.6人に1人）</li>
+            <li>その後、なんと減少！ 📉 2017年：<strong>15.8%</strong> → 2022年：<strong>12.1%</strong> 🎉</li>
+        </ul>
+        <p><strong>発症リスク（新しく認知症になる人の率）も大きくダウン</strong>：2002～2012年を境に、その後は約40％も減少（ハザード比0.60）。</p>
+        <p>💡 <strong>なぜ減ったの？</strong><br>
+        高血圧治療が進み、糖尿病の管理がよくなり、国民の健康意識が高まったから。つまり、<span class="highlight">「生活習慣の改善で、社会全体の認知症を減らせる」</span>という希望が現実になったのです！</p>
+        <div class="quote">
+            🌟 久山町は「日本の縮図」。だから日本全体でも同じ傾向が期待できます。あなたや家族の小さな努力が、未来を変える。
+        </div>
+    </div>
+
+    <!-- 金字塔の理由まとめ -->
+    <div class="card">
+        <h2>🏅 なぜ「金字塔」と呼ばれるの？ 4つの理由</h2>
+        <div class="grid-2">
+            <div class="info-box">1️⃣ <strong>圧倒的な追跡率</strong><br>住民の協力が凄く、データの信頼性がダントツ。</div>
+            <div class="info-box">2️⃣ <strong>脳の解剖で裏付け</strong><br>生きている診断＋死後の脳検査で、真実を確認。</div>
+            <div class="info-box">3️⃣ <strong>日本の発症率を初めて解明</strong><br>アルツハイマー病と血管性認知症の実態を科学的に示した。</div>
+            <div class="info-box">4️⃣ <strong>「誰がなりやすいか」を特定</strong><br>高血圧・糖尿病・運動不足など、予防できるリスクを明らかにした。</div>
+        </div>
+    </div>
+
+    <!-- 主要論文さわり -->
+    <div class="card">
+        <h2>📚 研究の歴史（論文マメ知識）</h2>
+        <p>久山町研究は何百もの論文を生み出しました。中学生にも知ってほしい代表作：</p>
+        <ul style="margin-left: 1.2rem;">
+            <li><strong>1995年 吉武論文</strong>：日本で初めて認知症の発症率を計算。「運動はアルツハイマー病の予防になる」を発見。</li>
+            <li><strong>2011年 小原論文</strong>：糖尿病と「食後高血糖」が認知症リスクを上げることを証明。</li>
+            <li><strong>2011年 二宮論文</strong>：中年期の高血圧が後年の血管性認知症に直結することを実証。</li>
+            <li><strong>2025年 小原最新論文</strong>：2012年以降、認知症の有病率・発症率が低下！世界に希望をもたらした。</li>
+        </ul>
+        <p>これらの成果が、今の日本の認知症予防政策の根拠になっています。</p>
+    </div>
+
+    <!-- 中学生にできるアクションリスト -->
+    <div class="card" style="background: #fef6e0;">
+        <h2>🌟 中学生・家族でできる「脳活アクション」</h2>
+        <div class="grid-2">
+            <div class="info-box" style="background: white;">
+                🥗 <strong>食生活でできること</strong><br>
+                • 牛乳・ヨーグルトを毎日コップ1杯（日本人は不足しがち）<br>
+                • 豆腐・納豆・野菜・わかめなどを意識して食べる<br>
+                • ごはんの食べ過ぎを控え、甘い飲み物を減らす<br>
+                • 食後の血糖値を急に上げない工夫
+            </div>
+            <div class="info-box" style="background: white;">
+                🏃 <strong>運動習慣</strong><br>
+                • 毎日30分、外で歩いたり、好きなスポーツをしよう<br>
+                • ゲームやスマホの合間にストレッチ<br>
+                • 運動は脳の血流を増やし、認知症予防に直結
+            </div>
+            <div class="info-box" style="background: white;">
+                🩺 <strong>家族をサポート</strong><br>
+                • おじいちゃん・おばあちゃんの血圧・血糖値に関心を持つ<br>
+                • 「一緒に散歩しよう」「味付けを薄味にしよう」と声かけ<br>
+                • 健康診断の大切さを伝えよう
+            </div>
+            <div class="info-box" style="background: white;">
+                🧠 <strong>知識を広めよう</strong><br>
+                • 「認知症は予防できる」という希望を友達や家族にシェア<br>
+                • 久山町研究の物語を覚えて、みんなを元気づけよう
+            </div>
+        </div>
+        <p style="margin-top: 16px; text-align: center; font-weight: bold;">✨ 今日からの小さな積み重ねが、未来の大きな笑顔につながる ✨</p>
+    </div>
+
+    <!-- クイズ -->
+    <div class="card">
+        <h2>❓ 理解度チェック（クイズ）</h2>
+        <p><strong>Q1: 久山町研究が「金字塔」とよばれる最大の理由は？</strong><br>
+        A：追跡率・受診率・剖検率が異常に高く、生活習慣と認知症の関係を明確にしたから。</p>
+        <p><strong>Q2: 糖尿病がアルツハイマー病を引き起こすメカニズムは？</strong><br>
+        A：高血糖やインスリン抵抗性が脳に「老人斑」という悪いタンパク質を増やし、神経細胞を傷つける。</p>
+        <p><strong>Q3: 日本人が牛乳を飲むと認知症リスクが下がる特別な理由は？</strong><br>
+        A：もともとの摂取量が欧米よりずっと少なく、適量まで増やすことが予防効果になるから。</p>
+        <p><strong>Q4: 最新研究でわかった明るいニュースは？</strong><br>
+        A：2012年をピークに認知症の有病率・発症率が下がり始めた。生活習慣改善で予防できる現実が証明された。</p>
+    </div>
+
+    <!-- 希望のメッセージ -->
+    <div class="card" style="background: linear-gradient(120deg, #eef4e4, #ffffff);">
+        <h2>🌈 悲観は卒業。私たちには“予防”という武器がある</h2>
+        <p>「高齢化＝認知症の爆発的な増加」という暗い予測は、もう古い。<br>
+        久山町研究という、世界最高レベルの証拠が教えてくれました：<br>
+        <strong>✅ 高血圧・糖尿病はコントロールできる<br>
+        ✅ 牛乳・野菜・運動など、身近な習慣でリスクを下げられる<br>
+        ✅ 社会全体で取り組めば認知症を減らせる</strong><br><br>
+        この希望のメッセージは、福岡県久山町という小さな町から始まり、日本中、世界中に広がっています。<br>
+        あなたの今日の一杯の牛乳、家族と歩く散歩、減塩の工夫。それらが未来の「健康な脳」をつくるのです。</p>
+        <div style="text-align: right; font-style: italic;">—— 久山町研究（久山町コホート研究）の知見より</div>
+    </div>
+
+    <footer>
+        📍 参考資料：久山町研究公式情報 / Neurology誌 / 九州大学 久山町研究論文集 (1985-2025)<br>
+        このページは中学生の皆さんに「生活習慣で認知症は予防できる」という希望を伝えるために作成しました。
+    </footer>
+</div>
+<div style="background:#0f4c81;color:white;padding:12px 16px;margin:0;text-align:center;font-size:14px;line-height:2;">
+<b>Book137シリーズ</b> ｜
+<a href="book137navi.html" style="color:#fff;">NAVI</a> ｜
+<a href="book137.html" style="color:#fff;">本編</a> ｜
+<a href="book137history.html" style="color:#fff;">歴史</a> ｜
+<a href="book137net.html" style="color:#fff;">ネットワーク説</a> ｜
+<a href="book137stu.html" style="color:#fff;">中学生版</a> ｜
+<a href="book137qa.html" style="color:#fff;">Q&amp;A</a> ｜
+<a href="book137sol.html" style="color:#fff;">総括</a> ｜
+<a href="book137sol1.html" style="color:#fff;">論文1</a> ｜
+<a href="book137sol2.html" style="color:#fff;">論文2</a> ｜
+<a href="book137sol3.html" style="color:#fff;">論文3</a> ｜
+<a href="book137sol4.html" style="color:#fff;">論文4</a> ｜
+<a href="book137sol5.html" style="color:#fff;">論文5</a>　｜
+<a href="book125navi.html" style="color:#fff;">グリンパティックシステム</a>　｜
+<a href="book8.html" style="color:#fff;">認知機能検査</a>
+</div>
+
+</body>
+</html>

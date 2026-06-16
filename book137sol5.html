@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>book137sol5：Lecanemab in Early Alzheimer's Disease 論文分解</title>
+  <style>
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fb;
+      color: #222;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 40px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      border-bottom: 3px solid #333;
+      padding-bottom: 16px;
+    }
+    h2 {
+      font-size: 1.45rem;
+      margin-top: 44px;
+      padding: 12px 16px;
+      background: #eef3ff;
+      border-left: 6px solid #4b6cb7;
+      border-radius: 8px;
+    }
+    h3 {
+      font-size: 1.18rem;
+      margin-top: 32px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #ddd;
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    li {
+      margin: 8px 0;
+    }
+    .note {
+      background: #fff8df;
+      border-left: 5px solid #e0b100;
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 6px;
+    }
+    .answer-line {
+      display: inline-block;
+      min-width: 260px;
+      border-bottom: 1px solid #aaa;
+      height: 1.2em;
+      vertical-align: middle;
+    }
+    .arrow {
+      font-weight: bold;
+      color: #333;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 32px 0;
+    }
+    .section-box {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 22px;
+      background: #fcfcff;
+    }
+    footer {
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 50px;
+    }
+    @media print {
+      body { background: #fff; }
+      .container { box-shadow: none; margin: 0; max-width: none; }
+    }
+  
+    .answer-line { display: inline; min-width: 0; border-bottom: none; height: auto; vertical-align: baseline; }
+    .filled { font-weight: 600; color: #102a43; }
+    .deep { background:#f7fbff; border-left:4px solid #7aa7e8; padding:12px 16px; border-radius:8px; margin:14px 0; }
+    .warn { background:#fff4f4; border-left:5px solid #d9534f; padding:10px 14px; border-radius:6px; margin:14px 0; }
+    .key { background:#f1fff4; border-left:5px solid #39a96b; padding:10px 14px; border-radius:6px; margin:14px 0; }
+    table { border-collapse: collapse; width: 100%; margin: 16px 0; font-size: 0.95rem; }
+    th, td { border: 1px solid #d6dbe6; padding: 9px 10px; vertical-align: top; }
+    th { background: #eef3ff; }
+    .small { font-size: 0.92rem; color:#444; }
+  </style>
+</head>
+<body>
+<div style="background:#0f4c81;color:white;padding:12px 16px;margin:0;text-align:center;font-size:14px;line-height:2;">
+<b>Book137シリーズ</b> ｜
+<a href="book137navi.html" style="color:#fff;">NAVI</a> ｜
+<a href="book137.html" style="color:#fff;">本編</a> ｜
+<a href="book137history.html" style="color:#fff;">歴史</a> ｜
+<a href="book137net.html" style="color:#fff;">ネットワーク説</a> ｜
+<a href="book137stu.html" style="color:#fff;">中学生版</a> ｜
+<a href="book137qa.html" style="color:#fff;">Q&amp;A</a> ｜
+<a href="book137sol.html" style="color:#fff;">総括</a> ｜
+<a href="book137sol1.html" style="color:#fff;">論文1</a> ｜
+<a href="book137sol2.html" style="color:#fff;">論文2</a> ｜
+<a href="book137sol3.html" style="color:#fff;">論文3</a> ｜
+<a href="book137sol4.html" style="color:#fff;">論文4</a> ｜
+<a href="book137sol5.html" style="color:#fff;">論文5</a>　｜
+<a href="book125navi.html" style="color:#fff;">グリンパティックシステム</a>　｜
+<a href="book8.html" style="color:#fff;">認知機能検査</a>
+</div>
+
+  <main class="container">
+    <h1>論文分解テンプレート：Lecanemab in Early Alzheimer’s Disease</h1>
+
+    <section>
+      <h2>■ 基本情報</h2>
+      <ul>
+        <li>論文タイトル：<span class="answer-line filled">Lecanemab in Early Alzheimer’s Disease</span></li>
+        <li>著者：<span class="answer-line filled">C. H. van Dyck, C. J. Swanson, P. Aisen, R. J. Bateman, C. Chen, M. Gee, M. Kanekiyo, D. Li, L. Reyderman, S. Cohen, L. Froelich, S. Katayama, M. Sabbagh, B. Vellas, D. Watson, S. Dhadda, M. Irizarry, L. D. Kramer, T. Iwatsubo ほか</span></li>
+        <li>分野：<span class="answer-line filled">神経内科学、認知症臨床試験、アルツハイマー病、抗アミロイドβ抗体、疾患修飾療法</span></li>
+        <li>発表年・雑誌：<span class="answer-line filled">2023年、New England Journal of Medicine、388巻1号、9-21頁、DOI: 10.1056/NEJMoa2212948</span></li>
+      </ul>
+      <div class="deep">
+        <b>この論文の位置づけ：</b>本論文は、早期アルツハイマー病患者を対象に、抗Aβプロトフィブリル抗体レカネマブが、脳内アミロイドを減らすだけでなく、18か月後の認知・生活機能低下をプラセボより有意に抑えることを示した第III相国際臨床試験である。1990年代から続くアミロイド仮説を、臨床アウトカムで初めて大規模に支えた論文の一つである。
+      </div>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>■ A：論文本文の論理構造（ストーリー）</h2>
+
+      <h3>1. 目的（Objective）</h3>
+      <ul>
+        <li>目的a：<span class="answer-line filled">早期アルツハイマー病患者において、レカネマブが18か月後の臨床的悪化、特にCDR-SBで測定される認知・生活機能低下をプラセボより抑えるかを検証する。</span></li>
+        <li>目的b：<span class="answer-line filled">レカネマブが標的である脳内アミロイドβ蓄積を実際に減少させるかを、PETのcentiloid値で定量的に評価する。</span></li>
+        <li>目的c：<span class="answer-line filled">有効性と同時に、ARIA-E、ARIA-H、輸注反応などの安全性リスクを第III相試験規模で明らかにする。</span></li>
+      </ul>
+      <div class="deep">
+        <b>論文の問い：</b>「アミロイドβを標的とする抗体治療は、本当に人間のアルツハイマー病の進行を遅らせるのか」。この問いに答えるため、著者らは単なるバイオマーカー改善ではなく、CDR-SB、ADAS-cog14、ADCOMS、ADCS-MCI-ADLという複数の臨床評価を同時に置いた。
+      </div>
+
+      <hr>
+
+      <h3>2. 仮説（Hypothesis）</h3>
+      <p class="note">※論文内で明示された背景と試験設計から推定した仮説を含む。</p>
+      <ul>
+        <li>仮説a：<span class="answer-line filled">可溶性Aβプロトフィブリルを高親和性で認識するレカネマブは、早期アルツハイマー病の病的過程を弱め、認知・生活機能低下を遅らせる。</span></li>
+        <li>仮説b：<span class="answer-line filled">レカネマブ投与により、PETで測定される脳内アミロイド蓄積はプラセボより大きく低下する。</span></li>
+        <li>仮説c：<span class="answer-line filled">治療効果が示されても、抗Aβ抗体特有のARIAや輸注反応が発生するため、有効性と安全性の両面から評価する必要がある。</span></li>
+      </ul>
+      <div class="key">
+        <b>核心仮説：</b>この論文は「アミロイドを減らせば、臨床進行も遅れる」というアミロイド仮説の臨床的検証である。ただし、著者は「治る」とは主張していない。主張は「18か月で低下速度が中等度に遅くなる」である。
+      </div>
+
+      <hr>
+
+      <h3>3. 実験・方法（Methods）</h3>
+      <ul>
+        <li>実験a：<span class="answer-line filled">Clarity AD試験：18か月、多施設、二重盲検、プラセボ対照、並行群間、第III相試験。50〜90歳の早期アルツハイマー病患者を対象に、レカネマブ10 mg/kgを2週ごとに静注、またはプラセボを投与した。</span></li>
+        <li>実験b：<span class="answer-line filled">対象者選定：軽度認知障害または軽度認知症段階で、PETまたはCSFによりアミロイド陽性を確認した患者を組み入れた。合計1795名が無作為化され、898名がレカネマブ、897名がプラセボに割り付けられた。</span></li>
+        <li>実験c：<span class="answer-line filled">評価項目：主要評価項目は18か月後のCDR-SB変化量。主要な副次評価項目はアミロイドPET、ADAS-cog14、ADCOMS、ADCS-MCI-ADL。安全性として有害事象、ARIA-E、ARIA-H、輸注反応をMRIと臨床的観察で追跡した。</span></li>
+      </ul>
+      <table>
+        <tr><th>設計要素</th><th>内容</th><th>意味</th></tr>
+        <tr><td>試験デザイン</td><td>18か月、二重盲検、プラセボ対照、第III相</td><td>薬効評価として信頼性が高い。</td></tr>
+        <tr><td>対象</td><td>早期AD、アミロイド陽性、50〜90歳</td><td>アミロイド除去が効きうる病期を狙った。</td></tr>
+        <tr><td>介入</td><td>レカネマブ10 mg/kg、2週ごと静注</td><td>第II相で選ばれた用量。</td></tr>
+        <tr><td>主要評価</td><td>CDR-SB</td><td>認知と日常生活機能をまとめて見る臨床指標。</td></tr>
+        <tr><td>副次評価</td><td>PET、ADAS-cog14、ADCOMS、ADCS-MCI-ADL</td><td>病理、認知、複合評価、生活機能を多面的に検証。</td></tr>
+      </table>
+
+      <hr>
+
+      <h3>4. 結果（Results）</h3>
+      <ul>
+        <li>結果a：<span class="answer-line filled">主要評価項目CDR-SBでは、18か月後の悪化量がレカネマブ群1.21、プラセボ群1.66で、差は−0.45点、95%CI −0.67〜−0.23、P&lt;0.001。レカネマブ群で臨床的悪化が有意に少なかった。</span></li>
+        <li>結果b：<span class="answer-line filled">アミロイドPETでは、レカネマブ群が−55.48 centiloids、プラセボ群が+3.64 centiloidsで、群間差は−59.12 centiloids、P&lt;0.001。標的である脳内アミロイドが大きく減少した。</span></li>
+        <li>結果c：<span class="answer-line filled">副次臨床評価も一貫してレカネマブ有利だった。ADAS-cog14差−1.44、ADCOMS差−0.050、ADCS-MCI-ADL差+2.0、いずれもP&lt;0.001。一方で輸注反応26.4%、ARIA-E 12.6%、ARIA-H 17.3%が認められた。</span></li>
+      </ul>
+      <table>
+        <tr><th>評価項目</th><th>レカネマブ</th><th>プラセボ</th><th>群間差</th><th>解釈</th></tr>
+        <tr><td>CDR-SB</td><td>+1.21</td><td>+1.66</td><td>−0.45</td><td>悪化を約27%抑制。</td></tr>
+        <tr><td>アミロイドPET</td><td>−55.48 centiloids</td><td>+3.64 centiloids</td><td>−59.12</td><td>標的病理を大きく除去。</td></tr>
+        <tr><td>ADAS-cog14</td><td>+4.14</td><td>+5.58</td><td>−1.44</td><td>認知悪化が少ない。</td></tr>
+        <tr><td>ADCOMS</td><td>+0.164</td><td>+0.214</td><td>−0.050</td><td>複合評価でも有利。</td></tr>
+        <tr><td>ADCS-MCI-ADL</td><td>−3.5</td><td>−5.5</td><td>+2.0</td><td>日常生活機能の低下が少ない。</td></tr>
+        <tr><td>ARIA-E</td><td>12.6%</td><td>1.7%</td><td>増加</td><td>安全性上の最大論点。</td></tr>
+      </table>
+
+      <hr>
+
+      <h3>5. 検証（目的との対応）</h3>
+      <ul>
+        <li>目的a <span class="arrow">→</span> 結果a <span class="arrow">→</span><span class="filled">支持。CDR-SBで有意差があり、レカネマブは18か月時点で臨床的低下をプラセボより抑制した。</span></li>
+        <li>目的b <span class="arrow">→</span> 結果b <span class="arrow">→</span><span class="filled">強く支持。アミロイドPETの低下は非常に大きく、薬剤が標的病理に作用したことを明確に示す。</span></li>
+        <li>目的c <span class="arrow">→</span> 結果c <span class="arrow">→</span><span class="filled">支持。安全性リスクは明確に観察され、特にARIAと輸注反応が臨床導入時の制約になることが示された。</span></li>
+      </ul>
+      <div class="deep">
+        <b>論理の流れ：</b>「Aβプロトフィブリルを標的にする → PETでアミロイドが減る → 複数の臨床評価で悪化速度が遅くなる → しかしARIA等の副作用がある」。この論理が本論文全体の骨格である。
+      </div>
+
+      <hr>
+
+      <h3>6. 結論（Conclusion）</h3>
+      <ul>
+        <li>結論：<span class="answer-line filled">レカネマブは早期アルツハイマー病において、脳内アミロイドを減少させ、18か月間の認知・生活機能低下をプラセボより中等度に抑制した。</span></li>
+        <li>著者の主張の要約：<span class="answer-line filled">レカネマブは疾患修飾療法として有望であるが、効果は進行停止や改善ではなく進行抑制であり、ARIAや輸注反応を伴うため、より長期の有効性・安全性確認が必要である。</span></li>
+      </ul>
+      <p class="warn"><b>注意：</b>この論文は「アルツハイマー病を治した」論文ではない。「進行速度を統計的に有意に遅らせた」論文である。この区別が非常に重要である。</p>
+
+      <hr>
+
+      <h3>7. 限界・未解決問題（Limitations）</h3>
+      <ul>
+        <li>限界a：<span class="answer-line filled">観察期間が18か月に限られる。長期的に効果が持続するか、認知症発症や施設入所をどの程度遅らせるかは未確定である。</span></li>
+        <li>限界b：<span class="answer-line filled">CDR-SB差−0.45点は統計的には明確だが、個々の患者や家族がどの程度実感できる臨床的意味を持つかは議論が残る。</span></li>
+        <li>未解決問題：<span class="answer-line filled">ARIAリスク、特にApoE ε4ホモ接合体でのリスク、抗凝固薬使用者での安全性、治療開始時期、費用対効果、長期投与後の停止基準が未解決である。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>8. 新規性（Novelty）</h3>
+      <p class="note">※既存研究と何が違うか</p>
+      <ul>
+        <li>新規性：<span class="answer-line filled">大規模第III相試験において、アミロイド除去と臨床進行抑制の両方を、主要評価項目および複数の副次評価項目で同時に示した点。</span></li>
+        <li>従来との差分：<span class="answer-line filled">従来の抗アミロイド薬は、バイオマーカー改善と臨床効果の結びつきが不十分、または承認過程に議論が多かった。本試験は、臨床評価を主要評価項目として有意差を示した点で重い。</span></li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>■ B：図・表の解析（エビデンス）</h2>
+
+      <div class="section-box">
+        <h3>図1（Figure 1）：Screening, Randomization, and Follow-up</h3>
+        <p>A. 対応箇所（目的 / 仮説 / 実験 / 結果）：<span class="answer-line filled">実験・方法、研究デザイン、対象者選抜、脱落状況。</span></p>
+        <p>B. 何を証明しようとしているか：<span class="answer-line filled">この試験が大規模、無作為化、二重盲検、プラセボ対照として成立していることを示す。5967名をスクリーニングし、1795名を無作為化した。</span></p>
+        <p>C. 図から分かること：<span class="answer-line filled">レカネマブ群898名、プラセボ群897名。試験完了はレカネマブ群729名（81.2%）、プラセボ群757名（84.4%）。修正ITT解析集団はレカネマブ859名、プラセボ875名。</span></p>
+        <p>D. 結果への影響：<span class="answer-line filled">群間人数が均衡しており、主要評価の比較が可能である。一方で、スクリーニング失敗が多く、実臨床の全患者にそのまま一般化できない点も示す。</span></p>
+        <p>E. この図がないと何が崩れるか：<span class="answer-line filled">試験対象者の選抜過程、脱落、解析集団の妥当性が見えなくなり、結果の信頼性を判断できなくなる。</span></p>
+      </div>
+
+      <hr>
+
+      <div class="section-box">
+        <h3>図2（Figure 2）：Primary and Key Secondary End Points</h3>
+        <p>A. 対応箇所：<span class="answer-line filled">主要結果、副次結果、論文の中心エビデンス。</span></p>
+        <p>B. 何を証明しようとしているか：<span class="answer-line filled">レカネマブが、病理指標であるアミロイドPETだけでなく、CDR-SB、ADAS-cog14、ADCOMS、ADCS-MCI-ADLのすべてでプラセボより悪化を抑えたことを示す。</span></p>
+        <p>C. 図から分かること：<span class="answer-line filled">Panel AではCDR-SBの悪化曲線が18か月で分離し、P&lt;0.001。Panel Bではアミロイド負荷が大きく低下。Panel C〜Eでも認知・複合評価・日常生活機能でレカネマブ有利の方向に分離している。</span></p>
+        <p>D. 結果への影響：<span class="answer-line filled">この図が本論文の結論をほぼ支えている。特にPanel Bの強いアミロイド除去と、Panel A/C/D/Eの臨床的進行抑制が同じ方向を示すことが重要である。</span></p>
+        <p>E. この図がないと何が崩れるか：<span class="answer-line filled">レカネマブが単にアミロイドを減らしただけなのか、それとも臨床悪化を抑えたのかが判断できなくなる。論文の主張全体が成立しにくくなる。</span></p>
+      </div>
+
+      <hr>
+
+      <div class="section-box">
+        <h3>表1（Table 1）：Baseline Characteristics</h3>
+        <p>A. 対応箇所：<span class="answer-line filled">方法、背景因子の均衡性。</span></p>
+        <p>B. 何を証明しようとしているか：<span class="answer-line filled">治療群とプラセボ群の年齢、性別、疾患段階、ApoE ε4、CDR-SB、アミロイド量などが概ね同等で、比較が公平であること。</span></p>
+        <p>C. 図表から分かること：<span class="answer-line filled">平均年齢は約71歳、CDR-SBは約3.2、約6割が軽度認知障害段階、約7割がApoE ε4保有者。早期ADとして組み入れ条件に合った集団である。</span></p>
+        <p>D. 結果への影響：<span class="answer-line filled">ベースラインの不均衡による見かけの効果という批判を弱める。</span></p>
+        <p>E. この表がないと何が崩れるか：<span class="answer-line filled">治療効果が本当に薬剤によるものか、初期条件の差によるものか判断できなくなる。</span></p>
+      </div>
+
+      <hr>
+
+      <div class="section-box">
+        <h3>表2（Table 2）：Primary and Secondary End Points</h3>
+        <p>A. 対応箇所：<span class="answer-line filled">結果、統計的検証。</span></p>
+        <p>B. 何を証明しようとしているか：<span class="answer-line filled">主要評価項目と副次評価項目の数値的根拠を示し、Figure 2の視覚的結果を統計的に裏づける。</span></p>
+        <p>C. 図表から分かること：<span class="answer-line filled">CDR-SB差−0.45、アミロイドPET差−59.12、ADAS-cog14差−1.44、ADCOMS差−0.050、ADCS-MCI-ADL差+2.0で、全てP&lt;0.001。</span></p>
+        <p>D. 結果への影響：<span class="answer-line filled">論文の「有効性」主張の数値的中核である。</span></p>
+        <p>E. この表がないと何が崩れるか：<span class="answer-line filled">効果量、信頼区間、P値が不明となり、臨床的・統計的な評価ができない。</span></p>
+      </div>
+
+      <hr>
+
+      <div class="section-box">
+        <h3>表3（Table 3）：Adverse Events</h3>
+        <p>A. 対応箇所：<span class="answer-line filled">安全性、限界、臨床導入上の問題点。</span></p>
+        <p>B. 何を証明しようとしているか：<span class="answer-line filled">レカネマブの有効性には副作用リスクが伴うことを示す。特にARIA-E、ARIA-H、輸注反応が重要である。</span></p>
+        <p>C. 図表から分かること：<span class="answer-line filled">輸注反応は26.4%、ARIA-Eは12.6%、ARIA-Hは17.3%。ApoE ε4ホモ接合体ではARIA-Eが32.6%と高い。</span></p>
+        <p>D. 結果への影響：<span class="answer-line filled">この薬剤は「効くか」だけでなく「誰に、どの条件で、安全に使えるか」が問題であることを示す。</span></p>
+        <p>E. この表がないと何が崩れるか：<span class="answer-line filled">治療の利益と危険のバランス評価ができなくなり、臨床的判断として不完全になる。</span></p>
+      </div>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>■ C：論文の本質（最重要まとめ）</h2>
+
+      <h3>1. この論文は一言で何をしたか</h3>
+      <p>→ <span class="answer-line filled">早期アルツハイマー病患者に対して、レカネマブが脳内アミロイドを大きく減らし、18か月間の認知・生活機能低下をプラセボより有意に遅らせることを示した。</span></p>
+
+      <h3>2. なぜ重要か</h3>
+      <p>→ <span class="answer-line filled">アルツハイマー病治療は長く症状緩和薬中心だった。本論文は、病理標的であるAβを除去することで臨床進行を遅らせうることを大規模試験で示し、疾患修飾療法の時代を現実化した。</span></p>
+
+      <h3>3. どこが一番強い証拠か（キーフィギュア）</h3>
+      <p>→ <span class="answer-line filled">Figure 2とTable 2。Figure 2Bが標的病理の除去を示し、Figure 2A/C/D/Eが臨床的悪化抑制を示す。Table 2がそれを数値とP値で支える。</span></p>
+
+      <h3>4. どこが一番怪しいか（弱点）</h3>
+      <p>→ <span class="answer-line filled">最大の弱点は、効果量が中等度であること、安全性リスクが無視できないこと、18か月を超える長期効果が未確定であること。またARIAにより盲検性が部分的に揺らぐ可能性もある。</span></p>
+
+      <h3>5. 次にやるべき研究は何か</h3>
+      <p>→ <span class="answer-line filled">より早期、すなわち無症候性アミロイド陽性者での予防試験、長期安全性、ApoE ε4別の最適投与、ARIAリスク低減、タウ病理や神経変性指標への長期影響、実臨床での費用対効果を検証する研究が必要である。</span></p>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>■ D：TPAI法による追加解析</h2>
+      <h3>Truth：この論文で確実に言えること</h3>
+      <ul>
+        <li>レカネマブは18か月でアミロイドPET値を大幅に低下させた。</li>
+        <li>CDR-SB、ADAS-cog14、ADCOMS、ADCS-MCI-ADLでプラセボより悪化が少なかった。</li>
+        <li>ARIA-E、ARIA-H、輸注反応は明確に増えた。</li>
+      </ul>
+      <h3>Proof：どの証拠が支えているか</h3>
+      <ul>
+        <li>Figure 2BとTable 2：アミロイド除去。</li>
+        <li>Figure 2A/C/D/EとTable 2：臨床評価での進行抑制。</li>
+        <li>Table 3：安全性リスク。</li>
+      </ul>
+      <h3>Assumption：前提として置かれているもの</h3>
+      <ul>
+        <li>Aβプロトフィブリルが早期ADの病態進行に重要な役割を果たす。</li>
+        <li>早期に介入すれば、病理除去が臨床進行抑制につながる。</li>
+        <li>CDR-SBなどの尺度が18か月の臨床変化を適切に反映する。</li>
+      </ul>
+      <h3>Implication：何を変えたか</h3>
+      <ul>
+        <li>アルツハイマー病治療を「症状緩和」から「疾患修飾」へ押し出した。</li>
+        <li>早期診断、アミロイドPET/CSF検査、ARIAモニタリングの重要性を高めた。</li>
+        <li>一方で、高額治療・安全性・対象患者選別という新しい医療課題を生んだ。</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>■ E：アルツハイマー病研究史での位置づけ</h2>
+      <div class="deep">
+        <p><b>Hardy & Higgins 1992：</b>アミロイドカスケード仮説を提示。</p>
+        <p><b>Bateman et al. 2012：</b>発症25年前からCSF Aβ42低下、15年前からアミロイド沈着など、病理カスケードの時間軸を示した。</p>
+        <p><b>Iliff et al. 2012 / Xie et al. 2013：</b>グリンパティック系と睡眠によるAβ除去を示し、Aβ蓄積を「産生」だけでなく「排出・除去」の問題として捉え直した。</p>
+        <p><b>van Dyck et al. 2023：</b>抗Aβ抗体によりアミロイドを除去し、臨床進行を遅らせることを大規模試験で示した。</p>
+      </div>
+      <p>したがって本論文は、アミロイド仮説の「臨床的勝利」と言える一方で、その勝利は限定的であり、効果量、安全性、長期転帰、医療経済性という次の課題を同時に提示した論文である。</p>
+    </section>
+
+    <footer>book137sol5.html：論文分解テンプレート記入済み</footer>
+  </main>
+<div style="background:#0f4c81;color:white;padding:12px 16px;margin:0;text-align:center;font-size:14px;line-height:2;">
+<b>Book137シリーズ</b> ｜
+<a href="book137navi.html" style="color:#fff;">NAVI</a> ｜
+<a href="book137.html" style="color:#fff;">本編</a> ｜
+<a href="book137history.html" style="color:#fff;">歴史</a> ｜
+<a href="book137net.html" style="color:#fff;">ネットワーク説</a> ｜
+<a href="book137stu.html" style="color:#fff;">中学生版</a> ｜
+<a href="book137qa.html" style="color:#fff;">Q&amp;A</a> ｜
+<a href="book137sol.html" style="color:#fff;">総括</a> ｜
+<a href="book137sol1.html" style="color:#fff;">論文1</a> ｜
+<a href="book137sol2.html" style="color:#fff;">論文2</a> ｜
+<a href="book137sol3.html" style="color:#fff;">論文3</a> ｜
+<a href="book137sol4.html" style="color:#fff;">論文4</a> ｜
+<a href="book137sol5.html" style="color:#fff;">論文5</a>　｜
+<a href="book125navi.html" style="color:#fff;">グリンパティックシステム</a>　｜
+<a href="book8.html" style="color:#fff;">認知機能検査</a>
+</div>
+
+</body>
+</html>

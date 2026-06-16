@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>脳のネットワークから見るアルツハイマー病｜認知症＝ネットワーク孤立説（中学生向け）</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: linear-gradient(145deg, #f0f9ff 0%, #e6f0f5 100%);
+    font-family: 'Helvetica Neue', 'Segoe UI', 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', sans-serif;
+    line-height: 1.78;
+    color: #1e2f3e;
+    padding: 24px 20px;
+  }
+
+  .wrap {
+    max-width: 1120px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.96);
+    border-radius: 48px;
+    box-shadow: 0 20px 35px -12px rgba(0,0,0,0.2);
+    overflow: hidden;
+    padding: 28px 28px 48px;
+  }
+
+  h1 {
+    font-size: clamp(1.7rem, 4vw, 2.55rem);
+    background: linear-gradient(135deg, #135B7A, #2C8F6E);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 0.3rem;
+    border-left: 8px solid #2C8F6E;
+    padding-left: 20px;
+    line-height: 1.32;
+  }
+
+  .subhead {
+    font-size: 1.03rem;
+    color: #2c6979;
+    margin: 12px 0 30px 27px;
+    font-weight: 500;
+    border-left: 3px solid #9ac9db;
+    padding-left: 18px;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, #E5F2F5, #F2FBF7);
+    border-radius: 38px;
+    padding: 26px 30px;
+    margin-bottom: 34px;
+    text-align: center;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.03);
+  }
+
+  .hero p { margin: 10px 0; }
+
+  .badge {
+    background: #117A65;
+    color: white;
+    border-radius: 60px;
+    padding: 5px 18px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+  }
+
+  h2 {
+    font-size: 1.72rem;
+    margin: 50px 0 16px 0;
+    border-left: 8px solid #2E86AB;
+    padding-left: 16px;
+    color: #0F4C5F;
+    line-height: 1.35;
+  }
+
+  h3 {
+    font-size: 1.35rem;
+    margin: 20px 0 12px;
+    color: #1F6E5C;
+  }
+
+  p { margin: 0.55rem 0; }
+
+  .toc {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+    gap: 12px;
+    margin: 26px 0 32px;
+  }
+
+  .toc a {
+    text-decoration: none;
+    color: #12536b;
+    background: #f7fbfe;
+    border: 1px solid #cde3ed;
+    border-radius: 20px;
+    padding: 12px 14px;
+    font-weight: 700;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+  }
+
+  .network-card {
+    background: white;
+    border-radius: 32px;
+    box-shadow: 0 8px 20px rgba(0, 20, 30, 0.08);
+    margin: 28px 0;
+    border: 1px solid #d4e4ed;
+    overflow: hidden;
+    transition: all 0.2s;
+  }
+
+  .network-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 28px -8px rgba(0,0,0,0.12);
+  }
+
+  .card-header {
+    background: #F6FBFE;
+    padding: 16px 24px;
+    border-bottom: 3px solid;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .card-header h3 {
+    margin: 0;
+    font-size: 1.48rem;
+    flex: 1;
+  }
+
+  .card-body { padding: 22px 28px 30px; }
+
+  .struct { border-bottom-color: #3b82f6; }
+  .func { border-bottom-color: #f59e0b; }
+  .clean { border-bottom-color: #10b981; }
+  .memory { border-bottom-color: #a855f7; }
+  .story { border-bottom-color: #ef4444; }
+  .theory { border-bottom-color: #0f766e; }
+
+  .tag {
+    display: inline-block;
+    background: #e2edf2;
+    border-radius: 24px;
+    padding: 3px 12px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    margin: 3px 6px 3px 0;
+    color: #1f5e6e;
+  }
+
+  .highlight {
+    background: #fef9e3;
+    border-left: 6px solid #f4b942;
+    padding: 13px 18px;
+    border-radius: 20px;
+    margin: 20px 0;
+    font-weight: 500;
+  }
+
+  .paper-ref {
+    background: #f0f4f9;
+    border-radius: 20px;
+    padding: 11px 16px;
+    font-size: 0.88rem;
+    color: #2c6280;
+    margin: 14px 0;
+  }
+
+  .warning {
+    background: #ffe8e6;
+    border-left: 6px solid #dc6b4a;
+    padding: 15px 20px;
+    border-radius: 20px;
+    margin: 20px 0;
+  }
+
+  .gloss {
+    background: #eef3fa;
+    border-radius: 20px;
+    padding: 13px 18px;
+    font-size: 0.9rem;
+    margin-top: 16px;
+  }
+
+  .big-conclusion {
+    background: linear-gradient(135deg,#dcfce7,#dbeafe);
+    border: 2px solid #7dd3fc;
+    border-radius: 32px;
+    padding: 24px 26px;
+    margin: 28px 0;
+    text-align: center;
+    font-size: 1.1rem;
+  }
+
+  .big-conclusion strong {
+    color: #075985;
+    font-size: 1.35rem;
+  }
+
+  .storybox {
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+    border-radius: 32px;
+    padding: 24px 26px;
+    margin: 22px 0;
+  }
+
+  .dialogue {
+    background: white;
+    border-radius: 24px;
+    padding: 16px 20px;
+    margin: 14px 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+
+  .grid-steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin: 28px 0 20px;
+    justify-content: center;
+  }
+
+  .step {
+    flex: 1;
+    min-width: 130px;
+    background: #F3F9FF;
+    border-radius: 28px;
+    padding: 14px 12px;
+    text-align: center;
+    border: 1px solid #cde3ed;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+
+  .step-number {
+    background: #2E86AB;
+    width: 32px;
+    height: 32px;
+    border-radius: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .brain-role {
+    font-weight: 800;
+    color: #1e6b5e;
+    margin: 10px 0 4px;
+    display: block;
+  }
+
+  .flex-icon { font-size: 1.65rem; margin-right: 8px; }
+
+  figure {
+    margin: 22px 0;
+    text-align: center;
+  }
+
+  figure img, figure svg {
+    max-width: 100%;
+    height: auto;
+    border-radius: 24px;
+    border: 1px solid #d4e4ed;
+    background: #fff;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.07);
+  }
+
+  figcaption {
+    font-size: 0.82rem;
+    color: #507184;
+    margin-top: 8px;
+  }
+
+  .img-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    align-items: start;
+  }
+
+  .three-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+    gap: 18px;
+    margin: 20px 0;
+  }
+
+  .mini {
+    background: #f7fbfe;
+    border: 1px solid #cde3ed;
+    border-radius: 24px;
+    padding: 16px;
+  }
+
+  .mini strong { color: #0f766e; }
+
+  .stage-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 18px;
+    margin: 18px 0;
+  }
+  .stage-table th, .stage-table td {
+    border: 1px solid #d4e4ed;
+    padding: 12px 14px;
+    vertical-align: top;
+  }
+  .stage-table th {
+    background: #ecfeff;
+    color: #0f4c5f;
+  }
+
+  .footer {
+    margin-top: 52px;
+    text-align: center;
+    font-size: 0.82rem;
+    color: #5d7f8c;
+    border-top: 1px solid #cde3ed;
+    padding-top: 28px;
+  }
+
+  .source-note {
+    font-size: 0.78rem;
+    color: #607d8b;
+    margin-top: 8px;
+  }
+
+  ruby rt { font-size: 0.6rem; }
+
+  @media (max-width: 700px) {
+    body { padding: 14px 10px; }
+    .wrap { padding: 20px 16px 36px; border-radius: 28px; }
+    h1 { font-size: 1.58rem; }
+    h2 { font-size: 1.42rem; margin-top: 38px; }
+    .card-header h3 { font-size: 1.22rem; }
+    .card-body { padding: 18px 18px 24px; }
+  }
+</style>
+</head>
+<body>
+<div style="background:#0f4c81;color:white;padding:12px 16px;margin:0;text-align:center;font-size:14px;line-height:2;">
+<b>Book137シリーズ</b> ｜
+<a href="book137navi.html" style="color:#fff;">NAVI</a> ｜
+<a href="book137.html" style="color:#fff;">本編</a> ｜
+<a href="book137history.html" style="color:#fff;">歴史</a> ｜
+<a href="book137net.html" style="color:#fff;">ネットワーク説</a> ｜
+<a href="book137stu.html" style="color:#fff;">中学生版</a> ｜
+<a href="book137qa.html" style="color:#fff;">Q&amp;A</a> ｜
+<a href="book137sol.html" style="color:#fff;">総括</a> ｜
+<a href="book137sol1.html" style="color:#fff;">論文1</a> ｜
+<a href="book137sol2.html" style="color:#fff;">論文2</a> ｜
+<a href="book137sol3.html" style="color:#fff;">論文3</a> ｜
+<a href="book137sol4.html" style="color:#fff;">論文4</a> ｜
+<a href="book137sol5.html" style="color:#fff;">論文5</a>　｜
+<a href="book125navi.html" style="color:#fff;">グリンパティックシステム</a>　｜
+<a href="book8.html" style="color:#fff;">認知機能検査</a>
+</div>
+
+<div class="wrap">
+
+  <h1>🧠 脳のネットワークから見る<br>アルツハイマー病</h1>
+  <div class="subhead">
+    📡 中学生向け：記憶はどこで作られ、なぜ失われるのか<br>
+    🔗 3つの視点「構造」「機能」「清掃」から読む、認知症＝ネットワーク孤立説
+  </div>
+
+  <div class="hero">
+    <span class="badge">🧬 脳科学×記憶ネットワーク</span>
+    <p style="margin-top: 14px;"><strong>アルツハイマー病は「脳がランダムに壊れる病気」ではありません。</strong></p>
+    <p>脳の中には、情報をやりとりする「ネットワーク」があります。記憶を作る海馬、絵を見る視覚野、思い出す前頭前野、感情を加える扁桃体、長期保存する大脳皮質。これらが一本のリレーのようにつながって、私たちは「覚える」「しまう」「思い出す」を行っています。</p>
+    <p>このページでは、添付PDFの内容をもとに、アルツハイマー病を <strong>「脳ネットワークの孤立」</strong> として読み解きます。</p>
+  </div>
+
+  <nav class="toc">
+    <a href="#story">1. 昨日の昼食を忘れたおじいさん</a>
+    <a href="#isolation">2. 認知症＝ネットワーク孤立説</a>
+    <a href="#struct">3. 構造ネットワーク</a>
+    <a href="#braak">4. Braak博士と6段階モデル</a>
+    <a href="#func">5. 機能ネットワーク</a>
+    <a href="#clean">6. 清掃ネットワーク</a>
+    <a href="#memory">7. 16枚絵記憶検査</a>
+    <a href="#summary">8. まとめ</a>
+  </nav>
+
+  <!-- ========= 導入ストーリー ========= -->
+  <h2 id="story">🍱 1. 昨日の昼食を忘れたおじいさん</h2>
+  <div class="network-card">
+    <div class="card-header story">
+      <span class="flex-icon">👴</span>
+      <h3>「昔のことは覚えているのに、昨日のことを忘れる」のはなぜ？</h3>
+    </div>
+    <div class="card-body">
+      <div class="storybox">
+        <p>ある日、中学生のあなたは、おじいさんに聞きました。</p>
+        <div class="dialogue">
+          <p><strong>あなた：</strong>「おじいちゃん、昨日のお昼、何を食べた？」</p>
+          <p><strong>おじいさん：</strong>「うーん……何だったかな。思い出せないなあ」</p>
+        </div>
+        <p>ところが、そのあとおじいさんは、50年前の旅行の話や、若いころの仕事の話を、とても詳しく話し始めます。</p>
+        <div class="dialogue">
+          <p><strong>おじいさん：</strong>「あのときの駅前の風景は今でも覚えているよ。空が青くてね……」</p>
+        </div>
+        <p>不思議です。なぜ <strong>50年前のことは覚えている</strong> のに、<strong>昨日の昼食は忘れてしまう</strong> のでしょうか。</p>
+      </div>
+      <p>答えは、記憶の仕組みにあります。古い記憶は、大脳皮質という「巨大な図書館」に保存されています。一方、新しい記憶を登録するには、海馬という「記憶の司書」が必要です。アルツハイマー病では、この海馬とその入口が早い段階で障害されやすいため、<strong>新しい記憶を作ること</strong> が難しくなります。</p>
+      <div class="highlight">
+        🔑 <strong>このページの中心メッセージ</strong><br>
+        認知症を「物忘れ」とだけ考えると、見えにくい。実際には、脳の中で情報を運ぶネットワークが、少しずつ切断され、海馬が孤立していく病気として理解すると分かりやすい。
+      </div>
+    </div>
+  </div>
+
+  <!-- ========= ネットワーク孤立説 ========= -->
+  <h2 id="isolation">🚧 2. 認知症＝ネットワーク孤立説</h2>
+  <div class="big-conclusion">
+    <p><strong>認知症とは、単なる「脳細胞の死」ではなく、<br>脳の情報ネットワークが切断されていく病気である。</strong></p>
+  </div>
+
+  <div class="network-card">
+    <div class="card-header theory">
+      <span class="flex-icon">📡</span>
+      <h3>脳のインターネットが切れる</h3>
+    </div>
+    <div class="card-body">
+      <p>インターネットで動画を見るとき、パソコン、ルーター、ケーブル、サーバーがつながっています。どこか1か所の重要な中継点が壊れると、画面は止まります。</p>
+      <p>脳も同じです。視覚野で見た情報は、海馬で新しい記憶になり、大脳皮質に保存され、前頭前野で検索されます。このリレーの途中にある <strong>嗅内皮質</strong> や <strong>海馬支脚</strong> が壊れると、海馬は外の世界から切り離されます。</p>
+      <p>PDFでは、Hymanらの研究が、アルツハイマー病の病理変化が嗅内皮質の特定層と海馬支脚に現れ、海馬を他の脳領域から物理的に孤立させる、と説明しています。これが「新しいことを覚えられない」症状の重要な原因になります。</p>
+
+      <figure>
+        <svg viewBox="0 0 900 360" role="img" aria-label="認知症＝ネットワーク孤立説の模式図">
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#2E86AB"/>
+            </marker>
+            <marker id="redarrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#dc2626"/>
+            </marker>
+          </defs>
+          <rect x="20" y="30" width="860" height="300" rx="28" fill="#f8fbff" stroke="#cde3ed"/>
+          <text x="450" y="66" text-anchor="middle" font-size="25" fill="#0F4C5F" font-weight="700">正常な記憶ネットワーク</text>
+          <circle cx="120" cy="150" r="48" fill="#dbeafe" stroke="#3b82f6" stroke-width="3"/>
+          <text x="120" y="145" text-anchor="middle" font-size="17" font-weight="700">視覚野</text>
+          <text x="120" y="170" text-anchor="middle" font-size="13">絵を見る</text>
+          <circle cx="300" cy="150" r="48" fill="#dcfce7" stroke="#16a34a" stroke-width="3"/>
+          <text x="300" y="145" text-anchor="middle" font-size="17" font-weight="700">嗅内皮質</text>
+          <text x="300" y="170" text-anchor="middle" font-size="13">海馬の入口</text>
+          <circle cx="480" cy="150" r="55" fill="#fae8ff" stroke="#a855f7" stroke-width="3"/>
+          <text x="480" y="145" text-anchor="middle" font-size="18" font-weight="700">海馬</text>
+          <text x="480" y="170" text-anchor="middle" font-size="13">記憶の司書</text>
+          <circle cx="660" cy="150" r="48" fill="#fef3c7" stroke="#f59e0b" stroke-width="3"/>
+          <text x="660" y="145" text-anchor="middle" font-size="17" font-weight="700">大脳皮質</text>
+          <text x="660" y="170" text-anchor="middle" font-size="13">図書館</text>
+          <circle cx="800" cy="150" r="48" fill="#fee2e2" stroke="#ef4444" stroke-width="3"/>
+          <text x="800" y="145" text-anchor="middle" font-size="17" font-weight="700">前頭前野</text>
+          <text x="800" y="170" text-anchor="middle" font-size="13">検索</text>
+          <line x1="168" y1="150" x2="245" y2="150" stroke="#2E86AB" stroke-width="5" marker-end="url(#arrow)"/>
+          <line x1="348" y1="150" x2="420" y2="150" stroke="#2E86AB" stroke-width="5" marker-end="url(#arrow)"/>
+          <line x1="535" y1="150" x2="605" y2="150" stroke="#2E86AB" stroke-width="5" marker-end="url(#arrow)"/>
+          <line x1="708" y1="150" x2="745" y2="150" stroke="#2E86AB" stroke-width="5" marker-end="url(#arrow)"/>
+
+          <text x="450" y="250" text-anchor="middle" font-size="24" fill="#991b1b" font-weight="700">アルツハイマー病：入口が壊れ、海馬が孤立</text>
+          <line x1="260" y1="250" x2="340" y2="250" stroke="#dc2626" stroke-width="8" marker-end="url(#redarrow)"/>
+          <line x1="355" y1="230" x2="405" y2="280" stroke="#dc2626" stroke-width="8"/>
+          <line x1="405" y1="230" x2="355" y2="280" stroke="#dc2626" stroke-width="8"/>
+          <text x="480" y="300" text-anchor="middle" font-size="18" fill="#991b1b" font-weight="700">情報が海馬に入らない → 新しい記憶が作れない</text>
+        </svg>
+        <figcaption>図1　認知症＝ネットワーク孤立説。海馬そのものだけでなく、海馬への入口が壊れることが重要。</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- ========= 1. 構造ネットワーク ========= -->
+  <h2 id="struct">🔗 3. 構造ネットワーク（脳の配線・ケーブル）</h2>
+  <div class="network-card">
+    <div class="card-header struct">
+      <span class="flex-icon">🧩</span>
+      <h3>記憶を支える「解剖学的ネットワーク」の崩壊</h3>
+    </div>
+    <div class="card-body">
+      <p>脳の各エリアは神経線維、つまり「ケーブル」でつながっています。この配線によって、<strong>視覚野で見た情報 → 海馬で記憶として登録 → 大脳皮質で保存 → 前頭前野で思い出す</strong> という連携が可能になります。</p>
+
+      <figure>
+        <svg viewBox="0 0 900 360" role="img" aria-label="海馬と記憶の図">
+          <rect x="25" y="35" width="850" height="290" rx="28" fill="#ffffff" stroke="#cde3ed"/>
+          <path d="M160 190 C190 75, 370 55, 495 100 C635 150, 675 255, 560 290 C445 322, 260 300, 195 245 C165 220, 150 205, 160 190 Z" fill="#fee2e2" stroke="#ef8888" stroke-width="3"/>
+          <path d="M330 160 C390 105, 520 100, 585 160 C628 198, 610 250, 540 257 C470 264, 400 245, 365 210 C335 184, 310 178, 330 160 Z" fill="#fde68a" stroke="#d97706" stroke-width="4"/>
+          <path d="M390 185 C425 150, 515 151, 552 186 C575 208, 560 232, 515 234 C470 236, 420 224, 398 204 C385 193, 378 196, 390 185 Z" fill="#bbf7d0" stroke="#16a34a" stroke-width="4"/>
+          <circle cx="310" cy="175" r="26" fill="#dbeafe" stroke="#2563eb" stroke-width="4"/>
+          <text x="310" y="180" text-anchor="middle" font-size="14" font-weight="700">入口</text>
+          <text x="455" y="145" text-anchor="middle" font-size="20" font-weight="700" fill="#92400e">海馬</text>
+          <text x="455" y="175" text-anchor="middle" font-size="15">新しい記憶を登録する</text>
+          <text x="455" y="205" text-anchor="middle" font-size="15">「記憶の司書」</text>
+          <text x="310" y="225" text-anchor="middle" font-size="16" fill="#1d4ed8" font-weight="700">嗅内皮質</text>
+          <text x="310" y="248" text-anchor="middle" font-size="13" fill="#1d4ed8">海馬への玄関</text>
+          <line x1="80" y1="180" x2="280" y2="180" stroke="#2E86AB" stroke-width="5" marker-end="url(#arrow2)"/>
+          <defs>
+            <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#2E86AB"/>
+            </marker>
+          </defs>
+          <text x="115" y="160" font-size="15" font-weight="700" fill="#0F4C5F">視覚・音・言葉</text>
+          <line x1="575" y1="210" x2="770" y2="250" stroke="#2E86AB" stroke-width="5" marker-end="url(#arrow2)"/>
+          <text x="710" y="232" font-size="15" font-weight="700" fill="#0F4C5F">大脳皮質へ保存</text>
+          <text x="450" y="65" text-anchor="middle" font-size="24" fill="#0F4C5F" font-weight="700">海馬は「記憶の司書」</text>
+        </svg>
+        <figcaption>図2　海馬の役割を中学生向けに単純化した模式図。実際の脳構造を説明用に簡略化しています。</figcaption>
+      </figure>
+
+      <div class="highlight">
+        📌 <strong>Hymanらの発見</strong><br>
+        アルツハイマー病の最初のダメージは「嗅内皮質」と「海馬支脚」という場所に集中します。ここは、海馬と他の脳領域をつなぐ“入口”です。この小さな領域が壊れると、海馬が脳全体から孤立し、新しい記憶が作れなくなります。
+      </div>
+
+      <p><strong>中学生向けに言い換え：</strong> 脳の中の情報ハイウェイで、最初に「料金所」が壊れるようなものです。車が高速道路に入れなければ、目的地に荷物を届けられません。同じように、情報が海馬に入らなければ、新しい記憶は登録されません。</p>
+
+      <div class="gloss">
+        💡 <ruby>嗅内皮質<rt>きゅうないひしつ</rt></ruby> ＝ 海馬の玄関。アルツハイマー病で早く障害されやすい場所。<br>
+        💡 <ruby>海馬支脚<rt>かいばしきゃく</rt></ruby> ＝ 海馬から外へ情報を出す出口の一部。
+      </div>
+    </div>
+  </div>
+
+  <!-- ========= Braak ========= -->
+  <h2 id="braak">🧑‍🔬 4. Braak博士が見つけた「壊れる順番」</h2>
+  <div class="network-card">
+    <div class="card-header theory">
+      <span class="flex-icon">🧪</span>
+      <h3>認知症はランダムではなく、順番に広がる</h3>
+    </div>
+    <div class="card-body">
+      <div class="img-grid">
+        <figure>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Verleihung%20Gr.%20Bundesverdienstkreuz%20Prof.%20Braak.jpg" alt="Heiko Braak博士の写真">
+          <figcaption>Heiko Braak博士。Braak &amp; Braakステージで、タウ病変が脳内を広がる順序を示しました。画像：Wikimedia Commons, CC BY-SA 3.0 Germany。</figcaption>
+        </figure>
+        <div>
+          <p>Braak博士たちは、多数の脳病理を調べ、アルツハイマー病で見られる異常なタウタンパク質が、脳の中を <strong>ある程度決まった順番で広がる</strong> ことを示しました。</p>
+          <p>これが有名な <strong>Braakステージ</strong> です。中学生向けに言えば、「脳のどこから故障が始まり、どの道を通って広がるか」を示した地図です。</p>
+          <div class="highlight">
+            🔥 <strong>重要ポイント</strong><br>
+            最初から脳全体が一気に壊れるわけではありません。最初は海馬の入口付近、次に海馬、最後に大脳皮質の広い範囲へと広がります。
+          </div>
+        </div>
+      </div>
+
+      <table class="stage-table">
+        <tr>
+          <th>段階</th>
+          <th>主な場所</th>
+          <th>中学生向け説明</th>
+          <th>記憶への影響</th>
+        </tr>
+        <tr>
+          <td><strong>Stage I〜II</strong></td>
+          <td>嗅内皮質・海馬の入口</td>
+          <td>記憶工場の玄関が壊れ始める</td>
+          <td>新しいことを覚えにくくなる</td>
+        </tr>
+        <tr>
+          <td><strong>Stage III〜IV</strong></td>
+          <td>海馬・辺縁系</td>
+          <td>記憶の司書そのものが傷む</td>
+          <td>記憶障害が目立つ</td>
+        </tr>
+        <tr>
+          <td><strong>Stage V〜VI</strong></td>
+          <td>大脳新皮質の連合野</td>
+          <td>図書館全体や検索システムまで壊れる</td>
+          <td>判断・言葉・生活動作にも影響</td>
+        </tr>
+      </table>
+
+      <figure>
+        <svg viewBox="0 0 900 300" role="img" aria-label="Braakステージ模式図">
+          <rect x="25" y="35" width="850" height="230" rx="28" fill="#ffffff" stroke="#cde3ed"/>
+          <text x="450" y="72" text-anchor="middle" font-size="24" fill="#0F4C5F" font-weight="700">Braakステージ：ネットワーク破壊の広がり</text>
+          <circle cx="180" cy="165" r="60" fill="#dcfce7" stroke="#16a34a" stroke-width="4"/>
+          <text x="180" y="150" text-anchor="middle" font-size="19" font-weight="700">I〜II</text>
+          <text x="180" y="176" text-anchor="middle" font-size="14">海馬の入口</text>
+          <text x="180" y="198" text-anchor="middle" font-size="13">玄関の故障</text>
+          <circle cx="450" cy="165" r="70" fill="#fef3c7" stroke="#f59e0b" stroke-width="4"/>
+          <text x="450" y="150" text-anchor="middle" font-size="20" font-weight="700">III〜IV</text>
+          <text x="450" y="176" text-anchor="middle" font-size="14">海馬・辺縁系</text>
+          <text x="450" y="198" text-anchor="middle" font-size="13">司書の故障</text>
+          <circle cx="720" cy="165" r="82" fill="#fee2e2" stroke="#ef4444" stroke-width="4"/>
+          <text x="720" y="150" text-anchor="middle" font-size="20" font-weight="700">V〜VI</text>
+          <text x="720" y="176" text-anchor="middle" font-size="14">大脳皮質全体</text>
+          <text x="720" y="198" text-anchor="middle" font-size="13">図書館全体へ</text>
+          <line x1="240" y1="165" x2="372" y2="165" stroke="#64748b" stroke-width="5" marker-end="url(#arrow3)"/>
+          <line x1="520" y1="165" x2="630" y2="165" stroke="#64748b" stroke-width="5" marker-end="url(#arrow3)"/>
+          <defs>
+            <marker id="arrow3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#64748b"/>
+            </marker>
+          </defs>
+        </svg>
+        <figcaption>図3　Braakステージを中学生向けに簡略化した図。病理変化はネットワークに沿って広がる。</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- ========= 2. 機能ネットワーク ========= -->
+  <h2 id="func">⚡ 5. 機能ネットワーク（脳の同期・チームワーク）</h2>
+  <div class="network-card">
+    <div class="card-header func">
+      <span class="flex-icon">🧠✨</span>
+      <h3>デフォルトモード・ネットワークと「ハブ領域」の異常</h3>
+    </div>
+    <div class="card-body">
+      <p>脳では、物理的なケーブルだけでなく、別々の場所が <strong>同じタイミングで協力して働く</strong> ことも重要です。これを「機能的ネットワーク」と呼びます。</p>
+      <p>たとえば、思い出にふける、過去の出来事を考える、自分について考える。このようなときに働きやすいネットワークの一つが <strong>デフォルトモード・ネットワーク（DMN）</strong> です。</p>
+
+      <div class="highlight">
+        🔬 <strong>Jackらの研究</strong><br>
+        FDG-PETという検査で、脳のブドウ糖代謝を見ると、後部帯状回、楔前部、側頭頭頂葉といったハブ領域で代謝低下が見られます。これは、脳の重要な中継点がエネルギー不足になっていることを示します。
+      </div>
+
+      <div class="paper-ref">
+        🧬 <strong>Batemanらの研究</strong><br>
+        優性遺伝性アルツハイマー病では、発症の15〜20年前から楔前部にアミロイドβが蓄積し、発症10年前にはブドウ糖代謝が低下すると説明されています。つまり、症状が出るずっと前から、機能的ネットワークの異常が始まっている可能性があります。
+      </div>
+
+      <div class="three-grid">
+        <div class="mini">
+          <strong>構造ネットワーク</strong>
+          <p>道路やケーブルそのもの。壊れると情報が物理的に届かない。</p>
+        </div>
+        <div class="mini">
+          <strong>機能ネットワーク</strong>
+          <p>チームワーク。配線が残っていても、タイミングが合わないと働きが落ちる。</p>
+        </div>
+        <div class="mini">
+          <strong>ハブ領域</strong>
+          <p>駅や交差点のような重要中継点。ここが弱ると広い範囲に影響する。</p>
+        </div>
+      </div>
+
+      <div class="gloss">
+        🧭 <ruby>楔前部<rt>けつぜんぶ</rt></ruby> ：頭頂葉の内側にある領域。記憶の検索や自己認識に関わる重要なハブ領域。
+      </div>
+    </div>
+  </div>
+
+  <!-- ========= 3. グリンパティックシステム ========= -->
+  <h2 id="clean">🧹 6. 清掃ネットワーク（脳の下水道）</h2>
+  <div class="network-card">
+    <div class="card-header clean">
+      <span class="flex-icon">💧</span>
+      <h3>グリンパティックシステム：脳の老廃物を洗い流す仕組み</h3>
+    </div>
+    <div class="card-body">
+      <p>脳はとてもエネルギーを使う臓器です。たくさん働けば、老廃物も出ます。では、そのゴミはどうやって片づけられるのでしょうか。</p>
+      <p>ここで登場するのが <strong>グリンパティックシステム</strong> です。脳脊髄液が血管の周りを流れ、アストロサイトの水チャネルAQP4などを通じて、アミロイドβなどの老廃物を洗い流す仕組みです。</p>
+
+      <figure>
+        <svg viewBox="0 0 900 420" role="img" aria-label="グリンパティックシステムの模式図">
+          <rect x="25" y="30" width="850" height="360" rx="28" fill="#ffffff" stroke="#cde3ed"/>
+          <text x="450" y="68" text-anchor="middle" font-size="25" fill="#0F4C5F" font-weight="700">脳の下水道：グリンパティックシステム</text>
+          <rect x="90" y="110" width="90" height="220" rx="35" fill="#fecaca" stroke="#dc2626" stroke-width="4"/>
+          <text x="135" y="95" text-anchor="middle" font-size="16" font-weight="700" fill="#991b1b">動脈</text>
+          <rect x="720" y="110" width="90" height="220" rx="35" fill="#bfdbfe" stroke="#2563eb" stroke-width="4"/>
+          <text x="765" y="95" text-anchor="middle" font-size="16" font-weight="700" fill="#1d4ed8">静脈</text>
+          <path d="M180 145 C300 90, 430 115, 520 150 C610 185, 650 250, 720 260" fill="none" stroke="#38bdf8" stroke-width="12" stroke-linecap="round" opacity="0.65"/>
+          <path d="M180 250 C330 310, 475 300, 610 270 C660 260, 690 255, 720 250" fill="none" stroke="#38bdf8" stroke-width="12" stroke-linecap="round" opacity="0.65"/>
+          <text x="450" y="116" text-anchor="middle" font-size="16" fill="#0369a1" font-weight="700">脳脊髄液が流れ込む</text>
+          <text x="450" y="336" text-anchor="middle" font-size="16" fill="#0369a1" font-weight="700">老廃物を集めて外へ出す</text>
+          <g fill="#dcfce7" stroke="#16a34a" stroke-width="3">
+            <circle cx="300" cy="200" r="36"/><circle cx="410" cy="230" r="36"/><circle cx="530" cy="200" r="36"/><circle cx="620" cy="245" r="36"/>
+          </g>
+          <text x="300" y="205" text-anchor="middle" font-size="13" font-weight="700">アストロ</text>
+          <text x="410" y="235" text-anchor="middle" font-size="13" font-weight="700">サイト</text>
+          <text x="530" y="205" text-anchor="middle" font-size="13" font-weight="700">AQP4</text>
+          <text x="620" y="250" text-anchor="middle" font-size="13" font-weight="700">水路</text>
+          <g fill="#f97316">
+            <circle cx="360" cy="160" r="7"/><circle cx="470" cy="180" r="7"/><circle cx="555" cy="260" r="7"/><circle cx="635" cy="180" r="7"/><circle cx="275" cy="270" r="7"/>
+          </g>
+          <text x="520" y="308" font-size="15" fill="#9a3412" font-weight="700">Aβなどの老廃物</text>
+          <path d="M185 145 C260 110, 330 105, 390 125" fill="none" stroke="#0ea5e9" stroke-width="5" marker-end="url(#bluearrow)"/>
+          <path d="M520 300 C610 280, 660 260, 715 250" fill="none" stroke="#0ea5e9" stroke-width="5" marker-end="url(#bluearrow)"/>
+          <defs>
+            <marker id="bluearrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#0ea5e9"/>
+            </marker>
+          </defs>
+        </svg>
+        <figcaption>図4　グリンパティックシステムを中学生向けに単純化した図。脳脊髄液が流れ、老廃物を洗い流す。</figcaption>
+      </figure>
+
+      <div class="highlight">
+        🚰 <strong>Iliff / Jessen らの発見</strong><br>
+        脳にはリンパ管がほとんどない代わりに、脳脊髄液を利用した清掃ネットワークがあります。動脈の周囲から脳内に流れ込み、静脈の周囲へ抜けていく流れが、Aβなどの老廃物除去に関わります。
+      </div>
+
+      <div class="paper-ref">
+        🌊 <strong>Nedergaard &amp; Goldman の視点</strong><br>
+        Aβやタウの脳内での広がり方は、グリンパティックシステムによる脳脊髄液の流れ方と似ていると説明されています。つまり、異常タンパク質は神経ネットワークだけでなく、清掃ネットワークの「流れの淀み」にも関係して広がる可能性があります。
+      </div>
+
+      <div class="gloss">
+        😴 睡眠は「脳の大掃除タイム」です。十分な睡眠は、清掃ネットワークを支える重要な生活習慣と考えられます。
+      </div>
+    </div>
+  </div>
+
+  <!-- ========= 記憶の6ステップネットワーク + 認知機能検査 ========= -->
+  <h2 id="memory">🧭 7. 16枚絵記憶検査が見ているもの</h2>
+  <div class="network-card">
+    <div class="card-header memory">
+      <span class="flex-icon">📸</span>
+      <h3>「絵を覚えて思い出す」脳の大リレー</h3>
+    </div>
+    <div class="card-body">
+      <p>認知機能検査で「16枚の絵を覚えて、あとで思い出す」という課題があります。これは単なる暗記力テストではありません。実は、<strong>脳全体の記憶ネットワークが正常に働いているか</strong> を見ています。</p>
+
+      <div class="grid-steps">
+        <div class="step"><div class="step-number">1</div>👁️ 視覚野<br><span class="brain-role">絵を見る</span><span style="font-size:0.76rem;">飛行機・ライオン</span></div>
+        <div class="step"><div class="step-number">2</div>🐚 海馬<br><span class="brain-role">記憶形成</span><span style="font-size:0.76rem;">これは覚えよう</span></div>
+        <div class="step"><div class="step-number">3</div>🎯 前頭前野<br><span class="brain-role">注意・集中</span><span style="font-size:0.76rem;">集中する</span></div>
+        <div class="step"><div class="step-number">4</div>❤️ 扁桃体<br><span class="brain-role">感情・興味</span><span style="font-size:0.76rem;">大事だと印をつける</span></div>
+        <div class="step"><div class="step-number">5</div>📚 大脳皮質<br><span class="brain-role">長期保存</span><span style="font-size:0.76rem;">図書館にしまう</span></div>
+        <div class="step"><div class="step-number">6</div>🔍 前頭前野<br><span class="brain-role">想起・検索</span><span style="font-size:0.76rem;">何があったっけ？</span></div>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 900 470" role="img" aria-label="16枚絵記憶検査の模式図">
+          <rect x="25" y="28" width="850" height="410" rx="28" fill="#ffffff" stroke="#cde3ed"/>
+          <text x="450" y="67" text-anchor="middle" font-size="24" fill="#0F4C5F" font-weight="700">16枚絵記憶検査：脳全体を使う</text>
+          <g transform="translate(95,95)">
+            <rect width="280" height="280" rx="22" fill="#f8fafc" stroke="#cbd5e1"/>
+            <text x="140" y="32" text-anchor="middle" font-size="16" font-weight="700" fill="#0F4C5F">覚える16枚の絵</text>
+            <g font-size="28" text-anchor="middle">
+              <rect x="35" y="55" width="45" height="45" rx="8" fill="#dbeafe"/><text x="58" y="88">✈️</text>
+              <rect x="95" y="55" width="45" height="45" rx="8" fill="#dcfce7"/><text x="118" y="88">🦁</text>
+              <rect x="155" y="55" width="45" height="45" rx="8" fill="#fef3c7"/><text x="178" y="88">🚲</text>
+              <rect x="215" y="55" width="45" height="45" rx="8" fill="#fee2e2"/><text x="238" y="88">🍎</text>
+              <rect x="35" y="115" width="45" height="45" rx="8" fill="#fae8ff"/><text x="58" y="148">🐟</text>
+              <rect x="95" y="115" width="45" height="45" rx="8" fill="#e0f2fe"/><text x="118" y="148">🚗</text>
+              <rect x="155" y="115" width="45" height="45" rx="8" fill="#fce7f3"/><text x="178" y="148">🌂</text>
+              <rect x="215" y="115" width="45" height="45" rx="8" fill="#ecfccb"/><text x="238" y="148">🐶</text>
+              <rect x="35" y="175" width="45" height="45" rx="8" fill="#ffedd5"/><text x="58" y="208">⌚</text>
+              <rect x="95" y="175" width="45" height="45" rx="8" fill="#ccfbf1"/><text x="118" y="208">🏠</text>
+              <rect x="155" y="175" width="45" height="45" rx="8" fill="#ede9fe"/><text x="178" y="208">🌸</text>
+              <rect x="215" y="175" width="45" height="45" rx="8" fill="#fef9c3"/><text x="238" y="208">📘</text>
+              <rect x="35" y="235" width="45" height="45" rx="8" fill="#dcfce7"/><text x="58" y="268">🚢</text>
+              <rect x="95" y="235" width="45" height="45" rx="8" fill="#dbeafe"/><text x="118" y="268">🍌</text>
+              <rect x="155" y="235" width="45" height="45" rx="8" fill="#fee2e2"/><text x="178" y="268">👞</text>
+              <rect x="215" y="235" width="45" height="45" rx="8" fill="#fef3c7"/><text x="238" y="268">☂️</text>
+            </g>
+          </g>
+          <path d="M395 230 C445 170, 505 170, 555 230" fill="none" stroke="#2E86AB" stroke-width="6" marker-end="url(#arrow4)"/>
+          <path d="M555 245 C510 315, 455 315, 405 250" fill="none" stroke="#2E86AB" stroke-width="6" marker-end="url(#arrow4)"/>
+          <defs>
+            <marker id="arrow4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#2E86AB"/>
+            </marker>
+          </defs>
+          <g transform="translate(560,105)">
+            <rect width="250" height="260" rx="24" fill="#f0fdf4" stroke="#86efac"/>
+            <text x="125" y="36" text-anchor="middle" font-size="18" font-weight="700" fill="#166534">脳内リレー</text>
+            <text x="125" y="76" text-anchor="middle" font-size="16">視覚野で見る</text>
+            <text x="125" y="108" text-anchor="middle" font-size="16">↓</text>
+            <text x="125" y="140" text-anchor="middle" font-size="16">海馬で登録</text>
+            <text x="125" y="172" text-anchor="middle" font-size="16">↓</text>
+            <text x="125" y="204" text-anchor="middle" font-size="16">大脳皮質に保存</text>
+            <text x="125" y="236" text-anchor="middle" font-size="16">前頭前野で検索</text>
+          </g>
+          <text x="450" y="410" text-anchor="middle" font-size="17" fill="#0F4C5F" font-weight="700">この検査は「記憶力」だけでなく、脳ネットワーク全体を見ている</text>
+        </svg>
+        <figcaption>図5　16枚絵記憶検査の模式図。絵を見る、覚える、保存する、思い出すという大リレーを調べる。</figcaption>
+      </figure>
+
+      <div class="highlight">
+        🧪 <strong>アルツハイマー病では「ステップ2：海馬」が孤立する</strong><br>
+        海馬への入口が破壊されると、視覚野で見た情報が海馬に届きません。その結果、「さっき見た絵」を記憶として登録できず、あとで前頭前野がいくら検索しても、見つける本が図書館に入っていない状態になります。
+      </div>
+
+      <div class="warning">
+        ⚠️ 「思い出すのに時間がかかる」のと「そもそも記憶が登録されていない」のは違います。正常な老化では検索に時間がかかることがあります。一方、アルツハイマー病では新しい記憶の登録そのものが難しくなることがあります。
+      </div>
+
+      <div class="gloss">
+        🎓 <strong>海馬＝記憶の司書、大脳皮質＝巨大図書館、前頭前野＝検索コンピューター</strong><br>
+        アルツハイマー病は、司書と玄関が病気になり、新しい本を図書館に登録できなくなる病気として理解できます。
+      </div>
+    </div>
+  </div>
+
+  <!-- ========= まとめ ========= -->
+  <h2 id="summary">✨ 8. 3つのネットワークが教えること</h2>
+  <div style="background: #EFFAF5; border-radius: 34px; padding: 24px 28px; margin: 20px 0 20px;">
+    <div class="three-grid">
+      <div class="mini">
+        <div style="font-weight:800; color:#117A65;">🔗 構造ネットワーク</div>
+        <p>神経の配線。嗅内皮質や海馬支脚が壊れると、海馬が孤立し、新しい記憶を作りにくくなる。</p>
+      </div>
+      <div class="mini">
+        <div style="font-weight:800; color:#D97706;">⚡ 機能ネットワーク</div>
+        <p>脳のチームワーク。デフォルトモード・ネットワークのハブが弱ると、記憶や思考の同期が乱れる。</p>
+      </div>
+      <div class="mini">
+        <div style="font-weight:800; color:#059669;">💧 清掃ネットワーク</div>
+        <p>グリンパティックシステム。老廃物を洗い流す脳の下水道で、睡眠と深く関係する。</p>
+      </div>
+    </div>
+
+    <div class="big-conclusion">
+      <p><strong>結論：アルツハイマー病は「ネットワーク病」である。</strong></p>
+      <p>構造の配線、機能のチームワーク、清掃の流れ。この3つが崩れることで、記憶ネットワークは少しずつ孤立していきます。</p>
+    </div>
+
+    <p>だから、認知機能検査は単なる「物覚えのテスト」ではありません。視覚野、海馬、前頭前野、扁桃体、大脳皮質が協力しているかを、一度に見る検査です。</p>
+    <p>そして、運動、睡眠、血圧管理、糖尿病予防といった生活習慣は、脳のネットワークを守る行動として理解できます。</p>
+  </div>
+
+  <!-- 論文リスト / ソース -->
+  <div class="paper-ref" style="background:#EFF3F8;">
+    <strong>📚 このページで使った主要な論文・概念（提供PDFより）</strong><br>
+    • Hyman et al.：アルツハイマー病の病理変化が海馬入力を孤立させる<br>
+    • Braak &amp; Braak：神経原線維変化のステージングモデル<br>
+    • Jack et al.：バイオマーカー・モデル、FDG-PETによるハブ領域の代謝低下<br>
+    • Bateman et al.：優性遺伝性アルツハイマー病での早期楔前部変化<br>
+    • Iliff / Jessen：グリンパティックシステムの発見・解説<br>
+    • Nedergaard &amp; Goldman：Aβ・タウ拡散とCSFフローの関連<br>
+    • 16枚絵記憶検査：視覚野→海馬→前頭前野→扁桃体→大脳皮質→前頭前野という記憶ネットワークの検査
+    <div class="source-note">
+      Braak博士写真：Wikimedia Commons「Verleihung Gr. Bundesverdienstkreuz Prof. Braak.jpg」CC BY-SA 3.0 Germany。その他の図は本ページ用に作成した説明用模式図です。
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>📖 book140net.html — 中学生でもわかる！脳ネットワーク解説<br>
+    認知症を「脳ネットワークの孤立」として理解する教材版。<br>
+    作成：TPAI法（AIと共に論文を読み解く）</p>
+  </div>
+
+</div>
+<div style="background:#0f4c81;color:white;padding:12px 16px;margin:0;text-align:center;font-size:14px;line-height:2;">
+<b>Book137シリーズ</b> ｜
+<a href="book137navi.html" style="color:#fff;">NAVI</a> ｜
+<a href="book137.html" style="color:#fff;">本編</a> ｜
+<a href="book137history.html" style="color:#fff;">歴史</a> ｜
+<a href="book137net.html" style="color:#fff;">ネットワーク説</a> ｜
+<a href="book137stu.html" style="color:#fff;">中学生版</a> ｜
+<a href="book137qa.html" style="color:#fff;">Q&amp;A</a> ｜
+<a href="book137sol.html" style="color:#fff;">総括</a> ｜
+<a href="book137sol1.html" style="color:#fff;">論文1</a> ｜
+<a href="book137sol2.html" style="color:#fff;">論文2</a> ｜
+<a href="book137sol3.html" style="color:#fff;">論文3</a> ｜
+<a href="book137sol4.html" style="color:#fff;">論文4</a> ｜
+<a href="book137sol5.html" style="color:#fff;">論文5</a>　｜
+<a href="book125navi.html" style="color:#fff;">グリンパティックシステム</a>　｜
+<a href="book8.html" style="color:#fff;">認知機能検査</a>
+</div>
+
+</body>
+</html>

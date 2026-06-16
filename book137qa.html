@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>認知症研究ノート：NotebookLM解析結果（問答集要約）</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #1e2a3a;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            background-color: #f9fafb;
+        }
+        .qa-container {
+            background-color: white;
+            border-radius: 1.2rem;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.02);
+            overflow: hidden;
+            padding: 0.5rem 0;
+        }
+        .qa-item {
+            border-bottom: 1px solid #e5e9f0;
+            padding: 1.8rem 2rem;
+        }
+        .qa-item:last-child {
+            border-bottom: none;
+        }
+        .question {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #0f3b5c;
+            background: #eef2ff;
+            display: inline-block;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            letter-spacing: -0.3px;
+        }
+        .answer {
+            margin-top: 0.75rem;
+            color: #2c3e4e;
+        }
+        .answer h3 {
+            font-size: 1.2rem;
+            margin: 1rem 0 0.5rem 0;
+            color: #1f5e8c;
+            border-left: 4px solid #3b82f6;
+            padding-left: 0.75rem;
+        }
+        .answer p {
+            margin: 0.75rem 0;
+        }
+        .answer ul, .answer ol {
+            margin: 0.5rem 0 0.5rem 1.25rem;
+            padding-left: 0.25rem;
+        }
+        .answer li {
+            margin: 0.35rem 0;
+        }
+        .summary-note {
+            background: #f0f9ff;
+            border-left: 3px solid #38bdf8;
+            padding: 0.5rem 1rem;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            border-radius: 12px;
+        }
+        hr {
+            margin: 0.8rem 0;
+            border: 0;
+            border-top: 1px solid #e2e8f0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+        @media (max-width: 640px) {
+            .qa-item {
+                padding: 1.2rem 1rem;
+            }
+            .question {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div style="background:#0f4c81;color:white;padding:12px 16px;margin:0;text-align:center;font-size:14px;line-height:2;">
+<b>Book137シリーズ</b> ｜
+<a href="book137navi.html" style="color:#fff;">NAVI</a> ｜
+<a href="book137.html" style="color:#fff;">本編</a> ｜
+<a href="book137history.html" style="color:#fff;">歴史</a> ｜
+<a href="book137net.html" style="color:#fff;">ネットワーク説</a> ｜
+<a href="book137stu.html" style="color:#fff;">中学生版</a> ｜
+<a href="book137qa.html" style="color:#fff;">Q&amp;A</a> ｜
+<a href="book137sol.html" style="color:#fff;">総括</a> ｜
+<a href="book137sol1.html" style="color:#fff;">論文1</a> ｜
+<a href="book137sol2.html" style="color:#fff;">論文2</a> ｜
+<a href="book137sol3.html" style="color:#fff;">論文3</a> ｜
+<a href="book137sol4.html" style="color:#fff;">論文4</a> ｜
+<a href="book137sol5.html" style="color:#fff;">論文5</a>　｜
+<a href="book125navi.html" style="color:#fff;">グリンパティックシステム</a>　｜
+<a href="book8.html" style="color:#fff;">認知機能検査</a>
+</div>
+
+<h1 style="font-weight: 600; font-size: 1.8rem; margin-bottom: 0.5rem; color: #0c4a6e;">🧠 認知症研究ハイライト</h1>
+<p style="color: #4b5563; margin-bottom: 1.8rem;">論文群のNotebookLM解析結果 — 質問と要約 (順序固定)</p>
+<div class="qa-container">
+
+    <!-- A. 認知症の原因は？ -->
+    <div class="qa-item">
+        <div class="question">A. 認知症の原因は？</div>
+        <div class="answer">
+            <p>認知症（特にアルツハイマー病）は単一原因ではなく、複数要因の連鎖で発症。以下の要素が重要。</p>
+            <ul>
+                <li><strong>アミロイドβ（Aβ）蓄積</strong>：「アミロイド・カスケード仮説」の起点。症状出現20～25年前から蓄積開始。</li>
+                <li><strong>グリンパティックシステム不全</strong>：脳の老廃物排出系。機能低下がタンパク蓄積を促進。</li>
+                <li><strong>睡眠不足・質低下</strong>：睡眠中に掃除が活発化。加齢で睡眠が浅くなりクリアランス低下。</li>
+                <li><strong>心血管疾患・高血圧</strong>：脈動駆動力が弱まり、脳脊髄液循環が滞る。</li>
+                <li><strong>タウタンパク凝集</strong>：神経原線維変化 → 海馬など神経細胞死 → 記憶障害。</li>
+            </ul>
+            <div class="summary-note">📌 現在は「最終共通経路」として、加齢・睡眠障害・血管因子がグリンパティック機能を衰えさせ悪循環を生むと考える。</div>
+        </div>
+    </div>
+
+    <!-- B. 研究の流れを教えて（年代こみで） -->
+    <div class="qa-item">
+        <div class="question">B. 研究の流れを教えて（年代こみで）</div>
+        <div class="answer">
+            <ul>
+                <li><strong>1901–1906</strong>：アルツハイマー病発見（アロイス・アルツハイマー）。老人斑と神経原線維変化を報告。</li>
+                <li><strong>1984</strong>：初の統一臨床診断基準 (NINCDS-ADRDA)。</li>
+                <li><strong>1991</strong>：Braak 病理ステージング (タウ伝播)。</li>
+                <li><strong>1992</strong>：Hardy & Higgins が「アミロイド・カスケード仮説」提唱。</li>
+                <li><strong>2010</strong>：Jackらがバイオマーカーの動的モデル発表。</li>
+                <li><strong>2011</strong>：診断基準にMRI・PET・CSFなどのバイオマーカーを導入。</li>
+                <li><strong>2012</strong>：Batemanらが症状の25年前からAβ蓄積開始を実証。</li>
+                <li><strong>2012</strong>：Iliffらが「グリンパティックシステム」発見。</li>
+                <li><strong>2013</strong>：Xieらが睡眠中に掃除が劇的に活性化することを解明。</li>
+                <li><strong>2020</strong>：Nedergaardらが「最終共通経路」モデルを提示。</li>
+                <li><strong>2022–2023</strong>：抗アミロイド抗体「レカネマブ」第3相試験で進行抑制に成功。アミロイド仮説を臨床的に裏付け。</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- C. 睡眠中に脳が老廃物を掃除する仕組みを教えて -->
+    <div class="qa-item">
+        <div class="question">C. 睡眠中に脳が老廃物を掃除する仕組みを教えて</div>
+        <div class="answer">
+            <p>グリンパティックシステムと睡眠による脳の物理的変化が鍵。</p>
+            <ul>
+                <li><strong>脳脊髄液循環</strong>：動脈拍動を駆動力に脳脊髄液が血管周囲から脳組織内へ流入。</li>
+                <li><strong>細胞間スペースが60%拡大</strong>：睡眠中に間質空間が拡がり、液体抵抗が減少。</li>
+                <li><strong>排出速度が2倍に上昇</strong>：アミロイドβなどの除去速度が覚醒時の約2倍に。</li>
+                <li><strong>ノルアドレナリン制御</strong>：覚醒時は細胞体積増で間質狭小化、睡眠で抑制解除され掃除活性化。</li>
+                <li><strong>深いノンレム睡眠が特に重要</strong>：徐波活動と強く相関。</li>
+            </ul>
+            <p>睡眠が脳を回復させる本質は「老廃物の物理的洗い流し」にある。</p>
+        </div>
+    </div>
+
+    <!-- D. 脳の清掃を助ける「水チャネル（AQP4）」とは何ですか？ -->
+    <div class="qa-item">
+        <div class="question">D. 脳の清掃を助ける「水チャネル（AQP4）」とは何ですか？</div>
+        <div class="answer">
+            <p>AQP4はアストロサイトの足突起に高密度に存在する水分子選択的チャネル。グリンパティックシステムの中核。</p>
+            <ul>
+                <li><strong>水分ゲート</strong>：脳脊髄液を間質へスムーズに流入させ、Aβなどの老廃物を静脈側へ押し流す。</li>
+                <li><strong>極性と喪失</strong>：健康脳では血管側に集中配置。加齢・炎症・外傷で局在異常が生じ、老廃物蓄積を加速。</li>
+                <li><strong>遺伝子多型の影響</strong>：AQP4遺伝子SNPは深い睡眠や日中の眠気に影響し、アミロイド蓄積量・認知機能低下速度と関連。</li>
+            </ul>
+            <div class="summary-note">AQP4は「睡眠中の脳洗浄システム」を物理的に支える重要な構造基盤。</div>
+        </div>
+    </div>
+
+    <!-- E. 水分を十分に摂取しないとどうなりますか？ -->
+    <div class="qa-item">
+        <div class="question">E. 水分を十分に摂取しないとどうなりますか？</div>
+        <div class="answer">
+            <p>提供ソースに「脱水状態の直接的影響」の記載はないが、以下の極めて重要な関連がある。</p>
+            <ul>
+                <li>脳を洗う脳脊髄液（CSF）の99％は水で構成。</li>
+                <li>老廃物排出はAQP4水チャネルに依存。</li>
+            </ul>
+            <p><strong>（ソース外の医学的推測）</strong>：脱水が続くと脳脊髄液産生や循環が滞り、グリンパティック清掃機能が低下。異常タンパク質が蓄積しやすくなる可能性がある。脳の健康維持には十分な水分補給が重要と考えられる。</p>
+        </div>
+    </div>
+
+    <!-- F. 特定の遺伝子変異は認知症リスクをどの程度高めますか？ -->
+    <div class="qa-item">
+        <div class="question">F. 特定の遺伝子変異は認知症リスクをどの程度高めますか？</div>
+        <div class="answer">
+            <ul>
+                <li><strong>確実に100％発症（原因遺伝子変異）</strong>：APP、PSEN1、PSEN2 → 優性遺伝性の若年性アルツハイマー病。完全浸透。</li>
+                <li><strong>リスク増加・発症年齢を早める</strong>：APOE ε4 → 最大の遺伝的リスク因子。Aβ輸送異常。発症年齢を有意に前倒し。</li>
+                <li><strong>認知機能低下の進行速度に影響</strong>：AQP4遺伝子多型 → 変異により睡眠深度・Aβ排出効率が変化。進行の加速または減速に関与。</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- G. レカネマブの効果と副作用について詳しく知りたい -->
+    <div class="qa-item">
+        <div class="question">G. レカネマブの効果と副作用について詳しく知りたい</div>
+        <div class="answer">
+            <h3>✅ 効果</h3>
+            <ul>
+                <li>初期アルツハイマー病（軽度認知障害/軽度認知症）を対象。</li>
+                <li>毒性の強いAβ可溶性プロトフィプリルを除去。</li>
+                <li>18ヶ月で認知機能低下を約27％遅延（CDR-SBスコア差 -0.45）。</li>
+                <li>脳内アミロイド負荷を劇的に減少 — 治療後平均値が「アミロイド陽性」基準を下回るレベルに浄化。</li>
+            </ul>
+            <h3>⚠️ 主な副作用</h3>
+            <ul>
+                <li><strong>ARIA-E（脳浮腫）</strong>：12.6％に発生。大半は無症状（78％）かつ軽度～中等度。多くは自然消失。</li>
+                <li><strong>ARIA-H（微小出血・ヘモジデリン沈着）</strong>：17.3％（プラセボ9.0％）。</li>
+                <li><strong>輸液関連反応</strong>：26.4％（軽度～中等度、初回に多い）。</li>
+                <li>頭痛（11.1％）、転倒（10.4％）など。</li>
+            </ul>
+            <h3>🧬 遺伝子リスク</h3>
+            <p>APOE ε4キャリアはARIA発生頻度が高い。特にホモ接合体は慎重なモニタリング（定期MRI）が必要。</p>
+            <div class="summary-note">レカネマブはアミロイド除去により進行を有意に遅らせるが、ARIAや輸液反応のリスク管理が必須。</div>
+        </div>
+    </div>
+
+    <!-- H. 関係する日本人研究者は？ -->
+    <div class="qa-item">
+        <div class="question">H. 関係する日本人研究者は？</div>
+        <div class="answer">
+            <ul>
+                <li><strong>レカネマブ第3相試験 (Clarity AD)</strong>：
+                    <ul>
+                        <li>岩坪 威 (東京大学／国立精神・神経医療研究センター)</li>
+                        <li>片山 禎夫 (片山内科クリニック)</li>
+                        <li>金清 道生 (エーザイ株式会社)</li>
+                    </ul>
+                </li>
+                <li><strong>睡眠・グリンパティックシステム研究 (2013年論文)</strong>：
+                    <ul>
+                        <li>高野 隆寛 (当時ロチェスター大学医療センター)</li>
+                    </ul>
+                </li>
+            </ul>
+            <p>※ソース上で明確に確認できる日本人研究者。</p>
+        </div>
+    </div>
+
+    <!-- I. 論文名と著者名 -->
+    <div class="qa-item">
+        <div class="question">I. 論文名と著者名</div>
+        <div class="answer">
+            <p>主要な原著・レビューの一覧（代表例）</p>
+            <ul>
+                <li><strong>Alzheimer's Disease: The Amyloid Cascade Hypothesis</strong> — Hardy JA, Higgins GA (1992)</li>
+                <li><strong>The discovery of Alzheimer's disease</strong> — Hippius H, Neundörfer G</li>
+                <li><strong>Glymphatic failure as a final common pathway to dementia</strong> — Nedergaard M, Goldman SA</li>
+                <li><strong>A Paravascular Pathway Facilitates CSF Flow ... (Glymphatic system 原論文)</strong> — Iliff JJ et al. (2012)</li>
+                <li><strong>Clinical and Biomarker Changes in Dominantly Inherited Alzheimer's Disease</strong> — Bateman RJ et al.</li>
+                <li><strong>Lecanemab in Early Alzheimer's Disease (NEJM)</strong> — van Dyck CH, Swanson CJ, Aisen P, Iwatsubo T, Katayama S, Kanekiyo M 他</li>
+                <li><strong>Neuropathological stageing of Alzheimer-related changes</strong> — Braak H, Braak E</li>
+                <li><strong>Hypothetical model of dynamic biomarkers of the Alzheimer's pathological cascade</strong> — Jack CR Jr et al.</li>
+                <li><strong>Sleep Drives Metabolite Clearance from the Adult Brain</strong> — Xie L, Takano T, Nedergaard M 他 (2013)</li>
+            </ul>
+            <div class="summary-note">※ 各文献は提供されたソース中で引用・記載されているものから抜粋。</div>
+        </div>
+    </div>
+</div>
+<div style="background:#0f4c81;color:white;padding:12px 16px;margin:0;text-align:center;font-size:14px;line-height:2;">
+<b>Book137シリーズ</b> ｜
+<a href="book137navi.html" style="color:#fff;">NAVI</a> ｜
+<a href="book137.html" style="color:#fff;">本編</a> ｜
+<a href="book137history.html" style="color:#fff;">歴史</a> ｜
+<a href="book137net.html" style="color:#fff;">ネットワーク説</a> ｜
+<a href="book137stu.html" style="color:#fff;">中学生版</a> ｜
+<a href="book137qa.html" style="color:#fff;">Q&amp;A</a> ｜
+<a href="book137sol.html" style="color:#fff;">総括</a> ｜
+<a href="book137sol1.html" style="color:#fff;">論文1</a> ｜
+<a href="book137sol2.html" style="color:#fff;">論文2</a> ｜
+<a href="book137sol3.html" style="color:#fff;">論文3</a> ｜
+<a href="book137sol4.html" style="color:#fff;">論文4</a> ｜
+<a href="book137sol5.html" style="color:#fff;">論文5</a>　｜
+<a href="book125navi.html" style="color:#fff;">グリンパティックシステム</a>　｜
+<a href="book8.html" style="color:#fff;">認知機能検査</a>
+</div>
+
+</body>
+</html>

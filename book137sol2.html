@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>book137sol2｜DIAN論文分解</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fb;
+      color: #222;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 40px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      border-bottom: 3px solid #333;
+      padding-bottom: 16px;
+    }
+    h2 {
+      font-size: 1.45rem;
+      margin-top: 44px;
+      padding: 12px 16px;
+      background: #eef3ff;
+      border-left: 6px solid #4b6cb7;
+      border-radius: 8px;
+    }
+    h3 {
+      font-size: 1.18rem;
+      margin-top: 32px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #ddd;
+    }
+    ul { padding-left: 1.5em; }
+    li { margin: 8px 0; }
+    .note {
+      background: #fff8df;
+      border-left: 5px solid #e0b100;
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 6px;
+    }
+    .answer-line {
+      display: inline;
+      min-width: 0;
+      border-bottom: none;
+      height: auto;
+      vertical-align: baseline;
+    }
+    .arrow { font-weight: bold; color: #333; }
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 32px 0;
+    }
+    .section-box {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 22px;
+      background: #fcfcff;
+    }
+    footer {
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 50px;
+    }
+    @media print {
+      body { background: #fff; }
+      .container { box-shadow: none; margin: 0; max-width: none; }
+    }
+  </style>
+</head>
+<div style="background:#0f4c81;color:white;padding:12px 16px;margin:0;text-align:center;font-size:14px;line-height:2;">
+<b>Book137シリーズ</b> ｜
+<a href="book137navi.html" style="color:#fff;">NAVI</a> ｜
+<a href="book137.html" style="color:#fff;">本編</a> ｜
+<a href="book137history.html" style="color:#fff;">歴史</a> ｜
+<a href="book137net.html" style="color:#fff;">ネットワーク説</a> ｜
+<a href="book137stu.html" style="color:#fff;">中学生版</a> ｜
+<a href="book137qa.html" style="color:#fff;">Q&amp;A</a> ｜
+<a href="book137sol.html" style="color:#fff;">総括</a> ｜
+<a href="book137sol1.html" style="color:#fff;">論文1</a> ｜
+<a href="book137sol2.html" style="color:#fff;">論文2</a> ｜
+<a href="book137sol3.html" style="color:#fff;">論文3</a> ｜
+<a href="book137sol4.html" style="color:#fff;">論文4</a> ｜
+<a href="book137sol5.html" style="color:#fff;">論文5</a>　｜
+<a href="book125navi.html" style="color:#fff;">グリンパティックシステム</a>　｜
+<a href="book8.html" style="color:#fff;">認知機能検査</a>
+</div>
+
+<body>
+  <main class="container">
+    <h1>論文分解テンプレート：DIANによる家族性アルツハイマー病の時系列解析</h1>
+
+    <section>
+      <h2>■ 基本情報</h2>
+      <ul>
+        <li>論文タイトル：<span class="answer-line">Clinical and Biomarker Changes in Dominantly Inherited Alzheimer’s Disease</span></li>
+        <li>著者：<span class="answer-line">Randall J. Bateman, Chengjie Xiong, Tammie L.S. Benzinger, Anne M. Fagan, Alison Goate, Nick C. Fox, David S. Marcus, Nigel J. Cairns, Xianyun Xie, Tyler M. Blazey, David M. Holtzman, Anna Santacruz, Virginia Buckles, Angela Oliver, Krista Moulder, Paul S. Aisen, Bernardino Ghetti, William E. Klunk, Eric McDade, Ralph N. Martins, Colin L. Masters, Richard Mayeux, John M. Ringman, Martin N. Rossor, Peter R. Schofield, Reisa A. Sperling, Stephen Salloway, John C. Morris, for the Dominantly Inherited Alzheimer Network</span></li>
+        <li>分野：<span class="answer-line">神経内科学／認知症研究／アルツハイマー病バイオマーカー／臨床疫学</span></li>
+        <li>発表年・雑誌：<span class="answer-line">2012年・The New England Journal of Medicine, 367(9), 795–804, DOI: 10.1056/NEJMoa1202753</span></li>
+      </ul>
+      <p class="note">解析対象：DIAN（Dominantly Inherited Alzheimer Network）の128名を対象に、発症予測年齢を基準として、臨床症状・認知機能・画像・髄液／血液バイオマーカーの変化順序を推定した論文。</p>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>■ A：論文本文の論理構造（ストーリー）</h2>
+
+      <h3>1. 目的（Objective）</h3>
+      <ul>
+        <li>目的a：<span class="answer-line">常染色体優性遺伝性アルツハイマー病で、発症前から発症後までに起こる病態変化の順序と時期を明らかにする。</span></li>
+        <li>目的b：<span class="answer-line">Aβ、tau、脳萎縮、糖代謝低下、記憶障害、全般的認知障害が、臨床発症の何年前から変化するかを推定する。</span></li>
+        <li>目的c：<span class="answer-line">予防試験・疾患修飾療法の設計に使える、発症前アルツハイマー病のバイオマーカー地図を作る。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>2. 仮説（Hypothesis）</h3>
+      <p class="note">※明示されていない場合は推定する</p>
+      <ul>
+        <li>仮説a：<span class="answer-line">遺伝性アルツハイマー病では、臨床症状の数十年前からAβ関連変化が始まる。</span></li>
+        <li>仮説b：<span class="answer-line">Aβ変化の後にtau上昇、脳萎縮、糖代謝低下、記憶障害、全般的認知障害が段階的に続く。</span></li>
+        <li>仮説c：<span class="answer-line">常染色体優性遺伝性アルツハイマー病の病態進行は、孤発性アルツハイマー病の病態進行理解にも参考になる。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>3. 実験・方法（Methods）</h3>
+      <ul>
+        <li>実験a：<span class="answer-line">DIANに登録された、APP・PSEN1・PSEN2変異家系の参加者128名を、変異保有者88名と非保有者40名に分けて解析した。</span></li>
+        <li>実験b：<span class="answer-line">参加者の年齢から親の発症年齢を引き、「予測発症から何年前／何年後か」という共通時間軸を作った。</span></li>
+        <li>実験c：<span class="answer-line">臨床評価（CDR）、認知検査（MMSE・Logical Memory）、MRI、FDG-PET、PIB-PET、CSF Aβ42・tau、血漿Aβ42を横断的に比較した。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>4. 結果（Results）</h3>
+      <ul>
+        <li>結果a：<span class="answer-line">CSF Aβ42低下は予測発症の約25年前から始まり、PIB-PETによるAβ沈着は約15年前から検出された。</span></li>
+        <li>結果b：<span class="answer-line">CSF tau上昇と海馬萎縮は約15年前、糖代謝低下とエピソード記憶障害は約10年前から認められた。</span></li>
+        <li>結果c：<span class="answer-line">MMSEやCDRで測る全般的認知障害は約5年前から現れ、認知症診断基準を満たすのは平均して予測発症の約3年後だった。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>5. 検証（目的との対応）</h3>
+      <ul>
+        <li>目的a <span class="arrow">→</span> 結果a・b・c <span class="arrow">→</span> 支持：発症前25年から臨床発症後までの病態変化の順序が示された。</li>
+        <li>目的b <span class="arrow">→</span> 結果a・b・c <span class="arrow">→</span> 支持：Aβ、tau、萎縮、代謝、記憶、臨床症状の時系列が数値化された。</li>
+        <li>目的c <span class="arrow">→</span> 結論・考察 <span class="arrow">→</span> 支持。ただし孤発性アルツハイマー病にそのまま適用できるかは不明。</li>
+      </ul>
+
+      <hr>
+
+      <h3>6. 結論（Conclusion）</h3>
+      <ul>
+        <li>結論：<span class="answer-line">常染色体優性遺伝性アルツハイマー病では、臨床症状の20年以上前からAβ関連変化を皮切りに、生化学・画像・認知の変化が連続的に進む。</span></li>
+        <li>著者の主張の要約：<span class="answer-line">アルツハイマー病の臨床診断は病態カスケードのかなり後期であり、治療・予防は発症前段階を標的にすべきである。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>7. 限界・未解決問題（Limitations）</h3>
+      <ul>
+        <li>限界a：<span class="answer-line">主解析は横断研究であり、同一人物を長期追跡して得た時間変化ではない。</span></li>
+        <li>限界b：<span class="answer-line">対象は主にPSEN1などの遺伝性アルツハイマー病であり、孤発性高齢発症型に完全に一般化できるとは限らない。</span></li>
+        <li>未解決問題：<span class="answer-line">Aβを早期に標的化すれば、本当にtau病理・神経変性・認知症発症を防げるかは、介入試験で検証が必要である。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>8. 新規性（Novelty）</h3>
+      <p class="note">※既存研究と何が違うか</p>
+      <ul>
+        <li>新規性：<span class="answer-line">遺伝性アルツハイマー病の国際コホートを用い、複数バイオマーカーを同一の「発症予測時間軸」に並べた点。</span></li>
+        <li>従来との差分：<span class="answer-line">従来は個別マーカーや小規模研究が中心だったが、本研究は臨床・認知・画像・髄液・血液を統合して、病態進行を一枚の時間地図として示した。</span></li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>■ B：図・表の解析（エビデンス）</h2>
+
+      <div class="section-box">
+        <h3>図1（Figure 1）</h3>
+        <p>A. 対応箇所（目的 / 仮説 / 実験 / 結果）：<span class="answer-line">結果・結論。臨床、認知、MRI、FDG-PET、PIB-PET、CSF、血漿マーカーの変化を、発症予測年齢を基準に横断的に示す。</span></p>
+        <p>B. 何を証明しようとしているか：<span class="answer-line">変異保有者では、非保有者に比べて、発症前から各バイオマーカーが規則的な順序で変化すること。</span></p>
+        <p>C. 図から分かること：<span class="answer-line">CSF Aβ42低下が最も早く、Aβ沈着・CSF tau上昇・海馬萎縮が続き、糖代謝低下と記憶障害、最後に全般的認知障害が現れる。</span></p>
+        <p>D. 結果への影響：<span class="answer-line">本文の主要結果である「発症前から数十年にわたる病態カスケード」を、複数指標の実測モデルとして支えている。</span></p>
+        <p>E. この図がないと何が崩れるか：<span class="answer-line">どの指標がいつ変化するのかという論文の核心が見えにくくなり、単なる個別検査結果の列挙になってしまう。</span></p>
+      </div>
+
+      <hr>
+
+      <div class="section-box">
+        <h3>図2（Figure 2）</h3>
+        <p>A. 対応箇所：<span class="answer-line">結論・統合モデル。変異保有者と非保有者の標準化差を使い、各マーカーの相対的な変化順序を一つの図にまとめている。</span></p>
+        <p>B. 何を証明しようとしているか：<span class="answer-line">Aβ関連変化が最初に起こり、その後にtau、萎縮、代謝低下、臨床症状が続くというカスケード順序。</span></p>
+        <p>C. 図から分かること：<span class="answer-line">CSF Aβ42低下が最早期、続いてAβ沈着、CSF tau上昇、海馬体積低下、糖代謝低下、CDR-SOB悪化が進む。</span></p>
+        <p>D. 結果への影響：<span class="answer-line">本論文の最重要メッセージである「臨床認知症は病態進行の後期に現れる」を強く支える。</span></p>
+        <p>E. この図がないと何が崩れるか：<span class="answer-line">複数バイオマーカーの時間的優先順位が直感的に理解できず、予防試験の標的時期という意義が弱くなる。</span></p>
+      </div>
+
+      <hr>
+
+      <div class="section-box">
+        <h3>図3（Figure 3）</h3>
+        <p>A. 対応箇所：<span class="answer-line">Aβ沈着の画像エビデンス。PIB-PETで、発症20年前、10年前、発症時のAβ沈着分布を示している。</span></p>
+        <p>B. 何を証明しようとしているか：<span class="answer-line">変異保有者では、臨床症状が出るかなり前から脳内Aβ沈着が画像で検出できること。</span></p>
+        <p>C. 図から分かること：<span class="answer-line">非保有者では沈着が乏しい一方、保有者では発症前から尾状核や皮質に沈着が現れ、発症時には広範囲に増加する。</span></p>
+        <p>D. 結果への影響：<span class="answer-line">Aβ沈着が発症前病態の実体であることを、数値だけでなく脳画像として示す。</span></p>
+        <p>E. この図がないと何が崩れるか：<span class="answer-line">Aβ沈着が実際に脳内のどこで、どの程度広がるかという空間的説得力が弱くなる。</span></p>
+      </div>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>■ C：論文の本質（最重要まとめ）</h2>
+
+      <h3>1. この論文は一言で何をしたか</h3>
+      <p>→ <span class="answer-line">遺伝性アルツハイマー病を「発症予測年齢」を基準に並べ、発症25年前から始まる病態カスケードを可視化した。</span></p>
+
+      <h3>2. なぜ重要か</h3>
+      <p>→ <span class="answer-line">アルツハイマー病は症状が出てから始まる病気ではなく、数十年前から進む病気だと示し、早期診断・予防治療の根拠を与えた。</span></p>
+
+      <h3>3. どこが一番強い証拠か（キーフィギュア）</h3>
+      <p>→ <span class="answer-line">Figure 2。複数バイオマーカーの標準化差を一つの時間軸に統合し、Aβから臨床症状へ至る順序を示している。</span></p>
+
+      <h3>4. どこが一番怪しいか（弱点）</h3>
+      <p>→ <span class="answer-line">横断データから時間経過を推定しているため、個人内で本当に同じ順序で進むかは縦断データで確認する必要がある。</span></p>
+
+      <h3>5. 次にやるべき研究は何か</h3>
+      <p>→ <span class="answer-line">同じ参加者を長期追跡し、Aβを発症前に除去・抑制する介入で、tau上昇、脳萎縮、認知機能低下を遅らせられるか検証する。</span></p>
+    </section>
+
+    <footer>論文分解テンプレート</footer>
+  </main>
+<div style="background:#0f4c81;color:white;padding:12px 16px;margin:0;text-align:center;font-size:14px;line-height:2;">
+<b>Book137シリーズ</b> ｜
+<a href="book137navi.html" style="color:#fff;">NAVI</a> ｜
+<a href="book137.html" style="color:#fff;">本編</a> ｜
+<a href="book137history.html" style="color:#fff;">歴史</a> ｜
+<a href="book137net.html" style="color:#fff;">ネットワーク説</a> ｜
+<a href="book137stu.html" style="color:#fff;">中学生版</a> ｜
+<a href="book137qa.html" style="color:#fff;">Q&amp;A</a> ｜
+<a href="book137sol.html" style="color:#fff;">総括</a> ｜
+<a href="book137sol1.html" style="color:#fff;">論文1</a> ｜
+<a href="book137sol2.html" style="color:#fff;">論文2</a> ｜
+<a href="book137sol3.html" style="color:#fff;">論文3</a> ｜
+<a href="book137sol4.html" style="color:#fff;">論文4</a> ｜
+<a href="book137sol5.html" style="color:#fff;">論文5</a>　｜
+<a href="book125navi.html" style="color:#fff;">グリンパティックシステム</a>　｜
+<a href="book8.html" style="color:#fff;">認知機能検査</a>
+</div>
+
+</body>
+</html>

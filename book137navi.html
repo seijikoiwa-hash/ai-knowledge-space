@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>book137navi｜認知症・アミロイド仮説・記憶ネットワーク ナビゲーション</title>
+<style>
+:root{
+  --ink:#172033;
+  --sub:#59677c;
+  --paper:#fffaf1;
+  --bg:#f4efe5;
+  --navy:#10213f;
+  --blue:#2457a6;
+  --cyan:#3aa6b9;
+  --green:#10766b;
+  --gold:#c58a25;
+  --rose:#c45a64;
+  --line:rgba(16,33,63,.13);
+  --card:#fffdf8;
+  --shadow:0 22px 60px rgba(16,33,63,.16);
+  --soft-shadow:0 14px 34px rgba(16,33,63,.10);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
+  line-height:1.85;
+  background:
+    radial-gradient(circle at 12% -5%,rgba(58,166,185,.26),transparent 28%),
+    radial-gradient(circle at 92% 3%,rgba(197,138,37,.23),transparent 30%),
+    linear-gradient(135deg,#f8f3e8 0%,#edf5f7 46%,#fffaf1 100%);
+}
+a{color:inherit}
+.topbar,
+.bottombar{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(16,33,63,.92);
+  color:white;
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255,255,255,.16);
+  box-shadow:0 8px 22px rgba(16,33,63,.16);
+}
+.bottombar{position:static;border-top:1px solid rgba(255,255,255,.12);border-bottom:0;margin-top:50px}
+.navinner{
+  max-width:1220px;
+  margin:0 auto;
+  padding:10px 16px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  overflow-x:auto;
+  white-space:nowrap;
+}
+.brand{font-weight:900;letter-spacing:.08em;margin-right:6px;color:#ffe7af}
+.navinner a{
+  text-decoration:none;
+  color:#eef6ff;
+  font-weight:800;
+  font-size:.9rem;
+  padding:5px 9px;
+  border-radius:999px;
+}
+.navinner a:hover{background:rgba(255,255,255,.14)}
+.wrap{max-width:1220px;margin:0 auto;padding:30px 18px 64px}
+.hero{
+  position:relative;
+  overflow:hidden;
+  min-height:390px;
+  border-radius:38px;
+  padding:52px 42px;
+  color:white;
+  background:
+    linear-gradient(135deg,rgba(16,33,63,.96),rgba(36,87,166,.92) 54%,rgba(16,118,107,.92)),
+    radial-gradient(circle at 76% 22%,rgba(255,255,255,.28),transparent 24%);
+  box-shadow:var(--shadow);
+}
+.hero:before{
+  content:"";
+  position:absolute;
+  inset:22px;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:30px;
+  pointer-events:none;
+}
+.hero:after{
+  content:"β";
+  position:absolute;
+  right:36px;
+  bottom:-66px;
+  font-size:15rem;
+  font-weight:900;
+  line-height:1;
+  color:rgba(255,255,255,.09);
+}
+.kicker{
+  display:inline-flex;
+  gap:8px;
+  align-items:center;
+  border:1px solid rgba(255,255,255,.32);
+  background:rgba(255,255,255,.13);
+  border-radius:999px;
+  padding:7px 15px;
+  font-weight:900;
+  letter-spacing:.09em;
+}
+.kicker:before{content:"◆";color:#ffe3a5;font-size:.8rem}
+h1{
+  max-width:900px;
+  font-size:clamp(2.15rem,5.3vw,4.5rem);
+  line-height:1.12;
+  letter-spacing:.02em;
+  margin:22px 0 16px;
+}
+.hero p{max-width:850px;margin:0;color:#eef6ff;font-size:1.08rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.hero-actions a{
+  text-decoration:none;
+  font-weight:900;
+  border-radius:999px;
+  padding:11px 18px;
+  background:#fffaf1;
+  color:#15315e;
+  box-shadow:0 12px 24px rgba(0,0,0,.14);
+}
+.hero-actions a:nth-child(2){background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);color:white}
+.quick{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin:22px 0 30px;
+}
+.quick a{
+  min-height:82px;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  background:rgba(255,253,248,.86);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:17px 18px;
+  font-weight:900;
+  color:#18345b;
+  box-shadow:var(--soft-shadow);
+}
+.quick a span{font-size:1.35rem;color:var(--gold)}
+.panel{
+  position:relative;
+  background:rgba(255,253,248,.88);
+  border:1px solid var(--line);
+  border-radius:30px;
+  padding:30px;
+  margin:28px 0;
+  box-shadow:var(--soft-shadow);
+}
+.panel:before{
+  content:"";
+  position:absolute;
+  left:28px;
+  right:28px;
+  top:0;
+  height:4px;
+  border-radius:0 0 999px 999px;
+  background:linear-gradient(90deg,var(--gold),var(--cyan),var(--green));
+}
+h2{
+  margin:0 0 14px;
+  font-size:clamp(1.5rem,3vw,2.25rem);
+  line-height:1.35;
+  color:#132c52;
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+h2:before{
+  content:"";
+  width:14px;
+  height:14px;
+  border-radius:50%;
+  background:var(--gold);
+  box-shadow:18px 0 0 var(--cyan),36px 0 0 var(--green);
+  flex:0 0 auto;
+}
+.lead{font-size:1.05rem;color:#405066;margin:0 0 16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:18px;margin-top:20px}
+.card{
+  position:relative;
+  overflow:hidden;
+  min-height:260px;
+  display:flex;
+  flex-direction:column;
+  text-decoration:none;
+  background:linear-gradient(180deg,#fffdf8 0%,#fffaf1 100%);
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:22px;
+  box-shadow:0 10px 26px rgba(16,33,63,.08);
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+}
+.card:after{
+  content:"";
+  position:absolute;
+  right:-38px;
+  top:-38px;
+  width:128px;
+  height:128px;
+  border-radius:50%;
+  background:rgba(58,166,185,.12);
+}
+.card:hover{transform:translateY(-5px);box-shadow:0 22px 42px rgba(16,33,63,.15);border-color:rgba(36,87,166,.32)}
+.meta{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:13px;position:relative;z-index:1}
+.type,.badge{
+  display:inline-flex;
+  align-items:center;
+  min-height:29px;
+  border-radius:999px;
+  padding:4px 11px;
+  font-size:.82rem;
+  font-weight:900;
+}
+.type{background:#132c52;color:white}
+.badge{background:#fff0cf;color:#895c0f;border:1px solid rgba(197,138,37,.3);white-space:nowrap}
+.card h3{position:relative;z-index:1;margin:2px 0 10px;font-size:1.22rem;line-height:1.45;color:#132c52}
+.card p{position:relative;z-index:1;margin:0;color:#516177}
+.open{position:relative;z-index:1;margin-top:auto;padding-top:18px;color:var(--blue);font-weight:900}
+.route{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+  margin-top:18px;
+  counter-reset:route;
+}
+.step{
+  counter-increment:route;
+  position:relative;
+  background:linear-gradient(180deg,#f7fbff,#fffdf8);
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:19px 18px 18px 62px;
+}
+.step:before{
+  content:counter(route);
+  position:absolute;
+  left:18px;
+  top:18px;
+  width:31px;
+  height:31px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  background:var(--navy);
+  color:white;
+  font-weight:900;
+}
+.step b{display:block;color:#12355f;font-size:1.05rem;margin-bottom:4px}
+.feature{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:20px;
+  align-items:stretch;
+}
+.feature-box{
+  background:linear-gradient(135deg,#fff7e4,#edf8f9);
+  border:1px solid var(--line);
+  border-radius:28px;
+  padding:24px;
+}
+.feature-box h3{margin:0 0 10px;font-size:1.3rem;color:#132c52}
+.note{
+  background:#fff5dc;
+  border:1px solid rgba(197,138,37,.28);
+  border-left:8px solid var(--gold);
+  border-radius:18px;
+  padding:16px 18px;
+  margin-top:18px;
+  color:#513812;
+}
+.timeline{display:grid;gap:14px;margin-top:20px}
+.titem{
+  display:grid;
+  grid-template-columns:88px 1fr;
+  gap:16px;
+  align-items:start;
+  background:#fffdf8;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:16px;
+  box-shadow:0 8px 20px rgba(16,33,63,.06);
+}
+.year{
+  background:linear-gradient(135deg,#14325d,#2b6fa5);
+  color:white;
+  border-radius:18px;
+  text-align:center;
+  font-weight:900;
+  padding:12px 7px;
+  box-shadow:0 10px 20px rgba(16,33,63,.14);
+}
+.titem h3{margin:0 0 4px;font-size:1.1rem;color:#12355f}
+.titem p{margin:0;color:#516177}
+footer{text-align:center;color:#637086;font-size:.94rem;margin-top:34px}
+@media(max-width:820px){
+  .quick{grid-template-columns:repeat(2,1fr)}
+  .feature{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .wrap{padding:22px 14px 44px}
+  .hero{padding:38px 24px;border-radius:28px;min-height:auto}
+  .panel{padding:24px 18px;border-radius:24px}
+  .quick{grid-template-columns:1fr}
+  .titem{grid-template-columns:1fr}
+  .navinner{font-size:.86rem}
+}
+@media print{
+  .topbar,.bottombar,.quick,.hero-actions{display:none}
+  body{background:white}
+  .hero,.panel,.card{box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="navinner">
+    <span class="brand">BOOK137</span>
+    <a href="book137navi.html">NAVI</a>
+    <a href="book137.html">本編</a>
+    <a href="book137history.html">歴史</a>
+    <a href="book137net.html">ネットワーク説</a>
+    <a href="book137stu.html">中学生版</a>
+    <a href="book137qa.html">Q&amp;A</a>
+    <a href="book137sol.html">総括</a>
+    <a href="book137sol1.html">論文1</a>
+    <a href="book137sol2.html">論文2</a>
+    <a href="book137sol3.html">論文3</a>
+    <a href="book137sol4.html">論文4</a>
+    <a href="book137sol5.html">論文5</a>
+    <a href="book125navi.html">グリンパティック</a>
+    <a href="book8.html">認知機能検査</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <header class="hero">
+    <span class="kicker">BOOK 137 NAVIGATION</span>
+    <h1>認知症研究をめぐる<br>知の地図</h1>
+    <p>久山町研究、記憶ネットワーク、アミロイド仮説、グリンパティックシステム、睡眠、レカネマブまで。book137シリーズを「読む順番」と「研究の流れ」で案内する、少し洒落た入口です。</p>
+    <div class="hero-actions">
+      <a href="#route">おすすめ順路を見る</a>
+      <a href="#papers">5本の論文へ進む</a>
+    </div>
+  </header>
+
+  <nav class="quick" aria-label="quick links">
+    <a href="#route">おすすめ順路 <span>01</span></a>
+    <a href="#main">主要ページ <span>02</span></a>
+    <a href="#papers">論文分解5本 <span>03</span></a>
+    <a href="#timeline">研究の流れ <span>04</span></a>
+  </nav>
+
+  <section class="panel">
+    <h2>認知症を理解するための前提知識</h2>
+    <div class="feature">
+      <div class="feature-box">
+        <h3>最初に押さえる2つの入口</h3>
+        <p class="lead">book137を読み始める前に、記憶形成と脳の掃除システムを先に見ると、全体の見通しがよくなります。</p>
+        <div class="note"><strong>推奨読書順：</strong> book8 → book125 → book137</div>
+      </div>
+      <div class="feature-box">
+        <h3>このNAVIの役割</h3>
+        <p class="lead">単なるリンク集ではなく、「どこから読むか」「なぜその順番なのか」「研究史のどこに位置するか」が見えるように整理しました。</p>
+      </div>
+    </div>
+    <div class="grid">
+      <a class="card" href="book8.html">
+        <div class="meta"><span class="type">前提知識 ①</span><span class="badge">記憶形成</span></div>
+        <h3>book8<br>認知機能検査のウラ側で、脳はこう動いている</h3>
+        <p>16枚絵記憶検査を通して、視覚野 → 海馬 → 前頭前野という記憶形成ネットワークを理解する。</p>
+        <div class="open">ページを開く →</div>
+      </a>
+      <a class="card" href="book125navi.html">
+        <div class="meta"><span class="type">前提知識 ②</span><span class="badge">脳の掃除</span></div>
+        <h3>book125<br>グリンパティックシステム入門</h3>
+        <p>脳内老廃物除去システムを学び、アミロイドβ除去と睡眠の関係を理解する。</p>
+        <div class="open">ページを開く →</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="panel" id="route">
+    <h2>おすすめの読み方</h2>
+    <p class="lead">最初に全体像をつかみ、次に生活との接点を確認し、最後に5本の論文で研究の骨格を検証する流れです。</p>
+    <div class="route">
+      <div class="step"><b>全体像</b>総合ブログで「認知症とは何か」をつかむ。</div>
+      <div class="step"><b>生活との接点</b>久山町研究で、予防・生活習慣との関係を見る。</div>
+      <div class="step"><b>脳内ネットワーク</b>記憶ネットワークの崩壊として認知症を理解する。</div>
+      <div class="step"><b>論文で確認</b>1992年の仮説から2023年レカネマブまで追う。</div>
+    </div>
+  </section>
+
+  <section class="panel" id="main">
+    <h2>主要ページ</h2>
+    <div class="grid">
+      <a class="card" href="book137.html">
+        <div class="meta"><span class="type">総合ブログ</span><span class="badge">まず読む</span></div>
+        <h3>認知症とは何か？</h3>
+        <p>記憶ネットワークの崩壊から、認知症研究の全体像を読み解く中心ページ。</p>
+        <div class="open">ページを開く →</div>
+      </a>
+      <a class="card" href="book137stu.html">
+        <div class="meta"><span class="type">中学生向け</span><span class="badge">入門</span></div>
+        <h3>久山町研究：認知症予防の希望</h3>
+        <p>日本の長期疫学研究から、生活習慣と認知症予防をわかりやすく学ぶ。</p>
+        <div class="open">ページを開く →</div>
+      </a>
+      <a class="card" href="book137history.html">
+        <div class="meta"><span class="type">歴史編</span><span class="badge">流れ</span></div>
+        <h3>認知症研究の流れと実験の特徴</h3>
+        <p>アミロイド仮説、グリンパティック、睡眠、新薬へ至る研究史を俯瞰。</p>
+        <div class="open">ページを開く →</div>
+      </a>
+      <a class="card" href="book137net.html">
+        <div class="meta"><span class="type">ネットワーク編</span><span class="badge">注目</span></div>
+        <h3>認知症＝ネットワーク孤立説</h3>
+        <p>視覚野・海馬・前頭前野などの記憶ネットワークから認知症を理解するページ。</p>
+        <div class="open">ページを開く →</div>
+      </a>
+      <a class="card" href="book137qa.html">
+        <div class="meta"><span class="type">問答集</span><span class="badge">復習</span></div>
+        <h3>認知症研究ハイライト Q&amp;A</h3>
+        <p>NotebookLM解析結果をもとに、疑問点を短く確認できる問答集。</p>
+        <div class="open">ページを開く →</div>
+      </a>
+      <a class="card" href="book137sol.html">
+        <div class="meta"><span class="type">統合視点</span><span class="badge">総括</span></div>
+        <h3>論文分解による新たな視点</h3>
+        <p>5本の重要論文を横断し、アミロイド仮説が生き残った理由を考える総括。</p>
+        <div class="open">ページを開く →</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="panel" id="papers">
+    <h2>論文分解5本</h2>
+    <p class="lead">book137シリーズの核になる5論文です。「仮説の誕生」→「発症前の時間軸」→「脳の排水路」→「睡眠」→「治療薬」へ進みます。</p>
+    <div class="grid">
+      <a class="card" href="book137sol1.html">
+        <div class="meta"><span class="type">論文1</span><span class="badge">1992</span></div>
+        <h3>Hardy &amp; Higgins 1992：アミロイドカスケード仮説</h3>
+        <p>アルツハイマー病研究を30年以上動かした仮説の出発点。</p>
+        <div class="open">論文分解を開く →</div>
+      </a>
+      <a class="card" href="book137sol2.html">
+        <div class="meta"><span class="type">論文2</span><span class="badge">2012</span></div>
+        <h3>Bateman ら 2012：DIAN 時系列解析</h3>
+        <p>家族性アルツハイマー病で、発症前から進むバイオマーカー変化を示した研究。</p>
+        <div class="open">論文分解を開く →</div>
+      </a>
+      <a class="card" href="book137sol3.html">
+        <div class="meta"><span class="type">論文3</span><span class="badge">2012</span></div>
+        <h3>Iliff ら 2012：グリンパティック経路</h3>
+        <p>脳内の老廃物排出システムを示し、Aβ除去を新しい視点で捉えた研究。</p>
+        <div class="open">論文分解を開く →</div>
+      </a>
+      <a class="card" href="book137sol4.html">
+        <div class="meta"><span class="type">論文4</span><span class="badge">2013</span></div>
+        <h3>Xie ら 2013：睡眠と代謝物クリアランス</h3>
+        <p>睡眠中に脳の老廃物除去が進むことを示し、睡眠と認知症を結びつけた研究。</p>
+        <div class="open">論文分解を開く →</div>
+      </a>
+      <a class="card" href="book137sol5.html">
+        <div class="meta"><span class="type">論文5</span><span class="badge">2023</span></div>
+        <h3>van Dyck ら 2023：レカネマブ臨床試験</h3>
+        <p>抗Aβ抗体薬レカネマブが早期ADの進行を抑制した大規模臨床試験。</p>
+        <div class="open">論文分解を開く →</div>
+      </a>
+    </div>
+  </section>
+
+  <section class="panel" id="timeline">
+    <h2>研究の流れで見る</h2>
+    <div class="timeline">
+      <div class="titem"><div class="year">1992</div><div><h3>アミロイドカスケード仮説</h3><p>Aβの蓄積を出発点として、アルツハイマー病を説明する大きな仮説が提示される。</p></div></div>
+      <div class="titem"><div class="year">2012</div><div><h3>DIANと発症前バイオマーカー</h3><p>症状が出るかなり前から、脳内では変化が進んでいることが時間軸で見える。</p></div></div>
+      <div class="titem"><div class="year">2012</div><div><h3>グリンパティックシステム</h3><p>脳にも老廃物を流す仕組みがあるという見方が、Aβ除去の議論を広げる。</p></div></div>
+      <div class="titem"><div class="year">2013</div><div><h3>睡眠と脳の掃除</h3><p>睡眠中に代謝物除去が進むという発見が、生活習慣と認知症研究を接続する。</p></div></div>
+      <div class="titem"><div class="year">2023</div><div><h3>レカネマブ</h3><p>抗Aβ抗体薬が早期アルツハイマー病の進行を抑える時代へ進む。</p></div></div>
+    </div>
+    <div class="note"><strong>読みどころ：</strong>このシリーズの面白さは、「仮説が正しいか間違いか」だけではなく、失敗と反証を受けながら、なぜ研究の中心であり続けたのかを追える点にあります。</div>
+  </section>
+
+  <footer>book137navi.html / 認知症・アミロイド仮説・記憶ネットワーク シリーズ入口</footer>
+</div>
+
+<div class="bottombar">
+  <div class="navinner">
+    <span class="brand">BOOK137</span>
+    <a href="book137navi.html">NAVI</a>
+    <a href="book137.html">本編</a>
+    <a href="book137history.html">歴史</a>
+    <a href="book137net.html">ネットワーク説</a>
+    <a href="book137stu.html">中学生版</a>
+    <a href="book137qa.html">Q&amp;A</a>
+    <a href="book137sol.html">総括</a>
+    <a href="book137sol1.html">論文1</a>
+    <a href="book137sol2.html">論文2</a>
+    <a href="book137sol3.html">論文3</a>
+    <a href="book137sol4.html">論文4</a>
+    <a href="book137sol5.html">論文5</a>
+    <a href="book125navi.html">グリンパティック</a>
+    <a href="book8.html">認知機能検査</a>
+  </div>
+</div>
+</body>
+</html>

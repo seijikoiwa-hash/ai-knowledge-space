@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>認知症研究の流れと実験の特徴</title>
+  <style>
+    :root{
+      --ink:#223044;
+      --muted:#667085;
+      --blue:#2563eb;
+      --sky:#eaf4ff;
+      --green:#0f766e;
+      --mint:#e9fbf6;
+      --amber:#b45309;
+      --cream:#fff7ed;
+      --rose:#be123c;
+      --pink:#fff1f2;
+      --line:#d9e2ef;
+      --paper:#fffdf8;
+      --shadow:0 18px 45px rgba(35,48,68,.12);
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;
+      line-height:1.85;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 10% 5%, rgba(37,99,235,.10), transparent 28%),
+        radial-gradient(circle at 85% 18%, rgba(15,118,110,.12), transparent 30%),
+        linear-gradient(180deg,#f7fbff 0%,#fffdf8 38%,#f8fafc 100%);
+    }
+    a{color:var(--blue);}
+    .wrap{max-width:1080px;margin:0 auto;padding:28px 18px 70px;}
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      padding:42px 34px;
+      color:#fff;
+      background:linear-gradient(135deg,#172554 0%,#2563eb 52%,#0f766e 100%);
+      box-shadow:var(--shadow);
+    }
+    .hero:before{
+      content:"";
+      position:absolute;inset:-60px -30px auto auto;
+      width:330px;height:330px;border-radius:50%;
+      background:rgba(255,255,255,.12);
+    }
+    .hero h1{font-size:clamp(28px,4.6vw,48px);line-height:1.25;margin:0 0 18px;letter-spacing:.02em;}
+    .hero p{max-width:780px;font-size:1.08rem;margin:0 0 20px;color:#eff6ff;}
+    .badge{display:inline-flex;gap:.5em;align-items:center;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:7px 14px;font-weight:700;}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;align-items:center;position:relative;z-index:1;}
+    .hero-figure{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.26);border-radius:22px;padding:16px;}
+    .lead-card{margin:28px 0;background:rgba(255,255,255,.88);border:1px solid var(--line);border-radius:22px;padding:24px 26px;box-shadow:0 12px 30px rgba(35,48,68,.07);}
+    .timeline{position:relative;margin:34px 0;}
+    .timeline:before{content:"";position:absolute;left:28px;top:6px;bottom:6px;width:4px;background:linear-gradient(var(--blue),var(--green),var(--amber),var(--rose));border-radius:999px;}
+    .chapter{position:relative;margin:0 0 28px;padding-left:72px;}
+    .dot{position:absolute;left:11px;top:8px;width:38px;height:38px;border-radius:50%;background:#fff;border:5px solid var(--blue);box-shadow:0 7px 20px rgba(37,99,235,.22);display:grid;place-items:center;font-weight:900;color:var(--blue);}
+    .chapter:nth-child(2) .dot{border-color:var(--green);color:var(--green);}
+    .chapter:nth-child(3) .dot{border-color:var(--amber);color:var(--amber);}
+    .chapter:nth-child(4) .dot{border-color:var(--rose);color:var(--rose);}
+    .card{background:rgba(255,255,255,.94);border:1px solid var(--line);border-radius:24px;padding:26px;box-shadow:0 14px 32px rgba(35,48,68,.08);}
+    .card h2{font-size:clamp(22px,3vw,31px);line-height:1.35;margin:.1em 0 .5em;}
+    .kicker{font-weight:900;letter-spacing:.06em;color:var(--blue);font-size:.9rem;}
+    .chapter:nth-child(2) .kicker{color:var(--green);}
+    .chapter:nth-child(3) .kicker{color:var(--amber);}
+    .chapter:nth-child(4) .kicker{color:var(--rose);}
+    .two{display:grid;grid-template-columns:1fr 330px;gap:24px;align-items:center;}
+    .answer{background:#f8fafc;border-left:5px solid var(--blue);border-radius:16px;padding:16px 18px;margin:16px 0;}
+    .chapter:nth-child(2) .answer{border-left-color:var(--green);background:var(--mint);}
+    .chapter:nth-child(3) .answer{border-left-color:var(--amber);background:var(--cream);}
+    .chapter:nth-child(4) .answer{border-left-color:var(--rose);background:var(--pink);}
+    .answer b{display:block;margin-bottom:4px;}
+    figure{margin:0;}
+    figcaption{font-size:.86rem;color:var(--muted);text-align:center;margin-top:8px;}
+    .svgbox{background:linear-gradient(180deg,#fff,#f8fafc);border:1px solid var(--line);border-radius:18px;padding:10px;}
+    .summary{margin-top:36px;background:linear-gradient(135deg,#fff7ed,#eef6ff);border:1px solid #fed7aa;border-radius:28px;padding:30px;box-shadow:var(--shadow);}
+    .summary h2{margin-top:0;font-size:clamp(24px,3vw,34px);}
+    .takeaway{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:18px;}
+    .takeaway div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center;font-weight:800;}
+    .source{font-size:.9rem;color:var(--muted);margin-top:26px;border-top:1px solid var(--line);padding-top:18px;}
+    @media (max-width:860px){.hero-grid,.two{grid-template-columns:1fr}.timeline:before{left:21px}.chapter{padding-left:58px}.dot{left:3px}.takeaway{grid-template-columns:1fr 1fr}}
+  </style>
+</head>
+<body>
+<div style="background:#0f4c81;color:white;padding:12px 16px;margin:0;text-align:center;font-size:14px;line-height:2;">
+<b>Book137シリーズ</b> ｜
+<a href="book137navi.html" style="color:#fff;">NAVI</a> ｜
+<a href="book137.html" style="color:#fff;">本編</a> ｜
+<a href="book137history.html" style="color:#fff;">歴史</a> ｜
+<a href="book137net.html" style="color:#fff;">ネットワーク説</a> ｜
+<a href="book137stu.html" style="color:#fff;">中学生版</a> ｜
+<a href="book137qa.html" style="color:#fff;">Q&amp;A</a> ｜
+<a href="book137sol.html" style="color:#fff;">総括</a> ｜
+<a href="book137sol1.html" style="color:#fff;">論文1</a> ｜
+<a href="book137sol2.html" style="color:#fff;">論文2</a> ｜
+<a href="book137sol3.html" style="color:#fff;">論文3</a> ｜
+<a href="book137sol4.html" style="color:#fff;">論文4</a> ｜
+<a href="book137sol5.html" style="color:#fff;">論文5</a>　｜
+<a href="book125navi.html" style="color:#fff;">グリンパティックシステム</a>　｜
+<a href="book8.html" style="color:#fff;">認知機能検査</a>
+</div>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="badge">🧠 認知症研究の30年史</div>
+          <h1>「脳のゴミ」仮説から、治療薬の時代へ</h1>
+          <p>アルツハイマー病研究は、ただ論文が積み重なっただけの歴史ではありません。そこには、見えない原因を推理し、長すぎる時間を測り、生きている脳をのぞき、最後に人で確かめるという、科学のリレーがありました。</p>
+          <p>ここでは、1992年のアミロイドカスケード仮説から、2012年の発症前研究、睡眠とグリンパティックシステム、そして2023年のレカネマブまでを、画像とともに中学生にもわかる流れでたどります。</p>
+        </div>
+        <figure class="hero-figure">
+          <svg viewBox="0 0 520 360" role="img" aria-label="脳と研究のリレー図">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1"><stop offset="0" stop-color="#bfdbfe"/><stop offset="1" stop-color="#99f6e4"/></linearGradient>
+              <filter id="s" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-opacity=".18"/></filter>
+            </defs>
+            <rect width="520" height="360" rx="28" fill="rgba(255,255,255,.12)"/>
+            <path d="M258 78c-53-40-137-8-150 58-47 10-70 62-44 104 22 37 72 43 104 20 28 49 101 53 135 6 40 15 92-5 103-54 11-52-24-102-76-104-12-16-36-27-72-30z" fill="url(#g1)" filter="url(#s)"/>
+            <path d="M147 147c33-22 73-24 104-6M138 209c46-24 88-13 117 19M255 111c-22 26-24 63-4 96M303 132c38 23 54 61 41 106" fill="none" stroke="#1e3a8a" stroke-width="8" stroke-linecap="round" opacity=".45"/>
+            <g font-family="sans-serif" font-weight="700" font-size="18" fill="#fff">
+              <circle cx="90" cy="300" r="30" fill="#2563eb"/><text x="90" y="307" text-anchor="middle">1992</text>
+              <circle cx="204" cy="300" r="30" fill="#0f766e"/><text x="204" y="307" text-anchor="middle">2012</text>
+              <circle cx="318" cy="300" r="30" fill="#b45309"/><text x="318" y="307" text-anchor="middle">睡眠</text>
+              <circle cx="432" cy="300" r="30" fill="#be123c"/><text x="432" y="307" text-anchor="middle">薬</text>
+            </g>
+            <path d="M121 300h52M235 300h52M349 300h52" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+          </svg>
+          <figcaption>仮説・時間軸・観察・治療へ進んだ研究のリレー</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="lead-card">
+      <p>認知症研究を一言でいうなら、<strong>「忘れる病気」を、脳の中で起きる物質・時間・水の流れ・治療効果として見えるようにしてきた歴史</strong>です。最初は「本当にアミロイドβが原因なのか」という仮説でした。しかし、30年の間に、発症前からの変化、脳の清掃システム、薬でアミロイドβを減らす臨床試験がつながり、研究は大きく前進しました。</p>
+    </section>
+
+    <section class="timeline">
+      <article class="chapter">
+        <div class="dot">1</div>
+        <div class="card">
+          <div class="kicker">1992年｜原因仮説の誕生</div>
+          <h2>バラバラの知識をつなぎ、「道すじ」を描いた</h2>
+          <div class="two">
+            <div>
+              <p>まず登場したのが、<strong>アミロイドカスケード仮説</strong>です。これは、脳にアミロイドβという小さなタンパク質のかけらがたまり、それが引き金となってタウ異常、神経細胞の障害、記憶障害へ進む、という考え方でした。</p>
+              <div class="answer"><b>何がわかったの？</b>「脳にゴミがたまる」ことを出発点に、認知症が進む一連の流れを説明できるようになりました。</div>
+              <div class="answer"><b>実験のすごい特徴</b>新しい実験をしたというより、当時バラバラだった遺伝学・病理学・細胞研究を、一本のストーリーに組み直した点が画期的でした。</div>
+              <p>この仮説は、いわば研究者たちに配られた<strong>「脳内迷路の地図」</strong>でした。もちろん地図は後で修正されます。しかし、地図がなければ次の一歩も選べません。ここから世界中の研究が、同じ大きな問いに向かって動き出しました。</p>
+            </div>
+            <figure class="svgbox">
+              <svg viewBox="0 0 360 260" role="img" aria-label="アミロイドカスケード仮説">
+                <rect x="18" y="28" width="120" height="50" rx="18" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/><text x="78" y="60" text-anchor="middle" font-size="17" font-weight="700" fill="#1e3a8a">Aβ蓄積</text>
+                <rect x="118" y="105" width="120" height="50" rx="18" fill="#ede9fe" stroke="#7c3aed" stroke-width="3"/><text x="178" y="137" text-anchor="middle" font-size="17" font-weight="700" fill="#4c1d95">タウ異常</text>
+                <rect x="218" y="182" width="120" height="50" rx="18" fill="#fee2e2" stroke="#dc2626" stroke-width="3"/><text x="278" y="214" text-anchor="middle" font-size="17" font-weight="700" fill="#7f1d1d">神経障害</text>
+                <path d="M126 75 C150 88 154 91 166 103" stroke="#334155" stroke-width="5" fill="none" marker-end="url(#arrow1)"/>
+                <path d="M226 153 C250 166 254 169 266 181" stroke="#334155" stroke-width="5" fill="none" marker-end="url(#arrow1)"/>
+                <defs><marker id="arrow1" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L7,3 z" fill="#334155"/></marker></defs>
+                <circle cx="55" cy="130" r="8" fill="#60a5fa"/><circle cx="72" cy="152" r="6" fill="#60a5fa"/><circle cx="41" cy="160" r="5" fill="#60a5fa"/>
+                <text x="180" y="245" text-anchor="middle" fill="#64748b" font-size="14">原因から症状へ進む「連鎖反応」</text>
+              </svg>
+              <figcaption>アミロイドβを起点に考える連鎖モデル</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="dot">2</div>
+        <div class="card">
+          <div class="kicker">2012年｜発症前の時間を読む</div>
+          <h2>病気は、症状が出るずっと前から始まっていた</h2>
+          <div class="two">
+            <div>
+              <p>認知症研究の大きな壁は、<strong>進行があまりに長い</strong>ことでした。症状が出た時点だけを見ても、病気の始まりはわかりません。そこで研究者は、家族性アルツハイマー病のデータを使い、「発症予定年齢から何年前か」という共通の時間軸を作りました。</p>
+              <div class="answer"><b>何がわかったの？</b>症状が出る約25年前から、すでに脳内ではアミロイドβの蓄積が始まっていると考えられるようになりました。</div>
+              <div class="answer"><b>実験のすごい特徴</b>年齢の違う参加者を、同じ時計の上に並べ直したことです。これは、長い病気を一枚の映画のように見るための工夫でした。</div>
+              <p>ここで見えてきたのは、認知症は「ある日突然始まる病気」ではない、ということです。記憶の失敗が表に出る頃には、脳内の変化はすでに長い道のりを歩いていました。</p>
+            </div>
+            <figure class="svgbox">
+              <svg viewBox="0 0 360 260" role="img" aria-label="発症前25年のタイムライン">
+                <line x1="48" y1="194" x2="315" y2="194" stroke="#0f766e" stroke-width="7" stroke-linecap="round"/>
+                <g font-size="13" fill="#334155" font-weight="700" text-anchor="middle">
+                  <text x="60" y="222">-25年</text><text x="160" y="222">-10年</text><text x="285" y="222">発症</text>
+                </g>
+                <circle cx="60" cy="194" r="13" fill="#99f6e4" stroke="#0f766e" stroke-width="4"/>
+                <circle cx="160" cy="194" r="13" fill="#ccfbf1" stroke="#0f766e" stroke-width="4"/>
+                <circle cx="285" cy="194" r="16" fill="#0f766e"/>
+                <path d="M60 178 C98 92 143 80 185 104 C224 126 248 154 285 178" fill="none" stroke="#2563eb" stroke-width="6" stroke-linecap="round"/>
+                <text x="170" y="86" text-anchor="middle" fill="#2563eb" font-size="15" font-weight="700">Aβが先に上がる</text>
+                <path d="M105 160 C145 150 210 128 270 88" fill="none" stroke="#f97316" stroke-width="6" stroke-linecap="round"/>
+                <text x="248" y="68" text-anchor="middle" fill="#b45309" font-size="15" font-weight="700">脳の変化</text>
+                <text x="180" y="245" text-anchor="middle" fill="#64748b" font-size="14">ばらばらの人生を、共通の時間軸へ</text>
+              </svg>
+              <figcaption>発症前から進む変化を時間軸で見る</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="dot">3</div>
+        <div class="card">
+          <div class="kicker">2012〜2013年｜脳の清掃システム</div>
+          <h2>眠っている脳は、静かに掃除をしていた</h2>
+          <div class="two">
+            <div>
+              <p>次の主役は、<strong>グリンパティックシステム</strong>です。脳にはリンパ管のような老廃物の排出ルートが乏しいと考えられてきましたが、脳脊髄液が血管の周囲を通り、老廃物を洗い流す仕組みが注目されました。</p>
+              <div class="answer"><b>何がわかったの？</b>睡眠中には脳の細胞のすき間が広がり、老廃物が流れやすくなる。睡眠と認知症リスクがつながる理由を説明する重要な手がかりになりました。</div>
+              <div class="answer"><b>実験のすごい特徴</b>死んだ脳ではなく、生きているマウスの脳をリアルタイムで観察したことです。水の流れを見るには、動いている脳を見る必要がありました。</div>
+              <p>これは、脳を「考える臓器」としてだけでなく、<strong>掃除し、排水し、整備し続ける臓器</strong>として見る転換点でした。睡眠は単なる休憩ではなく、脳のメンテナンスタイムだったのです。</p>
+            </div>
+            <figure class="svgbox">
+              <svg viewBox="0 0 360 260" role="img" aria-label="グリンパティックシステム">
+                <rect x="70" y="30" width="220" height="180" rx="55" fill="#fff7ed" stroke="#f59e0b" stroke-width="4"/>
+                <path d="M110 120 C150 70 210 70 250 120 C214 106 146 106 110 120z" fill="#fed7aa"/>
+                <path d="M100 150 C150 196 210 196 260 150" fill="none" stroke="#f97316" stroke-width="8" stroke-linecap="round"/>
+                <path d="M96 70 C145 118 210 126 285 86" fill="none" stroke="#38bdf8" stroke-width="8" stroke-linecap="round" stroke-dasharray="10 9"/>
+                <path d="M88 185 C154 142 221 135 290 178" fill="none" stroke="#22c55e" stroke-width="8" stroke-linecap="round" stroke-dasharray="10 9"/>
+                <circle cx="138" cy="86" r="6" fill="#60a5fa"/><circle cx="198" cy="113" r="6" fill="#60a5fa"/><circle cx="246" cy="93" r="6" fill="#60a5fa"/>
+                <text x="70" y="235" fill="#0f172a" font-size="15" font-weight="700">睡眠中：</text><text x="137" y="235" fill="#64748b" font-size="15">脳脊髄液が老廃物を洗い流す</text>
+              </svg>
+              <figcaption>睡眠中に働く脳の「水洗い」イメージ</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+
+      <article class="chapter">
+        <div class="dot">4</div>
+        <div class="card">
+          <div class="kicker">2023年｜治療薬の時代へ</div>
+          <h2>仮説は、ついに人で試される段階へ進んだ</h2>
+          <div class="two">
+            <div>
+              <p>そして登場したのが、抗アミロイドβ抗体薬の一つである<strong>レカネマブ</strong>です。これまでの薬の失敗から学び、今回は「本当にアミロイドβがたまっている人」を検査で選び、大規模に効果を確認しました。</p>
+              <div class="answer"><b>何がわかったの？</b>レカネマブは脳内のアミロイドβを減らし、早期アルツハイマー病の進行を遅らせることが臨床試験で示されました。</div>
+              <div class="answer"><b>実験のすごい特徴</b>対象者を厳密に選び、約1800人規模で比較したことです。「効いたように見える」ではなく、「条件をそろえて確かめる」段階に研究が進みました。</div>
+              <p>ただし、これは魔法の薬ではありません。進行を完全に止めるものではなく、副作用にも注意が必要です。それでも、仮説から出発した研究が、人間の治療に届いたという意味は非常に大きいものです。</p>
+            </div>
+            <figure class="svgbox">
+              <svg viewBox="0 0 360 260" role="img" aria-label="抗体薬レカネマブの模式図">
+                <path d="M182 72 L182 137" stroke="#be123c" stroke-width="16" stroke-linecap="round"/>
+                <path d="M182 118 L125 69" stroke="#be123c" stroke-width="16" stroke-linecap="round"/>
+                <path d="M182 118 L239 69" stroke="#be123c" stroke-width="16" stroke-linecap="round"/>
+                <path d="M182 137 L142 197" stroke="#be123c" stroke-width="14" stroke-linecap="round"/>
+                <path d="M182 137 L222 197" stroke="#be123c" stroke-width="14" stroke-linecap="round"/>
+                <circle cx="88" cy="178" r="14" fill="#93c5fd"/><circle cx="115" cy="202" r="10" fill="#60a5fa"/><circle cx="76" cy="216" r="8" fill="#bfdbfe"/>
+                <circle cx="272" cy="170" r="12" fill="#93c5fd"/><circle cx="292" cy="196" r="9" fill="#60a5fa"/><circle cx="250" cy="206" r="7" fill="#bfdbfe"/>
+                <path d="M124 70 C105 92 93 119 88 156" fill="none" stroke="#64748b" stroke-width="4" stroke-dasharray="7 6"/>
+                <path d="M238 70 C260 95 273 122 274 152" fill="none" stroke="#64748b" stroke-width="4" stroke-dasharray="7 6"/>
+                <text x="180" y="38" text-anchor="middle" fill="#be123c" font-size="18" font-weight="800">抗体がAβを狙う</text>
+                <text x="180" y="238" text-anchor="middle" fill="#64748b" font-size="14">選んだ患者で、効果と安全性を検証</text>
+              </svg>
+              <figcaption>抗体薬がアミロイドβに結合するイメージ</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="summary">
+      <h2>まとめ：科学は「見えないもの」を見えるようにしてきた</h2>
+      <p>この30年間の研究は、単に時間が経ったという話ではありません。<strong>仮説を作る力、長い時間を測る工夫、生きた脳を観察する技術、人で厳密に確かめる臨床試験</strong>が、一本のバトンとしてつながってきた物語です。</p>
+      <p>最初は「アミロイドβが怪しい」という推理でした。次に、症状のずっと前から変化が始まることが見えました。さらに、睡眠中に脳が老廃物を洗い流す仕組みが注目され、最後に、アミロイドβを標的にした薬が実際の患者で試される時代に入りました。</p>
+      <div class="takeaway">
+        <div>1992<br>仮説の地図</div>
+        <div>2012<br>発症前の時計</div>
+        <div>睡眠研究<br>脳の掃除</div>
+        <div>2023<br>治療の入口</div>
+      </div>
+      <p>認知症研究はまだ完成ではありません。しかし、少なくとも私たちは、かつて暗闇だった脳の変化を、少しずつ測り、描き、治療へつなげるところまで来ました。ここに、この30年の研究の最大の価値があります。</p>
+      <p class="source">※本HTMLの画像は、本文理解のために作成した模式図です。</p>
+    </section>
+  </main>
+<div style="background:#0f4c81;color:white;padding:12px 16px;margin:0;text-align:center;font-size:14px;line-height:2;">
+<b>Book137シリーズ</b> ｜
+<a href="book137navi.html" style="color:#fff;">NAVI</a> ｜
+<a href="book137.html" style="color:#fff;">本編</a> ｜
+<a href="book137history.html" style="color:#fff;">歴史</a> ｜
+<a href="book137net.html" style="color:#fff;">ネットワーク説</a> ｜
+<a href="book137stu.html" style="color:#fff;">中学生版</a> ｜
+<a href="book137qa.html" style="color:#fff;">Q&amp;A</a> ｜
+<a href="book137sol.html" style="color:#fff;">総括</a> ｜
+<a href="book137sol1.html" style="color:#fff;">論文1</a> ｜
+<a href="book137sol2.html" style="color:#fff;">論文2</a> ｜
+<a href="book137sol3.html" style="color:#fff;">論文3</a> ｜
+<a href="book137sol4.html" style="color:#fff;">論文4</a> ｜
+<a href="book137sol5.html" style="color:#fff;">論文5</a>　｜
+<a href="book125navi.html" style="color:#fff;">グリンパティックシステム</a>　｜
+<a href="book8.html" style="color:#fff;">認知機能検査</a>
+</div>
+
+</body>
+</html>
