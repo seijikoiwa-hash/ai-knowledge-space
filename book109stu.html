@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>無重力を地上で作る！ NASAも認めた日本発のスゴイ装置『グラビテ』の秘密</title>
+  <style>
+    :root{
+      --bg:#f6f8fb;
+      --paper:#ffffff;
+      --ink:#1f2937;
+      --sub:#4b5563;
+      --line:#dbe4f0;
+      --accent:#1d4ed8;
+      --accent2:#0f766e;
+      --soft:#eff6ff;
+      --soft2:#ecfeff;
+      --warn:#fff7ed;
+      --shadow:0 14px 35px rgba(15,23,42,.08);
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family:"Hiragino Sans","Yu Gothic","Meiryo",system-ui,sans-serif;
+      background:linear-gradient(180deg,#eef4ff 0%,#f8fbff 22%,var(--bg) 100%);
+      color:var(--ink);
+      line-height:1.95;
+      letter-spacing:.02em;
+    }
+    .wrap{
+      width:min(960px,92vw);
+      margin:0 auto;
+      padding:28px 0 60px;
+    }
+    .hero{
+      background:linear-gradient(135deg,#dbeafe 0%,#ecfeff 55%,#ffffff 100%);
+      border:1px solid #cfe3ff;
+      border-radius:28px;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      margin:12px 0 28px;
+    }
+    .hero-inner{padding:34px 34px 22px}
+    .eyebrow{
+      display:inline-block;
+      font-size:14px;
+      font-weight:700;
+      color:var(--accent);
+      background:#ffffffd9;
+      border:1px solid #bfdbfe;
+      border-radius:999px;
+      padding:6px 12px;
+      margin-bottom:14px;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(28px,4.1vw,46px);
+      line-height:1.25;
+      letter-spacing:.01em;
+    }
+    .subtitle{
+      margin:12px 0 0;
+      font-size:clamp(16px,2vw,24px);
+      color:#0f3b8c;
+      font-weight:700;
+    }
+    .lead{
+      margin:18px 0 0;
+      color:var(--sub);
+      font-size:17px;
+    }
+    .hero-art{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:0;
+      align-items:stretch;
+      border-top:1px solid #d8e7ff;
+      background:linear-gradient(180deg,#ffffffcc,#f8fbff);
+    }
+    .hero-art > div{padding:16px 22px}
+    .card,.toc,.section{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:24px;
+      box-shadow:var(--shadow);
+    }
+    .toc{padding:28px;margin:0 0 28px}
+    .toc h2{margin:0 0 12px;font-size:24px}
+    .toc ol{margin:0;padding-left:1.4em}
+    .toc li{margin:.45em 0;color:var(--sub)}
+    .section{padding:34px 32px;margin:0 0 26px}
+    h2{
+      margin:0 0 18px;
+      font-size:30px;
+      line-height:1.35;
+    }
+    h3{
+      margin:28px 0 10px;
+      font-size:22px;
+      color:#0f3b8c;
+    }
+    p{margin:0 0 16px}
+    .note{
+      background:var(--soft);
+      border-left:6px solid var(--accent);
+      padding:16px 18px;
+      border-radius:16px;
+      margin:16px 0 18px;
+    }
+    .note.green{
+      background:var(--soft2);
+      border-left-color:var(--accent2);
+    }
+    .note.orange{
+      background:var(--warn);
+      border-left-color:#ea580c;
+    }
+    .grid2{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:18px;
+      margin:18px 0;
+    }
+    .mini{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:16px 16px 14px;
+      background:#fcfdff;
+    }
+    .mini h4{margin:0 0 8px;font-size:18px;color:#0f3b8c}
+    .mini p{margin:0;color:var(--sub)}
+    figure{
+      margin:22px 0;
+      border:1px solid var(--line);
+      border-radius:22px;
+      overflow:hidden;
+      background:#fff;
+      box-shadow:var(--shadow);
+    }
+    figcaption{
+      padding:12px 16px 16px;
+      color:var(--sub);
+      font-size:14px;
+      background:#fbfdff;
+      border-top:1px solid var(--line);
+    }
+    svg{display:block;width:100%;height:auto}
+    ul{margin:0 0 16px 1.2em;padding:0}
+    li{margin:.45em 0}
+    .closing{
+      font-size:19px;
+      font-weight:700;
+      color:#0f3b8c;
+      background:linear-gradient(135deg,#eff6ff,#ecfeff);
+      border:1px solid #cfe3ff;
+      border-radius:20px;
+      padding:18px 20px;
+      margin-top:20px;
+    }
+    footer{
+      color:#6b7280;
+      font-size:13px;
+      padding:8px 4px 0;
+    }
+    @media (max-width:720px){
+      .hero-art,.grid2{grid-template-columns:1fr}
+      .section,.toc,.hero-inner{padding:24px 20px}
+      h2{font-size:26px}
+    }
+  </style>
+</head>
+<body>
+<div class="note green">
+  <p><strong>👉 高校生向き</strong></p>
+  <p>
+        さらに深く知りたい人は  
+    <a href="book109.html" style="font-weight:bold; color:#1d4ed8;">
+      ▶ 高校生向きはこちら
+    </a>
+  </p>
+</div>
+  <div class="wrap">
+    <header class="hero">
+      <div class="hero-inner">
+        <div class="eyebrow">中学生向けブログ</div>
+        <h1>無重力を地上で作る！ NASAも認めた日本発のスゴイ装置『グラビテ』の秘密</h1>
+        <p class="subtitle">― おじいちゃん、おばあちゃんの足腰を守る！ ―</p>
+        <p class="lead">宇宙の研究は、遠い世界の話に見える。けれども実は、宇宙飛行士の体に起こる変化を調べることが、地上で生きる私たち、特に高齢者の健康を守ることにつながっている。日本で生まれた「グラビテ」は、その橋をかける装置である。</p>
+      </div>
+      <div class="hero-art">
+        <div>
+          <svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="宇宙と病院をつなぐイメージ図">
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0" stop-color="#1d4ed8"/>
+                <stop offset="1" stop-color="#0ea5e9"/>
+              </linearGradient>
+            </defs>
+            <rect width="720" height="300" fill="#f8fbff"/>
+            <circle cx="112" cy="90" r="45" fill="#bfdbfe"/>
+            <circle cx="130" cy="75" r="15" fill="#fff"/>
+            <path d="M80 175c18-24 38-39 60-39s42 15 60 39" fill="none" stroke="#1d4ed8" stroke-width="10" stroke-linecap="round"/>
+            <circle cx="270" cy="148" r="52" fill="#dbeafe" stroke="#60a5fa" stroke-width="3"/>
+            <circle cx="270" cy="148" r="18" fill="#60a5fa"/>
+            <circle cx="245" cy="124" r="8" fill="#1d4ed8"/>
+            <circle cx="294" cy="118" r="8" fill="#1d4ed8"/>
+            <circle cx="302" cy="176" r="8" fill="#1d4ed8"/>
+            <circle cx="238" cy="177" r="8" fill="#1d4ed8"/>
+            <rect x="470" y="80" width="160" height="130" rx="18" fill="#ecfeff" stroke="#0f766e" stroke-width="4"/>
+            <rect x="500" y="112" width="100" height="18" rx="9" fill="#99f6e4"/>
+            <rect x="500" y="144" width="80" height="18" rx="9" fill="#ccfbf1"/>
+            <rect x="500" y="176" width="60" height="18" rx="9" fill="#ccfbf1"/>
+            <path d="M157 156C206 119 217 120 214 120" fill="none" stroke="url(#g1)" stroke-width="9" stroke-linecap="round"/>
+            <path d="M322 148C395 148 420 145 470 145" fill="none" stroke="url(#g1)" stroke-width="9" stroke-linecap="round"/>
+            <polygon points="460,136 484,145 460,154" fill="#0ea5e9"/>
+            <text x="24" y="250" font-size="28" fill="#0f3b8c" font-weight="700">宇宙の研究</text>
+            <text x="238" y="250" font-size="28" fill="#0f3b8c" font-weight="700">グラビテ</text>
+            <text x="498" y="250" font-size="28" fill="#0f3b8c" font-weight="700">高齢者医療</text>
+          </svg>
+        </div>
+        <div>
+          <div class="note green" style="margin:0;height:100%">
+            <p><strong>このブログで明らかにしたいこと</strong></p>
+            <ul>
+              <li>グラビテとは何か</li>
+              <li>どうして地上で無重力のような状態を作れるのか</li>
+              <li>なぜ高齢者の筋肉や骨の研究につながるのか</li>
+              <li>月や火星、再生医療へどう広がっていくのか</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="toc">
+      <h2>ブログの目次</h2>
+      <ol>
+        <li>はじめに：｢宇宙の技術｣ がお年寄りを救う？</li>
+        <li>第1章：そもそも ｢グラビテ｣ って何だ？</li>
+        <li>第2章：どうやって地上で ｢無重力｣ を作るの？</li>
+        <li>第3章：驚きの発見！ なぜこれが ｢高齢者医療｣ につながるのか？</li>
+        <li>第4章：もっと知りたい！ グラビテのこれから</li>
+        <li>おわりに：重力は ｢ただの力｣ じゃなかった</li>
+      </ol>
+    </section>
+
+    <section class="section">
+      <h2>はじめに：｢宇宙の技術｣ がお年寄りを救う？</h2>
+      <p>「グラビテ」という名前を初めて聞いたとき、私はまず、そのひびきにひかれた。重力を意味する <em>gravity</em> に似ていて、何か大きな秘密を持っていそうだからだ。そしてさらに調べてみると、この装置が日本で作られ、しかもNASAの研究にも使われていることを知って、二度驚いた。</p>
+      <p>だが、本当に心を動かされたのは、その次の事実である。グラビテは、宇宙飛行士の体を守るための研究だけではなく、地上で生きる高齢者の筋力低下や骨の弱まりを理解し、予防し、治療するための研究にも役立っている。つまり、宇宙と病院、ロケットとリハビリ、未来の宇宙旅行と、おじいちゃん・おばあちゃんの歩く力が、一本の線でつながっていたのである。</p>
+      <div class="note">
+        <p><strong>なぜそんなことが起きるのか。</strong><br>
+        それは、無重力の世界では、人の体がとても速く弱ってしまうからだ。地上では何年もかかるような筋肉や骨の変化が、宇宙では数週間から数か月という短い時間で起こる。つまり宇宙は、老化や廃用の現象を一気に早送りで見せてくれる「加速実験場」になる。</p>
+      </div>
+      <p>このブログでは、中学生にもわかるように、難しい言葉をできるだけかみくだきながら、グラビテの仕組みと意味を順番に見ていく。読み終わるころには、「重力って、ただ下に引っ張る力ではなかったんだ」と感じてもらえるはずだ。</p>
+    </section>
+
+    <section class="section">
+      <h2>第1章：そもそも ｢グラビテ｣ って何だ？</h2>
+      <p>グラビテとは、株式会社スペース・バイオ・ラボラトリーズが製造・販売する「重力制御装置」の製品名である。広い分類でいえば「クリノスタット」と呼ばれる装置の一種で、試料を回転させることによって重力の向きのかたよりを平均化し、細胞や小さな生き物が重力を感じにくい状態をつくる。</p>
+      <p>ここで大切なのは、<strong>クリノスタットは技術の名前、グラビテは製品の名前</strong>だということだ。たとえば「自転車」が種類の名前で、「あるメーカーの人気モデル」が製品名であるのと同じである。グラビテは、その中でも特に再生医療や細胞研究向けに設計された高性能な装置だ。</p>
+
+      <figure>
+        <svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="クリノスタットとグラビテの違い">
+          <rect width="900" height="340" fill="#f9fbff"/>
+          <rect x="60" y="60" width="320" height="210" rx="24" fill="#eff6ff" stroke="#93c5fd" stroke-width="4"/>
+          <rect x="520" y="60" width="320" height="210" rx="24" fill="#ecfeff" stroke="#5eead4" stroke-width="4"/>
+          <text x="220" y="110" text-anchor="middle" font-size="34" font-weight="700" fill="#1d4ed8">クリノスタット</text>
+          <text x="220" y="158" text-anchor="middle" font-size="22" fill="#334155">重力の影響を平均化する</text>
+          <text x="220" y="193" text-anchor="middle" font-size="22" fill="#334155">研究装置の総称</text>
+          <text x="220" y="228" text-anchor="middle" font-size="22" fill="#334155">学術用語</text>
+          <text x="680" y="110" text-anchor="middle" font-size="34" font-weight="700" fill="#0f766e">Gravite</text>
+          <text x="680" y="158" text-anchor="middle" font-size="22" fill="#334155">その原理を実用化した</text>
+          <text x="680" y="193" text-anchor="middle" font-size="22" fill="#334155">日本発の具体的製品名</text>
+          <text x="680" y="228" text-anchor="middle" font-size="22" fill="#334155">高性能な二軸・三軸機</text>
+          <path d="M390 165H510" stroke="#64748b" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="500,150 535,165 500,180" fill="#64748b"/>
+        </svg>
+        <figcaption>図1　「クリノスタット」は装置の種類の名前で、「Gravite」はその原理を高性能に実用化した日本発の製品名である。</figcaption>
+      </figure>
+
+      <h3>クリノスタットの歴史</h3>
+      <p>この考え方そのものは新しいものではない。もともとは、植物がどちらを上、どちらを下と感じるのかを調べるために考えられた装置が出発点で、長い時間をかけて改良されてきた。昔のクリノスタットは一軸、つまり一つの棒のまわりに回るだけのものが多かった。しかしそれだけでは、重力の向きの偏りを完全には消しにくい。</p>
+      <p>そこで日本の研究者たちは、二つの軸を直角に組み合わせ、さらに制御を工夫することで、より本物の微小重力に近い環境を作ろうとした。その進化した形の一つがグラビテである。</p>
+
+      <h3>日本の大学発ベンチャーから世界へ</h3>
+      <p>グラビテは、広島大学の研究成果を土台にして生まれた。中心にいたのは、再生医療やリハビリテーション工学の研究で知られる弓削類教授らのチームである。大学の研究室から生まれた技術が、企業によって装置となり、世界の研究現場へ広がっていった。これは、教科書の中だけにある科学ではなく、研究者のひらめきと、現場のものづくりの力が本当に結びついた例だと言える。</p>
+      <div class="grid2">
+        <div class="mini">
+          <h4>名前の意味</h4>
+          <p>「グラビテ」は、重力を意味する言葉を思わせる名前でありながら、重力を“消す”のではなく“制御して見せ方を変える”装置であるところが面白い。</p>
+        </div>
+        <div class="mini">
+          <h4>なぜ注目されたか</h4>
+          <p>地上にいながら宇宙ステーションに近い微小重力の条件を作り、しかも過重力まで一台で扱える点が、世界でも特にユニークだった。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>第2章：どうやって地上で ｢無重力｣ を作るの？</h2>
+      <p>ここが、いちばんのミソである。最初に大事なことをはっきり言うと、グラビテは<strong>本当に重力を消しているわけではない</strong>。地球の上にある以上、重力はずっと下向きに1Gかかっている。では何をしているのか。答えは、<strong>その「下」の向きを、試料から見て次々に変えてしまう</strong>のである。</p>
+      <p>たとえば、君がいつも同じ方向から風を受けているとする。すると、どちらが風上かすぐわかる。だが、風の向きが一秒ごとに前・横・後ろ・斜め上へと変わり続けたらどうだろう。長い目で見ると、体は「特定の方向から風が来ている」と感じにくくなる。グラビテの発想は、これに少し似ている。</p>
+
+      <figure>
+        <svg viewBox="0 0 900 430" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="重力ベクトルを平均化する模式図">
+          <rect width="900" height="430" fill="#fbfdff"/>
+          <circle cx="450" cy="220" r="66" fill="#fef3c7" stroke="#f59e0b" stroke-width="5"/>
+          <text x="450" y="232" text-anchor="middle" font-size="32" font-weight="700" fill="#92400e">試料</text>
+          <g stroke="#2563eb" stroke-width="8" stroke-linecap="round">
+            <line x1="450" y1="220" x2="450" y2="72"/>
+            <line x1="450" y1="220" x2="450" y2="368"/>
+            <line x1="450" y1="220" x2="300" y2="220"/>
+            <line x1="450" y1="220" x2="600" y2="220"/>
+            <line x1="450" y1="220" x2="335" y2="105"/>
+            <line x1="450" y1="220" x2="565" y2="105"/>
+            <line x1="450" y1="220" x2="335" y2="335"/>
+            <line x1="450" y1="220" x2="565" y2="335"/>
+          </g>
+          <g fill="#2563eb">
+            <polygon points="450,58 438,82 462,82"/>
+            <polygon points="450,382 438,358 462,358"/>
+            <polygon points="286,220 310,208 310,232"/>
+            <polygon points="614,220 590,208 590,232"/>
+            <polygon points="325,95 338,119 351,106"/>
+            <polygon points="575,95 549,106 562,119"/>
+            <polygon points="325,345 351,334 338,321"/>
+            <polygon points="575,345 562,321 549,334"/>
+          </g>
+          <text x="450" y="42" text-anchor="middle" font-size="28" fill="#0f3b8c" font-weight="700">重力の向きを全方向に散らす</text>
+          <text x="450" y="408" text-anchor="middle" font-size="22" fill="#475569">時間平均すると「一方向に押されている感じ」が小さくなる</text>
+        </svg>
+        <figcaption>図2　重力そのものを消すのではなく、重力ベクトルの向きを次々に変えて、時間平均でほぼゼロに近づける。</figcaption>
+      </figure>
+
+      <h3>「風船の下」を変え続けるイメージ</h3>
+      <p>「風船をずっと落とし続けて無重力にする」のは地上では無理だ。しかし「風船にとっての『下』の方向」を次々に切り替えられたら、風船は特定の向きに押され続けない。すると、浮いているような振る舞いに近づく。グラビテは、細胞に対してそれをしているのである。</p>
+
+      <h3>1軸と2軸、そして3軸の違い</h3>
+      <p>一軸回転では、重力の向きは一つの平面の中を回るだけだ。たとえば、前後には変わっても、左右への散らばりは不十分かもしれない。これでは偏りが残りやすい。二軸回転では、二本の軸が直角に交わることで、重力の向きを三次元的にばらけさせやすくなる。だから、細胞から見た「いつも同じ方向に引かれている」という感覚を、より弱められる。</p>
+      <p>さらに三軸化すると、月面の約6分の1Gや火星の約3分の1Gのような、0Gと1Gのあいだの重力条件も模擬しやすくなる。つまり「地球か、完全な無重力か」だけではなく、その中間の世界まで研究できるようになるのだ。</p>
+
+      <figure>
+        <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="一軸回転と二軸回転の比較">
+          <rect width="900" height="360" fill="#fbfdff"/>
+          <text x="220" y="52" text-anchor="middle" font-size="34" font-weight="700" fill="#1d4ed8">1軸回転</text>
+          <text x="680" y="52" text-anchor="middle" font-size="34" font-weight="700" fill="#0f766e">2軸回転</text>
+          <ellipse cx="220" cy="180" rx="140" ry="85" fill="none" stroke="#60a5fa" stroke-width="6" stroke-dasharray="12 8"/>
+          <circle cx="220" cy="180" r="24" fill="#fbbf24"/>
+          <line x1="220" y1="180" x2="355" y2="180" stroke="#ef4444" stroke-width="6"/>
+          <line x1="220" y1="180" x2="84" y2="180" stroke="#ef4444" stroke-width="6"/>
+          <text x="220" y="300" text-anchor="middle" font-size="22" fill="#475569">重力の向きが一つの平面に偏りやすい</text>
+          <ellipse cx="680" cy="180" rx="145" ry="85" fill="none" stroke="#5eead4" stroke-width="6" stroke-dasharray="12 8"/>
+          <ellipse cx="680" cy="180" rx="72" ry="145" fill="none" stroke="#2dd4bf" stroke-width="6" stroke-dasharray="12 8"/>
+          <circle cx="680" cy="180" r="24" fill="#fbbf24"/>
+          <g stroke="#0f766e" stroke-width="6">
+            <line x1="680" y1="180" x2="820" y2="180"/>
+            <line x1="680" y1="180" x2="540" y2="180"/>
+            <line x1="680" y1="180" x2="680" y2="40"/>
+            <line x1="680" y1="180" x2="680" y2="320"/>
+          </g>
+          <text x="680" y="300" text-anchor="middle" font-size="22" fill="#475569">重力の向きを三次元的に散らしやすい</text>
+        </svg>
+        <figcaption>図3　一軸では偏りが残りやすいが、二軸では三次元的に重力方向を分散できる。</figcaption>
+      </figure>
+
+      <div class="note orange">
+        <p><strong>大事な注意</strong><br>
+        グラビテは「魔法の無重力機」ではない。回転の仕方が悪いと、遠心力や液体の流れ、試料のずれなど、別の力がかかってしまう。だからこそ、装置の精度と制御がとても重要になる。</p>
+      </div>
+
+      <p>このようにしてグラビテは、時間平均で約1000分の1Gレベルの擬似微小重力を作り出す。言い換えれば、<strong>「重力を消す機械」ではなく、「重力の向きの情報を細胞に読みにくくする機械」</strong>なのだ。この考え方そのものが、すでに科学としてとても美しい。</p>
+    </section>
+
+    <section class="section">
+      <h2>第3章：驚きの発見！ なぜこれが ｢高齢者医療｣ につながるのか？</h2>
+      <p>ここがこのブログの核心である。宇宙飛行士の体では、無重力のために筋肉や骨が急速に弱ることがよく知られている。とくに太ももやふくらはぎなど、地上で体を支えている「抗重力筋」は大きな影響を受ける。地上では立つ、歩く、階段を上る、それだけで筋肉は毎日トレーニングされている。だが無重力では、その前提がなくなってしまう。</p>
+      <p>その結果、体は「この筋肉は前ほど必要ではない」と判断し、筋タンパク質の合成を減らし、分解を進める。骨にも同じようなことが起き、骨を作る方向よりも、骨を壊す方向が強くなりやすい。宇宙で起きるこれらの現象は、地上で長い時間をかけて起きるサルコペニアや骨粗しょう症とよく似ている。</p>
+
+      <figure>
+        <svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="地上の老化と宇宙での高速変化の比較">
+          <rect width="900" height="400" fill="#fbfdff"/>
+          <text x="250" y="60" text-anchor="middle" font-size="34" font-weight="700" fill="#0f3b8c">地上の高齢化</text>
+          <text x="650" y="60" text-anchor="middle" font-size="34" font-weight="700" fill="#0f3b8c">宇宙の無重力</text>
+          <rect x="90" y="105" width="320" height="200" rx="24" fill="#eff6ff" stroke="#93c5fd" stroke-width="4"/>
+          <rect x="490" y="105" width="320" height="200" rx="24" fill="#fff7ed" stroke="#fdba74" stroke-width="4"/>
+          <text x="250" y="155" text-anchor="middle" font-size="26" fill="#334155">数年〜数十年</text>
+          <text x="250" y="198" text-anchor="middle" font-size="26" fill="#334155">筋力低下・骨量低下</text>
+          <text x="250" y="241" text-anchor="middle" font-size="26" fill="#334155">生活習慣や個人差が大きい</text>
+          <text x="650" y="155" text-anchor="middle" font-size="26" fill="#7c2d12">数週間〜数か月</text>
+          <text x="650" y="198" text-anchor="middle" font-size="26" fill="#7c2d12">似た変化が急速に起こる</text>
+          <text x="650" y="241" text-anchor="middle" font-size="26" fill="#7c2d12">原因を短時間で追いやすい</text>
+          <path d="M410 205H490" stroke="#ef4444" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="480,190 510,205 480,220" fill="#ef4444"/>
+          <text x="450" y="182" text-anchor="middle" font-size="20" fill="#b91c1c">加速</text>
+          <text x="450" y="348" text-anchor="middle" font-size="24" fill="#475569">宇宙は「超高速老化モデル」になる</text>
+        </svg>
+        <figcaption>図4　地上で何年もかかる変化が、宇宙や擬似無重力では短い時間で進むため、原因と対策を調べやすい。</figcaption>
+      </figure>
+
+      <h3>「無重力＝超高速の老化マシン」という見方</h3>
+      <p>もちろん、宇宙飛行士が本当に高齢者と同じになるわけではない。だが、筋肉が落ちる、骨が弱る、活動量が下がるという流れはよく似ている。だから研究者は、宇宙や疑似無重力を「人が弱る仕組みを短期間で暴く加速器」として使う。これが、グラビテが高齢者医療の研究にとって価値を持つ第一の理由だ。</p>
+
+      <h3>細胞は「力」を感じている</h3>
+      <p>もう一歩深く入ると、話は細胞の中にまで進む。私たちの細胞は、ただ化学物質だけで動いているのではない。細胞骨格、接着装置、核、ミトコンドリアなどは、力がかかると形が変わり、それが合図になる。つまり細胞は、小さな物理センサーでもある。</p>
+      <p>重力があると、細胞の中では微妙な張力や圧力が保たれる。ところが重力の入力が失われると、そのバランスが崩れる。カルシウムイオンの流れが変わり、細胞骨格が再編成され、エネルギー工場であるミトコンドリアにも影響が出る。さらに、小胞体でのタンパク質の折りたたみが乱れやすくなり、いわゆるERストレスやUPRと呼ばれる防御反応が関わる可能性も考えられている。</p>
+
+      <div class="grid2">
+        <div class="mini">
+          <h4>骨で起きること</h4>
+          <p>骨の中の細胞は、圧力やひずみを感じて「作る」「壊す」のバランスを調整している。刺激が減ると、作る側が弱くなりやすい。</p>
+        </div>
+        <div class="mini">
+          <h4>筋肉で起きること</h4>
+          <p>筋肉は荷重がなくなると、合成より分解が勝ちやすくなる。つまり「使わない機能は削る」という体の省エネが進む。</p>
+        </div>
+      </div>
+
+      <h3>なぜ医療の研究が速くなるのか</h3>
+      <p>ここが実用上の大きな強みである。地上で高齢者の変化を研究しようとすると、何年も追跡しなければならず、生活習慣や個人差も大きい。だがグラビテのような装置を使えば、細胞や組織が重力の変化にどう反応するかを短い時間で何度も見られる。すると、原因の候補をしぼり、薬や運動法や栄養法を、より速く試せる。</p>
+      <p>たとえば、宇宙飛行士の筋萎縮を防ぐために考えられた運動法は、高齢者のサルコペニア対策に応用できるかもしれない。短時間でも効果の高い負荷のかけ方、どのタイミングでたんぱく質をとるか、どうすれば弱り始める前に予防できるか。こうした「人を壊さずに、最も効率よく強く保つ設計図」が、宇宙研究から逆流して地上に戻ってくるのである。</p>
+
+      <figure>
+        <svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="宇宙研究から高齢者医療への橋の図">
+          <rect width="900" height="380" fill="#fbfdff"/>
+          <text x="450" y="56" text-anchor="middle" font-size="34" font-weight="700" fill="#0f3b8c">宇宙研究から高齢者医療への「架け橋」</text>
+          <rect x="70" y="110" width="210" height="180" rx="22" fill="#eff6ff" stroke="#93c5fd" stroke-width="4"/>
+          <rect x="345" y="110" width="210" height="180" rx="22" fill="#fefce8" stroke="#fde68a" stroke-width="4"/>
+          <rect x="620" y="110" width="210" height="180" rx="22" fill="#ecfeff" stroke="#99f6e4" stroke-width="4"/>
+          <text x="175" y="155" text-anchor="middle" font-size="28" fill="#1d4ed8" font-weight="700">時間の橋</text>
+          <text x="175" y="195" text-anchor="middle" font-size="22" fill="#334155">老化を短期間で</text>
+          <text x="175" y="228" text-anchor="middle" font-size="22" fill="#334155">再現できる</text>
+          <text x="450" y="155" text-anchor="middle" font-size="28" fill="#a16207" font-weight="700">原因の橋</text>
+          <text x="450" y="195" text-anchor="middle" font-size="22" fill="#334155">分子や遺伝子の</text>
+          <text x="450" y="228" text-anchor="middle" font-size="22" fill="#334155">変化を見やすい</text>
+          <text x="725" y="155" text-anchor="middle" font-size="28" fill="#0f766e" font-weight="700">治療の橋</text>
+          <text x="725" y="195" text-anchor="middle" font-size="22" fill="#334155">運動・栄養・薬を</text>
+          <text x="725" y="228" text-anchor="middle" font-size="22" fill="#334155">速く検証できる</text>
+          <path d="M280 200H345" stroke="#64748b" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="335,185 365,200 335,215" fill="#64748b"/>
+          <path d="M555 200H620" stroke="#64748b" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="610,185 640,200 610,215" fill="#64748b"/>
+        </svg>
+        <figcaption>図5　宇宙研究は、時間を縮め、原因を見やすくし、対策を速く試せるという三つの橋を通じて、高齢者医療へつながる。</figcaption>
+      </figure>
+
+      <p>だからグラビテは、単なる珍しい機械ではない。宇宙の知識を地上の医療へ運ぶ、静かながらも強力な「橋」なのである。</p>
+    </section>
+
+    <section class="section">
+      <h2>第4章：もっと知りたい！ グラビテのこれから</h2>
+      <p>グラビテの面白さは、「宇宙の無重力を地上でまねる」ことだけでは終わらない。重力を細かく調整できるようになると、研究の舞台はもっと広がる。月の6分の1G、火星の3分の1Gのような条件を地上で再現できれば、将来、人類が月面基地や火星基地でどう暮らすかを考えるうえでも重要な手がかりになる。</p>
+      <p>たとえば、月の重力では骨はどれくらい保てるのか。火星では筋肉を維持するにはどんな運動が必要か。生まれたばかりの細胞や、再生医療に使いたい幹細胞は、どの重力条件で一番よく育つのか。こうした問いは、宇宙開発の未来にかかわるだけでなく、地上の医療やバイオ産業にも直結している。</p>
+
+      <figure>
+        <svg viewBox="0 0 900 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="地球 月 火星の重力比較">
+          <rect width="900" height="360" fill="#fbfdff"/>
+          <text x="450" y="54" text-anchor="middle" font-size="34" font-weight="700" fill="#0f3b8c">重力を変えて未来を調べる</text>
+          <circle cx="180" cy="190" r="68" fill="#60a5fa"/>
+          <circle cx="450" cy="190" r="48" fill="#cbd5e1"/>
+          <circle cx="720" cy="190" r="56" fill="#fb923c"/>
+          <text x="180" y="296" text-anchor="middle" font-size="28" font-weight="700" fill="#1e3a8a">地球 1G</text>
+          <text x="450" y="296" text-anchor="middle" font-size="28" font-weight="700" fill="#334155">月 1/6G</text>
+          <text x="720" y="296" text-anchor="middle" font-size="28" font-weight="700" fill="#9a3412">火星 1/3G</text>
+          <text x="180" y="332" text-anchor="middle" font-size="20" fill="#475569">今の私たちの基準</text>
+          <text x="450" y="332" text-anchor="middle" font-size="20" fill="#475569">月面生活を考える鍵</text>
+          <text x="720" y="332" text-anchor="middle" font-size="20" fill="#475569">火星移住の基礎データ</text>
+        </svg>
+        <figcaption>図6　0Gだけでなく、月や火星のような「中間の重力」を研究できることが、未来の宇宙生活や地上医療の両方に役立つ。</figcaption>
+      </figure>
+
+      <h3>幹細胞と再生医療への期待</h3>
+      <p>微小重力や疑似無重力の環境では、細胞が平らな皿にべったり広がるより、三次元的に集まりやすくなることがある。これは、組織に近い立体構造を作りやすいという意味でもある。もし細胞をより自然な形で育てられるなら、軟骨、筋肉、神経、血管などの再生研究に新しい道が開けるかもしれない。</p>
+      <p>未来には、宇宙で得られた知見を使って、地上でより若々しい性質を保った細胞を育てたり、病気のモデルを立体的に作って薬の効き方を調べたりすることが当たり前になる可能性がある。グラビテは、その入口に立つ装置だ。</p>
+
+      <h3>宇宙船の「人工重力」へのヒント</h3>
+      <p>人類が長い宇宙旅行をするなら、ずっと無重力のままでは体がもたないかもしれない。そこで考えられているのが「人工重力」である。宇宙船を回転させて遠心力を利用し、擬似的に重力のようなものを作るという発想だ。グラビテの研究は、どれくらいの重力があれば骨や筋肉を守れるのか、どんな変化が起きるのかを知る手がかりにもなる。</p>
+
+      <div class="note green">
+        <p><strong>未来の広がり</strong></p>
+        <ul>
+          <li>月や火星で人が健康に暮らす条件を探る</li>
+          <li>幹細胞や立体組織を育てる再生医療を前進させる</li>
+          <li>宇宙飛行士を守る運動法や栄養法を高齢者医療へ応用する</li>
+          <li>人工重力つき宇宙船の設計に役立つ基礎データを集める</li>
+        </ul>
+      </div>
+
+      <p>つまりグラビテは、「いま困っていること」を解決する装置であると同時に、「まだ来ていない未来」を準備する装置でもある。ここに、この機械のロマンがある。</p>
+    </section>
+
+    <section class="section">
+      <h2>おわりに：重力は ｢ただの力｣ じゃなかった</h2>
+      <p>このブログを通して見えてきたのは、重力が単なる「下向きの力」ではなく、生き物の体そのものを形づくる環境条件の一つだということだ。私たちは毎日、重力の中で立ち、歩き、骨を保ち、筋肉を使い、細胞の中で小さな力の情報を読み取りながら生きている。ふだん意識しないだけで、重力は私たちの体の設計図の一部なのである。</p>
+      <p>だからこそ、「重力をだます」という発想はすごい。ただ力学のトリックで人をびっくりさせるだけではない。その発想が、宇宙飛行士の健康を守り、さらに、おじいちゃんやおばあちゃんが自分の足で立ち、歩き、笑って暮らせる未来の医療へつながっていく。宇宙の研究と高齢者医療のあいだに、こんなに温かい道があったのかと、私はそこに強い感動を覚える。</p>
+      <p>中学生のみなさんにも、ぜひ覚えていてほしい。科学は、遠い宇宙や難しい数式のためだけにあるのではない。身近な誰かの生活を良くするためにもある。そして、ときどきその二つは、思いもよらない形でつながる。グラビテは、そのことを教えてくれる美しい例である。</p>
+      <div class="closing">もしかしたら、未来の病院には「グラビテ」が置かれていて、宇宙研究から生まれた方法で、お年寄りの筋肉や骨を守る日が来るかもしれない。そう考えると、重力をめぐる研究は、ただの実験ではなく、人の希望を支える研究に見えてくる。</div>
+    </section>
+<div class="note green">
+  <p><strong>👉 高校生向き</strong></p>
+  <p>
+    無重力になると体はどう変わるのか？  
+    さらに深く知りたい人は  
+    <a href="book109.html" style="font-weight:bold; color:#1d4ed8;">
+      ▶ 高校生向きはこちら
+    </a>
+  </p>
+</div>
+
+    <footer>
+      このHTMLは、ユーザー提供資料をもとに中学生向けに再構成した読み物です。文章は読みやすさを優先して編集し、図は理解を助けるためのオリジナル模式図として作成しました。
+    </footer>
+  </div>
+</body>
+</html>

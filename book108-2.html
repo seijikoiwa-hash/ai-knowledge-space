@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ERストレス統合理論マップ + 分子定義集</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --paper: #ffffff;
+      --ink: #1f2937;
+      --sub: #5b6472;
+      --line: #d8e2ee;
+      --blue: #1d4e89;
+      --blue2: #2b6cb0;
+      --softblue: #eef5ff;
+      --green: #2f855a;
+      --softgreen: #eefaf2;
+      --amber: #b7791f;
+      --softamber: #fff8e8;
+      --red: #c53030;
+      --softred: #fff3f3;
+      --purple: #6b46c1;
+      --softpurple: #f5f0ff;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, #edf3fa 0%, #f7f9fc 40%, #f4f7fb 100%);
+      line-height: 1.85;
+    }
+    .wrap {
+      max-width: 1200px;
+      margin: 28px auto 56px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 18px 46px rgba(31, 41, 55, 0.08);
+    }
+    header {
+      padding: 48px 38px 34px;
+      background: linear-gradient(135deg, #143d6b 0%, #245b9d 45%, #4b8ad1 100%);
+      color: #fff;
+    }
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.14);
+      font-size: .9rem;
+      letter-spacing: .05em;
+      margin-bottom: 16px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 2.25rem;
+      line-height: 1.35;
+    }
+    .lead {
+      margin: 0;
+      max-width: 900px;
+      color: rgba(255,255,255,.94);
+      font-size: 1.04rem;
+    }
+    main {
+      padding: 34px 36px 50px;
+    }
+    .panel {
+      background: #fbfdff;
+      border: 1px solid #dce7f3;
+      border-radius: 22px;
+      padding: 18px;
+      margin-bottom: 32px;
+    }
+    .panel svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #fff;
+      border-radius: 18px;
+    }
+    .caption {
+      color: var(--sub);
+      font-size: .95rem;
+      margin-top: 10px;
+    }
+    h2 {
+      margin: 1.9em 0 .7em;
+      font-size: 1.55rem;
+      color: var(--blue);
+      border-bottom: 3px solid #e8f0fb;
+      padding-bottom: .25em;
+    }
+    h3 {
+      margin: 1.4rem 0 0.5rem;
+      color: #234a71;
+      font-size: 1.2rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px 18px 16px;
+      background: #fff;
+    }
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+      color: #234a71;
+    }
+    .card p, .card li {
+      font-size: .98rem;
+    }
+    .blue { background: var(--softblue); }
+    .green { background: var(--softgreen); }
+    .amber { background: var(--softamber); }
+    .red { background: var(--softred); }
+    .purple { background: var(--softpurple); }
+    ul { padding-left: 1.2em; margin: .4em 0 0; }
+    li { margin: .28em 0; }
+    .summary {
+      margin-top: 22px;
+      background: linear-gradient(180deg,#f7fbff 0%,#f1f7ff 100%);
+      border: 1px solid #d8e7fa;
+      border-radius: 18px;
+      padding: 18px 20px;
+    }
+    .summary strong { color: var(--blue); }
+
+    /* 分子定義集用のスタイル */
+    .term {
+      background: #eef6ff;
+      border-left: 5px solid #4b89dc;
+      padding: 1rem;
+      border-radius: 14px;
+      margin: 1rem 0;
+    }
+    .health {
+      background: #eef9ef;
+      border-left: 5px solid #4cae61;
+      padding: 1rem;
+      border-radius: 14px;
+      margin: 0.8rem 0;
+    }
+    .disease {
+      background: #fff1f1;
+      border-left: 5px solid #d65a5a;
+      padding: 1rem;
+      border-radius: 14px;
+      margin: 0.8rem 0;
+    }
+    .def-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+      background: white;
+    }
+    .def-table th, .def-table td {
+      border: 1px solid #d9ddd7;
+      padding: 0.9rem;
+      vertical-align: top;
+    }
+    .def-table th {
+      background: #e6f1ec;
+      color: #1c4d44;
+    }
+    .small {
+      font-size: 0.95rem;
+      color: #555;
+    }
+    hr {
+      margin: 2rem 0;
+      border: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #cfe0f4, transparent);
+    }
+    footer {
+      margin-top: 28px;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+      font-size: .94rem;
+      color: var(--sub);
+    }
+    @media (max-width: 780px) {
+      .wrap { margin: 0; border-radius: 0; }
+      header { padding: 34px 18px 28px; }
+      main { padding: 22px 16px 34px; }
+      h1 { font-size: 1.7rem; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div style="margin:20px 0; padding:16px; background:#eef6ff; border-radius:12px; border:1px solid #cfe0f4;">
+  👉 全体ストーリーはこちら
+  <br>
+  <a href="book108.html" style="font-weight:bold;">
+    高校生向けブログ（全体統合）
+  </a>
+</div>
+
+<div style="margin:20px 0; padding:16px; background:#fef6e7; border-radius:12px; border:1px solid #f6e3b4;">
+  👉 実験で理解する
+  <br>
+  <a href="book108exp.html" style="font-weight:bold;">
+    実験編（発見の流れ）
+  </a>
+</div>
+<article class="wrap">
+  <header>
+    <div class="eyebrow">小胞体(ER)ストレス応答</div>
+    <h1>ERストレスと関連分子 (BiP・IRE1・XBP1・PERK) </h1>
+    <p class="lead">
+      生活習慣、腸内環境、代謝、炎症などの「入力」が小胞体に負荷をかけ、
+      細胞はUPR（三経路）で適応しようとする。適応に成功すれば健康は保たれ、
+      破綻すれば糖尿病・神経変性疾患・脂肪肝・がんなどの病態へつながる。
+      下段ではUPRの中心分子を詳しく解説する。
+    </p>
+  </header>
+
+  <main>
+    <!-- ========== 統合理論マップ (SVG) ========== -->
+    <section class="panel">
+      <svg viewBox="0 0 1200 1320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ERストレス統合理論マップ">
+        <defs>
+          <linearGradient id="bgGrad" x1="0" x2="0" y1="0" y2="1">
+            <stop offset="0%" stop-color="#f8fbff"/>
+            <stop offset="100%" stop-color="#f4f8fc"/>
+          </linearGradient>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10 Z" fill="#4a6b8f"/>
+          </marker>
+          <marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+            <path d="M0,0 L10,5 L0,10 Z" fill="#c53030"/>
+          </marker>
+          <style>
+            .title { font: 700 28px -apple-system,BlinkMacSystemFont,'Hiragino Sans','Yu Gothic',sans-serif; fill:#173b63; }
+            .st { font: 700 22px -apple-system,BlinkMacSystemFont,'Hiragino Sans','Yu Gothic',sans-serif; fill:#173b63; }
+            .tx { font: 16px -apple-system,BlinkMacSystemFont,'Hiragino Sans','Yu Gothic',sans-serif; fill:#1f2937; }
+            .sm { font: 14px -apple-system,BlinkMacSystemFont,'Hiragino Sans','Yu Gothic',sans-serif; fill:#5b6472; }
+            .center { text-anchor: middle; }
+          </style>
+        </defs>
+        <rect x="0" y="0" width="1200" height="1320" rx="28" fill="url(#bgGrad)"/>
+        <text x="600" y="48" class="title center">生活 → ERストレス → UPR → 健康 / 病気</text>
+        <text x="600" y="78" class="sm center">入力と適応のバランスで、細胞と個体の運命が決まる</text>
+
+        <!-- Input column -->
+        <rect x="40" y="120" width="300" height="330" rx="22" fill="#eef5ff" stroke="#cfe0f4"/>
+        <text x="190" y="160" class="st center">① 入力：ERに負荷をかけるもの</text>
+        <text x="68" y="205" class="tx">・過食、高脂肪食、高血糖</text>
+        <text x="68" y="238" class="tx">・睡眠不足、概日リズムの乱れ</text>
+        <text x="68" y="271" class="tx">・慢性ストレス、交感神経亢進</text>
+        <text x="68" y="304" class="tx">・炎症、感染、酸化ストレス</text>
+        <text x="68" y="337" class="tx">・カルシウム異常、低酸素</text>
+        <text x="68" y="370" class="tx">・腸内細菌叢の乱れ、胆汁酸異常</text>
+        <text x="68" y="403" class="tx">・加齢、変異タンパク質の蓄積</text>
+        <text x="190" y="435" class="sm center">タンパク質の折りたたみ能力を上回ると危機が始まる</text>
+
+        <!-- ER box -->
+        <rect x="390" y="130" width="420" height="240" rx="24" fill="#fff8e8" stroke="#f0d8a8"/>
+        <text x="600" y="170" class="st center">② ERストレス：小胞体の品質管理が逼迫</text>
+        <text x="425" y="215" class="tx">・未折りたたみ / 誤折りたたみタンパク質の増加</text>
+        <text x="425" y="248" class="tx">・BiP / GRP78 が処理に追われる</text>
+        <text x="425" y="281" class="tx">・センサー（IRE1 / PERK / ATF6）が解放される</text>
+        <text x="425" y="314" class="tx">・「修理」「減産」「再設計」が必要になる</text>
+        <text x="600" y="348" class="sm center">ERストレス = 工場の故障ではなく、能力限界に近づいた状態</text>
+
+        <!-- UPR section -->
+        <rect x="360" y="420" width="480" height="430" rx="26" fill="#f5f0ff" stroke="#dfd0ff"/>
+        <text x="600" y="462" class="st center">③ UPR：細胞の緊急適応システム</text>
+
+        <rect x="388" y="495" width="124" height="290" rx="18" fill="#ffffff" stroke="#d9d1f7"/>
+        <text x="450" y="525" class="st center" style="font-size:18px">IRE1</text>
+        <text x="406" y="565" class="tx">・異常感知</text>
+        <text x="406" y="595" class="tx">・XBP1 mRNA</text>
+        <text x="406" y="621" class="tx">  をスプライシング</text>
+        <text x="406" y="655" class="tx">・XBP1s生成</text>
+        <text x="406" y="685" class="tx">・シャペロン増産</text>
+        <text x="406" y="715" class="tx">・ERAD強化</text>
+        <text x="406" y="745" class="tx">・分泌系の再建</text>
+
+        <rect x="538" y="495" width="124" height="290" rx="18" fill="#ffffff" stroke="#d9d1f7"/>
+        <text x="600" y="525" class="st center" style="font-size:18px">PERK</text>
+        <text x="556" y="565" class="tx">・翻訳抑制</text>
+        <text x="556" y="595" class="tx">・eIF2αリン酸化</text>
+        <text x="556" y="625" class="tx">・新規流入を減らす</text>
+        <text x="556" y="655" class="tx">・ATF4誘導</text>
+        <text x="556" y="685" class="tx">・抗酸化 / 代謝調整</text>
+        <text x="556" y="715" class="tx">・長引くとCHOP</text>
+        <text x="556" y="745" class="tx">  → 細胞死へ</text>
+
+        <rect x="688" y="495" width="124" height="290" rx="18" fill="#ffffff" stroke="#d9d1f7"/>
+        <text x="750" y="525" class="st center" style="font-size:18px">ATF6</text>
+        <text x="706" y="565" class="tx">・Golgiへ移動</text>
+        <text x="706" y="595" class="tx">・切断され活性化</text>
+        <text x="706" y="625" class="tx">・核へ入る</text>
+        <text x="706" y="655" class="tx">・シャペロン遺伝子</text>
+        <text x="706" y="685" class="tx">  を誘導</text>
+        <text x="706" y="715" class="tx">・折りたたみ能</text>
+        <text x="706" y="745" class="tx">  を底上げ</text>
+
+        <text x="600" y="820" class="sm center">UPRの本質：修理能力を増やし、流入を抑え、工場そのものを再編成する</text>
+
+        <!-- Health side -->
+        <rect x="60" y="520" width="240" height="250" rx="22" fill="#eefaf2" stroke="#cfe8d8"/>
+        <text x="180" y="560" class="st center">④ 適応に成功すると</text>
+        <text x="88" y="605" class="tx">・タンパク質恒常性が回復</text>
+        <text x="88" y="638" class="tx">・炎症が抑えられる</text>
+        <text x="88" y="671" class="tx">・代謝が安定する</text>
+        <text x="88" y="704" class="tx">・分泌機能が保たれる</text>
+        <text x="88" y="737" class="tx">・細胞は生き延びる</text>
+
+        <rect x="40" y="830" width="300" height="330" rx="22" fill="#eefaf2" stroke="#cfe8d8"/>
+        <text x="190" y="870" class="st center">⑤ 健康を支える生活</text>
+        <text x="68" y="915" class="tx">・適度な運動</text>
+        <text x="68" y="948" class="tx">・十分な睡眠</text>
+        <text x="68" y="981" class="tx">・入浴 / 体温リズムの調整</text>
+        <text x="68" y="1014" class="tx">・過食を避ける</text>
+        <text x="68" y="1047" class="tx">・腸内環境を整える</text>
+        <text x="68" y="1080" class="tx">・慢性炎症を減らす</text>
+        <text x="190" y="1120" class="sm center">軽い刺激はホルミシスとしてUPRを鍛える</text>
+
+        <!-- Disease side -->
+        <rect x="900" y="520" width="240" height="250" rx="22" fill="#fff3f3" stroke="#f0caca"/>
+        <text x="1020" y="560" class="st center">⑥ 適応に失敗すると</text>
+        <text x="928" y="605" class="tx">・慢性炎症が続く</text>
+        <text x="928" y="638" class="tx">・分泌不全が起こる</text>
+        <text x="928" y="671" class="tx">・代謝制御が崩れる</text>
+        <text x="928" y="704" class="tx">・アポトーシスへ傾く</text>
+        <text x="928" y="737" class="tx">・組織機能が低下する</text>
+
+        <rect x="860" y="830" width="300" height="370" rx="22" fill="#fff3f3" stroke="#f0caca"/>
+        <text x="1010" y="870" class="st center">⑦ 代表的な病態</text>
+        <text x="888" y="915" class="tx">・糖尿病（β細胞の疲弊）</text>
+        <text x="888" y="948" class="tx">・脂肪肝 / NASH</text>
+        <text x="888" y="981" class="tx">・神経変性疾患</text>
+        <text x="888" y="1014" class="tx">　（アルツハイマー、パーキンソンなど）</text>
+        <text x="888" y="1047" class="tx">・動脈硬化 / 心血管障害</text>
+        <text x="888" y="1080" class="tx">・炎症性腸疾患</text>
+        <text x="888" y="1113" class="tx">・がん</text>
+        <text x="888" y="1146" class="tx">　（UPRを利用して生き延びる場合もある）</text>
+
+        <!-- bottom key concept -->
+        <rect x="330" y="960" width="500" height="180" rx="24" fill="#eef5ff" stroke="#cfdef2"/>
+        <text x="580" y="1000" class="st center">⑧ この理論の核心</text>
+        <text x="360" y="1042" class="tx">健康 = ERストレスがゼロの状態ではない</text>
+        <text x="360" y="1076" class="tx">健康 = ストレスに対してUPRで回復できる状態</text>
+        <text x="360" y="1110" class="tx">病気 = 負荷が長期化し、適応が追いつかなくなった状態</text>
+
+        <!-- arrows -->
+        <path d="M340 285 L390 250" stroke="#4a6b8f" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+        <path d="M600 370 L600 420" stroke="#4a6b8f" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+        <path d="M360 620 L300 620" stroke="#4a6b8f" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+        <path d="M840 620 L900 620" stroke="#c53030" stroke-width="4" fill="none" marker-end="url(#arrowRed)"/>
+        <path d="M180 770 L190 830" stroke="#4a6b8f" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+        <path d="M1020 770 L1010 830" stroke="#c53030" stroke-width="4" fill="none" marker-end="url(#arrowRed)"/>
+        <path d="M600 850 L580 960" stroke="#4a6b8f" stroke-width="4" fill="none" marker-end="url(#arrow)"/>
+      </svg>
+      <div class="caption">ERストレスは「悪いもの」そのものではなく、細胞が負荷を受けたときに生じる警報である。問題は、その警報に対して回復できるか、慢性化して破綻するかである。</div>
+    </section>
+
+    <h2>この図の読み方</h2>
+    <div class="grid">
+      <section class="card blue"><h3>①入力</h3><p>生活習慣や炎症、代謝異常、加齢などが、小胞体に対する負荷として流れ込む。ここが悪化すると、細胞内のタンパク質工場は過負荷になる。</p></section>
+      <section class="card amber"><h3>②ERストレス</h3><p>誤ったタンパク質が増え、BiP/GRP78が忙しくなり、センサー分子が起動する。ここが危機の検知点である。</p></section>
+      <section class="card purple"><h3>③UPR三経路</h3><p>IRE1、PERK、ATF6がそれぞれ別の方法で工場を立て直す。つまり、UPRは単一の反応ではなく、役割分担された統合システムである。</p></section>
+      <section class="card green"><h3>④健康側</h3><p>適応が成功すると、炎症や代謝異常は抑えられ、分泌機能や組織の安定が守られる。運動・睡眠・入浴などはこの回復力を支える。</p></section>
+      <section class="card red"><h3>⑤病気側</h3><p>負荷が長引くと、UPRは防御から傷害へ傾き、細胞死や慢性炎症につながる。すると糖尿病、認知症、脂肪肝、がんなどが見えてくる。</p></section>
+      <section class="card blue"><h3>⑥健康</h3><p>健康とはストレスがないことではなく、ストレスを処理して元に戻れることである。ここがERストレス統合理論のいちばん重要な点である。</p></section>
+    </div>
+
+    <div class="summary">
+      <strong>要するに：</strong>
+      人体は、つねに小さなERストレスを受けながら生きている。だから大事なのは「ゼロ負荷」を目指すことではなく、
+      <strong>負荷を受けても回復できる細胞環境を保つこと</strong>である。生活習慣、腸内環境、炎症制御、代謝調整は、すべてこの回復力の設計に関わっている。
+    </div>
+
+    <hr>
+
+    <!-- ========== 分子定義集 (book108-1.html の内容) ========== -->
+    <h2>「BiP・IRE1・XBP1・XBP1s・PERK・GRP78」と、「健康」と「病気」</h2>
+    <p>
+      細胞の中には、タンパク質を折りたたみ、仕上げる「小胞体（しょうほうたい）」という場所があります。
+      ここで不良品タンパク質が増えると、細胞は<strong>小胞体ストレス</strong>という危機に陥ります。
+      そのとき働くのが<strong>UPR（小胞体ストレス応答）</strong>です。
+    </p>
+
+    <div style="background: #f3f8f6; border: 1px solid #d6e7e1; border-radius: 18px; padding: 1rem 1.2rem; margin: 1rem 0;">
+      <p><strong>大まかな役割イメージ</strong></p>
+      <p>BiP / GRP78 ＝ 修理屋・見張り役<br>IRE1 ＝ センサー<br>XBP1 ＝ 司令官の材料<br>XBP1s ＝ 活性化された司令官<br>PERK ＝ 生産ラインを一時停止させるブレーキ</p>
+    </div>
+
+    <h3>1. 略語と正式名称</h3>
+    <table class="def-table">
+      <thead><tr><th>略語</th><th>正式名称</th><th>ひとことで言うと</th></tr></thead>
+      <tbody>
+        <tr><td>BiP</td><td>Binding Immunoglobulin Protein</td><td>小胞体内で働く代表的なシャペロン（修理屋）</td></tr>
+        <tr><td>GRP78</td><td>Glucose-Regulated Protein 78</td><td>BiPの別名。基本的に同じタンパク質</td></tr>
+        <tr><td>IRE1</td><td>Inositol-Requiring Enzyme 1</td><td>小胞体ストレスを感知するセンサー</td></tr>
+        <tr><td>XBP1</td><td>X-box Binding Protein 1</td><td>司令官XBP1sの元になるmRNA / タンパク質名</td></tr>
+        <tr><td>XBP1s</td><td>spliced X-box Binding Protein 1</td><td>IRE1によるスプライシング後にできる活性型司令官</td></tr>
+        <tr><td>PERK</td><td>PKR-like ER Kinase</td><td>タンパク質合成を抑えるブレーキ役</td></tr>
+      </tbody>
+    </table>
+
+    <h3>2. それぞれの役割</h3>
+    <div class="term"><h3>BiP / GRP78</h3><p>BiP（GRP78）は、小胞体の中で新しく作られたタンパク質が正しく折りたたまれるのを助ける<strong>シャペロン</strong>です。いわば「修理屋」「品質管理係」です。さらにBiPは、普段はIRE1やPERKなどのセンサーに結びついて、それらを静かに保つ役目もあります。不良品タンパク質が増えると、BiPはそちらの対応に回り、センサーが自由になってUPRが始まります。</p></div>
+    <div class="term"><h3>IRE1</h3><p>IRE1は、小胞体ストレスを感じる代表的なセンサーです。ストレスが起こると活性化し、RNAを切る働きを使ってXBP1 mRNAを特別に加工します。</p></div>
+    <div class="term"><h3>XBP1</h3><p>XBP1は、そのままでは強い司令官としては働きません。しかしIRE1によってmRNAが特別に切られてつなぎ直されると、活性型の<strong>XBP1s</strong>になります。</p></div>
+    <div class="term"><h3>XBP1s</h3><p>XBP1sは、核に入って多くの遺伝子のスイッチを入れる<strong>司令官</strong>です。BiPなどのシャペロン、タンパク質分解系、脂質合成、小胞体の拡張に関わる遺伝子を動かし、細胞を立て直そうとします。</p></div>
+    <div class="term"><h3>PERK</h3><p>PERKは、小胞体ストレス時にタンパク質合成を一時的に抑える役目です。これは、工場が混乱しているときに新しい製品をどんどん流し込まないための<strong>緊急ブレーキ</strong>です。</p></div>
+
+    <h3>3. 健康の視点でみるとどう働くか</h3>
+    <div class="health"><h3>BiP / GRP78：健康維持の土台</h3><p>健康な細胞では、BiPがタンパク質の品質を保ち、必要以上のストレス反応が起こらないように調整しています。つまり、BiPは「平常運転を支える分子」です。</p></div>
+    <div class="health"><h3>IRE1-XBP1s経路：修復と立て直し</h3><p>軽いストレスが起きたとき、IRE1がXBP1をXBP1sへ変え、修理体制を強化します。その結果、小胞体の処理能力が上がり、細胞は元の健康な状態へ戻りやすくなります。</p></div>
+    <div class="health"><h3>PERK：守るための一時停止</h3><p>PERKは、タンパク質を作る量を一時的に減らして、小胞体の負担を軽くします。これは壊すためではなく、むしろ<strong>細胞を守るための防御反応</strong>です。</p></div>
+    <div style="background: #f3f8f6; border-radius: 18px; padding: 1rem; margin: 1rem 0;"><p><strong>健康なときの流れ</strong><br>軽いストレスが起こる → BiPが異常タンパク質の対応に回る → IRE1やPERKが働く → XBP1sが修理遺伝子を動かし、PERKが負担を減らす → 細胞が回復する</p></div>
+
+    <h3>4. 病気の視点でみるとどうなるか</h3>
+    <div class="disease"><h3>BiP / GRP78：足りなくても、増えすぎても問題</h3><p>BiPが十分に働けないと、不良品タンパク質がたまりやすくなり、細胞が壊れやすくなります。一方で、がん細胞ではBiP / GRP78が高くなり、強いストレス環境でも生き延びる助けになることがあります。</p></div>
+    <div class="disease"><h3>IRE1-XBP1s経路：守りにもなるが、病気を助けることもある</h3><p>慢性的に活性化すると、がん細胞が厳しい環境を生き抜く助けになったり、炎症性腸疾患などで異常な反応に関わったりします。逆に、この経路が弱すぎると、分泌の多い細胞や腸上皮細胞、免疫細胞などがうまく働けず、組織の破綻につながることがあります。</p></div>
+    <div class="disease"><h3>XBP1 / XBP1s：病気との結びつきが強い司令官</h3><p>腸では炎症の制御に関わり、膵臓では分泌細胞の維持に重要です。そのため異常があると、炎症や糖代謝異常に関わることがあります。</p></div>
+    <div class="disease"><h3>PERK：短期的には保護、長期的には障害</h3><p>強く長く働きすぎると、細胞の合成活動が落ちすぎてしまいます。その結果、神経細胞や膵β細胞などが弱り、神経変性疾患や糖尿病との関係が問題になります。</p></div>
+
+    <h3>5. 健康と病気をわけるポイント</h3>
+    <table class="def-table">
+      <thead><tr><th>分子</th><th>健康に働くとき</th><th>病気に関わるとき</th></tr></thead>
+      <tbody>
+        <tr><td>BiP / GRP78</td><td>タンパク質を修理し、品質管理を保つ</td><td>不足すると不良品蓄積、過剰だとがん細胞を助ける場合がある</td></tr>
+        <tr><td>IRE1</td><td>異常を感知して回復経路を動かす</td><td>慢性活性化で炎症やがん適応に関わることがある</td></tr>
+        <tr><td>XBP1</td><td>XBP1sの材料として働く</td><td>加工不全で修復応答が弱くなる</td></tr>
+        <tr><td>XBP1s</td><td>修理遺伝子を動かして小胞体を立て直す</td><td>不足で細胞機能低下、過剰または持続活性で病的適応に関与することがある</td></tr>
+        <tr><td>PERK</td><td>合成を一時停止し、細胞を守る</td><td>長期活性化で細胞機能低下や細胞死につながる</td></tr>
+      </tbody>
+    </table>
+
+    <div style="background: #fff8dd; border: 1px solid #eadb95; border-radius: 18px; padding: 1.2rem; margin-top: 2rem;">
+      <p>BiP / GRP78、IRE1、XBP1、XBP1s、PERKは、すべて<strong>「小胞体ストレスから細胞を守る仕組み」</strong>の中心です。ただし重要なのは、これらが<strong>常に善でも悪でもない</strong>ことです。適度に働けば健康を守りますが、弱すぎても、強すぎても、長すぎても病気に結びつきます。</p>
+      <p>つまり、<strong>健康とはUPRがちょうどよく働いている状態</strong>であり、<strong>病気とはそのバランスが崩れた状態</strong>だと見ることができます。</p>
+    </div>
+    <p class="small">注：BiPとGRP78は通常同じ分子を指し、文脈によって呼び方が異なります。</p>
+<div style="margin:20px 0; padding:16px; background:#eef6ff; border-radius:12px; border:1px solid #cfe0f4;">
+  👉 全体ストーリーはこちら
+  <br>
+  <a href="book108.html" style="font-weight:bold;">
+    高校生向けブログ（全体統合）
+  </a>
+</div>
+
+<div style="margin:20px 0; padding:16px; background:#fef6e7; border-radius:12px; border:1px solid #f6e3b4;">
+  👉 実験で理解する
+  <br>
+  <a href="book108exp.html" style="font-weight:bold;">
+    実験編（発見の流れ）
+  </a>
+</div>
+
+    <footer>
+      このHTMLは、ERストレス・UPR・健康と病気の関係を1枚で把握するための統合理論マップと、主要分子の詳細解説を統合したものです。
+    </footer>
+  </main>
+</article>
+</body>
+</html>

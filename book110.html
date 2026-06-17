@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>テラスチーム法による土壌浄化</title>
+<style>
+  :root{
+    --bg:#f6f8fb;
+    --paper:#ffffff;
+    --ink:#1d2733;
+    --muted:#5f6b7a;
+    --accent:#1769aa;
+    --accent2:#159570;
+    --line:#d8e0ea;
+    --soft:#eef5fb;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.95;
+    letter-spacing:.02em;
+  }
+  .container{
+    width:min(980px, 92vw);
+    margin:40px auto;
+    background:var(--paper);
+    border:1px solid var(--line);
+    box-shadow:0 10px 35px rgba(0,0,0,.06);
+    border-radius:18px;
+    overflow:hidden;
+  }
+  header{
+    background:linear-gradient(135deg, #0d3b66 0%, #1769aa 55%, #3aa6d0 100%);
+    color:#fff;
+    padding:54px 56px 42px;
+  }
+  header h1{
+    margin:0 0 16px;
+    font-size:2.2rem;
+    line-height:1.35;
+    letter-spacing:.04em;
+  }
+  header .lead{
+    max-width:860px;
+    color:rgba(255,255,255,.94);
+    font-size:1.02rem;
+  }
+  main{padding:42px 56px 60px;}
+  h2{
+    margin:54px 0 20px;
+    font-size:1.55rem;
+    line-height:1.45;
+    color:#103a5d;
+    border-left:8px solid var(--accent);
+    padding-left:14px;
+  }
+  h3{
+    margin:28px 0 12px;
+    font-size:1.1rem;
+    color:#134c7a;
+  }
+  p{margin:12px 0;}
+  .toc{
+    background:var(--soft);
+    border:1px solid #cfe0f0;
+    border-radius:16px;
+    padding:26px 28px;
+    margin:8px 0 34px;
+  }
+  .toc h2{
+    margin:0 0 10px;
+    border:none;
+    padding:0;
+    font-size:1.3rem;
+  }
+  .toc ol{margin:8px 0 0 1.2em; padding:0;}
+  .toc li{margin:8px 0;}
+  .point{
+    background:#f9fbfd;
+    border:1px solid var(--line);
+    border-left:6px solid var(--accent2);
+    padding:18px 20px;
+    border-radius:12px;
+    margin:18px 0;
+  }
+  figure{
+    margin:28px auto 26px;
+    padding:18px;
+    background:#fbfdff;
+    border:1px solid var(--line);
+    border-radius:16px;
+  }
+  figcaption{
+    margin-top:10px;
+    color:var(--muted);
+    font-size:.95rem;
+    text-align:center;
+  }
+  .compare{
+    width:100%;
+    border-collapse:collapse;
+    margin:18px 0 10px;
+    font-size:.96rem;
+  }
+  .compare th, .compare td{
+    border:1px solid var(--line);
+    padding:12px 10px;
+    vertical-align:top;
+  }
+  .compare th{
+    background:#eef5fb;
+    color:#0f4067;
+  }
+  .footer-note{
+    margin-top:38px;
+    padding-top:18px;
+    border-top:1px dashed #c7d3df;
+    color:var(--muted);
+    font-size:.92rem;
+  }
+  svg{width:100%; height:auto; display:block;}
+  .small{font-size:.92rem;color:var(--muted);}
+  .em{color:#0e5f96;font-weight:700}
+  @media (max-width: 720px){
+    header, main{padding:28px 22px;}
+    header h1{font-size:1.72rem;}
+    h2{font-size:1.32rem;}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<h1>テラスチーム法による土壌浄化</h1>
+<div class="lead">
+        土壌汚染は、目に見えにくいのに、都市の再開発、地下水の安全、そして未来の土地利用を左右する重要問題です。
+        本稿では、土壌汚染の基本から主要な浄化技術、そしてテラスチーム法の核心である
+        「加熱・水蒸気・相変化による分離」の考え方までを、できるだけ筋道立てて説明します。
+        単なる技術紹介ではなく、なぜこの方法が必要になるのか、どこまで万能でどこに限界があるのか、
+        さらに都市再開発やSDGsとどう結びつくのかまで見通せる構成にしました。
+      </div>
+</header>
+<main>
+<section class="toc">
+<h2>目次</h2>
+<ol>
+  <li><a href="#sec1">土壌汚染とは何か</a></li>
+  <li><a href="#sec2">土壌浄化技術の全体像</a></li>
+  <li><a href="#sec3">テラスチーム法の原理 ― 相変化による分離</a></li>
+  <li><a href="#sec4">プロセス全体の構造</a></li>
+  <li><a href="#sec5">他技術との比較と使い分け</a></li>
+  <li><a href="#sec6">まとめ</a></li>
+</ol>
+</section>
+<h2 id="sec1">１．土壌汚染とは何か</h2>
+<p>
+        「汚染」と聞くと、多くの人はまず川や空気を思い浮かべるかもしれません。ところが実際には、土壌もまた
+        きわめて重要な環境媒体です。土壌はただの「地面」ではありません。植物を育て、雨水を通し、地下水とつながり、
+        さらに人間が家を建て、学校を造り、道路や工場を置く基盤でもあります。だからこそ、土壌が汚染されると、
+        その影響は土だけにとどまりません。地下水、建物の室内空気、周辺の生態系、さらには土地の価値や使い道にまで
+        波及していきます。
+      </p>
+<h3>都市再開発と汚染の顕在化</h3>
+<p>
+        現代の日本で土壌汚染がしばしば話題になるのは、新しい大規模汚染が増えたからというより、
+        <span class="em">昔の汚染が再開発によって「見える化」される</span>からです。
+        高度経済成長期には工場、倉庫、ガソリン関連施設、化学工場、金属加工場などが各地に建てられ、
+        その過程で重金属や有機溶剤、油などが地中に残った場所が少なくありませんでした。
+        当時は現在ほど厳密な規制や調査体制が整っていなかったため、長い時間をかけて地中に蓄積した汚染が、
+        工場跡地をマンション、商業施設、病院、学校用地へ転用する段階で初めて問題として表面化するのです。
+      </p>
+<p>
+        つまり、土壌汚染は「終わった公害」の話ではありません。むしろ、都市が成熟し、古い土地を再利用しようとする
+        社会ほど直面しやすい課題です。土地取引や再開発の前に調査が行われると、見えなかった負の遺産が見つかります。
+        ここに現代の土壌浄化の需要があります。
+      </p>
+<figure>
+<svg aria-label="土壌汚染の広がりの模式図" role="img" viewbox="0 0 900 420">
+<rect fill="#f8fbff" height="420" width="900" x="0" y="0"></rect>
+<rect fill="#dff1ff" height="120" width="900" x="0" y="0"></rect>
+<rect fill="#d7b27a" height="120" width="900" x="0" y="120"></rect>
+<rect fill="#b98a58" height="120" width="900" x="0" y="240"></rect>
+<rect fill="#7a5b42" height="60" width="900" x="0" y="360"></rect>
+<rect fill="#ccd6df" height="120" rx="8" stroke="#7b8794" width="200" x="90" y="60"></rect>
+<rect fill="#b0bec5" height="100" rx="8" stroke="#7b8794" width="120" x="350" y="80"></rect>
+<rect fill="#cfd8dc" height="110" rx="8" stroke="#7b8794" width="180" x="550" y="70"></rect>
+<line stroke="#6d4c41" stroke-width="8" x1="190" x2="190" y1="180" y2="360"></line>
+<path d="M190 190 C240 230, 290 230, 320 260 C360 300, 430 280, 470 310 C520 350, 610 330, 660 350" fill="none" stroke="#cc2f7a" stroke-linecap="round" stroke-width="18"></path>
+<path d="M190 205 C140 240, 110 280, 105 340" fill="none" stroke="#cc2f7a" stroke-linecap="round" stroke-width="14"></path>
+<line stroke="#3a7bbf" stroke-dasharray="10 10" stroke-width="4" x1="0" x2="900" y1="250" y2="250"></line>
+<text fill="#245b90" font-size="22" x="25" y="245">地下水面</text>
+<text fill="#263238" font-size="26" x="120" y="85">旧工場</text>
+<text fill="#263238" font-size="24" x="566" y="105">住宅・再開発</text>
+<text fill="#263238" font-size="22" x="365" y="135">倉庫</text>
+<text fill="#8e114e" font-size="24" x="500" y="290">汚染プルーム</text>
+<text fill="#245b90" font-size="22" x="620" y="230">地下水へ移行</text>
+<text fill="#fff" font-size="22" x="78" y="390">不透水層</text>
+<text fill="#355c7d" font-size="20" x="680" y="32">地表</text>
+</svg>
+<figcaption>図1　工場跡地で生じた汚染が、土壌中にとどまりつつ地下水や周辺へ影響するイメージ</figcaption>
+</figure>
+<h3>汚染物質の種類（重金属・有機物）</h3>
+<p>
+        土壌を汚染する物質は大きく分けると、<span class="em">重金属類</span>と
+        <span class="em">有機汚染物質</span>の二つに整理しやすくなります。
+        重金属類には鉛、ヒ素、六価クロム、水銀などが含まれます。これらは分解されにくく、
+        土に吸着したり、条件によっては地下水へ溶け出したりします。一方、有機汚染物質には
+        ベンゼン、トルエン、キシレンなどのBTX、トリクロロエチレンのような塩素系溶剤、
+        多環芳香族炭化水素（PAH）、PCB、農薬などがあります。こちらは「揮発しやすいか」「水に溶けやすいか」
+        「熱で分解・脱離しやすいか」といった性質が物質ごとにかなり異なります。
+      </p>
+<p>
+        この違いは浄化技術の選び方に直結します。たとえば、ある物質は熱をかければ気体になって取り出しやすいのに、
+        別の物質はほとんど揮発せず、化学的に形を変えるか、洗い出すか、封じ込めるしかないことがあります。
+        つまり、土壌浄化は「土をきれいにする魔法」ではなく、<span class="em">物質ごとのふるまいを読む科学</span>なのです。
+      </p>
+<h3>なぜ自然浄化が難しいのか</h3>
+<p>
+        「時間がたてば自然に薄まるのでは」と考えたくなりますが、土壌汚染ではそれが簡単には起こりません。
+        理由は三つあります。第一に、土壌は空気や川ほど自由に混ざらないため、汚染物質がその場にとどまりやすいこと。
+        第二に、重金属は微生物によって分解されるわけではないため、基本的には存在し続けること。
+        第三に、揮発性の有機物でも、土粒子への吸着、地下水中での溶解、細かな間隙への閉じ込めによって、
+        思ったほどすばやく外へ出てこないことです。
+      </p>
+<p>
+        しかも土壌は不均一です。砂質土、粘土、礫混じり土、含水率の高い場所と乾いた場所が混在し、
+        ガスや水の通りやすさが場所ごとに違います。そのため、自然任せでは「止まったままの汚染」が残りやすく、
+        人為的に熱・流れ・反応を与えて動かす必要が出てきます。
+      </p>
+<div class="point">
+        土壌汚染の本質は、<strong>「見えない地下の中に、分解しにくい物質が長くとどまり、土地利用と健康リスクを縛ること」</strong>にあります。
+      </div>
+<h2 id="sec2">２．土壌浄化技術の全体像</h2>
+<p>
+        土壌浄化技術は数多くありますが、高校生の段階では
+        <span class="em">分解するか、移動させるか、分離するか</span>
+        という三つの見方で整理すると理解しやすくなります。バイオ法は分解、土壌洗浄は移動、
+        化学処理は変換、テラスチーム法は相変化を利用した分離、という位置づけです。
+        どの技術も「土壌をきれいにする」という目的は同じでも、物理・化学の考え方はかなり違います。
+      </p>
+<figure>
+<svg role="img" viewbox="0 0 900 520">
+<rect fill="#f9fcff" height="520" width="900"></rect>
+<rect fill="#fff6da" height="360" rx="20" stroke="#e0c85c" stroke-width="3" width="180" x="40" y="80"></rect>
+<rect fill="#eaf8e9" height="360" rx="20" stroke="#78b97d" stroke-width="3" width="180" x="240" y="80"></rect>
+<rect fill="#e9f5ff" height="360" rx="20" stroke="#69a9d7" stroke-width="3" width="180" x="440" y="80"></rect>
+<rect fill="#fff0ef" height="360" rx="20" stroke="#d88b7b" stroke-width="3" width="180" x="640" y="80"></rect>
+<text font-size="26" font-weight="700" text-anchor="middle" x="130" y="120">テラスチーム法</text>
+<text font-size="26" font-weight="700" text-anchor="middle" x="330" y="120">バイオ法</text>
+<text font-size="26" font-weight="700" text-anchor="middle" x="530" y="120">土壌洗浄</text>
+<text font-size="26" font-weight="700" text-anchor="middle" x="730" y="120">化学処理</text>
+<text font-size="18" text-anchor="middle" x="130" y="160">🔥 分離</text>
+<text font-size="18" text-anchor="middle" x="330" y="160">🌱 分解</text>
+<text font-size="18" text-anchor="middle" x="530" y="160">💧 移動</text>
+<text font-size="18" text-anchor="middle" x="730" y="160">⚗️ 変換</text>
+<text font-size="18" x="60" y="210">原理：加熱＋蒸気</text>
+<text font-size="18" x="60" y="245">得意：油・VOC</text>
+<text font-size="18" x="60" y="280">弱点：高温コスト</text>
+<text font-size="18" x="260" y="210">原理：微生物分解</text>
+<text font-size="18" x="260" y="245">得意：軽い有機物</text>
+<text font-size="18" x="260" y="280">弱点：遅い</text>
+<text font-size="18" x="460" y="210">原理：水で洗う</text>
+<text font-size="18" x="460" y="245">得意：重金属</text>
+<text font-size="18" x="460" y="280">弱点：汚水処理</text>
+<text font-size="18" x="660" y="210">原理：薬剤反応</text>
+<text font-size="18" x="660" y="245">得意：広範囲</text>
+<text font-size="18" x="660" y="280">弱点：副反応</text>
+<rect fill="#fff3c4" height="90" rx="12" width="150" x="55" y="310"></rect>
+<rect fill="#dff5df" height="90" rx="12" width="150" x="255" y="310"></rect>
+<rect fill="#dff0ff" height="90" rx="12" width="150" x="455" y="310"></rect>
+<rect fill="#ffe3df" height="90" rx="12" width="150" x="655" y="310"></rect>
+<text font-size="17" font-weight="700" text-anchor="middle" x="130" y="345">相変化で分離</text>
+<text font-size="17" font-weight="700" text-anchor="middle" x="330" y="345">生物で分解</text>
+<text font-size="17" font-weight="700" text-anchor="middle" x="530" y="345">別相へ移動</text>
+<text font-size="17" font-weight="700" text-anchor="middle" x="730" y="345">性質を変換</text>
+<text font-size="20" text-anchor="middle" x="130" y="460">分離</text>
+<text font-size="20" text-anchor="middle" x="330" y="460">分解</text>
+<text font-size="20" text-anchor="middle" x="530" y="460">移動</text>
+<text font-size="20" text-anchor="middle" x="730" y="460">変換</text>
+</svg>
+<figcaption>図2　主要な土壌浄化技術を「本質」で整理すると違いが見えやすい</figcaption>
+</figure>
+<h3>バイオ法（分解）</h3>
+<p>
+        バイオ法は、微生物の力を利用して有機汚染物質を分解する方法です。土壌中にすでにいる微生物を活性化したり、
+        必要に応じて栄養源や酸素を供給したりして、汚染物質を少しずつ分解させます。自然の力を利用するので環境負荷が比較的低く、
+        エネルギー消費も小さくできる場合があります。油汚染や比較的分解しやすい有機物には有効です。
+      </p>
+<p>
+        ただし、微生物は万能ではありません。温度、酸素、栄養塩、水分、pHなどの条件に強く左右され、
+        冬季や乾燥条件では進みにくくなります。また、重金属のように「分解する」という発想自体が当てはまらない汚染には向きません。
+        時間がかかることも大きな特徴です。急いで土地を再利用したい再開発案件では、バイオ法だけでは間に合わない場合があります。
+      </p>
+<h3>土壌洗浄（移動）</h3>
+<p>
+        土壌洗浄は、土を水や薬剤で洗い、汚染物質を土から水側へ移し替える方法です。重金属や粒子に強く結びついた汚染に対して用いられ、
+        粒径ごとにふるい分けたり、比重差を利用したりしながら処理されることもあります。浄化された粗い砂分は再利用しやすく、
+        汚染の集中した細粒分を重点的に処理できる点が利点です。
+      </p>
+<p>
+        しかし、これは「汚れが消える」というより、<span class="em">汚れのある場所を土から水へ移す</span>操作です。
+        そのため、最終的には汚水処理が必須になります。洗浄液の管理が不十分だと二次汚染の原因にもなりえます。
+      </p>
+<h3>化学処理（変換）</h3>
+<p>
+        化学処理は、薬剤を加えて汚染物質の性質を変える方法です。たとえば六価クロムを三価クロムへ還元したり、
+        水銀を安定な形へ変えて溶け出しにくくしたりします。うまくいけば即効性が高く、対象物質を短時間で危険な状態から遠ざけられます。
+      </p>
+<p>
+        ただし、反応はいつも理想どおりに進むとは限りません。副生成物、反応の不均一、長期安定性などを慎重に考える必要があります。
+        つまり、化学処理は強力ですが、設計と管理が難しい方法でもあります。
+      </p>
+<h3>テラスチーム法（分離）</h3>
+<p>
+        テラスチーム法は、土壌を加熱し、過熱水蒸気を用いて汚染物質を揮発・脱離させ、気体として取り出して回収する方法です。
+        この方法の魅力は、「壊す」のでも「洗い流す」のでもなく、
+        <span class="em">汚染物質だけを相変化によって土から分けて外へ出す</span>点にあります。
+        そのため、物理の見通しが比較的はっきりしており、対象物質に応じて温度、滞留時間、ガス流量、圧力条件を設計できるのが強みです。
+      </p>
+<h2 id="sec3">３．テラスチーム法の原理 ― 相変化による分離</h2>
+<p>
+        テラスチーム法の本質を一言で言えば、<span class="em">「土の中に閉じ込められている汚染物質を、熱と水蒸気で気相へ追い出す技術」</span>です。
+        高校物理や化学で学ぶ「沸騰」「蒸発」「凝縮」「吸着」といった現象が、そのまま実際の環境工学に使われています。
+      </p>
+<h3>加熱＋過熱水蒸気</h3>
+<p>
+        汚染土壌を温めると、揮発しやすい有機物は土粒子から離れやすくなります。さらに過熱水蒸気を供給すると、
+        単なる熱風よりも効率よく熱を伝えられます。水蒸気は潜熱を持っており、土壌粒子のすき間まで入り込みやすく、
+        汚染物質の周囲の温度をすばやく上げられます。加熱によって粘度が下がり、吸着力も弱まり、汚染物質は土粒子の表面から離脱しやすくなります。
+      </p>
+<p>
+        ここで重要なのは、テラスチーム法が「土全体を燃やす技術」ではないことです。目的は土そのものではなく、
+        土に付着・含有している汚染物質を気化・脱離させることにあります。だからこそ、対象物質によって適切な温度帯が変わります。
+      </p>
+<h3>汚染物質の揮発・脱離</h3>
+<p>
+        土壌中の有機汚染物質は、土粒子表面に吸着していたり、細孔の中に液体として残っていたり、地下水中に溶けていたりします。
+        これらを外へ出すには、「そこにある状態のままでは出てこない」ものを動かす必要があります。
+        加熱はその第一歩です。温度が上がれば蒸気圧が上がり、汚染物質は気体になりやすくなります。
+        また、圧力を低くすると沸点が下がるため、より低い温度でも気相へ移りやすくなります。
+      </p>
+<p>
+        つまり、テラスチーム法や関連する真空・吸引系技術の核心は、
+        <span class="em">圧力差と濃度差を利用して「止まっていたものを動かす」こと</span>です。
+        地下で気体の流れを作れば、揮発した汚染物質はその流れに乗って外へ移動します。自然拡散だけに任せるより、
+        はるかに速く、はるかに制御しやすくなるわけです。
+      </p>
+<figure>
+<svg aria-label="テラスチーム法の原理図" role="img" viewbox="0 0 900 420">
+<rect fill="#f8fbff" height="420" width="900"></rect>
+<rect fill="#dcefff" height="130" width="900" x="0" y="0"></rect>
+<rect fill="#cfa36b" height="290" width="900" x="0" y="130"></rect>
+<rect fill="#e7ecef" height="270" rx="10" stroke="#7d8b96" stroke-width="3" width="85" x="115" y="95"></rect>
+<rect fill="#e7ecef" height="270" rx="10" stroke="#7d8b96" stroke-width="3" width="85" x="700" y="95"></rect>
+<rect fill="#ffefe8" height="62" rx="12" stroke="#d6856b" stroke-width="3" width="250" x="325" y="32"></rect>
+<text fill="#8d432f" font-size="28" text-anchor="middle" x="450" y="71">加熱・過熱水蒸気供給</text>
+<path d="M210 200 C300 200, 360 200, 450 200" fill="none" stroke="#47a0d8" stroke-dasharray="16 10" stroke-width="10"></path>
+<path d="M450 200 C540 200, 600 200, 690 200" fill="none" stroke="#cc2f7a" stroke-dasharray="16 10" stroke-width="10"></path>
+<path d="M210 250 C300 250, 360 250, 450 250" fill="none" stroke="#47a0d8" stroke-dasharray="16 10" stroke-width="10"></path>
+<path d="M450 250 C540 250, 600 250, 690 250" fill="none" stroke="#cc2f7a" stroke-dasharray="16 10" stroke-width="10"></path>
+<circle cx="455" cy="225" fill="#f4d0a8" r="55" stroke="#aa6b2f" stroke-width="4"></circle>
+<text fill="#744314" font-size="22" text-anchor="middle" x="455" y="218">汚染土壌</text>
+<text fill="#744314" font-size="20" text-anchor="middle" x="455" y="245">加熱で脱離</text>
+<text fill="#44525c" font-size="22" x="120" y="385">蒸気注入側</text>
+<text fill="#44525c" font-size="22" x="695" y="385">吸引・回収側</text>
+<text fill="#2c79ad" font-size="20" x="238" y="182">熱と蒸気が入る</text>
+<text fill="#9f1e5d" font-size="20" x="538" y="182">気化した汚染物質が移動</text>
+<text fill="#355c7d" font-size="24" x="40" y="32">地表</text>
+<text fill="#6f4e37" font-size="22" x="58" y="156">地下</text>
+</svg>
+<figcaption>図3　加熱と水蒸気で汚染物質を気相へ移し、流れに乗せて回収するというのが原理の骨格</figcaption>
+<p>
+この原理が、実際の装置では次のように実現されています。
+</p>
+</figure>
+<figure>
+<img src="tera2.png">
+<figcaption>図4　実機における加熱・蒸気・揮発・回収の対応関係</figcaption>
+</figure>
+<h3>凝縮・回収プロセス</h3>
+<p>
+        気体として取り出した汚染物質を、そのまま空へ逃がすわけにはいきません。そこで次に行うのが凝縮・回収です。
+        水蒸気を含んだガスを冷やすと、水分は液体になります。そのとき、汚染物質の一部は凝縮水側へ移ります。
+        さらに残った成分は、活性炭で吸着したり、必要に応じて触媒で酸化分解したりして処理します。
+      </p>
+<p>
+        ここまで見ると、テラスチーム法は実は一つの装置ではなく、
+        <span class="em">加熱・気化・輸送・凝縮・吸着・排水処理</span>が連なったシステムだとわかります。
+        土から外へ出すだけではなく、出した後の行き先まで設計して初めて「浄化」になります。
+      </p>
+<div class="point">
+        テラスチーム法の核心は、<strong>土壌中の汚染物質を「相変化させて取り出せる状態」に変え、その後の回収経路まで閉じた系として設計すること</strong>です。
+      </div>
+<h2 id="sec4">４．プロセス全体の構造</h2>
+<p>
+        実際のプラントでは、テラスチーム法は段階的なプロセスとして組み上げられます。
+        「熱をかける」だけで終わるのではなく、前処理から排ガス・排水処理までが一体化している点が重要です。
+      </p>
+<h3>前処理（破砕・乾燥）</h3>
+<p>
+        掘削した土壌は、そのままでは大きな塊や石、含水率のばらつきを含んでいます。そこでまず破砕やふるい分けを行い、
+        粒径をそろえて処理しやすい状態にします。大きな塊が残ると内部まで熱が伝わりにくく、処理ムラの原因になります。
+        また、水分が多すぎると本来汚染物質を飛ばすための熱が水の蒸発に使われてしまうため、プレドライヤーで乾燥させます。
+      </p>
+<p>
+        この段階は地味に見えて、実はとても重要です。工学では「入口条件」が悪いと、その後の高性能装置も力を発揮できません。
+        テラスチーム法でも、粒径分布、含水率、処理量の安定化が全体効率を左右します。
+      </p>
+<h3>蒸留反応器</h3>
+<p>
+        前処理後の土壌は蒸留反応器へ送られます。ここで外熱と過熱水蒸気によって、対象物質に応じた温度まで加熱されます。
+        資料群では、プレドライヤーでおよそ150〜200℃、蒸留反応器で300〜700℃程度まで加熱する例が示されています。
+        もちろんすべての現場で同じではなく、汚染物質の種類、濃度、土質、求められる浄化レベルによって条件は変わります。
+      </p>
+<p>
+        この反応器の中で起きていることを、化学の言葉で言えば「蒸留」や「脱着」、物理の言葉で言えば「熱移動」と「相平衡の移動」です。
+        土壌という複雑な混合物の中から、狙った成分だけを気相へ追い出す工程だと考えるとわかりやすいでしょう。
+      </p>
+<h3>排ガス処理（活性炭・触媒）</h3>
+<p>
+        蒸留反応器から出てきたガスには、水蒸気だけでなく汚染物質も混じっています。これをそのまま排出すれば、浄化ではなく汚染の移し替えです。
+        そこで、バグフィルターで粉じんを除き、コンデンサで凝縮し、スクラバーで洗浄し、
+        最後に活性炭吸着塔や触媒酸化器で処理してから大気へ放出します。活性炭は表面積が非常に大きく、
+        有機物を吸着するのに適しています。触媒酸化は、分解可能な物質をより安全な形へ変えるために使われます。
+      </p>
+<h3>排水処理</h3>
+<p>
+        凝縮によって生じた水には、汚染物質が移っていることがあります。したがって、この水も処理が必要です。
+        凝集沈殿、ろ過、活性炭吸着などを組み合わせ、清浄な水へ近づけていきます。
+        一部は処理後の土壌の加湿水として再利用できる場合もあり、プロセス内で循環させることで資源利用の効率を上げられます。
+      </p>
+<figure>
+<svg aria-label="テラスチーム法のプロセス全体図" role="img" viewbox="0 0 900 500">
+<rect fill="#f9fcff" height="500" width="900"></rect>
+<rect fill="#fff3e0" height="80" rx="16" stroke="#d79b2d" stroke-width="3" width="130" x="40" y="180"></rect>
+<rect fill="#fff3e0" height="80" rx="16" stroke="#d79b2d" stroke-width="3" width="130" x="210" y="180"></rect>
+<rect fill="#ffedd9" height="80" rx="16" stroke="#d47b4d" stroke-width="3" width="150" x="380" y="180"></rect>
+<rect fill="#eaf5ff" height="70" rx="16" stroke="#69a9d7" stroke-width="3" width="130" x="580" y="120"></rect>
+<rect fill="#eaf5ff" height="70" rx="16" stroke="#69a9d7" stroke-width="3" width="130" x="580" y="220"></rect>
+<rect fill="#e8f8ef" height="70" rx="16" stroke="#63aa7a" stroke-width="3" width="130" x="580" y="320"></rect>
+<rect fill="#fbe9e7" height="70" rx="16" stroke="#d88b7b" stroke-width="3" width="100" x="760" y="120"></rect>
+<rect fill="#fbe9e7" height="70" rx="16" stroke="#d88b7b" stroke-width="3" width="100" x="760" y="220"></rect>
+<rect fill="#f1f6fb" height="70" rx="16" stroke="#8ea3b8" stroke-width="3" width="100" x="760" y="320"></rect>
+<text fill="#855d00" font-size="23" text-anchor="middle" x="105" y="227">破砕・ふるい</text>
+<text fill="#855d00" font-size="23" text-anchor="middle" x="275" y="227">乾燥</text>
+<text fill="#9a4e22" font-size="23" text-anchor="middle" x="455" y="227">蒸留反応器</text>
+<text fill="#296b94" font-size="21" text-anchor="middle" x="645" y="162">コンデンサ</text>
+<text fill="#296b94" font-size="21" text-anchor="middle" x="645" y="262">活性炭・触媒</text>
+<text fill="#2d7a46" font-size="21" text-anchor="middle" x="645" y="362">排水処理</text>
+<text fill="#8f4635" font-size="20" text-anchor="middle" x="810" y="162">大気排出</text>
+<text fill="#8f4635" font-size="20" text-anchor="middle" x="810" y="262">回収物</text>
+<text fill="#455a64" font-size="20" text-anchor="middle" x="810" y="362">再利用水</text>
+<line stroke="#6a7f95" stroke-width="5" x1="170" x2="210" y1="220" y2="220"></line>
+<polygon fill="#6a7f95" points="210,220 195,212 195,228"></polygon>
+<line stroke="#6a7f95" stroke-width="5" x1="340" x2="380" y1="220" y2="220"></line>
+<polygon fill="#6a7f95" points="380,220 365,212 365,228"></polygon>
+<line stroke="#6a7f95" stroke-width="5" x1="530" x2="580" y1="200" y2="155"></line>
+<polygon fill="#6a7f95" points="580,155 563,154 572,168"></polygon>
+<line stroke="#6a7f95" stroke-width="5" x1="530" x2="580" y1="220" y2="255"></line>
+<polygon fill="#6a7f95" points="580,255 565,244 562,261"></polygon>
+<line stroke="#6a7f95" stroke-dasharray="8 6" stroke-width="4" x1="645" x2="645" y1="190" y2="220"></line>
+<line stroke="#6a7f95" stroke-dasharray="8 6" stroke-width="4" x1="645" x2="645" y1="290" y2="320"></line>
+<line stroke="#6a7f95" stroke-width="5" x1="710" x2="760" y1="155" y2="155"></line>
+<polygon fill="#6a7f95" points="760,155 745,147 745,163"></polygon>
+<line stroke="#6a7f95" stroke-width="5" x1="710" x2="760" y1="255" y2="255"></line>
+<polygon fill="#6a7f95" points="760,255 745,247 745,263"></polygon>
+<line stroke="#6a7f95" stroke-width="5" x1="710" x2="760" y1="355" y2="355"></line>
+<polygon fill="#6a7f95" points="760,355 745,347 745,363"></polygon>
+<text fill="#103a5d" font-size="28" x="44" y="62">前処理 → 本処理 → 排ガス・排水処理</text>
+<text fill="#5f6b7a" font-size="20" x="42" y="440">土を処理する工程と、取り出した汚染物質を安全に処理する工程が一体になっている。</text>
+</svg>
+<figcaption>図5　テラスチーム法は「蒸留反応器」だけでなく、前後の処理を含む総合システムである</figcaption>
+</figure>
+<figure>
+  <img src="tera.jpg" alt="テラスチーム法 回転キルン（加熱装置）" style="width:100%; border-radius:12px;">
+  <figcaption>
+    図6　テラスチーム法に用いられる回転キルン（加熱装置）の実機例ーイメージ図ー。
+    円筒状ドラムが回転しながら土壌を加熱し、汚染物質を気化・分離する。
+<p>
+図3・図4で示した「加熱→蒸気→揮発→回収」は、
+この回転キルン内部で実際に起きている。
+</p>
+  </figcaption>
+</figure>
+<h2 id="sec5">５．他技術との比較と使い分け</h2>
+<p>
+        現実の土壌汚染は、教科書のように単一物質・均一土壌・一定濃度という単純な条件ではありません。
+        実際には、油と重金属の複合汚染、砂と粘土の混在、深度ごとの濃度差、地下水の有無、周辺住民への配慮、工期、コストなど、
+        多くの要因が絡み合います。だからこそ、浄化技術は単独勝負ではなく、組み合わせと使い分けが重要になります。
+      </p>
+<h3>なぜ単独ではなく組み合わせるのか</h3>
+<p>
+        テラスチーム法は、熱で揮発・脱離しやすい物質に強い一方で、すべての汚染に万能ではありません。
+        重金属の中には揮発しにくいものがあり、化学的安定化や洗浄のほうが合理的な場合があります。
+        逆に、バイオ法は環境負荷が小さくても、濃度が高すぎると進みにくいことがあります。すると、まず熱処理や洗浄で濃度を下げ、
+        残りをバイオ法で仕上げるという考え方が出てきます。
+      </p>
+<p>
+        つまり現場では、「どの技術が一番すごいか」ではなく、
+        <span class="em">「どの順番・どの組み合わせが最も安全で確実か」</span>が問われます。
+        これは医療に似ています。薬、手術、リハビリのどれが一番偉いかではなく、患者の状態に応じて最適解を組むのと同じです。
+      </p>
+<h3>汚染物質ごとの最適解</h3>
+<p>
+        一般に、ベンゼンやトリクロロエチレンなどの揮発性有機物は、吸引や加熱との相性が良く、テラスチーム法や関連する熱脱着・真空抽出系が有力です。
+        油汚染も熱による粘度低下や揮発促進の恩恵を受けやすく、適用しやすい対象です。
+        一方で、鉛・ヒ素などの重金属は熱だけでは十分に動かせないことが多く、洗浄、分級、化学処理、封じ込めの選択が重要になります。
+      </p>
+<p>
+        さらに現場条件も大きく効きます。都市部で周囲に建物が密集し、掘削や搬出が難しいなら原位置処理の価値が上がります。
+        大規模な再開発で短期間に大量処理が必要なら、オンサイト型の設備や集約処理型プラントが候補になります。
+        粘土層が厚くてガスが通りにくい場合は、吸引効率が落ちるため、熱だけでなく土質改良や別方式の併用を検討する必要があります。
+      </p>
+<table class="compare">
+<thead>
+<tr>
+<th>状況・対象</th>
+<th>向きやすい技術</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VOC・油など揮発しやすい有機物</td>
+<td>テラスチーム法、熱脱着、真空抽出</td>
+<td>加熱で蒸気圧が上がり、気相へ移しやすい</td>
+</tr>
+<tr>
+<td>軽い有機物で濃度が比較的低い</td>
+<td>バイオ法</td>
+<td>微生物分解が働きやすく、環境負荷が低い</td>
+</tr>
+<tr>
+<td>重金属や細粒分に集中した汚染</td>
+<td>土壌洗浄、分級、化学処理</td>
+<td>揮発しにくく、洗い出しや安定化が合理的</td>
+</tr>
+<tr>
+<td>複合汚染・短工期・再開発案件</td>
+<td>複数技術の組み合わせ</td>
+<td>単独方式では処理しきれない場合が多い</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<svg aria-label="技術選定フロー図" role="img" viewbox="0 0 900 380">
+<rect fill="#f9fcff" height="380" width="900"></rect>
+<rect fill="#eef5fb" height="70" rx="18" stroke="#7ea7c8" stroke-width="3" width="190" x="50" y="60"></rect>
+<rect fill="#fff6da" height="70" rx="18" stroke="#d6b44a" stroke-width="3" width="190" x="355" y="40"></rect>
+<rect fill="#eaf8e9" height="70" rx="18" stroke="#79b77c" stroke-width="3" width="190" x="355" y="150"></rect>
+<rect fill="#e9f5ff" height="70" rx="18" stroke="#69a9d7" stroke-width="3" width="190" x="355" y="260"></rect>
+<rect fill="#fff0ef" height="80" rx="18" stroke="#d88b7b" stroke-width="3" width="200" x="650" y="150"></rect>
+<text fill="#0f4067" font-size="24" text-anchor="middle" x="145" y="103">汚染の調査</text>
+<text fill="#785f00" font-size="22" text-anchor="middle" x="450" y="83">揮発しやすい？</text>
+<text fill="#2d7a46" font-size="22" text-anchor="middle" x="450" y="193">分解しやすい？</text>
+<text fill="#1b5c84" font-size="22" text-anchor="middle" x="450" y="303">洗い出せる？</text>
+<text fill="#8f4635" font-size="24" text-anchor="middle" x="750" y="198">複合的に設計</text>
+<line stroke="#6a7f95" stroke-width="4" x1="240" x2="355" y1="95" y2="75"></line>
+<polygon fill="#6a7f95" points="355,75 340,69 342,84"></polygon>
+<line stroke="#6a7f95" stroke-width="4" x1="240" x2="355" y1="95" y2="185"></line>
+<polygon fill="#6a7f95" points="355,185 340,177 346,192"></polygon>
+<line stroke="#6a7f95" stroke-width="4" x1="240" x2="355" y1="95" y2="295"></line>
+<polygon fill="#6a7f95" points="355,295 340,286 347,302"></polygon>
+<line stroke="#6a7f95" stroke-width="4" x1="545" x2="650" y1="185" y2="190"></line>
+<polygon fill="#6a7f95" points="650,190 635,182 635,198"></polygon>
+<text fill="#785f00" font-size="20" x="665" y="94">→ テラスチーム法</text>
+<text fill="#1b5c84" font-size="20" x="650" y="285">→ 洗浄・化学処理</text>
+<text fill="#2d7a46" font-size="20" x="662" y="248">→ バイオ法</text>
+</svg>
+<figcaption>図7　最適な浄化技術は、物質の性質・土質・工期・周辺条件を読んで決める</figcaption>
+</figure>
+<p>
+        ここで高校生にぜひ意識してほしいのは、環境技術は「理科の各分野の寄せ集め」ではなく、
+        <span class="em">複数の原理を現場でつなぎ直す総合設計</span>だという点です。
+        テラスチーム法を理解するには、化学の相変化、物理の熱移動、地学や地盤工学の土質、工学の安全設計、さらに社会制度まで視野に入ります。
+        だからこの分野は難しい一方で、とても面白いのです。
+      </p>
+<h2 id="sec6">６．まとめ</h2>
+<h3>SDGsとの関係</h3>
+<p>
+        土壌浄化は、SDGsのうち「住み続けられるまちづくり」「安全な水とトイレ」「産業と技術革新の基盤づくり」などに深く関わります。
+        汚染地を放置すれば、地下水や生活環境に長期のリスクを残します。しかし適切に浄化すれば、過去の負の遺産を未来の資産へ変えられます。
+        これは単なる後始末ではなく、持続可能な都市をつくるための再設計です。
+      </p>
+<h3>都市再開発</h3>
+<p>
+        現代の都市では、新しい土地を外側へ広げ続けるより、既に使われた土地を再生していくことがますます重要になります。
+        そのとき土壌汚染対策は避けて通れません。工場跡地を住宅地や商業地へ変えるには、安全性の確認と対策が必要です。
+        テラスチーム法のようなオンサイト処理型の技術は、土を遠くへ運ばずにその場で浄化できる点で、再開発と相性の良い技術です。
+      </p>
+<h3>環境工学の役割</h3>
+<p>
+        環境工学の仕事は、「汚れを消すこと」だけではありません。どんな物質が、どんな地盤で、どのように動くのかを読み、
+        最小のリスクとコストで、最大の安全を実現する仕組みを設計することです。テラスチーム法は、その象徴的な例です。
+        加熱して終わりではなく、蒸発・脱離・凝縮・吸着・排水処理までを一つの流れとして組み立てることで、初めて土壌浄化として成立します。
+      </p>
+<p>
+        高校生の皆さんにとって、この分野の魅力は、学校で学ぶ知識がそのまま社会課題の解決につながることにあります。
+        気体の性質、熱、平衡、反応、流れ、材料、エネルギー、法律、都市計画――それらが分断されず、一つの現場で同時に問われます。
+        だからこそ、土壌浄化は「地味な後始末」ではなく、<span class="em">未来の土地を取り戻すための総合科学</span>なのです。
+      </p>
+<p>
+        テラスチーム法による土壌浄化を学ぶと、私たちは一つの大きな見方にたどり着きます。環境問題とは、単に悪いものをなくす作業ではなく、
+        目に見えない地下の世界を理解し、そこにある物質のふるまいを制御し、社会がもう一度その土地を安心して使えるようにする知の営みだということです。
+        過去の産業活動が残した課題を、次の世代の技術と知恵で乗り越える。その最前線の一つが、土壌浄化なのです。
+      </p>
+<p>参考資料 ： 宮村彰 ;荏原製作所 ､ ｢テラスチーム法による土壌浄化技術｣､ 資源環境対策 33(10)(434)､ p892 ～ 895､ 1997年</p>
+<div class="footer-note">
+        筆者は約３０年前土壌浄化プラントで作業した経験を有する。摂氏８０℃を超す環境下での仕事は過酷でしたが､ この様な環境下
+での作業が今の健康につながっている様にも思えます｡ 田口所長､ 金子氏､ 田中氏はじめ皆様のお世話になりました｡
+      </div>
+</main>
+</div>
+</body>
+</html>

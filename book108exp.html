@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>小胞体ストレス応答（UPR）の実験 | 中学生でもわかる細胞の大発見</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f2efe6;
+            font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Segoe UI', sans-serif;
+            line-height: 1.8;
+            color: #2c2a24;
+            padding: 2rem 1rem;
+        }
+        .blog {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fffef7;
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #1c6e4a, #2e8b6c);
+            color: white;
+            padding: 2rem 2rem 1.8rem;
+            text-align: center;
+        }
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+            font-weight: 800;
+        }
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        .toc {
+            background: #f9f6e9;
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #e2dccd;
+        }
+        .toc h3 {
+            color: #1c6e4a;
+            margin-bottom: 0.8rem;
+            font-size: 1.4rem;
+        }
+        .toc ol {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+            gap: 0.5rem 1rem;
+            margin-left: 1.2rem;
+        }
+        .toc li {
+            font-size: 0.95rem;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #2b6b4f;
+            font-weight: 500;
+        }
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        .content {
+            padding: 2rem 2rem 2.5rem;
+        }
+        h2 {
+            font-size: 1.8rem;
+            margin: 1.8rem 0 0.8rem 0;
+            padding-left: 0.8rem;
+            border-left: 7px solid #3b9b78;
+            color: #1d543e;
+        }
+        h3 {
+            font-size: 1.4rem;
+            margin: 1.2rem 0 0.6rem;
+            color: #2b6a50;
+        }
+        .figure {
+            background: #f3f9f4;
+            padding: 1rem;
+            border-radius: 28px;
+            margin: 1.2rem 0;
+            text-align: center;
+            border: 1px solid #cbe3d4;
+            font-family: monospace;
+            white-space: pre-line;
+        }
+        .exp-step {
+            background: #eef3fc;
+            border-left: 5px solid #2c7a5e;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border-radius: 16px;
+        }
+        .scientist {
+            background: #fef2e0;
+            border-radius: 24px;
+            padding: 0.8rem 1.5rem;
+            margin: 1rem 0;
+            display: inline-block;
+            font-weight: bold;
+        }
+        hr {
+            margin: 1.6rem 0;
+            border: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #cfe3d8, transparent);
+        }
+        footer {
+            background: #e4e0d3;
+            text-align: center;
+            padding: 1.2rem;
+            font-size: 0.75rem;
+            color: #4f5a4a;
+        }
+        @media (max-width: 650px) {
+            .content {
+                padding: 1.2rem;
+            }
+            .header h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div style="margin:20px 0; padding:16px; background:#eefaf5; border-radius:12px; border:1px solid #cdeee0;">
+  👉 理論と全体像はこちら
+  <br>
+  <a href="book108.html" style="font-weight:bold;">
+    高校生向け統合解説
+  </a>
+</div>
+
+<div style="margin:20px 0; padding:16px; background:#f5f0ff; border-radius:12px; border:1px solid #e9d8fd;">
+  👉 分子レベルの詳細はこちら
+  <br>
+  <a href="book108-2.html" style="font-weight:bold;">
+    分子定義・統合理論マップ
+  </a>
+</div>
+<div class="blog">
+    <div class="header">
+        <h1>🧪 小胞体ストレス応答（UPR）の実験</h1>
+        <p>細胞の中の「異常を感じる仕組み」を解き明かした5人の科学者</p>
+    </div>
+
+    <div class="toc">
+        <h3>📖 実験ストーリー（目次）</h3>
+        <ol>
+            <li><a href="#mori">森和俊博士の実験 — 異常を見つけるセンサー</a></li>
+            <li><a href="#walter">Peter Walter博士の実験 — 司令官を編集するハサミ</a></li>
+            <li><a href="#ron">David Ron博士の実験 — 生産ラインを止めるブレーキ</a></li>
+            <li><a href="#lee">Amy Lee博士の実験 — 最初の修理屋を発見</a></li>
+            <li><a href="#glimcher">Laurie Glimcher博士の実験 — 免疫と病気をつなぐXBP1</a></li>
+        </ol>
+    </div>
+
+    <div class="content">
+        <!-- 導入文 -->
+        <p>🧫 小胞体（しょうほうたい）は、細胞の中にある「タンパク質工場」のことで、この工場で不良品が増えると「小胞体ストレス」というピンチになります。でも細胞はそんなピンチに、ただ何もしないわけではありません。自分で異常を感じて、修復したり、生産を止めたりするのです！<br>
+        この「仕組み」を明らかにした科学者たちがいます。ここでは5人の博士たちの実験をわかりやすく紹介します。</p>
+
+        <!-- 1. 森和俊 -->
+        <h2 id="mori">① 森和俊博士の実験 — 細胞はどうやって異常に気づくのか？</h2>
+        <div class="scientist">🔬 森 和俊（もり かずとし） / 京都大学</div>
+        <p>1990年代、森博士は「細胞が小胞体の中の異常なタンパク質に気づく仕組み」に興味をもちました。当時はまだ誰もそのセンサーを知りませんでした。</p>
+        <div class="exp-step">
+            <strong>🧪 実験の方法（中学生ver.）</strong><br>
+            ① 酵母（パンを作る小さな細胞）を使う。<br>
+            ② ツニカマイシンという薬を加える → 小胞体の中で「変な形のタンパク質」をあえて大量に作らせる。<br>
+            ③ すると細胞は「BiP（修理屋さん）」をたくさん作りはじめた！<br>
+            ④ 次に、遺伝子を1つずつ壊して「異常を感じられなくなった細胞」を探した。<br>
+            ⑤ 見つかった遺伝子が「IRE1」！これがセンサーだった。
+        </div>
+        <div class="figure">
+            <svg viewBox="0 0 900 220" role="img" aria-label="IRE1発見の模式図" style="max-width:100%;height:auto;display:block;margin:0 auto 0.8rem;">
+                <defs><marker id="arrow1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2b6b4f"/></marker></defs>
+                <rect x="30" y="55" width="150" height="90" rx="20" fill="#fff" stroke="#2b6b4f" stroke-width="3"/>
+                <text x="105" y="88" text-anchor="middle" font-size="22" font-family="sans-serif">正常細胞</text>
+                <text x="105" y="118" text-anchor="middle" font-size="18" font-family="sans-serif">タンパク質工場は正常</text>
+                <line x1="185" y1="100" x2="285" y2="100" stroke="#2b6b4f" stroke-width="4" marker-end="url(#arrow1)"/>
+                <text x="235" y="82" text-anchor="middle" font-size="18" font-family="sans-serif">薬を加える</text>
+                <rect x="300" y="45" width="220" height="110" rx="20" fill="#fff" stroke="#2b6b4f" stroke-width="3"/>
+                <circle cx="355" cy="102" r="12" fill="#d86c6c"/><circle cx="390" cy="82" r="12" fill="#d86c6c"/><circle cx="420" cy="108" r="12" fill="#d86c6c"/><circle cx="450" cy="78" r="12" fill="#d86c6c"/><circle cx="485" cy="102" r="12" fill="#d86c6c"/>
+                <text x="410" y="145" text-anchor="middle" font-size="18" font-family="sans-serif">異常タンパク質が増える</text>
+                <line x1="525" y1="100" x2="625" y2="100" stroke="#2b6b4f" stroke-width="4" marker-end="url(#arrow1)"/>
+                <text x="575" y="82" text-anchor="middle" font-size="18" font-family="sans-serif">細胞が反応</text>
+                <rect x="640" y="40" width="230" height="120" rx="20" fill="#fff" stroke="#2b6b4f" stroke-width="3"/>
+                <text x="755" y="78" text-anchor="middle" font-size="20" font-family="sans-serif">BiPを増産</text>
+                <text x="755" y="108" text-anchor="middle" font-size="20" font-family="sans-serif">センサー IRE1 を発見</text>
+            </svg>
+            📊 [イメージ図]<br>
+            正常細胞 → 薬を加える → 小胞体内に ●●● 異常タンパク質が増える<br>
+            → 細胞が反応！ → 「BiP（修理屋さん）」を増産 → センサーIRE1を発見
+        </div>
+<div class="scientist">🔬 森 和俊（もり かずとし） / 京都大学</div>
+<img src="mori.jpg" alt="森和俊博士" style="width:100%; max-width:300px; display:block; margin:10px auto; border-radius:12px;">
+        <p>💡 つまり森博士は、細胞が異常を感じるうえで重要なセンサーの一つである「IRE1」を明らかにしました。UPR全体は、複数の研究者の発見が積み重なって解明されてきた仕組みです。</p>
+
+        <h2 id="walter">② Peter Walter博士の実験 — センサーがどのように命令を出すのか？</h2>
+        <div class="scientist">🔬 Peter Walter（ピーター・ウォルター） / UCSF</div>
+        <p>森博士が見つけたセンサー「IRE1」。しかし、IRE1が異常を感じたあと、細胞はどのようにして「修理せよ！」と命令を出すのでしょうか？Walter博士はその謎に挑みました。</p>
+        <div class="exp-step">
+            <strong>🧪 ウォルター博士の発見</strong><br>
+            ① IRE1は異常を感じると、RNAを切る酵素（RNase）として働くことを発見。<br>
+            ② ターゲットは「XBP1」というRNA。ふつうの形のXBP1は、司令官としてはほとんど働けない。<br>
+            ③ IRE1がXBP1のRNAを切り、細胞がもう一度つなぎ直すと…<br>
+            ④ なんと「XBP1s（超強い司令官）」に変身！<br>
+            ⑤ XBP1sが核に入り、「BiPを増やせ！」「不良品を分解しろ！」と命令を出す。
+        </div>
+        <div class="figure">
+            <svg viewBox="0 0 920 220" role="img" aria-label="RNA編集スイッチの模式図" style="max-width:100%;height:auto;display:block;margin:0 auto 0.8rem;">
+                <defs><marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2b6b4f"/></marker></defs>
+                <text x="70" y="120" text-anchor="middle" font-size="24" font-family="sans-serif">ストレス</text>
+                <line x1="110" y1="110" x2="210" y2="110" stroke="#2b6b4f" stroke-width="4" marker-end="url(#arrow2)"/>
+                <rect x="220" y="70" width="110" height="80" rx="20" fill="#fff" stroke="#2b6b4f" stroke-width="3"/>
+                <text x="275" y="118" text-anchor="middle" font-size="24" font-family="sans-serif">IRE1</text>
+                <line x1="330" y1="110" x2="430" y2="110" stroke="#2b6b4f" stroke-width="4" marker-end="url(#arrow2)"/>
+                <text x="380" y="88" text-anchor="middle" font-size="18" font-family="sans-serif">切る</text>
+                <rect x="445" y="70" width="120" height="80" rx="20" fill="#fff" stroke="#2b6b4f" stroke-width="3"/>
+                <text x="505" y="118" text-anchor="middle" font-size="24" font-family="sans-serif">XBP1</text>
+                <line x1="565" y1="110" x2="665" y2="110" stroke="#2b6b4f" stroke-width="4" marker-end="url(#arrow2)"/>
+                <text x="615" y="88" text-anchor="middle" font-size="18" font-family="sans-serif">つなぎ直す</text>
+                <rect x="680" y="60" width="180" height="100" rx="20" fill="#fff7d6" stroke="#2b6b4f" stroke-width="3"/>
+                <text x="770" y="103" text-anchor="middle" font-size="26" font-family="sans-serif">XBP1s</text>
+                <text x="770" y="132" text-anchor="middle" font-size="16" font-family="sans-serif">最強司令官</text>
+            </svg>
+            📊 [イメージ図: RNA編集スイッチ]<br>
+            ストレス → IRE1 🔪✂️ → XBP1 → 切ってつなぐ → XBP1s（最強司令官）→ 「修理部隊を増やせ！」
+        </div>
+<div class="scientist">🔬 Peter Walter（ピーター・ウォルター） / UCSF</div>
+<img src="peter.jpg" alt="Peter Walter博士" style="width:100%; max-width:300px; display:block; margin:10px auto; border-radius:12px;">
+        <p>🌟 Walter博士のすごいところは、「RNAを切ってつなぎ直すことで、細胞がその場で強力に働く司令官XBP1sを作り出す」という新しい仕組みを見つけたことです。</p>
+
+        <h2 id="ron">③ David Ron博士の実験 — ストレス時に生産を止めるブレーキ</h2>
+        <div class="scientist">🔬 David Ron（デビッド・ロン） / ケンブリッジ大学</div>
+        <p>さて、異常を感じて司令官までできた。でもそれだけでは足りません。これ以上新しいタンパク質を作り続けると、もっと混乱します。そこでDavid Ron博士は「生産ラインを一時停止する仕組み」を探しました。</p>
+        <div class="exp-step">
+            <strong>🧪 Ron博士の実験の核心</strong><br>
+            ① 細胞にストレスをかけると、タンパク質の合成が急に止まることを発見。<br>
+            ② 原因を調べると「PERK（パーク）」という分子がブレーキ役をしていた。<br>
+            ③ PERKは「eIF2α」というスイッチをリン酸化して、タンパク質合成の開始を強くおさえる。<br>
+            ④ PERKがない細胞では生産を十分に減らせず、細胞が壊れやすくなることを証明した。
+        </div>
+        <div class="figure">
+            <svg viewBox="0 0 920 220" role="img" aria-label="PERKによる生産ライン停止の模式図" style="max-width:100%;height:auto;display:block;margin:0 auto 0.8rem;">
+                <defs><marker id="arrow3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2b6b4f"/></marker></defs>
+                <rect x="30" y="60" width="180" height="90" rx="20" fill="#fff" stroke="#2b6b4f" stroke-width="3"/>
+                <text x="120" y="102" text-anchor="middle" font-size="24" font-family="sans-serif">小胞体パンク！</text>
+                <line x1="210" y1="105" x2="330" y2="105" stroke="#2b6b4f" stroke-width="4" marker-end="url(#arrow3)"/>
+                <rect x="345" y="60" width="150" height="90" rx="20" fill="#fff" stroke="#2b6b4f" stroke-width="3"/>
+                <text x="420" y="100" text-anchor="middle" font-size="26" font-family="sans-serif">PERK</text>
+                <text x="420" y="128" text-anchor="middle" font-size="16" font-family="sans-serif">ブレーキ役</text>
+                <line x1="495" y1="105" x2="615" y2="105" stroke="#2b6b4f" stroke-width="4" marker-end="url(#arrow3)"/>
+                <rect x="630" y="50" width="240" height="110" rx="20" fill="#fff" stroke="#2b6b4f" stroke-width="3"/>
+                <text x="750" y="92" text-anchor="middle" font-size="22" font-family="sans-serif">リボソーム</text>
+                <text x="750" y="122" text-anchor="middle" font-size="20" font-family="sans-serif">ゴゴゴ…停止</text>
+            </svg>
+            📊 [イメージ図: 生産ライン停止]<br>
+            小胞体パンク！ → PERKがブレーキをかける → リボソーム「ゴゴゴ…停止」 → これ以上不良品を増やさない！
+        </div>
+<div class="scientist">🔬 David Ron（デビッド・ロン） / ケンブリッジ大学</div>
+<img src="ron.jpg" alt="David Ron博士" style="width:100%; max-width:300px; display:block; margin:10px auto; border-radius:12px;">
+        <p>✅ Ron博士は、細胞がピンチのときにタンパク質生産を全体として減速させる仕組みを明らかにしました。この発見がなければ、UPRの全体像は不完全なままでした。</p>
+
+        <h2 id="lee">④ Amy Lee博士の実験 — 最初の「修理屋さん」を発見した先駆者</h2>
+        <div class="scientist">🔬 Amy Lee（エイミー・リー） / 南カリフォルニア大学</div>
+        <p>みなさん、この分野で一番最初の「最初の一歩」を踏み出したのは誰だと思いますか？それはAmy Lee博士です。1980年代、彼女は「細胞から糖をとると特定のタンパク質が増える」という不思議な現象をみつけました。</p>
+        <div class="exp-step">
+            <strong>🧪 歴史的な実験</strong><br>
+            ① 細胞から栄養（グルコース）を取ると、あるタンパク質が増える。<br>
+            ② でも「本当に栄養不足が原因？」と疑問をもつ。<br>
+            ③ そこで栄養はたっぷり与えたまま、「タンパク質の形を壊す薬」を加えた。<br>
+            ④ すると、栄養があっても同じタンパク質が爆発的に増えた！<br>
+            ⑤ これが「GRP78（BiP）」で、小胞体の中で働くシャペロン、つまり修理屋さんだった。
+        </div>
+        <div class="figure">
+            <svg viewBox="0 0 920 220" role="img" aria-label="GRP78発見の模式図" style="max-width:100%;height:auto;display:block;margin:0 auto 0.8rem;">
+                <defs><marker id="arrow4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2b6b4f"/></marker></defs>
+                <rect x="30" y="60" width="220" height="90" rx="20" fill="#fff" stroke="#2b6b4f" stroke-width="3"/>
+                <text x="140" y="98" text-anchor="middle" font-size="24" font-family="sans-serif">栄養たっぷり</text>
+                <text x="140" y="126" text-anchor="middle" font-size="18" font-family="sans-serif">＋ 形を壊す薬</text>
+                <line x1="250" y1="105" x2="380" y2="105" stroke="#2b6b4f" stroke-width="4" marker-end="url(#arrow4)"/>
+                <rect x="395" y="55" width="190" height="100" rx="20" fill="#fff" stroke="#2b6b4f" stroke-width="3"/>
+                <text x="490" y="100" text-anchor="middle" font-size="22" font-family="sans-serif">GRP78 / BiP</text>
+                <text x="490" y="128" text-anchor="middle" font-size="16" font-family="sans-serif">修理屋さんが増える</text>
+                <line x1="585" y1="105" x2="715" y2="105" stroke="#2b6b4f" stroke-width="4" marker-end="url(#arrow4)"/>
+                <rect x="730" y="50" width="160" height="110" rx="20" fill="#fff7d6" stroke="#2b6b4f" stroke-width="3"/>
+                <text x="810" y="95" text-anchor="middle" font-size="20" font-family="sans-serif">不良品が</text>
+                <text x="810" y="123" text-anchor="middle" font-size="20" font-family="sans-serif">たまると反応</text>
+            </svg>
+            📊 [イメージ図: GRP78発見]<br>
+            栄養たっぷり + 形を壊す薬 → 修理屋さんGRP78が大量発生 → 「不良品がたまると修理屋が増える」という現象の発見！
+        </div>
+<div class="scientist">🔬 Amy Lee（エイミー・リー） / 南カリフォルニア大学</div>
+<img src="lee.jpg" alt="Amy Lee博士" style="width:100%; max-width:300px; display:block; margin:10px auto; border-radius:12px;">
+        <p>🎯 Amy Lee博士がいなければ、森博士もWalter博士も「何を調べればいいか」わからなかったでしょう。彼女はUPR研究の「土台」を作った科学者です。</p>
+
+        <h2 id="glimcher">⑤ Laurie Glimcher博士の実験 — XBP1が病気と直結する証明</h2>
+        <div class="scientist">🔬 Laurie Glimcher（ローリー・グリムチャー） / 免疫学者</div>
+        <p>最後は少し視点が違います。Glimcher博士は免疫の専門家です。彼女は「XBP1」という司令官に注目し、マウスを使った大胆な実験をしました。</p>
+        <div class="exp-step">
+            <strong>🧪 Glimcher博士のノックアウト実験</strong><br>
+            ① XBP1がまったく作れないマウス（ノックアウトマウス）を作る。<br>
+            ② 予想: 免疫の働きが弱くなるはずだった。<br>
+            ③ しかし結果は逆！マウスの腸が勝手に炎症を起こしてしまった。<br>
+            ④ つまりXBP1がないと小胞体ストレスが強まり、腸の細胞の働きがこわれて炎症が起こりやすくなる。<br>
+            ⑤ さらにXBP1がないと、インスリンを作る細胞が壊れて糖尿病になることも発見。
+        </div>
+        <div class="figure">
+            <svg viewBox="0 0 920 240" role="img" aria-label="XBP1と炎症の模式図" style="max-width:100%;height:auto;display:block;margin:0 auto 0.8rem;">
+                <line x1="460" y1="30" x2="460" y2="210" stroke="#cbe3d4" stroke-width="4"/>
+                <rect x="60" y="60" width="300" height="110" rx="24" fill="#fff" stroke="#2b6b4f" stroke-width="3"/>
+                <text x="210" y="98" text-anchor="middle" font-size="28" font-family="sans-serif">XBP1あり</text>
+                <text x="210" y="132" text-anchor="middle" font-size="20" font-family="sans-serif">腸は落ち着いている</text>
+                <rect x="560" y="60" width="300" height="110" rx="24" fill="#fff0f0" stroke="#b85b5b" stroke-width="3"/>
+                <text x="710" y="98" text-anchor="middle" font-size="28" font-family="sans-serif">XBP1なし</text>
+                <text x="710" y="132" text-anchor="middle" font-size="20" font-family="sans-serif">腸で大炎症</text>
+                <text x="710" y="160" text-anchor="middle" font-size="18" font-family="sans-serif">炎症性腸疾患・糖尿病リスク増加</text>
+            </svg>
+            📊 [イメージ図: 炎症と司令官]<br>
+            XBP1あり → 腸は落ち着いている<br>
+            XBP1なし → 🔥腸で大炎症！→ 炎症性腸疾患や糖尿病のリスク増加
+        </div>
+<div class="scientist">🔬 Laurie Glimcher（ローリー・グリムチャー） / 免疫学者</div>
+<img src="glimcher.jpg" alt="Laurie Glimcher博士" style="width:100%; max-width:300px; display:block; margin:10px auto; border-radius:12px;">
+        <p>🌟 Glimcher博士の実験は、小胞体ストレス応答の異常が、実際の病気（炎症性腸疾患・糖尿病など）に深く関わることを示しました。細胞の中の出来事が、そのまま私たちの病気の理解につながることを示したのです。</p>
+
+        <hr>
+        <h2>📚 まとめ — 5人の実験がつなぐ「細胞の大発見」</h2>
+        <div class="figure" style="background:#e8f0ea;">
+            <svg viewBox="0 0 980 300" role="img" aria-label="UPR発見のリレー図" style="max-width:100%;height:auto;display:block;margin:0 auto 0.8rem;">
+                <defs><marker id="arrow5" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2b6b4f"/></marker></defs>
+                <rect x="40" y="80" width="150" height="80" rx="20" fill="#fff" stroke="#2b6b4f" stroke-width="3"/><text x="115" y="112" text-anchor="middle" font-size="22" font-family="sans-serif">Amy Lee</text><text x="115" y="138" text-anchor="middle" font-size="14" font-family="sans-serif">GRP78 / BiP</text>
+                <line x1="190" y1="120" x2="260" y2="120" stroke="#2b6b4f" stroke-width="4" marker-end="url(#arrow5)"/>
+                <rect x="270" y="80" width="150" height="80" rx="20" fill="#fff" stroke="#2b6b4f" stroke-width="3"/><text x="345" y="112" text-anchor="middle" font-size="22" font-family="sans-serif">森和俊</text><text x="345" y="138" text-anchor="middle" font-size="16" font-family="sans-serif">IRE1</text>
+                <line x1="420" y1="120" x2="490" y2="120" stroke="#2b6b4f" stroke-width="4" marker-end="url(#arrow5)"/>
+                <rect x="500" y="80" width="150" height="80" rx="20" fill="#fff" stroke="#2b6b4f" stroke-width="3"/><text x="575" y="112" text-anchor="middle" font-size="22" font-family="sans-serif">Walter</text><text x="575" y="138" text-anchor="middle" font-size="14" font-family="sans-serif">XBP1s</text>
+                <line x1="650" y1="120" x2="720" y2="120" stroke="#2b6b4f" stroke-width="4" marker-end="url(#arrow5)"/>
+                <rect x="730" y="80" width="120" height="80" rx="20" fill="#fff" stroke="#2b6b4f" stroke-width="3"/><text x="790" y="112" text-anchor="middle" font-size="22" font-family="sans-serif">Ron</text><text x="790" y="138" text-anchor="middle" font-size="14" font-family="sans-serif">PERK</text>
+                <line x1="850" y1="120" x2="920" y2="120" stroke="#2b6b4f" stroke-width="4" marker-end="url(#arrow5)"/>
+                <rect x="730" y="190" width="190" height="80" rx="20" fill="#fff" stroke="#2b6b4f" stroke-width="3"/><text x="825" y="222" text-anchor="middle" font-size="20" font-family="sans-serif">Glimcher</text><text x="825" y="248" text-anchor="middle" font-size="14" font-family="sans-serif">炎症・糖尿病</text>
+            </svg>
+            🧬 小胞体ストレス応答（UPR）発見のリレー<br>
+            🥇 Amy Lee博士 : 修理屋さん「GRP78/BiP」を最初に発見<br>
+            🥈 森和俊博士 : 異常を感じるセンサー「IRE1」を発見<br>
+            🥉 Peter Walter博士 : IRE1がRNAを編集して司令官「XBP1s」を作る仕組みを解明<br>
+            🏅 David Ron博士 : 生産を止めるブレーキ「PERK」を発見<br>
+            🏆 Laurie Glimcher博士 : XBP1が免疫・炎症・糖尿病と直結することを証明
+        </div>
+        <p>これらの実験のおかげで、今では小胞体ストレス応答（UPR）がアルツハイマー病、がん、糖尿病などにどう関わるのかが研究されています。UPRは本来、細胞を守るための防御反応ですが、それが強すぎたり、うまく働かなくなったりすると病気に関わることがあります。今日から「細胞の中では毎日センサーが働き、司令官が飛び回っている」ことをイメージしてみてください。きっと、からだの見方が変わるはずです。</p>
+        <p style="margin-top: 1.2rem;">🔍 さらに詳しく知りたい人は「UPR」「IRE1」「XBP1s」「シャペロン」で調べてみよう！</p>
+    </div>
+<div style="margin:20px 0; padding:16px; background:#eefaf5; border-radius:12px; border:1px solid #cdeee0;">
+  👉 理論と全体像はこちら
+  <br>
+  <a href="book108.html" style="font-weight:bold;">
+    高校生向け統合解説
+  </a>
+</div>
+
+<div style="margin:20px 0; padding:16px; background:#f5f0ff; border-radius:12px; border:1px solid #e9d8fd;">
+  👉 分子レベルの詳細はこちら
+  <br>
+  <a href="book108-2.html" style="font-weight:bold;">
+    分子定義・統合理論マップ
+  </a>
+</div>
+    <footer>
+        © 2026 小胞体ストレス応答（UPR）実験ブログ<br>
+            </footer>
+</div>
+</body>
+</html>

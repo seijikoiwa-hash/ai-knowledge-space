@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>記録と情報―父の日記と御堂関白記― 図主役版・中学生向け完全版</title>
+  <style>
+    :root{
+      --bg:#f6f1e8;
+      --paper:#fffdf9;
+      --ink:#1f2937;
+      --muted:#5c6470;
+      --line:#ded6c7;
+      --accent:#8a4b08;
+      --accent2:#0f5b6e;
+      --accent3:#7a2144;
+      --soft:#f9f3e8;
+      --shadow:0 12px 28px rgba(0,0,0,.08);
+      --max:960px;
+      --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Hiragino Sans","Yu Gothic","Noto Sans JP",system-ui,sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(138,75,8,.10), transparent 28%),
+        radial-gradient(circle at top right, rgba(15,91,110,.10), transparent 24%),
+        linear-gradient(180deg,#efe6d8 0,#f6f1e8 160px,#f6f1e8 100%);
+      line-height:1.95;
+      letter-spacing:.02em;
+    }
+    a{color:var(--accent2)}
+    header{
+      padding:44px 18px 26px;
+    }
+    .wrap{max-width:var(--max);margin:0 auto}
+    .hero{
+      background:linear-gradient(135deg,#fff8ed,#f8f0e3 52%,#f4efe8);
+      border:1px solid #eadfcd;
+      border-radius:32px;
+      padding:28px;
+      box-shadow:var(--shadow);
+    }
+    .badge{
+      display:inline-block;
+      padding:6px 12px;
+      border-radius:999px;
+      background:#fff4df;
+      border:1px solid #edd3a9;
+      color:#6f4b1a;
+      font-size:.92rem;
+      margin-bottom:14px;
+      font-weight:700;
+    }
+    h1{
+      margin:.1em 0 .3em;
+      font-size:clamp(2rem,4vw,3.2rem);
+      line-height:1.18;
+      letter-spacing:.04em;
+    }
+    .lead{font-size:1.05rem;color:#473f36;max-width:760px}
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.35fr .95fr;
+      gap:22px;
+      align-items:center;
+      margin-top:22px;
+    }
+    .card, section, .toc, .quizbox, .answerbox, .summarybox{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    .card{padding:18px}
+    main{max-width:var(--max);margin:0 auto;padding:0 18px 72px}
+    .toc{padding:22px;margin:0 0 24px}
+    .toc h2{margin-top:0}
+    .toc ol{margin:0;padding-left:1.2em}
+    .toc li{margin:.45em 0}
+    .toc a{
+      text-decoration:none;
+      color:var(--ink);
+      transition:color 0.2s;
+    }
+    .toc a:hover{
+      color:var(--accent);
+      text-decoration:underline;
+    }
+    section{
+      padding:28px;
+      margin:24px 0;
+      scroll-margin-top:1rem;
+    }
+    h2{
+      font-size:1.55rem;
+      margin:.1em 0 .8em;
+      line-height:1.35;
+      border-left:6px solid #c98c46;
+      padding-left:14px;
+      color:#2b221b;
+    }
+    h3{
+      margin:1.2em 0 .4em;
+      color:#3c2b1e;
+      font-size:1.12rem;
+    }
+    p{margin:.8em 0}
+    .pillrow{display:flex;flex-wrap:wrap;gap:8px;margin:.2em 0 1em}
+    .pill{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid #e6d7bf;
+      background:#f4ecdd;
+      color:#5f4a30;
+      font-size:.93rem;
+      font-weight:700;
+    }
+    .bigpoint{
+      padding:16px 18px;
+      border-left:5px solid var(--accent);
+      background:#fff8ef;
+      border-radius:0 16px 16px 0;
+      color:#4e3a24;
+      margin:1em 0;
+    }
+    .diagram{
+      background:#faf7f1;
+      border:1px solid #e9dfd1;
+      border-radius:22px;
+      overflow:hidden;
+      margin:18px 0 16px;
+    }
+    .diagram svg{display:block;width:100%;height:auto}
+    .caption{
+      margin:0;
+      padding:12px 15px 15px;
+      font-size:.95rem;
+      color:var(--muted);
+      border-top:1px solid #ece2d4;
+      background:#fffdfa;
+    }
+    table{
+      width:100%;
+      border-collapse:collapse;
+      margin:14px 0 12px;
+      overflow:hidden;
+      border-radius:16px;
+      background:white;
+    }
+    th,td{border:1px solid #e8ddce;padding:12px 10px;vertical-align:top}
+    th{background:#f8f0e2;text-align:left}
+    .two{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+    .step{
+      background:var(--soft);
+      border:1px solid #eadcc7;
+      border-radius:18px;
+      padding:15px;
+    }
+    .kicker{font-size:.92rem;color:var(--muted);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+    .quizbox,.answerbox,.summarybox{padding:24px;margin:24px 0}
+    .question{padding:14px 0;border-top:1px dashed #ddd3c2}
+    .question:first-child{border-top:none;padding-top:0}
+    footer{max-width:var(--max);margin:0 auto 54px;padding:0 18px;color:#5d615f}
+    .mini{font-size:.93rem;color:var(--muted)}
+    .switch-link{
+      margin:20px 0;
+      padding:16px;
+      border:1px solid #c8d5c0;
+      border-radius:18px;
+      background:#f0f4e8;
+      box-shadow:var(--shadow);
+    }
+    @media (max-width:860px){
+      .hero-grid,.two{grid-template-columns:1fr}
+    }
+    @media (max-width:640px){
+      header{padding:22px 12px 18px}
+      main{padding:0 12px 56px}
+      section,.toc,.quizbox,.answerbox,.summarybox{padding:20px}
+      .hero{padding:20px}
+      body{line-height:1.88}
+      h2{font-size:1.34rem}
+      table,tbody,tr,td,th,thead{font-size:.94rem}
+    }
+  </style>
+</head>
+<body>
+<div class="switch-link">
+  <strong>👉 もっと深く知りたい人へ（高校生版）</strong><br>
+  理論・哲学・AIまで詳しく学びたい人はこちら<br>
+  <a href="book107.html">→ 高校生版へ</a>
+</div>
+  <header>
+    <div class="wrap hero">
+      <div class="badge">中学生向け</div>
+      <h1>記録と情報―父の日記と御堂関白記―</h1>
+      <p class="lead">
+        「書いて残すこと」と「意味が伝わること」は同じではありません。父の日記、平安時代の『御堂関白記』、そして私たちのブログやSNS。これらはすべて最初は<strong>記録</strong>です。けれども、誰かが読み、考え、何かに役立てたとき、はじめて<strong>情報</strong>になります。このページでは、その違いを図で一気に理解できるようにしました。
+      </p>
+      <div class="hero-grid">
+        <div class="card">
+          <div class="kicker">このページの中心</div>
+          <p><strong>記録</strong> = 外に残されたもの</p>
+          <p><strong>情報</strong> = 人との関係の中で意味を持ったもの</p>
+          <div class="bigpoint">書いた瞬間は「記録」。読まれ、理解され、役立った瞬間に「情報」になる。</div>
+        </div>
+        <div class="diagram">
+          <svg viewBox="0 0 760 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ノートに書くと記録になり、人が読んで意味を得ると情報になる図">
+            <defs>
+              <linearGradient id="bg1" x1="0" x2="1">
+                <stop offset="0%" stop-color="#fff7ea"/>
+                <stop offset="100%" stop-color="#f4ead8"/>
+              </linearGradient>
+              <linearGradient id="pen" x1="0" x2="1">
+                <stop offset="0%" stop-color="#8a4b08"/>
+                <stop offset="100%" stop-color="#b26e26"/>
+              </linearGradient>
+            </defs>
+            <rect width="760" height="480" fill="#fbf7f1"/>
+            <rect x="56" y="76" width="250" height="310" rx="26" fill="url(#bg1)" stroke="#d9c4a2" stroke-width="4"/>
+            <rect x="336" y="76" width="150" height="310" rx="26" fill="#fffdfa" stroke="#d9d0c1" stroke-width="4"/>
+            <circle cx="620" cy="180" r="70" fill="#f5d9b6"/>
+            <rect x="566" y="252" width="108" height="102" rx="24" fill="#6a8193"/>
+            <line x1="96" y1="136" x2="258" y2="136" stroke="#c8a173" stroke-width="8" stroke-linecap="round"/>
+            <line x1="96" y1="184" x2="238" y2="184" stroke="#c8a173" stroke-width="8" stroke-linecap="round"/>
+            <line x1="96" y1="232" x2="250" y2="232" stroke="#c8a173" stroke-width="8" stroke-linecap="round"/>
+            <line x1="96" y1="280" x2="220" y2="280" stroke="#c8a173" stroke-width="8" stroke-linecap="round"/>
+            <g transform="translate(410 228)">
+              <rect x="-54" y="-32" width="108" height="64" rx="18" fill="#fff1dc" stroke="#e5c38f" stroke-width="3"/>
+              <text x="0" y="10" text-anchor="middle" font-size="28" fill="#7a4a18" font-family="sans-serif" font-weight="700">読む</text>
+            </g>
+            <path d="M306 228 C324 228,334 228,352 228" fill="none" stroke="#b6823f" stroke-width="8" stroke-linecap="round"/>
+            <path d="M486 228 C516 228,536 228,560 228" fill="none" stroke="#0f5b6e" stroke-width="8" stroke-linecap="round"/>
+            <polygon points="552,228 532,216 532,240" fill="#0f5b6e"/>
+            <g transform="translate(614 100)">
+              <rect x="-92" y="-32" width="184" height="58" rx="20" fill="#e7f4f7" stroke="#7fb3c0" stroke-width="3"/>
+              <text x="0" y="7" text-anchor="middle" font-size="28" fill="#0f5b6e" font-family="sans-serif" font-weight="700">情報</text>
+            </g>
+            <g transform="translate(184 428)">
+              <rect x="-92" y="-32" width="184" height="58" rx="20" fill="#fff1dc" stroke="#e5c38f" stroke-width="3"/>
+              <text x="0" y="7" text-anchor="middle" font-size="28" fill="#8a4b08" font-family="sans-serif" font-weight="700">記録</text>
+            </g>
+            <g transform="translate(172 52) rotate(-15)">
+              <rect x="0" y="0" width="180" height="22" rx="11" fill="url(#pen)"/>
+              <polygon points="180,0 216,11 180,22" fill="#d6c3aa"/>
+              <polygon points="216,11 232,5 232,17" fill="#333"/>
+            </g>
+          </svg>
+          <p class="caption">図1　このページの全体像。書かれたものはまず「記録」。そこに読む人と文脈が加わったとき「情報」になる。</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="toc">
+      <h2>目次</h2>
+      <ol>
+        <li><a href="#intro">はじめに</a></li>
+        <li><a href="#ch1">第1章　記録とは何か</a></li>
+        <li><a href="#ch2">第2章　父の日記</a></li>
+        <li><a href="#ch3">第3章　情報とは何か</a></li>
+        <li><a href="#ch4">第4章　御堂関白記</a></li>
+        <li><a href="#ch5">第5章　記録が情報になる流れ</a></li>
+        <li><a href="#ch6">第6章　AIは理解しているのか</a></li>
+        <li><a href="#ch7">第7章　AI時代の記録と情報</a></li>
+        <li><a href="#ch8">第8章　200年後に残すには</a></li>
+        <li><a href="#summary">まとめ</a></li>
+        <li><a href="#quiz">テスト問題</a></li>
+        <li><a href="#answers">解答例</a></li>
+      </ol>
+    </div>
+
+    <section id="intro">
+      <h2>はじめに</h2>
+      <div class="pillrow">
+        <span class="pill">最初に覚えること</span>
+        <span class="pill">記録 ≠ 情報</span>
+        <span class="pill">関係の中で意味が生まれる</span>
+      </div>
+      <p>
+        私たちは、スマホの中にたくさんのものを残しています。写真、動画、メモ、検索履歴、チャット履歴、SNSの投稿。これらをまとめて「情報」と呼んでしまいがちです。けれども、よく考えると、その中の多くはまだ「意味を持って誰かに働きかけているもの」ではありません。ただ<strong>残っている</strong>だけです。
+      </p>
+      <p>
+        ここで必要になるのが、「記録」と「情報」を分けて考える視点です。書いたり、撮ったり、保存したりしただけのものは、まず<strong>記録</strong>です。そこに、読む人、使う人、比べる文脈が加わり、「なるほど」「危ない」「こう考えればよい」といった意味が生まれたとき、それは<strong>情報</strong>になります。
+      </p>
+      <div class="bigpoint">記録は「保存されたもの」。情報は「意味を持って動き出したもの」。</div>
+      <p>
+        この違いを理解すると、父の日記、私たちのブログ、そして平安時代の『御堂関白記』が一本の線でつながります。どれも最初は書かれたものにすぎません。しかし、後から読まれ、つながりを持ったとき、歴史資料にも、家族の宝物にも、学びの材料にもなります。つまり、人間はただ残しているのではなく、未来の誰かに届くかもしれない種をまいているのです。
+      </p>
+    </section>
+
+    <section id="ch1">
+      <h2>第1章　記録とは何か</h2>
+      <p>
+        記録とは、いちばん簡単に言えば<strong>過去を固定したもの</strong>です。きょうの気温をメモする、試合結果をノートに書く、家族旅行の写真を保存する。こうして「あとで確かめられるように残す」ことが記録です。
+      </p>
+      <div class="diagram">
+        <svg viewBox="0 0 960 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="過去の出来事から記録になる流れの図">
+          <rect width="960" height="500" fill="#fbf7f1"/>
+          <g font-family="sans-serif" font-weight="700">
+            <rect x="62" y="170" width="190" height="100" rx="24" fill="#fff2df" stroke="#e6c48f" stroke-width="4"/>
+            <text x="157" y="228" text-anchor="middle" font-size="34" fill="#865019">出来事</text>
+            <rect x="384" y="170" width="190" height="100" rx="24" fill="#fffdf8" stroke="#d8d0c2" stroke-width="4"/>
+            <text x="479" y="228" text-anchor="middle" font-size="34" fill="#45515e">書く・撮る</text>
+            <rect x="706" y="170" width="190" height="100" rx="24" fill="#e7f4f7" stroke="#8bbac4" stroke-width="4"/>
+            <text x="801" y="228" text-anchor="middle" font-size="34" fill="#0f5b6e">記録</text>
+          </g>
+          <path d="M252 220 C305 220,331 220,384 220" fill="none" stroke="#b6823f" stroke-width="10" stroke-linecap="round"/>
+          <polygon points="374,220 352,208 352,232" fill="#b6823f"/>
+          <path d="M574 220 C627 220,653 220,706 220" fill="none" stroke="#0f5b6e" stroke-width="10" stroke-linecap="round"/>
+          <polygon points="696,220 674,208 674,232" fill="#0f5b6e"/>
+          <g font-family="sans-serif" fill="#6a635a" font-size="24">
+            <text x="135" y="334" text-anchor="middle">例：今日の天気</text>
+            <text x="479" y="334" text-anchor="middle">例：ノート・写真・動画</text>
+            <text x="801" y="334" text-anchor="middle">あとで見返せる形になる</text>
+          </g>
+        </svg>
+        <p class="caption">図2　記録は、過去の出来事をあとで確かめられる形にしたもの。</p>
+      </div>
+      <p>
+        記録の大きな特徴は、<strong>静かであること</strong>です。書かれたノートは自分からしゃべりません。保存された写真も、そのままでは「これが大切だ」と主張しません。ただそこにあるだけです。だから記録には、まず正確さが大切になります。日付が違っていたら困る。数字がずれていたら困る。誰が、いつ、どこで、何をしたかがずれていたら、後で見ても役に立ちません。
+      </p>
+      <p>
+        ただし、ここで大事なのは、記録は多ければ多いほどよいとは限らないということです。たとえば監視カメラは膨大な映像を残しますが、そのほとんどは見られません。見られないまま積み上がるだけなら、そこに意味は生まれにくい。つまり、記録は素材ですが、まだ完成品ではないのです。
+      </p>
+      <div class="two">
+        <div class="step">
+          <h3>記録のよいところ</h3>
+          <p>忘れやすい人間の記憶を外に置ける。あとで見返せる。証拠になる。</p>
+        </div>
+        <div class="step">
+          <h3>記録の弱いところ</h3>
+          <p>読む人がいなければ埋もれる。多すぎると意味が見えなくなる。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="ch2">
+      <h2>第2章　父の日記</h2>
+      <p>
+        父の日記を考えると、記録の意味がよく見えてきます。多くの日記は、有名になるために書かれるのではありません。忘れないため、気持ちを整理するため、自分と向き合うために書かれます。つまり、日記はまず<strong>自分のための記録</strong>です。
+      </p>
+      <div class="diagram">
+        <svg viewBox="0 0 960 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="父が日記を書き、あとで子どもが読んで情報になる図">
+          <rect width="960" height="520" fill="#fbf7f1"/>
+          <circle cx="170" cy="162" r="56" fill="#f5d9b6"/>
+          <rect x="102" y="224" width="136" height="122" rx="28" fill="#677d8f"/>
+          <rect x="260" y="208" width="170" height="116" rx="22" fill="#f6e5cb" stroke="#ceb28d" stroke-width="4"/>
+          <line x1="288" y1="244" x2="392" y2="244" stroke="#b9966a" stroke-width="7" stroke-linecap="round"/>
+          <line x1="288" y1="278" x2="380" y2="278" stroke="#b9966a" stroke-width="7" stroke-linecap="round"/>
+          <g font-family="sans-serif" font-weight="700">
+            <text x="170" y="92" text-anchor="middle" font-size="30" fill="#5f4834">父が書く</text>
+            <rect x="445" y="192" width="160" height="86" rx="22" fill="#fff0dc" stroke="#e6c48f" stroke-width="4"/>
+            <text x="525" y="245" text-anchor="middle" font-size="28" fill="#8a4b08">日記</text>
+            <rect x="678" y="120" width="210" height="74" rx="20" fill="#fff8ee" stroke="#ebd7b9" stroke-width="4"/>
+            <text x="783" y="166" text-anchor="middle" font-size="28" fill="#6a5948">読まれない</text>
+            <rect x="678" y="300" width="210" height="74" rx="20" fill="#e7f4f7" stroke="#8bbac4" stroke-width="4"/>
+            <text x="783" y="346" text-anchor="middle" font-size="28" fill="#0f5b6e">読まれる</text>
+            <rect x="718" y="204" width="130" height="62" rx="18" fill="#fff2df" stroke="#e6c48f" stroke-width="3"/>
+            <text x="783" y="244" text-anchor="middle" font-size="24" fill="#8a4b08">または</text>
+          </g>
+          <path d="M430 248 C438 248,440 248,445 248" fill="none" stroke="#b6823f" stroke-width="8" stroke-linecap="round"/>
+          <path d="M605 235 C635 215,645 188,678 157" fill="none" stroke="#8a4b08" stroke-width="8" stroke-linecap="round"/>
+          <path d="M605 257 C635 285,645 312,678 337" fill="none" stroke="#0f5b6e" stroke-width="8" stroke-linecap="round"/>
+          <polygon points="670,157 648,149 655,171" fill="#8a4b08"/>
+          <polygon points="670,337 649,326 651,349" fill="#0f5b6e"/>
+          <g font-family="sans-serif" font-weight="700">
+            <rect x="96" y="394" width="274" height="72" rx="20" fill="#fff8ee" stroke="#ebd7b9" stroke-width="3"/>
+            <text x="233" y="439" text-anchor="middle" font-size="28" fill="#6a5948">記録のまま</text>
+            <rect x="602" y="394" width="286" height="72" rx="20" fill="#e7f4f7" stroke="#8bbac4" stroke-width="3"/>
+            <text x="745" y="439" text-anchor="middle" font-size="28" fill="#0f5b6e">情報になる</text>
+          </g>
+        </svg>
+        <p class="caption">図3　父の日記は、読まれなければ記録。読まれて理解されれば情報になる。</p>
+      </div>
+      <p>
+        ここで重要なのは、同じ日記でも、見る人と時点によって性質が変わるということです。父が書いた直後、その日記は単に保存された文章です。けれども、あとで父本人が読み返して生活を立て直すなら、それは父にとっての情報になります。さらに、子どもが読んで「このころ父はこう悩んでいたのか」と知れば、家族にとっての大切な情報にもなります。
+      </p>
+      <p>
+        日記の価値は、社会の大事件を記録しているからではありません。むしろ逆です。大事件ではない日常、たとえば疲れたこと、腹が立ったこと、季節の変化に気づいたこと、そうした細かいことが残るからこそ価値があります。歴史の教科書は大きな出来事を残しますが、日記は一人の人間の生の手ざわりを残します。
+      </p>
+      <div class="bigpoint">父の日記の価値は「有名だから」ではない。「その人の生がそこにしか残っていない」から大切なのである。</div>
+    </section>
+
+    <section id="ch3">
+      <h2>第3章　情報とは何か</h2>
+      <p>
+        情報とは、ただ存在しているものではありません。<strong>誰かにとって意味を持ち、理解や行動を変えるもの</strong>です。たとえば「気温30度」という数字があるだけなら記録です。しかし、「いつもよりかなり暑い。水分を多めにとったほうがよい」という意味がそこに加わったら、それは情報になります。
+      </p>
+      <div class="diagram">
+        <svg viewBox="0 0 960 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="記録と人と文脈が合わさって情報になる図">
+          <rect width="960" height="520" fill="#fbf7f1"/>
+          <g font-family="sans-serif" font-weight="700">
+            <rect x="72" y="200" width="180" height="92" rx="22" fill="#fff2df" stroke="#e6c48f" stroke-width="4"/>
+            <text x="162" y="258" text-anchor="middle" font-size="34" fill="#8a4b08">記録</text>
+            <text x="310" y="256" text-anchor="middle" font-size="48" fill="#765f45">＋</text>
+            <rect x="372" y="200" width="180" height="92" rx="22" fill="#fffdf8" stroke="#d8d0c2" stroke-width="4"/>
+            <text x="462" y="258" text-anchor="middle" font-size="34" fill="#4a5663">人</text>
+            <text x="610" y="256" text-anchor="middle" font-size="48" fill="#765f45">＋</text>
+            <rect x="672" y="200" width="180" height="92" rx="22" fill="#f7eef8" stroke="#caa0bc" stroke-width="4"/>
+            <text x="762" y="258" text-anchor="middle" font-size="34" fill="#7a2144">文脈</text>
+          </g>
+          <path d="M480 322 C480 350,480 360,480 392" fill="none" stroke="#0f5b6e" stroke-width="10" stroke-linecap="round"/>
+          <polygon points="480,410 468,388 492,388" fill="#0f5b6e"/>
+          <rect x="320" y="418" width="320" height="70" rx="22" fill="#e7f4f7" stroke="#8bbac4" stroke-width="4"/>
+          <text x="480" y="463" text-anchor="middle" font-family="sans-serif" font-weight="700" font-size="34" fill="#0f5b6e">情報</text>
+          <g font-family="sans-serif" fill="#6a635a" font-size="22">
+            <text x="162" y="160" text-anchor="middle">例：30℃</text>
+            <text x="462" y="160" text-anchor="middle">例：読む人</text>
+            <text x="762" y="160" text-anchor="middle">例：真夏・部活前</text>
+          </g>
+        </svg>
+        <p class="caption">図4　記録だけでは不十分。読む人と状況が加わって、はじめて情報になる。</p>
+      </div>
+      <table>
+        <thead>
+          <tr><th>比べる点</th><th>記録</th><th>情報</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>基本</td><td>残っているもの</td><td>意味を持ったもの</td></tr>
+          <tr><td>時間</td><td>主に過去</td><td>現在や未来に働く</td></tr>
+          <tr><td>大切なこと</td><td>正確さ</td><td>役立ち・理解</td></tr>
+          <tr><td>例</td><td>日記、写真、ログ</td><td>助言、警告、発見</td></tr>
+        </tbody>
+      </table>
+      <p>
+        ここで注意したいのは、「情報が多い時代」という言い方です。実際に大量に増えているのは、正確には情報そのものではなく、写真・動画・ログなどの<strong>記録</strong>です。それらが意味づけされないかぎり、ただ積み上がるだけで終わることもあります。つまり、現代の問題は「情報が多すぎる」というより、「記録が多すぎて情報が見えにくい」ことなのです。
+      </p>
+    </section>
+
+    <section id="ch4">
+      <h2>第4章　御堂関白記</h2>
+      <p>
+        『御堂関白記』は、平安時代の藤原道長が残した日記です。もともとは日記なので、形としては記録です。ところが、現代ではただの日記ではなく、歴史を知るための重要な資料として読まれています。つまり、後世においては情報として働いているのです。
+      </p>
+      <div class="diagram">
+        <svg viewBox="0 0 960 540" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="多くの記録の中から読まれ比べられて歴史資料になる図">
+          <rect width="960" height="540" fill="#fbf7f1"/>
+          <g>
+            <rect x="94" y="118" width="104" height="148" rx="14" fill="#f2e4ca" stroke="#cdb08a" stroke-width="4"/>
+            <rect x="132" y="96" width="104" height="148" rx="14" fill="#f0dcc0" stroke="#c9a67d" stroke-width="4"/>
+            <rect x="170" y="126" width="104" height="148" rx="14" fill="#f6ead6" stroke="#d4b894" stroke-width="4"/>
+            <rect x="208" y="104" width="104" height="148" rx="14" fill="#efdfc8" stroke="#cfb08b" stroke-width="4"/>
+          </g>
+          <g font-family="sans-serif" font-weight="700">
+            <text x="203" y="330" text-anchor="middle" font-size="32" fill="#6b5133">たくさんの記録</text>
+            <rect x="398" y="136" width="166" height="78" rx="22" fill="#fff2df" stroke="#e6c48f" stroke-width="4"/>
+            <text x="481" y="185" text-anchor="middle" font-size="28" fill="#8a4b08">読まれる</text>
+            <rect x="398" y="252" width="166" height="78" rx="22" fill="#fffdf8" stroke="#d8d0c2" stroke-width="4"/>
+            <text x="481" y="301" text-anchor="middle" font-size="28" fill="#4a5663">比べる</text>
+            <rect x="398" y="368" width="166" height="78" rx="22" fill="#f7eef8" stroke="#caa0bc" stroke-width="4"/>
+            <text x="481" y="417" text-anchor="middle" font-size="28" fill="#7a2144">意味が出る</text>
+            <rect x="680" y="226" width="194" height="100" rx="24" fill="#e7f4f7" stroke="#8bbac4" stroke-width="4"/>
+            <text x="777" y="287" text-anchor="middle" font-size="32" fill="#0f5b6e">歴史資料</text>
+          </g>
+          <path d="M312 194 C346 194,356 175,398 175" fill="none" stroke="#b6823f" stroke-width="8" stroke-linecap="round"/>
+          <path d="M564 175 C610 175,629 208,680 256" fill="none" stroke="#0f5b6e" stroke-width="8" stroke-linecap="round"/>
+          <path d="M564 291 C610 291,629 282,680 276" fill="none" stroke="#0f5b6e" stroke-width="8" stroke-linecap="round"/>
+          <path d="M564 407 C610 407,629 344,680 296" fill="none" stroke="#0f5b6e" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+        <p class="caption">図5　歴史とは、読まれ、比べられ、意味づけされた記録である。</p>
+      </div>
+      <p>
+        では、なぜ『御堂関白記』のような記録は歴史資料になるのでしょうか。理由はいくつかあります。第一に、書いた人が政治の中心にいたこと。第二に、長く書かれていて時代の流れが追えること。第三に、ほかの記録と比べて確かめられることです。つまり、「重要な人が書いたから」だけではなく、<strong>つながりがあるから</strong>歴史資料になるのです。
+      </p>
+      <div class="bigpoint">歴史とは、最初から歴史であったものではない。あとで読まれ、選ばれた記録である。</div>
+    </section>
+
+    <section id="ch5">
+      <h2>第5章　記録が情報になる流れ</h2>
+      <p>
+        ここまでをまとめると、記録が情報になるまでには流れがあります。何かが起き、それが残され、読まれ、ほかのものと結びつき、意味が生まれる。この段階を順に見ると、区別がはっきりします。
+      </p>
+      <div class="diagram">
+        <svg viewBox="0 0 960 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="記録から情報への5段階フロー図">
+          <rect width="960" height="380" fill="#fbf7f1"/>
+          <g font-family="sans-serif" font-weight="700">
+            <rect x="42" y="142" width="138" height="92" rx="22" fill="#fff2df" stroke="#e6c48f" stroke-width="4"/>
+            <text x="111" y="199" text-anchor="middle" font-size="26" fill="#8a4b08">起きる</text>
+            <rect x="218" y="142" width="138" height="92" rx="22" fill="#fff8ee" stroke="#ebd7b9" stroke-width="4"/>
+            <text x="287" y="199" text-anchor="middle" font-size="26" fill="#7a644b">残す</text>
+            <rect x="394" y="142" width="138" height="92" rx="22" fill="#fffdf8" stroke="#d8d0c2" stroke-width="4"/>
+            <text x="463" y="199" text-anchor="middle" font-size="26" fill="#4a5663">読む</text>
+            <rect x="570" y="142" width="138" height="92" rx="22" fill="#f7eef8" stroke="#caa0bc" stroke-width="4"/>
+            <text x="639" y="199" text-anchor="middle" font-size="26" fill="#7a2144">つなぐ</text>
+            <rect x="746" y="142" width="172" height="92" rx="22" fill="#e7f4f7" stroke="#8bbac4" stroke-width="4"/>
+            <text x="832" y="199" text-anchor="middle" font-size="26" fill="#0f5b6e">情報になる</text>
+          </g>
+          <g fill="none" stroke-linecap="round" stroke-width="8">
+            <path d="M180 188 C194 188,204 188,218 188" stroke="#b6823f"/>
+            <path d="M356 188 C370 188,380 188,394 188" stroke="#8a8e94"/>
+            <path d="M532 188 C546 188,556 188,570 188" stroke="#a1647f"/>
+            <path d="M708 188 C720 188,730 188,746 188" stroke="#0f5b6e"/>
+          </g>
+        </svg>
+        <p class="caption">図6　記録は素材。読まれ、つながったときに情報になる。</p>
+      </div>
+      <p>
+        この図を見ると、記録と情報は対立するものではなく、つながっていることが分かります。情報は空から落ちてくるのではありません。まず残されたものがあり、それを誰かが読み、意味をつかみ、別のものと結びつけるからこそ生まれます。だから「記録なんて意味がない」と考えるのは間違いです。意味が生まれる前の、大切な土台だからです。
+      </p>
+    </section>
+
+    <section id="ch6">
+      <h2>第6章　AIは理解しているのか</h2>
+      <p>
+        ここで少し難しい問いに進みます。AIはたくさんの文章を読み、すばやく答えを返します。では、AIは本当に「意味」を理解しているのでしょうか。この問題を考えるために、有名な思考実験として「中国語の部屋」という考え方があります。
+      </p>
+      <div class="diagram">
+        <svg viewBox="0 0 960 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="入力を処理して出力するが意味は分からないという図">
+          <rect width="960" height="440" fill="#fbf7f1"/>
+          <g font-family="sans-serif" font-weight="700">
+            <rect x="64" y="162" width="180" height="100" rx="24" fill="#fff2df" stroke="#e6c48f" stroke-width="4"/>
+            <text x="154" y="224" text-anchor="middle" font-size="32" fill="#8a4b08">入力</text>
+            <rect x="390" y="120" width="180" height="184" rx="24" fill="#fffdf8" stroke="#d8d0c2" stroke-width="4"/>
+            <text x="480" y="190" text-anchor="middle" font-size="32" fill="#4a5663">処理</text>
+            <text x="480" y="242" text-anchor="middle" font-size="22" fill="#7b8693">規則どおりに並べる</text>
+            <rect x="716" y="162" width="180" height="100" rx="24" fill="#e7f4f7" stroke="#8bbac4" stroke-width="4"/>
+            <text x="806" y="224" text-anchor="middle" font-size="32" fill="#0f5b6e">出力</text>
+          </g>
+          <path d="M244 212 C298 212,328 212,390 212" fill="none" stroke="#b6823f" stroke-width="10" stroke-linecap="round"/>
+          <path d="M570 212 C626 212,656 212,716 212" fill="none" stroke="#0f5b6e" stroke-width="10" stroke-linecap="round"/>
+          <g font-family="sans-serif" font-weight="700">
+            <rect x="336" y="346" width="288" height="56" rx="18" fill="#fff8ee" stroke="#ebd7b9" stroke-width="3"/>
+            <text x="480" y="382" text-anchor="middle" font-size="25" fill="#6a5948">意味が分かっているとは限らない</text>
+          </g>
+        </svg>
+        <p class="caption">図7　処理ができることと、意味が分かることは同じではない。</p>
+      </div>
+      <p>
+        この考え方が言いたいのは、「正しく見える答えを出せること」と「本当に理解していること」は別かもしれない、ということです。AIは大量の記録をもとに、とても上手に文章を作れます。しかし、それは意味を感じているからではなく、パターンを処理しているだけかもしれません。ここに、人間とAIの違いを考える入口があります。
+      </p>
+      <div class="bigpoint">AIは記録をすばやく処理できる。しかし、意味そのものを生きているかどうかは別問題である。</div>
+    </section>
+
+    <section id="ch7">
+      <h2>第7章　AI時代の記録と情報</h2>
+      <p>
+        AI時代になると、記録の量はさらに増えます。写真も動画も音声も文章も、自動でどんどん残せるからです。ところが、ここで大事なのは、記録が増えることと、情報が増えることは同じではないという点です。
+      </p>
+      <div class="diagram">
+        <svg viewBox="0 0 960 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="昔は記録が少なく価値があり、今は多すぎて埋もれる図">
+          <rect width="960" height="460" fill="#fbf7f1"/>
+          <line x1="480" y1="70" x2="480" y2="390" stroke="#dccfbf" stroke-width="4"/>
+          <g font-family="sans-serif" font-weight="700">
+            <text x="240" y="94" text-anchor="middle" font-size="34" fill="#8a4b08">昔</text>
+            <text x="720" y="94" text-anchor="middle" font-size="34" fill="#0f5b6e">今</text>
+          </g>
+          <g>
+            <rect x="150" y="178" width="58" height="108" rx="10" fill="#f2e4ca" stroke="#cdb08a" stroke-width="3"/>
+            <rect x="230" y="158" width="58" height="128" rx="10" fill="#f0dcc0" stroke="#c9a67d" stroke-width="3"/>
+            <rect x="310" y="188" width="58" height="98" rx="10" fill="#f6ead6" stroke="#d4b894" stroke-width="3"/>
+          </g>
+          <g>
+            <rect x="556" y="118" width="38" height="168" rx="10" fill="#f2e4ca" stroke="#cdb08a" stroke-width="3"/>
+            <rect x="608" y="136" width="38" height="150" rx="10" fill="#f0dcc0" stroke="#c9a67d" stroke-width="3"/>
+            <rect x="660" y="102" width="38" height="184" rx="10" fill="#f6ead6" stroke="#d4b894" stroke-width="3"/>
+            <rect x="712" y="126" width="38" height="160" rx="10" fill="#efdfc8" stroke="#cfb08b" stroke-width="3"/>
+            <rect x="764" y="92" width="38" height="194" rx="10" fill="#f2e4ca" stroke="#cdb08a" stroke-width="3"/>
+            <rect x="816" y="110" width="38" height="176" rx="10" fill="#f0dcc0" stroke="#c9a67d" stroke-width="3"/>
+          </g>
+          <g font-family="sans-serif" font-weight="700">
+            <rect x="120" y="322" width="278" height="64" rx="18" fill="#fff8ee" stroke="#ebd7b9" stroke-width="3"/>
+            <text x="259" y="363" text-anchor="middle" font-size="26" fill="#6a5948">少ない → 目立つ</text>
+            <rect x="540" y="322" width="330" height="64" rx="18" fill="#e7f4f7" stroke="#8bbac4" stroke-width="3"/>
+            <text x="705" y="363" text-anchor="middle" font-size="26" fill="#0f5b6e">多すぎる → 埋もれる</text>
+          </g>
+        </svg>
+        <p class="caption">図8　今は「残すこと」より「読まれること」の方が難しい。</p>
+      </div>
+      <p>
+        昔は、残っている記録そのものが少なかったため、保存されているだけで価値がありました。今は違います。残すこと自体は簡単になりましたが、そのかわり、膨大な記録の中に埋もれてしまいます。だから価値の中心は、「残せるか」から「読まれるか・意味づけされるか」に移っているのです。
+      </p>
+      <p>
+        ここで重要なのは、AI時代だからこそ、自分で考えながら記録を残す必要があるということです。ただ量を増やすだけではなく、「何を残すか」「誰に伝わるか」「あとで読み返して意味が見えるか」を意識することが、これからますます大切になります。
+      </p>
+    </section>
+
+    <section id="ch8">
+      <h2>第8章　200年後に残すには</h2>
+      <p>
+        最後に、もっと現実的な問題を考えます。せっかく記録を残しても、読めなくなったら意味がありません。ファイル形式が古くなって開けない、サービスが終わって消える、機械が壊れる。こうしたことは実際に起こります。だから、長く残したい記録ほど、保存の方法を考える必要があります。
+      </p>
+      <div class="diagram">
+        <svg viewBox="0 0 960 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="保存しても読めないと意味がない図">
+          <rect width="960" height="500" fill="#fbf7f1"/>
+          <g font-family="sans-serif" font-weight="700">
+            <rect x="84" y="192" width="180" height="90" rx="22" fill="#fff2df" stroke="#e6c48f" stroke-width="4"/>
+            <text x="174" y="248" text-anchor="middle" font-size="32" fill="#8a4b08">保存</text>
+            <rect x="388" y="92" width="220" height="90" rx="22" fill="#fff8ee" stroke="#ebd7b9" stroke-width="4"/>
+            <text x="498" y="148" text-anchor="middle" font-size="30" fill="#6a5948">読めない</text>
+            <rect x="388" y="308" width="220" height="90" rx="22" fill="#e7f4f7" stroke="#8bbac4" stroke-width="4"/>
+            <text x="498" y="364" text-anchor="middle" font-size="30" fill="#0f5b6e">読める</text>
+            <rect x="710" y="92" width="150" height="90" rx="22" fill="#fff5f2" stroke="#e5b7ab" stroke-width="4"/>
+            <text x="785" y="148" text-anchor="middle" font-size="28" fill="#9b3c24">無意味化</text>
+            <rect x="710" y="308" width="150" height="90" rx="22" fill="#eef8ec" stroke="#add0ab" stroke-width="4"/>
+            <text x="785" y="364" text-anchor="middle" font-size="28" fill="#336a2d">活用可能</text>
+          </g>
+          <path d="M264 237 C316 237,338 178,388 137" fill="none" stroke="#8a4b08" stroke-width="9" stroke-linecap="round"/>
+          <path d="M264 237 C316 237,338 296,388 353" fill="none" stroke="#0f5b6e" stroke-width="9" stroke-linecap="round"/>
+          <path d="M608 137 C646 137,666 137,710 137" fill="none" stroke="#c45b41" stroke-width="8" stroke-linecap="round"/>
+          <path d="M608 353 C646 353,666 353,710 353" fill="none" stroke="#5e9c58" stroke-width="8" stroke-linecap="round"/>
+        </svg>
+        <p class="caption">図9　残すことよりも、あとで読めることの方が重要である。</p>
+      </div>
+      <p>
+        長く残すには、一つの方法だけに頼らないことが大切です。紙に印刷して残す、信頼できる保存メディアに入れる、クラウドにも置く、説明文を一緒に残す。こうした組み合わせが必要です。特に大事なのは、ファイルだけでなく「これは何で、いつ、誰が、何のために残したか」という説明も一緒に残すことです。意味をつなぐ手がかりがないと、あとで読めても分からないからです。
+      </p>
+      <div class="bigpoint">長期保存で本当に大切なのは「壊れないこと」だけではない。「あとで読んで意味がわかること」である。</div>
+    </section>
+
+    <div id="summary" class="summarybox">
+      <h2>まとめ</h2>
+      <p>
+        このページでいちばん大切なのは、次の三つです。第一に、<strong>記録は外に残されたもの</strong>だということ。第二に、<strong>情報は読む人と文脈の中で意味を持ったもの</strong>だということ。第三に、<strong>AI時代ほど記録は増えるが、意味は自動では生まれない</strong>ということです。
+      </p>
+      <p>
+        父の日記は、一見すると私的な記録にすぎません。しかし、家族が読み、そこから父の生き方や悩みを理解したとき、大切な情報になります。『御堂関白記』も同じです。最初は日記でしたが、後から読まれ、比べられ、時代を知るための情報になりました。つまり、記録と情報は別物でありながら、深くつながっているのです。
+      </p>
+      <div class="bigpoint">あなたが今日残した記録も、未来の誰かにとって情報になるかもしれない。</div>
+    </div>
+
+    <div id="quiz" class="quizbox">
+      <h2>テスト問題</h2>
+      <div class="question">
+        <h3>問1</h3>
+        <p>「記録」と「情報」の違いを、本文の言葉を使って説明しなさい。</p>
+      </div>
+      <div class="question">
+        <h3>問2</h3>
+        <p>父の日記が、ある時は記録であり、ある時は情報にもなるのはなぜですか。</p>
+      </div>
+      <div class="question">
+        <h3>問3</h3>
+        <p>『御堂関白記』が、ただの日記ではなく歴史資料になる理由を二つ書きなさい。</p>
+      </div>
+      <div class="question">
+        <h3>問4</h3>
+        <p>「AI時代には記録が増えるが、情報が自動で増えるわけではない」とあるのはなぜですか。</p>
+      </div>
+      <div class="question">
+        <h3>問5</h3>
+        <p>200年後まで記録を残すとき、「保存」だけでは足りないのはなぜですか。</p>
+      </div>
+      <div class="question">
+        <h3>問6（発展）</h3>
+        <p>あなたが今から残すとしたら、どんな記録を、どのように残したいですか。理由も書きなさい。</p>
+      </div>
+    </div>
+
+    <div id="answers" class="answerbox">
+      <h2>解答例</h2>
+      <div class="question">
+        <h3>問1 解答例</h3>
+        <p>記録は、出来事や考えをあとで確かめられるように外に残したものです。情報は、その記録が読まれたり使われたりして、意味を持ち、人の理解や行動を変えるものです。</p>
+      </div>
+      <div class="question">
+        <h3>問2 解答例</h3>
+        <p>父の日記は、書かれて保存されているだけなら記録です。しかし、父本人や家族が読んで意味を理解したり、生活や考え方に役立てたりすれば、情報にもなるからです。</p>
+      </div>
+      <div class="question">
+        <h3>問3 解答例</h3>
+        <p>たとえば、①政治の中心にいた人物が書いていて時代を知る手がかりになること、②長く書かれていて流れが追えること、③ほかの資料と比べて確かめられること、などが理由です。</p>
+      </div>
+      <div class="question">
+        <h3>問4 解答例</h3>
+        <p>AI時代には写真・動画・文章などの記録は大量に残せますが、それだけでは意味が生まれません。人が読み、文脈の中で使い、何かに結びつけてはじめて情報になるからです。</p>
+      </div>
+      <div class="question">
+        <h3>問5 解答例</h3>
+        <p>保存されていても、あとで読めなかったり、何の記録か分からなかったりすると意味が伝わらないからです。長く残すには、読める形と説明を一緒に残す必要があります。</p>
+      </div>
+      <div class="question">
+        <h3>問6 解答例</h3>
+        <p>例：家族との日常や、自分が考えたことを日記として残したい。あとで自分が読み返せるだけでなく、家族が読んだときに、その時代の気持ちや生活が伝わるから。</p>
+      </div>
+    </div>
+<div class="switch-link">
+  <strong>👉 もっと深く知りたい人へ（高校生版）</strong><br>
+  理論・哲学・AIまで詳しく学びたい人はこちら<br>
+  <a href="book107.html">→ 高校生版へ</a>
+</div>
+  </main>
+
+  <footer>
+    <p><strong>完成版について</strong><br>
+    このHTMLは、外部画像を使わず、すべての図を埋め込みSVGで構成しています。そのため、画像切れが起こらず、スマホでも表示が安定します。</p>
+    <p class="mini">ファイル名：book107_svg_quiz.html</p>
+  </footer>
+</body>
+</html>

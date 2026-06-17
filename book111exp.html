@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ロボットによる実験の実際</title>
+<style>
+:root{
+  --bg:#f7fbff;
+  --paper:#ffffff;
+  --ink:#1f2937;
+  --sub:#4b5563;
+  --line:#d9e4f2;
+  --accent:#2563eb;
+  --accent2:#0f766e;
+  --warn:#b45309;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
+  color:var(--ink);
+  background:linear-gradient(180deg,#eef6ff 0%, #f8fbff 30%, #ffffff 100%);
+  line-height:1.95;
+}
+header{
+  background:linear-gradient(135deg,#1d4ed8,#0f766e);
+  color:white;
+  padding:56px 20px 40px;
+}
+.header-inner, main{max-width:980px;margin:0 auto}
+h1{font-size:2.4rem;line-height:1.25;margin:0 0 14px}
+.subtitle{font-size:1.05rem;opacity:.95;max-width:860px}
+main{padding:28px 18px 72px}
+.card{
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:26px;
+  margin:18px 0 24px;
+  box-shadow:0 8px 28px rgba(37,99,235,.06);
+}
+h2{
+  font-size:1.7rem;
+  margin:0 0 16px;
+  padding-bottom:8px;
+  border-bottom:3px solid #dbeafe;
+}
+h3{
+  font-size:1.2rem;
+  color:#0f3b80;
+  margin:26px 0 10px;
+}
+p{margin:0 0 14px}
+.lead{
+  font-size:1.06rem;
+  background:#eff6ff;
+  border-left:6px solid var(--accent);
+  padding:16px 18px;
+  border-radius:12px;
+}
+ul,ol{padding-left:1.4em}
+li{margin:6px 0}
+.toc a{color:#1447a6;text-decoration:none}
+.toc a:hover{text-decoration:underline}
+.note{
+  background:#f8fafc;
+  border:1px solid #e5e7eb;
+  border-radius:14px;
+  padding:14px 16px;
+}
+.warn{
+  background:#fff7ed;
+  border:1px solid #fed7aa;
+  border-left:6px solid var(--warn);
+  border-radius:14px;
+  padding:14px 16px;
+}
+.figure{
+  margin:22px 0;
+  background:linear-gradient(180deg,#fbfdff,#f4f9ff);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:14px;
+}
+.figure svg{width:100%;height:auto;display:block}
+.figcap{
+  margin-top:10px;
+  color:var(--sub);
+  font-size:.95rem;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  margin:14px 0 18px;
+  font-size:.96rem;
+}
+th,td{
+  border:1px solid #dbe4ee;
+  padding:10px 12px;
+  vertical-align:top;
+}
+th{background:#eff6ff}
+small.code{
+  display:block;
+  white-space:pre-wrap;
+  background:#0b1220;
+  color:#dbeafe;
+  border-radius:14px;
+  padding:16px;
+  line-height:1.7;
+  overflow:auto;
+}
+.footer{
+  color:var(--sub);
+  font-size:.95rem;
+}
+.badge{
+  display:inline-block;
+  background:#dbeafe;
+  color:#1d4ed8;
+  border-radius:999px;
+  padding:3px 10px;
+  font-size:.85rem;
+  margin-right:8px;
+}
+@media (max-width:700px){
+  h1{font-size:1.9rem}
+  .card{padding:18px}
+}
+</style>
+</head>
+<body>
+
+<div style="max-width:1100px;margin:18px auto 0;padding:0 16px;">
+  <div style="background:#ffffff;border:1px solid #dbe4f0;border-radius:16px;padding:14px 18px;box-shadow:0 6px 18px rgba(0,0,0,.06);font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Yu Gothic',sans-serif;">
+    <strong style="margin-right:10px;">3部作リンク：</strong>
+    <a href="book111.html">高校生版</a> ｜ 
+    <a href="book111exp.html">実験編</a> ｜ 
+    <a href="book111stu.html">中学生版</a>
+  </div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <div class="badge">中学生向け解説</div>
+    <h1>ロボットによる実験の実際</h1>
+    <p class="subtitle">水に粒状の水酸化ナトリウム（苛性ソーダ）を入れてかき混ぜ、pHを測る実験を例に、ロボットが実験をするときに何を考え、どのように動くのかを、できるだけやさしく、しかし中身はしっかり保って説明します。</p>
+  </div>
+</header>
+
+<main>
+
+<section class="card">
+  <p class="lead">
+    研究室で人がふつうにやっている実験でも、ロボットにやらせようとすると、実はたくさんのことを細かく決めなければなりません。
+    「水を入れる」「少しずつ量る」「よくかき混ぜる」といった言い方は、人には通じますが、ロボットにはあいまいです。
+    だからこそ、実験をロボットが読める形に変えることが大切になります。
+  </p>
+</section>
+
+<section class="card toc">
+  <h2>目次</h2>
+  <ol>
+    <li><a href="#sec1">この実験では何をするのか</a></li>
+    <li><a href="#sec2">人にはわかるが、ロボットにはわかりにくい理由</a></li>
+    <li><a href="#sec3">ロボットは実験をどう分解して考えるか</a></li>
+    <li><a href="#sec4">実際の動作の流れを見てみよう</a></li>
+    <li><a href="#sec5">なぜ追加の情報が必要なのか</a></li>
+    <li><a href="#sec6">安全はどう守るのか</a></li>
+    <li><a href="#sec7">実験をコンピュータが読める形にする</a></li>
+    <li><a href="#sec8">AIが次の条件を考えると何が起こるか</a></li>
+    <li><a href="#sec9">これからの実験室と、学ぶ人に必要な力</a></li>
+    <li><a href="#sec10">まとめ</a></li>
+  </ol>
+</section>
+
+<section class="card" id="sec1">
+  <h2>1．この実験では何をするのか</h2>
+  <p>
+    まず、今回の実験そのものを簡単に言い直してみましょう。500 mLのビーカーに200 mLの水を入れます。そこへ、電子天秤ではかった粒状の水酸化ナトリウムを1 g入れます。よくかき混ぜたあと、pHメーターで液体のpHを測り、その値を記録します。
+  </p>
+  <p>
+    pHというのは、その液体が酸性か、アルカリ性かを表す数字です。水酸化ナトリウムは強いアルカリ性を示す物質なので、水に溶かすとpHは高くなります。つまりこの実験は、「決められた量の物質を水に溶かしたとき、どんなアルカリ性になるのか」を確かめる基礎的な実験といえます。
+  </p>
+  <p>
+    人がやるなら、ふつうはそれほど難しくありません。しかしロボットにとっては、これは「物をつかむ」「位置を合わせる」「重さを正確にはかる」「液体をこぼさない」「壊れやすい電極をそっと入れる」といった、いくつもの難しい仕事が集まった複合課題です。
+  </p>
+
+  
+  <h3>この実験がロボット向きでもあり、難しくもある理由</h3>
+  <p>
+    今回の実験は、派手な化学反応が起きるわけではありません。色が急に変わったり、大きな音が出たりする実験ではないので、一見すると自動化しやすそうに見えます。実際、使う器具はビーカー、天秤、かくはん装置、pHメーターと、研究室ではよく見かけるものです。
+  </p>
+  <p>
+    その一方で、ロボットにとっては基本動作が多く、しかも正確さが要求されます。重さは1 gぴったり近く、液体は決められた量、pH電極はこわさないようにそっと扱う必要があります。つまり、単純に見えて、ロボットの基礎力がよく試される実験でもあるのです。
+  </p>
+
+
+  <div class="figure">
+    <svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="900" height="320" rx="18" fill="#f8fbff"/>
+      <rect x="30" y="110" width="150" height="120" rx="18" fill="#dbeafe" stroke="#93c5fd"/>
+      <text x="105" y="95" text-anchor="middle" font-size="24" fill="#1e3a8a">① 水を入れる</text>
+      <rect x="52" y="130" width="106" height="80" rx="10" fill="#fff" stroke="#60a5fa" stroke-width="3"/>
+      <path d="M65 170 Q105 145 145 170" fill="none" stroke="#38bdf8" stroke-width="5"/>
+      <line x1="205" y1="170" x2="285" y2="170" stroke="#60a5fa" stroke-width="8"/>
+      <polygon points="285,170 260,155 260,185" fill="#60a5fa"/>
+
+      <rect x="300" y="110" width="150" height="120" rx="18" fill="#dcfce7" stroke="#86efac"/>
+      <text x="375" y="95" text-anchor="middle" font-size="24" fill="#166534">② 1 g量る</text>
+      <rect x="330" y="145" width="90" height="52" rx="10" fill="#fff" stroke="#22c55e" stroke-width="3"/>
+      <text x="375" y="177" text-anchor="middle" font-size="28" fill="#166534">1.000 g</text>
+
+      <line x1="475" y1="170" x2="555" y2="170" stroke="#34d399" stroke-width="8"/>
+      <polygon points="555,170 530,155 530,185" fill="#34d399"/>
+
+      <rect x="570" y="110" width="150" height="120" rx="18" fill="#fef3c7" stroke="#fcd34d"/>
+      <text x="645" y="95" text-anchor="middle" font-size="24" fill="#92400e">③ 混ぜる</text>
+      <rect x="600" y="130" width="90" height="90" rx="12" fill="#fff" stroke="#f59e0b" stroke-width="3"/>
+      <path d="M617 180 C635 145, 655 215, 673 180" fill="none" stroke="#f59e0b" stroke-width="5"/>
+      <circle cx="645" cy="174" r="28" fill="none" stroke="#fbbf24" stroke-width="4"/>
+      <polygon points="677,174 666,165 666,183" fill="#f59e0b"/>
+
+      <line x1="745" y1="170" x2="825" y2="170" stroke="#f59e0b" stroke-width="8"/>
+      <polygon points="825,170 800,155 800,185" fill="#f59e0b"/>
+
+      <rect x="740" y="110" width="130" height="120" rx="18" fill="#ede9fe" stroke="#c4b5fd"/>
+      <text x="805" y="95" text-anchor="middle" font-size="24" fill="#5b21b6">④ pH測定</text>
+      <rect x="777" y="128" width="56" height="95" rx="10" fill="#fff" stroke="#8b5cf6" stroke-width="3"/>
+      <text x="805" y="186" text-anchor="middle" font-size="34" fill="#5b21b6">pH</text>
+    </svg>
+    <div class="figcap">図1　今回の実験は、入れる・量る・混ぜる・測る、という4つの大きな流れでできています。</div>
+  </div>
+</section>
+
+<section class="card" id="sec2">
+  <h2>2．人にはわかるが、ロボットにはわかりにくい理由</h2>
+  <p>
+    たとえば先生が「少しずつ入れて」「よく混ぜて」「値が落ち着いたら読んで」と言ったとします。人なら経験を使って意味を補えます。ところがロボットは、あいまいな言葉のままでは動けません。
+  </p>
+  <p>
+    「少しずつ」とは何グラムずつなのか。「よく混ぜる」とは何秒で、何回転なのか。「落ち着いたら」とは、pHの数字がどのくらい変わらなくなったらよいのか。こうした条件がはっきりして初めて、ロボットは確実に動けます。
+  </p>
+  <p>
+    つまりロボット実験の本当のむずかしさは、ロボットが腕を動かすことだけではありません。実験の言葉を、数字と条件に変えることが重要なのです。これは、実験を「ていねいに言い直す」作業でもあります。
+  </p>
+
+  <table>
+    <tr>
+      <th>人向けの言い方</th>
+      <th>ロボット向けに直した言い方</th>
+    </tr>
+    <tr>
+      <td>水を入れる</td>
+      <td>純水を200.0 mL、誤差±0.5 mL以内でビーカーへ注入する</td>
+    </tr>
+    <tr>
+      <td>少しずつ量る</td>
+      <td>目標1.000 gに対して、残り量に応じて投入量を小さくしながら調整する</td>
+    </tr>
+    <tr>
+      <td>よく混ぜる</td>
+      <td>400 rpmで60秒間かくはんする</td>
+    </tr>
+    <tr>
+      <td>落ち着いたら測る</td>
+      <td>5秒間でpH変動が±0.02以内になった時点の値を記録する</td>
+    </tr>
+  </table>
+
+  
+  <h3>人間の「常識」は、そのままでは命令にならない</h3>
+  <p>
+    人は、理科室で何度も器具を見たり使ったりするうちに、知らないうちに多くの常識を身につけています。ビーカーは上から見れば丸い口がある、液体は急に振るとこぼれやすい、電極は細くて割れやすい、といったことです。こうした常識のおかげで、多少あいまいな指示でも動けます。
+  </p>
+  <p>
+    しかしロボットには、その常識が最初から入っているとは限りません。だから、見た目の情報をカメラで取り、重さの情報を天秤で取り、触れた力をセンサーで取り、それらを合わせて判断します。言いかえると、ロボットの実験は「見て、感じて、数字で確かめる」の連続なのです。
+  </p>
+
+
+  <div class="note">
+    ロボットにとって大切なのは「意味が通じること」ではなく、「同じ条件で毎回同じように再現できること」です。
+  </div>
+</section>
+
+<section class="card" id="sec3">
+  <h2>3．ロボットは実験をどう分解して考えるか</h2>
+  <p>
+    ロボットは、実験全体を一気に理解しているわけではありません。むしろ、たくさんの小さな動きに分けて考えます。たとえば「ビーカーをつかむ」という作業だけでも、見る、位置を決める、近づく、つかむ、持ち上げる、運ぶ、置く、という流れに分かれます。
+  </p>
+  <p>
+    さらに、「つかむ」という動作の中には、手をどこまで開くか、どの速さで近づくか、どれくらいの力でつかむか、すべらずに持てているかをどう確かめるか、まで含まれます。人にとっては一瞬でも、ロボットには段階があるのです。
+  </p>
+  <p>
+    この考え方は、プログラミングにも似ています。大きな問題を小さく分けると、失敗した場所も見つけやすくなります。だから先進的な自動実験室では、「つかむ」「量る」「注ぐ」「測る」といった“動作の部品”を作り、それを組み合わせて実験全体を構成します。
+  </p>
+
+  <div class="figure">
+    <svg viewBox="0 0 920 360" xmlns="http://www.w3.org/2000/svg">
+      <rect x="0" y="0" width="920" height="360" rx="20" fill="#f8fbff"/>
+      <rect x="50" y="40" width="820" height="70" rx="18" fill="#dbeafe" stroke="#93c5fd"/>
+      <text x="460" y="84" text-anchor="middle" font-size="34" fill="#1e3a8a">「実験をする」</text>
+
+      <line x1="460" y1="110" x2="460" y2="150" stroke="#60a5fa" stroke-width="6"/>
+
+      <rect x="60" y="150" width="180" height="70" rx="16" fill="#ecfeff" stroke="#67e8f9"/>
+      <text x="150" y="194" text-anchor="middle" font-size="28" fill="#155e75">つかむ</text>
+
+      <rect x="265" y="150" width="180" height="70" rx="16" fill="#ecfccb" stroke="#bef264"/>
+      <text x="355" y="194" text-anchor="middle" font-size="28" fill="#3f6212">量る</text>
+
+      <rect x="470" y="150" width="180" height="70" rx="16" fill="#fef3c7" stroke="#fcd34d"/>
+      <text x="560" y="194" text-anchor="middle" font-size="28" fill="#92400e">注ぐ</text>
+
+      <rect x="675" y="150" width="180" height="70" rx="16" fill="#ede9fe" stroke="#c4b5fd"/>
+      <text x="765" y="194" text-anchor="middle" font-size="28" fill="#5b21b6">測る</text>
+
+      <line x1="150" y1="220" x2="150" y2="250" stroke="#67e8f9" stroke-width="4"/>
+      <line x1="355" y1="220" x2="355" y2="250" stroke="#bef264" stroke-width="4"/>
+      <line x1="560" y1="220" x2="560" y2="250" stroke="#fcd34d" stroke-width="4"/>
+      <line x1="765" y1="220" x2="765" y2="250" stroke="#c4b5fd" stroke-width="4"/>
+
+      <text x="150" y="286" text-anchor="middle" font-size="21" fill="#0f766e">見る → 近づく → つかむ</text>
+      <text x="355" y="286" text-anchor="middle" font-size="21" fill="#4d7c0f">置く → 0にする → 微調整</text>
+      <text x="560" y="286" text-anchor="middle" font-size="21" fill="#b45309">傾ける → 落下確認 → 戻す</text>
+      <text x="765" y="286" text-anchor="middle" font-size="21" fill="#6d28d9">洗う → 浸す → 安定判定</text>
+    </svg>
+    <div class="figcap">図2　ロボットは大きな作業を、小さな動きの部品へ分けて考えます。</div>
+  </div>
+</section>
+
+<section class="card" id="sec4">
+  <h2>4．実際の動作の流れを見てみよう</h2>
+  <p>
+    では、今回の実験をロボットが行う場面を、順番に追ってみましょう。まずロボットは作業台をカメラで見て、ビーカー、水を入れる場所、天秤、薬品の容器、かくはん装置、pHメーターの位置を確認します。人にとっては見ればわかることでも、ロボットにとってはこれが出発点です。
+  </p>
+  <p>
+    次に空のビーカーをつかみ、水を入れる場所まで運びます。200 mLの水を入れたら、ビーカーをかくはん装置の近くへ置きます。その後、計量皿を天秤に置いてゼロ合わせをし、薬品を少しずつ入れて1.000 gになるように調整します。
+  </p>
+  <p>
+    ここがかなり難しいところです。薬品を一度にどさっと入れると、1 gをこえてしまいます。こえてしまうと、正しい条件で実験したことにならないので、やり直しになることがあります。だからロボットは、最初は少し多めに、最後はほんの少しだけ入れる、というように細かく調整します。
+  </p>
+  <p>
+    量れた薬品をビーカーへ移したら、かくはん装置で混ぜます。水酸化ナトリウムがしっかり溶けるまで待ち、必要なら温度も確認します。最後にpH電極を洗ってから液体に入れ、数字が安定したらpHを読み取り、結果を保存します。
+  </p>
+
+  
+  <h3>秤量がむずかしいのはなぜか</h3>
+  <p>
+    「1 g量るだけなら簡単では」と思うかもしれません。ところが粉や粒を量る作業は、ロボットにとってかなり繊細です。まず、薬品の粒の大きさが毎回まったく同じとは限りません。次に、スプーンや容器の角度によって、どれだけ落ちるかが変わります。ほんの少し手首を傾けただけで、落ちる量が変わるのです。
+  </p>
+  <p>
+    そこでロボットは、最初から1.000 gを狙って一気に入れるのではなく、0.85 gくらいまでざっくり入れ、その後は天秤の値を見ながら少しずつ近づいていきます。これは人が料理で塩を最後に少しずつ足すのと似ています。正確さがほしいときほど、最後はゆっくりになるのです。
+  </p>
+  <h3>pH測定がむずかしいのはなぜか</h3>
+  <p>
+    pH電極は、数字を出す機械の一部であると同時に、とてもデリケートな道具です。液体の底や横のガラスに強く当てると、壊れたり測定がおかしくなったりすることがあります。だからロボットは、液面の高さを見ながら、先端を必要な深さまで静かに入れなくてはなりません。
+  </p>
+  <p>
+    さらに、電極を入れた直後の数字はすぐには安定しないことがあります。液体の流れや温度の影響を受けるからです。そのため「値が出たらすぐ読む」のではなく、「一定時間ほとんど変わらなくなったら読む」というルールが必要になります。ここでも、実験のていねいさが重要です。
+  </p>
+
+
+  <div class="figure">
+    <svg viewBox="0 0 940 430" xmlns="http://www.w3.org/2000/svg">
+      <rect width="940" height="430" rx="20" fill="#f8fbff"/>
+      <rect x="45" y="40" width="145" height="92" rx="18" fill="#dbeafe" stroke="#93c5fd"/>
+      <text x="118" y="78" text-anchor="middle" font-size="26" fill="#1e3a8a">1</text>
+      <text x="118" y="110" text-anchor="middle" font-size="21" fill="#1e3a8a">場所を認識</text>
+
+      <rect x="225" y="40" width="145" height="92" rx="18" fill="#d1fae5" stroke="#6ee7b7"/>
+      <text x="298" y="78" text-anchor="middle" font-size="26" fill="#065f46">2</text>
+      <text x="298" y="110" text-anchor="middle" font-size="21" fill="#065f46">水を入れる</text>
+
+      <rect x="405" y="40" width="145" height="92" rx="18" fill="#ecfccb" stroke="#bef264"/>
+      <text x="478" y="78" text-anchor="middle" font-size="26" fill="#3f6212">3</text>
+      <text x="478" y="110" text-anchor="middle" font-size="21" fill="#3f6212">1 g量る</text>
+
+      <rect x="585" y="40" width="145" height="92" rx="18" fill="#fef3c7" stroke="#fcd34d"/>
+      <text x="658" y="78" text-anchor="middle" font-size="26" fill="#92400e">4</text>
+      <text x="658" y="110" text-anchor="middle" font-size="21" fill="#92400e">混ぜる</text>
+
+      <rect x="765" y="40" width="130" height="92" rx="18" fill="#ede9fe" stroke="#c4b5fd"/>
+      <text x="830" y="78" text-anchor="middle" font-size="26" fill="#5b21b6">5</text>
+      <text x="830" y="110" text-anchor="middle" font-size="21" fill="#5b21b6">pH測定</text>
+
+      <line x1="190" y1="86" x2="225" y2="86" stroke="#60a5fa" stroke-width="6"/>
+      <polygon points="225,86 208,76 208,96" fill="#60a5fa"/>
+      <line x1="370" y1="86" x2="405" y2="86" stroke="#34d399" stroke-width="6"/>
+      <polygon points="405,86 388,76 388,96" fill="#34d399"/>
+      <line x1="550" y1="86" x2="585" y2="86" stroke="#84cc16" stroke-width="6"/>
+      <polygon points="585,86 568,76 568,96" fill="#84cc16"/>
+      <line x1="730" y1="86" x2="765" y2="86" stroke="#f59e0b" stroke-width="6"/>
+      <polygon points="765,86 748,76 748,96" fill="#f59e0b"/>
+
+      <rect x="90" y="200" width="760" height="170" rx="20" fill="#fff" stroke="#dbeafe"/>
+      <text x="470" y="235" text-anchor="middle" font-size="28" fill="#0f172a">途中で大切なチェック</text>
+      <text x="145" y="285" font-size="22" fill="#334155">・こぼしていないか</text>
+      <text x="145" y="320" font-size="22" fill="#334155">・目標の重さをこえていないか</text>
+      <text x="145" y="355" font-size="22" fill="#334155">・温度が上がりすぎていないか</text>
+      <text x="510" y="285" font-size="22" fill="#334155">・電極が底に当たっていないか</text>
+      <text x="510" y="320" font-size="22" fill="#334155">・pHの数字が安定したか</text>
+      <text x="510" y="355" font-size="22" fill="#334155">・結果が保存されたか</text>
+    </svg>
+    <div class="figcap">図3　ロボット実験では、ただ順に進むだけでなく、各段階で細かい確認が入ります。</div>
+  </div>
+</section>
+
+<section class="card" id="sec5">
+  <h2>5．なぜ追加の情報が必要なのか</h2>
+  <p>
+    元の実験文だけでも、人はかなり理解できます。けれども「ロボットが確実に再現実行できるレベル」にするには、まだ足りない情報があります。特に大切なのは、位置、条件、安全、機器の4つです。
+  </p>
+  <h3>位置の情報</h3>
+  <p>
+    ビーカーは作業台のどこにあるのか。水のノズルはどこか。天秤、薬品容器、スターラー、pHメーターはどこにあるのか。これらが座標として決まっていなければ、ロボットは手をどこへ伸ばせばよいのかわかりません。
+  </p>
+  <h3>条件の情報</h3>
+  <p>
+    水200 mLにはどれくらいの誤差が許されるのか。1 gはどこまで正確であるべきか。混ぜる時間と速さはいくつか。pHが「安定した」と判断する基準は何か。科学では、このような条件が実験の信頼性を決めます。
+  </p>
+  <h3>機器の情報</h3>
+  <p>
+    天秤はロボットやコンピュータとどう通信するのか。pHメーターの数字はどの方法で読み取るのか。スターラーは遠隔でオン・オフできるのか。ロボットの腕だけではなく、実験装置どうしをつなぐ仕組みも必要です。
+  </p>
+  <h3>記録の情報</h3>
+  <p>
+    結果は紙のノートに書くのか、パソコンへ保存するのか。ファイル名はどうするのか。試料番号はどう決めるのか。実験は、終わった瞬間だけでなく、あとから見返せることも大切です。
+  </p>
+
+  
+  <h3>失敗したときの分かれ道も決めておく</h3>
+  <p>
+    実験では、うまくいく場合だけを考えていては不十分です。ロボット実験では特に、「失敗したらどうするか」を先に決めておきます。たとえば、1.005 gをこえてしまったらその回はやり直す、ビーカーが見つからなかったら3回まで見直す、それでもだめなら人へ知らせる、といった具合です。
+  </p>
+  <p>
+    こうした分かれ道を用意しておくことで、ロボットはむりに作業を続けず、より安全で確実な動きを選べます。実験の世界では、失敗しないことよりも、失敗を早く見つけて正しく対処することが大切な場合が少なくありません。
+  </p>
+
+
+  <div class="figure">
+    <svg viewBox="0 0 920 370" xmlns="http://www.w3.org/2000/svg">
+      <rect width="920" height="370" rx="18" fill="#f8fbff"/>
+      <rect x="50" y="55" width="180" height="110" rx="18" fill="#dbeafe" stroke="#93c5fd"/>
+      <text x="140" y="98" text-anchor="middle" font-size="28" fill="#1e3a8a">位置</text>
+      <text x="140" y="132" text-anchor="middle" font-size="20" fill="#1e3a8a">どこに置くか</text>
+
+      <rect x="265" y="55" width="180" height="110" rx="18" fill="#dcfce7" stroke="#86efac"/>
+      <text x="355" y="98" text-anchor="middle" font-size="28" fill="#166534">条件</text>
+      <text x="355" y="132" text-anchor="middle" font-size="20" fill="#166534">何mL・何秒・何rpm</text>
+
+      <rect x="480" y="55" width="180" height="110" rx="18" fill="#fef3c7" stroke="#fcd34d"/>
+      <text x="570" y="98" text-anchor="middle" font-size="28" fill="#92400e">安全</text>
+      <text x="570" y="132" text-anchor="middle" font-size="20" fill="#92400e">危険時に止まる</text>
+
+      <rect x="695" y="55" width="180" height="110" rx="18" fill="#ede9fe" stroke="#c4b5fd"/>
+      <text x="785" y="98" text-anchor="middle" font-size="28" fill="#5b21b6">機器</text>
+      <text x="785" y="132" text-anchor="middle" font-size="20" fill="#5b21b6">どうつながるか</text>
+
+      <path d="M140 190 L140 245 L785 245 L785 190" fill="none" stroke="#94a3b8" stroke-width="5"/>
+      <text x="462" y="292" text-anchor="middle" font-size="27" fill="#334155">この4つがそろって、はじめて再現しやすい実験になる</text>
+    </svg>
+    <div class="figcap">図4　ロボット実験では、位置・条件・安全・機器の情報がそろうことが重要です。</div>
+  </div>
+</section>
+
+<section class="card" id="sec6">
+  <h2>6．安全はどう守るのか</h2>
+  <p>
+    今回の実験で使う水酸化ナトリウムは、強いアルカリです。皮ふや目に付くと危険ですし、水に溶けるときに熱が出ることもあります。ロボットがやるから安全、というわけではありません。むしろ、危険をどこで感じ取り、どの条件で止まるかを最初から決めておく必要があります。
+  </p>
+  <p>
+    たとえば、薬品が飛び散ったら中止する、人が近づいたら一時停止する、温度が上がりすぎたら警告を出す、電極が何かにぶつかりそうなら戻る、といったルールです。これは、ロボットに“勇気”を持たせることではなく、“無理をさせない”設計をすることだといえます。
+  </p>
+  <p>
+    理科の実験でも、正確さと同じくらい安全が大切です。最新の自動実験室ほど、安全をあとづけにせず、手順そのものに組み込んでいます。
+  </p>
+
+  <div class="warn">
+    <strong>安全で特に大切な点</strong><br>
+    ① 薬品の飛散　② 発熱　③ ガラス器具の破損　④ 人との接触　⑤ 電極の破損　⑥ 異常時の停止と記録
+  </div>
+
+  <div class="figure">
+    <svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg">
+      <rect width="900" height="330" rx="18" fill="#fffaf5"/>
+      <circle cx="150" cy="115" r="55" fill="#fed7aa"/>
+      <text x="150" y="125" text-anchor="middle" font-size="40">⚠</text>
+      <text x="150" y="215" text-anchor="middle" font-size="23" fill="#9a3412">飛散を検知</text>
+
+      <circle cx="345" cy="115" r="55" fill="#fde68a"/>
+      <text x="345" y="125" text-anchor="middle" font-size="40">🌡</text>
+      <text x="345" y="215" text-anchor="middle" font-size="23" fill="#92400e">温度上昇</text>
+
+      <circle cx="540" cy="115" r="55" fill="#fecaca"/>
+      <text x="540" y="125" text-anchor="middle" font-size="40">🧪</text>
+      <text x="540" y="215" text-anchor="middle" font-size="23" fill="#991b1b">器具異常</text>
+
+      <circle cx="735" cy="115" r="55" fill="#dbeafe"/>
+      <text x="735" y="125" text-anchor="middle" font-size="40">🛑</text>
+      <text x="735" y="215" text-anchor="middle" font-size="23" fill="#1d4ed8">停止・通知</text>
+
+      <line x1="205" y1="115" x2="290" y2="115" stroke="#fb923c" stroke-width="7"/>
+      <polygon points="290,115 272,105 272,125" fill="#fb923c"/>
+      <line x1="400" y1="115" x2="485" y2="115" stroke="#f59e0b" stroke-width="7"/>
+      <polygon points="485,115 467,105 467,125" fill="#f59e0b"/>
+      <line x1="595" y1="115" x2="680" y2="115" stroke="#ef4444" stroke-width="7"/>
+      <polygon points="680,115 662,105 662,125" fill="#ef4444"/>
+
+      <text x="450" y="285" text-anchor="middle" font-size="28" fill="#7c2d12">危険を見つけたら、続けるのではなく止まる</text>
+    </svg>
+    <div class="figcap">図5　安全設計は「うまく動く」ことと同じくらい大切です。</div>
+  </div>
+</section>
+
+<section class="card" id="sec7">
+  <h2>7．実験をコンピュータが読める形にする</h2>
+  <p>
+    先ほどまで説明してきたことを、さらにコンピュータが扱いやすい形へ直すと、実験は「機械が読める手順」になります。これは、文章をそのまま保存するのではなく、項目ごとに整理したデータとして表すやり方です。
+  </p>
+  <p>
+    たとえば、「材料」「容器」「装置」「手順」「例外時の対応」「保存する項目」などに分けます。こうすると、同じ形式で別の実験も並べられるので、実験どうしの比較もしやすくなります。また、ロボットが動きやすくなるだけでなく、研究データの整理もしやすくなります。
+  </p>
+  <p>
+    これは、実験をただ自動化するだけでなく、「知識として共有できる形へ変える」ことでもあります。もし学校や研究所が違っても、同じ形式で書かれたプロトコルなら、同じ内容を再現しやすくなります。
+  </p>
+
+  <small class="code">{
+  "title": "NaOH dissolution and pH measurement",
+  "materials": [
+    {"name": "water", "target_volume_ml": 200.0},
+    {"name": "sodium_hydroxide", "target_mass_g": 1.000}
+  ],
+  "steps": [
+    {"id": "S1", "action": "dispense_liquid"},
+    {"id": "S2", "action": "weigh_solid_iterative"},
+    {"id": "S3", "action": "transfer_solid"},
+    {"id": "S4", "action": "stir"},
+    {"id": "S5", "action": "measure_ph"},
+    {"id": "S6", "action": "log_result"}
+  ]
+}</small>
+
+  <p>
+    上のような形にすれば、「何を」「どれだけ」「どの順番で」「どの条件で」行うかがはっきりします。人間の感覚に頼る部分が減るので、ミスを減らしやすいのです。
+  </p>
+
+  <h3>「記録する」は最後のおまけではない</h3>
+  <p>
+    実験では、pHの数字だけを書いて終わりではありません。いつ測ったか、どの試料か、水は本当に200.0 mLだったか、量った重さは何gだったか、どの速さで何秒混ぜたか、といった情報もあわせて記録すると、あとで結果の意味がよくわかります。
+  </p>
+  <p>
+    もし2回目の結果だけ少し変だったとしても、記録が細かければ「その日は温度が高かった」「重さが少し多かった」などの手がかりが見つかるかもしれません。ロボット実験が強いのは、動きが正確なだけでなく、途中のデータも細かく残しやすい点にあります。
+  </p>
+
+</section>
+
+<section class="card" id="sec8">
+  <h2>8．AIが次の条件を考えると何が起こるか</h2>
+  <p>
+    ここからが、いわゆる“自己運転する実験室”の面白いところです。ロボットが1回だけ実験するなら自動化で終わります。しかし、AIが結果を見て「次はこの条件で試そう」と考え始めると、実験は一段進みます。
+  </p>
+  <p>
+    たとえば目標のpHを11.5にしたいとします。最初は0.50 g、0.75 g、1.00 g、1.25 g、1.50 gのようにいくつか条件を試します。その結果を見て、AIが「次は0.83 gくらいがよさそうだ」と提案し、ロボットがまた実験します。こうして、少ない回数で目標に近づいていきます。
+  </p>
+  <p>
+    これは、やみくもに全部試すよりもかしこいやり方です。しかも、記録されるのがpHだけでなく、温度、溶けるまでの時間、重さのずれ、安定するまでの時間などであれば、AIは「目標に近いだけでなく、安全で速くて安定した条件」まで学べるようになります。
+  </p>
+
+  
+  <h3>AIは「答え」を知っているのではなく、「次の一手」を考える</h3>
+  <p>
+    AIという言葉を聞くと、何でも最初から正解を知っているように思えるかもしれません。でも実験でのAIは、魔法の先生ではありません。いま手元にあるデータから、「次にどの条件を試すと、いちばん学びが大きそうか」を考える役目です。
+  </p>
+  <p>
+    だからAIも、最初はよく知らない状態から始まります。まず少数の条件で試し、その結果から全体の傾向を予想し、次の実験条件を選びます。つまりAIは、実験を減らすために考える相棒のような存在です。ロボットが手足なら、AIは作戦係といえるでしょう。
+  </p>
+
+
+  <div class="figure">
+    <svg viewBox="0 0 920 350" xmlns="http://www.w3.org/2000/svg">
+      <rect width="920" height="350" rx="18" fill="#f8fbff"/>
+      <rect x="60" y="120" width="180" height="90" rx="18" fill="#dbeafe" stroke="#93c5fd"/>
+      <text x="150" y="160" text-anchor="middle" font-size="28" fill="#1e3a8a">AIが条件提案</text>
+      <text x="150" y="190" text-anchor="middle" font-size="20" fill="#1e3a8a">たとえば 0.83 g</text>
+
+      <rect x="370" y="120" width="180" height="90" rx="18" fill="#dcfce7" stroke="#86efac"/>
+      <text x="460" y="160" text-anchor="middle" font-size="28" fill="#166534">ロボット実行</text>
+      <text x="460" y="190" text-anchor="middle" font-size="20" fill="#166534">量る・混ぜる・測る</text>
+
+      <rect x="680" y="120" width="180" height="90" rx="18" fill="#ede9fe" stroke="#c4b5fd"/>
+      <text x="770" y="160" text-anchor="middle" font-size="28" fill="#5b21b6">結果を学習</text>
+      <text x="770" y="190" text-anchor="middle" font-size="20" fill="#5b21b6">次の条件を更新</text>
+
+      <path d="M240 165 L370 165" stroke="#60a5fa" stroke-width="8"/>
+      <polygon points="370,165 350,153 350,177" fill="#60a5fa"/>
+      <path d="M550 165 L680 165" stroke="#34d399" stroke-width="8"/>
+      <polygon points="680,165 660,153 660,177" fill="#34d399"/>
+      <path d="M770 230 C770 300, 150 300, 150 220" fill="none" stroke="#8b5cf6" stroke-width="8"/>
+      <polygon points="150,220 162,242 138,242" fill="#8b5cf6"/>
+
+      <text x="460" y="60" text-anchor="middle" font-size="31" fill="#0f172a">考える → 実験する → 学ぶ → また考える</text>
+    </svg>
+    <div class="figcap">図6　AIとロボットが組み合わさると、実験は1回で終わらず、結果を見ながら進化していきます。</div>
+  </div>
+</section>
+
+<section class="card" id="sec9">
+  <h2>9．これからの実験室と、学ぶ人に必要な力</h2>
+  <p>
+    こうした話を聞くと、「では人間はいらなくなるのか」と思うかもしれません。でも実際には逆です。ロボットが増えるほど、人はもっと本質的なことを考える役割を持つようになります。
+  </p>
+  <p>
+    たとえば、何を目標にするのか、どんな条件を試すべきか、結果をどう解釈するか、安全をどう設計するか、といった部分は人が考える必要があります。ロボットは正確にくり返すのが得意ですが、「何をくり返すべきか」を決めるのは簡単ではありません。
+  </p>
+  <p>
+    だからこれからの理科や工学では、実験の意味を理解する力、データを見る力、機械やプログラムに伝わる形で整理する力がますます大事になります。中学生の段階では、まず「正確に観察する」「条件を言葉だけでなく数字で表す」「なぜその条件が必要か考える」という姿勢が大きな第一歩です。
+  </p>
+  <div class="note">
+    ロボット時代に大切なのは、機械より速く動くことではなく、実験の意味を深く考え、あいまいなことをはっきりさせる力です。
+  </div>
+
+  <h3>中学生の学びと、未来の研究とのつながり</h3>
+  <p>
+    学校の理科で「条件をそろえる」「変えるのは1つだけにする」「結果を表にまとめる」と習います。これは、最先端の自動実験室でもまったく同じです。違うのは、手を動かすのが人かロボットか、次の条件を考えるときにAIが加わるかどうかです。
+  </p>
+  <p>
+    つまり、中学生の理科は未来の研究の土台です。ていねいに量る、観察を記録する、変数を意識する、危険を考える。こうした基本は、どれだけ技術が進んでも消えません。だからこそ、今の学びには大きな意味があります。
+  </p>
+
+</section>
+
+
+  <p>
+    また、こうした実験は一つの例にすぎません。同じ考え方を使えば、色の変化を見る実験、温度を変えて反応を比べる実験、細胞や材料を扱う実験へも広げていけます。だから今回の話は、単なるpH測定の説明ではなく、「実験をどう整理すれば機械と協力できるか」を学ぶ入口でもあります。
+  </p>
+<section class="card" id="sec10">
+  <h2>10．まとめ</h2>
+  <p>
+    今回の実験は、一見するととてもシンプルです。水に薬品を入れて混ぜ、pHを測るだけです。しかし、ロボットにやらせようとすると、位置、重さ、時間、回転数、安定の判定、安全条件、記録方法まで、細かく決める必要があることがわかります。
+  </p>
+  <p>
+    これは面倒なことのように見えるかもしれません。けれども見方を変えれば、実験をより正確で、より再現しやすく、より安全にするための工夫でもあります。つまりロボット実験とは、機械が人の代わりに手を動かすことだけではなく、「実験とは何か」をもう一度ていねいに考え直すことなのです。
+  </p>
+  <p>
+    そして、その先にはAIがあります。AIが結果から次の条件を考え、ロボットがそれを試し、またAIが学ぶ。この流れが進めば、研究はより速く、より広く進むかもしれません。未来の実験室では、人とロボットとAIがそれぞれの得意なことを持ち寄りながら、新しい知識を生み出していくことになるでしょう。
+  </p>
+  <p>
+    理科を学ぶみなさんにとって大切なのは、最初から難しい機械を使えることではありません。「なぜそうするのか」を考え、「条件をはっきり言えること」です。その力があれば、未来の実験室を理解する土台がもうできています。
+  </p>
+</section>
+
+<section class="card footer">
+  <p><strong>付記</strong>：この文章は、ロボットによる実験手順の分解、Self-Driving Laboratoryの考え方、ロボット実行に必要な追加情報、JSON形式プロトコル、AIによる条件探索の考え方をもとに、中学生向けへ再構成した読み物です。</p>
+</section>
+<div style="max-width:1100px;margin:18px auto 0;padding:0 16px;">
+  <div style="background:#ffffff;border:1px solid #dbe4f0;border-radius:16px;padding:14px 18px;box-shadow:0 6px 18px rgba(0,0,0,.06);font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Yu Gothic',sans-serif;">
+    <strong style="margin-right:10px;">3部作リンク：</strong>
+    <a href="book111.html">高校生版</a> ｜ 
+    <a href="book111exp.html">実験編</a> ｜ 
+    <a href="book111stu.html">中学生版</a>
+  </div>
+</div>
+</main>
+</body>
+</html>

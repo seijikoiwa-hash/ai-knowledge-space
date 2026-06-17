@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>中学生のための科学技術ウォッチング2026 | 日本の最先端研究をやさしく解説（説明充実版）</title>
+  <meta name="description" content="2026年の日本のすごい技術を中学生にもわかるように詳しく解説。iPS細胞・量子コンピュータ・半導体・ロボット実験など、未来を変える研究を紹介します。">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      background: #f0f7ff;
+      color: #1a2a3f;
+      line-height: 1.8;
+    }
+
+    .blog-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      box-shadow: 0 0 30px rgba(0,0,0,0.05);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #0b5e7e 0%, #1a8cba 100%);
+      color: white;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+    .hero p {
+      font-size: 1rem;
+      opacity: 0.95;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .hero-date {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    .toc {
+      background: #fef9e6;
+      padding: 1.5rem;
+      border-bottom: 1px solid #ffe0a3;
+    }
+    .toc h2 {
+      font-size: 1.2rem;
+      color: #0b5e7e;
+      margin-bottom: 0.8rem;
+    }
+    .toc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 0.5rem;
+    }
+    .toc a {
+      color: #0b5e7e;
+      text-decoration: none;
+      font-size: 0.85rem;
+      display: block;
+      padding: 0.2rem 0;
+      border-bottom: 1px dashed #ffd966;
+    }
+    .toc a:hover {
+      color: #ff8c42;
+    }
+
+    .content {
+      padding: 1.8rem;
+    }
+    section {
+      margin-bottom: 2.5rem;
+      scroll-margin-top: 1rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #0b5e7e;
+      margin: 1.2rem 0 0.8rem;
+      padding-bottom: 0.2rem;
+      border-bottom: 3px solid #ffcd4a;
+      display: inline-block;
+    }
+    h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 1rem 0 0.5rem;
+      color: #1f6e8c;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin: 1.2rem 0;
+    }
+    .card {
+      background: #f9fbfe;
+      border-radius: 18px;
+      padding: 1rem;
+      border: 1px solid #d4e4f0;
+    }
+    .card strong {
+      color: #0b5e7e;
+      font-size: 1.05rem;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.85rem;
+    }
+    th, td {
+      border: 1px solid #cce0ed;
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #e6f3fa;
+      color: #0b5e7e;
+      font-weight: 600;
+    }
+    .info-note {
+      background: #e8f4f8;
+      padding: 0.8rem 1.2rem;
+      border-radius: 16px;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      border-left: 5px solid #ffaa33;
+    }
+    .link-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 0.8rem 0;
+    }
+    .link-list a {
+      background: #eef3fc;
+      padding: 0.3rem 0.9rem;
+      border-radius: 30px;
+      text-decoration: none;
+      font-size: 0.8rem;
+      color: #0b5e7e;
+      transition: 0.1s;
+    }
+    .link-list a:hover {
+      background: #dceafa;
+    }
+    .footer {
+      background: #e6f0f5;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.75rem;
+      color: #4a627a;
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.3rem; }
+      .content { padding: 1rem; }
+      h2 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="series-nav" style="max-width:1120px;margin:18px auto 0;padding:0 16px;">
+  <div style="background:linear-gradient(135deg,#fff7d6 0%,#eef4ff 100%);border:1px solid #dbe6f2;border-radius:20px;padding:14px 16px;box-shadow:0 8px 20px rgba(0,0,0,.05);display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+    <div style="font-weight:700;color:#1e2a3a;">📘 3部作ナビ｜このページは 中学生向けブログ</div>
+    <div style="display:flex;gap:10px;">
+      <a href="book112.html" style="display:inline-block;padding:12px 18px;background:#2563eb;color:#fff;text-decoration:none;border-radius:999px;font-weight:800;box-shadow:0 8px 18px rgba(37,99,235,.22);">📗 一般向け版</a>
+      <a href="book112info.html" style="display:inline-block;padding:12px 18px;background:#0f5c2f;color:#fff;text-decoration:none;border-radius:999px;font-weight:800;box-shadow:0 8px 18px rgba(15,92,47,.22);">📎 添付資料（情報源集）</a>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="blog-container">
+  <div class="hero">
+    <h1>🔬 中学生のための科学技術ウォッチング2026</h1>
+    <p>未来を変える！日本の最先端研究をやさしく解説（リンク付き）</p>
+    <div class="hero-date">2026年4月22日更新 | 中学生でもわかる！くわしい科学技術ガイド</div>
+  </div>
+
+  <div class="toc">
+    <h2>📖 もくじ（クリックでとべるよ）</h2>
+    <div class="toc-grid">
+      <a href="#sec1">1. 今日の技術ニュース</a>
+      <a href="#sec2">2. 日本がすごい技術10選</a>
+      <a href="#sec3">3. 大学のすごい研究ベスト10</a>
+      <a href="#sec4">4. 中学生が目指すべき分野</a>
+      <a href="#sec5">5. 文系の大切な役割</a>
+      <a href="#sec6">6. 情報の集め方</a>
+      <a href="#sec7">7. おすすめサイト</a>
+      <a href="#sec8">8. AIの使い方</a>
+      <a href="#sec9">9. 日本の強い大学</a>
+      <a href="#sec10">10. ノーベル賞候補</a>
+      <a href="#appendix">付録：ブックマーク10選</a>
+    </div>
+  </div>
+
+  <div class="content">
+    <!-- 第1章 -->
+    <section id="sec1">
+      <h2>1. 今日（2026年4月21日）の技術ニュース</h2>
+      <h3>💻 Rapidus：日本が超すごい半導体を作る</h3>
+      <p><a href="https://www.rapidus.co.jp/" target="_blank" rel="noopener">Rapidus（ラピダス）</a>という会社が、<strong>2nm（ナノメートル）</strong>という超小さな半導体を日本で作ろうとしています。髪の毛の太さは約8万nm。その3万分の1以下の大きさで回路を作る、とてつもなく細かい技術です。なぜこれが大事かというと、AI（人工知能）やスマートフォン、車、さらには国の安全を守る技術のすべてに半導体が必要だから。今は台湾や韓国に頼っている部分が大きいですが、日本でも作れるようになれば、世界の半導体事情が大きく変わります。</p>
+      
+      <h3>🔥 700℃でも動くメモリ</h3>
+      <p>みんなが使っているUSBメモリやパソコンのメモリは、高温になると壊れてしまいます。しかし今回発表された新しいメモリは<strong>700℃</strong>という、溶岩のような高温でも動きます。これが実用化されると、金星探査機（表面温度約460℃）やジェットエンジンの内部、鉄工所など、今まで電子機器を置けなかった場所でもコンピュータが使えるようになります。</p>
+      
+      <h3>🧠 NVIDIA×量子：AIと量子の新しいモデル</h3>
+      <p>アメリカの<a href="https://research.nvidia.com/" target="_blank" rel="noopener">NVIDIA（エヌビディア）</a>という会社は、ゲームやAIで使われる画像処理チップで有名です。そのNVIDIAが、<strong>量子コンピュータ</strong>のエラーを直すための新しいAIモデル「Ising（イジング）」を公開しました。量子コンピュータはまだエラーが多くて実用化が難しいのですが、このAIを使うと実用化が一気に近づくかもしれません。</p>
+      
+      <div class="info-note">
+        <strong>📌 中学生が覚えておきたい3つ</strong><br>
+        ① <a href="https://www.rapidus.co.jp/" target="_blank">Rapidus</a>：日本が世界と戦える半導体を作る国家プロジェクト<br>
+        ② <a href="https://www.riken.jp/" target="_blank">理化学研究所（理研）</a>：日本のノーベル賞級研究の中心拠点<br>
+        ③ <a href="https://group.ntt/jp/rd/" target="_blank">NTTの光コンピュータ</a>：電気ではなく光で計算する未来のコンピュータ
+      </div>
+    </section>
+
+    <!-- 第2章 -->
+    <section id="sec2">
+      <h2>2. 日本が世界で勝てる技術10選</h2>
+      <p>「日本はもうダメ」なんて言う人もいますが、実は世界の最先端で戦える技術がたくさんあります。それぞれ簡単に説明するね。</p>
+      <div class="card-grid">
+        <div class="card"><strong>1. 量子コンピュータ</strong> 今のスーパーコンピュータでも何千年かかる計算を数分でできる。創薬（新薬作り）や物流の最適化で大活躍する予定。</div>
+        <div class="card"><strong>2. 自動実験ロボット</strong> AIが実験計画を立て、ロボットが実際に実験する。研究者の人手不足を解消し、新素材や新薬の発見が10倍以上速くなる。</div>
+        <div class="card"><strong>3. iPS細胞</strong> 京都大学の山中伸弥教授が発見。体のどんな細胞にも変身できる。傷ついた心臓や神経を再生する治療が始まっている。</div>
+        <div class="card"><strong>4. AIで薬を作る</strong> 従来は10年かかった新薬開発を数年まで短縮。がんや難病の治療が劇的に早まる。</div>
+        <div class="card"><strong>5. 次世代半導体</strong> AI時代の「頭脳」。Rapidusなどが開発する2nmチップは、今よりはるかに速くて省エネ。</div>
+        <div class="card"><strong>6. スピントロニクス</strong> 電子の「スピン」という磁石の性質を使う。東北大学が世界最強。電気をほとんど使わないメモリができる。</div>
+        <div class="card"><strong>7. ナノ医療デバイス</strong> 体の中を泳ぐロボット。病気の場所をみつけて、ピンポイントで薬を届ける。副作用がほとんどない治療が可能に。</div>
+        <div class="card"><strong>8. 災害予測AI</strong> 日本は台風・地震・豪雨が多い。AIで災害をより正確に予測し、避難の準備ができる。</div>
+        <div class="card"><strong>9. CO₂を資源に</strong> 地球温暖化の原因CO₂を、ガソリンやプラスチックの原料に変える。環境と経済の両方を解決できる夢の技術。</div>
+        <div class="card"><strong>10. 最先端の医療センサー</strong> 血液を採らずに、体の外から病気を発見。高齢者が病院に行かずに健康チェックできるようになる。</div>
+      </div>
+    </section>
+
+    <!-- 第3章 -->
+    <section id="sec3">
+      <h2>3. 大学のすごい研究ベスト10</h2>
+      <p>日本の大学では、世界をリードする研究が毎日行われています。特に実用化が近いものをピックアップしました。</p>
+      <table>
+        <thead><tr><th>順位</th><th>研究テーマ</th><th>大学</th><th>くわしい説明</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>iPS細胞でパーキンソン病治療</td><td><a href="https://www.kyoto-u.ac.jp/" target="_blank">京都大学</a></td><td>手がふるえる難病を、iPS細胞から作った神経細胞を移植して治療。2025年に世界初の成功。</td></tr>
+          <tr><td>2</td><td>おなかから酸素をとる呼吸法</td><td><a href="https://www.isct.ac.jp/" target="_blank">東京科学大学</a></td><td>肺が悪くて人工呼吸器が必要な人に。お尻から酸素を送り込む液体を入れると、肺を使わずに酸素を補える。</td></tr>
+          <tr><td>3</td><td>フォトニック結晶</td><td>京都大学</td><td>光を思い通りに操る人工の結晶。光通信の高速化や、超省エネなレーザーに使われる。イギリスの権威あるRank Prizeを受賞。</td></tr>
+          <tr><td>4</td><td>スピントロニクス</td><td><a href="https://www.tohoku.ac.jp/" target="_blank">東北大学</a></td><td>電子の「スピン」を利用して、今の1000分の1の電力で動くコンピュータを作る。東北大は世界の中心拠点。</td></tr>
+          <tr><td>5</td><td>ナノテラス＋AI</td><td>東北大学</td><td>「ナノテラス」という世界最高性能の顕微鏡で物質の原子レベルを見て、AIが新しい材料を設計する。電池や超伝導の開発が劇的に加速。</td></tr>
+          <tr><td>6</td><td>超偏極MRI</td><td><a href="https://www.u-tokyo.ac.jp/" target="_blank">東京大学</a></td><td>普通のMRIでは見えなかった「薬が効いているかどうか」が画像で見える。無駄な抗がん剤治療を減らせる。</td></tr>
+          <tr><td>7</td><td>mRNA医療</td><td>東京科学大学</td><td>コロナワクチンで有名になったmRNA技術。不妊のマウスの赤ちゃんを作ることに成功。将来は不妊治療やがん治療に。</td></tr>
+          <tr><td>8</td><td>オルガノイド医療</td><td>京大・阪大</td><td>iPS細胞から「ミニ臓器」を作る。薬の効果を試したり、臓器移植の代わりになるかもしれない。武部貴則教授はTIME100選出。</td></tr>
+          <tr><td>9</td><td>自然免疫の研究</td><td><a href="https://www.osaka-u.ac.jp/" target="_blank">大阪大学</a></td><td>体の中の「自然免疫」という仕組みを解明。ワクチンやアレルギーの理解に革命を起こし、Japan Prize（日本国際賞）を受賞。</td></tr>
+          <tr><td>10</td><td>光配線半導体</td><td>東大・Rapidus</td><td>今は電気で信号を伝えているけど、それを光に変える。消費電力が激減し、より速いコンピュータが作れる。</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- 第4章 -->
+    <section id="sec4">
+      <h2>4. 中学生がこれから目指すべき分野</h2>
+      <p>「将来どんな勉強をすればいいの？」という疑問に答えます。どの分野も「今から始めれば間に合う」ものばかりです。</p>
+      <div class="card-grid">
+        <div class="card"><strong>1位 AI×ロボット</strong> プログラミングができて、ものづくりが好きな人にぴったり。Pythonという言語がおすすめ。</div>
+        <div class="card"><strong>2位 バイオ×AI</strong> 生物が好きで、人の役に立ちたい人に。遺伝子や細胞を扱うから、実験が好きな人も向く。</div>
+        <div class="card"><strong>3位 半導体・量子</strong> 物理やパソコンの中身に興味がある人。電気回路や量子力学の知識が将来役立つ。</div>
+        <div class="card"><strong>4位 エネルギー</strong> 地球温暖化やエネルギー問題を解決したい人。化学と物理の知識が必要。</div>
+        <div class="card"><strong>5位 医療機器</strong> 工学と医療の両方に興味がある人。病院で使われるロボット手術器や検査機器を作る仕事。</div>
+      </div>
+      <div class="info-note">💡 <strong>中学生が今やるべきこと（順番が大事！）</strong><br>
+        ① 数学（特に微積分と線形代数の入門）<br>
+        ② 英語（英語の論文や技術記事を読む力）<br>
+        ③ Pythonプログラミング（無料の入門サイトがたくさんあるよ）<br>
+        ④ 理科を1つ深める（物理・化学・生物どれでもOK）<br>
+        ⑤ 大学の研究室見学（夏休みに公開しているところもある）
+      </div>
+    </section>
+
+    <!-- 第5章 -->
+    <section id="sec5">
+      <h2>5. 文系の大切な役割（意外と重要！）</h2>
+      <p>「理系だけがすごい」と思われがちですが、実は<strong>文系の仕事も超大事</strong>です。なぜなら、どんなにすごい技術ができても、「誰のために」「どんなルールで」「どうやって社会に入れるか」を決めるのは文系の専門家だからです。</p>
+      <ul>
+        <li><strong><a href="https://www.pp.u-tokyo.ac.jp/" target="_blank">AIのルール作り</a></strong>（東大公共政策大学院）：AIが暴走しないルールや、著作権の問題を考える。</li>
+        <li><strong><a href="https://www.rieti.go.jp/" target="_blank">経済安全保障</a></strong>（RIETI）：半導体やAI技術を、どうやって外国から守るか考える。</li>
+        <li><strong><a href="https://www.iss.u-tokyo.ac.jp/" target="_blank">少子化対策</a></strong>（東大社研）：なぜ子どもが減っているのかを統計や調査で分析。政策を提案する。</li>
+        <li><strong><a href="https://www.zinbun.kyoto-u.ac.jp/" target="_blank">AIで歴史を読む</a></strong>（京大人文研）：大量の古文書をAIで解析。新しい歴史の発見が生まれている。</li>
+      </ul>
+      <p>「文系だから理系のことはわからない」と思わなくて大丈夫。文系と理系が協力して、未来を作っていくんです。</p>
+    </section>
+
+    <!-- 第6章 -->
+    <section id="sec6">
+      <h2>6. 科学技術の情報を集めるコツ</h2>
+      <p>「毎日ニュースを見るのは大変…」という人のために、<strong>少ない時間で効率よく情報をキャッチする方法</strong>を紹介します。</p>
+      <h3>毎朝10分のルーティン</h3>
+      <ul>
+        <li><strong>Feedly</strong>（無料の情報まとめツール）で、<a href="https://www.riken.jp/" target="_blank">理研</a>と<a href="https://news.mit.edu/" target="_blank">MIT</a>の新着記事をチェック（5分）</li>
+        <li><strong>Nature Briefing</strong>というメールマガジンに登録。毎日世界の科学ニュースが届く（3分）</li>
+        <li>週に1回、<a href="https://arxiv.org/" target="_blank">arXiv</a>という論文サイトで「AI」や「量子」の新しい論文のタイトルだけ見る（15分）</li>
+      </ul>
+      <p>これだけで、一般のニュースよりずっと早く「これからの技術」を知ることができます。</p>
+    </section>
+
+    <!-- 第7章 -->
+    <section id="sec7">
+      <h2>7. おすすめのサイト（リンク付き）</h2>
+      <p>ここで紹介するサイトは、すべて無料で見られます。最初は難しく感じるかもしれないけど、少しずつ慣れていこう。</p>
+      <h3>国立研究所（日本の研究の中心）</h3>
+      <div class="link-list"><a href="https://www.riken.jp/" target="_blank">理研 RIKEN</a><a href="https://www.aist.go.jp/" target="_blank">AIST</a><a href="https://www.nims.go.jp/" target="_blank">NIMS</a><a href="https://www.jaxa.jp/" target="_blank">JAXA（宇宙）</a></div>
+      <h3>トップ大学（プレスリリースが読みやすい）</h3>
+      <div class="link-list"><a href="https://www.u-tokyo.ac.jp/" target="_blank">東大</a><a href="https://www.kyoto-u.ac.jp/" target="_blank">京大</a><a href="https://www.tohoku.ac.jp/" target="_blank">東北大</a><a href="https://www.osaka-u.ac.jp/" target="_blank">阪大</a><a href="https://www.isct.ac.jp/" target="_blank">東京科学大</a></div>
+      <h3>論文検索（最先端の研究を直接見る）</h3>
+      <div class="link-list"><a href="https://scholar.google.com/" target="_blank">Google Scholar</a><a href="https://arxiv.org/" target="_blank">arXiv（プレプリント）</a></div>
+      <div class="info-note">✨ これらのサイトを「ブックマーク」しておくだけで、あなたの情報収集力は一気に上がります。</div>
+    </section>
+
+    <!-- 第8章 -->
+    <section id="sec8">
+      <h2>8. AI（ChatGPT・DeepSeek）の使い方</h2>
+      <p>AIを「ただの質問箱」として使うのはもったいない。自分だけの「研究アシスタント」にする方法を紹介します。</p>
+      <p><a href="https://chatgpt.com/" target="_blank">ChatGPT</a> は、ふわっとした質問でもやさしく答えてくれる。調べものや要約が得意。<a href="https://www.deepseek.com/" target="_blank">DeepSeek</a> は数学やプログラミング、論理的な質問に強い。</p>
+      <div class="card-grid">
+        <div class="card"><strong>使える質問例</strong><br>
+          「今日の世界の技術ニュースを教えて」<br>
+          「この研究を中学生にわかるように説明して」<br>
+          「東大とMITの研究の違いを教えて」<br>
+          「量子コンピュータがなぜすごいのか、理由を3つ」
+        </div>
+        <div class="card"><strong>⚠️ 注意点</strong><br>
+          AIはときどき<strong>間違った情報を自信満々に教える</strong>ことがあります（これをハルシネーションと言います）。特に数字や論文のタイトルは要注意。大事な情報は必ず、紹介されたリンク先や公式サイトで確認する習慣をつけましょう。
+        </div>
+      </div>
+    </section>
+
+    <!-- 第9章 -->
+    <section id="sec9">
+      <h2>9. 日本の強い大学（わかりやすく比較）</h2>
+      <p>「東大が一番」というのは総合力の話。実は分野によって「ここが世界一」という大学がたくさんあります。</p>
+      <ul>
+        <li><strong><a href="https://www.u-tokyo.ac.jp/" target="_blank">東京大学</a></strong>：すべての分野で強い。国の大きなプロジェクト（例：Rapidus）をリード。総合王者。</li>
+        <li><strong><a href="https://www.kyoto-u.ac.jp/" target="_blank">京都大学</a></strong>：独創的な研究が得意。iPS細胞はここから生まれた。基礎科学の火山。</li>
+        <li><strong><a href="https://www.osaka-u.ac.jp/" target="_blank">大阪大学</a></strong>：免疫学（病気から体を守る仕組み）とAI創薬で世界トップ。実用的な研究が強い。</li>
+        <li><strong><a href="https://www.tohoku.ac.jp/" target="_blank">東北大学</a></strong>：材料科学（金属・セラミックスなど）とスピントロニクスでは世界最強。ナノテラスもここ。</li>
+        <li><strong><a href="https://www.isct.ac.jp/" target="_blank">東京科学大学</a></strong>：旧東京工業大学と旧東京医科歯科大学が合体。医療と工学の融合が得意。</li>
+      </ul>
+    </section>
+
+    <!-- 第10章 -->
+    <section id="sec10">
+      <h2>10. ノーベル賞候補の研究室（2026年）</h2>
+      <p>ノーベル賞は「その研究がどれだけ世界を変えたか」で決まります。今、最もノーベル賞に近いと言われている日本人研究者を紹介します。</p>
+      <div class="card-grid">
+        <div class="card"><strong>高橋淳（京都大学）</strong><br>iPS細胞でパーキンソン病の治療に世界で初めて成功。神経再生医療のパイオニア。</div>
+        <div class="card"><strong>審良静男（大阪大学）</strong><br>「自然免疫」の仕組みを解明。ワクチンやアレルギーの理解が劇的に進んだ。2026年Japan Prize受賞。</div>
+        <div class="card"><strong>武部貴則（大阪大学／東京科学大学）</strong><br>ミニ臓器「オルガノイド」を作り出す。タイム誌の「世界で最も影響力のある健康分野の100人」に選出。今後10年の大本命。</div>
+        <div class="card"><strong>野田進（京都大学）</strong><br>「フォトニック結晶」の生みの親。光を自由に操る技術で、光通信や量子コンピュータに革命を起こした。Rank Prize受賞。</div>
+      </div>
+      <div class="info-note">🏆 これらの研究者の論文やニュースを追いかけると、「今、世界の最先端で何が起きているか」がよくわかるようになります。</div>
+    </section>
+
+    <!-- 付録 -->
+    <section id="appendix">
+      <h2>付録：すぐにブックマークしたい10サイト</h2>
+      <p>まずはこの10サイトをブラウザのブックマークに保存してください。1日1サイト見るだけでも、1ヶ月後にはあなたの知識はクラスでトップクラスになります。</p>
+      <div class="link-list">
+        <a href="https://www.riken.jp/" target="_blank">理化学研究所</a>
+        <a href="https://arxiv.org/" target="_blank">arXiv（論文）</a>
+        <a href="https://scholar.google.com/" target="_blank">Google Scholar</a>
+        <a href="https://www.technologyreview.com/" target="_blank">MIT Tech Review</a>
+        <a href="https://www.nature.com/" target="_blank">Nature</a>
+        <a href="https://openai.com/news/" target="_blank">OpenAI</a>
+        <a href="https://research.nvidia.com/" target="_blank">NVIDIA Research</a>
+        <a href="https://www.u-tokyo.ac.jp/focus/ja/press.html" target="_blank">東大プレスリリース</a>
+        <a href="https://kaken.nii.ac.jp/" target="_blank">科研費KAKEN</a>
+        <a href="https://scienceportal.jst.go.jp/" target="_blank">JSTサイエンスポータル</a>
+      </div>
+      <div class="info-note">
+        🌟 <strong>さいごに</strong><br>
+        科学技術の世界は、思っているよりずっと面白いです。「すごいな」「なぜだろう」と思ったら、ぜひこの記事で紹介したサイトをのぞいてみてください。最初はわからない言葉が多いかもしれません。でも、続けているうちに必ず見えてくるものがあります。<br><br>
+        <strong>ニュースを「待つ」のではなく、自分から「見に行く」習慣が、未来を変える第一歩です。</strong><br>
+        まずは1つのサイトからで大丈夫。あなたの好奇心を大切にしてください。
+      </div>
+    </section>
+  </div>
+
+  <div class="footer">
+    © 2026 中学生のための科学技術ウォッチング <br>
+    わからない言葉があれば、おうちの人や先生と一緒に読んでみてね。
+  </div>
+</div>
+<div class="series-nav" style="max-width:1120px;margin:18px auto 0;padding:0 16px;">
+  <div style="background:linear-gradient(135deg,#fff7d6 0%,#eef4ff 100%);border:1px solid #dbe6f2;border-radius:20px;padding:14px 16px;box-shadow:0 8px 20px rgba(0,0,0,.05);display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;">
+    <div style="font-weight:700;color:#1e2a3a;">📘 3部作ナビ｜このページは 中学生向けブログ</div>
+    <div style="display:flex;gap:10px;">
+      <a href="book112.html" style="display:inline-block;padding:12px 18px;background:#2563eb;color:#fff;text-decoration:none;border-radius:999px;font-weight:800;box-shadow:0 8px 18px rgba(37,99,235,.22);">📗 一般向け版</a>
+      <a href="book112info.html" style="display:inline-block;padding:12px 18px;background:#0f5c2f;color:#fff;text-decoration:none;border-radius:999px;font-weight:800;box-shadow:0 8px 18px rgba(15,92,47,.22);">📎 添付資料（情報源集）</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>
