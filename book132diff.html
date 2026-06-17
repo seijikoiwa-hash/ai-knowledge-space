@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>book132diff1：book132paper1とbook132paper2の関係</title>
+<style>
+  body{
+    margin:0;
+    background:#f5f7fb;
+    color:#222;
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
+    line-height:1.85;
+  }
+  .container{
+    max-width:980px;
+    margin:36px auto;
+    padding:36px;
+    background:#fff;
+    border-radius:18px;
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+  }
+  h1{
+    text-align:center;
+    font-size:2rem;
+    margin:0 0 28px;
+    padding-bottom:16px;
+    border-bottom:3px solid #333;
+  }
+  h2{
+    font-size:1.35rem;
+    margin-top:38px;
+    padding:12px 16px;
+    background:#eef3ff;
+    border-left:6px solid #4b6cb7;
+    border-radius:8px;
+  }
+  h3{font-size:1.1rem;margin-top:26px;border-bottom:1px solid #ddd;padding-bottom:6px;}
+  .lead{
+    background:#fff8df;
+    border-left:6px solid #e0b100;
+    padding:16px 18px;
+    border-radius:10px;
+    font-size:1.05rem;
+  }
+  .nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:0 0 24px;}
+  .nav a{text-decoration:none;color:#234;background:#eef3ff;border:1px solid #ccd8ff;padding:8px 12px;border-radius:999px;font-size:.94rem;}
+  table{width:100%;border-collapse:collapse;margin:18px 0;background:#fff;}
+  th,td{border:1px solid #d8ddeb;padding:12px;vertical-align:top;}
+  th{background:#f0f4ff;text-align:left;}
+  .tag{display:inline-block;padding:2px 8px;border-radius:999px;background:#edf7ee;border:1px solid #cce7cf;font-weight:600;font-size:.88rem;}
+  .warn{background:#fff1f1;border-left:6px solid #e06b6b;padding:14px 16px;border-radius:10px;}
+  .ok{background:#eefaf3;border-left:6px solid #3ca66b;padding:14px 16px;border-radius:10px;}
+  .timeline{border-left:4px solid #4b6cb7;padding-left:18px;margin-left:8px;}
+  .timeline div{margin:16px 0;padding:12px 14px;background:#fafbff;border:1px solid #e2e6f7;border-radius:10px;}
+  footer{text-align:center;color:#666;font-size:.9rem;margin-top:44px;}
+  @media print{body{background:#fff}.container{box-shadow:none;margin:0;max-width:none}}
+</style>
+</head>
+<body>
+<div style="text-align:center;margin:15px 0;padding:10px;background:#eef3ff;border-radius:10px;">
+<a href="book132navi.html">🏠 Navi</a> |
+<a href="book132.html">📘 Blog</a> |
+<a href="book132note.html">📊 Note</a> |
+<a href="book132paper1.html">📄 Paper</a> |
+<a href="book132paper2.html">📄 Paper</a> |
+<a href="book132sol1.html">🧩 Sol1</a> |
+<a href="book132sol2.html">🧩 Sol2</a> |
+<a href="book132fig.html">📊 Fig</a> |
+<a href="book132diff.html">🔄 Diff</a> |
+<a href="book132counter.html">⚖ Counter</a>
+</div>
+<h1>2つの論文の関係と違い</h1>
+<p class="lead">
+    結論から言うと、<strong>book132paper1</strong> と <strong>book132paper2</strong> は、別々の論文ですが、
+    どちらも「脳卒中のあと、脳はどうやって回復するのか」を調べた、かなり近い関係の研究です。
+    ただし、見ている主役が違います。paper1は<strong>神経細胞</strong>、paper2は<strong>ミクログリア／ミエロイド細胞</strong>が中心です。
+  </p>
+<section>
+<h2>1. まず、2つの論文は何を調べたのか</h2>
+<table>
+<tr><th>項目</th><th>book132paper1 / book132sol1</th><th>book132paper2 / book132sol2</th></tr>
+<tr>
+<td>論文タイトル</td>
+<td><strong>PLA2G2E<sup><a href="#foot1" id="ref1_1">[1]</a></sup>-mediated lipid metabolism triggers brain-autonomous neural repair after ischemic stroke</strong></td>
+<td><strong>Sustaining microglial reparative function enhances stroke recovery</strong></td>
+</tr>
+<tr>
+<td>中心テーマ</td>
+<td>脳卒中後、神経細胞自身が修復を始めるしくみ</td>
+<td>脳卒中後、修復役のミクログリアが力を失う理由と、それを防ぐ方法</td>
+</tr>
+<tr>
+<td>主役の細胞</td>
+<td><span class="tag">神経細胞</span></td>
+<td><span class="tag">ミクログリア／ミエロイド細胞</span></td>
+</tr>
+<tr>
+<td>重要な分子</td>
+<td>PLA2G2E<sup><a href="#foot1" id="ref1_2">[1]</a></sup>、DGLA<sup><a href="#foot2" id="ref2_1">[2]</a></sup>、15-HETrE<sup><a href="#foot3" id="ref3_1">[3]</a></sup>、PADI4<sup><a href="#foot4" id="ref4_1">[4]</a></sup></td>
+<td>IGF1<sup><a href="#foot5" id="ref5_1">[5]</a></sup>、ZFP384<sup><a href="#foot6" id="ref6_1">[6]</a></sup>、YY1<sup><a href="#foot7" id="ref7_1">[7]</a></sup>、ASO<sup><a href="#foot10" id="ref10_1">[10]</a></sup>-Zfp384<sup><a href="#foot9" id="ref9_1">[9]</a></sup><sup><a href="#foot8" id="ref8_1">[8]</a></sup></td>
+</tr>
+<tr>
+<td>一言で言うと</td>
+<td>「壊れた脳の近くの神経細胞が、脂質シグナルで修復スイッチを入れる」</td>
+<td>「修復役のミクログリアがダメになるのを防ぐと、回復が長く続く」</td>
+</tr>
+</table>
+</section>
+<section>
+<h2>2. 継続性：paper1からpaper2へ、何が続いているか</h2>
+<div class="timeline">
+<div>
+<strong>第1段階：paper1</strong><br/>
+        脳卒中後、脳はただ壊れるだけではありません。梗塞の近くで生き残った神経細胞が、
+        <strong>PLA2G2E<sup><a href="#foot1" id="ref1_3">[1]</a></sup> → DGLA<sup><a href="#foot2" id="ref2_2">[2]</a></sup> → 15-HETrE<sup><a href="#foot3" id="ref3_2">[3]</a></sup> → PADI4<sup><a href="#foot4" id="ref4_2">[4]</a></sup></strong> という流れを使って、修復に関係する遺伝子を動かすことが示されました。
+      </div>
+<div>
+<strong>第2段階：paper2</strong><br/>
+        しかし、脳の自然回復は長く続きません。paper2は、修復を助けるミクログリア／ミエロイド細胞が、
+        時間がたつと <strong>ZFP384<sup><a href="#foot6" id="ref6_2">[6]</a></sup></strong> によって修復力を失うことを調べています。
+      </div>
+<div>
+<strong>つながり</strong><br/>
+        paper1は「修復が始まるしくみ」、paper2は「修復を長続きさせるしくみ」を扱っています。
+        つまり、同じ脳卒中回復を、<strong>開始</strong>と<strong>持続</strong>という別の角度から見た研究です。
+      </div>
+</div>
+</section>
+<section>
+<h2>3. sol1とsol2の違いから見える、研究の発展</h2>
+<table>
+<tr><th>比べる点</th><th>sol1で強調されること</th><th>sol2で強調されること</th><th>そこから分かる関係</th></tr>
+<tr>
+<td>研究の問い</td>
+<td>脳はどの分子で修復を始めるのか</td>
+<td>なぜ修復は途中で弱まるのか</td>
+<td>「開始」から「持続」へ問いが進んでいる</td>
+</tr>
+<tr>
+<td>治療候補</td>
+<td>15-HETrE<sup><a href="#foot3" id="ref3_3">[3]</a></sup>投与、PADI4<sup><a href="#foot4" id="ref4_3">[4]</a></sup>経路の活性化</td>
+<td>Zfp384<sup><a href="#foot9" id="ref9_2">[9]</a></sup>をASO<sup><a href="#foot10" id="ref10_2">[10]</a></sup>で抑える治療</td>
+<td>修復を起動する薬から、修復を長持ちさせる薬へ広がっている</td>
+</tr>
+<tr>
+<td>細胞の見方</td>
+<td>神経細胞が自分で修復プログラムを動かす</td>
+<td>免疫系の細胞が修復を支えるが、やがて力を失う</td>
+<td>脳回復は神経細胞だけでなく、免疫細胞との共同作業だと分かる</td>
+</tr>
+<tr>
+<td>時間軸</td>
+<td>脳卒中後に修復が始まる時期</td>
+<td>回復期から慢性期まで</td>
+<td>研究対象が、急性〜回復期から、より長い慢性期へ進んでいる</td>
+</tr>
+<tr>
+<td>証拠の性質</td>
+<td>脂質代謝、遺伝子発現、PADI4<sup><a href="#foot4" id="ref4_4">[4]</a></sup>依存性、マウス治療効果</td>
+<td>細胞運命追跡、ZFP384<sup><a href="#foot6" id="ref6_3">[6]</a></sup>、YY1<sup><a href="#foot7" id="ref7_2">[7]</a></sup>、ASO<sup><a href="#foot10" id="ref10_3">[10]</a></sup>治療、ヒト組織との関連</td>
+<td>分子経路の説明から、細胞の運命と治療標的の説明へ広がっている</td>
+</tr>
+</table>
+</section>
+<section>
+<h2>4. 大きな違い：主役・問題設定・治療戦略</h2>
+<h3>違い1：主役が違う</h3>
+<p>
+      paper1の主役は、梗塞の近くで生き残った<strong>神経細胞</strong>です。
+      paper2の主役は、脳の免疫細胞である<strong>ミクログリア／ミエロイド細胞</strong>です。
+      どちらも脳の回復に関係しますが、担当している役割が違います。
+    </p>
+<h3>違い2：問題の場所が違う</h3>
+<p>
+      paper1は「修復のスイッチはどこにあるのか」を探しています。
+      paper2は「なぜ修復の力は長く続かないのか」を探しています。
+      たとえるなら、paper1は<strong>エンジンの始動</strong>、paper2は<strong>エンジンを止めずに走らせる方法</strong>を調べています。
+    </p>
+<h3>違い3：治療の考え方が違う</h3>
+<p>
+      paper1では、15-HETrE<sup><a href="#foot3" id="ref3_4">[3]</a></sup>などを使って修復プログラムを動かす方向が見えます。
+      paper2では、ZFP384<sup><a href="#foot6" id="ref6_4">[6]</a></sup>をASO<sup><a href="#foot10" id="ref10_4">[10]</a></sup>で抑えて、修復細胞が「ruined cell」、つまり働けない細胞になるのを防ぐ方向が見えます。
+    </p>
+</section>
+<section>
+<h2>5. 両者を合わせると見える全体像</h2>
+<p class="ok">
+      2つの論文を合わせると、脳卒中後の回復は、単純に「壊れた細胞が少し戻る」という話ではなく、
+      <strong>神経細胞の修復スイッチ</strong>と、<strong>ミクログリアの修復支援</strong>が組み合わさった現象だと考えられます。
+    </p>
+<ol>
+<li>脳卒中で脳が傷つく。</li>
+<li>梗塞周辺の神経細胞が、脂質シグナルを使って修復プログラムを始める。</li>
+<li>ミクログリア／ミエロイド細胞も、IGF1<sup><a href="#foot5" id="ref5_2">[5]</a></sup>などを出して修復を助ける。</li>
+<li>しかし時間がたつと、ZFP384<sup><a href="#foot6" id="ref6_5">[6]</a></sup>によって修復細胞の力が落ちる。</li>
+<li>そのため、15-HETrE<sup><a href="#foot3" id="ref3_5">[3]</a></sup>系で修復を始め、ZFP384<sup><a href="#foot6" id="ref6_6">[6]</a></sup>を抑えて修復を長持ちさせる、という組み合わせ治療の可能性が見えてくる。</li>
+</ol>
+</section>
+<section>
+<h2>6. 注意点：sol2には記入ずれがある可能性</h2>
+<p class="warn">
+      book132sol2では、「結論」「限界」「新規性」「図1〜図2の説明」の一部に、項目と内容がずれているように見える部分があります。
+      たとえば、結論欄に本来なら全体結論を書くべきところで、目的と結果の対応文が入っています。
+      そのため、本HTMLでは、sol2の文字をそのまま並べるのではなく、論文内容として自然につながる形に整理し直しました。
+    </p>
+</section>
+<section>
+<h2>7. 最終結論</h2>
+<p>
+<strong>book132paper1</strong> と <strong>book132paper2</strong> は、同じ脳卒中後の回復研究として強い連続性があります。
+      paper1は「脳が修復を始めるしくみ」を、paper2は「その修復を長く続けるしくみ」を示しています。
+      つまり、paper2はpaper1を否定する研究ではなく、paper1で見えた脳内修復の考え方を、
+      <strong>ミクログリアと慢性期回復</strong>へ広げた研究と見るのが自然です。
+    </p>
+<p>
+      中学生向けに一言でまとめると、<strong>paper1は「脳の修理スイッチの発見」、paper2は「修理係を長く働かせる方法の発見」</strong>です。
+    </p>
+</section>
+<footer>
+    book132diff1.html / book132sol1.html と book132sol2.html の比較に基づく整理
+  </footer>
+<section><h2>脚注（略語解説）</h2><ol><li id="foot1"><strong>PLA2G2E</strong>：分泌型ホスホリパーゼA2グループIIE。脂質を切り出し、神経修復のきっかけを作る酵素。 （<a href="#ref1_1">↑本文1</a> / <a href="#ref1_2">↑本文2</a> / <a href="#ref1_3">↑本文3</a>）</li><li id="foot2"><strong>DGLA</strong>：ジホモ-γ-リノレン酸。体内でさまざまな生理活性脂質の材料になる脂肪酸。 （<a href="#ref2_1">↑本文1</a> / <a href="#ref2_2">↑本文2</a>）</li><li id="foot3"><strong>15-HETrE</strong>：DGLAから作られる脂質代謝物。神経修復を促すシグナル候補。 （<a href="#ref3_1">↑本文1</a> / <a href="#ref3_2">↑本文2</a> / <a href="#ref3_3">↑本文3</a> / <a href="#ref3_4">↑本文4</a> / <a href="#ref3_5">↑本文5</a>）</li><li id="foot4"><strong>PADI4</strong>：遺伝子の働きを調節する酵素。修復関連遺伝子の発現に関与。 （<a href="#ref4_1">↑本文1</a> / <a href="#ref4_2">↑本文2</a> / <a href="#ref4_3">↑本文3</a> / <a href="#ref4_4">↑本文4</a>）</li><li id="foot5"><strong>IGF1</strong>：インスリン様成長因子1。細胞の成長や修復を助けるタンパク質。 （<a href="#ref5_1">↑本文1</a> / <a href="#ref5_2">↑本文2</a>）</li><li id="foot6"><strong>ZFP384</strong>：修復性ミクログリアの働きを弱める方向に作用する転写制御因子。 （<a href="#ref6_1">↑本文1</a> / <a href="#ref6_2">↑本文2</a> / <a href="#ref6_3">↑本文3</a> / <a href="#ref6_4">↑本文4</a> / <a href="#ref6_5">↑本文5</a> / <a href="#ref6_6">↑本文6</a>）</li><li id="foot7"><strong>YY1</strong>：遺伝子発現を調節する転写因子。修復関連遺伝子の活性化に関与。 （<a href="#ref7_1">↑本文1</a> / <a href="#ref7_2">↑本文2</a>）</li><li id="foot8"><strong>ASO-Zfp384</strong>：Zfp384遺伝子の働きを抑えるためのアンチセンス核酸医薬。 （<a href="#ref8_1">↑本文1</a>）</li><li id="foot9"><strong>Zfp384</strong>：ZFP384を作る遺伝子名（マウス表記）。 （<a href="#ref9_1">↑本文1</a> / <a href="#ref9_2">↑本文2</a>）</li><li id="foot10"><strong>ASO</strong>：アンチセンスオリゴヌクレオチド。特定遺伝子の働きを抑える核酸医薬。 （<a href="#ref10_1">↑本文1</a> / <a href="#ref10_2">↑本文2</a> / <a href="#ref10_3">↑本文3</a> / <a href="#ref10_4">↑本文4</a>）</li></ol></section></main>
+<div style="text-align:center;margin:15px 0;padding:10px;background:#eef3ff;border-radius:10px;">
+<a href="book132navi.html">🏠 Navi</a> |
+<a href="book132.html">📘 Blog</a> |
+<a href="book132note.html">📊 Note</a> |
+<a href="book132paper1.html">📄 Paper</a> |
+<a href="book132paper2.html">📄 Paper</a> |
+<a href="book132sol1.html">🧩 Sol1</a> |
+<a href="book132sol2.html">🧩 Sol2</a> |
+<a href="book132fig.html">📊 Fig</a> |
+<a href="book132diff.html">🔄 Diff</a> |
+<a href="book132counter.html">⚖ Counter</a>
+</div>
+</body></html>

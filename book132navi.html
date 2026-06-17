@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>book132navi｜脳卒中神経修復ナビゲーション</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', 'Segoe UI', 'Yu Gothic', 'Meiryo', system-ui, -apple-system, sans-serif;
+    background: radial-gradient(circle at 10% 30%, #0a0f2a, #030617);
+    color: #eef5ff;
+    line-height: 1.6;
+    padding: 2rem 1.5rem;
+  }
+
+  /* 滑らかなスクロール */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* メインコンテナ */
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  /* ヘッダー : 刺激的 */
+  .hero {
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+  }
+  .hero h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #FFFFFF, #7AD0FF, #FFB347);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: -0.02em;
+    text-shadow: 0 2px 15px rgba(0,160,255,0.3);
+    margin-bottom: 0.5rem;
+  }
+  .hero h1 small {
+    font-size: 1.2rem;
+    display: block;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    color: #b9e2ff;
+    text-shadow: none;
+    font-weight: 500;
+    margin-top: 0.5rem;
+  }
+  .glow-text {
+    font-size: 1.1rem;
+    background: rgba(255,255,245,0.1);
+    backdrop-filter: blur(4px);
+    display: inline-block;
+    padding: 0.3rem 1.2rem;
+    border-radius: 60px;
+    border-left: 3px solid #ffb347;
+    letter-spacing: 0.5px;
+  }
+
+  /* カード共通 - グラスモーフィズム＋刺激 */
+  .card {
+    background: rgba(15, 25, 45, 0.65);
+    backdrop-filter: blur(12px);
+    border-radius: 2rem;
+    border: 1px solid rgba(90, 180, 255, 0.3);
+    box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(122, 208, 255, 0.1) inset;
+    transition: transform 0.2s ease, box-shadow 0.25s ease, border-color 0.2s;
+    padding: 1.6rem;
+    margin-bottom: 1.8rem;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+    border-color: #ffb347;
+    box-shadow: 0 28px 40px -16px rgba(0,0,0,0.6), 0 0 0 2px rgba(255, 180, 70, 0.3) inset;
+  }
+
+  /* グリッド */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .section-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin: 2rem 0 1rem 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-left: 5px solid #ffb347;
+    padding-left: 1.2rem;
+  }
+  .section-title i {
+    font-size: 1.8rem;
+  }
+
+  /* 順序リスト 特別装飾 */
+  .order-list {
+    list-style: none;
+    counter-reset: step-counter;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+  .order-list li {
+    counter-increment: step-counter;
+    background: rgba(0, 30, 60, 0.7);
+    backdrop-filter: blur(4px);
+    border-radius: 48px;
+    padding: 0.5rem 1.2rem 0.5rem 2.5rem;
+    position: relative;
+    font-weight: 500;
+    transition: all 0.2s;
+    border: 1px solid #2c5282;
+  }
+  .order-list li::before {
+    content: counter(step-counter);
+    background: #ffb347;
+    color: #0a0f2a;
+    font-weight: bold;
+    width: 1.7rem;
+    height: 1.7rem;
+    border-radius: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.9rem;
+    box-shadow: 0 0 6px #ffb347;
+  }
+  .order-list li:hover {
+    background: #1e3a5f;
+    transform: scale(1.02);
+    border-color: #ffb347;
+  }
+  .order-list a {
+    color: #c8e7ff;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .order-list a:hover {
+    text-decoration: underline;
+    color: white;
+  }
+
+  /* ファイルカード内リンク */
+  .file-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(145deg, #fff, #90d0ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .file-card p {
+    color: #ccdeff;
+    font-size: 0.95rem;
+  }
+  .file-card a {
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    background: rgba(255,180,70,0.2);
+    padding: 0.2rem 1rem;
+    border-radius: 40px;
+    border: 1px solid #ffb34760;
+    transition: 0.2s;
+    color: #ffcf9a;
+  }
+  .file-card a:hover {
+    background: #ffb347;
+    color: #0a0f2a;
+    border-color: #ffd966;
+    box-shadow: 0 0 8px #ffb347;
+  }
+
+  /* 動画リンク */
+  .video-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .video-list li a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(8px);
+    padding: 0.6rem 1.3rem;
+    border-radius: 80px;
+    font-weight: 500;
+    transition: all 0.2s;
+    border: 1px solid #4c9aff;
+    color: #eef5ff;
+    text-decoration: none;
+  }
+  .video-list li a:hover {
+    background: #ffb347;
+    color: #030617;
+    border-color: #ffffff;
+    transform: scale(1.02);
+    box-shadow: 0 4px 14px rgba(255,180,70,0.4);
+  }
+
+  /* 研究フロー : タイムライン風 */
+  .flow-path {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+  .flow-step {
+    background: linear-gradient(125deg, #0e1f38, #07132a);
+    padding: 0.7rem 1.1rem;
+    border-radius: 3rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    backdrop-filter: blur(4px);
+    border: 1px solid #3a77a5;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+    transition: 0.2s;
+  }
+  .flow-step:hover {
+    background: #ffb34720;
+    border-color: #ffb347;
+    transform: scale(1.02);
+  }
+  .arrow {
+    font-size: 1.4rem;
+    color: #ffb347;
+    font-weight: bold;
+    align-self: center;
+  }
+
+  /* ボタン的な装飾 */
+  .badge {
+    background: #ffb347;
+    color: #0a0f2a;
+    font-size: 0.7rem;
+    font-weight: bold;
+    border-radius: 20px;
+    padding: 0.2rem 0.7rem;
+    vertical-align: middle;
+    margin-left: 0.5rem;
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    border-top: 1px dashed #3a6a9e;
+    padding-top: 1.5rem;
+  }
+
+  @media (max-width: 700px) {
+    body {
+      padding: 1rem;
+    }
+    .hero h1 {
+      font-size: 2rem;
+    }
+    .section-title {
+      font-size: 1.5rem;
+    }
+    .flow-step {
+      font-size: 0.7rem;
+    }
+    .arrow {
+      display: none;
+    }
+    .flow-path {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>
+</head>
+<body>
+<div style="text-align:center;margin:15px 0;padding:10px;background:#eef3ff;border-radius:10px;">
+<a href="book132navi.html">🏠 Navi</a> |
+<a href="book132.html">📘 Blog</a> |
+<a href="book132note.html">📊 Note</a> |
+<a href="book132paper1.html">📄 Paper</a> |
+<a href="book132paper2.html">📄 Paper</a> |
+<a href="book132sol1.html">🧩 Sol1</a> |
+<a href="book132sol2.html">🧩 Sol2</a> |
+<a href="book132fig.html">📊 Fig</a> |
+<a href="book132diff.html">🔄 Diff</a> |
+<a href="book132counter.html">⚖ Counter</a>
+</div>
+<div style="text-align:center; margin:20px 0;">
+  <img src="shichita.jpeg" alt="七田博士" style="max-width:280px; width:100%; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.3);">
+  <p><strong>七田博士</strong></p>
+</div>
+
+<div class="container">
+  <div class="hero">
+    <h1>🧠 book132navi<br><small>脳卒中後の神経修復とミクログリア研究 — エッジの効いたナビゲーション</small></h1>
+    <div class="glow-text">🔥 🔥 自然回復の謎を解く —
+PLA2G2E・15-HETrE・修復型ミクログリアが切り拓く次世代脳卒中治療</div>
+  </div>
+
+  <!-- 推奨閲覧順 - 刺激的リスト -->
+  <div class="card">
+    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 1rem;">
+      <span style="font-size: 2rem;">⚡</span>
+      <h2 style="font-size: 1.8rem; font-weight: 700;">推奨閲覧順 — 最速で深く学ぶルート</h2>
+    </div>
+<ul class="order-list">
+  <li><a href="book132.html">book132.html（全体概要）</a> <span class="badge">必須</span></li>
+
+  <li><a href="book132note.html">book132note.html（NotebookLM総合解説）</a> <span class="badge">総論</span></li>
+
+  <li><a href="book132paper1.html">PLA2G2E論文</a> <span class="badge">新発見</span></li>
+
+  <li><a href="book132sol1.html">TPAI解析①</a></li>
+
+  <li><a href="book132paper2.html">ミクログリア修復論文</a> <span class="badge">機能維持</span></li>
+
+  <li><a href="book132sol2.html">TPAI解析②</a></li>
+
+  <li><a href="book132diff.html">2論文の比較</a> <span class="badge">ブリッジ</span></li>
+
+  <li><a href="book132fig.html">図解読本（Figure対応）</a></li>
+
+  <li><a href="book132counter.html">反論・限界</a> <span class="badge">クリティカル</span></li>
+</ul>
+    <p style="margin-top: 1rem; font-size: 0.9rem; border-left: 3px solid #ffb347; padding-left: 1rem;">⚡ この順序で読めば、脳卒中後のミクログリア修復ダイナミクスが立体的に掴めます</p>
+  </div>
+
+  <!-- 📚 ファイル群 グリッド・カード強化 -->
+  <div class="section-title">
+    <span>📁</span> コアリソース <span style="font-size: 0.9rem; background: #ffb34720; padding: 0 0.6rem; border-radius: 40px;">9つの重要ドキュメント</span>
+  </div>
+  <div class="grid">
+    <div class="card file-card">
+      <h3>📘 book132.html</h3>
+      <p>全体解説・入門記事 — 神経修復ロードマップの出発点</p>
+      <a href="book132.html">アクセス →</a>
+    </div>
+    <div class="card file-card">
+      <h3>🧪 book132paper1.html</h3>
+      <p>PLA2G2Eによる神経修復論文 | 脂質シグナルが切り拓く回復経路</p>
+      <a href="book132paper1.html">深掘り →</a>
+    </div>
+    <div class="card file-card">
+      <h3>📊 book132sol1.html</h3>
+      <p>TPAI解析① (論文1ベース) — トランスクリプトームから見える制御機構</p>
+      <a href="book132sol1.html">解析を見る →</a>
+    </div>
+   <div class="card file-card">
+  <h3>📖 book132note.html</h3>
+  <p>
+    NotebookLM総合解説 —
+    ミクログリア・自然回復・研究史・世界的意義を一望
+  </p>
+  <a href="book132note.html">解説を読む →</a>
+</div>
+    <div class="card file-card">
+      <h3>🧠 book132paper2.html</h3>
+      <p>ミクログリア修復機能維持論文 | ZFP384制御とASO介入</p>
+      <a href="book132paper2.html">詳細へ →</a>
+    </div>
+    <div class="card file-card">
+      <h3>🔬 book132sol2.html</h3>
+      <p>TPAI解析② (論文2) — 修復型ミクロリアジェンダー</p>
+      <a href="book132sol2.html">データ確認 →</a>
+    </div>
+    <div class="card file-card">
+      <h3>⚖️ book132diff.html</h3>
+      <p>2論文の関係と違い — PLA2G2E vs ミクログリア修復維持のシナジー</p>
+      <a href="book132diff.html">比較へ →</a>
+    </div>
+    <div class="card file-card">
+      <h3>🎨 book132fig.html</h3>
+      <p>図解読本（Figure対応） — シグナル経路を視覚で叩き込む</p>
+      <a href="book132fig.html">ビジュアル解説 →</a>
+    </div>
+    <div class="card file-card">
+      <h3>⚠️ book132counter.html</h3>
+      <p>反論・課題・限界 — 科学の本質を鋭く考察</p>
+      <a href="book132counter.html">クリティカルリーディング →</a>
+    </div>
+  </div>
+
+  <!-- 🎥 関連動画 section + 刺激的アイコン -->
+  <div class="section-title">
+    <span>🎬</span> 関連動画 — 脳神経修復を動画で体感
+  </div>
+  <div class="card">
+    <ul class="video-list">
+      <li><a href="https://youtu.be/Wj3HmDl9mI4" target="_blank" rel="noopener">▶ Neuroplasticity After Stroke</a></li>
+      <li><a href="https://youtu.be/mw-rwhpAQe4" target="_blank" rel="noopener">🎥 Microglia Animation</a></li>
+      <li><a href="https://youtu.be/0QP2Je38Fxg" target="_blank" rel="noopener">🧬 Epigenetics Explained (ZFP384文脈)</a></li>
+    </ul>
+  </div>
+<div class="section-title">
+  <span>📚</span> NotebookLM総合解説
+</div>
+
+<div class="card">
+
+<h3>book132note.html</h3>
+
+<p>
+本資料はNotebookLMを用いて、
+book132シリーズで引用した6本の主要論文を
+統合的に整理した総論編です。
+</p>
+
+<ul>
+<li>ミクログリアとは何か</li>
+<li>脳卒中後の自然回復とは何か</li>
+<li>PLA2G2Eと15-HETrEの役割</li>
+<li>ZFP384による修復停止機構</li>
+<li>脳卒中研究の歴史</li>
+<li>世界における本研究の意義</li>
+<li>15-HETrE治療薬の将来性</li>
+</ul>
+
+<a href="book132note.html">
+📖 NotebookLM総合解説を読む →
+</a>
+
+</div>
+
+  <!-- 研究の流れ グラフィカル＋刺激 -->
+  <div class="section-title">
+    <span>⚡</span> 研究フロー — 脳卒中からの修復カスケード
+  </div>
+  <div class="card" style="padding: 1.2rem;">
+<div class="flow-path">
+
+<span class="flow-step">🧠 脳卒中発生</span>
+<span class="arrow">➡</span>
+
+<span class="flow-step">⏳ 自然回復開始</span>
+<span class="arrow">➡</span>
+
+<span class="flow-step">🧬 PLA2G2E活性化</span>
+<span class="arrow">➡</span>
+
+<span class="flow-step">🧪 15-HETrE産生</span>
+<span class="arrow">➡</span>
+
+<span class="flow-step">🛠️ 修復型ミクログリア</span>
+<span class="arrow">➡</span>
+
+<span class="flow-step">📉 ZFP384増加</span>
+<span class="arrow">➡</span>
+
+<span class="flow-step">✂️ ASO介入</span>
+<span class="arrow">➡</span>
+
+<span class="flow-step">✨ 神経機能回復</span>
+
+</div>
+    <!-- History -->
+<div class="section-title">
+  <span>📜</span> 研究の歴史と未来
+</div>
+
+<div class="card">
+<span class="flow-step">🌍 GBD研究</span>
+ <span class="flow-step">📈 自然回復研究</span>
+ <span class="flow-step">⚠ トランスレーショナル・ギャップ</span>
+ <span class="flow-step">🧬 PLA2G2E発見</span>
+ <span class="flow-step">🧠 ミクログリア修復維持</span>
+ <span class="flow-step">🚀 次世代再生医療</span>
+</div>
+  <section>
+    <h2>脳梗塞後の修復研究：過去から将来へ</h2>
+
+    <p>
+      かつて脳梗塞後の脳は、「一度傷つくとほとんど治らない」と考えられていた。
+      治療の中心は、急性期に血流を戻すこと、炎症や細胞死を抑えることだった。
+      しかし、後遺症が残ったあとに脳をどう回復させるかは大きな課題だった。
+    </p>
+
+    <p>
+      第1の論文は、脳の中に自力で修復を始める仕組みがあることを示した。
+      脳梗塞後、生き残った神経細胞がPLA2G2Eを作り、DGLAや15-HETrEという脂質を生み出す。
+      それがPADI4を働かせ、神経修復に関わる遺伝子を動かす。
+      つまり「脳は壊れるだけでなく、自ら治ろうとする」ことが明らかになった。
+    </p>
+
+    <p>
+      第2の論文は、なぜその回復が途中で止まるのかを説明した。
+      修復を助けるミクログリアは、最初はIGF1などを出して神経を助ける。
+      しかし時間がたつとZFP384という因子が増え、修復遺伝子の働きが弱まり、
+      ミクログリアは修復力を失った状態になる。
+    </p>
+
+    <p>
+      将来は、この2つの発見を組み合わせる治療が期待される。
+      15-HETrEなどで修復を開始し、ZFP384を抑えて修復を長く続ける。
+      その結果、脳梗塞後の回復期間を延ばし、後遺症を軽くする新しい再生医療へ進む可能性がある。
+    </p>
+  </section>
+</div> 
+    
+    <div style="margin-top: 1.2rem; background: linear-gradient(90deg, #1e3a8a30, #ffb34730); border-radius: 32px; padding: 0.6rem 1rem; text-align: center; font-size: 0.85rem;">
+      💡 キーポイント : PLA2G2E → ミクログリア修復状態誘導 → ZFP384が経時的に抑制 → ASOで長期的な修復機能維持 → 神経可塑性最大化
+    </div>
+  </div>
+
+  <!-- 補足・サイエンティフィックな刺激メッセージ -->
+  <div class="card" style="background: radial-gradient(ellipse at 70% 30%, #0f1c33, #030617);">
+    <div style="display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: space-between; align-items: center;">
+      <div>
+        <span style="font-size: 2rem;">🚀</span>
+        <strong style="font-size: 1.2rem;">『修復型ミクログリアのフェーズ制御』が次の脳卒中治療を変える</strong>
+      </div>
+      <div style="background: #ffb34720; border-radius: 40px; padding: 0.3rem 1rem;">
+        <span>#NeuroRepair #Microglia #PLA2G2E #ASO戦略</span>
+      </div>
+    </div>
+    <hr style="border-color: #2c5282; margin: 1rem 0;">
+    <p style="font-size: 0.9rem;">
+      本ナビゲーションは、2つの先端論文とTPAI解析の橋渡し。ミクログリアの「修復型」をいかに誘導し、その機能をZFP384のエピジェネティックな制御から守るか？<br>
+      🧬 さらなる議論は <strong>book132diff.html</strong> や <strong>book132counter.html</strong> でクリティカルに検証を。
+    </p>
+  </div>
+
+  <footer>
+    <p>© book132navi — 脳卒中後神経修復研究ハブ | 最先端ミクログリアサイエンスを直感的に</p>
+    <p style="margin-top: 6px;">📌 各リンクは同一ディレクトリ内のHTMLファイルにジャンプします (book132.html / paper1 / sol1 ...)</p>
+  </footer>
+</div>
+<div style="text-align:center;margin:15px 0;padding:10px;background:#eef3ff;border-radius:10px;">
+<a href="book132navi.html">🏠 Navi</a> |
+<a href="book132.html">📘 Blog</a> |
+<a href="book132note.html">📊 Note</a> |
+<a href="book132paper1.html">📄 Paper</a> |
+<a href="book132paper2.html">📄 Paper</a> |
+<a href="book132sol1.html">🧩 Sol1</a> |
+<a href="book132sol2.html">🧩 Sol2</a> |
+<a href="book132fig.html">📊 Fig</a> |
+<a href="book132diff.html">🔄 Diff</a> |
+<a href="book132counter.html">⚖ Counter</a>
+</div>
+</body>
+</html>
