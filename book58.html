@@ -1,0 +1,551 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>バイアス、偏見、バイアスの幅</title>
+  <style>
+    :root{--fg:#111;--muted:#555;--bg:#fff;--card:#f6f7f8;--line:#e6e8eb;--accent:#0b63ce;}
+    body{margin:0;background:var(--bg);color:var(--fg);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Hiragino Sans","Noto Sans JP",Meiryo,system-ui,sans-serif;line-height:1.8}
+    header{padding:40px 18px 18px;border-bottom:1px solid var(--line)}
+    header .kicker{color:var(--muted);font-size:14px}
+    h1{margin:8px 0 0;font-size:30px;letter-spacing:.02em}
+    main{max-width:980px;margin:0 auto;padding:18px}
+    .toc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:18px 0}
+    .toc ol{margin:8px 0 0;padding-left:22px}
+    .toc a{color:var(--accent);text-decoration:none}
+    .toc a:hover{text-decoration:underline}
+    section{margin:28px 0}
+    h2{margin:0 0 8px;font-size:22px}
+    h3{margin:18px 0 6px;font-size:18px}
+    p{margin:10px 0}
+    .note{background:#fff; border-left:4px solid var(--accent); padding:10px 12px; margin:12px 0; color:#1a1a1a}
+    .grid{display:grid;grid-template-columns:1fr;gap:12px}
+    @media (min-width:900px){.grid{grid-template-columns:1.1fr .9fr;align-items:start}}
+    figure{margin:0;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+    figure img{width:100%;height:auto;border-radius:10px;display:block;background:#fff}
+    figure figcaption{font-size:13px;color:var(--muted);margin-top:8px}
+    table{border-collapse:collapse;width:100%;margin:10px 0;background:#fff}
+    th,td{border:1px solid var(--line);padding:10px 10px;vertical-align:top}
+    th{background:#fbfbfc;text-align:left}
+    .small{font-size:13px;color:var(--muted)}
+    footer{border-top:1px solid var(--line);padding:18px;color:var(--muted);font-size:13px}
+    code{background:#f2f3f5;border:1px solid #e7e8eb;border-radius:6px;padding:1px 6px}
+  </style>
+</head>
+<body>
+<header>
+  <div class="kicker">book58.html</div>
+  <h1>バイアス、偏見、バイアスの幅</h1>
+  <div class="small">※用語の歴史的由来・社会的転用・AI時代の運用を「幅」という視点で整理した。</div>
+</header>
+<main>
+
+  <div class="toc" aria-label="目次">
+    <strong>目次</strong>
+    <ol>
+      <li><a href="#sec1">バイアスは学術用語だった</a></li>
+      <li><a href="#sec2">社会的な意味のバイアス</a></li>
+      <li><a href="#sec3">「バイアスの幅」とは</a></li>
+      <li><a href="#sec4">日本と海外との比較</a></li>
+      <li><a href="#sec5">AIと「バイアスの幅」</a></li>
+      <li><a href="#sec6">まとめ</a></li>
+    </ol>
+  </div>
+
+  <!-- 画像1：天秤（中立と偏り） -->
+  <section id="sec1">
+    <div class="grid">
+      <div>
+        <h2>1. バイアスは学術用語だった</h2>
+        <p>
+          「バイアス（bias）」という語は、今日では「偏見」「不公平」「先入観」の意味で使われがちである。
+          しかし、もともとは<strong>「中立・客観であるべき測定や判断が、特定方向へ系統的にずれる」</strong>という
+          <em>技術語・分析語</em>であった。本稿でも、心理学（認知バイアス）、統計（サンプルバイアス・生存者バイアス）、
+          工学（バイアス電圧・バイアス電流）など、分野ごとの「操作可能な偏り」として整理されている。
+        </p>
+
+        <h3>学術語としての「バイアス」の中心的作法</h3>
+        <p>
+          学術的に「バイアス」を扱うとき、重要なのはラベル貼りではなく、<strong>手続き</strong>である。
+          すなわち、(1) バイアスを特定し、(2) 影響方向と大きさを示し、(3) 補正方法を議論し、
+          (4) それでも残る不確実性を書く——という流れである。
+          この作法が保たれている限り、バイアスは「議論を始める言葉」であり続ける。
+        </p>
+
+        <div class="note">
+          <strong>ポイント：</strong>
+          学術語としてのバイアスは、価値判断を直ちに呼び込むための語ではなく、
+          「どの手続きのどこで偏りが生じ、どの程度で、どう補正できるか」を問うための語であった。
+        </div>
+
+        <h3>日本語への導入：先に入ったのは「学術バイアス」</h3>
+        <p>
+          日本での「バイアス」は、まず統計学・心理学・工学などを通じて
+          専門領域へ導入・定着し、少なくとも<strong>1950〜60年代には学術専門語として確立していた</strong>とされている。
+          これに対して、社会問題・メディア批判・ジェンダーなどの文脈で一般に広まるのは、
+          <strong>1980年代以降、とくに1990年代〜2000年代</strong>が転機であった。
+          つまり日本語では、学術語としての導入が先行し、その後に社会語へと拡張された、という順序が見える。
+        </p>
+      </div>
+
+      <figure>
+        <img alt="中立と偏りを示す天秤の図" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' width='900' height='560' viewBox='0 0 900 560'>
+  <rect width='900' height='560' fill='white'/>
+  <g stroke='black' stroke-width='10' fill='none' stroke-linecap='round' stroke-linejoin='round'>
+    <line x1='450' y1='80' x2='450' y2='420'/>
+    <line x1='250' y1='160' x2='650' y2='160'/>
+    <line x1='450' y1='80' x2='400' y2='120'/>
+    <line x1='450' y1='80' x2='500' y2='120'/>
+    <line x1='310' y1='160' x2='260' y2='290'/>
+    <line x1='590' y1='160' x2='640' y2='250'/>
+  </g>
+  <g stroke='black' stroke-width='8' fill='white'>
+    <ellipse cx='250' cy='330' rx='120' ry='35'/>
+    <ellipse cx='650' cy='290' rx='120' ry='35'/>
+  </g>
+  <g fill='black' font-family='sans-serif' font-size='28'>
+    <text x='120' y='400'>中立（理想）</text>
+    <text x='560' y='360'>偏り（bias）</text>
+  </g>
+  <g fill='black' font-family='sans-serif' font-size='18'>
+    <text x='90' y='430'>測定・推定・判断の「基準点」</text>
+    <text x='520' y='390'>系統的にずれる動作点</text>
+  </g>
+</svg>" />
+        <figcaption>
+          画像1：学術語としての bias は「善悪」ではなく、測定・判断のずれ（系統誤差）を扱う言葉として機能してきた。
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 画像2：ラベルが議論を止める（スタンプ） -->
+  <section id="sec2">
+    <div class="grid">
+      <div>
+        <h2>2. 社会的な意味のバイアス</h2>
+        <p>
+          社会語としての「バイアス」は、学術的な手続きから切り離され、
+          しばしば<strong>「批判」「責任追及」「不適切」</strong>を示す言葉として働く。
+          日本での転位は<strong>1990年代後半〜2000年代</strong>に明確化されている。
+          「メディア・バイアス」「ジェンダーバイアス」「無意識のバイアス（unconscious bias）」などの定着が、その象徴である。
+        </p>
+
+        <h3>なぜ社会語化すると“強い言葉”になるのか</h3>
+        <p>
+          「偏見」という既存語は、人格や道徳の問題として響きやすく、直接的な対立を生む。
+          それに比べ、カタカナ語の「バイアス」は<strong>分析的・客観的に見える距離感</strong>を生み、
+          相手を責めているように見せずに正当性を否定できるという効果を持つ。
+          結果として、会話は「感情の衝突」から「構造の指摘」へと移動しやすくなる。
+          ただし同時に、その指摘が<strong>具体性を失ったまま結論の位置に置かれる</strong>と、議論停止の力も強まる。
+        </p>
+
+        <h3>「バイアス」が議論を止める瞬間</h3>
+        <p>
+          社会的用法では、「どのバイアスか」「どの程度か」「補正可能か」が省略されがちである。
+          その結果、<strong>バイアス＝途中に置かれるはずの操作語が、結論の位置に置かれる</strong>現象が起こる。
+          筆者が提案する回避策はシンプルである。
+          「どのバイアスですか？」「補正できますか？」「それでも使える範囲は？」と、静かに手続きを戻す。
+          つまり、社会語を学術語の作法へ引き戻す試みである。
+        </p>
+
+        <div class="note">
+          <strong>注意：</strong>
+          「バイアス」という語が持つ“権威”は便利であるが、
+          便利さは同時に、説明と検証を省略する誘惑にもなる。
+        </div>
+      </div>
+
+      <figure>
+        <img alt="議論停止のスタンプ図" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' width='900' height='560' viewBox='0 0 900 560'>
+  <rect width='900' height='560' fill='white'/>
+  <g fill='none' stroke='black' stroke-width='10'>
+    <rect x='120' y='120' width='660' height='280' rx='28'/>
+    <line x1='220' y1='400' x2='680' y2='120'/>
+  </g>
+  <g fill='black' font-family='sans-serif'>
+    <text x='180' y='210' font-size='34'>それはバイアスだ</text>
+    <text x='180' y='260' font-size='22'>（どの？ どの程度？ どう補正？ が省略される）</text>
+    <text x='180' y='330' font-size='28'>→ 便利だが、停止語にもなる</text>
+  </g>
+</svg>" />
+        <figcaption>
+          画像2：社会語化した「バイアス」は、具体化されないまま“結論スタンプ”として働くことがある。
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 画像3：スペクトラム（幅） -->
+  <section id="sec3">
+    <div class="grid">
+      <div>
+        <h2>3. 「バイアスの幅」とは</h2>
+        <p>
+          本稿の中心概念である「バイアスの幅（bias width / tolerable bias range / contextual bias bandwidth）」は、筆者が提示する重要なメタファーである。
+          それは、バイアスを「ある／ない」の二値で切るのではなく、<strong>連続量（どの程度か）</strong>や
+          <strong>多次元（どの軸で問題なのか）</strong>として捉え直す提案である。
+        </p>
+
+        <h3>（1）量としての「幅」：強度スペクトラム</h3>
+        <p>
+          例えば「無意識の軽微な傾向」から「強固な差別的信念」まで、偏りには強度差がある。
+          「幅」を導入すると、議論は「有罪／無罪」の裁判型から、
+          「どの程度で、どこから介入し、どこは許容するか」という設計型へ移る。
+          この転換は、測定可能性（可視化）を高め、議論を具体化する可能性がある。
+        </p>
+
+        <h3>（2）多次元としての「幅」：軸を増やす</h3>
+        <p>
+          本稿は、少なくとも次のような軸で「幅」を考えるべきだと示唆する。
+        </p>
+        <table>
+          <thead>
+            <tr><th>軸</th><th>片側</th><th>反対側</th><th>この軸が効く場面</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>意識性</td>
+              <td>無意識的</td>
+              <td>意識的</td>
+              <td>教育・研修で「自覚化」できるかどうか</td>
+            </tr>
+            <tr>
+              <td>変動性</td>
+              <td>固定的</td>
+              <td>状況依存</td>
+              <td>環境設計（情報提示順・UI・制度）で動かせるか</td>
+            </tr>
+            <tr>
+              <td>倫理的影響</td>
+              <td>有害</td>
+              <td>中立／有益</td>
+              <td>規制・是正の対象か、創造性の源として扱うか</td>
+            </tr>
+            <tr>
+              <td>普遍性</td>
+              <td>個人特有</td>
+              <td>文化的／人類普遍</td>
+              <td>個人責任か、制度・文化の課題か</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>「幅」がもたらす実践的な効用</h3>
+        <p>
+          「幅」を導入すると、議論の目的が変わる。
+          それは「偏りをゼロにする」ではなく、
+          <strong>偏りを点検し、必要なら補正し、それでも残る偏りを“使える範囲”として管理する</strong>、という運用である。
+          さらに、異なる幅を持つ人々の集合は「認知的多様性」として資源化できる、という肯定的解釈も提示されている。
+          ただし「幅があるから仕方ない」と相対化して、有害な偏見を免責する危険もあるため、
+          ガードレール（どの軸で何を許容しないか）の設定が不可欠である。
+        </p>
+      </div>
+
+      <figure>
+        <img alt="バイアスの強度スペクトラム図" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' width='900' height='560' viewBox='0 0 900 560'>
+  <rect width='900' height='560' fill='white'/>
+  <g fill='none' stroke='black' stroke-width='8'>
+    <rect x='120' y='210' width='660' height='70' rx='16'/>
+  </g>
+  <defs>
+    <linearGradient id='g' x1='0' y1='0' x2='1' y2='0'>
+      <stop offset='0%' stop-color='white'/>
+      <stop offset='100%' stop-color='black'/>
+    </linearGradient>
+  </defs>
+  <rect x='130' y='220' width='640' height='50' fill='url(%23g)' stroke='none'/>
+  <g fill='black' font-family='sans-serif'>
+    <text x='120' y='170' font-size='32'>「幅」= 有無ではなく連続・多次元</text>
+    <text x='130' y='330' font-size='22'>弱い傾向</text>
+    <text x='650' y='330' font-size='22'>強い信念</text>
+    <text x='130' y='380' font-size='18'>（無意識・状況依存）</text>
+    <text x='610' y='380' font-size='18'>（固定化・制度化）</text>
+  </g>
+  <g stroke='black' stroke-width='6'>
+    <line x1='260' y1='280' x2='260' y2='320'/>
+    <line x1='450' y1='280' x2='450' y2='340'/>
+    <line x1='640' y1='280' x2='640' y2='320'/>
+  </g>
+  <g fill='black' font-family='sans-serif' font-size='16'>
+    <text x='220' y='350'>点検</text>
+    <text x='420' y='370'>補正</text>
+    <text x='610' y='350'>規制</text>
+  </g>
+</svg>" />
+        <figcaption>
+          画像3：「幅」は、二値の糾弾から、点検・補正・管理（ときに規制）へ議論を移動させる。
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 画像4：日本と海外（地図イメージ） -->
+  <section id="sec4">
+    <div class="grid">
+      <div>
+        <h2>4. 海外との比較</h2>
+        <p>
+          ここでの比較は、単なる翻訳の違いというより、
+          「言葉が社会の議論作法をどう作るか」という比較である。
+          海外（特に英語圏）では、<code>bias</code> は統計・心理・工学の学術語として普通に使われつつ、
+          同時に社会的文脈（social bias / media bias）でも早くから使われてきた。
+          一方、日本語では、社会的意味を担う既存語（偏見・先入観・差別）が強い道徳的響きを持っていたため、
+          学術語としての「バイアス」が入った後、社会語としても「バイアス」が便利に再利用される、という経路が目立つ。
+        </p>
+
+        <h3>カタカナ語が作る「距離」と「権威」</h3>
+        <p>
+          本稿が指摘する重要点は、カタカナ語であること自体が、
+          「偏見」という直接語よりも<strong>情緒的反応を和らげ、概念的距離を作る</strong>ことである。
+          その距離は、対話を成立させることもある（脱個人化・構造化）。
+          しかし同時に、その距離は「どこが、どう偏っているか」を曖昧にしやすく、
+          反論が難しい非対称性を生む（無意識・構造という形で否定しにくい）。
+        </p>
+
+        <h3>「学術語→道徳語」の転位のしやすさ</h3>
+        <p>
+          本稿では、日本では概念が態度評価へ吸収されやすく、
+          その結果として「学術語が道徳語になる」「道徳語は反証不能になりやすい」
+          という指摘をしている。
+          これは「日本だけが特殊」という断定ではなく、
+          日本語が持つ既存の道徳語体系（偏見・差別など）と、外来語が持つ権威借用の相互作用として理解できる。
+          実務的な含意は明確であり、社会的議論の場で「バイアス」を使うときほど、
+          学術的作法（特定・程度・補正・残余不確実性）へ戻す必要が高い、ということである。
+        </p>
+
+        <div class="note">
+          <strong>比較の要点：</strong>
+          海外では <code>bias</code> の語が幅広く使われても、同時に「どのバイアスか」を特定して議論する文化が強い領域がある。
+          日本では「バイアス」という語が“便利な批判語”として先に働く場面があり、手続きが脱落しやすい。
+        </div>
+      </div>
+
+      <figure>
+        <img alt="日本と世界を対比する図" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' width='900' height='560' viewBox='0 0 900 560'>
+  <rect width='900' height='560' fill='white'/>
+  <g fill='none' stroke='black' stroke-width='8'>
+    <rect x='90' y='110' width='340' height='360' rx='18'/>
+    <rect x='470' y='110' width='340' height='360' rx='18'/>
+  </g>
+  <g fill='black' font-family='sans-serif'>
+    <text x='200' y='160' font-size='30'>日本</text>
+    <text x='585' y='160' font-size='30'>海外（英語圏）</text>
+    <text x='120' y='220' font-size='18'>・既存語：偏見/差別（道徳語）</text>
+    <text x='120' y='255' font-size='18'>・バイアス（学術語）→社会語へ</text>
+    <text x='120' y='290' font-size='18'>・カタカナの“距離”と“権威”</text>
+    <text x='120' y='325' font-size='18'>・手続きが落ちると停止語化</text>
+
+    <text x='500' y='220' font-size='18'>・biasが学術/社会で並行使用</text>
+    <text x='500' y='255' font-size='18'>・social/media bias などの語彙</text>
+    <text x='500' y='290' font-size='18'>・領域によって特定・補正が強い</text>
+    <text x='500' y='325' font-size='18'>・prejudice 等の道徳語も併存</text>
+  </g>
+  <g stroke='black' stroke-width='6' fill='none'>
+    <path d='M250 380 q40 -60 80 0 q40 60 80 0' />
+    <path d='M630 380 q40 -60 80 0 q40 60 80 0' />
+  </g>
+  <g fill='black' font-family='sans-serif' font-size='16'>
+    <text x='170' y='430'>言葉の“道徳化”が起きやすい</text>
+    <text x='545' y='430'>言葉の“操作語”も維持されやすい</text>
+  </g>
+</svg>" />
+        <figcaption>
+          画像4：同じ bias でも、「既存語（偏見など）」との関係や、語がもつ距離感の効果が、議論の作法に影響する。
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 画像5：AI（回路） -->
+  <section id="sec5">
+    <div class="grid">
+      <div>
+        <h2>5. AIと「バイアスの幅」</h2>
+        <p>
+          本稿では、AI・アルゴリズムのバイアスを「人間社会の写し鏡」として説明している。
+          ここで重要なのは、AIの偏りを「道徳的に悪いAI」として語るだけではなく、
+          <strong>どの工程が、何を、どの方向にバイアスするか</strong>という因果の分解である。
+          つまり、人間の議論における「バイアスの幅」を、AIの設計・運用にも持ち込む必要がある。
+        </p>
+
+        <h3>AIにおける「幅」：データ・モデル・運用の三層</h3>
+        <p>
+          AIのバイアスは、ざっくり三層で生じる。
+        </p>
+        <table>
+          <thead>
+            <tr><th>層</th><th>典型例</th><th>「幅」での見方</th><th>対処の方向</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>データ</td>
+              <td>サンプル偏り、欠損、歴史的偏り</td>
+              <td>どの属性の過小/過大がどの程度か</td>
+              <td>収集設計、再重み付け、追加データ</td>
+            </tr>
+            <tr>
+              <td>モデル</td>
+              <td>学習目標・損失関数の設計</td>
+              <td>何を公平と定義するか（軸の選択）</td>
+              <td>目的関数の再設計、監査</td>
+            </tr>
+            <tr>
+              <td>運用</td>
+              <td>UI/提示順/説明、人的介入</td>
+              <td>状況依存で幅が変動するか</td>
+              <td>ガイドライン、説明責任、ログ</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>「バイアス監査」と“許容可能な幅（tolerable bias range）”</h3>
+        <p>
+          今後の展開として、バイアスが<strong>測定・監査・規制の対象</strong>として制度化される可能性が挙げられる。
+          企業ガバナンスの中に<strong>Bias Audit（バイアス監査）</strong>が組み込まれ、
+          業界基準や規格（例：ISO等）として「許容可能なバイアス水準」が定められる未来像がある。
+          ここで「幅」は、単なる比喩ではなく、監査に耐える指標（定量/半定量）へと変換される。
+        </p>
+
+        <h3>国・文化で衝突する「公平」の基準</h3>
+        <p>
+          さらに、文化や価値観の違いによって「何を偏りとみなすか」が異なる場合、
+          バイアス是正の基準そのものが国際的に衝突する可能性が指摘できる。
+          つまり、AI時代の「バイアスの幅」は、国内の議論だけでは完結しない。
+          どの軸を採用し、どこにガードレールを置くかは、政治・倫理・経済を巻き込む「設計問題」になる。
+        </p>
+
+        <div class="note">
+          <strong>実務のまとめ：</strong>
+          AIのバイアス対策は「偏りをゼロにする」ではなく、
+          「偏りの種類を分解し、許容範囲（幅）を定義し、監査と説明に耐える形で運用する」へと向かう。
+        </div>
+      </div>
+
+      <figure>
+        <img alt="AIチップと監査を示す図" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' width='900' height='560' viewBox='0 0 900 560'>
+  <rect width='900' height='560' fill='white'/>
+  <g fill='none' stroke='black' stroke-width='8' stroke-linejoin='round'>
+    <rect x='170' y='140' width='320' height='320' rx='24'/>
+    <rect x='210' y='180' width='240' height='240' rx='18'/>
+    <line x1='130' y1='200' x2='170' y2='200'/>
+    <line x1='130' y1='260' x2='170' y2='260'/>
+    <line x1='130' y1='320' x2='170' y2='320'/>
+    <line x1='130' y1='380' x2='170' y2='380'/>
+    <line x1='490' y1='200' x2='530' y2='200'/>
+    <line x1='490' y1='260' x2='530' y2='260'/>
+    <line x1='490' y1='320' x2='530' y2='320'/>
+    <line x1='490' y1='380' x2='530' y2='380'/>
+    <circle cx='670' cy='240' r='90'/>
+    <line x1='735' y1='305' x2='800' y2='370'/>
+  </g>
+  <g fill='black' font-family='sans-serif'>
+    <text x='205' y='120' font-size='28'>AI</text>
+    <text x='600' y='120' font-size='28'>監査（Audit）</text>
+    <text x='580' y='425' font-size='18'>「許容可能な幅（tolerable bias range）」を定義</text>
+    <text x='210' y='510' font-size='18'>データ/モデル/運用の偏りを分解</text>
+  </g>
+</svg>" />
+        <figcaption>
+          画像5：AIのバイアスは「どこで」「何が」「どの程度」起きるかに分解し、監査可能な「幅」へ落とし込む必要がある。
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 画像6：まとめ（ノート） -->
+  <section id="sec6">
+    <div class="grid">
+      <div>
+        <h2>6. まとめ</h2>
+        <p>
+          以上をまとめると、次のように整理できる。
+        </p>
+
+        <h3>（A）バイアスは「学術語」として始まった</h3>
+        <p>
+          学術語としてのバイアスは、測定や判断の系統的なずれを扱う「操作語」であった。
+          その核心は、偏りを糾弾することではなく、特定し、程度を示し、補正し、残る不確実性を記述することである。
+          この作法が残っている限り、バイアスは“思考の道具”として機能する。
+        </p>
+
+        <h3>（B）社会語化すると、便利な「停止語」にもなる</h3>
+        <p>
+          日本語では、学術語として入った「バイアス」が、1990年代以降にメディア批判・社会問題の語彙として一般化し、
+          道徳的評価を帯びる場面が増えた。
+          カタカナ語の距離感が対話を促すこともあるが、具体化が脱落すると、
+          「それはバイアスだ」で議論が止まりやすい。
+          対策は、用語を手続きへ戻すことである。
+        </p>
+
+        <h3>（C）「バイアスの幅」は、議論を設計へ引き戻す</h3>
+        <p>
+          「幅」を導入すると、バイアスは有無ではなく程度・分布・多次元として扱われる。
+          すると、問いは「排除」から「管理・最適化」へ移り、
+          チームや社会の「認知的多様性」を資源として扱う道も開ける。
+          ただし、有害な偏見の免責に使われないよう、何を許容しないかというガードレールは不可欠である。
+        </p>
+
+        <h3>（D）AI時代には「幅」が制度と衝突する</h3>
+        <p>
+          AIのバイアスは、データ・モデル・運用の各層で生じ、社会の偏りを写す。
+          今後は監査や規制の対象として制度化され、「許容可能なバイアス水準」を巡って
+          企業・国家・文化が衝突する可能性がある。
+          だからこそ、「バイアスの幅」は、単なる比喩ではなく、
+          説明責任と合意形成を可能にする“翻訳装置”として重要になる。
+        </p>
+
+        <div class="note">
+          <strong>最後に：</strong>
+          「バイアス」を見つけた瞬間に思考を止めない。
+          代わりに、「どのバイアスか」「どの程度か」「補正できるか」「それでも使える範囲はどこか」を問い直す。
+          この反復こそが、学術語と社会語の間を往復するための、最小の作法である。
+        </div>
+
+        <p class="small">
+          参考：本稿では、「学術用語としてのバイアスの導入→社会語化（1990年代後半〜）→AI文脈での拡張」、
+          および「バイアスの幅（多次元化・定量化・監査）」の議論を統合した。
+        </p>
+      </div>
+
+      <figure>
+        <img alt="まとめのノート図" src="data:image/svg+xml;utf8,<?xml version='1.0' encoding='UTF-8'?>
+<svg xmlns='http://www.w3.org/2000/svg' width='900' height='560' viewBox='0 0 900 560'>
+  <rect width='900' height='560' fill='white'/>
+  <g fill='none' stroke='black' stroke-width='8' stroke-linejoin='round'>
+    <rect x='180' y='90' width='540' height='380' rx='22'/>
+    <line x1='240' y1='170' x2='660' y2='170'/>
+    <line x1='240' y1='230' x2='660' y2='230'/>
+    <line x1='240' y1='290' x2='660' y2='290'/>
+    <line x1='240' y1='350' x2='560' y2='350'/>
+    <path d='M300 470 L600 470' />
+    <path d='M600 470 L650 520' />
+    <path d='M300 470 L250 520' />
+  </g>
+  <g fill='black' font-family='sans-serif'>
+    <text x='220' y='140' font-size='28'>要点</text>
+    <text x='240' y='205' font-size='18'>1) 学術語：特定→程度→補正→不確実性</text>
+    <text x='240' y='265' font-size='18'>2) 社会語：距離と権威／停止語化の危険</text>
+    <text x='240' y='325' font-size='18'>3) 幅：連続・多次元・管理と最適化</text>
+    <text x='240' y='385' font-size='18'>4) AI：監査と許容範囲、文化衝突</text>
+  </g>
+</svg>" />
+        <figcaption>
+          画像6：まとめ——「バイアス」をラベルから手続きへ、「有無」から「幅」へ。
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+</main>
+<footer>
+  <div>作成物：<strong>book58-3</strong></div>
+  </footer>
+</body>
+</html>

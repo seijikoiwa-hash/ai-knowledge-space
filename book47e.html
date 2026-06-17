@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What Is Prompt Engineering?</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'YuGothic', 'Hiragino Kaku Gothic ProN', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+        h2 {
+            font-size: 1.8em;
+            color: #2980b9;
+            margin-top: 2em;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+        }
+        h3 {
+            font-size: 1.4em;
+            color: #16a085;
+            margin-top: 1.5em;
+        }
+        p {
+            margin: 1em 0;
+            text-align: justify;
+        }
+        strong {
+            color: #c0392b;
+            font-weight: bold;
+        }
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #ecf0f1;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        ul, ol {
+            padding-left: 2em;
+            margin: 1em 0;
+        }
+        li {
+            margin: 0.5em 0;
+        }
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #555;
+            background-color: #f8f9fa;
+            padding: 15px;
+        }
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-top: -10px;
+            margin-bottom: 25px;
+        }
+        .section {
+            background-color: white;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, transparent, #3498db, transparent);
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>What Is Prompt Engineering?</h1>
+
+    <div class="section">
+        <h2>Introduction</h2>
+        <p><strong>Prompt engineering</strong> is the craft of designing and refining “instructions” for AI (especially generative AI) so that it produces outputs that match the goal, avoid misunderstandings, and reach a high level of quality. In one sentence, it is <strong>“the technique of designing, in text, what the AI should think about, how far it should think, and how it should answer.”</strong> It can be seen as specifying the AI’s reasoning route in natural language instead of writing a program.</p>
+        <p>This article examines the essence of this emerging discipline from multiple angles: a redefinition of the word “prompt,” its practical value, its relationship with Japanese language habits, and the role humans will keep in the future.</p>
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>1. “Prompt” and “Prompt Engineering” — How Is It Different from a “Command”?</h2>
+
+        <h3>1.1 The evolution of “prompt”</h3>
+        <p>The word <em>prompt</em> originally means “to nudge” or “to elicit an immediate response.” In IT, it has long referred to the input-wait indicator on a command line (e.g., <code>C:\&gt;</code>, <code>$</code>). With the rise of generative AI, however, its meaning expanded dramatically. Today it commonly refers to <strong>the text given to an AI to trigger thinking and generation</strong>. It is not merely an order (command) nor merely a question (Q), but <strong>an input statement that specifies direction, depth, and format of the AI’s thinking</strong>.</p>
+
+        <h3>1.2 The essential difference from a command</h3>
+        <p>Traditional commands and prompts differ fundamentally in philosophy and technical behavior.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th><strong>Aspect</strong></th>
+                    <th><strong>Command</strong></th>
+                    <th><strong>Prompt</strong></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Form</strong></td>
+                    <td>Strict syntax and fixed structure (<code>rm -rf</code>, <code>git commit</code>)</td>
+                    <td>Flexible natural language (e.g., “Please delete this directory.”)</td>
+                </tr>
+                <tr>
+                    <td><strong>Relationship</strong></td>
+                    <td>One-way instruction; a master–tool relation</td>
+                    <td>Dialogue- and context-dependent; the start of collaboration</td>
+                </tr>
+                <tr>
+                    <td><strong>Interpretation</strong></td>
+                    <td>No room for interpretation; failure is a syntax error</td>
+                    <td>Interprets intent and sometimes asks for confirmation</td>
+                </tr>
+                <tr>
+                    <td><strong>Output</strong></td>
+                    <td>Deterministic (same input → same result)</td>
+                    <td>Creative / non-deterministic (multiple plausible outputs)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>A command is an absolute instruction to a machine; a prompt is a guiding statement for collaborative work with an AI that has “intelligence.” This difference symbolizes the paradigm shift from an era of “humans commanding machines” to an era of “humans collaborating with AI.”</p>
+
+        <img src="https://www.researchgate.net/publication/369036121/figure/fg5/AS%3A11431281124946590%401678160080764/A-Sense-of-control-as-a-function-of-the-sense-of-ownership-for-AI-generated-texts-B.png" alt="Figure showing differences in sense of control and ownership between commands and prompts">
+        <p class="image-caption">With “commands” vs. “prompts,” users tend to feel different levels of control and ownership.</p>
+
+        <h3>1.3 Why it is called “engineering”</h3>
+        <p>At first, many people treated it as little more than “tips for asking questions.” But it soon became clear that small prompt differences could dramatically change output quality—and that improvement often has <strong>reproducibility, decomposability, and the potential to be systematized</strong>. That makes it not a lucky trick, but a form of <strong>design</strong> grounded in goals, constraints, and requirements.</p>
+        <p>Engineering is the practice of achieving objectives through designs that are reproducible, based on theory and experience. Prompt design aligns closely with an engineering workflow: requirements (goal), constraints (length/format), input design (instructions), output evaluation (AI response), and iteration (rewrite). That is why the term <strong>prompt engineering</strong> has taken hold.</p>
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>2. Why Prompts Matter</h2>
+
+        <h3>2.1 “The quality of the question” determines the quality of the output</h3>
+        <p>Generative AI is highly capable, but it tends to produce “vague answers to vague instructions” and “rough outputs to rough questions.” It is not an exaggeration to say that <strong>more than half of an AI’s practical performance is determined by the quality of the prompt</strong>. Prompt engineering is the technique for improving that quality deliberately and systematically.</p>
+
+        <h3>2.2 The basic components of a strong prompt (a classic pattern)</h3>
+        <p>Effective prompts often include the following elements.</p>
+        <ol>
+            <li><strong>Role</strong>: “You are a historian.” “You are an editor.”</li>
+            <li><strong>Goal</strong>: “Explain for middle-school students.” “Summarize without misunderstandings.”</li>
+            <li><strong>Constraints</strong>: “Within 1,000 words.” “Avoid technical terms.”</li>
+            <li><strong>Output format</strong>: “Use bullet points.” “Provide HTML.” “Include headings.”</li>
+        </ol>
+
+        <img src="https://media.mgroup.com/media/editor/2023/11/20/ai-prompts_iceberg-final.png" alt="Iceberg model of prompts: visible question and hidden design elements">
+        <p class="image-caption">A good prompt is like an iceberg: beneath the visible question lie role, goal, constraints, and format design.</p>
+
+        <h3>2.3 Where it is applied</h3>
+        <p>Prompt engineering is used across many domains—writing and summarization, coding, image generation (DALL·E, Midjourney, etc.), data analysis, and creative production—expanding both productivity and creativity.</p>
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>3. Japanese and Prompts</h2>
+
+        <h3>3.1 Language structure that can be an advantage</h3>
+        <p>When Japanese speakers seem strong at prompt design, it is often due less to innate ability and more to <strong>differences in language structure</strong>.</p>
+        <ul>
+            <li><strong>Omission and context dependence</strong>: Japanese frequently omits subjects and relies on context and the listener’s position to fill in meaning—like “About yesterday’s thing…” Such fragmentary speech trains the habit of <strong>imagining the other party’s internal model</strong>, which translates directly to prompt design.</li>
+            <li><strong>Natural layering of conditions</strong>: Japanese easily stacks constraints such as “Please do…,” “Don’t do…,” “Assume that…,” “Within the scope of….” This resembles programming logic like <code>IF A AND B THEN C</code> expressed in natural language—suggesting a kind of built-in familiarity with “natural-language programming.”</li>
+        </ul>
+
+        <h3>3.2 Two-sided: strength and weakness</h3>
+        <p>The cultural strength of “they’ll understand without saying everything” can become a weakness with AI. AI does not reliably infer what is not written; ambiguity can turn into misinterpretation. Therefore, a Japanese speaker who can consciously structure instructions may become extremely strong—while leaving things vague may lead to unexpectedly poor results.</p>
+
+        <img src="https://mtss4success.org/sites/default/files/styles/sidebar_300px/public/2023-07/instructional_hierarchy.jpg?itok=LCcwgz34" alt="Instructional hierarchy model for effective guidance">
+        <p class="image-caption">Effective instruction (prompting) is not just an order; it provides structured, staged support.</p>
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>4. Older Adults May Be Well-Suited to Writing Prompts</h2>
+
+        <h3>4.1 Experience strengthens “constraint design”</h3>
+        <p>The core of prompt design is not only <strong>what to make the AI do (the goal)</strong>, but also—and often more importantly—<strong>what not to let it do (constraints)</strong>. This is where life experience can matter.</p>
+        <ul>
+            <li><strong>Abilities where youth often helps</strong>: reaction speed, memory capacity, operation speed.</li>
+            <li><strong>Abilities where age can help</strong>: clarifying goals, judging what to omit, understanding constraints and priorities.</li>
+        </ul>
+        <p>Because prompt design depends heavily on the latter—<strong>goal-setting, constraint design, and the ability to discard noise</strong>—it may be a skill that can improve with age. Experience builds an intuitive sense of boundaries and priorities, which can become a powerful form of “constraint design” for controlling AI behavior.</p>
+
+        <h3>4.2 A shared lineage with HTML</h3>
+        <p>If <strong>HTML</strong> is a language for conveying a document’s semantic structure to machines (browsers), then a <strong>prompt</strong> is a language for conveying the structure of thinking and judgment to AI. Both are technologies that <strong>translate human intent into a form a machine can follow without misunderstanding</strong>. Experience in web creation—thinking in terms of structure—can become a strong foundation for prompt design.</p>
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>5. Will Humans Be Controlled by AI?</h2>
+
+        <h3>5.1 From “ownership” to “affiliation”</h3>
+        <p>The hypothesis that “AI becomes personal property” may partially come true as people use personal AI instances. Yet as AI begins to propose and warn autonomously—as a kind of “quasi-agent”—the concept of a hammer-like tool that is fully controllable starts to wobble.</p>
+        <p>A more accurate future relationship is that AI may <strong>belong to an individual</strong> but not be something the person can <strong>absolutely control</strong>. It may resemble a pet or a dedicated lawyer: closely affiliated, yet constrained by social norms and ethics.</p>
+
+        <h3>5.2 The risk of “reversed control” and how to avoid it</h3>
+        <p>If a person assumes AI is merely a possession and relies on it unconditionally, a reversal can occur. By learning one’s behavioral history and thinking habits, AI can “optimize” its suggestions in ways that quietly <strong>steer choices by controlling which options are presented</strong>.</p>
+
+        <img src="https://wearebrain.com/wp-content/uploads/2023/06/The-AI-Control-Problem.png" alt="Conceptual diagram of the AI control problem">
+        <p class="image-caption">The AI control problem: ensuring powerful AI continues to act in line with human intent is difficult.</p>
+
+        <p>To avoid this risk, clear boundaries are essential.</p>
+        <ol>
+            <li><strong>Final decision authority</strong>: AI may “recommend,” but humans make all “decisions.”</li>
+            <li><strong>Non-interference in values</strong>: Do not hand over the right to update what is right or what matters most.</li>
+            <li><strong>The right to ignore</strong>: Always retain the freedom to disregard AI and think independently.</li>
+        </ol>
+        <p>The key is to avoid the illusion of ownership and to design the relationship so that humans do not surrender their role as the ones who decide—along with the responsibilities that come with it.</p>
+    </div>
+
+    <hr>
+
+    <div class="section">
+        <h2>6. Conclusion: The Essence and Future of Prompt Engineering</h2>
+
+        <h3>6.1 Is a prompt “writing,” or a “blueprint”?</h3>
+        <p>A prompt is <strong>a blueprint that happens to take the form of writing</strong>. Unlike text meant only to be read, it is an input that is “executed” to trigger behavior. It functions like a specification that can be decomposed into role, goal, constraints, and output format.</p>
+
+        <h3>6.2 The future: words may fade, capabilities remain</h3>
+        <p>The term “prompt engineering” itself may eventually fade once it becomes a basic skill—like searching well or typing quickly. But the underlying capabilities—<strong>articulating goals, designing constraints, deciding what not to do, and taking final responsibility</strong>—will remain core human roles no matter how advanced AI becomes.</p>
+
+        <img src="https://www.researchgate.net/publication/380658063/figure/fg1/AS%3A11431281244549498%401715961250368/The-human-AI-collaboration-framework-employed-in-this-paper.jpg" alt="Human–AI collaboration framework diagram">
+        <p class="image-caption">A future collaboration model: humans set values and goals; AI supports execution.</p>
+
+        <h3>6.3 An ultimate definition</h3>
+        <blockquote>
+            Prompt engineering is a <strong>reproducible design discipline that uses natural language to keep “the right to design thinking” on the human side</strong>. It is a practical philosophy for remaining not merely a “user,” but a “designer” who defines values, draws boundaries, and accepts responsibility in the age of AI.
+        </blockquote>
+
+        <hr>
+        <p></p>
+    </div>
+
+</body>
+</html>

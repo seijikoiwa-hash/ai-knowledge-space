@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>紙芝居｜微生物さがしの昔と今</title>
+  <style>
+    /* 中学生向け やさしい紙芝居スタイル */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #b2d8b2;  /* やさしい緑 芝生っぽく */
+      font-family: 'Hiragino Maru Gothic', 'Yu Gothic', 'Noto Sans JP', sans-serif;
+      line-height: 1.8;
+      padding: 30px 15px 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* 紙芝居の枠（舞台） */
+    .story-stage {
+      max-width: 950px;
+      width: 100%;
+      background: #fef7e6;  /* やわらかい紙色 */
+      border-radius: 40px 40px 20px 20px;
+      box-shadow: 0 20px 30px rgba(0, 40, 0, 0.3);
+      padding: 30px 25px 40px;
+      border: 5px solid #8b5a2b; /* わく */
+      position: relative;
+    }
+
+    /* タイトル部分 (紙芝居の見出し) */
+    .kamishibai-title {
+      text-align: center;
+      background: #f1dca8;
+      padding: 20px 10px 15px;
+      border-radius: 100px 100px 30px 30px;
+      margin-top: -55px;
+      margin-bottom: 30px;
+      border: 3px solid #aa7c4f;
+      box-shadow: 0 5px 0 #6b4c2e;
+    }
+
+    .kamishibai-title h1 {
+      font-size: 2.2rem;
+      letter-spacing: 0.05em;
+      color: #2d4b1e;
+      margin: 0;
+      line-height: 1.3;
+    }
+
+    .kamishibai-title p {
+      font-size: 1.2rem;
+      color: #3b2b14;
+      font-weight: bold;
+    }
+
+    /* 各場面 (スライド) */
+    .scene {
+      background: white;
+      border-radius: 50px 20px 50px 20px;
+      padding: 25px 20px 20px;
+      margin-bottom: 30px;
+      border: 3px solid #7b5a3b;
+      box-shadow: 8px 8px 0 #aa8c6b;
+      position: relative;
+    }
+
+    .scene::before {
+      content: "🎬";
+      font-size: 2rem;
+      position: absolute;
+      top: -20px;
+      left: 10px;
+      background: #fef7e6;
+      padding: 0 12px;
+      border-radius: 40px;
+      border: 2px solid #7b5a3b;
+      line-height: 1.4;
+    }
+
+    /* 場面タイトル */
+    .scene h2 {
+      font-size: 1.9rem;
+      background: #cfb591;
+      color: white;
+      display: inline-block;
+      padding: 5px 25px 5px 35px;
+      border-radius: 50px 20px 20px 50px;
+      margin-top: -10px;
+      margin-bottom: 25px;
+      border: 2px solid #3c3c3c;
+      text-shadow: 2px 2px 0 #3f3f3f;
+      letter-spacing: 0.04em;
+    }
+
+    /* ふつうのテキスト */
+    p {
+      font-size: 1.25rem;
+      margin: 1em 0;
+      color: #1e2f1e;
+    }
+
+    /* 図のスタイル（イラスト風） */
+    .illus-box {
+      background: #e2f0d9;
+      border-radius: 40px 10px 40px 10px;
+      padding: 20px 15px;
+      margin: 20px 0 10px;
+      border: 2px dashed #527a52;
+      text-align: center;
+      font-size: 1.2rem;
+    }
+
+    .illus-icon {
+      font-size: 3.5rem;
+      filter: drop-shadow(2px 4px 4px #777);
+    }
+
+    .note-box {
+      background: #f2e5c4;
+      border-radius: 20px;
+      padding: 15px;
+      border-left: 10px solid #3f8954;
+      margin-top: 15px;
+    }
+
+    /* ルビ専用スタイル（大きな文字でも読みやすく） */
+    ruby {
+      ruby-align: center;
+    }
+    rt {
+      font-size: 0.7rem;
+      color: #0645ad;
+      font-weight: normal;
+      letter-spacing: 0.02em;
+    }
+
+    /* リストは紙芝居では☆マークで */
+    ul {
+      list-style: none;
+      padding-left: 10px;
+    }
+    li {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      padding-left: 30px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><text x="0" y="18" font-size="20">🧫</text></svg>') left center no-repeat;
+      background-size: 24px;
+    }
+
+    hr {
+      border: none;
+      border-top: 4px dotted #c7a87b;
+      margin: 30px 0 20px;
+    }
+
+    .scientific-note {
+      background: #e1e9f0;
+      padding: 15px;
+      border-radius: 30px;
+      font-size: 1.1rem;
+      border: 2px solid #3c6b7f;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      color: #1e3d1e;
+      font-weight: bold;
+    }
+
+    /* モバイルでルビが小さくなりすぎないように */
+    @media (max-width: 600px) {
+      .kamishibai-title h1 { font-size: 1.8rem; }
+      .scene h2 { font-size: 1.5rem; }
+      p { font-size: 1.1rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="story-stage">
+
+  <div class="kamishibai-title">
+    <h1>
+      <ruby>微生物<rt>びせいぶつ</rt></ruby>さがしの<br>むかしと いま
+    </h1>
+    <p>〜 1975ねんの けんきゅうから さいしんぎじゅつまで 〜</p>
+  </div>
+<div style="
+margin:20px auto;
+padding:12px;
+background:#fff8e1;
+border-left:6px solid #ff9800;
+border-radius:10px;
+max-width:800px;
+font-size:16px;
+text-align:center;
+">
+🔬 くわしい解説（高校生以上）はこちら  
+→ <a href="book56.html">微生物探索の今昔</a>
+</div>
+
+  <!-- 場面１：はじめに（導入） -->
+  <section class="scene">
+    <h2>🍄 はじめに</h2>
+    <div class="illus-box">
+      <span class="illus-icon">🧑‍🔬🔬🌍</span>
+      <p>このおはなしでは、<ruby>微生物<rt>びせいぶつ</rt></ruby>（かび・きん・バクテリア）を さがす けんきゅうの<br>「むかしのやりかた」と「いまのやりかた」を くらべるよ。</p>
+    </div>
+    <p><ruby>昭和<rt>しょうわ</rt></ruby>50ねん（1975ねん）の<ruby>講演<rt>こうえん</rt></ruby>ようしをもとに、<br><ruby>微生物<rt>びせいぶつ</rt></ruby>のふしぎな ちからを あばく おはなしを していくね！</p>
+    <div class="note-box">
+      ⚗️ <ruby>研究<rt>けんきゅう</rt></ruby>のポイント：<br> 「ある とくべつな えさ（<ruby>炭素源<rt>たんそげん</rt></ruby>）だけで そだつ こつを みつける」こと。
+    </div>
+  </section>
+
+  <!-- 場面２：むかしの方法 新種の微生物さがし -->
+  <section class="scene">
+    <h2>🔍 むかしの さがしかた (1970ねんだい)</h2>
+    <p><ruby>研究者<rt>けんきゅうしゃ</rt></ruby>は まず、<ruby>土<rt>つち</rt></ruby>や <ruby>川原<rt>かわら</rt></ruby>の サンプルを ひろいます。<br>
+    なぜなら<ruby>微生物<rt>びせいぶつ</rt></ruby>は いろんなところに すんでいるから！</p>
+    <div class="illus-box">
+      <span class="illus-icon">🧪🧫🥼</span>
+      <p>しかも、ある<ruby>特別<rt>とくべつ</rt></ruby>な えさだけを いれた えいようえき(培地)で そだてます。</p>
+    </div>
+    <p>たとえば…<br> <strong>フタルさん、イソフタルさん、テレフタルさん</strong> という なかまの <ruby>化合物<rt>かごうぶつ</rt></ruby>を 「これだけが<ruby>食<rt>た</rt></ruby>べられる！」という ばめんで そだてるんだ。</p>
+    <ul>
+      <li><ruby>大阪<rt>おおさか</rt></ruby>の だいがくの つちから、それらの えさを たべられる <ruby>菌<rt>きん</rt></ruby>を わける (ぶんりする)。</li>
+      <li>そして <ruby>菌<rt>きん</rt></ruby>が つくった ぶっしつ（<ruby>生成物<rt>せいせいぶつ</rt></ruby>）を エーテルで ぬきとって、しらべる。</li>
+    </ul>
+    <p>むかしは いまみたいな すごい きかいが なくて、<ruby>自分<rt>じぶん</rt></ruby>のあたまで 「なにができたかな？」と考えながら けんきゅうしていたんだね。</p>
+  </section>
+
+  <!-- 場面３：目的はなに？ -->
+  <section class="scene">
+    <h2>🎯 むかしの けんきゅうの もくてき</h2>
+    <p>ただ あたらしい<ruby>微生物<rt>びせいぶつ</rt></ruby>を みつけたいだけじゃないよ。<br>
+    このときは、<strong>プラスチックの ねんどづかい（可塑剤）</strong> として たくさん つかわれていた フタルさんが  <ruby>環境<rt>かんきょう</rt></ruby>に でてしまって こまる、という<ruby>問題<rt>もんだい</rt></ruby>があったんだ。</p>
+    <div class="illus-box">
+      <span class="illus-icon">🧴🌊⚠️</span>
+      <p>ジブチルフタルさん という ぶっしつが あぶないかも？</p>
+    </div>
+    <p>そこで <ruby>研究目的<rt>けんきゅうもくてき</rt></ruby>は、<br>
+    (1) これらのぶっしつを たべられる<ruby>菌<rt>きん</rt></ruby>を つちから みつける。<br>
+    (2) みつけた<ruby>菌<rt>きん</rt></ruby>が どんな<ruby>仲間<rt>なかま</rt></ruby>の ぶっしつを すきかを しらべる。<br>
+    (3) どんな <ruby>生成物<rt>せいせいぶつ</rt></ruby>（へんしんしたもの）を つくるか しらべる。</p>
+    <p>という3つだったよ！</p>
+  </section>
+
+  <!-- 場面４：どんな菌がみつかった？ -->
+  <section class="scene">
+    <h2>🧫 ぶんりされた 菌たち</h2>
+    <p>むかしの けんきゅうで、<strong>P3, P11, P12, P44, IP3, IP4, IP5, TP2 …</strong> という <ruby>名前<rt>なまえ</rt></ruby>の <ruby>菌<rt>きん</rt></ruby>が わかれた！</p>
+    <div class="illus-box">
+      <span class="illus-icon">🧪📋✅</span>
+      <p>フタルさんグループを たべるPくん、イソフタルさんグループを たべるIPくん、テレフタルさんグループのTPくんたちだ。</p>
+    </div>
+    <p>さらに いくつかの<ruby>菌<rt>きん</rt></ruby>は「プロトカテキュさん」という <ruby>生成物<rt>せいせいぶつ</rt></ruby>を つくっていることも とくてい！<br>
+    でも「<strong><ruby>生成物<rt>せいせいぶつ</rt></ruby>C</strong>」という なぞのぶっしつは わからずじまい…</p>
+    <p>これが むかしの けんきゅうが のこした 「ふしぎな よはく」だね。</p>
+  </section>
+
+  <!-- 場面５：いまの たんけん方法 -->
+  <section class="scene">
+    <h2>⚡ いまの さいしん 微生物さがし</h2>
+    <p>さて、いまから<ruby>現在<rt>げんざい</rt></ruby>の けんきゅうを みてみよう！<br>
+    むかしとおなじで「とくていの えさ」で そだてるのは おなじ。でも すごい ぎじゅつが たくさん つかえる！</p>
+    <div class="illus-box">
+      <span class="illus-icon">🧬🔬🧪💻</span>
+      <p>96この ちいさな いれもので いっぺんに じっけんできちゃう。</p>
+    </div>
+    <ul>
+      <li><ruby>培養<rt>ばいよう</rt></ruby>の ようすを ロボットが じどうで そくてい。</li>
+      <li><ruby>遺伝子<rt>いでんし</rt></ruby>を まとめて よむ（メタゲノムかいせき）。</li>
+      <li>そのばに いる<ruby>菌<rt>きん</rt></ruby>たちが どんな えさを こわす<ruby>遺伝子<rt>いでんし</rt></ruby>を もっているか<ruby>予想<rt>よそう</rt></ruby>できる！</li>
+    </ul>
+    <p>だから、「この<ruby>場所<rt>ばしょ</rt></ruby>には すごい<ruby>菌<rt>きん</rt></ruby>が いそうだ」と あたりを つけてから、<ruby>本番<rt>ほんばん</rt></ruby>の ぶんりに すすむんだ。</p>
+  </section>
+
+  <!-- 場面６：それでも いきている むかしのわざ -->
+  <section class="scene">
+    <h2>🤝 むかしと いまの ベストパートナー</h2>
+    <p>すごい ぎじゅつが できても、<br><strong>さいごは なまの いきた 菌 (ぶんりされた 菌)</strong> が ないと はじまらない！</p>
+    <div class="illus-box">
+      <span class="illus-icon">🧫✨🔬</span>
+      <p>だから、むかしからつづく「つちから えさで えりわける」ちえは いまも だいじ。</p>
+    </div>
+    <p>いまの ぎじゅつは、むかし わからなかった「<ruby>生成物<rt>せいせいぶつ</rt></ruby>C」みたいな なぞを ときあかす ちからを くれるんだね。</p>
+  </section>
+
+  <!-- 場面７：これから の はなし -->
+  <section class="scene">
+    <h2>🌱 これから の ゆくえ</h2>
+    <p>プラスチックのもとになるような ぶっしつ（フタルさんたち）を <ruby>微生物<rt>びせいぶつ</rt></ruby>で へんしんさせて、<ruby>役<rt>やく</rt></ruby>に たつ ものに つくりかえる… そんな「<ruby>分解<rt>ぶんかい</rt></ruby>」から「<ruby>資源化<rt>しげんか</rt></ruby>」への ちょうせんも すすんでいるよ。</p>
+    <div class="scientific-note">
+      <p>🧪 たとえば、むかし なぞだった「<ruby>生成物<rt>せいせいぶつ</rt></ruby>C」を いまの LC-MS（えしえるしーえむえす）という すごい ぶんせききで しらべると、<br>どんな ものか わかるかもしれない。</p>
+    </div>
+    <p>むかしのけんきゅうは「ふるいデータ」で おしまい じゃないんだ。<br>あたらしい めがねで みなおすことで たからものに なるんだよ！</p>
+  </section>
+
+  <!-- 場面８：まとめ -->
+  <section class="scene">
+    <h2>📚 まとめ</h2>
+    <p><ruby>微生物<rt>びせいぶつ</rt></ruby>の たんけん とは…</p>
+    <ul>
+      <li>① <ruby>条件<rt>じょうけん</rt></ruby>（どんな えさ？どんな ばしょ？）を しっかり かんがえる。</li>
+      <li>② そこから <ruby>育<rt>そだ</rt></ruby>ってきた<ruby>微生物<rt>びせいぶつ</rt></ruby>の ちからを かくにん。</li>
+      <li>③ なにを つくったか？ どんな へんかが おきたか？ を しらべて きろくする。</li>
+    </ul>
+    <p>という ３つのステップは、むかしも いまも おなじ。</p>
+    <div class="note-box">
+      <p><ruby>大切<rt>たいせつ</rt></ruby>なのは「どのように じっけんしたか」という あしあとを のこすこと！<br>それが つぎの たんけんかの ヒントになるんだ。</p>
+    </div>
+    <p>1975ねんの けんきゅうしゃたちが のこしてくれた きろくが いまの わたしたちに ものづくりや かんきょうを まもる ちえを つたえてくれるんだね。</p>
+  </section>
+
+  <!-- 番外編：講演要旨 原文も ちょこっと紹介（中学生向けにやさしく） -->
+  <section class="scene">
+    <h2>📜 むかしの げんぶん（ちょっぴり）</h2>
+    <p>たいへんむずかしいので すこしだけ しょうかい。</p>
+    <div class="scientific-note">
+      <p><strong>446　フタルさん、イソフタルさん、テレフタルさんの 微生物によるぶんかい</strong><br>
+      もくてき： ジブチルフタルさんは プラスチックの ねんどづかいとして たくさん つかわれている。この きゅうさんを たべられる 菌を さがそう！<br>
+      ほうほう： つちから とった 菌を フタルさんだけを えさにして そだてたよ。<br>
+      けっか： P3、IP3、TP2など たくさんの 菌が みつかった。 プロトカテキュさんという せいせいぶつも わかったよ。</p>
+    </div>
+    <p>（<ruby>大阪大学<rt>おおさかだいがく</rt></ruby> はらだ とくや 先生 などが はっぴょう）</p>
+  </section>
+<hr>
+
+<section class="scene">
+<h2>🎮 デジタル紙芝居（クリック版）</h2>
+
+<p>
+つぎは <ruby>クリック<rt>くりっく</rt></ruby>で
+<ruby>場面<rt>ばめん</rt></ruby>が
+すすむ <ruby>紙芝居<rt>かみしばい</rt></ruby>です。
+</p>
+
+<div style="
+background:#eef4ff;
+padding:20px;
+border-radius:20px;
+border:3px solid #7b5a3b;
+">
+
+<iframe 
+src="book56child2.html"
+width="100%"
+height="650"
+style="
+border:none;
+border-radius:15px;
+background:white;
+">
+</iframe>
+
+</div>
+
+<p style="margin-top:10px;font-size:0.95em;">
+※ 下の紙芝居は「次へ▶」ボタンで進みます。
+</p>
+
+</section>
+
+  <hr>
+  <footer>
+    <p>🧪 この 紙芝居は 1975ねんの こうえんようし と いまの けんきゅうを もとに つくられました。<br>
+    <ruby>中学生<rt>ちゅうがくせい</rt></ruby>のみなさんにも <ruby>微生物<rt>びせいぶつ</rt></ruby>さがしの おもしろさが つたわりますように！</p>
+  </footer>
+
+</div>
+</body>
+</html>
