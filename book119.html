@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>中学生のための科学ブログ｜エンドトキシンに反応しないマウスのナゾ</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: #fef7e8;  /* あったかベージュ */
+      font-family: 'Helvetica Neue', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Meiryo', sans-serif;
+      line-height: 1.7;
+      color: #2c2c2c;
+      padding: 20px;
+    }
+    .blog-container {
+      max-width: 880px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 48px 32px 48px 32px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      padding: 30px 28px 50px;
+      transition: all 0.2s;
+    }
+    @media (max-width: 600px) {
+      .blog-container {
+        padding: 20px 18px 40px;
+      }
+    }
+    /* ヘッダー風 */
+    .blog-header {
+      text-align: center;
+      margin-bottom: 32px;
+      border-bottom: 3px dashed #ffb347;
+      padding-bottom: 24px;
+    }
+    .blog-badge {
+      display: inline-block;
+      background: #ffeed9;
+      color: #c65d00;
+      font-size: 0.8rem;
+      padding: 4px 14px;
+      border-radius: 40px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #2c3e4e;
+      background: linear-gradient(135deg, #1f5e6e, #2c8f6e);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin: 12px 0 8px;
+      line-height: 1.3;
+    }
+    .subhead {
+      color: #5e6b6f;
+      font-size: 1rem;
+      border-left: 4px solid #ffb347;
+      padding-left: 14px;
+      margin: 12px 0 8px;
+      text-align: left;
+      font-weight: 500;
+    }
+    .author-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: #6f6f6f;
+      margin-top: 12px;
+      border-top: 1px solid #f0e0c0;
+      padding-top: 12px;
+    }
+    /* カード＆セクション */
+    .science-card {
+      background: #fdfaf5;
+      border-radius: 32px;
+      padding: 22px 24px;
+      margin: 32px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+      border: 1px solid #ffe6c7;
+    }
+    h2 {
+      font-size: 1.6rem;
+      margin: 1.2em 0 0.6em;
+      padding-left: 12px;
+      border-left: 12px solid #ff9f4b;
+      color: #1e4a5f;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
+    h3 {
+      font-size: 1.25rem;
+      margin: 1.4em 0 0.6em;
+      background: #fff2e0;
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-weight: 600;
+      color: #b45f1b;
+    }
+    .highlight {
+      background: #fff1bb;
+      border-radius: 20px;
+      padding: 2px 8px;
+      font-weight: bold;
+      color: #a55217;
+    }
+    .keyword {
+      background: #e2f0f5;
+      border-radius: 20px;
+      padding: 3px 12px;
+      display: inline-block;
+      font-size: 0.85rem;
+      margin: 4px 4px 0 0;
+      font-weight: 500;
+    }
+    .emoji-bullet {
+      list-style: none;
+      padding-left: 0;
+    }
+    .emoji-bullet li {
+      margin: 10px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    .emoji-bullet li::before {
+      content: "🧪";
+      font-size: 1.2rem;
+      display: inline-block;
+      min-width: 28px;
+    }
+    .fun-fact {
+      background: #eef9ff;
+      border-radius: 24px;
+      padding: 16px 20px;
+      margin: 24px 0;
+      border-left: 8px solid #3b9bd5;
+      font-size: 0.95rem;
+    }
+    .figure-mock {
+      background: #f2ece0;
+      border-radius: 28px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      text-align: center;
+      border: 1px dashed #cfb284;
+    }
+    .two-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .col {
+      flex: 1;
+      background: #fef9ef;
+      border-radius: 24px;
+      padding: 16px;
+    }
+    footer {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: #9b8e7a;
+      border-top: 1px solid #eedbbc;
+      padding-top: 24px;
+    }
+    button {
+      background: none;
+      border: none;
+    }
+    .glossary {
+      background: #f2f1ea;
+      border-radius: 32px;
+      padding: 16px 24px;
+      margin-top: 32px;
+    }
+    .glossary details {
+      margin: 8px 0;
+    }
+    summary {
+      font-weight: bold;
+      cursor: pointer;
+      color: #1f6e6b;
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 1.5rem; }
+      h2 { font-size: 1.4rem; }
+      .science-card { padding: 16px; }
+    }
+  </style>
+</head>
+<body>
+<div class="toc">
+  <a href="book119.html">📘 中学生向け解説</a>
+  <a href="book119paper.html">📄 原論文</a>
+  <a href="book119sol.html">🧠 論文分解解析</a>
+</div>
+<div class="blog-container">
+  <div class="blog-header">
+        <h2>AIと共に異分野の論文を読み解く(３)ー審良静男博士と Toll 様受容体ー</h2>
+<h1>エンドトキシンに負けない！<br>「MyD88」という免疫の鍵</h1>
+
+    <div class="subhead">⚡ マウスが毒素に強くなるってどういうこと？ 免疫の秘密に迫る1999年の大発見！</div>
+    <div class="author-line">
+            <span>📅 2026年5月6日</span>
+    </div>
+  </div>
+
+  <!-- イントロダクション -->
+  <p>みなさん、こんにちは！🐭 「エンドトキシン」って聞いたことあるかな？ これは細菌の細胞壁にふくまれる「毒素」みたいなもので、人間やマウスにたくさん入ると高熱やショック状態を引きおこすんだ。でも、ある研究チームが「<strong class="highlight">特定の遺伝子がないマウス</strong>」をつくったら、なんと<strong>エンドトキシンにまったく反応しなくなった</strong>んだよ！ 今回はそのふしぎな研究を、中学生でもわかるように紹介するね！📖🔍</p>
+
+  <!-- 基本情報 カード風 -->
+  <div class="science-card">
+    <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px;">
+      <span>📄</span> <strong style="font-size: 1.2rem;">研究のタイトル＆著者</strong>
+    </div>
+    <p>🔹 タイトル: <strong>「Unresponsiveness of MyD88-Deficient Mice to Endotoxin」</strong><br>
+    🔹 発表年: <strong>1999年</strong> （免疫学の歴史に残る論文！）<br>
+    🔹 著者: Taro Kawai, Osamu Adachi たち（日本のスーパー研究者チーム✨）<br>
+    🔹 雑誌: <strong>Immunity</strong> （免疫分野で有名な科学雑誌）</p>
+    <p>⭐ この研究のおかげで、<strong>自然免疫のシグナル伝達</strong>の理解がグッと深まったんだ！</p>
+  </div>
+
+  <!-- 背景＆目的 -->
+  <h2>🧫 そもそも何を調べたかったの？</h2>
+  <p>わたしたちの体には「自然免疫」という最前線の防御システムがあるよ。その中で「<strong>TLR4（トル様受容体4）</strong>」というセンサーがエンドトキシン（LPS）をキャッチして、「やばい！細菌が来た！」と細胞内にシグナルを送るんだ。そのシグナルを中継する重要な部品のひとつが「<strong class="highlight">MyD88（マイディーエイティエイト）</strong>」。</p>
+  <p>研究チームは「<strong>MyD88がないマウス</strong>」をつくって、次の3つのことを知りたかった。</p>
+  <ul class="emoji-bullet">
+    <li>✅ 生きたマウスでエンドトキシンを注射したら、ショック症状が出るのか出ないのか？</li>
+    <li>✅ マクロファージやB細胞といった免疫細胞が、LPSに反応できるのか？</li>
+    <li>✅ MyD88が無くても、別のルートでシグナルが伝わったりするのか？</li>
+  </ul>
+
+  <!-- 実験の注目ポイント -->
+  <h2>🐭 どうやって調べたの？</h2>
+  <div class="two-columns">
+    <div class="col">
+      <span style="font-size: 2rem;">🧬</span>
+      <h3 style="margin-top: 4px;">ノックアウトマウス</h3>
+      <p>「ノックアウト」って聞いたことある？ 遺伝子をわざと壊したマウスのこと。<br>ここでは<strong>MyD88遺伝子を欠くマウス</strong>と、普通のマウスをくらべたよ。</p>
+    </div>
+    <div class="col">
+      <span style="font-size: 2rem;">💉</span>
+      <h3 style="margin-top: 4px;">LPS注射実験</h3>
+      <p>エンドトキシンの正体＝LPSをマウスのお腹の中に注射！<br>その後、血液中のサイトカイン（炎症物質）や生存率をチェック。</p>
+    </div>
+  </div>
+  <div class="two-columns">
+    <div class="col">
+      <span style="font-size: 2rem;">🔬</span>
+      <h3 style="margin-top: 4px;">細胞レベルでも観察</h3>
+      <p>マクロファージやB細胞を試験管でLPSと反応させて、<br>サイトカイン産生・増殖・表面分子を測定。</p>
+    </div>
+    <div class="col">
+      <span style="font-size: 2rem;">⚙️</span>
+      <h3 style="margin-top: 4px;">シグナル解析</h3>
+      <p>細胞の中で働くIRAK、MAPキナーゼ、NF-κBといったタンパク質の働きを調べて、「MyD88がなければどうなるか」をくわしく見たよ。</p>
+    </div>
+  </div>
+
+  <!-- ★ 衝撃の結果 ★ -->
+  <h2>😲 びっくり結果！ MyD88なしマウスはエンドトキシンに強い！</h2>
+  <div class="figure-mock">
+    🧪【図1 イメージ】🧪<br>
+    💀 普通マウス → LPS注射で死亡（エンドトキシンショック）<br>
+    🐭✨ MyD88ノックアウトマウス → LPSを打っても<strong>ピンピン！生存率100％</strong><br>
+    📉 血液中の炎症物質（TNFα, IL-6など）もほとんどゼロ！
+  </div>
+  <p>つまり、<strong>MyD88がないだけで、エンドトキシンがまるで効かない</strong>という大発見！ さらに、マクロファージやB細胞でも同じ結果に。「MyD88って、LPSに関係する炎症のスイッチそのものなんじゃないか？」と研究者たちはワクワクしたはず✨</p>
+
+  <!-- もっと深堀 図3/4/5など -->
+  <div class="fun-fact">
+    💡 <strong>知ってた？</strong> LPSに対して、<strong>IL-1受容体やIL-18受容体</strong>という別の経路を壊したマウスでは、ここまでの完全な不応答にはならなかったんだ。つまり、MyD88はLPS専用のアダプターとして必須ということ！
+  </div>
+
+  <h2>🌀 でも待って！ まだシグナルの火は消えていなかった！</h2>
+  <p>面白いことに、MyD88ノックアウトの細胞の中で<strong>MAPキナーゼとNF-κBというシグナル分子</strong>を調べてみたら……<br>
+  ❌ まずIRAK（すぐに働くシグナル分子）の活性化は完全に消えた。<br>
+  ✅ でも、MAPキナーゼ（ERK、JNK、p38）やNF-κBは、<strong>ゆっくりだけど活性化</strong>していたんだ！ 🐢✨<br>
+  これは「<strong>MyD88に依存しない別のルート</strong>」が存在する証拠！ でも、その別ルートだけではサイトカイン産生までにはつながらなかった。だから、炎症を起こすにはMyD88ルートが「主力」だということが分かった。</p>
+
+  <div class="science-card">
+    <h3 style="margin-top: 0;">🔑 この発見のキーポイント</h3>
+    <ul style="margin-left: 1.2rem;">
+      <li>✅ MyD88はLPSに対する「炎症応答・サイトカイン爆弾」に絶対必要。</li>
+      <li>✅ でも、細胞の中の別の小道からもシグナルが届く（MyD88非依存経路）。</li>
+      <li>✅ この研究があったから、その後に「TRIF」という別のアダプター分子が見つかるきっかけになった！</li>
+    </ul>
+  </div>
+
+  <!-- なぜすごいの？ -->
+  <h2>🌟 この研究のすごいところ・新しさ</h2>
+  <ul class="emoji-bullet">
+    <li>✨ <strong>初めて「MyD88ノックアウトマウス」でLPS応答を個体レベルで解明</strong>：細胞だけでなく、<strong>生きているマウス</strong>でエンドトキシンショックに耐えることを証明！</li>
+    <li>✨ <strong>MyD88依存/非依存の二重経路を発見</strong>：自然免疫の複雑さを明らかにして、その後の研究の道しるべになった！</li>
+    <li>✨ 当時はまだTLR下流のイメージがぼんやりしていたが、この論文で「MyD88が司令塔である」と明確になった。</li>
+  </ul>
+
+  <!-- 弱みや限界（中学生向けにやさしく） -->
+  <h2>🤔 まだ分からないことは？ 研究のつづき</h2>
+  <div class="fun-fact" style="background:#fff0db;">
+    🔍 「MyD88がなくても、なぜMAPキナーゼだけ遅れて動くのか？」<br>
+    → その正確な分子メカニズムは当時解明されていなかった。のちに「TRIF」「TRAM」という別のたんぱく質が発見されて、謎がとけていったんだ！<br>
+    🧩 そして「遅れたシグナルはどんな遺伝子を動かすのか？」という疑問は今も研究が続いているよ。
+  </div>
+
+  <!-- 一番強い証拠の図 -->
+  <div class="figure-mock">
+    🏆 <strong>ベストオブ図解</strong> 🏆<br>
+    図1（マウスの生存率）＋ 図3（マクロファージのサイトカインゼロ）<br>
+    → これが「MyD88は本当に重要！」という鉄壁の証拠。
+  </div>
+
+  <!-- 本質メッセージ -->
+  <h2>📢 まとめ：この論文が教えてくれること</h2>
+  <div class="science-card" style="background: #fffbee;">
+    <p style="font-size: 1.1rem;"><strong>💎 一言でいうと：</strong> 「MyD88はLPSに対する炎症反応の支配者。ただし、その背後にはゆっくり動く秘密の通信ラインも存在する」</p>
+    <p>私たちの体は細菌と戦うとき、とても賢いシグナルネットワークを使っているんですね。この研究は「敗血症」の新しい治療法を考えるうえでも大きなヒントになりました。</p>
+    <p>もしMyD88だけをブロックする薬ができたら、エンドトキシンショックを防げるかもしれない…。未来の医療につながるサイエンスワールド！</p>
+  </div>
+
+  <!-- もっと学びたい人向け用語集 -->
+  <div class="glossary">
+    <details>
+      <summary>📖 中学生のための用語集 (クリックで開く)</summary>
+      <ul style="margin-top: 12px;">
+        <li><strong>LPS / エンドトキシン</strong> : グラム陰性菌の細胞壁の成分。大量に入ると発熱・血圧低下を引き起こす毒素。</li>
+        <li><strong>MyD88</strong> : Toll様受容体などからシグナルを受け渡す「アダプター分子」。免疫のアクセル役。</li>
+        <li><strong>ノックアウトマウス</strong> : 特定の遺伝子を壊したマウス。遺伝子の役割を調べるのに使う。</li>
+        <li><strong>サイトカイン</strong> : 細胞同士の情報伝達をするタンパク質。炎症や免疫を調整する。</li>
+        <li><strong>NF-κB / MAPキナーゼ</strong> : 細胞の中で遺伝子のスイッチを入れる大事なシグナル伝達分子。</li>
+        <li><strong>自然免疫</strong> : 生まれつき備わる、最初に働く防御システム。（獲得免疫とちがって即効性）</li>
+      </ul>
+    </details>
+<p style="margin-top: 12px; font-size:0.85rem;">📚 元になった論文: Kawai, T. et al. <em>Immunity</em> (1999) Vol.11, 115–122.<br>さらに深く知りたい人は「TLR4 シグナル MyD88 依存非依存」で調べてみよう！</p>
+
+    <p style="margin-top: 12px; font-size:0.85rem;">📚 このブログができるまで：１．TPAI法(Thinking through academic paper with AI)に従って、AIにより論文【Unresponsiveness of MyD88-Deficient Mice to Endotoxin】を解析し、解析した結果を、論文分解解析フォーマットに記入し(book119sol.html)、book119sol.htmlを参照してブログを作成する(中学生向け、book119.html) 。</p>
+  </div>
+
+  <footer>
+    🧪 このブログは免疫学の古典論文をやさしく翻訳＆解説しています。
+  </footer>
+</div>
+<div class="toc">
+  <a href="book119.html">📘 中学生向け解説</a>
+  <a href="book119paper.html">📄 原論文</a>
+  <a href="book119sol.html">🧠 論文分解解析</a>
+</div>
+</body>
+</html>

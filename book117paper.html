@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D printing in lithium battery manufacturing</title>
+  <style>
+    body { margin: 0; background: #f3f4f6; color: #111827; font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif; line-height: 1.7; }
+    .container { max-width: 900px; margin: 0 auto; padding: 32px 16px; }
+    .page { background: #ffffff; margin: 0 auto 24px; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); page-break-after: always; }
+    pre { white-space: pre-wrap; word-wrap: break-word; margin: 0; font-family: inherit; font-size: 17px; }
+    @media print { body { background: #ffffff; } .container { padding: 0; max-width: none; } .page { box-shadow: none; border-radius: 0; margin: 0; padding: 24mm; } }
+  </style>
+
+<style>
+.link-navigator { position: fixed; top: 16px; right: 16px; z-index: 9999; background: rgba(255,255,255,.96); color:#1b1f24; border:1px solid #d7e8ff; padding:12px 14px; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,.14); font-size:14px; line-height:1.7; }
+.link-navigator a { color:#0b63c7; text-decoration:none; }
+.link-navigator a:hover { text-decoration:underline; }
+@media print { .link-navigator { display:none; } }
+@media (max-width: 760px) { .link-navigator { position: static; margin: 12px; } }
+</style>
+</head>
+<body>
+<nav class="link-navigator" aria-label="論文ナビ">
+  <b>論文ナビ</b><br>
+  <a href="#paper2-1">2-1 論文</a><br>
+  <a href="#paper2-2">2-2 論文</a><br>
+  <a href="#paper2-3">2-3 論文</a><br>
+  <hr>
+  <a href="book117.html#papers">解説へ戻る</a>
+</nav>
+
+  <main class="container">
+<section class="page"><pre>１｡ 3D printing in lithium battery
+manufacturing: Opportunities,
+challenges, and perspectives
+
+Abstract
+
+Three-dimensional (3D) printing is
+emerging as a transformative
+manufacturing route for lithium batteries,
+enabling structural and compositional
+control far beyond the limits of conventional
+coating and stacking methods. This review
+critically surveys advances in 3D printing
+techniques used for lithium batteries,
+including direct ink writing, laser powder
+bed fusion, photopolymerization-based
+printing, and fused-deposition modeling.
+These approaches have been applied to
+fabricate electrodes, solid electrolytes
+(SEs), current collectors, and thermal-
+management components. 3D-printed
+architectures, such as gyroid copper
+collectors and graphene aerogel electrodes,
+exemplify how tailored geometry and</pre></section>
+<section class="page"><pre>porosity enhance ion/electron transport,
+mechanical robustness, and dendrite-free
+cycling. Despite these advances, challenges
+remain in printable materials chemistry,
+sub-100 µm structural fidelity, and
+interfacial integrity across dissimilar layers.
+Balancing high ceramic loading (&gt;70 wt%)
+with rheological stability, while maintaining
+low interfacial resistance, is a key scientific
+and engineering bottleneck. To address
+these complex trade-offs, data-driven and
+AI-assisted strategies, such as Gaussian-
+process optimization for ink formulation and
+generative modeling for microstructure
+design, are emerging to accelerate this
+convergence of materials discovery and
+process optimization. Looking forward,
+progress will rely on co-developing
+multifunctional printable materials
+(ionogels, sulfur copolymers, hybrid
+electrolytes), hybrid 3D-printing workflows
+coupling sintering, coating, and curing, and
+standardized evaluation metrics linking
+laboratory demonstrations to scalable
+production. Building on these foundations,</pre></section>
+<section class="page"><pre>3D printing is poised to evolve from a
+prototyping technique into a disruptive
+manufacturing paradigm for next-
+generation lithium batteries powering
+flexible electronics, electric vehicles, and
+grid-scale energy storage.
+
+＜日本語訳＞
+
+リチウム電池製造における 3D プリンティン
+グ：機会､ 課題､ そして展望
+
+要旨
+
+3D プリンティングは､ リチウム電池の革新
+的な製造手法として台頭しており､ 従来の塗
+工や積層法の限界を遥かに超える構造・組成
+の制御を可能にしています｡ 本レビューで
+は､ ダイレクトインク書き込み DIW ､ レー
+ザー粉末床溶融結合法 LPBF ､ 光重合ベー
+スのプリンティング､ および熱溶解積層法
+ FDM を含む､ リチウム電池に用いられる
+3D プリンティング技術の進展を批判的に概
+観します｡ これらの手法は､ 電極､ 固体電解
+質 SE ､ 集電体､ および熱管理コンポーネ</pre></section>
+<section class="page"><pre>ントの製造に適用されてきました｡ ジャイロ
+イド構造の銅集電体やグラフェンエアロゲル
+電極といった 3D プリント構造体は､ 調整さ
+れた幾何形状と気孔率がいかにイオン・電子
+輸送､ 機械的堅牢性､ そしてデンドライトフ
+リーなサイクル特性を向上させるかを実証し
+ています｡ こうした進展の一方で､ 印刷可能
+な材料化学､ 100µm 未満の構造再現性､ お
+よび異種層間における界面の完全性の維持と
+いった課題が残されています｡ 高い界面抵抗
+を抑えつつ､ 高いセラミック充填率 70wt%
+超 とレオロジー安定性を両立させること
+は､ 科学的および工学的な主要なボトルネッ
+クとなっています｡ これらの複雑なトレード
+オフを解消するために､ インク処方のための
+ガウス過程最適化や､ 微細構造設計のための
+生成モデルといった､ データ駆動型および AI
+支援型の戦略が登場しており､ 材料探索とプ
+ロセス最適化の融合を加速させています｡ 今
+後の展望として､ 多機能な印刷可能材料 イ
+オノゲル､ 硫黄共重合体､ ハイブリッド電解
+質 の共同開発､ 焼結・コーティング・硬化
+を組み合わせたハイブリッド 3D プリンティ
+ングワークフロー､ そしてラボレベルの実証
+をスケールアップ可能な生産へと繋げる標準</pre></section>
+<section class="page"><pre>化された評価指標に依存することになるでし
+ょう｡ これらの基盤の上に､ 3D プリンティ
+ングは試作技術から､ フレキシブル電子機
+器､ 電気自動車､ およびグリッド規模のエネ
+ルギー貯蔵を支える次世代リチウム電池の破
+壊的な製造パラダイムへと進化する準備が整
+っています｡
+
+<p>
+<a href="book117.html#paper-はじめに">
+← 本文に戻る（はじめに）
+</a>
+</p>
+
+
+<a id="paper2-1"></a>
+２-1｡ Three-Dimensional Interdigitated
+Lithium-Ion Microbattery Architectures
+
+Abstract：3D interdigitated
+microbattery architectures (3D-IMA)
+are fabricated by printing concentrated
+lithium oxide-based inks. The
+microbatteries are composed of
+interdigitated, high-aspect ratio
+cathode and anode structures. Our 3D-
+IMA, which exhibit high areal energy and
+power densities, may find potential
+application in autonomously powered
+microdevices.</pre></section>
+<section class="page"><pre>Ke Sun
+Teng-Sing Wei
+Bok Yeop Ahn
+Jung Yoon Seo
+Shen J. Dillon
+Jennifer A. Lewis
+-Materials Science 誌 Advanced Materials,
+2013-
+
+＜日本語訳＞
+
+三次元櫛歯状リチウムイオンマイクロバッテ
+リーアーキテクチャ
+
+要旨：濃縮されたリチウム酸化物ベースのイ
+ンクを印刷することにより､ 三次元櫛歯状マ
+イクロバッテリーアーキテクチャ 3D-IMA
+を作製した｡ このマイクロバッテリーは､ 高
+いアスペクト比を持つ櫛歯状のカソード 正
+極 およびアノード 負極 構造で構成されて
+いる｡ 高い面積当たりのエネルギー密度と出
+力密度を示す本 3D-IMA は､ 自律駆動型マイ
+クロデバイスへの応用の可能性がある｡
+<p>
+<a href="book117.html#paper-explain-2-1">
+← 解説に戻る（2-1）
+</a>
+</p>
+<a id="paper2-2"></a>
+2-2｡ Three-Dimensional Solid-State</pre></section>
+<section class="page"><pre>Lithium-Ion Batteries Fabricated Via
+Conformal Vapor-Phase Chemistry
+
+Alexander J. Pearse
+Thomas E. Schmitt
+Emily Sahadeo
+David Stewart
+Alexander C. Kozen
+Konstantinos Gerasopoulos et al
+
+ーACS Nano, Vol. 10, No. 10, pp. 9642–
+9651 (2016)-
+
+Abstract : Thin film solid state lithium-
+based batteries (TSSBs) are increasingly
+attractive for their intrinsic safety due to the
+use of a nonflammable solid electrolyte,
+cycling stability, and ability to be easily
+patterned in small form factors. However,
+existing methods for fabricating TSSBs are
+limited to planar geometries, which severely
+limits areal energy density when the
+electrodes are kept sufficiently thin to
+achieve high areal power. In order to
+circumvent this limitation, we report the first</pre></section>
+<section class="page"><pre>successful fabrication of fully conformal, 3D
+full cell TSSBs formed in micromachined
+silicon substrates with aspect ratios up to
+~10 using atomic layer deposition (ALD) at
+low processing temperatures (at or below
+250°C) to deposit all active battery
+components. The cells utilize a prelithiated
+LiV₂O₅ cathode, a very thin (40–100 nm)
+LiPON-like lithium polyphosphazene solid
+electrolyte, and a SnNₓ conversion anode,
+along with Ru and TiN current collectors.
+Planar all-ALD solid state cells deliver 37
+µAh/cm²·µm normalized to the cathode
+thickness with only 0.02% per-cycle
+capacity loss for hundreds of cycles.
+Fabrication of full cells in 3D substrates
+increases the areal discharge capacity by
+up to a factor of 9.3× while simultaneously
+improving the rate performance.
+
+＜日本語訳＞
+
+気相成膜法によって作製された三次元構造全
+固体リチウムイオン電池</pre></section>
+<section class="page"><pre>要旨：薄膜型の全固体リチウム電池
+ TSSBs は､ 不燃性の固体電解質を用いる
+ことによる本質的な安全性､ 優れた充放電サ
+イクル安定性､ そして小型形状へ容易に加工
+できる特性のため､ ますます注目を集めてい
+る｡ しかし､ 従来の TSSB 製造法は平面的
+ 2 次元 な構造に限られており､ 高い面積当
+たり出力を得るために電極を十分薄くする
+と､ 面積当たりエネルギー密度が大きく制限
+されるという問題があった｡ この制約を克服
+するため､ 本研究では､ すべての電池活性部
+材を低温 250℃以下 で原子層堆積法
+ ALD により形成し､ アスペクト比約 10 ま
+での微細加工シリコン基板上に､ 完全に被覆
+された三次元フルセル型全固体電池を世界で
+初めて作製することに成功した｡ この電池
+は､ あらかじめリチウム化した LiV₂O₅ 正
+極､ 非常に薄い 40 〜 100 nm の LiPON 類
+似リン酸窒化リチウム系固体電解質､ SnNₓ
+変換型負極､ さらに Ru および TiN 集電体を
+用いて構成されている｡ 平面型の全 ALD 全固
+体電池では､ 正極厚さで規格化した容量とし
+て 37 µAh/cm²·µm を示し､ 数百サイクルに
+わたって 1 サイクル当たり容量低下は わずか
+0.02% であった｡ さらに､ 三次元基板上に</pre></section>
+<section class="page"><pre>フルセルを形成することで､ 面積当たり放電
+容量は 最大 9.3 倍 に増加し､ 同時に高出力
+特性 レート性能 も向上した｡
+<p>
+<a href="book117.html#paper-explain-2-2">
+← 解説に戻る（2-2）
+</a>
+</p>
+<a id="paper2-3"></a>
+2-3｡ A 3D printing composite polymer solid
+electrolyte with an asymmetric tightly
+bonded bilayer structure for high-
+performance lithium batteries
+
+Hualong Li,
+Han Li,
+Yijun Zhong,
+Haochen Chen,
+Jianqiu Zhou,
+Rui Cai,
+Zongping Shao
+ーJournal of Power Sources (2025)
+
+Abstract : High-performance batteries for
+military and extreme environment
+applications require alternatives to
+conventional liquid lithium-ion batteries
+(LIBs), which suffer from poor low-
+temperature performance and safety risks.
+All-solid-state lithium batteries (ASSLBs)</pre></section>
+<section class="page"><pre>offer enhanced safety and superior low-
+temperature capability. In this work, we
+designed and fabricated composite solid-
+state electrolytes using polyvinylidene
+fluoride (PVDF) and polyacrylic acid (PAA)
+as polymer matrices, N,N-
+dimethylformamide (DMF) as the solvent,
+and lithium bis(trifluoromethane
+sulfonimide) (LiTFSI) as the lithium salt.
+Composite solutions with varying PAA mass
+ratios were prepared. Advanced three-
+dimensional (3D) printing technology
+enabled the rapid and precise fabrication of
+electrolyte membranes. An ionic
+conductivity of about 2.71 × 10−4 S cm−1
+at 25 °C, high mechanical strength, and
+good thermal properties can be achieved
+through component and 3D printing
+process optimization. Assembled LiCoO2||
+PVDF@PAA||Li ASSLBs delivered an initial
+discharge capacity of 165.3 mAh/g at 0.1
+mA cm−2 (room temperature), maintaining
+98% capacity retention after 300 cycles. At
+0 °C, these cells provided 157.4 mAh/g</pre></section>
+<section class="page"><pre>initial capacity with 85% retention over 100
+cycles at 0.1 mA cm−2.
+
+＜日本語訳＞
+
+高性能リチウム電池向け､ 強固に結合した非
+対称 2 層構造を持つ 3D プリント複合ポリマ
+ー固体電解質
+
+要旨
+
+軍事用途や極限環境向けの高性能電池には､
+低温性能の低さや安全性リスクという問題を
+抱える従来の液体電解質リチウムイオン電池
+ LIB に代わる技術が必要とされている｡ 全
+固体リチウム電池 ASSLB は､ 向上した安
+全性と優れた低温特性を提供する｡
+本研究では､ ポリフッ化ビニリデン PVDF
+とポリアクリル酸 PAA をポリマーマトリ
+ックスとし､ N,N-ジメチルホルムアミド
+ DMF を溶媒､ リチウムビス トリフルオ
+ロメタンスルホニル イミド LiTFSI をリチ
+ウム塩として用いた複合固体電解質を設計・
+作製した｡ 異なる PAA 質量比を持つ複合溶液
+を調製した｡ 先進的な三次元 3D プリンテ</pre></section>
+<section class="page"><pre>ィング技術により､ 電解質膜の迅速かつ精密
+な作製が可能となった｡
+組成と 3D プリンティングプロセスの最適化
+により､ 25℃で約 2.71 × 10^{-4} S cm^{-1}
+のイオン伝導度､ 高い機械的強度､ および良
+好な熱的特性が達成された｡ 組み立てた
+LiCoO₂ || PVDF@PAA || Li 全固体リチウム電
+池は､ 室温で 0.1 mA cm^{-2} の電流密度に
+おいて 165.3 mAh/g の初回放電容量を示し､
+300 サイクル後も 98% の容量維持率を維持
+した｡ さらに 0℃では､ 0.1 mA cm^{-2} の
+条件で 157.4 mAh/g の初回容量を示し､ 100
+サイクルにわたって 85% の容量維持率を達
+成した｡
+<p>
+<a href="book117.html#paper-explain-2-3">
+← 解説に戻る（2-3）
+</a>
+</p>
+</pre></section>
+  </main>
+
+</body>
+</html>

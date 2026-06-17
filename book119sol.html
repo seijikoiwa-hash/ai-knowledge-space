@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>book119sol - 論文分解解析</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fb;
+      color: #222;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 40px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      border-bottom: 3px solid #333;
+      padding-bottom: 16px;
+    }
+    h2 {
+      font-size: 1.45rem;
+      margin-top: 44px;
+      padding: 12px 16px;
+      background: #eef3ff;
+      border-left: 6px solid #4b6cb7;
+      border-radius: 8px;
+    }
+    h3 {
+      font-size: 1.18rem;
+      margin-top: 32px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #ddd;
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    li {
+      margin: 8px 0;
+    }
+    .note {
+      background: #fff8df;
+      border-left: 5px solid #e0b100;
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 6px;
+    }
+    .answer-line {
+      display: inline-block;
+      min-width: 260px;
+      border-bottom: 1px solid #aaa;
+      height: 1.2em;
+      vertical-align: middle;
+    }
+    .arrow {
+      font-weight: bold;
+      color: #333;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 32px 0;
+    }
+    .section-box {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 22px;
+      background: #fcfcff;
+    }
+    footer {
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 50px;
+    }
+    @media print {
+      body { background: #fff; }
+      .container { box-shadow: none; margin: 0; max-width: none; }
+    }
+  
+    .answer-line { display:inline; min-width:0; border-bottom:none; height:auto; vertical-align:baseline; }
+    .evidence { color:#555; font-size:0.95rem; }
+    .tag { display:inline-block; background:#eef3ff; border:1px solid #ccd9ff; border-radius:999px; padding:2px 10px; margin:2px 4px 2px 0; font-size:.88rem; }
+  </style>
+</head>
+<body>
+<div class="toc">
+  <a href="book119.html">📘 中学生向け解説</a>
+  <a href="book119paper.html">📄 原論文</a>
+  <a href="book119sol.html">🧠 論文分解解析</a>
+</div>
+  <main class="container">
+    <h1>論文分解テンプレート：TPAI法(Thinking through academic paper with AI)による解析結果</h1>
+
+    <section>
+      <h2>■ 基本情報</h2>
+      <ul>
+        <li>論文タイトル：<span class="answer-line">Unresponsiveness of MyD88-Deficient Mice to Endotoxin</span></li>
+        <li>著者：<span class="answer-line">Taro Kawai, Osamu Adachi, Tomohiko Ogawa, Kiyoshi Takeda, Shizuo Akira</span></li>
+        <li>分野：<span class="answer-line">免疫学・自然免疫・炎症シグナル伝達</span></li>
+        <li>発表年・雑誌：<span class="answer-line">1999年7月、Immunity, Vol. 11, 115–122</span></li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>■ A：論文本文の論理構造（ストーリー）</h2>
+
+      <h3>1. 目的（Objective）</h3>
+      <ul>
+        <li>目的a：<span class="answer-line">MyD88欠損マウスがLPS（エンドトキシン）に対してどのように反応するかを、生体レベルで検証する。</span></li>
+        <li>目的b：<span class="answer-line">MyD88欠損マクロファージ、B細胞、胚性線維芽細胞がLPS刺激に応答してサイトカイン産生・増殖・表面分子発現を起こすかを調べる。</span></li>
+        <li>目的c：<span class="answer-line">LPS刺激後のIRAK、MAPキナーゼ、NF-κB活性化におけるMyD88依存性とMyD88非依存性を切り分ける。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>2. 仮説（Hypothesis）</h3>
+      <p class="note">※明示されていない部分は、論文の問いから推定した。</p>
+      <ul>
+        <li>仮説a：<span class="answer-line">MyD88はTLR/IL-1 receptor family の共通アダプターであり、LPS応答にも必須である。</span></li>
+        <li>仮説b：<span class="answer-line">MyD88欠損によるLPS不応答性は、IL-1またはIL-18シグナルの欠損だけでは説明できない。</span></li>
+        <li>仮説c：<span class="answer-line">MyD88欠損ではIRAK活性化は失われるが、MAPキナーゼやNF-κBには別経路による残存活性化が存在する可能性がある。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>3. 実験・方法（Methods）</h3>
+      <ul>
+        <li>実験a：<span class="answer-line">野生型、MyD88 KO、IL-1R KO、IL-18 KO、IL-1R/IL-18二重KOマウスにLPSを投与し、エンドトキシンショックへの感受性と血清サイトカインを測定した。</span></li>
+        <li>実験b：<span class="answer-line">腹腔マクロファージ、B細胞、胚性線維芽細胞をLPSまたは合成リピドAで刺激し、TNFα、IL-6、IL-1β、NO産生、B細胞増殖、MHC class II発現を調べた。</span></li>
+        <li>実験c：<span class="answer-line">CD14、TLR2、TLR4、SLPIの発現を確認したうえで、IRAKキナーゼ活性、MAPキナーゼ活性、NF-κB DNA結合活性を解析した。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>4. 結果（Results）</h3>
+      <ul>
+        <li>結果a：<span class="answer-line">MyD88 KOマウスは高用量LPSによるエンドトキシンショックに強い抵抗性を示し、血清IL-6、TNFα、IL-1βの上昇も認められなかった。</span></li>
+        <li>結果b：<span class="answer-line">MyD88 KO由来のマクロファージ、B細胞、胚性線維芽細胞は、LPS刺激に対するサイトカイン産生、B細胞増殖、MHC class II増強が著しく障害された。</span></li>
+        <li>結果c：<span class="answer-line">LPS/リピドA刺激によるIRAK活性化はMyD88 KOで消失した一方、MAPキナーゼとNF-κB活性化は消失せず、遅延して起こった。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>5. 検証（目的との対応）</h3>
+      <ul>
+        <li>目的a <span class="arrow">→</span> 結果a <span class="arrow">→</span> 支持。MyD88欠損は個体レベルでLPSショック応答を大きく低下させた。</li>
+        <li>目的b <span class="arrow">→</span> 結果b <span class="arrow">→</span> 支持。複数の細胞種でLPS応答の欠損が確認された。</li>
+        <li>目的c <span class="arrow">→</span> 結果c <span class="arrow">→</span> 支持。MyD88依存経路とMyD88非依存経路が分離された。</li>
+      </ul>
+
+      <hr>
+
+      <h3>6. 結論（Conclusion）</h3>
+      <ul>
+        <li>結論：<span class="answer-line">MyD88はLPSに対する炎症性応答に必須であるが、LPS刺激によるMAPキナーゼおよびNF-κB活性化のすべてを担うわけではない。</span></li>
+        <li>著者の主張の要約：<span class="answer-line">LPS応答にはMyD88依存経路とMyD88非依存経路があり、サイトカイン産生やショック反応にはMyD88依存経路が決定的である。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>7. 限界・未解決問題（Limitations）</h3>
+      <ul>
+        <li>限界a：<span class="answer-line">この時点では、MyD88非依存経路の分子実体は明確に同定されていない。</span></li>
+        <li>限界b：<span class="answer-line">MAPキナーゼやNF-κBが遅延活性化しても、なぜサイトカイン産生が回復しないのかの機序は完全には説明されていない。</span></li>
+        <li>未解決問題：<span class="answer-line">TLR4下流でMyD88とは別に働くアダプターや転写制御機構は何か。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>8. 新規性（Novelty）</h3>
+      <p class="note">※既存研究と何が違うか</p>
+      <ul>
+        <li>新規性：<span class="answer-line">LPS/TLRシグナルにおいて、MyD88が生体レベルの炎症応答に必須であることをノックアウトマウスで示した。</span></li>
+        <li>従来との差分：<span class="answer-line">TLR2/TLR4がLPS受容体候補であるという知見から一歩進み、その下流アダプターMyD88の機能的重要性を直接検証した。</span></li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>■ B：図・表の解析（エビデンス）</h2>
+
+      <div class="section-box">
+        <h3>図1（Figure 1）</h3>
+        <p>A. 対応箇所（目的 / 仮説 / 実験 / 結果）：目的a、仮説a、実験a、結果a</p>
+        <p>B. 何を証明しようとしているか：MyD88欠損マウスがLPS誘導性エンドトキシンショックに反応しないこと。</p>
+        <p>C. 図から分かること：野生型はLPSで死亡するが、MyD88 KOは生存し、血清IL-6、TNFα、IL-1βも上昇しない。</p>
+        <p>D. 結果への影響：論文全体の中心結論、すなわちMyD88がLPS応答に必須であることを個体レベルで支える。</p>
+        <p>E. この図がないと何が崩れるか：MyD88欠損が単なる細胞内現象ではなく、生体のショック反応を変えるという主張が弱くなる。</p>
+      </div>
+
+      <hr>
+
+      <div class="section-box">
+        <h3>図2（Figure 2）</h3>
+        <p>A. 対応箇所：実験c、結果の前提確認</p>
+        <p>B. 何を証明しようとしているか：MyD88 KOマクロファージでCD14、TLR2、TLR4、SLPIなどLPS認識関連分子の発現が大きく欠けていないこと。</p>
+        <p>C. 図から分かること：不応答性はLPS受容体や関連分子の単純な発現欠損では説明しにくい。</p>
+        <p>D. 結果への影響：原因を「受容体がない」ではなく「MyD88下流シグナルが欠ける」方向へ絞り込む。</p>
+        <p>E. この図がないと何が崩れるか：MyD88欠損によるLPS不応答性が、単なる受容体発現低下の副作用ではないという保証が弱くなる。</p>
+      </div>
+
+      <hr>
+
+      <div class="section-box">
+        <h3>図3（Figure 3）</h3>
+        <p>A. 対応箇所：目的b、仮説a、実験b、結果b</p>
+        <p>B. 何を証明しようとしているか：MyD88 KOマクロファージがLPS/リピドA刺激により炎症性サイトカインやNOを産生できるか。</p>
+        <p>C. 図から分かること：MyD88 KOマクロファージではTNFα、IL-6、IL-1β mRNA/タンパク、NO産生が大きく低下する。</p>
+        <p>D. 結果への影響：LPS不応答性がマクロファージの炎症性応答欠損として実証される。</p>
+        <p>E. この図がないと何が崩れるか：血清サイトカイン低下の細胞レベルの原因が不明になる。</p>
+      </div>
+
+      <hr>
+
+      <div class="section-box">
+        <h3>図4（Figure 4）</h3>
+        <p>A. 対応箇所：目的b、実験b、結果b</p>
+        <p>B. 何を証明しようとしているか：MyD88 KOのLPS不応答性がマクロファージだけでなくB細胞や胚性線維芽細胞にも及ぶか。</p>
+        <p>C. 図から分かること：MyD88 KO B細胞はLPSによる増殖やMHC class II増強が障害され、胚性線維芽細胞もLPS誘導IL-6産生を示さない。</p>
+        <p>D. 結果への影響：MyD88の役割が特定細胞に限定されず、広いLPS応答に必要であることを示す。</p>
+        <p>E. この図がないと何が崩れるか：MyD88の重要性がマクロファージ限定の現象に見えてしまう。</p>
+      </div>
+
+      <hr>
+
+      <div class="section-box">
+        <h3>図5（Figure 5）</h3>
+        <p>A. 対応箇所：目的c、仮説c、実験c、結果c</p>
+        <p>B. 何を証明しようとしているか：LPS/リピドA刺激によるIRAK活性化がMyD88に依存するか。</p>
+        <p>C. 図から分かること：野生型ではIRAK自己リン酸化が起こるが、MyD88 KOではIRAK活性化が消失する。</p>
+        <p>D. 結果への影響：MyD88がIRAK活性化の上流にあることを明確にする。</p>
+        <p>E. この図がないと何が崩れるか：MyD88欠損がどのシグナル段階を止めるのかが曖昧になる。</p>
+      </div>
+
+      <hr>
+
+      <div class="section-box">
+        <h3>図6（Figure 6）</h3>
+        <p>A. 対応箇所：目的c、仮説c、実験c、結果c</p>
+        <p>B. 何を証明しようとしているか：MAPキナーゼ系の活性化がMyD88欠損で完全に消えるか、それとも残るか。</p>
+        <p>C. 図から分かること：JNK、ERK1/2、p38などの活性化はMyD88 KOで消失せず、遅延して起こる。</p>
+        <p>D. 結果への影響：LPSシグナルにはMyD88非依存経路が存在するという論文の重要な分岐点になる。</p>
+        <p>E. この図がないと何が崩れるか：LPS応答はすべてMyD88依存である、という単純化された結論になってしまう。</p>
+      </div>
+
+      <hr>
+
+      <div class="section-box">
+        <h3>図7（Figure 7）</h3>
+        <p>A. 対応箇所：目的c、仮説c、実験c、結果c</p>
+        <p>B. 何を証明しようとしているか：NF-κB活性化がMyD88欠損で完全に消失するかを検証する。</p>
+        <p>C. 図から分かること：NF-κB DNA結合活性はMyD88 KOでも誘導されるが、野生型より遅れて起こる。</p>
+        <p>D. 結果への影響：MyD88はLPS応答の主要経路だが、NF-κB活性化にはMyD88非依存成分があることを示す。</p>
+        <p>E. この図がないと何が崩れるか：MyD88非依存シグナルの存在を支える重要証拠が不足する。</p>
+      </div>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>■ C：論文の本質（最重要まとめ）</h2>
+
+      <h3>1. この論文は一言で何をしたか</h3>
+      <p>→ MyD88欠損マウスを使い、LPS応答にMyD88が必須であることと、同時にMyD88非依存経路も存在することを示した。</p>
+
+      <h3>2. なぜ重要か</h3>
+      <p>→ 自然免疫におけるTLR-LPSシグナルの中核構造を明らかにし、炎症・敗血症・自然免疫研究の基盤を作ったため。</p>
+
+      <h3>3. どこが一番強い証拠か（キーフィギュア）</h3>
+      <p>→ Figure 1 と Figure 3。個体レベルのショック抵抗性と、マクロファージのサイトカイン不産生が直接対応している。</p>
+
+      <h3>4. どこが一番怪しいか（弱点）</h3>
+      <p>→ NF-κBやMAPキナーゼが遅延活性化するにもかかわらず、なぜ炎症性サイトカイン産生に結びつかないのか、その分子機構は十分に解かれていない。</p>
+
+      <h3>5. 次にやるべき研究は何か</h3>
+      <p>→ MyD88非依存経路のアダプター分子を同定し、遅延NF-κB/MAPK活性化がどの遺伝子発現プログラムにつながるかを調べる。</p>
+    </section>
+
+    <footer>TPAI法(Thinking through academic paper with AI)による論文分解テンプレート</footer>
+  </main>
+<div class="toc">
+  <a href="book119.html">📘 中学生向け解説</a>
+  <a href="book119paper.html">📄 原論文</a>
+  <a href="book119sol.html">🧠 論文分解解析</a>
+</div>
+</body>
+</html>
