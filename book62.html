@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>ＩＤ・パスワード問題</title>
+<style>
+    :root{
+      --bg:#ffffff; --fg:#111; --muted:#555; --card:#f6f7f9; --line:#e6e7ea;
+      --accent:#0b57d0;
+    }
+    body{ margin:0; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
+          background:var(--bg); color:var(--fg); line-height:1.9; }
+    header{ padding: 36px 18px 18px; border-bottom:1px solid var(--line); }
+    main{ max-width: 920px; margin: 0 auto; padding: 22px 18px 60px; }
+    h1{ margin:0 0 10px; font-size: 30px; letter-spacing: .02em; }
+    .lead{ color:var(--muted); margin: 0; }
+    nav{ margin-top: 16px; }
+    nav a{ display:inline-block; margin: 6px 10px 0 0; padding: 6px 10px; background: var(--card);
+           border:1px solid var(--line); border-radius: 999px; color: var(--fg); text-decoration:none; }
+    nav a:hover{ border-color: var(--accent); color: var(--accent); }
+    section{ margin-top: 28px; padding: 18px; border:1px solid var(--line); border-radius: 16px; background: #fff; }
+    h2{ margin: 0 0 10px; font-size: 22px; }
+    h3{ margin: 18px 0 8px; font-size: 18px; }
+    .box{ background: var(--card); border:1px solid var(--line); border-radius: 14px; padding: 14px; }
+    ul{ margin: 8px 0 8px 1.2em; }
+    figure{ margin: 14px 0; padding: 12px; background: var(--card); border:1px solid var(--line); border-radius: 14px; }
+    figure img{ width:100%; height:auto; display:block; border-radius: 10px; background:#fff; }
+    figcaption{ color:var(--muted); font-size: 13px; margin-top: 8px; }
+    .small{ font-size: 13px; color: var(--muted); }
+    .k{ font-weight: 700; }
+  </style>
+</head>
+<body>
+<header>
+<div style="max-width:920px;margin:0 auto;">
+<h1>ＩＤ・パスワード問題</h1>
+<p class="lead">
+      ＩＤ・パスワードは「もともと少人数・管理者常在の環境で、１台のコンピュータを安全に共有するため」に生まれた。
+      ところが、1995年以降の一般社会への拡張で前提が崩れ、個人が生涯にわたり大量の認証情報を自己管理する“負担の仕組み”へ変質した。
+      本稿では、その歴史を整理し、人間中心設計の観点から現実的な解決策を提示する。
+    </p>
+<nav aria-label="目次">
+<a href="#s1">1. ＩＤ・パスワード問題</a>
+<a href="#s2">2. 歴史</a>
+<a href="#s3">3. 解決策</a>
+<a href="#s4">4. どうする高齢者</a>
+<a href="#s5">5. 将来</a>
+<a href="#s6">6. まとめ</a>
+</nav>
+</div>
+</header>
+<main>
+<!-- 画像1：象徴（鍵・ロック） -->
+
+<figure>
+  <img alt="ID・パスワード問題を象徴するイメージ" src="figure1.png" />
+  <figcaption>図1：添付資料冒頭の趣旨を踏まえて作成した象徴図。ID・パスワード強化と人間の負担増大という問題構造を示す。</figcaption>
+</figure>
+
+<section id="s1">
+<h2>１．ＩＤ・パスワード問題</h2>
+<p>
+      現代の生活は、銀行、行政、通信、交通、買い物、医療、学習、趣味に至るまで、何らかのオンライン認証を前提としている。
+      その中心に長く置かれてきたのが「ＩＤ・パスワード」である。しかし、これが<strong>一般人にとって“持続可能な仕組み”ではない</strong>ことは、すでに常識になりつつある。
+    </p>
+<div class="box">
+<p class="k">問題の本質（ひとことで）</p>
+<p>
+        ＩＤ・パスワードは、<strong>人間の記憶力・入力能力・注意力</strong>に依存する。しかも現代は、１人が管理すべき数が増え続け、
+        利用頻度もバラバラで、誤入力時にはロックや再発行が発生する。結果として「安全にするほど面倒」「面倒なほど危険（使い回し・メモ化）」という矛盾が生じる。
+      </p>
+</div>
+<h3>なぜ破綻するのか</h3>
+<ul>
+<li><strong>無意味な文字列</strong>は覚えにくい。強度を上げるほど覚えにくさは増す。</li>
+<li><strong>使用頻度が不規則</strong>である。年１回のサイトと毎日使うサービスが混在する。</li>
+<li><strong>入力がエラーになりやすい</strong>（大小文字、記号、キーボード切替、スマホの自動補正など）。</li>
+<li><strong>失敗ペナルティが大きい</strong>（ロック、再発行、本人確認、心理的ストレス）。</li>
+<li>攻撃側は自動化できる一方で、守る側は毎回「人間の注意力」を消費する。</li>
+</ul>
+<p>
+      こうして、個人は「覚える」「書く」「再発行する」という作業に時間と精神力を奪われる。
+      この負担は、とくに高齢期において決定的になる。なぜなら、加齢で最初に低下しやすい認知能力（短期記憶・注意の切替）を、
+      認証が最も酷使する設計になっているからである。
+    </p>
+</section>
+<section id="s2">
+<h2>２．歴史</h2>
+<p>
+      ＩＤ・パスワードは、はじめから「市民が生涯で数十種類を自己管理する」ことを想定して生まれたものではない。
+      誕生から一般社会化までを、段階で見ると理解しやすい。
+    </p>
+<!-- 画像2：CTSS（IBM 7094 at MIT） -->
+<figure>
+<img alt="CTSS時代の計算機（IBM 7094）" src="https://image.slidesharecdn.com/ctss-121128074831-phpapp02/85/CTSS-Compatible-Time-Sharing-System-2-320.jpg"/>
+<figcaption>図2：1960年代の計算機環境（例：MITのIBM 7094）。少人数・管理者常在の世界で、共有のためにパスワードが実用化された。</figcaption>
+</figure>
+<h3>（1）誕生：1960年代（MIT・CTSS）</h3>
+<p>
+      1960年代、MITのCTSSでＩＤ・パスワード方式が初めて実用化された。
+      目的は「１台のコンピュータを複数人で安全に共有するための識別」であり、利用者は数十人規模、管理者が全利用者を把握できた。
+      パスワードを忘れても、管理者が即時対応できる世界である。
+      ここには「一般人が大量の認証情報を長期自己管理する」という発想がそもそも存在しなかった。
+    </p>
+<h3>（2）専門家世界：1970〜1980年代（UNIXの普及）</h3>
+<p>
+      1970年代にUNIXが普及すると、ユーザー名とパスワードによるログイン方式は大学・研究機関・企業の計算機部門に広がった。
+      ただし、利用者は限定的で、やはり管理者常在が前提である。
+      日本で「パスワード」という言葉が技術文献・専門書に登場するのもこの時代で、一般社会の言葉ではなかった。
+    </p>
+<!-- 画像3：Windows 95 ロゴ -->
+<figure>
+<img alt="Windows 95のロゴ" src="https://www.pngkit.com/png/detail/163-1635480_windows-95-logo-png.png"/>
+<figcaption>図3：1995年のWindows 95は、ＩＤ・パスワードが一般社会へ流出する最大の転換点と位置づけられる。</figcaption>
+</figure>
+<h3>（3）一般社会化：1995年（Windows 95以降）</h3>
+<p>
+      1995年のWindows 95登場は最大の転換点である。家庭にPCが普及し、管理者不在の環境で一般市民がログイン操作を行うことが日常化した。
+      さらにインターネット接続、電子メール、会員制Webサービスの急増により、一般人が初めて「自分専用のＩＤ」を複数持つ時代が始まった。
+    </p>
+<h3>（4）構造的破綻：1997年以降（ネット社会の拡大）</h3>
+<p>
+      1997年以降、ネットバンキング、ECサイト、オンライン予約などが爆発的に増え、１人が管理すべきＩＤ・パスワードは急増した。
+      その結果、使い回し、紙への書き留め、忘却と再発行の頻発が常態化し、一般社会において構造的に破綻していった。
+    </p>
+<h3>（5）日本で深刻化した理由</h3>
+<div class="box">
+<ul>
+<li>行政・企業の<strong>縦割り構造</strong>により、ＩＤ統合思想が弱かった。</li>
+<li>「<strong>自己責任</strong>」の強調により、設計責任（ユーザーに無理を強いる設計）が問われにくかった。</li>
+<li><strong>紙文化とデジタル</strong>の併存で、利用者の負担が倍増した（紙もデジタルも“完璧にやれ”になる）。</li>
+</ul>
+<p class="small">結果として、日本は世界的にも例を見ない「多重認証管理社会」になりやすい土壌を持った。</p>
+</div>
+</section>
+<section id="s3">
+<h2>３．解決策</h2>
+<p>
+      解決策は「頑張って覚える」ではない。<strong>構造を変える</strong>ことである。
+      世界の高い安全要求（軍事・諜報・原子力・中央銀行など）では、そもそもＩＤ・パスワードが主役ではない。
+      共通する思想は３つに整理できる。
+    </p>
+<div class="box">
+<ul>
+<li><strong>覚えさせない</strong>（記憶依存を排除）</li>
+<li><strong>１要素では意味を持たせない</strong>（単独要素で突破できない）</li>
+<li><strong>人を信用しない</strong>（Zero Trust：前提として誤操作・漏洩が起きる）</li>
+</ul>
+</div>
+<h3>現代の個人向け「現実的上限」：パスワードレス（FIDO2など）</h3>
+<p>
+      個人利用で現実的かつ高水準な解として、FIDO2に代表されるパスワードレス認証がある。
+      仕組みの要点は単純で、秘密鍵を端末の外へ出さず（サーバ側は公開鍵のみ）、生体認証や端末のロック解除と組み合わせる。
+      これにより、フィッシング、漏洩、総当たりといった典型的攻撃に強くなり、利用者の「記憶負担」も激減する。
+    </p>
+<!-- 画像4：FIDO2キー -->
+<figure>
+<img alt="FIDO2 セキュリティキーの例" src="https://sc-b.digikeyassets.com/-/media/Images/Product%20Highlights/S/Swissbit/iShield%20FIDO2%20Security%20Key/Swissbit-iShield-FIDO2-200.jpg?la=en&amp;ts=6b48c9db-ab53-4320-9ecb-19a8f3e70eb3"/>
+<figcaption>図4：ハードウェア認証（FIDO2セキュリティキー）の例。端末・生体・物理要素を組み合わせ、単独要素での突破を難しくする。</figcaption>
+</figure>
+<h3>個人が取り入れやすい設計原則</h3>
+<ul>
+<li><strong>パスワードは「主役」から「非常用」へ</strong>：日常は生体＋端末、パスワードは復旧・レガシー対応に限定する。</li>
+<li><strong>入力を減らす</strong>：人は入力でミスをする。自動入力・パスキー・ワンタップを前提にする。</li>
+<li><strong>再発行コストを最小化</strong>：復旧手段を用意し、詰み（永久に入れない）を避ける。</li>
+<li><strong>攻撃に強い“形”を選ぶ</strong>：SMSだけに頼らない、フィッシング耐性のある方式を優先する。</li>
+</ul>
+</section>
+<section id="s4">
+<h2>４．どうする高齢者</h2>
+<p>
+      高齢者にとってＩＤ・パスワード方式が致命的なのは、「記憶」「注意」「入力」という、人が年齢とともに弱くなりやすい能力を最も酷使する点にある。
+      ここで重要なのは、高齢者の努力の問題ではなく、<strong>設計の不適合</strong>だという理解である。
+    </p>
+<div class="box">
+<p class="k">高齢者に不向きな理由（認知科学的観点）</p>
+<ul>
+<li>意味のない文字列は記憶に残りにくい。</li>
+<li>使用頻度が不規則で、思い出す機会が少ない。</li>
+<li>誤入力でロックされると、心理的負荷が一気に上がる。</li>
+<li>加齢で最初に低下する能力を、認証が最も酷使する。</li>
+</ul>
+</div>
+<!-- 画像5：Face ID アイコン -->
+<figure>
+<img alt="Face ID アイコン" src="https://www.kindpng.com/picc/m/255-2559998_face-id-icon-iphone-face-id-icon-hd.png"/>
+<figcaption>図5：生体認証（例：Face ID）。「覚える・打つ」を減らし、日常操作を端末側に委ねることで負担を下げられる。</figcaption>
+</figure>
+<h3>「人は入口だけ持つ」三層構造（実用設計）</h3>
+<p>
+      高齢期を前提にすると、設計はシンプルであるほど良い。
+      そこで有効なのが、次の<strong>三層構造</strong>である。
+    </p>
+<div class="box">
+<pre style="white-space:pre-wrap; margin:0;">
+【第1層】紙（安心・起点） … どこから入るかだけを書く
+   ↓
+【第2層】端末（鍵束） …… iPhone等の安全な保管庫（キーチェーン）に全部入れる
+   ↓
+【第3層】個別ID・パスワード … 覚えない／見ない／自分で入力しない
+      </pre>
+<p class="small">ポイントは「紙に一覧を書かない」「人は“入口”だけ扱う」「詳細は道具に任せる」である。</p>
+</div>
+<!-- 画像6：紙（チェックリストの象徴） -->
+<figure>
+<img alt="紙のチェックリスト（象徴）" src="figure6.png"/>
+<figcaption>図6：紙は「一覧表」ではなく「地図（手順と連絡先）」として最小限に使う。盗難時の被害をゼロに近づける。</figcaption>
+</figure>
+<h3>紙に書く／書かない（目安）</h3>
+<ul>
+<li><strong>紙に書く</strong>：入口の手順、重要な連絡先、保管場所、復旧用の考え方（例：Apple ID／復旧先の情報／家族への説明）。</li>
+<li><strong>紙に書かない</strong>：各サービスのパスワード、銀行暗証、ワンタイム系、秘密の文字列そのもの。</li>
+</ul>
+<p>
+      つまり、紙は「安心装置」兼「操作マニュアル」であり、鍵束そのものではない。
+      端末が壊れたときの復旧（例：クラウド同期や予備端末）も含め、<strong>“詰み”を作らない</strong>ことが最重要になる。
+    </p>
+</section>
+<section id="s5">
+<h2>５．将来</h2>
+<p>
+      将来、パスワードは完全に消えるのか。答えは「完全には消えないが、主役から非常用へ移る」である。
+      理由は、復旧手段・法制度・レガシー資産が残り続けるからだ。
+      ただし、社会の主流は明確に「覚えない設計」へ移行している。
+    </p>
+<h3>移行の方向性：人間中心設計への回帰</h3>
+<ul>
+<li><strong>パスキー（端末内鍵）</strong>の普及：秘密鍵は外へ出さず、生体・端末と結びつく。</li>
+<li><strong>MFAの高度化</strong>：SMSだけに頼らない、多層の認証へ。</li>
+<li><strong>運用の自動化</strong>：更新、保存、入力、監視を人間の作業から外す。</li>
+<li><strong>復旧の設計</strong>：本人死亡・入院・判断不能など、長期の人生イベントを前提にする。</li>
+</ul>
+<div class="box">
+<p class="k">歴史的評価（後世から見た場合）</p>
+<p>
+        現代は、技術的都合で「人間に不向きな認証方式」を一般社会へ押し付けた過渡期として評価される可能性が高い。
+        そして、いま進んでいる“覚えない設計”への移行は、技術進化というより、人間中心設計への回帰である。
+      </p>
+</div>
+</section>
+<section id="s6">
+<h2>６．まとめ</h2>
+<p>
+      ＩＤ・パスワードは、1960年代に少人数・管理者前提の技術として生まれ、1970〜80年代に専門家世界で定着し、
+      1995年以降に一般社会へ拡張されたことで前提が崩れ、構造的に破綻した。
+      とくに日本では縦割り制度と自己責任文化、紙文化との悪融合により、負担が増幅しやすかった。
+    </p>
+<div class="box">
+<p class="k">結論（実践の要点）</p>
+<ul>
+<li><strong>30以上のＩＤ・パスワードを「覚えて管理する」設計を捨てる。</strong></li>
+<li><strong>管理するのは「人」ではなく「道具」</strong>（端末の保管庫・自動入力・パスキー）。</li>
+<li><strong>紙は「地図（入口と復旧）」</strong>に限定し、秘密文字列は書かない。</li>
+<li><strong>日常は生体＋端末</strong>、パスワードは<strong>非常用</strong>へ。</li>
+</ul>
+</div>
+<p>
+      高齢期を含む長期の人生を考えるなら、セキュリティとは「難しくすること」ではなく、<strong>失敗しても立ち直れる構造</strong>を作ることである。
+      これが、人間中心設計としての「ＩＤ・パスワード問題」への答えである。
+    </p>
+<p class="small">
+      ※ 本文は、CTSS起源、Windows 95の転換点、インターネット社会での破綻、日本での深刻化要因、認知科学的問題点、
+      世界最高水準の認証思想、FIDO2等の現実的解決策、人間中心設計の最終方針を踏まえて再構成した。
+    </p>
+</section>
+</main>
+</body>
+</html>

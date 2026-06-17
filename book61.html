@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>マザーボード－ＮＥＣ９８シリーズ敗北の原因－</title>
+  <style>
+    body{
+      font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;
+      line-height:1.9;
+      margin:24px;
+      max-width:980px;
+      color:#111;
+    }
+    h1{font-size:1.85rem;margin:0 0 12px}
+    h2{font-size:1.28rem;margin:30px 0 10px;border-left:6px solid #333;padding-left:10px}
+    h3{font-size:1.05rem;margin:16px 0 8px}
+    p{margin:10px 0}
+    ul{margin:8px 0 10px 1.2em}
+    li{margin:6px 0}
+    figure{
+      margin:14px 0 18px;
+      padding:12px;
+      border:1px solid #ddd;
+      border-radius:12px;
+      background:#fafafa;
+    }
+    figure img{
+      max-width:100%;
+      height:auto;
+      display:block;
+      margin:0 auto 10px;
+      border-radius:12px;
+    }
+    figcaption{font-size:.92rem;color:#333;margin-top:8px}
+    .lead{
+      background:#fff7e6;
+      border:1px solid #ffd59a;
+      padding:14px;
+      border-radius:12px;
+    }
+    .note{
+      background:#f3f6ff;
+      border:1px solid #cfd9ff;
+      padding:12px;
+      border-radius:12px;
+      font-size:.95rem;
+      color:#222;
+    }
+    .small{font-size:.9rem;color:#555}
+    .hr{height:1px;background:#e6e6e6;margin:22px 0}
+  </style>
+</head>
+
+<body>
+  <h1>マザーボード－ＮＥＣ９８シリーズ敗北の原因－</h1>
+
+  <p class="lead">
+    NECのPC-98シリーズは、日本語環境や業務用途に強く、1980～90年代前半の日本市場を長く支配しました。
+    しかし最終的に主流の座を失った理由は、「性能が低かったから」だけではありません。
+    より決定的だったのは、パソコンが世界規模で“部品の交換と標準化”によって進化する流れに入ったとき、
+    PC-98の<strong>独自仕様（クローズドな設計）</strong>が重荷になったことです。
+    とくにWindows95の登場は、OSがハードを選び始める転換点であり、マザーボードが「単なる基板」から
+    「PC進化の主戦場」へ変わった事件でした。
+  </p>
+
+  <div class="note">
+    <strong>この文章の見取り図</strong><br/>
+    1) マザーボードとは何か（歴史と役割） → 2) PC-98とIBM互換機の設計思想の差 →
+    3) Windows95が要求した“標準の土台” → 4) 外観が変わらないのに中身が進化する理由 →
+    5) AI時代にマザーボードが担う役割 → 6) まとめ（PC-98敗北の核心）
+  </div>
+
+  <div class="hr"></div>
+
+  <h2>１。マザーボードとは</h2>
+
+  <h3>（１）定義：中心の基板＝「土台」</h3>
+  <p>
+    マザーボードは、CPU、メモリ、ストレージ、拡張カード、入出力（USBやLANなど）を<strong>電気的につなぐ中心の基板</strong>です。
+    人間にたとえるなら、CPUが「脳」、メモリが「作業机」だとすると、マザーボードはそれらを結ぶ「神経と骨格」に近い存在です。
+    目に見えやすい部品（CPUやメモリ）ほど派手ではありませんが、信号を正しく運び、電力を安定供給し、熱を逃がし、
+    さらに周辺機器を正しく認識させるなど、PCの土台として多くの役割を抱えています。
+  </p>
+
+  <h3>（２）歴史：原型→萌芽→定着</h3>
+  <p>
+    「マザーボードはいつ誕生したか」は、実は定義によって答えが変わります。技術史として整理すると次の3段階です。
+  </p>
+  <ul>
+    <li><strong>原型（1960年代）</strong>：大型計算機やミニコンの「バックプレーン方式」。中央の配線板に、CPUカードやメモリカードを差して動かす。</li>
+    <li><strong>萌芽（1970年代）</strong>：半導体が進歩し、CPU（マイクロプロセッサ）、メモリ、I/Oを1枚の基板にまとめる「ワンボード化」が進む。</li>
+    <li><strong>定着（1981年）</strong>：IBM PCで、一般に“マザーボード”としての形（CPU・メモリ・拡張スロット等を載せる中心基板）が広く普及。</li>
+  </ul>
+  <p>
+    つまり、マザーボードは突然生まれたというより、バックプレーンという祖先から、ワンボード化を経て、IBM PCの時代に一般化した――
+    そう考えると自然です。
+  </p>
+
+  <figure>
+    <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="マザーボードのイメージ図" loading="lazy" />
+
+    <svg viewBox="0 0 760 220" width="100%" height="220" role="img" aria-label="マザーボードの役割図">
+      <rect x="10" y="10" width="740" height="200" rx="14" fill="#ffffff" stroke="#333" stroke-width="2"/>
+      <rect x="40" y="55" width="160" height="70" rx="10" fill="#e9f3ff" stroke="#2b5" stroke-width="2"/>
+      <text x="120" y="95" text-anchor="middle" font-size="18">CPU</text>
+      <rect x="230" y="55" width="160" height="70" rx="10" fill="#fff2e8" stroke="#d55" stroke-width="2"/>
+      <text x="310" y="95" text-anchor="middle" font-size="18">メモリ</text>
+      <rect x="420" y="55" width="160" height="70" rx="10" fill="#f0ffe9" stroke="#5a5" stroke-width="2"/>
+      <text x="500" y="95" text-anchor="middle" font-size="18">ストレージ</text>
+      <rect x="610" y="55" width="110" height="70" rx="10" fill="#f6f0ff" stroke="#66c" stroke-width="2"/>
+      <text x="665" y="88" text-anchor="middle" font-size="16">拡張</text>
+      <text x="665" y="110" text-anchor="middle" font-size="16">スロット</text>
+      <line x1="200" y1="90" x2="230" y2="90" stroke="#333" stroke-width="2"/>
+      <line x1="390" y1="90" x2="420" y2="90" stroke="#333" stroke-width="2"/>
+      <line x1="580" y1="90" x2="610" y2="90" stroke="#333" stroke-width="2"/>
+      <rect x="250" y="145" width="260" height="48" rx="10" fill="#fff" stroke="#333" stroke-width="2"/>
+      <text x="380" y="175" text-anchor="middle" font-size="16">配線・制御・電源（チップセット等）</text>
+    </svg>
+    <figcaption>図1：マザーボードは「部品をつなぐ土台」。配線・制御・電源が性能と安定性を決めます。</figcaption>
+  </figure>
+
+  <h3>（３）“土台”の重要性：速さだけではない</h3>
+  <p>
+    マザーボードが重要なのは、「CPUが速いか遅いか」とは別の軸でPCの体験を決めるからです。たとえば――
+  </p>
+  <ul>
+    <li><strong>安定性</strong>：電源回路が弱いと、負荷がかかった瞬間に不安定になる。</li>
+    <li><strong>拡張性</strong>：後からGPUや高速SSDを足せるかどうかは、スロットや規格で決まる。</li>
+    <li><strong>互換性</strong>：OSや周辺機器が「標準通り」に動くかは、土台の設計に左右される。</li>
+    <li><strong>将来性</strong>：同じCPUでも、より新しい規格（PCIe世代、USB世代など）に対応できるかは基板次第。</li>
+  </ul>
+  <p>
+    ここで鍵になる言葉が<strong>「標準化」</strong>です。土台が標準化されると、世界中の部品が“同じルール”で作られ、競争で安く良いものが出回り、
+    進化が加速します。逆に独自仕様が強いと、互換性を維持するコストが増え、市場規模も閉じやすくなります。
+    PC-98の勝利と敗北は、この標準化の波と深く結びつきます。
+  </p>
+
+  <div class="hr"></div>
+
+  <h2>２。９８シリーズとＩＢＭ互換機の比較</h2>
+
+  <h3>（１）PC-98にもマザーボードはあった</h3>
+  <p>
+    まず誤解をほどきます。PC-98にはマザーボードが“ない”のではありません。
+    PC-9801シリーズの内部には、CPU、メインメモリ、グラフィック制御、I/O制御、拡張スロット（Cバス）などを載せた中心基板があり、
+    機能的には完全にマザーボードです。問題は「ある／ない」ではなく、<strong>マザーボードをどう位置付けたか（思想）</strong>です。
+  </p>
+
+  <h3>（２）設計思想の差：オープンか、独自最適か</h3>
+  <p>
+    IBM互換機（いわゆるDOS/V機、PC/AT互換機）では、マザーボードは「交換可能な部品」として発達しました。
+    互換性が重視され、規格が広く共有されるほど市場が大きくなり、部品の価格が下がり、さらに多くのメーカーが参入する――という好循環が起きます。
+    一方、PC-98は<strong>日本語表示や国内業務用途に最適化</strong>し、完成度を高めることで市場を取ってきました。
+    これは当時として合理的でしたが、裏返すと、土台（マザーボード）を世界規模の標準に合わせにくい構造でもありました。
+  </p>
+
+  <h3>（３）“独自仕様”が持つ強みと弱み</h3>
+  <p>
+    独自仕様には強みがあります。たとえば当時の日本語環境は、表示・フォント・入力などで負荷が大きく、OSやアプリも未成熟でした。
+    その中でPC-98は、国内の現実に合わせてハードとソフトを整え、「買えば仕事で使える」世界を作りました。
+    しかし独自仕様には、次のような弱みも生まれます。
+  </p>
+  <ul>
+    <li><strong>部品の選択肢が狭い</strong>：世界で売れる規格ほど、部品が大量に出回り安くなる。独自規格は部品の数が増えにくい。</li>
+    <li><strong>改良スピードが落ちやすい</strong>：メーカーが独自に互換性を守りながら進化させる必要があり、変化に慎重になる。</li>
+    <li><strong>周辺機器対応が遅れやすい</strong>：海外で標準化された新しいカードや規格を、そのまま取り込めない。</li>
+    <li><strong>ソフトウェア側が苦しくなる</strong>：OSやアプリが「世界標準」を前提に作られると、独自機は移植コストが高い。</li>
+  </ul>
+  <p>
+    PC-98は、拡張にCバスなど独自要素を含み、さらに機種ごとの差が積み上がることで、
+    国内では強いが世界の標準化の流れには乗りにくい――という構造を抱えました。
+    そして1990年代半ば、世界標準を強烈に押し進める「事件」が起きます。それがWindows95です。
+  </p>
+
+  <figure>
+    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="PC-98とIBM PCの比較イメージ" loading="lazy" />
+
+    <svg viewBox="0 0 760 220" width="100%" height="220" role="img" aria-label="PC-98とIBM互換機の思想比較">
+      <rect x="20" y="20" width="340" height="180" rx="14" fill="#ffffff" stroke="#333" stroke-width="2"/>
+      <rect x="400" y="20" width="340" height="180" rx="14" fill="#ffffff" stroke="#333" stroke-width="2"/>
+      <text x="190" y="55" text-anchor="middle" font-size="18">IBM互換機（オープン）</text>
+      <text x="570" y="55" text-anchor="middle" font-size="18">PC-98（独自最適）</text>
+
+      <text x="190" y="92" text-anchor="middle" font-size="15">マザーボード＝交換可能</text>
+      <text x="190" y="118" text-anchor="middle" font-size="15">規格が共有される</text>
+      <text x="190" y="144" text-anchor="middle" font-size="15">部品が大量・低価格</text>
+      <text x="190" y="170" text-anchor="middle" font-size="15">世界市場で加速</text>
+
+      <text x="570" y="92" text-anchor="middle" font-size="15">マザーボード＝製品の中核</text>
+      <text x="570" y="118" text-anchor="middle" font-size="15">独自要素が多い</text>
+      <text x="570" y="144" text-anchor="middle" font-size="15">部品市場が閉じがち</text>
+      <text x="570" y="170" text-anchor="middle" font-size="15">移行コストが増える</text>
+    </svg>
+    <figcaption>図2：「オープンな土台」は世界市場と相性が良い。独自最適は短期の完成度で勝ちやすいが、標準化の波で重くなります。</figcaption>
+  </figure>
+
+  <div class="hr"></div>
+
+  <h2>３。Windows95の登場</h2>
+
+  <h3>（１）Windows95以前：OSがハードに従属しやすかった</h3>
+  <p>
+    MS-DOSの時代、パソコンは機種ごとの差が大きく、OSはハードの癖（BIOSや周辺機器）に合わせて動く面が強くありました。
+    たとえば同じDOSでも、グラフィックや周辺機器の扱いは機種依存が残り、メーカーごとに工夫が必要でした。
+    この時代は「ハードが主で、OSが合わせる」感覚がまだ強かったと言えます。
+  </p>
+
+  <h3>（２）Windows95が前提にした世界：32bit・GUI常時稼働・マルチタスク</h3>
+  <p>
+    Windows 95は、単なる見た目の刷新だけではありません。32bit化、GUIの常時稼働、マルチタスク（複数の作業を同時に回す）を
+    本格的に前提にし、さらに周辺機器の扱い方を大きく変えました。
+    ここで重要なのは、OSが高度になるほど、土台（マザーボード）に対して「必要条件」を突きつけるようになる点です。
+    OSは、ハードの差を吸収して誰でも同じように使える世界を作りたい。すると土台には、次のような機能が求められます。
+  </p>
+  <ul>
+    <li><strong>デバイスを自動で認識・設定する仕組み</strong></li>
+    <li><strong>標準化された拡張バス（例：PCI）</strong></li>
+    <li><strong>割り込みや資源（I/O、DMAなど）を整然と管理する仕組み</strong></li>
+    <li><strong>電源管理（省電力、復帰など）をOSと協調する仕組み</strong></li>
+  </ul>
+
+  <h3>（３）Plug and Play（PnP）＝マザーボード革命</h3>
+  <p>
+    その象徴がPlug and Play（PnP）です。PnPは「挿せば使える」を目指す仕組みで、ユーザーが難しい設定（IRQやI/Oアドレスの調整）を
+    しなくても周辺機器が動く世界を作りました。
+    しかし、PnPはOSだけで成立しません。OSが「何が挿さっているか」を知るには、マザーボード側が情報を提供し、資源の割当を調整できる必要があります。
+    つまりPnPの普及は、マザーボードを「配線板」ではなく、OSと対話する<strong>能動的な土台</strong>へ押し上げました。
+  </p>
+
+  <h3>（４）PC-98にとって何が不利だったのか</h3>
+  <p>
+    ここでPC-98の独自性が重くのしかかります。IBM互換機は「互換」が最優先で、世界標準に合わせる動機が強い。
+    一方、PC-98は国内最適の積み重ねで強みを作ったため、標準へ寄せるほど既存資産（ソフト・周辺機器・ユーザー）との整合が難しくなる面がありました。
+    さらに、世界のソフトや周辺機器メーカーは「標準の土台」を前提に開発を進めます。
+    結果として、Windows 95時代に入ると、PC-98は「Windowsのための最短コース」を走りにくくなり、
+    市場の中心がIBM互換機へ一気に移る土壌ができました。
+  </p>
+
+  <figure>
+    <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-4.0.3&auto=format&fit=crop&w-800&q=80" alt="Windows 95の起動画面イメージ" loading="lazy" />
+
+    <svg viewBox="0 0 760 220" width="100%" height="220" role="img" aria-label="Windows95が土台に要求した標準">
+      <rect x="20" y="24" width="720" height="172" rx="14" fill="#fff" stroke="#333" stroke-width="2"/>
+      <text x="380" y="58" text-anchor="middle" font-size="18">Windows 95（PnP）が求めた「標準の土台」</text>
+
+      <rect x="70" y="85" width="170" height="70" rx="10" fill="#e9f3ff" stroke="#333"/>
+      <text x="155" y="115" text-anchor="middle" font-size="16">PnP BIOS</text>
+
+      <rect x="295" y="85" width="170" height="70" rx="10" fill="#fff2e8" stroke="#333"/>
+      <text x="380" y="115" text-anchor="middle" font-size="16">PCI</text>
+
+      <rect x="520" y="85" width="170" height="70" rx="10" fill="#f0ffe9" stroke="#333"/>
+      <text x="605" y="115" text-anchor="middle" font-size="16">電源管理</text>
+
+      <line x1="240" y1="120" x2="295" y2="120" stroke="#333" stroke-width="2"/>
+      <line x1="465" y1="120" x2="520" y2="120" stroke="#333" stroke-width="2"/>
+
+      <text x="380" y="185" text-anchor="middle" font-size="14">OSが高度になるほど「土台の標準化」が必須になる</text>
+    </svg>
+    <figcaption>図3：PnPは“自動”ですが、実際にはマザーボード側の標準対応が土台になります。</figcaption>
+  </figure>
+
+  <div class="hr"></div>
+
+  <h2>４。変わらぬ外観を持つ進化中のマザーボード</h2>
+
+  <h3>（１）外観が変わらない最大理由：ATXという「完成しすぎた解」</h3>
+  <p>
+    「マザーボードの見た目が30年前と変わらない」ことは、技術が止まった証拠ではありません。
+    むしろ、PCの組み立て方としてATX規格が早い段階で<strong>実用上の最適解</strong>に到達し、
+    それが社会全体の“前提”になったからです。
+  </p>
+  <p>
+    ATXは基板サイズ、ネジ穴の位置、拡張スロットの並び、I/Oパネルの位置などを規定します。
+    そしてATXが普及すると、周辺もATX前提で最適化されます。
+    具体的には、ケースの金型、電源ユニットの形、冷却ファンの位置、拡張カードの固定方法までが連動します。
+    ここを変えると「全部壊れる」（互換性が失われる）ため、外観は安定しました。
+  </p>
+
+  <h3>（２）物理法則と人間工学：結局、そこに落ち着く</h3>
+  <p>
+    さらに、マザーボードの形は物理条件でも縛られます。
+    空気で冷やすなら、熱い部品（CPUなど）は空気が流れやすい位置に置く必要があります。
+    人間が組み立てるなら、コネクタ類は手が届きやすく、配線が混乱しにくい位置が望ましい。
+    金属ケースに収めるなら、強度や電磁ノイズ対策の都合も出ます。
+    こうした条件を考えると、ATXの配置は合理的で、外観の大変化は起こりにくいのです。
+  </p>
+
+  <h3>（３）では、何が進化したのか：外から見えない中身</h3>
+  <p>
+    外観が似ていても、中身は別物になりました。進化の中心は「高速化がもたらす難しさ」です。
+    信号が速くなるほど、配線は短く正確である必要があり、少しのノイズや反射でも不安定になります。
+    そのため基板は多層化し、配線の引き回し、グラウンド（基準電位）設計、電源の安定化が高度化しました。
+    また、CPUやGPUの消費電力が増えるにつれ、電源回路（VRM）も強化され、熱設計も重要になりました。
+  </p>
+  <p>
+    たとえるなら、昔のマザーボードは「道路と交差点」を作ればよかった。
+    いまのマザーボードは「高速道路のジャンクション」を作る世界で、車（信号）が高速すぎて、
+    道路の角度や路面の質（配線の品質）が少し悪いだけで事故（エラー）が起きる。
+    そのため、外形が同じでも、設計の難易度は大きく上がっています。
+  </p>
+
+  <figure>
+    <img src="https://images.unsplash.com/photo-1562408590-e32931084e23?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="現代の高性能マザーボード" loading="lazy" />
+
+    <svg viewBox="0 0 760 220" width="100%" height="220" role="img" aria-label="ATXで外観が固定される構造">
+      <rect x="30" y="30" width="700" height="160" rx="14" fill="#fff" stroke="#333" stroke-width="2"/>
+      <text x="380" y="62" text-anchor="middle" font-size="18">ATX規格（外観の骨格）</text>
+      <text x="380" y="92" text-anchor="middle" font-size="14">互換性の鎖：変えると周辺が総崩れ</text>
+
+      <rect x="80" y="115" width="180" height="55" rx="10" fill="#e9f3ff" stroke="#333"/>
+      <text x="170" y="148" text-anchor="middle" font-size="14">ケース（金型）</text>
+
+      <rect x="290" y="115" width="180" height="55" rx="10" fill="#fff2e8" stroke="#333"/>
+      <text x="380" y="148" text-anchor="middle" font-size="14">電源・冷却</text>
+
+      <rect x="500" y="115" width="180" height="55" rx="10" fill="#f0ffe9" stroke="#333"/>
+      <text x="590" y="148" text-anchor="middle" font-size="14">拡張カード</text>
+
+      <line x1="260" y1="142" x2="290" y2="142" stroke="#333" stroke-width="2"/>
+      <line x1="470" y1="142" x2="500" y2="142" stroke="#333" stroke-width="2"/>
+    </svg>
+    <figcaption>図4：外観は互換性のため固定化。だからこそ、中身の改良（多層化、電源、信号品質、放熱）が積み上がります。</figcaption>
+  </figure>
+
+  <div class="hr"></div>
+
+  <h2>５。ＡＩ時代のマザーボード</h2>
+
+  <h3>（１）「終わる」と言われる理由：SoC化と“開けないPC”</h3>
+  <p>
+    近年、「マザーボードは終わるのでは」と言われる背景には、スマホやノートPCのように
+    CPU・GPU・I/Oが1枚に統合されるSoC化（System on a Chip）が進み、「基板に挿すもの」が減ったことがあります。
+    また、薄型化・一体化が進むと、ユーザーはPCを開けて交換しません。修理も交換も難しくなり、
+    自作向けマザーボード市場は縮小しやすくなります。
+  </p>
+
+  <h3>（２）それでも「役割」は消えない：AI・サーバーでは主戦場</h3>
+  <p>
+    しかし結論は単純ではありません。マザーボードは「今の形のまま」縮小する分野がある一方、
+    AIやサーバー分野ではむしろ主戦場になります。理由は、AI計算が<strong>電力・熱・通信</strong>の限界にぶつかりやすいからです。
+  </p>
+  <ul>
+    <li><strong>電力</strong>：AI用GPUや高性能CPUは大電力を消費する。電源回路（VRM）の設計力が性能と安定性を左右する。</li>
+    <li><strong>熱</strong>：計算が速いほど発熱が増える。冷却の設計（ヒートシンク、エアフロー、液冷前提など）が不可欠。</li>
+    <li><strong>通信（データ移動）</strong>：AIはデータ量が桁違い。高速バス（PCIe等）で安定してデータを運ぶ“信号品質”が重要。</li>
+  </ul>
+  <p>
+    AIは「計算」そのものだけでなく、「計算に必要なデータをどれだけ速く運べるか」「熱で性能が落ちないか」で実効性能が決まりやすい。
+    つまり、AI時代ほど“土台の設計”が効いてくるのです。
+  </p>
+
+  <h3>（３）台湾が強い理由（補足）：半導体だけではない</h3>
+  <p>
+    ここで視点を産業に移すと、マザーボード分野で台湾企業（ASUS、Gigabyte、MSIなど）が強い理由も理解しやすくなります。
+    台湾が強いのは「半導体が強いから」だけではなく、受託製造（OEM/ODM）を基盤に、
+    <strong>設計→実装→量産→改良</strong>を回し続ける産業構造を長年かけて完成させたからです。
+    TSMCは“直接の主役”ではないが、最先端半導体を外注できる安心感（サプライチェーンの強さ）として大きな後ろ盾になります。
+    こうした水平分業の強さは、標準化されたPC世界と非常に相性が良いと言えます。
+  </p>
+
+  <figure>
+    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="AI・データセンター向けサーバーマザーボード" loading="lazy" />
+
+    <svg viewBox="0 0 760 220" width="100%" height="220" role="img" aria-label="AI時代の主戦場">
+      <rect x="20" y="20" width="720" height="180" rx="14" fill="#fff" stroke="#333" stroke-width="2"/>
+      <text x="380" y="55" text-anchor="middle" font-size="18">AI時代：マザーボードの主戦場</text>
+
+      <rect x="60" y="80" width="200" height="90" rx="12" fill="#fff2e8" stroke="#333"/>
+      <text x="160" y="112" text-anchor="middle" font-size="16">電力（VRM）</text>
+      <text x="160" y="136" text-anchor="middle" font-size="12">大電流・安定供給</text>
+
+      <rect x="280" y="80" width="200" height="90" rx="12" fill="#e9f3ff" stroke="#333"/>
+      <text x="380" y="112" text-anchor="middle" font-size="16">冷却</text>
+      <text x="380" y="136" text-anchor="middle" font-size="12">熱密度が限界へ</text>
+
+      <rect x="500" y="80" width="200" height="90" rx="12" fill="#f0ffe9" stroke="#333"/>
+      <text x="600" y="112" text-anchor="middle" font-size="16">高速接続</text>
+      <text x="600" y="136" text-anchor="middle" font-size="12">データ移動がボトルネック</text>
+    </svg>
+    <figcaption>図5：AIの実効性能は「計算」だけでなく、電力・熱・データ移動で決まりやすい。土台（基板設計）が効きます。</figcaption>
+  </figure>
+
+  <div class="hr"></div>
+
+  <h2>６。まとめ</h2>
+
+  <h3>（１）PC-98敗北の核心：独自最適が“標準化の波”で重荷になった</h3>
+  <p>
+    PC-98シリーズは、当時の日本に必要な要件（日本語環境、業務用途、国内ソフト資産）を満たし、
+    「買えばすぐ使える」世界を作った点で大成功でした。ところが、PCの進化が世界規模の標準化に依存するようになると、
+    独自仕様は次第に不利になります。世界標準に合わせたIBM互換機は、部品が安く大量に出回り、周辺機器もソフトも集まり、
+    さらに市場が大きくなる――という連鎖を起こしました。
+  </p>
+
+  <h3>（２）Windows95が決定打になった理由：OSが土台に条件を出した</h3>
+  <p>
+    Windows 95は、OSが「標準の土台」を強く求める方向に世界を押し進めました。
+    Plug and Playのように“ユーザーが楽になる機能”は、マザーボード側の標準対応を前提にします。
+    その結果、土台が標準から外れるほど、移行コストが増えます。
+    PC-98は独自の積み重ねで勝っていたがゆえに、標準へ寄せるほど自分の強みや資産と衝突しやすい構造を抱え、
+    ここで潮目が大きく変わりました。
+  </p>
+
+  <h3>（３）外観が変わらないのは停滞ではなく、互換性の勝利</h3>
+  <p>
+    マザーボードの外観が大きく変わらないのは、ATX規格が「実用上の最適解」として早期に固まり、
+    ケース・電源・冷却・拡張カードまでがATX前提で最適化されたからです。
+    外形は安定しても、中身（多層配線、信号品質、電源回路、放熱設計）は激しく進化しました。
+    つまり“変わらない”のは、互換性を守りながら中身を進化させ続けた結果です。
+  </p>
+
+  <h3>（４）AI時代のマザーボード：形は変えても、役割は中心に残る</h3>
+  <p>
+    AI時代には、電力・熱・通信の重要性がさらに増します。スマホ的な一体化の世界では「挿す部品」が減り、
+    自作向け市場は縮む可能性があります。しかしサーバー／AI分野では、むしろ基板設計の巧拙が性能と安定性を左右します。
+    マザーボードという“形”が将来変わるとしても、「部品をつなぐ母体」という役割は、確実に残る――
+    これが技術史から見た現実的な結論です。
+  </p>
+
+  <figure>
+    <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="過去から未来への技術進化を象徴するイメージ" loading="lazy" />
+
+    <svg viewBox="0 0 760 220" width="100%" height="220" role="img" aria-label="流れの年表">
+      <rect x="20" y="20" width="720" height="180" rx="14" fill="#fff" stroke="#333" stroke-width="2"/>
+      <text x="380" y="54" text-anchor="middle" font-size="18">技術の流れ（超要約）</text>
+
+      <line x1="70" y1="120" x2="690" y2="120" stroke="#333" stroke-width="2"/>
+      <circle cx="140" cy="120" r="10" fill="#e9f3ff" stroke="#333"/>
+      <circle cx="360" cy="120" r="10" fill="#fff2e8" stroke="#333"/>
+      <circle cx="580" cy="120" r="10" fill="#f0ffe9" stroke="#333"/>
+
+      <text x="140" y="95" text-anchor="middle" font-size="14">1981 IBM PC</text>
+      <text x="140" y="155" text-anchor="middle" font-size="12">互換が世界化</text>
+
+      <text x="360" y="95" text-anchor="middle" font-size="14">1995 Windows 95</text>
+      <text x="360" y="155" text-anchor="middle" font-size="12">標準化が加速</text>
+
+      <text x="580" y="95" text-anchor="middle" font-size="14">AI時代</text>
+      <text x="580" y="155" text-anchor="middle" font-size="12">電力・熱・通信</text>
+    </svg>
+    <figcaption>図6：PC-98の敗北は「標準化の強さ」による歴史の流れとして理解できます。</figcaption>
+  </figure>
+
+  <p class="small">book61.html</p>
+</body>
+</html>
