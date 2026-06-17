@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>プラネタリウム実験｜渡り鳥の太陽コンパスと星コンパス</title>
+  <style>
+    :root {
+      --bg: #f4f8ff;
+      --card: #ffffff;
+      --ink: #16324f;
+      --sub: #486581;
+      --line: #cfe0f5;
+      --accent: #1d6fd6;
+      --accent2: #ffb703;
+      --accent3: #18a999;
+      --danger: #d1495b;
+      --shadow: 0 12px 30px rgba(20,50,80,.12);
+      --radius: 20px;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      background: linear-gradient(180deg, #eef5ff 0%, #f9fbff 100%);
+      color: var(--ink);
+      line-height: 1.8;
+      padding: 20px 0 60px;
+    }
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .toc {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 24px 30px;
+      margin: 30px 0;
+      box-shadow: var(--shadow);
+    }
+    .toc h2 {
+      margin-bottom: 16px;
+      color: var(--ink);
+      font-size: 1.6rem;
+      border-left: 6px solid var(--accent);
+      padding-left: 16px;
+    }
+    .toc ul {
+      columns: 2;
+      list-style: none;
+    }
+    .toc li {
+      margin: 8px 0;
+      font-size: 1.05rem;
+    }
+    .toc a {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 500;
+      border-bottom: 1px dashed var(--line);
+    }
+    .toc a:hover {
+      border-bottom: 1px solid var(--accent);
+    }
+    h1 {
+      font-size: 2.6rem;
+      background: linear-gradient(135deg, #16324f 0%, #245c9c 60%, #5fa8ff 100%);
+      color: white;
+      padding: 40px 30px;
+      border-radius: 40px;
+      box-shadow: var(--shadow);
+      margin: 20px 0 10px;
+    }
+    h2 {
+      font-size: 1.9rem;
+      margin: 40px 0 20px;
+      padding-bottom: 8px;
+      border-bottom: 3px solid var(--accent);
+      color: #15467a;
+    }
+    h3 {
+      font-size: 1.4rem;
+      margin: 30px 0 15px;
+      color: #1d4e7c;
+    }
+    .footnote-ref {
+      font-size: 0.8rem;
+      vertical-align: super;
+      color: var(--danger);
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .footnotes {
+      margin-top: 60px;
+      background: #edf5ff;
+      border-radius: var(--radius);
+      padding: 30px;
+      border: 1px solid var(--line);
+    }
+    .footnotes h3 {
+      margin-top: 0;
+    }
+    .footnotes ol {
+      padding-left: 20px;
+    }
+    .diagram-embed {
+      margin: 40px 0;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .diagram-embed .title {
+      background: linear-gradient(180deg, #f8fbff 0%, #eef6ff 100%);
+      padding: 15px 25px;
+      font-weight: bold;
+      font-size: 1.2rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .diagram-embed .content {
+      padding: 20px;
+    }
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(12,24,40,.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 1000;
+    }
+    .modal.open { display: flex; }
+    .modal-card {
+      width: min(700px, 96%);
+      background: white;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid #d7e6f7;
+    }
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f0f7ff;
+      padding: 16px 20px;
+    }
+    .modal-head h3 {
+      margin: 0;
+      color: #164d85;
+    }
+    .close-btn {
+      background: #e0edff;
+      border: none;
+      border-radius: 30px;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-weight: bold;
+      color: #164d85;
+    }
+    .modal-body {
+      padding: 20px;
+      max-height: 60vh;
+      overflow-y: auto;
+    }
+    .key {
+      background: #f4f9ff;
+      border-left: 4px solid var(--accent);
+      padding: 12px 14px;
+      margin-top: 15px;
+      border-radius: 12px;
+    }
+    .hotspot {
+      position: absolute;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(180deg, #ffde85, #ffb703);
+      border: 2px solid white;
+      color: #3e2b00;
+      font-weight: 900;
+      font-size: 1.2rem;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(255,183,3,.4);
+      transition: transform 0.1s ease;
+      z-index: 10;
+    }
+    .hotspot:hover { transform: scale(1.1); }
+    .relative { position: relative; }
+    .text-img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+    }
+    .quote {
+      background: #fafcff;
+      padding: 20px;
+      border-radius: 20px;
+      border-left: 6px solid var(--accent2);
+      margin: 20px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 12px 16px;
+      text-align: left;
+    }
+    th {
+      background: #e2efff;
+    }
+    .caption {
+      font-size: 0.9rem;
+      color: var(--sub);
+      text-align: center;
+      margin-top: 8px;
+    }
+    @media (max-width: 720px) {
+      h1 { font-size: 2rem; padding: 30px 20px; }
+      .toc ul { columns: 1; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>🌍 プラネタリウム実験<br>― 小鳥が星と太陽を使って旅する不思議を解き明かす ―</h1>
+<div style="text-align:center;margin:20px 0;">
+<a href="book92child_anime.html"
+style="display:inline-block;
+padding:12px 20px;
+background:#2f6fed;
+color:#fff;
+text-decoration:none;
+border-radius:22px;
+font-weight:bold;
+box-shadow:0 4px 10px rgba(0,0,0,0.15);">
+🎬 アニメで学ぶ版はこちら
+</a>
+</div>
+<div style="text-align:center;margin:20px 0;">
+<a href="book92.html"
+style="display:inline-block;padding:10px 18px;background:#1d6fd6;color:#fff;
+text-decoration:none;border-radius:20px;font-weight:bold;margin-right:10px;">
+📘 理論編（高校生向け）
+</a>
+
+<a href="book92child.html"
+style="display:inline-block;padding:10px 18px;background:#2f6fed;color:#fff;
+text-decoration:none;border-radius:20px;font-weight:bold;">
+🔰 中学生向け
+</a>
+</div>
+
+<div class="toc">
+  <h2>📖 目次</h2>
+  <ul>
+    <li><a href="#sec1">1. はじめに ─プラネタリウム実験以前の状況─</a></li>
+    <li><a href="#sec2">2. 目的 ─なぜプラネタリウム実験を実施するのか─</a></li>
+    <li><a href="#sec3">3. 仮説 ─プラネタリウム実験により得られる結果とは─</a></li>
+    <li><a href="#sec4">4. 実験 ─どのような実験で仮説を実証したのか─</a></li>
+    <li><a href="#sec5">5. 結果 ─仮説は証明されたのか─</a></li>
+    <li><a href="#sec6">6. 考察とまとめ ─証明された真実の波及効果─</a></li>
+    <li><a href="#footnotes">📌 脚注</a></li>
+  </ul>
+</div>
+
+<!-- ========== セクション1 ========== -->
+<section id="sec1">
+  <h2>1. はじめに ─プラネタリウム実験以前の状況─</h2>
+  <p>春になると南から渡ってきて秋に南へ帰っていく鳥たち。なぜ彼らは迷わず何千キロも旅できるのでしょうか。20世紀半ばまで、渡り鳥のナビゲーションについてはいくつかの説がありました。「川や山脈を覚えている」「生まれつき方向がわかる」などです。しかし夜に海を渡る鳥もいるため、地形だけでは説明できません。</p>
+  <p>1950年代、ドイツのグスタフ・クラマー<sup class="footnote-ref" onclick="scrollToFootnote(1)">[1]</sup>はムクドリを使い、鳥が<strong>太陽の位置</strong>をコンパスにしていることを示しました。しかし太陽は一日で動くため、「太陽が右＝南」という単純なルールは使えません。クラマーは鳥が体内時計も使っていると考えました。</p>
+  <p>その後、アメリカの動物行動学者スティーブン・T・エムレン<sup class="footnote-ref" onclick="scrollToFootnote(2)">[2]</sup>は夜間に渡る鳥に注目し、星の利用を調べようとしました。しかし本物の空で星の配置を操作することは不可能です。そこで彼が目をつけたのが、人工の空を作り出せる<strong>プラネタリウム</strong>でした。</p>
+</section>
+
+<!-- ========== セクション2 ========== -->
+<section id="sec2">
+  <h2>2. 目的 ─なぜプラネタリウム実験を実施するのか─</h2>
+  <p>野外観察には限界があります。太陽の位置を自由に変えられない、天候に左右される、地形や磁場などの他の手がかりが混ざる。プラネタリウムなら、太陽や星の配置を完全にコントロールできます。目的は「鳥が太陽や星のどの性質を手がかりに方角を決めるのかを、人工的な環境で明らかにする」ことです。</p>
+  <p>特に重要なのは<strong>時間補償付き太陽コンパス</strong><sup class="footnote-ref" onclick="scrollToFootnote(3)">[3]</sup>の証明です。太陽の位置と体内時計を組み合わせているなら、太陽の見える位置をずらしたり、体内時計を人為的にずらす（クロックシフト実験<sup class="footnote-ref" onclick="scrollToFootnote(4)">[4]</sup>）と、鳥の向く方向も変わると予想されます。また星については、特定の星座を覚えているのか、それとも星空全体の回転を見ているのかを確かめられます。</p>
+</section>
+
+<!-- ========== セクション3 ========== -->
+<section id="sec3">
+  <h2>3. 仮説 ─プラネタリウム実験により得られるであろう結果─</h2>
+  <p>エムレンらは以下の仮説を立てました。</p>
+  <ul>
+    <li><strong>仮説1（太陽コンパス）</strong>：太陽の位置を人為的に変えると、鳥の向く方向も同じ角度だけ変化する。</li>
+    <li><strong>仮説2（時間補償）</strong>：体内時計を6時間ずらすと、方向が約90°ずれる（太陽は1時間に15°動くため）。</li>
+    <li><strong>仮説3（星コンパス）</strong>：本物の星空を映せば、鳥は正しい渡り方向を向く。</li>
+    <li><strong>仮説4（回転中心）</strong>：鳥は特定の星座ではなく、星空全体の回転中心を手がかりにする。人工的に回転中心を変えると、新しい中心を北と見なして方向を変える。</li>
+    <li><strong>仮説5（星に時間補償は不要）</strong>：星の回転中心は一晩中動かないため、体内時計は関与しない。</li>
+  </ul>
+  <div class="quote">
+    <p>⭐ これらの仮説は、実験で検証可能な明確な予測を与えました。科学的方法論の理想的な形です。</p>
+  </div>
+</section>
+
+<!-- ========== セクション4 ========== -->
+<section id="sec4">
+  <h2>4. 実験 ─どのような実験により仮説は実証されると考えたか─</h2>
+
+  <h3>4.1 実験装置：エムレンファンネル</h3>
+  <p>エムレンファンネル<sup class="footnote-ref" onclick="scrollToFootnote(6)">[6]</sup>は、鳥が「飛びたい方向」を足跡として記録する装置です。円すい形のケージの内側にインク紙を敷き、鳥が壁をよじ登ろうとした痕跡の方角を調べます。下の図はその模式図です。クリック可能な点を押して詳しく学べます。</p>
+
+  <!-- エムレンファンネル図（ホットスポット充実版） -->
+  <div class="diagram-embed">
+    <div class="title">🔍 エムレンファンネル模式図（上から見た図）</div>
+    <div class="content relative" style="min-height: 550px; background: #fbfdff; border-radius: 20px;">
+      <div style="position: absolute; left: 20px; top: 20px; background: #eaf4ff; padding: 8px 16px; border-radius: 40px; border:1px solid #c7def8; font-weight: bold;">クリックして学ぶ</div>
+      <!-- 簡易ファンネル図 -->
+      <div style="position: relative; width: 80%; margin: 60px auto 20px; aspect-ratio: 1/1; background: radial-gradient(circle at 50% 40%, #fefefe, #edf5ff); border: 4px solid #bfd8f0; border-radius: 50%; box-shadow: inset 0 -18px 36px #00000015;">
+        <!-- 中央の鳥 -->
+        <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 80px; height: 80px; background: white; border-radius: 50%; border: 2px solid #cfe1f6; display: flex; align-items: center; justify-content: center;">
+          <svg width="50" height="50" viewBox="0 0 100 100"><path d="M10 58 C22 44,36 42,50 50 C64 42,78 44,90 58 C76 58,66 62,56 70 C53 72,51 74,50 78 C49 74,47 72,44 70 C34 62,24 58,10 58Z" fill="#25364a"/></svg>
+        </div>
+        <!-- 南西方向に集中した足跡（黒丸） -->
+        <span style="position: absolute; left: 12%; top: 63%; width: 16px; height: 16px; background: #26384c; border-radius: 50%; box-shadow: 0 0 0 2px white;"></span>
+        <span style="position: absolute; left: 9%; top: 56%; width: 16px; height: 16px; background: #26384c; border-radius: 50%; box-shadow: 0 0 0 2px white;"></span>
+        <span style="position: absolute; left: 7%; top: 49%; width: 16px; height: 16px; background: #26384c; border-radius: 50%; box-shadow: 0 0 0 2px white;"></span>
+        <span style="position: absolute; left: 8%; top: 42%; width: 16px; height: 16px; background: #26384c; border-radius: 50%; box-shadow: 0 0 0 2px white;"></span>
+        <span style="position: absolute; left: 11%; top: 35%; width: 16px; height: 16px; background: #26384c; border-radius: 50%; box-shadow: 0 0 0 2px white;"></span>
+        <!-- 他の方向にも散らす（ノイズ） -->
+        <span style="position: absolute; left: 70%; top: 20%; width: 16px; height: 16px; background: #26384c40; border-radius: 50%;"></span>
+        <span style="position: absolute; left: 80%; top: 70%; width: 16px; height: 16px; background: #26384c40; border-radius: 50%;"></span>
+        <!-- 赤い矢印 (南西方向) -->
+        <div style="position: absolute; left: 50%; top: 50%; transform: translate(-20px,-20px) rotate(135deg); width: 120px; height: 6px; background: var(--danger); border-radius: 6px; transform-origin: 0 50%;"></div>
+        <div style="position: absolute; left: calc(50% + 80px); top: calc(50% - 16px); transform: rotate(135deg); border-left: 18px solid var(--danger); border-top: 10px solid transparent; border-bottom: 10px solid transparent;"></div>
+        <!-- 方角ラベル -->
+        <span style="position: absolute; top: 10px; left: 50%; transform: translateX(-50%); color: #16324f; font-weight: bold; background: rgba(255,255,255,0.7); padding: 2px 8px; border-radius: 20px;">北</span>
+        <span style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); color: #16324f; font-weight: bold; background: rgba(255,255,255,0.7); padding: 2px 8px; border-radius: 20px;">南</span>
+        <span style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: #16324f; font-weight: bold; background: rgba(255,255,255,0.7); padding: 2px 8px; border-radius: 20px;">東</span>
+        <span style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #16324f; font-weight: bold; background: rgba(255,255,255,0.7); padding: 2px 8px; border-radius: 20px;">西</span>
+      </div>
+      <!-- 充実したホットスポット -->
+      <button class="hotspot" style="top: 40px; right: 60px;" data-title="☀️ 太陽（プラネタリウムで投影）" data-content="プラネタリウムのドームに映し出された太陽。実験ではこの位置を自由に変えられる。鳥は太陽を手がかりに方角を決めるが、太陽は時間とともに動くため、体内時計による補正が必要。この図では太陽が南西方向にある設定。">＋</button>
+      <button class="hotspot" style="top: 200px; left: 40%;" data-title="🐦 中央の鳥（渡り衝動）" data-content="渡り時期の鳥は「渡りの中途半端な興奮 (Zugunruhe)」と呼ばれる落ち着きのない状態になる。ケージの中を跳び回り、飛び立ちたい方向に向かって壁をよじ登る。そのときの足跡が記録される。この鳥は南西へ行きたがっている。">＋</button>
+      <button class="hotspot" style="bottom: 140px; right: 100px;" data-title="👣 足跡の集中（南西）" data-content="南西側の壁に足跡が集中している（黒丸）。これは鳥が何度も南西方向へ跳び上がった証拠。他の方向にもわずかに足跡はあるが、明らかな偏りがある。研究者はこの分布を統計処理し、「鳥の志向方向」を割り出す。">＋</button>
+      <button class="hotspot" style="bottom: 220px; left: 120px;" data-title="🧪 漏斗の壁（インク紙）" data-content="漏斗の内側にはインクを塗った紙や感熱紙が敷かれている。鳥が壁に触れると足跡や引っかき傷が残る。実験終了後、紙を取り出して傷の分布を調べる。このシンプルな仕組みで鳥の「意思」を客観的に記録できる。">＋</button>
+      <button class="hotspot" style="top: 300px; left: 60%;" data-title="🔴 赤い矢印（推定方向）" data-content="赤い矢印は、足跡の集中から推定された「鳥が進みたかった方向」を模式的に示している。実際には1本の矢印が見えるわけではなく、多数の足跡の偏りから統計的に求める。この図では南西方向。">＋</button>
+      <div class="caption">図：エムレンファンネルの模式図。黒点は足跡、赤矢印は推定された渡り方向。</div>
+    </div>
+  </div>
+
+  <h3>4.2 太陽コンパス実験の手順</h3>
+  <p><strong>実験A（太陽の位置を変える）</strong>：渡り時期の鳥をファンネルに入れ、プラネタリウムで①自然な太陽、②太陽を90°ずらした空を投影し、足跡の方向を比較。</p>
+  <p><strong>実験B（クロックシフト）</strong>：鳥を6時間明暗サイクルをずらした環境で飼育し体内時計を操作。その後、自然な太陽の下で方向を調べる。</p>
+
+  <h3>4.3 星コンパス実験の手順</h3>
+  <p><strong>実験C（通常の星空）</strong>：秋の夜の星空を投影し、鳥の向きを記録。</p>
+  <p><strong>実験D（回転中心の変更）</strong>：人工的に回転中心をベテルギウス<sup class="footnote-ref" onclick="scrollToFootnote(8)">[8]</sup>などに変えた星空を投影。</p>
+  <p><strong>実験E（星の遮蔽）</strong>：北極星周辺の星だけを隠した星空で反応を見る。</p>
+
+  <!-- 太陽コンパス実験の図（2パネル）にホットスポット追加 -->
+  <div class="diagram-embed">
+    <div class="title">☀️ 太陽の位置を変える実験（模式図）</div>
+    <div class="content" style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; position: relative;">
+      <!-- 左パネル -->
+      <div style="flex: 1; min-width: 260px; border: 1px solid var(--line); border-radius: 20px; padding: 15px; position: relative;">
+        <h4 style="color:#154a81;">条件A：自然な太陽</h4>
+        <div style="position: relative; height: 240px; background: linear-gradient(180deg,#16324f,#76b7ff); border-radius: 16px;">
+          <div style="position: absolute; top: 20px; right: 40px; width: 50px; height: 50px; background: radial-gradient(circle at 30% 30%, #fff8d8, #ffb703); border-radius: 50%; box-shadow: 0 0 30px #ffb703;"></div>
+          <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 50px; height: 50px; background: #25364a; border-radius: 50%;"></div>
+          <div style="position: absolute; left: 50%; top: 50%; transform: translate(10px,-30px) rotate(-35deg); width: 100px; height: 4px; background: var(--danger);"></div>
+          <div style="position: absolute; left: calc(50% + 90px); top: calc(50% - 36px); border-left: 12px solid var(--danger); border-top: 8px solid transparent; border-bottom: 8px solid transparent;"></div>
+          <span style="position: absolute; bottom: 10px; left: 10px; color: white;">南西方向へ向く</span>
+          <!-- ホットスポット左 -->
+          <button class="hotspot" style="top: 15px; right: 30px; width: 28px; height: 28px; font-size: 1rem;" data-title="太陽（自然な位置）" data-content="自然な空では太陽は南西の空（秋の午後）にある。鳥は体内時計と照らし合わせて「南西が渡り方向」と判断する。">＋</button>
+          <button class="hotspot" style="top: 100px; left: 40%; width: 28px; height: 28px; font-size: 1rem;" data-title="鳥（正常な時計）" data-content="体内時計は自然な時刻に同調している。太陽の位置を正しく解釈できるため、南西へ向かう。">＋</button>
+        </div>
+      </div>
+      <!-- 右パネル -->
+      <div style="flex: 1; min-width: 260px; border: 1px solid var(--line); border-radius: 20px; padding: 15px; position: relative;">
+        <h4 style="color:#154a81;">条件B：太陽を90°ずらした</h4>
+        <div style="position: relative; height: 240px; background: linear-gradient(180deg,#16324f,#76b7ff); border-radius: 16px;">
+          <div style="position: absolute; top: 60px; left: 40px; width: 50px; height: 50px; background: radial-gradient(circle at 30% 30%, #fff8d8, #ffb703); border-radius: 50%;"></div>
+          <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); width: 50px; height: 50px; background: #25364a; border-radius: 50%;"></div>
+          <div style="position: absolute; left: 50%; top: 50%; transform: translate(-10px,-40px) rotate(55deg); width: 100px; height: 4px; background: var(--danger);"></div>
+          <div style="position: absolute; left: calc(50% - 70px); top: calc(50% - 52px); border-left: 12px solid var(--danger); border-top: 8px solid transparent; border-bottom: 8px solid transparent; transform: rotate(55deg);"></div>
+          <span style="position: absolute; bottom: 10px; left: 10px; color: white;">方向も約90°ずれる</span>
+          <!-- ホットスポット右 -->
+          <button class="hotspot" style="top: 50px; left: 30px; width: 28px; height: 28px; font-size: 1rem;" data-title="太陽（人工的にずらした）" data-content="プラネタリウムで太陽の位置だけを90°ずらして投影。実際の時刻とは合っていない。">＋</button>
+          <button class="hotspot" style="top: 140px; left: 60%; width: 28px; height: 28px; font-size: 1rem;" data-title="鳥の反応" data-content="鳥は体内時計はそのままなので、太陽の位置を「いつもの時間と違う」と解釈し、方向を90°ずらしてしまう。例えば南西へ行くべきところを北西へ向く。">＋</button>
+        </div>
+      </div>
+    </div>
+    <p style="text-align: center; margin-top: 15px;">👉 太陽の位置を変えると、鳥の向きも同じ角度だけ変わった（仮説1を支持）</p>
+  </div>
+</section>
+
+<!-- ========== セクション5 ========== -->
+<section id="sec5">
+  <h2>5. 結果 ─実験により仮説は証明されたのか─</h2>
+
+  <h3>5.1 太陽コンパス実験の結果</h3>
+  <p><strong>実験A</strong>：自然な太陽では鳥は渡り方向（例：南西）を向いた。太陽を90°ずらすと、向きも約90°ずれた（例：北西）。→ <strong>仮説1 証明</strong></p>
+  <p><strong>実験B（クロックシフト）</strong>：体内時計を6時間ずらすと、向きが約90°ずれた。これは太陽が1時間に15°動くため、6時間で90°の誤差が生じるという予測と完全に一致。→ <strong>仮説2 証明</strong></p>
+
+  <h3>5.2 星コンパス実験の結果</h3>
+  <p><strong>実験C</strong>：通常の星空で鳥は正しい南方向を向いた。</p>
+  <p><strong>実験D（回転中心変更）</strong>：人工的にベテルギウスを中心に回転する星空を見せると、鳥はその新しい中心を北と見なして相対的な南方向を向いた。→ <strong>仮説4 証明</strong>（星座ではなく回転中心を手がかりにする）</p>
+  <p><strong>実験E（遮蔽）</strong>：北極星周辺を隠すと方向を見失う個体が現れた。→ 北極星そのものではなく、回転中心付近の星のパターンが重要。</p>
+
+  <h3>5.3 太陽と星の決定的な違い</h3>
+  <table>
+    <tr><th>コンパス</th><th>手がかり</th><th>時間補償</th><th>体内時計</th></tr>
+    <tr><td>太陽コンパス</td><td>太陽の位置</td><td>必要（太陽が動く）</td><td>不可欠</td></tr>
+    <tr><td>星コンパス</td><td>星空の回転中心</td><td>不要（中心は固定）</td><td>不要</td></tr>
+  </table>
+
+  <div class="quote">
+    <p>✨ 最も美しい結果：6時間の時計ずらし → 90°の方向ずれ。これは太陽の角速度 (15°/h) から完璧に説明できる。</p>
+  </div>
+
+  <!-- 簡単な図：時計ずらしの幾何学 -->
+  <div style="background: #e2efff; border-radius: 20px; padding: 20px; margin: 20px 0;">
+    <h4>なぜ6時間で90°ずれるのか？</h4>
+    <p>太陽は24時間で360°動く → 1時間＝15°。体内時計が6時間ずれると、太陽の位置を「6時間前/後の位置」と誤解するため、方向も6×15°＝90°ずれる。</p>
+    <div style="display: flex; justify-content: center; gap: 30px; margin-top: 10px;">
+      <div><span style="background: #ffb703; padding: 10px; border-radius: 50%;">☀️</span> 6時間 → 90°</div>
+      <div><span style="background: #d1495b; padding: 10px; border-radius: 50%;">⬆️</span> 方向誤差</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== セクション6 ========== -->
+<section id="sec6">
+  <h2>6. 考察とまとめ ─証明された真実の波及効果─</h2>
+
+  <h3>6.1 学術的波及効果</h3>
+  <p>プラネタリウム実験は動物ナビゲーション研究を確立し、その後、地磁気コンパス<sup class="footnote-ref" onclick="scrollToFootnote(11)">[11]</sup>の発見や、脳内の神経回路の解明へとつながった。現在では、時計遺伝子<sup class="footnote-ref" onclick="scrollToFootnote(12)">[12]</sup>の発現や量子生物学<sup class="footnote-ref" onclick="scrollToFootnote(13)">[13]</sup>との関連も研究されている。</p>
+
+  <h3>6.2 技術的進化</h3>
+  <p>エムレンファンネルは現在、AI行動解析（BirdOriTrack<sup class="footnote-ref" onclick="scrollToFootnote(14)">[14]</sup>）やVR技術と融合し、より精密な実験が可能になっている。またGPS追跡と組み合わせることで、実験室の結果と実際の渡りルートの比較も進んでいる。</p>
+
+  <h3>6.3 教育的価値</h3>
+  <p>「仮説→予測→実験→検証」という科学の方法論を学ぶ絶好の教材である。また、小さな鳥が天文学と時計を組み合わせて旅をするという事実は、自然界への驚きと理解を与える。</p>
+
+  <h3>6.4 生物ナビゲーションの全体像</h3>
+  <p>下の図は、太陽・星・地磁気・偏光・地形・嗅覚・体内時計など、あらゆる手がかりが脳で統合され、最終的に渡り行動が生み出される仕組みを示した「完全図」です。クリックで各段階の説明が表示されます。</p>
+
+  <!-- 生物ナビゲーション完全図（ホットスポット充実） -->
+  <div class="diagram-embed">
+    <div class="title">🧠 生物ナビゲーション完全図（入力→統合→出力）</div>
+    <div class="content relative" style="min-height: 750px;">
+      <!-- 簡易4段階レイアウト -->
+      <div style="display: flex; flex-direction: column; gap: 30px;">
+        <!-- 段階1 情報入力 -->
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; background: #f0f7ff; padding: 20px; border-radius: 30px; position: relative;">
+          <span style="background: #ffe8a3; padding: 8px 15px; border-radius: 40px;">☀️ 太陽</span>
+          <span style="background: #dcd7ff; padding: 8px 15px; border-radius: 40px;">✨ 星</span>
+          <span style="background: #b8ffe8; padding: 8px 15px; border-radius: 40px;">🧲 地磁気</span>
+          <span style="background: #d6f0ff; padding: 8px 15px; border-radius: 40px;">◐ 偏光</span>
+          <span style="background: #d8f8c7; padding: 8px 15px; border-radius: 40px;">⛰ 地形</span>
+          <span style="background: #ffe1ef; padding: 8px 15px; border-radius: 40px;">〰 嗅覚</span>
+          <span style="background: #d9fff8; padding: 8px 15px; border-radius: 40px;">⏰ 体内時計</span>
+          <!-- ホットスポット -->
+          <button class="hotspot" style="top: 10px; left: 10px; width: 28px; height: 28px;" data-title="多様な感覚入力" data-content="渡り鳥は太陽・星・地磁気・偏光・地形・嗅覚・体内時計など、複数の情報を同時に利用している。これらの情報はしばしば冗長であり、一つが使えなくても他の手がかりで補える。">＋</button>
+        </div>
+        <div style="text-align: center;">⬇️</div>
+        <!-- 段階2 コンパス＋地図 -->
+        <div style="display: flex; justify-content: center; gap: 30px; position: relative;">
+          <span style="background: #ffe7d2; padding: 10px 20px; border-radius: 40px;">🧭 コンパス (方向)</span>
+          <span style="background: #ffe7d2; padding: 10px 20px; border-radius: 40px;">🗺 地図 (位置)</span>
+          <button class="hotspot" style="top: -10px; left: 45%; width: 28px; height: 28px;" data-title="コンパスと地図の役割" data-content="コンパスは「どちらが北か」「どちらへ進むべきか」を教える。地図は「現在地がどこか」「目的地はどこか」を教える。両方がそろって初めて正確なナビゲーションが可能になる。">＋</button>
+        </div>
+        <div style="text-align: center;">⬇️</div>
+        <!-- 段階3 脳統合 -->
+        <div style="display: flex; justify-content: center; position: relative;">
+          <span style="background: #e8dcff; padding: 10px 30px; border-radius: 40px;">🧠 脳で統合</span>
+          <button class="hotspot" style="top: -5px; right: 30%; width: 28px; height: 28px;" data-title="脳内情報処理" data-content="大脳、視床、海馬など複数の脳領域が関与。感覚情報を統合し、矛盾がある場合はどの手がかりを優先するか調整する。経験や学習も影響する。">＋</button>
+        </div>
+        <div style="text-align: center;">⬇️</div>
+        <!-- 段階4 行動出力 -->
+        <div style="display: flex; justify-content: center; gap: 20px; position: relative;">
+          <span style="background: #ffd9dc; padding: 10px 20px; border-radius: 40px;">🕊 方向決定</span>
+          <span style="background: #ffd9dc; padding: 10px 20px; border-radius: 40px;">⬈ ルート選択</span>
+          <span style="background: #ffd9dc; padding: 10px 20px; border-radius: 40px;">⌂ 帰巣・渡り</span>
+          <button class="hotspot" style="top: -10px; right: 20%; width: 28px; height: 28px;" data-title="最終的な行動" data-content="脳の統合結果として、実際の飛行方向、高度、経路が決まる。渡りルートや帰巣行動が発現する。">＋</button>
+        </div>
+      </div>
+      <div class="caption">図：生物ナビゲーションの情報処理段階。各段階で複数の感覚が統合される。</div>
+    </div>
+  </div>
+
+  <p>このように、プラネタリウム実験は単独のメカニズムの証明から、分子・脳・行動・実際の渡りをつなぐ学際的研究へと進化しています。渡り鳥のナビゲーションツールキットの最深部の謎は、今後さらに解き明かされるでしょう。</p>
+</section>
+
+<!-- ========== 脚注（充実版） ========== -->
+<section id="footnotes" class="footnotes">
+  <h3>📌 脚注</h3>
+  <ol>
+    <li id="fn1"><strong>グスタフ・クラマー</strong> (1910-1959)：ドイツの動物行動学者。太陽コンパスの存在を実験的に示した。鳥を放射状のケージに入れ、太陽の方向と鳥の向きの関係を調べた。</li>
+    <li id="fn2"><strong>スティーブン・T・エムレン</strong> (1940- )：コーネル大学名誉教授。父親ジョン・T・エムレンと共にエムレンファンネルを開発。プラネタリウムを用いた星コンパスの研究で有名。</li>
+    <li id="fn3"><strong>時間補償付き太陽コンパス</strong>：太陽の方位は時刻によって変化するため、体内時計で現在時刻を補正して正しい地理的な方角を割り出す仕組み。</li>
+    <li id="fn4"><strong>クロックシフト実験</strong>：人工的な明暗サイクルで鳥の体内時計を数時間ずらし、その状態で太陽コンパスの働きを調べる実験。ずれが生じれば時間補償の証拠となる。</li>
+    <li id="fn6"><strong>エムレンファンネル</strong>：1966年発表。円錐形のケージの内壁に足跡を記録する。現在でも改良版が使われている。</li>
+    <li id="fn8"><strong>ベテルギウス</strong>：オリオン座のα星。赤色超巨星。北半球の冬の星空で明るく、天の北極から遠いため、回転中心を変える実験に使われた。</li>
+    <li id="fn11"><strong>地磁気コンパス</strong>：鳥は地球の磁場の方向や傾きを感知できる。磁鉄鉱を含む細胞やクリプトクロム分子が関与すると考えられている。</li>
+    <li id="fn12"><strong>時計遺伝子</strong>：PER, CRY, CLOCK, BMALなど。体内時計の中核を担い、概日リズムを生み出す。脳内の視交叉上核で発現する。</li>
+    <li id="fn13"><strong>量子生物学</strong>：クリプトクロムにおけるラジカルペア反応が磁場に影響されるという説。鳥の磁気受容の量子力学的モデルとして注目される。</li>
+    <li id="fn14"><strong>BirdOriTrack</strong>：オープンソースのビデオ追跡プログラム。鳥の位置や向きを自動検出し、方向選択を解析する。</li>
+  </ol>
+</section>
+
+<!-- モーダル -->
+<div class="modal" id="modal">
+  <div class="modal-card">
+    <div class="modal-head">
+      <h3 id="modal-title">説明</h3>
+      <button class="close-btn" id="close-modal">閉じる</button>
+    </div>
+    <div class="modal-body" id="modal-body">
+      <p></p>
+      <div class="key" id="modal-key">🔑 ここが重要</div>
+    </div>
+  </div>
+</div>
+
+<footer style="text-align: center; margin: 60px 0 20px; color: var(--sub);">
+  © 2025 プラネタリウム実験 ― 高校生のための科学ブログ
+</footer>
+
+</div><!-- .wrap -->
+
+<script>
+  // モーダル機能
+  const modal = document.getElementById('modal');
+  const modalTitle = document.getElementById('modal-title');
+  const modalBody = document.getElementById('modal-body');
+  const closeBtn = document.getElementById('close-modal');
+
+  function openModal(title, content) {
+    modalTitle.textContent = title;
+    modalBody.innerHTML = `<p>${content}</p><div class="key">🔑 ここが重要：この要素が実験の鍵を握っています。</div>`;
+    modal.classList.add('open');
+  }
+
+  function closeModal() {
+    modal.classList.remove('open');
+  }
+
+  // 全ホットスポットにイベント設定
+  document.querySelectorAll('.hotspot').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal(btn.dataset.title || '情報', btn.dataset.content || '説明がありません。');
+    });
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => { if(e.target === modal) closeModal(); });
+  window.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeModal(); });
+
+  // 脚注スクロール
+  window.scrollToFootnote = function(id) {
+    const footnote = document.getElementById('fn'+id);
+    if(footnote) footnote.scrollIntoView({ behavior: 'smooth' });
+  };
+</script>
+</body>
+</html>

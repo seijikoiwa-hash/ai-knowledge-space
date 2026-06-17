@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鳥の分類表：実在種・伝承種・表記バリエーション</title>
+    <style>
+        body {
+            font-family: 'Helvetica', 'Arial', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+            line-height: 1.6;
+            background-color: #fafaf5;
+            color: #1e3a3a;
+            padding: 2rem;
+        }
+        .classification-table {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 20px;
+            padding: 2rem 2rem 2.5rem 2rem;
+            box-shadow: 0 8px 20px rgba(0, 40, 30, 0.1);
+            border: 1px solid #c0d6cc;
+        }
+        h1 {
+            font-size: 1.9rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            color: #1f4f4b;
+            border-bottom: 2px solid #98b9af;
+            padding-bottom: 0.5rem;
+            margin-top: 0.2rem;
+            margin-bottom: 1.8rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 1.8rem 0 0.8rem 0;
+            color: #276b63;
+            border-left: 8px solid #7fbbb0;
+            padding-left: 1rem;
+        }
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 500;
+            margin: 1.2rem 0 0.5rem 1rem;
+            color: #3b6f64;
+            border-bottom: 1px dashed #9bc3b8;
+            padding-bottom: 0.2rem;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0.3rem 0 1rem 2rem;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 0.15rem;
+            font-size: 1.1rem;
+            position: relative;
+            padding-left: 1.8rem;
+        }
+        li::before {
+            content: "●";
+            color: #679b8e;
+            font-size: 0.9rem;
+            position: absolute;
+            left: 0.2rem;
+            top: 0.1rem;
+        }
+        .sublist li::before {
+            content: "○";
+            color: #8fb5a8;
+            font-size: 0.9rem;
+        }
+        .sublist {
+            margin-left: 1.2rem;
+        }
+        .sublist li {
+            padding-left: 1.6rem;
+        }
+        .species-name {
+            font-weight: 600;
+            color: #1b4e47;
+        }
+        .annotation {
+            font-size: 0.95rem;
+            color: #5f736e;
+            margin-left: 0.5rem;
+            font-weight: normal;
+        }
+        .category-desc {
+            font-size: 1rem;
+            color: #3f6259;
+            margin: 0 0 0.4rem 2rem;
+            font-style: italic;
+        }
+        hr {
+            border: none;
+            border-top: 1px solid #c7ddd2;
+            margin: 1.5rem 0 1rem 0;
+        }
+        .subnote {
+            font-size: 0.95rem;
+            background-color: #f0f7f3;
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            color: #2d5a4f;
+            display: inline-block;
+            margin-left: 2rem;
+        }
+    
+        a.species-link{
+            text-decoration: none;
+        }
+        a.species-link:hover .species-name{
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+    </style>
+</head>
+<body>
+<div class="classification-table">
+    <h1>📚 鳥の分類表（実在種・伝承種・表記バリエーション）</h1>
+    <p style="margin-left: 1rem; color: #3d6a61;">出典：「AIの友達より、迎合は不要」より分類結果をそのまま構成</p>
+
+    <!-- ① 実在する鳥種（日常利用・野鳥・飼育鳥） -->
+    <h2>① 実在する鳥種（日常利用・野鳥・飼育鳥）</h2>
+    <p class="category-desc">日常的に観察・飼育され、漢字表記が用いられる実在の鳥類</p>
+
+    <h3>日常利用・飼育鳥</h3>
+    <ul>
+        <li><a class="species-link" href="book88-6-1.html#bird-suzume"><span class="species-name" id="cls-suzume">雀</span></a>（すずめ）</li>
+        <li><a class="species-link" href="book88-6-1.html#bird-karasu"><span class="species-name" id="cls-karasu">烏</span></a>（からす）</li>
+        <li><a class="species-link" href="book88-6-1.html#bird-tsuru"><span class="species-name" id="cls-tsuru">鶴</span></a>（つる）</li>
+        <li><a class="species-link" href="book88-6-1.html#bird-hato"><span class="species-name" id="cls-hato">鳩</span></a>（はと）</li>
+        <li><span class="species-name">鶏</span>（にわとり）</li>
+        <li><span class="species-name">家鴨</span>（あひる）</li>
+        <li><span class="species-name">鵞鳥</span>（がちょう）</li>
+        <li><span class="species-name">軍鶏</span>（しゃも）</li>
+        <li><span class="species-name">鸚哥</span>（インコ）</li>
+        <li><span class="species-name">鸚鵡</span>（おうむ）</li>
+        <li><a class="species-link" href="book88-6-1.html#bird-kujaku"><span class="species-name" id="cls-kujaku">孔雀</span></a>（くじゃく）</li>
+        <li><span class="species-name">駝鳥</span>（だちょう）</li>
+        <li><a class="species-link" href="book88-6-1.html#bird-hakuchou"><span class="species-name" id="cls-hakuchou">白鳥</span></a>（はくちょう）</li>
+        <li><span class="species-name">七面鳥</span>（しちめんちょう）</li>
+    </ul>
+
+    <h3>野鳥・水鳥</h3>
+    <ul>
+        <li><span class="species-name">鴨</span>（かも）</li>
+        <li><span class="species-name">真鴨</span>（まがも）</li>
+        <li><a class="species-link" href="book88-6-1.html#bird-oshidori"><span class="species-name" id="cls-oshidori">鴛鴦・鴛</span></a>（おしどり）</li>
+        <li><a class="species-link" href="book88-6-1.html#bird-u"><span class="species-name" id="cls-u">鵜・鸕鶿</span></a>（う）</li>
+        <li><span class="species-name">川鵜</span>（かわう）</li>
+        <li><a class="species-link" href="book88-6-1.html#bird-sagi"><span class="species-name" id="cls-sagi">鷺</span></a>（さぎ）</li>
+        <li><span class="species-name">白鷺</span>（しらさぎ）</li>
+        <li><span class="species-name">雁</span>（がん）</li>
+        <li><span class="species-name">鴎・鷗</span>（かもめ）</li>
+        <li><span class="species-name">都鳥</span>（みやこどり／ゆりかもめ）</li>
+        <li><span class="species-name">千鳥</span>（ちどり）</li>
+        <li><span class="species-name">鴫・鷸</span>（しぎ類）</li>
+        <li><span class="species-name">鷸</span>（しぎ）</li>
+        <li><span class="species-name">水鶏</span>（くいな）</li>
+        <li><span class="species-name">鷭</span>（ばん）</li>
+        <li><span class="species-name">鳰</span>（にお／かいつぶり）</li>
+        <li><span class="species-name">鸛</span>（こうのとり）</li>
+        <li><span class="species-name">鴇</span>（とき）</li>
+        <li><span class="species-name">杜鵑・時鳥・不如帰</span>（ほととぎす）</li>
+        <li><span class="species-name">郭公</span>（かっこう）</li>
+        <li><span class="species-name">百千鳥</span>（ももちどり）</li>
+    </ul>
+
+    <h3>小鳥・山鳥</h3>
+    <ul>
+        <li><a class="species-link" href="book88-6-1.html#bird-uguisu"><span class="species-name" id="cls-uguisu">鶯</span></a>（うぐいす）</li>
+        <li><span class="species-name">目白</span>（めじろ）</li>
+        <li><span class="species-name">鶫・鶇</span>（つぐみ）</li>
+        <li><a class="species-link" href="book88-6-1.html#bird-mozu"><span class="species-name" id="cls-mozu">百舌</span></a>（もず）</li>
+        <li><span class="species-name">雲雀</span>（ひばり）</li>
+        <li><a class="species-link" href="book88-6-1.html#bird-tsubame"><span class="species-name" id="cls-tsubame">燕</span></a>（つばめ）</li>
+        <li><a class="species-link" href="book88-6-1.html#bird-kawasemi"><span class="species-name" id="cls-kawasemi">翡翠</span></a>（かわせみ）</li>
+        <li><span class="species-name">鵯</span>（ひよどり）</li>
+        <li><span class="species-name">鶺鴒</span>（せきれい）</li>
+        <li><span class="species-name">鵲</span>（かささぎ）</li>
+        <li><span class="species-name">駒鳥</span>（こまどり）</li>
+        <li><span class="species-name">椋鳥</span>（むくどり）</li>
+        <li><span class="species-name">四十雀</span>（しじゅうから）</li>
+        <li><span class="species-name">山雀</span>（やまがら）</li>
+        <li><span class="species-name">五十雀</span>（ごじゅうから）</li>
+        <li><span class="species-name">瑠璃鳥</span>（るりびたき）</li>
+        <li><span class="species-name">黄鶲</span>（きびたき）</li>
+        <li><span class="species-name">川烏</span>（かわがらす）</li>
+        <li><span class="species-name">夜雀</span>（よたか）</li>
+        <li><span class="species-name">鶸</span>（ひわ）</li>
+        <li><span class="species-name">鷽</span>（うそ）</li>
+        <li><a class="species-link" href="book88-6-1.html#bird-kitsutsuki"><span class="species-name" id="cls-kitsutsuki">啄木鳥</span></a>（きつつき）</li>
+        <li><span class="species-name">鶲</span>（ひたき）</li>
+    </ul>
+
+    <h3>猛禽類</h3>
+    <ul>
+        <li><span class="species-name">鷹</span>（たか）</li>
+        <li><a class="species-link" href="book88-6-1.html#bird-hayabusa"><span class="species-name" id="cls-hayabusa">隼</span></a>（はやぶさ）</li>
+        <li><span class="species-name">鷹隼</span>（たかはやぶさ）<span class="annotation">※熟語</span></li>
+        <li><a class="species-link" href="book88-6-1.html#bird-washi"><span class="species-name" id="cls-washi">鷲</span></a>（わし）</li>
+        <li><a class="species-link" href="book88-6-1.html#bird-tobi"><span class="species-name" id="cls-tobi">鳶・鴟</span></a>（とび）</li>
+        <li><span class="species-name">梟</span>（ふくろう）</li>
+        <li><span class="species-name">梟鴞</span>（きょうきょう）<span class="annotation">※熟語</span></li>
+        <li><span class="species-name">鷲鷹</span>（わしたか）<span class="annotation">※熟語</span></li>
+        <li><span class="species-name">鶚</span>（みさご）</li>
+        <li><span class="species-name">鷂</span>（はいたか）</li>
+        <li><span class="species-name">熊鷹</span>（くまたか）</li>
+    </ul>
+
+    <!-- 区切り -->
+    <hr>
+
+    <!-- ② 伝承上の鳥 -->
+    <h2>② 伝承上の鳥（実在しない神話・伝説上の鳥）</h2>
+    <ul>
+        <li><a class="species-link" href="book88-6-1.html#bird-houou"><span class="species-name" id="cls-houou">鳳凰</span></a>（ほうおう）</li>
+        <li><span class="species-name">朱雀</span>（すざく／しゅじゃく）</li>
+        <li><a class="species-link" href="book88-6-1.html#bird-yatagarsu"><span class="species-name" id="cls-yatagarsu">八咫烏</span></a>（やたがらす）</li>
+        <li><a class="species-link" href="book88-6-1.html#bird-nue"><span class="species-name" id="cls-nue">鵺</span></a>（ぬえ）</li>
+        <li><span class="species-name">鵺鳥</span>（ぬえどり）<span class="annotation">※鵺の別表記</span></li>
+        <li><span class="species-name">迦楼羅</span>（かるら）</li>
+        <li><span class="species-name">鴻</span>（おおとり）<span class="annotation">※伝説上の大鳥</span></li>
+    </ul>
+
+    <hr>
+
+    <!-- ③ 表記のバリエーション（異体字・旧字体・別表記・熟語） -->
+    <h2>③ 表記のバリエーション（異体字・旧字体・別表記・熟語）</h2>
+    <p class="category-desc">既出の鳥種に対する異なる表記法や、熟語として存在するもの</p>
+
+    <h3>異体字・旧字体</h3>
+    <ul>
+        <li><span class="species-name">鴎・鷗</span>（かもめ）<span class="annotation">：新旧字体</span></li>
+        <li><span class="species-name">鶫・鶇</span>（つぐみ）<span class="annotation">：異体字</span></li>
+        <li><a class="species-link" href="book88-6-1.html#bird-u"><span class="species-name">鵜・鸕鶿</span></a>（う）<span class="annotation">：常用字と正式字</span></li>
+        <li><span class="species-name">杜鵑・時鳥・不如帰</span>（ほととぎす）<span class="annotation">：同一種の別表記</span></li>
+    </ul>
+
+    <h3>熟語・複合語</h3>
+    <ul>
+        <li><span class="species-name">鷲鷹</span>（わしたか）<span class="annotation">：猛禽類の総称的熟語</span></li>
+        <li><span class="species-name">鷹隼</span>（たかはやぶさ）<span class="annotation">：猛禽類の熟語</span></li>
+        <li><span class="species-name">梟鴞</span>（きょうきょう）<span class="annotation">：梟の異称的熟語</span></li>
+        <li><span class="species-name">鷸鴫</span>（しぎしぎ）<span class="annotation">：鴫・鷸類の畳語的表現</span></li>
+        <li><a class="species-link" href="book88-6-1.html#bird-hakuchou"><span class="species-name">白鳥</span></a>（はくちょう）<span class="annotation">：漢語表記</span></li>
+        <li><span class="species-name">白鷺</span>（しらさぎ）<span class="annotation">：和語表記と漢語の中間</span></li>
+        <li><span class="species-name">家鴨</span>（あひる）<span class="annotation">：漢字表記</span></li>
+        <li><span class="species-name">軍鶏</span>（しゃも）<span class="annotation">：漢字表記</span></li>
+        <li><span class="species-name">鸚哥</span>（インコ）<span class="annotation">：漢字表記（常用はカタカナ）</span></li>
+        <li><span class="species-name">鸚鵡</span>（おうむ）<span class="annotation">：漢字表記</span></li>
+        <li><span class="species-name">鶤鶏</span>（けいけい／しゃも）<span class="annotation">：軍鶏の別表記</span></li>
+    </ul>
+
+    <div style="margin-top: 2rem; padding-top: 1rem; border-top: 2px dotted #a0c0b3; font-size: 0.95rem; color: #3b6b60; text-align: right;">
+        
+    </div>
+</div>
+</body>
+</html>

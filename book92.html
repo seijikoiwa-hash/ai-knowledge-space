@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>太陽コンパスと脳内GPSの科学</title>
+    <style>
+        body {
+            background-color: #f5f5f5;
+            color: #1a1a1a;
+            font-family: '游明朝', 'Yu Mincho', 'Hiragino Mincho ProN', 'HG明朝E', serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            padding: 40px 30px;
+            border-radius: 8px;
+        }
+        h1 {
+            font-size: 2.2rem;
+            border-bottom: 4px solid #ff8c42;
+            padding-bottom: 15px;
+            margin-top: 0;
+            color: #2c3e50;
+            text-align: center;
+        }
+        h2 {
+            font-size: 1.8rem;
+            border-left: 8px solid #ff8c42;
+            padding-left: 20px;
+            margin-top: 45px;
+            color: #2c3e50;
+        }
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 30px;
+            color: #3a5f7a;
+            border-bottom: 1px dashed #ccc;
+            padding-bottom: 5px;
+        }
+        p {
+            margin: 1.2em 0;
+            text-align: justify;
+        }
+        figure {
+            margin: 30px 0;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            background-color: #eee;
+            padding: 5px;
+        }
+        figcaption {
+            font-size: 0.9rem;
+            color: #555;
+            margin-top: 8px;
+            font-style: italic;
+        }
+        .info-box {
+            background-color: #eef7fa;
+            border-left: 5px solid #3498db;
+            padding: 15px 20px;
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .quote {
+            font-style: italic;
+            background-color: #f9f3e3;
+            padding: 15px 25px;
+            border-radius: 30px 10px 30px 10px;
+            margin: 25px 0;
+        }
+        .author-note {
+            text-align: right;
+            font-weight: bold;
+            color: #777;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #3a5f7a;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .footer {
+            margin-top: 50px;
+            border-top: 2px solid #ccc;
+            padding-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #888;
+        }
+        ruby {
+            ruby-align: center;
+        }
+        rt {
+            font-size: 0.7rem;
+            color: #2c3e50;
+        }
+
+        .note-trigger {
+            display: inline-block;
+            margin-left: 0.25em;
+            padding: 0 0.45em;
+            border: none;
+            border-radius: 999px;
+            background: #ff8c42;
+            color: #fff;
+            font-size: 0.72rem;
+            line-height: 1.6;
+            cursor: pointer;
+            vertical-align: super;
+        }
+        .note-trigger:hover, .note-trigger:focus {
+            background: #e36f1f;
+        }
+        .note-popup {
+            display: none;
+            margin: 0.35em 0 0.35em 0.35em;
+            padding: 0.55em 0.8em;
+            border-left: 4px solid #ff8c42;
+            background: #fff7f0;
+            color: #333;
+            font-size: 0.92rem;
+            border-radius: 8px;
+        }
+        .note-popup.open {
+            display: inline-block;
+        }
+    
+        .top-figure-wrap {
+            position: relative;
+            margin: 34px 0 42px;
+            padding: 18px 18px 12px;
+            border-radius: 18px;
+            background: linear-gradient(180deg, #f8fbff 0%, #fffdf8 100%);
+            box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+            overflow: hidden;
+        }
+        .top-figure-headline {
+            margin: 0 0 8px;
+            text-align: center;
+            font-size: 1.18rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .top-figure-sub {
+            margin: 0 0 16px;
+            text-align: center;
+            color: #5c7183;
+            font-size: 0.95rem;
+        }
+        .figure-toolbar {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 0 0 14px;
+        }
+        .figure-btn {
+            border: none;
+            border-radius: 999px;
+            background: #ff8c42;
+            color: #fff;
+            padding: 0.45rem 0.9rem;
+            font-size: 0.84rem;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(255,140,66,0.25);
+        }
+        .figure-btn:hover, .figure-btn:focus { background: #e36f1f; }
+        .svg-stage {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 16px;
+            background: #f8fbff;
+            border: 1px solid rgba(44, 62, 80, 0.08);
+        }
+        .svg-panzoom {
+            transform-origin: center center;
+            transition: transform 0.35s ease;
+            width: 100%;
+            display: block;
+        }
+        .svg-hotspot { cursor: pointer; }
+        .svg-hotspot:hover .hotspot-shape,
+        .svg-hotspot:focus .hotspot-shape {
+            filter: brightness(1.04);
+            stroke-width: 4px;
+        }
+        .hotspot-ring {
+            animation: pulseRing 2.1s infinite;
+            transform-origin: center;
+            pointer-events: none;
+        }
+        @keyframes pulseRing {
+            0% { opacity: 0.85; transform: scale(1); }
+            70% { opacity: 0.1; transform: scale(1.22); }
+            100% { opacity: 0; transform: scale(1.28); }
+        }
+        .svg-panel {
+            margin: 14px 2px 4px;
+            padding: 14px 16px;
+            border-left: 5px solid #ff8c42;
+            background: #fff7f0;
+            border-radius: 12px;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+        }
+        .svg-panel h4 {
+            margin: 0 0 6px;
+            font-size: 1rem;
+            color: #2c3e50;
+        }
+        .svg-panel p {
+            margin: 0;
+            font-size: 0.96rem;
+            color: #4a4a4a;
+            text-align: left;
+        }
+        .svg-hint {
+            margin-top: 8px;
+            text-align: center;
+            color: #66788a;
+            font-size: 0.86rem;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>太陽コンパスと脳内GPSの科学</h1>
+<div style="text-align:center;margin:20px 0;">
+<a href="book92child_anime.html"
+style="display:inline-block;
+padding:12px 20px;
+background:#2f6fed;
+color:#fff;
+text-decoration:none;
+border-radius:22px;
+font-weight:bold;
+box-shadow:0 4px 10px rgba(0,0,0,0.15);">
+🎬 アニメで学ぶ版はこちら
+</a>
+</div>
+<div style="text-align:center;margin:10px 0;">
+<a href="book92dexp.html"
+style="display:inline-block;padding:10px 18px;background:#18a999;color:#fff;
+text-decoration:none;border-radius:20px;font-weight:bold;">
+🔬 プラネタリウム実験編はこちら
+</a>
+</div>
+<div style="text-align:center;margin:20px 0;">
+<a href="book92child.html"
+style="display:inline-block;padding:10px 18px;background:#ff8c42;color:#fff;
+text-decoration:none;border-radius:20px;font-weight:bold;">
+🔰 中学生向けやさしい解説はこちら
+</a>
+</div>
+    <p style="text-align:center; font-size:1.1rem; color:#3a5f7a;">～渡り鳥・昆虫・魚、そして人間の「帰巣本能」を探る～</p>
+
+    <!-- はじめに -->
+    <h2>はじめに</h2>
+    <p>君は、コンパスもスマホもなくても方角がわかるだろうか？　太陽の位置、星の並び、海の匂い…自然界には「目に見えないコンパス」があふれている。なんと渡り鳥は数千キロを旅し、サケは生まれた川にピタリと戻ってくる。しかも最新研究では、鳥は地磁気を「見ている」かもしれないという。さらに人間の脳にも精巧な「GPS<button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">Global Positioning System の略。人工衛星からの電波を使って現在地を知るしくみで、ここではその働きになぞらえて脳の位置認識システムを説明している。</span>細胞」が備わっていることがノーベル賞級の発見で明らかになった。本記事では太陽コンパスを軸に、動物たちの驚異のナビゲーション能力から、私たちがふるさとを恋しく思う理由まで、一気に探検しよう。</p>
+
+<figure class="top-figure-wrap">
+    <p class="top-figure-headline">クリックで学ぶ生命のナビゲーション</p>
+    <p class="top-figure-sub">図をクリックすると説明が下に開き、ズームボタンで見たい部分を拡大できます。</p>
+
+    <div class="figure-toolbar">
+        <button type="button" class="figure-btn" onclick="zoomFigure(1.18)">拡大</button>
+        <button type="button" class="figure-btn" onclick="zoomFigure(0.85)">縮小</button>
+        <button type="button" class="figure-btn" onclick="resetFigure()">元に戻す</button>
+    </div>
+
+    <div class="svg-stage">
+        <svg id="mainNavFigure" class="svg-panzoom" viewBox="0 0 980 620" aria-label="生命のナビゲーション：3つのコンパスと進化">
+            <defs>
+                <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+                    <path d="M0,0 L0,6 L9,3 z" fill="#607d8b"></path>
+                </marker>
+            </defs>
+
+            <rect x="0" y="0" width="980" height="620" fill="#f8fbff"></rect>
+
+            <text x="490" y="42" text-anchor="middle" font-size="30" font-weight="bold" fill="#243447">
+                生命のナビゲーション：3つのコンパスと進化
+            </text>
+            <text x="490" y="72" text-anchor="middle" font-size="16" fill="#4f6475">
+                太陽・地磁気・脳GPSによって、生き物は方向と位置を知る
+            </text>
+
+            <rect x="70" y="110" width="240" height="56" rx="14" fill="#ffe0b2"/>
+            <text x="190" y="145" text-anchor="middle" font-size="24" font-weight="bold" fill="#5d4037">① 太陽コンパス</text>
+
+            <rect x="370" y="110" width="240" height="56" rx="14" fill="#b2dfdb"/>
+            <text x="490" y="145" text-anchor="middle" font-size="24" font-weight="bold" fill="#004d40">② 地磁気コンパス</text>
+
+            <rect x="670" y="110" width="240" height="56" rx="14" fill="#e1bee7"/>
+            <text x="790" y="145" text-anchor="middle" font-size="24" font-weight="bold" fill="#4a148c">③ 脳GPS</text>
+
+            <line x1="190" y1="272" x2="190" y2="290" stroke="#607d8b" stroke-width="3" marker-end="url(#arrow2)"/>
+            <line x1="160" y1="354" x2="132" y2="388" stroke="#607d8b" stroke-width="3" marker-end="url(#arrow2)"/>
+            <line x1="220" y1="354" x2="248" y2="388" stroke="#607d8b" stroke-width="3" marker-end="url(#arrow2)"/>
+
+            <line x1="490" y1="268" x2="490" y2="305" stroke="#607d8b" stroke-width="3" marker-end="url(#arrow2)"/>
+            <line x1="458" y1="369" x2="430" y2="412" stroke="#607d8b" stroke-width="3" marker-end="url(#arrow2)"/>
+            <line x1="522" y1="369" x2="550" y2="412" stroke="#607d8b" stroke-width="3" marker-end="url(#arrow2)"/>
+
+            <line x1="790" y1="274" x2="790" y2="310" stroke="#607d8b" stroke-width="3" marker-end="url(#arrow2)"/>
+            <line x1="790" y1="420" x2="790" y2="450" stroke="#607d8b" stroke-width="3" marker-end="url(#arrow2)"/>
+
+            <path d="M560 500 C620 560, 700 560, 790 520" fill="none" stroke="#90a4ae" stroke-width="3" stroke-dasharray="8,6" marker-end="url(#arrow2)"/>
+            <text x="655" y="575" text-anchor="middle" font-size="15" fill="#546e7a">進化と統合：自然のコンパス → 脳のコンパスへ</text>
+
+            <g class="svg-hotspot" tabindex="0" onclick="showFigurePanel('sun')" onkeypress="if(event.key==='Enter'){showFigurePanel('sun')}">
+                <circle class="hotspot-ring" cx="190" cy="230" r="42" fill="none" stroke="#f9a825" stroke-width="3"/>
+                <circle class="hotspot-shape" cx="190" cy="230" r="42" fill="#ffd54f" stroke="#f9a825" stroke-width="3"/>
+                <text x="190" y="237" text-anchor="middle" font-size="20" font-weight="bold" fill="#5d4037">太陽</text>
+            </g>
+
+            <g class="svg-hotspot" tabindex="0" onclick="showFigurePanel('clock')" onkeypress="if(event.key==='Enter'){showFigurePanel('clock')}">
+                <rect class="hotspot-shape" x="95" y="290" width="190" height="64" rx="12" fill="#fff3e0" stroke="#ffcc80" stroke-width="2"/>
+                <text x="190" y="316" text-anchor="middle" font-size="18" font-weight="bold" fill="#6d4c41">光＋体内時計</text>
+                <text x="190" y="340" text-anchor="middle" font-size="14" fill="#6d4c41">太陽の位置から方角を知る</text>
+            </g>
+
+            <g class="svg-hotspot" tabindex="0" onclick="showFigurePanel('insects')" onkeypress="if(event.key==='Enter'){showFigurePanel('insects')}">
+                <circle class="hotspot-ring" cx="120" cy="430" r="42" fill="none" stroke="#7cb342" stroke-width="2"/>
+                <circle class="hotspot-shape" cx="120" cy="430" r="42" fill="#c5e1a5" stroke="#7cb342" stroke-width="2"/>
+                <text x="120" y="425" text-anchor="middle" font-size="19" font-weight="bold" fill="#2e4d1f">昆虫</text>
+                <text x="120" y="448" text-anchor="middle" font-size="13" fill="#2e4d1f">(ミツバチ・アリ)</text>
+            </g>
+
+            <g class="svg-hotspot" tabindex="0" onclick="showFigurePanel('birds')" onkeypress="if(event.key==='Enter'){showFigurePanel('birds')}">
+                <circle class="hotspot-ring" cx="260" cy="430" r="42" fill="none" stroke="#42a5f5" stroke-width="2"/>
+                <circle class="hotspot-shape" cx="260" cy="430" r="42" fill="#b3e5fc" stroke="#42a5f5" stroke-width="2"/>
+                <text x="260" y="425" text-anchor="middle" font-size="19" font-weight="bold" fill="#1b4f72">鳥</text>
+                <text x="260" y="448" text-anchor="middle" font-size="13" fill="#1b4f72">(渡り鳥)</text>
+            </g>
+
+            <g class="svg-hotspot" tabindex="0" onclick="showFigurePanel('magnetic')" onkeypress="if(event.key==='Enter'){showFigurePanel('magnetic')}">
+                <rect class="hotspot-shape" x="395" y="210" width="190" height="58" rx="12" fill="#e0f2f1" stroke="#80cbc4" stroke-width="2"/>
+                <text x="490" y="234" text-anchor="middle" font-size="18" font-weight="bold" fill="#004d40">地球磁場</text>
+                <text x="490" y="256" text-anchor="middle" font-size="14" fill="#004d40">見えない“北”の手がかり</text>
+            </g>
+
+            <g class="svg-hotspot" tabindex="0" onclick="showFigurePanel('magnetic-map')" onkeypress="if(event.key==='Enter'){showFigurePanel('magnetic-map')}">
+                <rect class="hotspot-shape" x="390" y="305" width="200" height="64" rx="12" fill="#f1f8f7" stroke="#b2dfdb" stroke-width="2"/>
+                <text x="490" y="331" text-anchor="middle" font-size="18" font-weight="bold" fill="#004d40">磁気を感じる仕組み</text>
+                <text x="490" y="355" text-anchor="middle" font-size="14" fill="#004d40">磁場の強さ・向きから現在地を知る</text>
+            </g>
+
+            <g class="svg-hotspot" tabindex="0" onclick="showFigurePanel('fish')" onkeypress="if(event.key==='Enter'){showFigurePanel('fish')}">
+                <circle class="hotspot-ring" cx="420" cy="455" r="40" fill="none" stroke="#64b5f6" stroke-width="2"/>
+                <circle class="hotspot-shape" cx="420" cy="455" r="40" fill="#bbdefb" stroke="#64b5f6" stroke-width="2"/>
+                <text x="420" y="450" text-anchor="middle" font-size="18" font-weight="bold" fill="#0d47a1">魚</text>
+                <text x="420" y="472" text-anchor="middle" font-size="13" fill="#0d47a1">(サケ・マグロ)</text>
+            </g>
+
+            <g class="svg-hotspot" tabindex="0" onclick="showFigurePanel('bacteria')" onkeypress="if(event.key==='Enter'){showFigurePanel('bacteria')}">
+                <circle class="hotspot-ring" cx="560" cy="455" r="40" fill="none" stroke="#9ccc65" stroke-width="2"/>
+                <circle class="hotspot-shape" cx="560" cy="455" r="40" fill="#dcedc8" stroke="#9ccc65" stroke-width="2"/>
+                <text x="560" y="448" text-anchor="middle" font-size="16" font-weight="bold" fill="#33691e">磁気細菌</text>
+                <text x="560" y="470" text-anchor="middle" font-size="12" fill="#33691e">最も古い磁気コンパス</text>
+            </g>
+
+            <g class="svg-hotspot" tabindex="0" onclick="showFigurePanel('human')" onkeypress="if(event.key==='Enter'){showFigurePanel('human')}">
+                <circle class="hotspot-ring" cx="790" cy="230" r="44" fill="none" stroke="#ef5350" stroke-width="2"/>
+                <circle class="hotspot-shape" cx="790" cy="230" r="44" fill="#ffcdd2" stroke="#ef5350" stroke-width="2"/>
+                <text x="790" y="237" text-anchor="middle" font-size="20" font-weight="bold" fill="#7f1d1d">人間</text>
+            </g>
+
+            <g class="svg-hotspot" tabindex="0" onclick="showFigurePanel('gps')" onkeypress="if(event.key==='Enter'){showFigurePanel('gps')}">
+                <rect class="hotspot-shape" x="690" y="310" width="200" height="110" rx="14" fill="#f3e5f5" stroke="#ce93d8" stroke-width="2"/>
+                <text x="790" y="338" text-anchor="middle" font-size="22" font-weight="bold" fill="#4a148c">脳GPS</text>
+                <text x="790" y="366" text-anchor="middle" font-size="15" fill="#4a148c">場所細胞</text>
+                <text x="790" y="388" text-anchor="middle" font-size="15" fill="#4a148c">グリッド細胞</text>
+                <text x="790" y="410" text-anchor="middle" font-size="15" fill="#4a148c">頭方向細胞</text>
+            </g>
+
+            <g class="svg-hotspot" tabindex="0" onclick="showFigurePanel('mind-map')" onkeypress="if(event.key==='Enter'){showFigurePanel('mind-map')}">
+                <rect class="hotspot-shape" x="690" y="450" width="200" height="64" rx="12" fill="#faf5fb" stroke="#e1bee7" stroke-width="2"/>
+                <text x="790" y="476" text-anchor="middle" font-size="17" font-weight="bold" fill="#6a1b9a">空間認識・記憶・郷愁</text>
+                <text x="790" y="498" text-anchor="middle" font-size="13" fill="#6a1b9a">人間は“心の地図”もつくる</text>
+            </g>
+        </svg>
+    </div>
+
+    <div id="figurePanel" class="svg-panel" aria-live="polite">
+        <h4>図の見方</h4>
+        <p>太陽・昆虫・鳥・地球磁場・魚・磁気細菌・人間・脳GPSのどれかをクリックしてください。図の意味がここに表示されます。</p>
+    </div>
+
+    <div class="svg-hint">おすすめ順：太陽 → 地球磁場 → 磁気細菌 → 脳GPS の順にクリックすると、記事全体の流れが一目でつかめます。</div>
+
+    <figcaption>
+        生命のナビゲーションは、「太陽コンパス」「地磁気コンパス」「脳GPS」の3つで理解できる。
+        昆虫・鳥・魚・磁気細菌・人間は、それぞれ異なる形でこの能力を発達させてきた。
+    </figcaption>
+</figure>
+
+
+    <!-- 第1章 -->
+    <h2>第1章：太陽が教える方角～「太陽コンパス」の基本原理～</h2>
+    <p><ruby>太陽コンパス<rt>たいようコンパス</rt></ruby>とは、太陽の位置と時刻を利用して方位を知る方法。磁石のように地磁気に左右されないため、北極や南極、金属が多い場所でも使える。</p>
+    
+    <h3>1-1. 影が指し示す東西南北</h3>
+    <figure>
+        <img src="https://survival-kompass.de/img/artikel/himmelsrichtungen-bestimmen-sonnes-schatten-en.jpg" alt="影を使った太陽コンパスの図">
+        <figcaption>地面に棒を立て、影の先端に印をつける。15～30分後にもう一度印をつけて2点を結ぶと東西線になる。</figcaption>
+    </figure>
+    <p>最も原始的な方法は、地面に棒（グノモン）<button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">グノモンは、地面に立てて影の向きや長さを調べる棒のこと。古代の日時計にも使われた。</span>を立てるだけ。影の先端に石を置き、時間をおいてもう一つ石を置く。最初の点（A）が西、後の点（B）が東。これで東西が分かり、垂直な線が南北を示す。これはまさに古代エジプトやバイキング<button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">北欧を中心に活動した航海民族。太陽や星、海の情報を頼りに長距離航海を行ったことで知られる。</span>が使ったテクニックだ。</p>
+    
+    <h3>1-2. アナログ時計がコンパスになる！？</h3>
+    <p>もしアナログ時計を持っていたら、即席コンパスになる。北半球では次の手順で南が分かる。</p>
+    <div class="info-box">
+        <ol>
+            <li>時計の文字盤を水平に構える。</li>
+            <li>短針（時針）を太陽の方向に向ける。</li>
+            <li>短針と12時のちょうど真ん中の方向が南。</li>
+        </ol>
+    </div>
+    <p>南半球では12時の方向を太陽に向け、短針との間が北になる。これは太陽が1時間に15度動く性質を利用している。サバイバル術として今でも重宝される。</p>
+    
+    <h3>1-3. 精密機械としての太陽コンパス</h3>
+    <figure>
+        <img src="https://www.spri.cam.ac.uk/museum/news/images/N1055.jpg" alt="極地探検用の太陽コンパス">
+        <figcaption>20世紀の極地探検で使われた太陽コンパス。磁場が不安定な地域で真北を示す。</figcaption>
+    </figure>
+    <p>船舶や航空機では、磁気コンパスの誤差を補うため、緯度・経度・日時に合わせて影板を調整する精密な太陽コンパスが開発された。磁気異常地帯や極地では今も基本的な考え方が生きている。</p>
+<!-- 生物ナビゲーション完全図 -->
+<figure style="margin:40px auto;text-align:center;max-width:900px;">
+<h3 style="font-size:1.4rem;">生物ナビゲーション完全図</h3>
+
+<svg viewBox="0 0 900 520" style="width:100%;background:#f8fbff;border-radius:14px;padding:20px">
+
+<!-- タイトル -->
+<text x="450" y="40" text-anchor="middle" font-size="26" font-weight="bold">
+生命のナビゲーションシステム
+</text>
+
+<!-- 太陽 -->
+<circle cx="200" cy="160" r="60" fill="#FFD54F"/>
+<text x="200" y="170" text-anchor="middle" font-size="20">太陽</text>
+
+<!-- 星 -->
+<circle cx="200" cy="330" r="60" fill="#BBDEFB"/>
+<text x="200" y="340" text-anchor="middle" font-size="20">星</text>
+
+<!-- 地磁気 -->
+<circle cx="700" cy="160" r="60" fill="#C8E6C9"/>
+<text x="700" y="170" text-anchor="middle" font-size="20">地磁気</text>
+
+<!-- 脳GPS -->
+<circle cx="700" cy="330" r="60" fill="#E1BEE7"/>
+<text x="700" y="340" text-anchor="middle" font-size="20">脳GPS</text>
+
+<!-- 中央 -->
+<circle cx="450" cy="250" r="70" fill="#FFCDD2"/>
+<text x="450" y="255" text-anchor="middle" font-size="22" font-weight="bold">
+動物
+</text>
+
+<!-- 矢印 -->
+<line x1="260" y1="180" x2="380" y2="230" stroke="#333" stroke-width="3"/>
+<line x1="260" y1="320" x2="380" y2="270" stroke="#333" stroke-width="3"/>
+
+<line x1="640" y1="180" x2="520" y2="230" stroke="#333" stroke-width="3"/>
+<line x1="640" y1="320" x2="520" y2="270" stroke="#333" stroke-width="3"/>
+
+<!-- 体内時計 -->
+<rect x="390" y="420" width="120" height="60" rx="10" fill="#FFF3E0"/>
+<text x="450" y="455" text-anchor="middle" font-size="18">体内時計</text>
+
+<line x1="450" y1="420" x2="450" y2="320" stroke="#333" stroke-width="3"/>
+
+</svg>
+
+<figcaption>
+動物のナビゲーションは、太陽・星・地磁気などの自然のコンパスと、
+脳内GPS（場所細胞・グリッド細胞）を統合して行われる。
+太陽コンパスには体内時計による時間補償が必要である。
+</figcaption>
+
+</figure>
+
+    <!-- 第2章 -->
+    <h2>第2章：生き物はみんな太陽コンパスを持っている</h2>
+    
+    <h3>2-1. 渡り鳥の「体内時計」というスゴい仕組み</h3>
+    <p>太陽は動き続ける。だから「太陽が東にあるから…」と単純に決められない。渡り鳥は <strong>太陽の位置 ＋ 体内時計</strong> で方角を割り出す。これを <strong>時間補償付き太陽コンパス</strong><button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">太陽が空の中を動くことを前提に、体内時計を使って「今の太陽の位置」から正しい方角を計算する仕組み。</span> と呼ぶ。</p>
+    <figure>
+        <img src="https://www.researchgate.net/publication/325605245/figure/fig1/AS:634768433635328@1528351996150/Simulated-migration-routes-based-on-different-sun-compass-mechanisms-a-Time-compensated.png" alt="時間補償付き太陽コンパスのシミュレーション">
+        <figcaption>体内時計をずらすと渡り方向が変わる「クロックシフト実験<button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">動物の明暗サイクルを変えて体内時計を人工的にずらし、進む方向がどう変わるかを調べる実験。</span>」の結果。</figcaption>
+    </figure>
+    <p>ドイツの研究者クレイマー<button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">渡り鳥の方向感覚を研究したドイツの研究者。体内時計をずらす実験で、太陽コンパスの存在を示した。</span>は、鳥を人工的な明暗サイクルで飼い体内時計を数時間ずらすと、放鳥後の進行方向が予想通りにズレることを発見。これが太陽コンパスの決定的な証拠となった。その精度は約 ±3度～5度というから驚きだ。</p>
+    
+    <h3>2-2. 小さな巨人、ミツバチと砂漠アリのナビ術</h3>
+    <p><strong>ミツバチ</strong>は仲間に花の場所を伝える「8の字ダンス」で有名。ダンスの角度は太陽の方向を基準にしており、見た蜂は太陽コンパス＋体内時計で花の方角を理解する。</p>
+    <figure>
+        <img src="https://www.researchgate.net/publication/263283812/figure/fig1/AS:613991852290065@1523398473938/Dance-alignment-to-a-resource-changes-with-the-position-of-the-sun-When-a-honeybee.png" alt="ミツバチの8の字ダンス">
+        <figcaption>太陽の位置が変わるとダンスの角度も変わる。</figcaption>
+    </figure>
+    <p><strong>サハラ砂漠のアリ（Cataglyphis）</strong>は気温50℃の砂漠で巣に正確に戻る。彼らは太陽コンパスに加えて <strong>歩数計（ステップカウンター）</strong> を持っている。研究者がアリの脚を長くしたり短くしたりすると、巣を通り過ぎたり手前で止まったりするのだ。まさに「歩数で距離を測る」能力。</p>
+    
+    <h3>2-3. 海のサムライ、サケとマグロの大回遊</h3>
+    <p>川で生まれ海へ出て数年後、再び生まれた川へ戻るサケ。彼らは海洋では <strong>地磁気コンパス＋太陽コンパス</strong><button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">地磁気は地球がつくる巨大な磁場のこと。動物はこれを見えない方位磁石として使い、太陽の情報と組み合わせて方向を知る。</span> を、川の近くでは <strong>嗅覚（川の匂い）</strong> を使う。人工的に磁場を変える実験で、サケの進行方向が変わることが確認されている。</p>
+    <figure>
+        <img src="https://www.researchgate.net/publication/388021059/figure/fig1/AS:11431281377995922@1744735277236/The-life-cycle-and-common-life-histories-of-Pacific-salmon-species-Generally-Pacific.jpg" alt="サケの生活史と回遊">
+        <figcaption>サケは数千kmの旅を経て故郷の川へ。</figcaption>
+    </figure>
+    <p>マグロも同様に、黒潮などの海流を利用しながら、磁場の強さと傾きで現在地を推定する「磁気地図」<button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">地球上の場所ごとに異なる磁場の強さや傾きを手がかりに、現在地を見分ける考え方。</span>を持っている可能性が高い。</p>
+
+    <!-- 第3章 -->
+    <h2>第3章：最新科学でここまでわかった！ミクロの世界のコンパス</h2>
+    
+    <h3>3-1. 鳥は地磁気を「見ている」？</h3>
+    <p>渡り鳥は曇りでも方向が分かる。その鍵を握るのが目のタンパク質 <strong>クリプトクロム</strong><button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">光を受けると化学状態が変わるタンパク質。鳥の磁気感覚に関わる候補として研究されている。</span> だ。光（特に青い光）を吸収すると、内部で電子のペア「ラジカル対」<button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">電子を1個ずつ持つ分子どうしのペア。磁場の影響で反応の進み方が変わる可能性がある。</span>が生まれる。この電子ペアは量子力学的に絡み合った状態（スピン相関）になり、地球の極めて微弱な磁場に反応する。</p>
+    <figure>
+        <img src="https://www.researchgate.net/publication/273956371/figure/fig5/AS:294816509382662@1447301141715/The-Radical-Pair-Model-of-magnetoreception-a-Scheme-of-the-radical-pair-mechanisms.png" alt="ラジカル対メカニズムの模式図">
+        <figcaption>ラジカル対のスピン状態が磁場で変化し、化学反応生成物の量が変わる。</figcaption>
+    </figure>
+    <p>その結果、鳥の視野に磁場の方向に応じた明暗や模様が浮かび上がる可能性がある。つまり鳥は地磁気を「感じる」のではなく <strong>「見る」</strong> ことで方角を知っているかもしれない。これは <strong>量子生物学</strong><button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">量子力学の現象が、生物の機能にどう関わるかを調べる研究分野。</span> の代表的な研究テーマだ。</p>
+    
+    <h3>3-2. 地球創世記のコンパス、磁気細菌</h3>
+    <p>実は磁気を感知する能力は非常に古い。水中には <strong>磁気細菌</strong><button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">体内に磁石のような構造を持ち、地球磁場に沿って泳ぐ細菌。</span> という仲間がいて、体内に <strong>マグネトソーム</strong><button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">磁気細菌の体内にある、磁鉄鉱の結晶を包む小さな構造。細胞内コンパスの役割を果たす。</span> と呼ばれる磁鉄鉱（Fe₃O₄）の微細な結晶を鎖状に並べている。まるで小さな磁石の棒だ。これによって地球磁場の方向に沿って泳ぐことができる。生命は進化の初期から地磁気を利用していたのだ。</p>
+    <figure>
+        <img src="https://www.researchgate.net/publication/325452458/figure/fig5/AS:731589986238542@1551436053946/Schematic-representation-of-ampullae-of-Lorenzini-distributionin-two-elasmobranch.jpg" alt="サメのロレンチーニ器官">
+        <figcaption>サメのロレンチーニ器官も微弱な電場・磁場を感じる。</figcaption>
+    </figure>
+    
+    <h3>3-3. 人間にも残る磁気感覚の「痕跡」</h3>
+    <p>2019年、カリフォルニア工科大の研究<button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">人間を人工磁場の中に置いて脳波を測定し、磁場変化に反応する可能性を調べた実験。</span>で、人間を磁場を操作できる部屋に入れて脳波を測ったところ、地磁気の変化に反応してα波が変わることが分かった。ただし、私たちはそれを意識的に方位感覚として使えていない。痕跡的な能力が残っているのかもしれない。</p>
+
+    <!-- 第4章 -->
+    <h2>第4章：もしも太陽コンパスが「心」だったら？～私たちがふるさとを恋しく思う理由</h2>
+    
+    <h3>4-1. 脳の中の「GPS」</h3>
+    <p>2014年ノーベル生理学・医学賞<button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">脳内で位置や方向を表す神経細胞の研究に与えられた賞。場所細胞とグリッド細胞の重要性が広く知られた。</span>は、脳の空間認識システムを解明した3人の研究者に贈られた。私たちの脳には以下の細胞がある。</p>
+    <table>
+        <tr><th>細胞の種類</th><th>場所</th><th>役割</th></tr>
+        <tr><td><strong>場所細胞</strong><button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">動物や人が特定の場所にいるときに強く活動する神経細胞。</span></td><td>海馬</td><td>特定の場所にいるときだけ発火。「ここは自分の部屋」など</td></tr>
+        <tr><td><strong>グリッド細胞</strong><button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">空間を六角形の格子のように区切って位置を表す神経細胞。</span></td><td>嗅内皮質</td><td>六角形の格子状の座標地図を作る</td></tr>
+        <tr><td><strong>頭方向細胞</strong><button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">顔や頭がどちらを向いているかに応じて活動する神経細胞。</span></td><td>複数領域</td><td>顔を向けている方角（北・東など）で発火</td></tr>
+    </table>
+    <figure>
+        <img src="https://www.researchgate.net/publication/364312896/figure/fig1/AS:11431281270425208@1723083583089/Grid-and-place-cells-work-together-to-determine-the-animals-position-Schematics-of.png" alt="場所細胞とグリッド細胞の模式図">
+        <figcaption>脳内に張り巡らされた格子地図が位置情報を支える。</figcaption>
+    </figure>
+    <p>つまり人間は、脳内に自分専用のGPS<button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">Global Positioning System の略。本来は人工衛星を使う位置測定システムだが、ここでは脳が自分の位置を把握するしくみをたとえている。</span>を持っている。だから街を歩いても迷わずにいられる。</p>
+    
+    <h3>4-2. サケの回帰と人間の郷愁は同じなのか？</h3>
+    <p>サケは太陽コンパスや磁気・嗅覚を使って生まれた川へ戻る。これは生存のための本能だ。一方、私たちが「ふるさとを恋しく思う」気持ちは <strong>郷愁（ノスタルジー<button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">過去や故郷、懐かしい時間を恋しく思う感情のこと。</span>）</strong> と呼ばれ、本能というより感情・記憶のネットワークから生まれる。</p>
+    <p>心理学的にはノスタルジーには心を守る機能がある。孤独や不安を感じたとき、脳は過去の安全で幸せな記憶（ふるさと）を呼び出し、ストレスを和らげる。これは精神の免疫システムとも言える。</p>
+    
+    <h3>4-3. 「心のコンパス」を動かすもの</h3>
+    <p>幼少期に過ごした家の匂い、夕暮れの景色、家族の声。これらは <strong>刷り込み</strong> のように深く刻まれている。特に <strong>嗅覚</strong> はダイレクトに扁桃体（感情）や海馬（記憶）に届くため、故郷の香りが強いノスタルジーを呼び起こす（プルースト効果<button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">匂いがきっかけで、昔の記憶や感情が鮮やかによみがえる現象。</span>）。人間にとって「ふるさと」とは単なる場所ではなく、脳が作り上げた <strong>「感情の地図」</strong> なのだ。</p>
+    <div class="quote">
+        <p>「我々がふるさとを恋しく思うのは、太陽コンパスのせい？　それとも心のコンパスのせい？」</p>
+        <p class="author-note">── ある高校生の疑問から</p>
+    </div>
+
+    <!-- 第5章 -->
+    <h2>第5章：動物たちに学ぶ、これからのテクノロジー</h2>
+    
+    <h3>5-1. AIとロボットへの応用</h3>
+    <p>GPSが使えない深海、地下、惑星探査では、動物のナビゲーションがヒントになる。砂漠アリの「経路積分（path integration）」<button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">進んだ方向と距離を少しずつ足し合わせて、今どこにいるかを推定する方法。</span>は、ロボットが自己位置を推定するアルゴリズムに応用されている。また複数のセンサー（太陽・磁場・視覚）を統合する鳥のやり方は、自動運転技術の <strong>センサーフュージョン</strong><button type="button" class="note-trigger" onclick="toggleNote(this)">注</button><span class="note-popup">複数のセンサー情報を組み合わせて、より正確に状況を判断する技術。</span> のモデルだ。</p>
+    <figure>
+        <img src="https://www.mdpi.com/biomimetics/biomimetics-10-00543/article_deploy/html/images/biomimetics-10-00543-g002-550.jpg" alt="生物模倣ロボットの例">
+        <figcaption>アリのナビゲーションを模倣した六足ロボット。</figcaption>
+    </figure>
+    <p>NASAやJAXAも、動物の磁気コンパスを模した航法システムの研究を進めている。</p>
+    
+    <h3>5-2. 人間の電磁波が鳥を迷わせる？</h3>
+    <p>近年、都市部のAMラジオ帯域などの人工電磁波が、渡り鳥の磁気コンパスを妨害する可能性が指摘されている。実験では、電磁波を遮断すると鳥の方向感覚が回復したという。私たちの便利な生活が、動物たちの神秘的な能力に影を落としているかもしれない。これは環境保全の新しい視点だ。</p>
+
+    <!-- まとめ -->
+    <h2>まとめ</h2>
+    <p>太陽コンパスは、古代の航海術から最先端の量子生物学まで、実に多彩な顔を持つ。渡り鳥は体内時計と太陽を使い、ミツバチはダンスで仲間に伝え、サケは磁場と匂いで故郷を目指す。そして人間の脳には「場所細胞」「グリッド細胞」という精巧なGPSが備わり、さらに幼い日の記憶が「心のコンパス」として私たちを支えている。</p>
+    <p>動物たちの能力は決して特別な魔法ではなく、進化が生み出した精緻なシステムだ。それを知ることで、私たちは自分自身の「ふるさと感覚」の正体にも迫れるのかもしれない。空を見上げるとき、鳥たちがどんなコンパスを働かせているか、想像してみてほしい。</p>
+
+    <div class="footer">
+        <p>参考文献：文書1〜9 / 画像は各研究機関・Wikipediaより（一部リンク切れの場合はイメージとして）</p>
+        <p>© 2026 高校生向けサイエンスブログ</p>
+    </div>
+</div>
+
+
+<script>
+function toggleNote(btn){
+  const popup = btn.nextElementSibling;
+  if (!popup) return;
+  document.querySelectorAll('.note-popup.open').forEach(el => {
+    if (el !== popup) el.classList.remove('open');
+  });
+  popup.classList.toggle('open');
+}
+
+let currentFigureScale = 1;
+
+function zoomFigure(factor){
+  currentFigureScale = Math.max(0.8, Math.min(2.1, currentFigureScale * factor));
+  const fig = document.getElementById('mainNavFigure');
+  if (fig) fig.style.transform = 'scale(' + currentFigureScale + ')';
+}
+
+function resetFigure(){
+  currentFigureScale = 1;
+  const fig = document.getElementById('mainNavFigure');
+  if (fig) fig.style.transform = 'scale(1)';
+}
+
+const figureNotes = {
+  'sun': {
+    title: '太陽コンパス',
+    body: '太陽はもっとも古く、わかりやすい方位の手がかりです。ただし太陽は空を動くので、「どこにあるか」だけでなく「今が何時ごろか」を合わせて考える必要があります。'
+  },
+  'clock': {
+    title: '光＋体内時計',
+    body: 'ここが記事の核心です。生き物は太陽の位置だけを見ているのではなく、体内時計で時刻を補正して、正しい進行方向を計算しています。'
+  },
+  'insects': {
+    title: '昆虫のナビゲーション',
+    body: 'ミツバチは太陽を基準にダンスの角度を決め、砂漠アリは太陽コンパスに歩数計を組み合わせて巣へ戻ります。小さな脳でも高精度のナビができる例です。'
+  },
+  'birds': {
+    title: '渡り鳥のナビゲーション',
+    body: '渡り鳥は太陽と体内時計を使うだけでなく、地磁気も利用します。晴れた日も曇った日も迷いにくいのは、複数の手がかりを統合しているからです。'
+  },
+  'magnetic': {
+    title: '地球磁場',
+    body: '地球は巨大な磁石のように磁場を作っています。生き物にとっては「見えない北」を教えてくれる全地球規模の道しるべです。'
+  },
+  'magnetic-map': {
+    title: '磁気地図',
+    body: '磁場の向きだけでなく、強さや傾きも場所ごとに少しずつ違います。魚やウミガメなどは、その違いを地図のように利用して現在地を推定していると考えられています。'
+  },
+  'fish': {
+    title: '魚の大回遊',
+    body: 'サケやマグロは海流、太陽、地磁気、匂いなどを組み合わせて長距離を移動します。ひとつのコンパスだけではなく、複数の情報源を重ねているのが重要です。'
+  },
+  'bacteria': {
+    title: '磁気細菌とマグネトソーム',
+    body: '磁気細菌は体内に磁石のような結晶を並べています。つまり、生命はかなり早い段階から「磁場を使う」という発想を獲得していたことになります。'
+  },
+  'human': {
+    title: '人間もナビゲーション生物',
+    body: '人間は鳥のように長距離を渡るわけではありませんが、脳の中に位置・方向・距離をまとめる高度なシステムを持っています。'
+  },
+  'gps': {
+    title: '脳GPS',
+    body: '場所細胞・グリッド細胞・頭方向細胞が協力して、脳の中に空間の地図をつくります。記事の後半は、この自然のコンパスが人間の心や記憶にどうつながるかを扱っています。'
+  },
+  'mind-map': {
+    title: '心の地図',
+    body: '人間ではナビゲーションが単なる移動技術では終わりません。空間認識は記憶や郷愁とも結びつき、「ふるさとを恋しく思う」という感情にもつながります。'
+  }
+};
+
+function showFigurePanel(key){
+  const panel = document.getElementById('figurePanel');
+  const note = figureNotes[key];
+  if (!panel || !note) return;
+  panel.innerHTML = '<h4>' + note.title + '</h4><p>' + note.body + '</p>';
+}
+
+document.addEventListener('click', function(e){
+  if (!e.target.classList.contains('note-trigger')) {
+    document.querySelectorAll('.note-popup.open').forEach(el => el.classList.remove('open'));
+  }
+});
+</script>
+
+
+</body>
+</html>

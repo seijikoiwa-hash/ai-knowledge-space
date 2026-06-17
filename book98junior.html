@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>分子の右手と左手｜ソアイ反応とBINAP・不斉水素化（中学生向け・修正版）</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(145deg, #e9f0fa 0%, #ffffff 100%);
+      font-family: 'Hiragino Kaku Gothic Pro', 'Yu Gothic', 'Meiryo', sans-serif;
+      color: #1e2a3e;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .card {
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(2px);
+      border-radius: 2rem;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.08);
+      padding: 1.8rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(100,150,200,0.2);
+    }
+    h1 {
+      font-size: 2.2rem;
+      background: linear-gradient(135deg, #1e4b6e, #2a7f6e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.5px;
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin: 1.2rem 0 0.8rem;
+      padding-left: 0.8rem;
+      border-left: 6px solid #2c8c6e;
+      color: #1e4b6e;
+    }
+    h3 {
+      font-size: 1.3rem;
+      margin: 1rem 0 0.6rem;
+      color: #2c6e5c;
+    }
+    .badge {
+      background: #d4e3fd;
+      color: #1e4b6e;
+      display: inline-block;
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-bottom: 0.8rem;
+    }
+    p {
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+    .analogy {
+      background: #fef7e0;
+      border-left: 5px solid #f4b942;
+      padding: 1rem 1.2rem;
+      border-radius: 1.2rem;
+      margin: 1.2rem 0;
+    }
+    .key-point {
+      background: #e0f0e8;
+      border-radius: 1.2rem;
+      padding: 1rem 1.2rem;
+      margin: 1rem 0;
+      font-weight: 500;
+    }
+    .note {
+      background: #eef4ff;
+      border-left: 5px solid #7aa7e8;
+      padding: 1rem 1.2rem;
+      border-radius: 1.2rem;
+      margin: 1.2rem 0;
+    }
+    .grid-2 {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin: 1.5rem 0;
+    }
+    .grid-2 > div {
+      flex: 1;
+      min-width: 220px;
+      background: #f8faff;
+      border-radius: 1.5rem;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 1rem auto;
+      background: #ffffff;
+      border-radius: 1.2rem;
+    }
+    .figure-caption {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #4a627a;
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
+    }
+    .comparison {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin: 1.2rem 0;
+    }
+    .comp-card {
+      background: #fcf8f0;
+      border-radius: 1.4rem;
+      padding: 1.2rem;
+      flex: 1;
+      border: 1px solid #e2dccd;
+    }
+    ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    footer {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      color: #5b6f86;
+    }
+    @media (max-width: 700px) {
+      .card { padding: 1.2rem; }
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="card" style="background: linear-gradient(120deg, #f0f7ff, #ffffff);">
+    <span class="badge">🔬 ノーベル化学賞と生命のふしぎ</span>
+    <h1>分子の右手と左手<br>ソアイ反応とBINAP・不斉水素化</h1>
+    <p style="font-size:1.2rem; margin-top:0.5rem;">小さな偏りが大きな違いに変わる「ソアイ反応」<br>そして野依良治博士が発明した「分子の左右を作り分ける技術」を、イラストとたとえでわかりやすく解説します。</p>
+  </div>
+
+  <div style="margin-top:1rem; margin-bottom:1rem; padding:0.8rem; background:#eef4ff; border-radius:16px; text-align:center;">
+    <p style="font-size:0.95rem; margin-bottom:0.4rem;">🎓 もっとくわしく知りたい人へ（高校生・大人向け）</p>
+    <p style="font-size:0.95rem; margin:0 0 0.6rem; color:#38506a;">まずはこのページで「どんな現象か」をつかみ、次に高校生向け版で「なぜそうなるのか」を学ぶのがおすすめです。</p>
+    <a href="book98.html" style="display:inline-block; padding:0.4rem 1rem; background:#128255; color:#fff; border-radius:999px; text-decoration:none; font-weight:bold; font-size:0.9rem;">
+      👉 高校生向け完全版はこちら
+    </a>
+  </div>
+
+  <div class="card">
+    <h2>✋ まず知っておこう：分子にも「右手・左手」がある</h2>
+    <p>自分の右手と左手を見てください。形はそっくりですが、重ねようとしてもピッタリ重なりません。鏡に映した関係を<strong>鏡像（きょうぞう）</strong>といいます。</p>
+    <p>実は、薬の材料になる分子にも同じことが起こります。<strong>右手型と左手型</strong>が存在し、<strong>化学式は同じでも、体の中での働きが違う</strong>ことがあるのです。</p>
+    <div class="grid-2">
+      <div>🖐️ <strong>右手型</strong><br>ある薬ではこちらがよく働くことがある</div>
+      <div>🖐️ <strong>左手型</strong><br>別の薬ではこちらがよく働くこともある</div>
+    </div>
+    <div class="note">
+      💡 大事な注意：どちらが「良い・悪い」と決まっているわけではありません。<strong>どちらが役に立つかは分子ごとに違います。</strong>
+    </div>
+    <div class="analogy">
+      💡 たとえ話：靴にも右足用・左足用があります。分子も同じで、体の中の「受容体」という鍵穴にぴったり合う向きだけが、強くはたらくことがあります。
+    </div>
+  </div>
+ 　　　　<p>※「右手型・左手型」はイメージです。実際の分類（D/L）は少し違う決め方です。</p>
+  <div class="card">
+    <h2>⚠️ 昔の化学の悩み：ほしい形と、ほしくない形が半分ずつ混ざる</h2>
+    <p>普通に化学反応を行うと、右手型と左手型が<strong>50%ずつ（ラセミ体）</strong>できてしまうことがあります。すると、<strong>目的の形</strong>と<strong>目的ではない形</strong>が同じ量だけ混ざってしまいます。</p>
+    <svg viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg">
+      <rect width="500" height="180" fill="#fef9e6" rx="16" />
+      <text x="250" y="30" text-anchor="middle" font-size="14" fill="#3a5e6e">普通の化学反応</text>
+      <circle cx="150" cy="100" r="40" fill="#7eb09e" opacity="0.9" />
+      <text x="150" y="105" text-anchor="middle" fill="white" font-size="14">右手型</text>
+      <circle cx="350" cy="100" r="40" fill="#e0a890" opacity="0.9" />
+      <text x="350" y="105" text-anchor="middle" fill="white" font-size="14">左手型</text>
+      <text x="250" y="160" text-anchor="middle" font-size="12" fill="#4a5c6b">50 : 50 で混ざることがある</text>
+    </svg>
+    <p>この混ざったものから目的の形だけを取り出すのは大変です。手間もコストもかかり、使わない分が多く出てしまうこともありました。</p>
+  </div>
+
+  <div class="card">
+    <h2>✨ ソアイ反応：わずかな偏りが大きな差になる</h2>
+    <p>1995年、硤合彰三（そあい しょうぞう）教授が発見した<strong>ソアイ反応</strong>は、化学の世界に大きな驚きを与えました。</p>
+    <div class="key-point">
+      🔁 ソアイ反応の本質：<strong>「できた分子が、自分と同じ向きの分子を増やす手助けをする」</strong>という自己触媒反応です。
+    </div>
+    <p>条件がそろうと、最初にL型が51、D型が49のようなごく小さな差しかなくても、反応が進むにつれてその差が大きくなり、片方がとても多くなることがあります。</p>
+
+    <svg viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg">
+      <rect width="900" height="280" fill="#ffffff" rx="20"/>
+      <text x="450" y="35" text-anchor="middle" font-size="20" fill="#1e4b6e">ソアイ反応：小さな差が大きく育つ</text>
+      <rect x="60" y="70" width="200" height="150" rx="16" fill="#f4f8ff" stroke="#c9d8ff"/>
+      <text x="160" y="108" text-anchor="middle" font-size="18" fill="#1d4aa9">最初</text>
+      <text x="160" y="142" text-anchor="middle" font-size="18" fill="#2c8c6e">L : 51</text>
+      <text x="160" y="172" text-anchor="middle" font-size="18" fill="#c07a5a">D : 49</text>
+      <text x="160" y="205" text-anchor="middle" font-size="13" fill="#5b6472">ほんの少しの差</text>
+
+      <rect x="350" y="70" width="200" height="150" rx="16" fill="#f8fcf8" stroke="#c6e7d3"/>
+      <text x="450" y="108" text-anchor="middle" font-size="18" fill="#16825d">途中</text>
+      <text x="450" y="142" text-anchor="middle" font-size="18" fill="#2c8c6e">L : 80</text>
+      <text x="450" y="172" text-anchor="middle" font-size="18" fill="#c07a5a">D : 20</text>
+      <text x="450" y="205" text-anchor="middle" font-size="13" fill="#5b6472">差が広がる</text>
+
+      <rect x="640" y="70" width="200" height="150" rx="16" fill="#fff9ef" stroke="#ead9a5"/>
+      <text x="740" y="108" text-anchor="middle" font-size="18" fill="#8a6310">最後</text>
+      <text x="740" y="142" text-anchor="middle" font-size="18" fill="#2c8c6e">L : 99.5</text>
+      <text x="740" y="172" text-anchor="middle" font-size="18" fill="#c07a5a">D : 0.5</text>
+      <text x="740" y="205" text-anchor="middle" font-size="13" fill="#5b6472">片方がとても多い</text>
+
+      <path d="M265 145 L340 145" stroke="#c7961d" stroke-width="6" marker-end="url(#arrowSoai)"/>
+      <path d="M555 145 L630 145" stroke="#c7961d" stroke-width="6" marker-end="url(#arrowSoai)"/>
+      <defs>
+        <marker id="arrowSoai" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+          <polygon points="0 0, 10 3, 0 6" fill="#c7961d"/>
+        </marker>
+      </defs>
+    </svg>
+    <div class="figure-caption">図：ソアイ反応では、条件が合うと最初のわずかな差が自己触媒によって大きく増幅される。</div>
+
+    <h3>🍬 キャンディのたとえで考える</h3>
+    <p>最初にL型キャンディが51個、D型キャンディが49個あるとします。L型はL型を増やすのが少し得意、D型はD型を増やすのが少し得意です。すると、わずかな差が少しずつ広がっていきます。</p>
+    <div class="grid-2">
+      <div>🍬 <strong>L型キャンディ</strong><br>自分と同じL型を増やすのが得意</div>
+      <div>🍬 <strong>D型キャンディ</strong><br>自分と同じD型を増やすのが得意</div>
+    </div>
+    <div class="analogy">
+      💡 これが「自己触媒増幅」です。小さな差が、反応の進み方によって大きな違いに育つことがあります。
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🧬 生命とソアイ反応：なぜアミノ酸はL体だけなの？</h2>
+    <p>地球上の生命は、タンパク質の材料として<strong>L型アミノ酸</strong>を使っています。なぜそうなったのかは、今も研究が続いている大きなテーマです。</p>
+    <p>有力な考えの一つでは、宇宙の円偏光や鉱物表面がごくわずかな偏りをつくり、その小さな差を<strong>ソアイ反応のような増幅機構</strong>が大きくしたのではないかと考えられています。</p>
+    <div class="key-point">
+      🌌 ソアイ反応は、「生命のホモキラリティ（片側だけの分子世界）」が化学的に説明できるかもしれない、という大きなヒントを与えました。
+    </div>
+    <p>つまり、生命がL体を選んだ理由として、<strong>小さな偏りが反応で増幅された</strong>という考え方に現実味を与えたのです。ただし、これはまだ研究中のテーマです。</p>
+  </div>
+
+  <div class="card">
+    <h2>🏆 野依良治博士の発明：BINAP触媒で「ほしい向き」を作り分ける</h2>
+    <p>ソアイ反応が「自然の中で偏りが大きくなるしくみ」を教えてくれたのに対し、野依良治博士（名古屋大学）は<strong>人間が分子の左右を作り分ける技術</strong>を発展させました。<strong>BINAP</strong>（バイナップ）という特別な分子を使い、金属と組み合わせることで、<strong>ほしい向きの分子を非常に高い割合で作れる</strong>ようにしたのです。</p>
+    <div class="key-point">
+      ✨ ポイント：BINAP触媒を使うと、目的の向きの分子を強くえらんで作れるようになります。
+    </div>
+
+    <svg viewBox="0 0 500 220" xmlns="http://www.w3.org/2000/svg">
+      <rect width="500" height="220" fill="#f4f9ff" rx="16" />
+      <text x="250" y="25" text-anchor="middle" font-size="13" fill="#2a6b5e">BINAP の“ねじれ”イメージ</text>
+      <circle cx="120" cy="110" r="32" fill="none" stroke="#2c7a5e" stroke-width="2.5" />
+      <circle cx="120" cy="110" r="22" fill="none" stroke="#2c7a5e" stroke-width="1.8" />
+      <text x="120" y="115" text-anchor="middle" font-size="12">環A</text>
+      <circle cx="380" cy="110" r="32" fill="none" stroke="#2c7a5e" stroke-width="2.5" />
+      <circle cx="380" cy="110" r="22" fill="none" stroke="#2c7a5e" stroke-width="1.8" />
+      <text x="380" y="115" text-anchor="middle" font-size="12">環B</text>
+      <path d="M152 110 L190 80 L310 80 L348 110" stroke="#d97706" stroke-width="4" fill="none" stroke-dasharray="5 3" />
+      <path d="M152 110 L190 140 L310 140 L348 110" stroke="#d97706" stroke-width="4" fill="none" stroke-dasharray="5 3" />
+      <text x="250" y="190" text-anchor="middle" font-size="11" fill="#6b4c2c">二つの環がねじれて固定 → キラルな空間を作る</text>
+    </svg>
+    <div class="figure-caption">図：BINAPの「軸不斉」――二つの環がねじれた形で固定されている。このねじれが左右を選ぶカギになる。</div>
+  </div>
+
+  <div class="card">
+    <h2>🚪 仕組みは「片開きのドア」</h2>
+    <p>BINAP触媒のまわりには、<strong>分子が入りやすい方向と入りにくい方向</strong>があります。まるで「ある向きだけ通りやすいドア」のようなイメージです。</p>
+    <svg viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="500" height="200" fill="#fff7ec" rx="16" />
+      <rect x="180" y="50" width="140" height="120" fill="#e9d9c2" stroke="#b47c48" stroke-width="2" rx="8" />
+      <text x="250" y="95" text-anchor="middle" font-size="16" fill="#5a3a1e">🚪 BINAP触媒の空間</text>
+      <text x="250" y="125" text-anchor="middle" font-size="12" fill="#3a2a1a">通りやすい向きがある</text>
+      <text x="250" y="150" text-anchor="middle" font-size="12" fill="#a55a2a">通りにくい向きもある</text>
+      <path d="M80 110 L170 110" stroke="#2c8c6e" stroke-width="3" marker-end="url(#arrowDoor)" />
+      <text x="125" y="100" text-anchor="middle" font-size="10" fill="#2c8c6e">通りやすい</text>
+      <path d="M420 110 L330 110" stroke="#c07a5a" stroke-width="3" marker-end="url(#arrowDoor2)" stroke-dasharray="4 2" />
+      <text x="380" y="90" text-anchor="middle" font-size="10" fill="#b05a3a">通りにくい</text>
+      <defs>
+        <marker id="arrowDoor" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+          <polygon points="0 0, 8 4, 0 8" fill="#2c8c6e" />
+        </marker>
+        <marker id="arrowDoor2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+          <polygon points="0 0, 8 4, 0 8" fill="#c07a5a" />
+        </marker>
+      </defs>
+    </svg>
+    <div class="analogy">
+      🔑 たとえ：BINAPは分子に対して「この向きは通しやすい、逆の向きは通しにくい」というフィルターのようにはたらきます。
+    </div>
+    <p>このおかげで、反応が進むとき、<strong>目的の向きの分子が多く生まれる</strong>ようになります。野依博士はこの技術を「不斉水素化」として発展させ、世界中の医薬品づくりに大きな影響を与えました。</p>
+  </div>
+
+  <div class="card">
+    <h2>⚖️ 二つの大きな発見：自然のしくみと人間の技術</h2>
+    <div class="comparison">
+      <div class="comp-card">
+        <h3>✨ ソアイ反応</h3>
+        <p><strong>発見者：</strong> 硤合彰三 教授（1995年）</p>
+        <p><strong>役割：</strong> 小さな偏りを自己増幅する「自然のしくみ」</p>
+        <p><strong>意義：</strong> 生命がなぜ片側だけになったのかを化学で考える大きなヒントを与えた。</p>
+        <p>💡 <strong>キーワード：</strong> 自己触媒、増幅、生命の起源仮説</p>
+      </div>
+      <div class="comp-card">
+        <h3>🏆 BINAP / 不斉水素化</h3>
+        <p><strong>開発者：</strong> 野依良治 博士（ノーベル化学賞 2001年）</p>
+        <p><strong>役割：</strong> 人工的に「ほしい向きの分子」を選んで作る技術</p>
+        <p><strong>意義：</strong> 薬づくりや化学工業をより効率よく、より環境にやさしくした。</p>
+        <p>💡 <strong>キーワード：</strong> 不斉触媒、医薬品合成、グリーンケミストリー</p>
+      </div>
+    </div>
+    <p>ソアイ反応は「自然界でどうやって分子の左右が選ばれたのか」を考える手がかりを与え、BINAPは「人間がその選び分けを実用的に行う」方法を示しました。どちらも「分子の手」の理解を深める大切な発見です。</p>
+  </div>
+
+  <div class="card">
+    <h2>🌟 野依博士の技術がすごい理由：3つのメリット</h2>
+    <div class="grid-2">
+      <div>💊 <strong>薬づくりに役立つ</strong><br>目的の形を多く作れるので、より効率よく薬を設計しやすくなる。</div>
+      <div>🌱 <strong>環境にやさしい</strong><br>不要な副生成物を減らしやすく、資源のムダを小さくできる。</div>
+      <div>💰 <strong>コストを下げやすい</strong><br>工程がシンプルになり、大量生産にも向く。</div>
+    </div>
+    <p>この功績により、野依良治博士は<strong>2001年にノーベル化学賞</strong>を受賞しました（K. Barry Sharpless 博士、William S. Knowles 博士と共同受賞）。</p>
+    <div class="analogy">
+      🌍 不斉触媒は、香料や医薬品など、私たちの身の回りのさまざまな化学製品づくりに役立っています。
+    </div>
+  </div>
+
+  <div class="card" style="background: #eef3fc;">
+    <h2>🎓 まとめ：分子の右手と左手から学べること</h2>
+    <p>「分子にも右手と左手がある」という発見から、二つの大きな化学の物語が生まれました。</p>
+    <ul>
+      <li><strong>ソアイ反応</strong> ── ごくわずかな偏りが「自分で自分を増やす」ことで大きな差になる。生命の片側性を考える大きなヒントになった。</li>
+      <li><strong>BINAP / 不斉水素化（野依良治博士）</strong> ── 分子の左右を人間が作り分ける技術。薬づくりや環境にやさしい化学に役立っている。</li>
+    </ul>
+    <p>科学のおもしろさは、「なぜ？」という素朴な疑問から始まります。野依博士は「どうすればほしい向きだけを作れるか」を追いかけ、硤合教授は「小さな差がどうやって大きくなるのか」を突き止めました。</p>
+    <div class="key-point" style="background: #f7f0d6;">
+      💡 もしあなたが「右手と左手、どうして同じじゃないんだろう？」と感じたなら、それはもう科学者への第一歩です。小さな「なぜ？」を大切にしてください。
+    </div>
+    <p style="margin-top: 1rem; text-align: right;">—— 参考：ソアイ反応関連論文 / 野依良治博士 ノーベル賞記念講演 など</p>
+  </div>
+
+  <div style="margin-top:1rem; margin-bottom:1rem; padding:0.8rem; background:#f4fbf7; border-radius:16px; text-align:center;">
+    <p style="font-size:0.95rem; margin-bottom:0.4rem;">🎓 ここまで読めた人は次の段階へ</p>
+    <p style="font-size:0.95rem; margin:0 0 0.6rem; color:#38506a;">高校生向け版では、円偏光・鉱物・ソアイ反応・不斉合成の意味をより深く学べます。</p>
+    <a href="book98.html" style="display:inline-block; padding:0.4rem 1rem; background:#128255; color:#fff; border-radius:999px; text-decoration:none; font-weight:bold; font-size:0.9rem;">
+      👉 高校生向け完全版はこちら
+    </a>
+  </div>
+
+  <footer>
+    © 中学生のための科学読み物 ― 分子の手のふしぎ　─
+  </footer>
+</div>
+</body>
+</html>

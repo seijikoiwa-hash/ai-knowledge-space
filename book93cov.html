@@ -1,0 +1,912 @@
+
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>book93 「臓器医学」から「システム医学」へ</title>
+<style>
+:root{
+  --bg:#f5f7fb; --card:#ffffff; --line:#d9e2ef; --text:#1f2937; --muted:#5b6472;
+  --accent:#2563eb; --accent2:#059669; --accent3:#dc2626; --accent4:#7c3aed; --soft:#eef4ff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:linear-gradient(180deg,#f8fbff 0%,#f5f7fb 100%);
+  color:var(--text); font-family:"Hiragino Sans","Yu Gothic","Meiryo",system-ui,sans-serif; line-height:1.95;
+}
+.wrap{max-width:1120px; margin:0 auto; padding:28px 18px 80px}
+.hero,.card,.figure,.toc{background:var(--card); border:1px solid var(--line); border-radius:24px; box-shadow:0 10px 24px rgba(15,23,42,.05)}
+.hero{padding:34px; margin-bottom:20px; background:linear-gradient(135deg,#eff6ff,#ecfeff 60%,#f0fdf4)}
+h1{font-size:clamp(1.9rem,3.5vw,3rem); line-height:1.25; margin:0 0 12px}
+.subtitle{font-size:1.04rem; color:var(--muted); margin:0}
+.toc{padding:22px 26px; margin:18px 0 22px}
+.toc h2{margin:0 0 12px}
+.toc ol{margin:0; padding-left:1.4rem}
+.card{padding:28px 28px 22px; margin:20px 0}
+h2.sec{font-size:1.55rem; margin:0 0 16px; padding-left:14px; border-left:7px solid var(--accent)}
+h3{margin:22px 0 10px; font-size:1.12rem}
+p{margin:0 0 1em}
+.lead{font-size:1.05rem}
+.note{
+  background:#f8fafc; border:1px solid #e5e7eb; border-left:6px solid var(--accent2);
+  border-radius:16px; padding:16px 18px; margin:16px 0;
+}
+.warn{
+  background:#fff7ed; border:1px solid #fed7aa; border-left:6px solid #ea580c;
+  border-radius:16px; padding:16px 18px; margin:16px 0;
+}
+.grid2,.grid3{display:grid; gap:16px}
+.grid2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.grid3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.mini{
+  background:#fbfdff; border:1px solid #e5ecf5; border-radius:18px; padding:16px 16px 14px;
+}
+.mini h4{margin:0 0 8px; font-size:1rem}
+.kpi{font-size:1.65rem; font-weight:700; color:var(--accent); line-height:1.2; margin-bottom:6px}
+.figure{padding:18px; margin:16px 0 20px}
+.figure h3{margin-top:0}
+figcaption,.cap{font-size:.95rem; color:var(--muted)}
+table{width:100%; border-collapse:collapse; margin:14px 0 8px; font-size:.98rem}
+th,td{border:1px solid #d8e0ec; padding:12px 10px; vertical-align:top}
+th{background:#f2f6fd}
+.badges{display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 0}
+.badge{display:inline-block; padding:5px 10px; border-radius:999px; color:#fff; font-size:.86rem}
+.b1{background:var(--accent3)} .b2{background:var(--accent)} .b3{background:var(--accent2)} .b4{background:var(--accent4)}
+small.ref{color:var(--muted); display:block; margin-top:10px}
+footer{color:var(--muted); font-size:.94rem; margin-top:24px}
+svg{width:100%; height:auto; display:block}
+@media (max-width:760px){
+  .wrap{padding:18px 12px 56px}
+  .hero,.card,.toc,.figure{border-radius:18px}
+  .card{padding:22px 18px 18px}
+}
+</style>
+<style>
+.control-panel,.glossary-card,.quiz-card{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:0 10px 24px rgba(15,23,42,.05);padding:18px 20px;margin:18px 0}
+.control-row,.glossary-chips,.quiz-actions,.figure-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.ctrl-btn,.chip-btn,.mini-btn,.quiz-btn{appearance:none;border:1px solid #cbd5e1;background:#fff;border-radius:999px;padding:9px 14px;font:inherit;cursor:pointer;transition:.2s;text-decoration:none;color:inherit}
+.ctrl-btn:hover,.chip-btn:hover,.mini-btn:hover,.quiz-btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(15,23,42,.08);border-color:#93c5fd}
+.ctrl-btn.primary,.quiz-btn.primary{background:#2563eb;color:#fff;border-color:#2563eb}
+.chip-btn.active{background:#eff6ff;border-color:#93c5fd;color:#1d4ed8}
+.glossary-panel,.quiz-feedback{margin-top:14px;padding:14px 16px;border-radius:16px;background:#f8fafc;border:1px solid #e5e7eb;display:none}
+.glossary-panel.show,.quiz-feedback.show{display:block}
+.section-tools{display:flex;justify-content:flex-end;gap:10px;margin:-6px 0 14px}
+.section-body.is-collapsed{display:none}
+.section.collapsed{opacity:.96}
+.figure-actions{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 10px}
+.figure[data-zoom='on']{position:relative;z-index:2;box-shadow:0 18px 40px rgba(15,23,42,.15)}
+.figure[data-zoom='on'] svg{transform:scale(1.12);transform-origin:center top}
+.figure svg{transition:transform .25s ease}
+.cap.is-hidden{display:none}
+.jump-note{font-size:.95rem;color:var(--muted);margin:8px 0 0}
+.quiz-option{display:block;width:100%;text-align:left;border:1px solid #dbe3ef;border-radius:14px;padding:12px 14px;background:#fff;cursor:pointer;margin:10px 0}
+.quiz-option:hover{border-color:#93c5fd;background:#f8fbff}
+.sticky-help{position:sticky;top:8px;z-index:5}
+@media (max-width:760px){.control-panel,.glossary-card,.quiz-card{border-radius:18px;padding:16px 14px}.section-tools{justify-content:flex-start}}
+</style><script>
+document.addEventListener('DOMContentLoaded', () => {
+  const sectionBodies = [...document.querySelectorAll('.section-body')];
+  document.querySelectorAll('[data-toggle-section]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const body = btn.closest('.section').querySelector('.section-body');
+      const collapsed = body.classList.toggle('is-collapsed');
+      btn.textContent = collapsed ? '章を開く' : '章を閉じる';
+      btn.closest('.section').classList.toggle('collapsed', collapsed);
+    });
+  });
+  const setAll = (collapsed) => {
+    sectionBodies.forEach(body => {
+      body.classList.toggle('is-collapsed', collapsed);
+      const sec = body.closest('.section');
+      sec.classList.toggle('collapsed', collapsed);
+      const btn = sec.querySelector('[data-toggle-section]');
+      if (btn) btn.textContent = collapsed ? '章を開く' : '章を閉じる';
+    });
+  };
+  document.getElementById('expandAll')?.addEventListener('click', () => setAll(false));
+  document.getElementById('collapseAll')?.addEventListener('click', () => setAll(true));
+
+  document.querySelectorAll('.chip-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const panel = document.getElementById('glossaryPanel');
+      panel.innerHTML = `<strong>${btn.dataset.term}</strong><br>${btn.dataset.desc}`;
+      panel.classList.add('show');
+    });
+  });
+
+  document.querySelectorAll('[data-zoom-figure]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const figure = btn.closest('.figure');
+      const on = figure.getAttribute('data-zoom') === 'on';
+      figure.setAttribute('data-zoom', on ? 'off' : 'on');
+      btn.textContent = on ? '図を拡大' : '拡大を戻す';
+    });
+  });
+  document.querySelectorAll('[data-toggle-cap]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const cap = btn.closest('.figure').querySelector('.cap');
+      if (!cap) return;
+      const hidden = cap.classList.toggle('is-hidden');
+      btn.textContent = hidden ? '図の説明を表示' : '図の説明を隠す';
+    });
+  });
+
+  document.querySelectorAll('.quiz-card').forEach(card => {
+    const feedback = card.querySelector('.quiz-feedback');
+    card.querySelectorAll('.quiz-option').forEach(opt => {
+      opt.addEventListener('click', () => {
+        feedback.innerHTML = opt.dataset.feedback;
+        feedback.classList.add('show');
+      });
+    });
+  });
+});
+</script></head>
+<body>
+<div class="wrap">
+<header class="hero">
+<div class="badges">
+<span class="badge b1">病名の爆発</span>
+<span class="badge b2">鑑別診断</span>
+<span class="badge b3">原因中心</span>
+<span class="badge b4">AI × システム医学</span>
+</div>
+<h1></h1>
+<h1>「臓器医学」から「システム医学」へ
+─対話型コンテンツ版─</h1>
+<div style="margin-top:12px">
+<a href="book93.html"
+style="display:inline-block;
+padding:8px 14px;
+background:#059669;
+color:white;
+border-radius:8px;
+text-decoration:none">
+通常版を見る
+</a>
+</div>
+<p class="subtitle">病名中心・臓器中心の医療がなぜ限界に近づきつつあるのか、そして原因・ネットワーク・時間軸で病気を捉える新しい見方を整理した。</p>
+</header><section aria-label="学習コントロール" class="control-panel sticky-help">
+<h2 style="margin:0 0 10px">対話型学習パネル</h2>
+<div class="control-row">
+<button class="ctrl-btn primary" id="expandAll" type="button">全章を開く</button>
+<button class="ctrl-btn" id="collapseAll" type="button">全章を閉じる</button>
+<a class="ctrl-btn" href="#glossaryCard">重要語句へ</a>
+<a class="ctrl-btn" href="#quiz1">理解チェックへ</a>
+<a class="ctrl-btn" href="#sec5">システム医学へジャンプ</a>
+</div>
+<p class="jump-note">使い方：章を閉じたり、語句をクリックして定義を出したり、図を拡大して読めます。</p>
+</section>
+<section class="toc">
+<h2>目次</h2>
+<ol>
+<li><a href="#sec1">はじめに</a></li>
+<li><a href="#sec2">医師はもはや病名を覚えきれない―病名は数万種を超える</a></li>
+<li><a href="#sec3">医師はどのようにして患者に病名をつけるのか―病名を付けないと診療報酬は発生しない</a></li>
+<li><a href="#sec4">医学のパラダイムシフト：臓器中心の医学から原因中心のシステム医学へ</a></li>
+<li><a href="#sec5">システム医学とは―新しい医療の全体像―</a></li>
+<li><a href="#sec6">我々患者はどうしたらいいのか</a></li>
+<li><a href="#sec7">おわりに</a></li>
+</ol>
+</section><section class="glossary-card" id="glossaryCard">
+<h2 style="margin:0 0 8px">クリック語句集</h2>
+<p class="jump-note">重要語句を押すと、その場で簡潔な説明が開きます。</p>
+<div class="glossary-chips">
+<button class="chip-btn" data-desc="症状や臓器に現れた結果へ名前を付けて整理する医学の考え方。制度や分類に強い一方、上流原因を見落としやすい。" data-term="病名中心医学" type="button">病名中心医学</button>
+<button class="chip-btn" data-desc="病気を孤立した臓器障害ではなく、免疫・代謝・神経などの相互作用の乱れとして捉える考え方。" data-term="システム医学" type="button">システム医学</button>
+<button class="chip-btn" data-desc="症状から考えられる複数の候補を並べ、問診・診察・検査で順に絞り込む臨床推論。" data-term="鑑別診断" type="button">鑑別診断</button>
+<button class="chip-btn" data-desc="病気を孤立した箱ではなく、上流原因から下流合併症までの連鎖としてみる見方。" data-term="進行ネットワーク" type="button">進行ネットワーク</button>
+<button class="chip-btn" data-desc="感染、免疫、代謝、老化、遺伝、生活環境など、症状や病名の背後で病態を動かす要因。" data-term="上流原因" type="button">上流原因</button>
+<button class="chip-btn" data-desc="単一臓器ではなく全身のシステム変化として、多くの慢性疾患の背後に横断的に関わる生物学的プロセス。" data-term="老化" type="button">老化</button>
+</div>
+<div aria-live="polite" class="glossary-panel" id="glossaryPanel"></div>
+</section>
+<section class="card section" id="sec1">
+<h2 class="sec">1．はじめに</h2><div class="section-tools"><button class="mini-btn" data-toggle-section="" type="button">章を閉じる</button></div><div class="section-body"><p class="lead">私たちはふつう、病気を「胃の病気」「肺の病気」「脳の病気」のように、臓器の名前で理解している。医療機関の看板も、消化器内科、循環器内科、呼吸器内科、腎臓内科、神経内科というように臓器別で並ぶ。これは近代医学の大きな成功の上に築かれた枠組みであり、外科、病理学、画像診断、薬物治療の発展を支えてきた。だが、現代の臨床現場では、その整理法だけではうまく扱えない病気が増えている。</p><p>たとえば動脈硬化は血管の病気として扱われるが、その背後には脂質代謝異常、慢性炎症、老化、生活習慣、遺伝素因が絡む。アルツハイマー病は脳の病気に見えるが、免疫、代謝、血管、老化、睡眠、腸内環境まで関わる可能性がある。自己免疫疾患では、症状が関節、皮膚、腸、神経などに分かれて現れても、原因の軸は全身の免疫ネットワークにある。つまり、<strong>見えている症状の場所</strong>と、<strong>病気を動かしている原因の場所</strong>が一致しないのである。</p><figure class="figure">
+<h3>図1　医学の見方はどう変わってきたか</h3><div class="figure-actions"><button class="mini-btn" data-zoom-figure="" type="button">図を拡大</button><button class="mini-btn" data-toggle-cap="" type="button">図の説明を隠す</button></div>
+<svg aria-label="医学史のタイムライン" viewbox="0 0 1080 240">
+<defs>
+<lineargradient id="g1" x1="0" x2="1">
+<stop offset="0" stop-color="#eff6ff"></stop><stop offset="1" stop-color="#ecfeff"></stop>
+</lineargradient>
+</defs>
+<line stroke="#94a3b8" stroke-linecap="round" stroke-width="6" x1="90" x2="990" y1="120" y2="120"></line>
+<g font-family="sans-serif" text-anchor="middle">
+<circle cx="140" cy="120" fill="#dc2626" r="22"></circle><text fill="#fff" font-size="14" x="140" y="125">古代</text>
+<circle cx="340" cy="120" fill="#2563eb" r="22"></circle><text fill="#fff" font-size="14" x="340" y="125">19C</text>
+<circle cx="540" cy="120" fill="#2563eb" r="22"></circle><text fill="#fff" font-size="14" x="540" y="125">19C</text>
+<circle cx="740" cy="120" fill="#059669" r="22"></circle><text fill="#fff" font-size="14" x="740" y="125">20C</text>
+<circle cx="940" cy="120" fill="#7c3aed" r="22"></circle><text fill="#fff" font-size="14" x="940" y="125">21C</text>
+<rect fill="url(#g1)" height="56" rx="16" stroke="#cbd5e1" width="170" x="55" y="30"></rect>
+<text font-size="19" font-weight="700" x="140" y="54">体液医学</text>
+<text fill="#475569" font-size="14" x="140" y="75">病気＝体液の乱れ</text>
+<rect fill="#fff" height="60" rx="16" stroke="#cbd5e1" width="180" x="250" y="150"></rect>
+<text font-size="19" font-weight="700" x="340" y="176">臓器医学</text>
+<text fill="#475569" font-size="14" x="340" y="197">病気＝臓器の異常</text>
+<rect fill="#fff" height="56" rx="16" stroke="#cbd5e1" width="184" x="448" y="30"></rect>
+<text font-size="19" font-weight="700" x="540" y="54">細胞医学</text>
+<text fill="#475569" font-size="14" x="540" y="75">フィルヒョウの細胞病理学</text>
+<rect fill="#fff" height="60" rx="16" stroke="#cbd5e1" width="184" x="648" y="150"></rect>
+<text font-size="19" font-weight="700" x="740" y="176">分子医学</text>
+<text fill="#475569" font-size="14" x="740" y="197">遺伝子・分子機構の重視</text>
+<rect fill="#eefdf5" height="56" rx="16" stroke="#bbf7d0" width="184" x="850" y="30"></rect>
+<text font-size="19" font-weight="700" x="942" y="54">システム医学</text>
+<text fill="#475569" font-size="14" x="942" y="75">ネットワーク・時間軸・予測</text>
+</g>
+</svg>
+<div class="cap">医学の中心は「体液→臓器→細胞→分子→システム」へと拡張。現在の転換点は、病名や臓器よりも、原因・相互作用・進行プロセスを重視する点にある。</div>
+</figure><p>この変化を一言でいえば、<strong>「病名の医学」から「原因の医学」へ</strong>、あるいは<strong>「断片医学」から「システム医学」へ</strong>の移行である。病名はもちろん必要だ。診療録にも、統計にも、保険制度にも、研究にも病名は欠かせない。しかし病名は、しばしば病気そのものではなく、複雑な生体プロセスに人間が付けたラベルにすぎない。病名が増え、細分化され、重なり合うほど、ラベルだけでは現実をうまく説明できなくなる。</p><p>本稿では、まず「なぜ医師は病名を覚えきれないのか」を整理し、次に「それでも医師はどうやって診断しているのか」を見ていく。その上で、臓器中心の医学がなぜ成立したのか、なぜそれが今見直されつつあるのか、さらにシステム医学がどんな全体像を持つのかを、学部学生向けに順序立てて説明する。結論を先に言えば、未来の医療は<strong>臓器を捨てる</strong>のではなく、<strong>臓器を上流からつなぎ直す</strong>方向に進む。つまり、局所の治療を続けながら、その背後の全身ネットワークを同時に見る医療へと変わっていくのである。</p></div>
+
+
+
+
+
+</section>
+<figure class="figure">
+<h3>図2　医学の進化：400年の医学パラダイム</h3><div class="figure-actions"><button class="mini-btn" data-zoom-figure="" type="button">図を拡大</button><button class="mini-btn" data-toggle-cap="" type="button">図の説明を隠す</button></div>
+<svg viewbox="0 0 1100 350">
+<!-- タイムライン -->
+<line stroke="black" stroke-width="4" x1="100" x2="1000" y1="200" y2="200"></line>
+<!-- 体液医学 -->
+<circle cx="180" cy="200" fill="#fde2e2" r="50" stroke="#e57373" stroke-width="3"></circle>
+<text font-size="16" text-anchor="middle" x="180" y="195">体液医学</text>
+<text font-size="14" text-anchor="middle" x="180" y="220">古代</text>
+<!-- 臓器医学 -->
+<circle cx="400" cy="200" fill="#fff3cd" r="50" stroke="#e0b800" stroke-width="3"></circle>
+<text font-size="16" text-anchor="middle" x="400" y="195">臓器医学</text>
+<text font-size="14" text-anchor="middle" x="400" y="220">19世紀</text>
+<!-- 細胞医学 -->
+<circle cx="600" cy="200" fill="#e7f1ff" r="50" stroke="#6fa8ff" stroke-width="3"></circle>
+<text font-size="16" text-anchor="middle" x="600" y="195">細胞医学</text>
+<text font-size="14" text-anchor="middle" x="600" y="220">20世紀</text>
+<!-- 分子医学 -->
+<circle cx="780" cy="200" fill="#eaf7ea" r="50" stroke="#6bbf6b" stroke-width="3"></circle>
+<text font-size="16" text-anchor="middle" x="780" y="195">分子医学</text>
+<text font-size="14" text-anchor="middle" x="780" y="220">2000年</text>
+<!-- システム医学 -->
+<circle cx="940" cy="200" fill="#e0f2fe" r="55" stroke="#0284c7" stroke-width="4"></circle>
+<text font-size="16" text-anchor="middle" x="940" y="195">システム医学</text>
+<text font-size="14" text-anchor="middle" x="940" y="220">未来</text>
+</svg>
+<p class="cap">
+医学は歴史の中で、体液 → 臓器 → 細胞 → 分子という階層へと理解を深めてきた。
+現在はそれらを統合する「システム医学」へと移行しつつある。
+</p>
+</figure>
+<section class="card section" id="sec2">
+<h2 class="sec">2．医師はもはや病名を覚えきれない―病名は数万種を超える</h2><div class="section-tools"><button class="mini-btn" data-toggle-section="" type="button">章を閉じる</button></div><div class="section-body"><p>現代の医学には<strong>数万レベルの疾患概念</strong>が存在する。代表的な目安として、ICD-10には約1万4千、希少疾患は約7000、遺伝病は約6000という数字が挙げられている。ここで重要なのは、これらが単純に足し算できるという意味ではなく、医師が向き合う病気の世界が、もはや「数百個の病名を覚えれば足りる」規模ではないということだ。</p><div class="grid3">
+<div class="mini"><div class="kpi">約1.4万</div><h4>ICD-10の病気分類</h4><p>国際疾病分類に収載される病名群。医療統計と保険実務の基盤。</p></div>
+<div class="mini"><div class="kpi">約7000</div><h4>希少疾患</h4><p>日常診療では遭遇しにくく、診断まで長期化しやすい領域。</p></div>
+<div class="mini"><div class="kpi">約6000</div><h4>遺伝病</h4><p>遺伝子異常の理解が進むほど、病名はさらに細分化される。</p></div>
+</div><p>しかも、医師が実際に扱う知識量は、病名の数そのものよりはるかに大きい。ひとつの病名について、原因、病態、鑑別診断、検査、画像所見、治療薬、副作用、禁忌、ガイドライン、予後、患者背景による違いまで知る必要があるからだ。さらに厄介なのは、医学知識が増えるだけでなく、<strong>書き換わる</strong>ことである。医学知識はおよそ<strong>数年で2倍</strong>になるペースで増えると説明されていた。昨日の常識が、今日の標準とは限らない。</p><figure class="figure">
+<h3>図3　病名の爆発は「記憶」の問題ではなく「構造」の問題</h3><div class="figure-actions"><button class="mini-btn" data-zoom-figure="" type="button">図を拡大</button><button class="mini-btn" data-toggle-cap="" type="button">図の説明を隠す</button></div>
+<svg aria-label="病名と知識量" viewbox="0 0 1080 340">
+<rect fill="#fff" height="240" rx="18" stroke="#dbe3ef" width="300" x="40" y="40"></rect>
+<text font-size="22" font-weight="700" text-anchor="middle" x="190" y="75">病名の数</text>
+<rect fill="#93c5fd" height="120" rx="10" width="60" x="90" y="110"></rect>
+<rect fill="#60a5fa" height="140" rx="10" width="60" x="190" y="90"></rect>
+<rect fill="#2563eb" height="150" rx="10" width="60" x="290" y="80"></rect>
+<text font-size="14" text-anchor="middle" x="120" y="255">日常診療</text>
+<text font-size="14" text-anchor="middle" x="220" y="255">希少疾患</text>
+<text font-size="14" text-anchor="middle" x="320" y="255">遺伝病</text>
+<text fill="#475569" font-size="14" text-anchor="middle" x="190" y="300">見えるラベルの増大</text>
+<rect fill="#fff" height="240" rx="18" stroke="#dbe3ef" width="300" x="390" y="40"></rect>
+<text font-size="22" font-weight="700" text-anchor="middle" x="540" y="75">1病名あたりの知識</text>
+<g font-size="16">
+<rect fill="#eff6ff" height="28" rx="8" stroke="#bfdbfe" width="180" x="450" y="100"></rect>
+<text text-anchor="middle" x="540" y="119">原因・病態</text>
+<rect fill="#eff6ff" height="28" rx="8" stroke="#bfdbfe" width="180" x="450" y="136"></rect>
+<text text-anchor="middle" x="540" y="155">検査・画像</text>
+<rect fill="#eff6ff" height="28" rx="8" stroke="#bfdbfe" width="180" x="450" y="172"></rect>
+<text text-anchor="middle" x="540" y="191">治療薬・副作用</text>
+<rect fill="#eff6ff" height="28" rx="8" stroke="#bfdbfe" width="180" x="450" y="208"></rect>
+<text text-anchor="middle" x="540" y="227">ガイドライン・更新</text>
+</g>
+<text fill="#475569" font-size="14" text-anchor="middle" x="540" y="300">1つの病名の中身も膨張</text>
+<rect fill="#fff" height="240" rx="18" stroke="#dbe3ef" width="300" x="740" y="40"></rect>
+<text font-size="22" font-weight="700" text-anchor="middle" x="890" y="75">現場で起きること</text>
+<g font-size="17">
+<circle cx="790" cy="120" fill="#dc2626" r="7"></circle><text x="812" y="126">誤診・見逃し</text>
+<circle cx="790" cy="160" fill="#dc2626" r="7"></circle><text x="812" y="166">診断までの長期化</text>
+<circle cx="790" cy="200" fill="#dc2626" r="7"></circle><text x="812" y="206">医師の認知負荷</text>
+<circle cx="790" cy="240" fill="#dc2626" r="7"></circle><text x="812" y="246">AI支援の必要性</text>
+</g>
+<text fill="#475569" font-size="14" text-anchor="middle" x="890" y="300">問題は暗記力より複雑さ</text>
+</svg>
+<div class="cap">病名が増えるだけでなく、1病名あたりの内容も爆発的に増える。したがって、現代医療の難しさは「医師の勉強不足」ではなく、「対象そのものが巨大化した」ことにある。</div>
+</figure><p>この状況は、少なくとも五つの混乱を生む。第一に、<strong>診断が難しくなる</strong>。多くの医師が日常的に経験する病気は限られており、希少疾患では見逃しやすい。第二に、<strong>病名が分裂する</strong>。昔は一括りだった白血病やがんが、分子異常や遺伝子変異ごとに細分化される。第三に、<strong>同じ病気に複数の名前</strong>が存在したり、逆に同じ病名の中に異質な病態が混在したりする。第四に、<strong>情報爆発</strong>が起きる。第五に、そして最も本質的なのは、<strong>病名が原因を示さない</strong>ことである。</p><p>たとえば「肺がん」という病名は、病気が肺にあることは示すが、なぜそのがんが起きたのか、どの分子異常が主役なのか、免疫がどう関与しているのかまでは示さない。現在のがん治療は「肺がん・胃がん・肝がん」よりも「EGFR変異・HER2・PD-L1」などで分類され始めている。これはまさに、病名が原因の十分な地図になっていないことを意味している。</p><div class="note">
+<strong>要点：</strong>医師が病名を覚えきれないのは能力不足ではない。病名の世界そのものが巨大化し、しかも病名だけでは病態の核心に届かなくなっているからである。ここで必要になるのが、暗記の強化ではなく、<strong>構造の見方の変更</strong>である。
+  </div><p>ここで見落としてはならないのは、<strong>病名が増えたこと自体は医学の失敗ではなく、むしろ進歩の結果</strong>だという点である。昔は一つに見えていた病気の中に、実際には複数の原因群が混じっていた。たとえば同じ白血病でも遺伝子異常や細胞系統が異なれば、予後も治療も違う。つまり病名の細分化は、患者により合った治療を選ぶためには必要な過程でもある。しかし細分化が進むほど、ひとりの医師の頭の中だけで全体を保持することは難しくなる。この時点で、医学は個人の暗記能力に依存する段階を超え、外部知識ベース、診療支援システム、AIを含む共同知性の段階に入っている。</p><p>また「1万種以上」という数字は、日常臨床の感覚ともズレがある。外来で頻繁に遭遇するのは、風邪、高血圧、糖尿病、脂質異常症、腰痛、花粉症、不眠、うつ状態、胃腸炎といった比較的限られた病気である。ところが実際の患者は、こうしたよくある病気の背後に、稀な病態、複数疾患の重なり、薬剤性、有害事象、心理社会的要因を抱えていることが少なくない。つまり医師に必要なのは、頻度の高い病気をすばやく見抜く力と、そこから外れたときに「おかしい」と気づく感度の両方なのである。</p><p>希少疾患の診断が長期化しやすいのもこのためだ。正しい診断に平均5〜7年かかる例が珍しくない。患者が複数の病院を渡り歩く「診断の旅」が起きる背景には、病名の希少性だけでなく、症状が複数科にまたがって見えること、初期には典型像を示さないこと、検査自体が適切に選ばれないことなどがある。ここでも重要なのは、病名の数が多いことより、<strong>病気の現れ方が臓器境界をまたいでいる</strong>ことである。</p><h3>補論：なぜAIが必要なのか</h3><p>ここでAIの必要性が出てくる。理由は単純で、AIは人間より賢いからではなく、<strong>大量の候補を落とさず並べること、更新された知識に素早く接続すること、多層データを同時に扱うこと</strong>に向いているからである。画像診断では見落とし防止、カルテ要約では情報圧縮、鑑別支援では候補列挙、慢性疾患管理では将来予測というように、AIの役割は「医師の代替」より「認知負荷の軽減」にある。別の表現を使えば、未来は“AIに代替される医師”ではなく、“AIを使いこなす医師”の時代である。</p><p>逆に言えば、AIが生きるのは、まさに病名中心・臓器中心だけでは処理しきれない領域である。複数疾患の併存、数年単位の経過、希少疾患の候補列挙、画像と検査と既往歴の統合、こうした問題はシステム医学的な問題であり、AIはそこに接続されてはじめて真価を発揮する。</p></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+<section class="card section" id="sec3">
+<h2 class="sec">3．医師はどのようにして患者に病名をつけるのか―病名を付けないと診療報酬は発生しない</h2><div class="section-tools"><button class="mini-btn" data-toggle-section="" type="button">章を閉じる</button></div><div class="section-body"><p>「病名が多すぎて覚えきれない」と聞くと、医師は何を手がかりに診断しているのか不思議に思える。<strong>医師は病名から考えるのではなく、症状から可能性を絞り込む</strong>という点である。発熱なら感染症、炎症、腫瘍、自己免疫、薬剤などのカテゴリーをまず思い浮かべ、問診、身体診察、検査で順に絞る。この方法を鑑別診断という。</p><figure class="figure">
+<h3>図4　医師の診断思考：暗記ではなく鑑別の流れ</h3><div class="figure-actions"><button class="mini-btn" data-zoom-figure="" type="button">図を拡大</button><button class="mini-btn" data-toggle-cap="" type="button">図の説明を隠す</button></div>
+<svg aria-label="鑑別診断の流れ" viewbox="0 0 1080 280">
+<defs>
+<marker id="arrow" markerheight="12" markerwidth="12" orient="auto" refx="10" refy="6">
+<path d="M0,0 L12,6 L0,12 z" fill="#64748b"></path>
+</marker>
+</defs>
+<rect fill="#eff6ff" height="90" rx="20" stroke="#bfdbfe" width="160" x="40" y="90"></rect>
+<text font-size="24" font-weight="700" text-anchor="middle" x="120" y="126">症状</text>
+<text font-size="16" text-anchor="middle" x="120" y="154">発熱・息切れ・痛み</text>
+<line marker-end="url(#arrow)" stroke="#64748b" stroke-width="4" x1="202" x2="300" y1="135" y2="135"></line>
+<rect fill="#fff" height="170" rx="20" stroke="#dbe3ef" width="230" x="300" y="50"></rect>
+<text font-size="23" font-weight="700" text-anchor="middle" x="415" y="84">鑑別診断</text>
+<text font-size="17" text-anchor="middle" x="415" y="118">感染</text>
+<text font-size="17" text-anchor="middle" x="415" y="146">炎症・自己免疫</text>
+<text font-size="17" text-anchor="middle" x="415" y="174">腫瘍・血管・代謝</text>
+<line marker-end="url(#arrow)" stroke="#64748b" stroke-width="4" x1="532" x2="630" y1="135" y2="135"></line>
+<rect fill="#f0fdf4" height="90" rx="20" stroke="#bbf7d0" width="160" x="630" y="90"></rect>
+<text font-size="24" font-weight="700" text-anchor="middle" x="710" y="126">検査</text>
+<text font-size="16" text-anchor="middle" x="710" y="154">血液・画像・病理</text>
+<line marker-end="url(#arrow)" stroke="#64748b" stroke-width="4" x1="792" x2="890" y1="135" y2="135"></line>
+<rect fill="#fff7ed" height="90" rx="20" stroke="#fdba74" width="150" x="890" y="90"></rect>
+<text font-size="24" font-weight="700" text-anchor="middle" x="965" y="126">病名</text>
+<text font-size="16" text-anchor="middle" x="965" y="154">診断ラベル</text>
+</svg>
+<div class="cap">病名は出発点ではなく、絞り込みの結果として付けられる。臨床では「全部覚える」より「構造を知る」ことが重要になる。</div>
+</figure><p>つまり、医師が覚えているのは1万個の病名の全文ではなく、<strong>病気の構造</strong>である。症状のパターン、危険な見逃し、頻度の高い疾患、緊急度、検査の優先順位、各科にまたがるカテゴリーの地図を頭に入れている。そして、そこから絞り込めないときに文献、ガイドライン、コンサルト、AI支援を使う。医師は「すべてを覚える」のではなく、「頻度順のピラミッド型知識」と「情報へのアクセス手段」を使っているのである。</p><p>しかし診断の実務には、純粋な学問とは別の現実がある。<strong>医療制度上、診療行為は何らかの病名と結びつけて記録される</strong>必要がある。検査、処方、入院、リハビリ、保険請求などの多くは、診療録上の診断名と連動している。したがって臨床の現場では、症状だけが先行していても、どこかの時点で診断ラベルを置かなければ実務が進みにくい。</p><p>ここに病名中心の医学の強みと弱みが同時に現れる。強みは、情報を整理し、医療行為を標準化し、統計や保険制度を回せることだ。弱みは、<strong>ラベルが先に立つと、患者の複雑な現実が切り落とされる</strong>ことである。「病名がつかないと治療が受けにくい」「同じ病名でも病態が違うのに画一的治療になりやすい」「病名が患者のアイデンティティを縛る」といった指摘もあるが、これは非常に重要である。</p><div class="warn">
+    病名は必要だが、病名は現実そのものではない。病名が実務を回す一方で、病名に合わない患者、病名の境界にいる患者、複数の病名が重なる患者は、制度の外側に押し出されやすい。
+  </div><p>この矛盾は、特に慢性疾患、多因子疾患、高齢者医療で目立つ。高齢の患者は、糖尿病、高血圧、骨粗鬆症、認知機能低下、睡眠障害、うつ傾向などを同時に抱えることが珍しくない。しかし制度上は、それぞれが別の病名、別の診療科、別の処方、別の評価項目として扱われる。すると患者にとっては「一人の身体の中で起きている一つの問題」が、「多数の断片」に分解されてしまう。</p><p>ここから次の問いが生まれる。そもそも、なぜ医学はこれほど臓器中心・病名中心になったのか。そして今、なぜそこからの転換が必要になっているのか。</p><p>診断という行為は、決して「正解ラベルを一発で当てるゲーム」ではない。むしろ不確実性を段階的に減らしていく作業である。問診では時間軸が重視される。いつ始まったか、急性か慢性か、波があるか、何が悪化因子か。身体診察では、局所所見と全身所見を分けて考える。検査では、感度の高い検査で拾うのか、特異度の高い検査で確定するのかを考える。つまり診断とは、臨床推論の連続であり、病名はその思考過程の最後に置かれる記号である。</p><p>ただし実際の医療制度では、仮診断、疑い病名、経過観察中の病名など、<strong>完全に確定していないラベル</strong>も実務上は使われる。これは制度を回すには必要だが、患者にとっては「その病気に決まった」と誤解されることもある。したがって患者教育の面でも、病名には確定の度合いがあること、病名は経過とともに修正されうることを共有する必要がある。システム医学の視点は、こうしたラベルの暫定性を理解する上でも役立つ。なぜならシステム医学では、病気は固定物ではなく、変化する状態として捉えられるからだ。</p><h3>補論：病名と診療報酬の関係が生むねじれ</h3><p>「病名を付けないと診療報酬は発生しない」という言い方はやや単純化ではあるが、方向としては本質を突いている。実際には、診療録上の診断名や疑い病名と、実施した検査・処置・処方の整合性が求められる。したがって現場では、病態がまだ流動的でも、何らかの診断名で仮に位置づけながら診療を進めることが多い。これは制度運用上やむを得ないが、その結果として「本当はプロセスであるもの」を「すでに確定した病気」として扱いやすくなる。</p><p>このねじれは、特に境界領域で目立つ。たとえば全身倦怠感、慢性痛、軽度の認知機能低下、原因不明の炎症所見、複数の軽い異常の重なりなどは、患者にとっては確かに苦しいのに、病名の箱にきれいに入らないことがある。すると治療の開始や継続、他科連携、保険上の整理が難しくなる。システム医学は、こうした“病名未満だが病態としては現実に存在するもの”を理解する言語を与える可能性がある。</p></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+<section class="card section" id="sec4">
+<h2 class="sec">4．医学のパラダイムシフト：臓器中心の医学から原因中心のシステム医学へ</h2><div class="section-tools"><button class="mini-btn" data-toggle-section="" type="button">章を閉じる</button></div><div class="section-body"><p>臓器医学は、偶然できたのではない。19世紀の病理学、とくにフィルヒョウの細胞病理学によって、病気は「どこで起きるのか」を具体的に捉えられるようになった。病気は体液の乱れではなく、細胞や組織の異常として観察できる。これが外科、病理解剖、顕微鏡診断、臓器別専門科の成立を強力に後押しした。近代医学にとって、これは決定的な革命だった。</p><p>しかも臓器別の整理は、教育と制度に非常に相性が良い。学生は心臓、肺、腎臓、肝臓という単位で学びやすい。病院は科に分けやすい。保険制度は請求しやすい。薬の臨床試験も特定疾患・特定臓器で設計しやすい。つまり臓器医学は、<strong>科学的にも制度的にも、きわめて強い勝者のモデル</strong>だったのである。</p><p>しかし現代では、その成功ゆえの限界が見え始めた。「現在の医学は断片医学である」という指摘もあり、たとえば老化を考えると分かりやすい。白内障は眼科、骨粗鬆症は整形外科、動脈硬化は循環器、認知症は神経内科で扱われる。だが生物学的には、これらは老化という全身システムの劣化が、別々の場所に表れたものとも考えられる。局所の治療は必要でも、それだけでは全体の問題は解けない。</p><figure class="figure">
+<h3>図5　臓器医学とシステム医学の違い</h3><div class="figure-actions"><button class="mini-btn" data-toggle-cap="" type="button">図の説明を隠す</button></div>
+<table>
+<thead>
+<tr><th>観点</th><th>臓器医学</th><th>システム医学</th></tr>
+</thead>
+<tbody>
+<tr><td>基本単位</td><td>胃・肺・腎臓・脳などの臓器</td><td>免疫・代謝・老化・感染・遺伝・神経ネットワーク</td></tr>
+<tr><td>問い</td><td>どの臓器が悪いか</td><td>どの原因系が乱れているか</td></tr>
+<tr><td>診断像</td><td>病名を臓器に割り当てる</td><td>病名を原因・進行・相互作用の中に位置づける</td></tr>
+<tr><td>典型例</td><td>肺炎、胃癌、腎不全</td><td>慢性炎症、老化、免疫異常、代謝異常、複数疾患の連鎖</td></tr>
+<tr><td>強み</td><td>局所治療、専門化、制度運用に強い</td><td>多因子疾患、慢性疾患、予防、個別化に強い</td></tr>
+<tr><td>弱み</td><td>全身性の共通原因を見落としやすい</td><td>データ量が大きく、解析にAIや計算モデルが必要</td></tr>
+</tbody>
+</table>
+<div class="cap">臓器医学は不要になるのではなく、システム医学の中の一層として再配置される。局所治療と全身理解の二段構えが重要になる。</div>
+</figure><p>加えて、病気は静的な点ではなく、時間の中を流れるネットワークでもある。「病気マップ」の最大の弱点は<strong>時間軸がないこと</strong>だと指摘されている。たしかに、動脈硬化は単独では終わらない。脂質異常から動脈硬化、狭心症、心筋梗塞、心不全へと進行する。同様に糖尿病は、インスリン抵抗性から糖尿病、腎症、透析へ連鎖する。つまり病名は孤立した箱ではなく、<strong>進行ネットワークの途中につけられた名前</strong>なのである。</p><figure class="figure">
+<h3>図6　病名ではなく「進行ネットワーク」で見る</h3><div class="figure-actions"><button class="mini-btn" data-zoom-figure="" type="button">図を拡大</button><button class="mini-btn" data-toggle-cap="" type="button">図の説明を隠す</button></div>
+<svg aria-label="進行ネットワーク" viewbox="0 0 1080 300">
+<defs><marker id="arr2" markerheight="12" markerwidth="12" orient="auto" refx="10" refy="6"><path d="M0,0 L12,6 L0,12 z" fill="#64748b"></path></marker></defs>
+<text font-size="22" font-weight="700" x="120" y="40">A．血管系の連鎖</text>
+<rect fill="#fff" height="54" rx="14" stroke="#cbd5e1" width="150" x="60" y="70"></rect><text font-size="18" text-anchor="middle" x="135" y="103">脂質異常</text>
+<rect fill="#fff" height="54" rx="14" stroke="#cbd5e1" width="150" x="270" y="70"></rect><text font-size="18" text-anchor="middle" x="345" y="103">動脈硬化</text>
+<rect fill="#fff" height="54" rx="14" stroke="#cbd5e1" width="150" x="480" y="70"></rect><text font-size="18" text-anchor="middle" x="555" y="103">心筋梗塞</text>
+<rect fill="#fff" height="54" rx="14" stroke="#cbd5e1" width="150" x="690" y="70"></rect><text font-size="18" text-anchor="middle" x="765" y="103">心不全</text>
+<line marker-end="url(#arr2)" stroke="#64748b" stroke-width="4" x1="210" x2="270" y1="97" y2="97"></line>
+<line marker-end="url(#arr2)" stroke="#64748b" stroke-width="4" x1="420" x2="480" y1="97" y2="97"></line>
+<line marker-end="url(#arr2)" stroke="#64748b" stroke-width="4" x1="630" x2="690" y1="97" y2="97"></line>
+<text fill="#475569" font-size="16" x="900" y="100">上流には老化・炎症・代謝異常</text>
+<text font-size="22" font-weight="700" x="120" y="185">B．代謝系の連鎖</text>
+<rect fill="#fff" height="54" rx="14" stroke="#cbd5e1" width="170" x="60" y="210"></rect><text font-size="18" text-anchor="middle" x="145" y="243">インスリン抵抗性</text>
+<rect fill="#fff" height="54" rx="14" stroke="#cbd5e1" width="140" x="300" y="210"></rect><text font-size="18" text-anchor="middle" x="370" y="243">糖尿病</text>
+<rect fill="#fff" height="54" rx="14" stroke="#cbd5e1" width="140" x="510" y="210"></rect><text font-size="18" text-anchor="middle" x="580" y="243">腎症</text>
+<rect fill="#fff" height="54" rx="14" stroke="#cbd5e1" width="140" x="720" y="210"></rect><text font-size="18" text-anchor="middle" x="790" y="243">透析</text>
+<line marker-end="url(#arr2)" stroke="#64748b" stroke-width="4" x1="230" x2="300" y1="237" y2="237"></line>
+<line marker-end="url(#arr2)" stroke="#64748b" stroke-width="4" x1="440" x2="510" y1="237" y2="237"></line>
+<line marker-end="url(#arr2)" stroke="#64748b" stroke-width="4" x1="650" x2="720" y1="237" y2="237"></line>
+<text fill="#475569" font-size="16" x="900" y="240">上流には食事・運動・遺伝・炎症</text>
+</svg>
+<div class="cap">病名はプロセスの結果にすぎない。上流原因と下流合併症を同時に見ることが、システム医学の発想につながる。</div>
+</figure><p>このように考えると、医学のパラダイムシフトとは「臓器をやめる」ことではない。<strong>臓器に現れた異常を、原因ネットワークと時間ネットワークの中で再解釈する</strong>ことだと言える。ネットワーク医学は病気のつながりを見る学問、システム医学は人体全体の動く仕組みを見る医学と整理される。この区別は有用である。病気の点と点を結ぶだけでなく、その背後で動いている制御系を理解することが、次の医療の核心になるからだ。</p><p>では、なぜ今この転換が急に重要になったのか。理由は三つある。第一に、<strong>慢性疾患が医療の中心になった</strong>ことである。感染症中心の時代には、一つの病原体と一つの臓器病変を結びつけるモデルが比較的有効だった。だが高齢化が進み、糖尿病、動脈硬化、認知症、フレイル、うつ、自己免疫疾患などが主役になると、単一原因・単一臓器モデルでは追いつかない。第二に、<strong>分子レベルの知見が逆に複雑さを露わにした</strong>ことである。遺伝子を見れば答えが単純になると思われたが、実際には同じ遺伝子異常が複数臓器に影響し、逆に同じ病名が多様な分子背景を持つことが分かった。第三に、<strong>データ処理能力が上がった</strong>ことである。電子カルテ、オミクス、画像AIが普及した今、ようやくネットワークとして病気を見る土台が整ってきた。</p><p>現在の医学は「横軸の臓器中心」から「縦軸の原因中心」へ移りつつある。横軸とは、胃・肝臓・肺・脳などの並びであり、縦軸とは、感染・免疫・老化・遺伝・代謝といった上流原因の並びである。たとえば同じ老化という縦軸は、白内障、骨粗鬆症、動脈硬化、認知機能低下という複数の横軸にまたがって症状を出す。つまり縦軸を見ることで、これまで別々に扱われていた病気のあいだに共通構造が見えるようになる。</p><p>この視点は研究にも直結する。もし複数の病名の背後に慢性炎症という共通機構があるなら、ひとつの原因介入が複数疾患に波及する可能性がある。慢性炎症が糖尿病、動脈硬化、がん、アルツハイマー病などに共通して現れる例が挙げられる。ここに「老化そのものを治療できれば多くの病気が減るのではないか」という発想が生まれる。もちろん現時点では研究途上だが、少なくとも考え方としては、各臓器の末端症状を追いかけるだけでは見えない地平が開けている。</p></div>
+
+
+
+
+
+
+
+
+
+
+</section>
+<section class="quiz-card" id="quiz1">
+<h2 style="margin:0 0 8px">理解チェック 1</h2>
+<p>この教材の中心命題として最も近いものを選んでください。</p>
+<button class="quiz-option" data-feedback="不十分です。病名の数の多さは問題の一部ですが、本稿の核心はそれだけではありません。" type="button">A．問題は病名が多すぎることだけである</button>
+<button class="quiz-option" data-feedback="正解です。病名だけでは原因が見えず、原因・システム・時間軸を合わせて考える必要がある、というのが本稿の核心です。" type="button"><strong>B．病名だけでは原因が見えにくく、原因とシステムを合わせて見る必要がある</strong></button>
+<button class="quiz-option" data-feedback="不十分です。局所治療は依然として重要であり、本稿もそれを否定していません。" type="button">C．今後は臓器医学を完全に捨てるべきである</button>
+<div aria-live="polite" class="quiz-feedback"></div>
+</section><section class="card section" id="sec5">
+<h2 class="sec">5．システム医学とは―新しい医療の全体像―</h2><div class="section-tools"><button class="mini-btn" data-toggle-section="" type="button">章を閉じる</button></div><div class="section-body"><p class="lead"><strong>
+病名は臓器の名前ではなく、「原因」と「影響範囲」の組み合わせとして理解できる。
+</strong></p><p class="note">
+<strong>問い：</strong>
+もし病気を「臓器名」ではなく「原因 × 影響範囲」で整理すると、
+医学の地図はどのように変わるのだろうか？
+</p><figure class="figure">
+<h3>図7　医学の最大の問題：症状の場所と原因の場所は違う</h3><div class="figure-actions"><button class="mini-btn" data-zoom-figure="" type="button">図を拡大</button><button class="mini-btn" data-toggle-cap="" type="button">図の説明を隠す</button></div>
+<svg viewbox="0 0 1000 420">
+<!-- 左：症状 -->
+<circle cx="200" cy="210" fill="#fde2e2" r="70" stroke="#e57373" stroke-width="3"></circle>
+<text font-size="22" text-anchor="middle" x="200" y="205">症状</text>
+<text font-size="16" text-anchor="middle" x="200" y="235">胸痛</text>
+<!-- 真ん中：臓器 -->
+<circle cx="500" cy="210" fill="#e7f1ff" r="70" stroke="#6fa8ff" stroke-width="3"></circle>
+<text font-size="22" text-anchor="middle" x="500" y="205">臓器</text>
+<text font-size="16" text-anchor="middle" x="500" y="235">心臓</text>
+<!-- 右：原因 -->
+<circle cx="800" cy="120" fill="#fff3cd" r="60" stroke="#e0b800"></circle>
+<text font-size="18" text-anchor="middle" x="800" y="125">炎症</text>
+<circle cx="800" cy="300" fill="#eaf7ea" r="60" stroke="#6bbf6b"></circle>
+<text font-size="18" text-anchor="middle" x="800" y="305">老化</text>
+<!-- 矢印 -->
+<line stroke="black" stroke-width="3" x1="270" x2="430" y1="210" y2="210"></line>
+<line stroke="black" stroke-width="3" x1="570" x2="740" y1="190" y2="140"></line>
+<line stroke="black" stroke-width="3" x1="570" x2="740" y1="230" y2="290"></line>
+</svg>
+<p class="cap">
+従来の医学では症状の場所（臓器）に病名を付けるが、
+実際には炎症・老化・代謝などの原因が上流に存在する。
+システム医学はこの「原因→システム→症状」の関係を重視する。
+</p>
+</figure><figure class="figure">
+<h3>図8　原因 × 影響範囲の統合マトリクス</h3><div class="figure-actions"><button class="mini-btn" data-zoom-figure="" type="button">図を拡大</button><button class="mini-btn" data-toggle-cap="" type="button">図の説明を隠す</button></div>
+<svg aria-label="原因と影響範囲による病気の統合マトリクス" viewbox="0 0 1200 760">
+<defs>
+<filter height="140%" id="shadow" width="140%" x="-20%" y="-20%">
+<fedropshadow dx="0" dy="4" flood-color="#94a3b8" flood-opacity="0.18" stddeviation="6"></fedropshadow>
+</filter>
+<marker id="arrowMini" markerheight="10" markerwidth="10" orient="auto" refx="8" refy="5">
+<path d="M0,0 L10,5 L0,10 z" fill="#64748b"></path>
+</marker>
+<style>
+        .title { font: 700 28px sans-serif; fill:#1f2937; }
+        .subtitle { font: 16px sans-serif; fill:#475569; }
+        .axis { font: 700 22px sans-serif; fill:#1f2937; }
+        .head { font: 700 20px sans-serif; fill:#0f172a; }
+        .rowlab { font: 700 19px sans-serif; fill:#111827; }
+        .cellmain { font: 700 18px sans-serif; fill:#111827; }
+        .cellsub { font: 14px sans-serif; fill:#475569; }
+        .smallnote { font: 15px sans-serif; fill:#475569; }
+        .legend { font: 15px sans-serif; fill:#334155; }
+        .strong { font: 700 17px sans-serif; fill:#1e293b; }
+      </style>
+</defs>
+<!-- タイトル -->
+<text class="title" text-anchor="middle" x="600" y="42">病気を「臓器名」ではなく「原因 × 影響範囲」で見る</text>
+<text class="subtitle" text-anchor="middle" x="600" y="68">
+      概念図と具体例を統合したシステム医学の基本マップ
+    </text>
+<!-- 右説明ボックス -->
+<rect fill="#f8fafc" filter="url(#shadow)" height="170" rx="18" stroke="#dbe3ef" width="245" x="905" y="110"></rect>
+<text class="strong" text-anchor="middle" x="1028" y="145">読み方</text>
+<text class="legend" x="928" y="178">① 縦に見る：原因の違い</text>
+<text class="legend" x="928" y="205">② 横に見る：広がりの違い</text>
+<text class="legend" x="928" y="232">③ 斜めに見る：局所→全身化</text>
+<text class="legend" x="928" y="259">④ 同じ病名でも上流原因は異なる</text>
+<!-- 上軸ラベル -->
+<text class="axis" text-anchor="middle" x="585" y="118">影響範囲</text>
+<!-- 左軸ラベル -->
+<g transform="translate(40,430) rotate(-90)">
+<text class="axis" text-anchor="middle">原因</text>
+</g>
+<!-- テーブル外枠 -->
+<rect fill="#ffffff" filter="url(#shadow)" height="510" rx="24" stroke="#cbd5e1" stroke-width="2" width="740" x="120" y="140"></rect>
+<!-- ヘッダー行 -->
+<rect fill="#f8fafc" height="70" stroke="#cbd5e1" width="170" x="120" y="140"></rect>
+<rect fill="#eff6ff" height="70" stroke="#cbd5e1" width="190" x="290" y="140"></rect>
+<rect fill="#eff6ff" height="70" stroke="#cbd5e1" width="190" x="480" y="140"></rect>
+<rect fill="#eff6ff" height="70" stroke="#cbd5e1" width="190" x="670" y="140"></rect>
+<text class="head" text-anchor="middle" x="385" y="182">局所</text>
+<text class="head" text-anchor="middle" x="575" y="182">臓器</text>
+<text class="head" text-anchor="middle" x="765" y="182">全身</text>
+<!-- 行1 外傷 -->
+<rect fill="#fff7ed" height="73" stroke="#cbd5e1" width="170" x="120" y="210"></rect>
+<rect fill="#fffaf5" height="73" stroke="#e5e7eb" width="190" x="290" y="210"></rect>
+<rect fill="#fffaf5" height="73" stroke="#e5e7eb" width="190" x="480" y="210"></rect>
+<rect fill="#fffaf5" height="73" stroke="#e5e7eb" width="190" x="670" y="210"></rect>
+<text class="rowlab" text-anchor="middle" x="205" y="252">外傷</text>
+<text class="cellmain" text-anchor="middle" x="385" y="242">切り傷・骨折</text>
+<text class="cellsub" text-anchor="middle" x="385" y="262">局所の損傷</text>
+<text class="cellmain" text-anchor="middle" x="575" y="242">臓器損傷</text>
+<text class="cellsub" text-anchor="middle" x="575" y="262">肝損傷・肺挫傷など</text>
+<text class="cellmain" text-anchor="middle" x="765" y="242">多発外傷</text>
+<text class="cellsub" text-anchor="middle" x="765" y="262">全身管理が必要</text>
+<!-- 行2 感染 -->
+<rect fill="#fef2f2" height="73" stroke="#cbd5e1" width="170" x="120" y="283"></rect>
+<rect fill="#fffafa" height="73" stroke="#e5e7eb" width="190" x="290" y="283"></rect>
+<rect fill="#fffafa" height="73" stroke="#e5e7eb" width="190" x="480" y="283"></rect>
+<rect fill="#fffafa" height="73" stroke="#e5e7eb" width="190" x="670" y="283"></rect>
+<text class="rowlab" text-anchor="middle" x="205" y="325">感染</text>
+<text class="cellmain" text-anchor="middle" x="385" y="315">皮膚感染</text>
+<text class="cellsub" text-anchor="middle" x="385" y="335">限局した感染巣</text>
+<text class="cellmain" text-anchor="middle" x="575" y="315">肺炎</text>
+<text class="cellsub" text-anchor="middle" x="575" y="335">臓器レベルの感染</text>
+<text class="cellmain" text-anchor="middle" x="765" y="315">敗血症</text>
+<text class="cellsub" text-anchor="middle" x="765" y="335">全身性炎症へ波及</text>
+<!-- 行3 免疫 -->
+<rect fill="#faf5ff" height="73" stroke="#cbd5e1" width="170" x="120" y="356"></rect>
+<rect fill="#fcfaff" height="73" stroke="#e5e7eb" width="190" x="290" y="356"></rect>
+<rect fill="#fcfaff" height="73" stroke="#e5e7eb" width="190" x="480" y="356"></rect>
+<rect fill="#fcfaff" height="73" stroke="#e5e7eb" width="190" x="670" y="356"></rect>
+<text class="rowlab" text-anchor="middle" x="205" y="398">免疫</text>
+<text class="cellmain" text-anchor="middle" x="385" y="388">接触皮膚炎</text>
+<text class="cellsub" text-anchor="middle" x="385" y="408">局所の免疫反応</text>
+<text class="cellmain" text-anchor="middle" x="575" y="388">関節リウマチ</text>
+<text class="cellsub" text-anchor="middle" x="575" y="408">関節に目立つ炎症</text>
+<text class="cellmain" text-anchor="middle" x="765" y="388">全身性自己免疫疾患</text>
+<text class="cellsub" text-anchor="middle" x="765" y="408">複数臓器へ波及</text>
+<!-- 行4 代謝 -->
+<rect fill="#eff6ff" height="73" stroke="#cbd5e1" width="170" x="120" y="429"></rect>
+<rect fill="#f8fbff" height="73" stroke="#e5e7eb" width="190" x="290" y="429"></rect>
+<rect fill="#f8fbff" height="73" stroke="#e5e7eb" width="190" x="480" y="429"></rect>
+<rect fill="#f8fbff" height="73" stroke="#e5e7eb" width="190" x="670" y="429"></rect>
+<text class="rowlab" text-anchor="middle" x="205" y="471">代謝</text>
+<text class="cellmain" text-anchor="middle" x="385" y="461">尿路結石</text>
+<text class="cellsub" text-anchor="middle" x="385" y="481">代謝異常の局所表現</text>
+<text class="cellmain" text-anchor="middle" x="575" y="461">糖尿病性腎症</text>
+<text class="cellsub" text-anchor="middle" x="575" y="481">臓器障害として可視化</text>
+<text class="cellmain" text-anchor="middle" x="765" y="461">メタボリック症候群</text>
+<text class="cellsub" text-anchor="middle" x="765" y="481">全身性の代謝失調</text>
+<!-- 行5 遺伝 -->
+<rect fill="#ecfeff" height="73" stroke="#cbd5e1" width="170" x="120" y="502"></rect>
+<rect fill="#f7feff" height="73" stroke="#e5e7eb" width="190" x="290" y="502"></rect>
+<rect fill="#f7feff" height="73" stroke="#e5e7eb" width="190" x="480" y="502"></rect>
+<rect fill="#f7feff" height="73" stroke="#e5e7eb" width="190" x="670" y="502"></rect>
+<text class="rowlab" text-anchor="middle" x="205" y="544">遺伝</text>
+<text class="cellmain" text-anchor="middle" x="385" y="534">限局性の先天異常</text>
+<text class="cellsub" text-anchor="middle" x="385" y="554">局所形成異常</text>
+<text class="cellmain" text-anchor="middle" x="575" y="534">多発性嚢胞腎</text>
+<text class="cellsub" text-anchor="middle" x="575" y="554">遺伝要因が臓器に表現</text>
+<text class="cellmain" text-anchor="middle" x="765" y="534">染色体異常症候群</text>
+<text class="cellsub" text-anchor="middle" x="765" y="554">全身に影響</text>
+<!-- 行6 老化 -->
+<rect fill="#fef9c3" height="75" stroke="#cbd5e1" width="170" x="120" y="575"></rect>
+<rect fill="#fffef3" height="75" stroke="#e5e7eb" width="190" x="290" y="575"></rect>
+<rect fill="#fffef3" height="75" stroke="#e5e7eb" width="190" x="480" y="575"></rect>
+<rect fill="#fffef3" height="75" stroke="#e5e7eb" width="190" x="670" y="575"></rect>
+<text class="rowlab" text-anchor="middle" x="205" y="620">老化</text>
+<text class="cellmain" text-anchor="middle" x="385" y="607">白内障</text>
+<text class="cellsub" text-anchor="middle" x="385" y="628">局所に見える老化</text>
+<text class="cellmain" text-anchor="middle" x="575" y="607">動脈硬化・骨粗鬆症</text>
+<text class="cellsub" text-anchor="middle" x="575" y="628">臓器・組織レベルの老化</text>
+<text class="cellmain" text-anchor="middle" x="765" y="607">老化そのもの</text>
+<text class="cellsub" text-anchor="middle" x="765" y="628">全身システムの変化</text>
+<!-- 横方向の例示矢印 -->
+<line marker-end="url(#arrowMini)" stroke="#94a3b8" stroke-dasharray="7 6" stroke-width="2.5" x1="360" x2="735" y1="319" y2="319"></line>
+<text class="smallnote" text-anchor="middle" x="545" y="302">感染は局所から全身へ広がりうる</text>
+<line marker-end="url(#arrowMini)" stroke="#94a3b8" stroke-dasharray="7 6" stroke-width="2.5" x1="360" x2="735" y1="610" y2="610"></line>
+<text class="smallnote" text-anchor="middle" x="545" y="592">老化は局所症状の背後にある全身変化でもある</text>
+<!-- 下部メッセージ -->
+<rect fill="#f8fafc" height="52" rx="18" stroke="#dbe3ef" width="740" x="120" y="675"></rect>
+<text class="strong" text-anchor="middle" x="490" y="707">
+      同じ「臓器の病気」に見えても、上流原因が違えば、理解の仕方も治療戦略も変わる
+    </text>
+</svg>
+<p class="cap"><p class="cap">
+この図は「病名中心医学」から「原因中心医学」への転換を示している。従来の臓器別分類では、肺・腎臓・関節・血管といった「見えている場所」に注目しやすい。だがシステム医学では、
+    まず原因（外傷・感染・免疫・代謝・遺伝・老化）を見て、次にその影響が局所・臓器・全身のどこまで広がっているかを考える。
+    すると、異なる病名の背後に共通構造があること、逆に同じ臓器病でも上流原因が違いうることが一目でわかる。
+  </p>
+</p></figure><figure class="figure">
+<h3>図9　三層構造：原因 → 生体システム → 個別疾患</h3><div class="figure-actions"><button class="mini-btn" data-zoom-figure="" type="button">図を拡大</button><button class="mini-btn" data-toggle-cap="" type="button">図の説明を隠す</button></div>
+<svg viewbox="0 0 900 420">
+<!-- 層１ -->
+<rect fill="#fff3cd" height="70" rx="15" stroke="#e0b800" width="700" x="100" y="40"></rect>
+<text font-size="22" text-anchor="middle" x="450" y="80">
+原因層
+</text>
+<text font-size="16" text-anchor="middle" x="450" y="105">
+感染・老化・代謝異常・遺伝・環境
+</text>
+<!-- 層２ -->
+<rect fill="#e7f1ff" height="70" rx="15" stroke="#6fa8ff" width="660" x="120" y="170"></rect>
+<text font-size="22" text-anchor="middle" x="450" y="210">
+生体システム層
+</text>
+<text font-size="16" text-anchor="middle" x="450" y="235">
+免疫系・代謝系・神経系・内分泌系
+</text>
+<!-- 層３ -->
+<rect fill="#eaf7ea" height="70" rx="15" stroke="#6bbf6b" width="600" x="150" y="300"></rect>
+<text font-size="22" text-anchor="middle" x="450" y="340">
+個別疾患層
+</text>
+<text font-size="16" text-anchor="middle" x="450" y="365">
+糖尿病・動脈硬化・肺炎・認知症
+</text>
+<!-- 矢印 -->
+<line stroke="black" stroke-width="3" x1="450" x2="450" y1="110" y2="170"></line>
+<line stroke="black" stroke-width="3" x1="450" x2="450" y1="240" y2="300"></line>
+</svg>
+<p class="cap">
+病名は最下層に現れる現象であり、  
+その背後には「原因」と「生体システム」が存在する。
+</p>
+</figure><p>では、システム医学とは何か。もっとも簡単に言えば、<strong>病気を孤立した臓器障害ではなく、相互接続された生命システムの乱れとして捉える医学</strong>である。人体には神経系、免疫系、内分泌系、代謝系、循環系、腸内微生物系などの制御ネットワークがあり、健康とはこれらが動的につり合っている状態である。病気とは、そのつり合いが崩れた状態であり、病名はその崩れが見えやすい場所に付けられた名前だ、と考える。</p><p>「病気＝原因×影響範囲」という二次元マトリクス（図6）や、「原因→生体システム→個別疾患」という三層構造（図７）の図は非常にわかりやすい。なぜなら、同じ病名でも原因が異なりうること、逆に別々の病名でも共通の原因を持ちうることを、示しているからだ。</p><p>システム医学には、少なくとも四つの特徴がある。第一に、<strong>上流原因を重視する</strong>。感染、免疫異常、慢性炎症、代謝異常、老化、遺伝、環境要因などが、どの臓器にどう波及するかを見る。第二に、<strong>時間軸を重視する</strong>。発症前のリスク状態、初期変化、病気、合併症、終末状態という連鎖を見る。第三に、<strong>個別化を重視する</strong>。同じ病名でも、その人の遺伝子、生活、免疫状態、年齢、併存疾患で中身が違うと考える。第四に、<strong>計算とAIを必要とする</strong>。人間が直感だけで扱えない多変量の関係を、データ解析で補う。</p><p>ここでAIの役割が見えてくる。AIが画像診断の見落とし防止、鑑別診断候補の提示、患者データの要約、慢性疾患リスクの予測などに使われる可能性がある。重要なのは、AIが医師の代わりになるというより、<strong>システムの複雑さを扱うための拡張器官</strong>として機能する点である。システム医学の時代には、医師の価値は「全部覚えること」ではなく、「複数の情報層を統合して意思決定すること」に移る。</p><div class="grid2">
+<div class="mini">
+<h4>システム医学の入力</h4>
+<p>遺伝子、血液検査、画像、生活習慣、服薬歴、睡眠、腸内環境、既往歴、家族歴など、多層データを使う。</p>
+</div>
+<div class="mini">
+<h4>システム医学の出力</h4>
+<p>病名だけでなく、リスク予測、進行予測、反応予測、個別化治療、予防介入の優先順位を示す。</p>
+</div>
+</div><p>ただし、システム医学を過大評価してはならない。いまの医療は依然として臓器医学の上に成り立っている。肺炎の患者を前にして、まず必要なのは抗菌薬、酸素投与、画像評価であり、抽象的なネットワーク論ではない。白内障には手術が効く。骨折には整復が必要だ。つまり未来の医療は、<strong>局所治療を否定するのではなく、局所治療を上流理解で束ね直す医療</strong>でなければならない。</p><p>この意味で、システム医学は万能の新宗教ではなく、近代医学の上に追加される<strong>上位レイヤー</strong>と考えるのが妥当である。臓器、細胞、分子、ネットワーク、時間軸を重ねて見る多層地図である。病名は消えないが、病名だけでは終わらない。ここに、現代医療の最も重要な認識転換がある。</p><p>システム医学の全体像をもう少し層構造で描くと、まず最上流には外部要因がある。感染、栄養、ストレス、毒性物質、生活習慣、社会環境である。その次に、神経・免疫・内分泌・代謝・循環といった生命システム層がある。さらにその下に、細胞・分子の変化、組織・臓器の機能低下が続き、そこで初めて私たちが知っている病名――糖尿病、肺炎、心筋梗塞、がん、アルツハイマー病――が現れる。しかも病名は終点ではなく、その後には合併症ネットワークが待っている。糖尿病の後に腎症や神経障害が起き、動脈硬化の後に心不全や脳梗塞が起きる。システム医学は、この上下と前後を同時に見ようとする。</p><figure class="figure">
+<h3>図10　システム医学の全体構造</h3><div class="figure-actions"><button class="mini-btn" data-zoom-figure="" type="button">図を拡大</button><button class="mini-btn" data-toggle-cap="" type="button">図の説明を隠す</button></div>
+<svg viewbox="0 0 900 420">
+<rect fill="#fff3cd" height="70" rx="15" stroke="#e0b800" width="500" x="200" y="40"></rect>
+<text font-size="22" text-anchor="middle" x="450" y="80">
+原因
+</text>
+<rect fill="#e7f1ff" height="70" rx="15" stroke="#6fa8ff" width="500" x="200" y="140"></rect>
+<text font-size="22" text-anchor="middle" x="450" y="180">
+生体システム
+</text>
+<rect fill="#eaf7ea" height="70" rx="15" stroke="#6bbf6b" width="500" x="200" y="240"></rect>
+<text font-size="22" text-anchor="middle" x="450" y="280">
+疾患
+</text>
+<rect fill="#fde2e2" height="70" rx="15" stroke="#e57373" width="500" x="200" y="340"></rect>
+<text font-size="22" text-anchor="middle" x="450" y="380">
+症状
+</text>
+<line stroke="black" stroke-width="3" x1="450" x2="450" y1="110" y2="140"></line>
+<line stroke="black" stroke-width="3" x1="450" x2="450" y1="210" y2="240"></line>
+<line stroke="black" stroke-width="3" x1="450" x2="450" y1="310" y2="340"></line>
+</svg>
+<p class="cap">
+症状は最下流に現れる現象であり、
+その背後には疾患、生体システム、原因が存在する。
+</p>
+</figure><figure class="figure">
+<h3>図11　疾病ネットワーク：病名は孤立していない</h3><div class="figure-actions"><button class="mini-btn" data-zoom-figure="" type="button">図を拡大</button><button class="mini-btn" data-toggle-cap="" type="button">図の説明を隠す</button></div>
+<svg viewbox="0 0 1000 520">
+<!-- ノード -->
+<circle cx="500" cy="120" fill="#fde68a" r="50" stroke="#f59e0b"></circle>
+<text font-size="18" text-anchor="middle" x="500" y="125">老化</text>
+<circle cx="280" cy="260" fill="#bfdbfe" r="50" stroke="#2563eb"></circle>
+<text font-size="18" text-anchor="middle" x="280" y="265">糖尿病</text>
+<circle cx="720" cy="260" fill="#fecaca" r="50" stroke="#dc2626"></circle>
+<text font-size="18" text-anchor="middle" x="720" y="265">動脈硬化</text>
+<circle cx="200" cy="420" fill="#bbf7d0" r="50" stroke="#059669"></circle>
+<text font-size="18" text-anchor="middle" x="200" y="425">腎症</text>
+<circle cx="800" cy="420" fill="#ddd6fe" r="50" stroke="#7c3aed"></circle>
+<text font-size="18" text-anchor="middle" x="800" y="425">認知症</text>
+<circle cx="500" cy="420" fill="#fecaca" r="50" stroke="#dc2626"></circle>
+<text font-size="18" text-anchor="middle" x="500" y="425">心筋梗塞</text>
+<!-- 接続線 -->
+<line stroke="#64748b" stroke-width="3" x1="500" x2="280" y1="170" y2="220"></line>
+<line stroke="#64748b" stroke-width="3" x1="500" x2="720" y1="170" y2="220"></line>
+<line stroke="#64748b" stroke-width="3" x1="280" x2="200" y1="310" y2="370"></line>
+<line stroke="#64748b" stroke-width="3" x1="720" x2="500" y1="310" y2="370"></line>
+<line stroke="#64748b" stroke-width="3" x1="500" x2="800" y1="370" y2="370"></line>
+</svg>
+<p class="cap">
+多くの慢性疾患は独立した病気ではなく、  
+老化・慢性炎症・代謝異常などの共通原因によって結びついた  
+「疾病ネットワーク」の一部として現れる。
+</p>
+</figure><figure class="figure">
+<h3>図12　老化中心医学モデル</h3><div class="figure-actions"><button class="mini-btn" data-zoom-figure="" type="button">図を拡大</button><button class="mini-btn" data-toggle-cap="" type="button">図の説明を隠す</button></div>
+<svg viewbox="0 0 1000 520">
+<!-- 中心 -->
+<circle cx="500" cy="260" fill="#fde68a" r="80" stroke="#f59e0b"></circle>
+<text font-size="22" text-anchor="middle" x="500" y="255">老化</text>
+<text font-size="14" text-anchor="middle" x="500" y="285">Aging</text>
+<!-- 周囲 -->
+<circle cx="500" cy="80" fill="#bfdbfe" r="55" stroke="#2563eb"></circle>
+<text text-anchor="middle" x="500" y="85">動脈硬化</text>
+<circle cx="780" cy="200" fill="#fecaca" r="55" stroke="#dc2626"></circle>
+<text text-anchor="middle" x="780" y="205">がん</text>
+<circle cx="780" cy="360" fill="#ddd6fe" r="55" stroke="#7c3aed"></circle>
+<text text-anchor="middle" x="780" y="365">認知症</text>
+<circle cx="220" cy="200" fill="#bbf7d0" r="55" stroke="#059669"></circle>
+<text text-anchor="middle" x="220" y="205">糖尿病</text>
+<circle cx="220" cy="360" fill="#bfdbfe" r="55" stroke="#2563eb"></circle>
+<text text-anchor="middle" x="220" y="365">骨粗鬆症</text>
+<!-- 接続 -->
+<line stroke="black" stroke-width="3" x1="500" x2="500" y1="180" y2="135"></line>
+<line stroke="black" stroke-width="3" x1="570" x2="720" y1="230" y2="210"></line>
+<line stroke="black" stroke-width="3" x1="570" x2="720" y1="290" y2="350"></line>
+<line stroke="black" stroke-width="3" x1="430" x2="280" y1="230" y2="210"></line>
+<line stroke="black" stroke-width="3" x1="430" x2="280" y1="290" y2="350"></line>
+</svg>
+<p class="cap">
+老化は単一の臓器病ではなく、  
+多くの慢性疾患の上流に存在する共通の生物学的プロセスである。
+</p>
+</figure><figure class="figure">
+<h3>図13　病気の時間構造（Disease Process Map）</h3><div class="figure-actions"><button class="mini-btn" data-zoom-figure="" type="button">図を拡大</button><button class="mini-btn" data-toggle-cap="" type="button">図の説明を隠す</button></div>
+<svg viewbox="0 0 1100 260">
+<!-- 箱 -->
+<rect fill="#fff3cd" height="70" rx="15" stroke="#e0b800" width="160" x="20" y="90"></rect>
+<text text-anchor="middle" x="100" y="125">生活環境</text>
+<text text-anchor="middle" x="100" y="145">遺伝</text>
+<rect fill="#e7f1ff" height="70" rx="15" stroke="#6fa8ff" width="160" x="200" y="90"></rect>
+<text text-anchor="middle" x="280" y="125">慢性炎症</text>
+<text text-anchor="middle" x="280" y="145">代謝異常</text>
+<rect fill="#e7f1ff" height="70" rx="15" stroke="#6fa8ff" width="160" x="380" y="90"></rect>
+<text text-anchor="middle" x="460" y="125">前臨床状態</text>
+<text text-anchor="middle" x="460" y="145">無症状</text>
+<rect fill="#eaf7ea" height="70" rx="15" stroke="#6bbf6b" width="160" x="560" y="90"></rect>
+<text text-anchor="middle" x="640" y="130">動脈硬化</text>
+<rect fill="#fde2e2" height="70" rx="15" stroke="#dc2626" width="160" x="740" y="90"></rect>
+<text text-anchor="middle" x="820" y="130">心筋梗塞</text>
+<rect fill="#f3e8ff" height="70" rx="15" stroke="#7c3aed" width="160" x="920" y="90"></rect>
+<text text-anchor="middle" x="1000" y="130">心不全</text>
+<!-- 矢印 -->
+<line stroke="black" stroke-width="3" x1="180" x2="200" y1="125" y2="125"></line>
+<line stroke="black" stroke-width="3" x1="360" x2="380" y1="125" y2="125"></line>
+<line stroke="black" stroke-width="3" x1="540" x2="560" y1="125" y2="125"></line>
+<line stroke="black" stroke-width="3" x1="720" x2="740" y1="125" y2="125"></line>
+<line stroke="black" stroke-width="3" x1="900" x2="920" y1="125" y2="125"></line>
+<!-- タイトル -->
+<text font-size="24" text-anchor="middle" x="550" y="40">
+病気は時間の中で進行するプロセス
+</text>
+</svg>
+<p class="cap">
+病名は病気プロセスの途中に付けられたラベルである。
+上流原因から合併症まで時間軸で理解することが、
+システム医学の核心となる。
+</p>
+</figure><p>この多層地図は、教育上も研究上も意味がある。教育では、学生が「胃なら消化器」「肺なら呼吸器」という暗記に閉じこもらず、共通原因の視点を持てる。研究では、一つの分子異常を単独で見るのではなく、どのシステムに埋め込まれているかを考えられる。臨床では、複数の病気を持つ患者に対して、どの上流原因が最も大きなハブになっているかを探せる。</p><p>さらにシステム医学は、予防と治療の境界を曖昧にする。臓器医学では、病気が成立してから診断し治療する流れが中心だった。システム医学では、発症前のゆがみ、つまり代謝の崩れ、慢性炎症、睡眠障害、フレイル、ストレス反応などが重要な介入点になる。「症状→診断→治療」から「データ→AI解析→予測→個別治療」への変化が、医学の新しい革命として整理される必要がある。これは誇張ではなく、実際に医療の重心が少しずつ後ろ向きから前向きへ移りつつあることを示している。</p><h3>補論：ネットワーク医学とシステム医学はどう違うのか</h3><p>ネットワーク医学は病気の「つながり」を解析する学問であって、システム医学は人体全体の「動く仕組み」を理解する医学であり、この区別をもう一歩具体化すると、ネットワーク医学は地図に近い。遺伝子、分子、細胞、臓器、病気どうしの結びつきを示し、どこがハブでどこが経路かを明らかにする。一方システム医学は、地図に加えて交通の流れや時間変化まで扱う。何が先に崩れ、何が増幅回路を作り、どこで介入すると全体が変わるのかを見る。</p><p>たとえば、ある患者で慢性炎症、睡眠障害、インスリン抵抗性、軽度うつ症状、高血圧が同時に存在するとする。ネットワーク医学は、これらがどのノードで結びつくかを示す。システム医学はさらに、睡眠障害が炎症を悪化させ、炎症が代謝異常を悪化させ、代謝異常が血管障害を進めるといった時間的な循環まで視野に入れる。つまりシステム医学は、病気の静止画ではなく動画を扱うのである。</p><h3>補論：なぜ“全身”を見ることが治療費の議論にもつながるのか</h3><p>「老化という全身性の問題を局所的疾患として処理し続けると、無駄な治療費が増えるのではないか」という問題がある。これは極端な言い方ではあるが、考える価値がある。もし共通の上流原因に対する介入が、複数の下流疾患を同時に減らせるなら、医療はより効率的になる可能性があるからだ。もちろん現実には、すべてを一つの原因で説明することはできないし、局所治療を省略することもできない。だが少なくとも、<strong>共通原因に早く介入する発想</strong>は、予防医学と医療経済の両方に関わる。</p><p>この意味でシステム医学は、単なる学問の流行ではない。高齢化社会で増え続ける多疾患併存をどう扱うか、診療科の縦割りをどう乗り越えるか、限られた医療資源をどこに投じるかという、制度全体の問いとも結びついている。</p><h3>ケースで考える：同じ病名でも中身は同じではない</h3><p>同じ「2型糖尿病」という病名でも、肥満が強い人、やせ型でインスリン分泌低下が目立つ人、睡眠不足や交代勤務が悪化要因になっている人、ステロイド薬がきっかけになった人では、病態も介入点も異なる。臓器医学では膵臓や血糖という焦点が中心になるが、システム医学では代謝、肝臓、筋肉、脂肪組織、睡眠、ストレス、炎症、腸内環境まで射程に入る。つまり病名は同じでも、患者ごとの“システムの崩れ方”が違う。</p><p>これはがんでも同じである。肺にできた腫瘍という意味で肺がんは肺の病気だが、治療選択は遺伝子変異、免疫状態、微小環境、全身状態、併存疾患によって大きく変わる。病名が肺がんであることは出発点にすぎず、実際に治療を決めるときは、その病気がどんなシステム文脈の中にあるかを見る必要がある。がんが臓器より遺伝子で分類され始めているのは、この転換の象徴である。</p><h3>ケースで考える：局所症状なのに全身病であるとはどういうことか</h3><p>花粉症や接触皮膚炎は一見すると局所症状だが、背後にあるのは免疫システムの反応性である。関節リウマチでは痛むのは関節でも、病気の軸は全身免疫の異常にある。白内障は目に現れるが、高齢者では老化、代謝、酸化ストレス、全身状態と切り離せない。システム医学の視点は、局所症状を軽視するためではなく、その局所症状がどの全身文脈から生まれているかを問うためにある。</p><p>逆に、全身病に見えても局所介入が決定的に効くこともある。細菌性肺炎では原因は感染という全身に広がりうる現象だが、診断と治療の入り口は肺の評価から始まる。つまり良い医療とは、局所と全身を対立させることではなく、どの層で何をすべきかを見極めることである。システム医学は、この“層の見分け”をより精密にしようとする試みだと言ってよい。</p><h3>教育への意味</h3><p>学部学生にとってこの話が重要なのは、医学や生命科学を学ぶときの視野が変わるからである。臓器別の学習は今後も必要だが、それだけだと知識が断片化しやすい。これに対してシステム医学の視点を持つと、免疫学、生化学、生理学、病理学、薬理学、情報科学が一本の線でつながる。個々の講義科目がバラバラに見えなくなり、「なぜこの知識が必要なのか」が理解しやすくなる。教育上の価値は、まさにここにある。</p><h3>研究と臨床の橋渡しとしてのシステム医学</h3><p>基礎研究では、細胞や分子を一つずつ切り出して調べる方法が今も強力である。しかし患者の病気は、その単位だけでは完結しない。薬が効くかどうかは、標的分子だけでなく、代謝、免疫、併用薬、年齢、腎機能、生活背景などに左右される。システム医学は、基礎研究で得た局所知識を、患者という全体へ戻すための翻訳装置でもある。したがってこれは、基礎か臨床かという二者択一ではなく、両者を循環させる考え方だと言える。</p><p>その意味では、システム医学は新しい専門科というより、既存の医学知識を再編するための“第二の文法”である。臓器医学の文法で見れば別々の文章に見える病気も、システム医学の文法で読み替えると、共通の主語や動詞を持つことがある。この二つの文法を行き来できることが、これからの医療者にも研究者にも求められるだろう。</p><h3>病気を見る座標軸を増やすということ</h3><p>結局のところ、システム医学が求めているのは、病気を見る座標軸を増やすことである。従来は「どの臓器か」が最も強い軸だった。これからはそこに、「どの原因か」「どの時間段階か」「どのネットワークに属するか」「どの患者文脈か」という軸が加わる。座標軸が増えると難しく見えるが、現実の患者に近づくのはむしろこちらである。人間の病気はもともと単純ではなく、単純化された見方のほうが例外だったと考えるべきなのかもしれない。</p><p>だからこそ、学ぶ側に必要なのは、病名や臓器の知識を捨てることではなく、その知識をより広い地図の中に置き直すことである。臓器医学は細部を見る顕微鏡であり、システム医学は全体を見る望遠鏡である。どちらか一方だけでは、現代の病気を十分に理解することはできない。</p></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>
+<section class="card section" id="sec6">
+<h2 class="sec">6．我々患者はどうしたらいいのか</h2><div class="section-tools"><button class="mini-btn" data-toggle-section="" type="button">章を閉じる</button></div><div class="section-body"><p>システム医学の話を聞くと、「患者は何をすればよいのか」と思うかもしれない。結論から言えば、患者に求められるのは難しい数理モデルの理解ではない。むしろ、<strong>自分の病気を“病名一個”で理解しすぎないこと</strong>が重要である。</p><p>第一に、病名を聞いたら「どの臓器が悪いのか」だけでなく、「何がその病気を動かしているのか」を医師に尋ねることだ。炎症なのか、代謝異常なのか、免疫異常なのか、老化の影響が大きいのか。第二に、治療の目的を確認することだ。今の治療は症状を抑えるのか、進行を遅らせるのか、原因に近いところを狙っているのか。第三に、複数の病名があるときは、それらを別々にではなく、<strong>つながった問題として説明してもらう</strong>ことが大切である。</p><div class="note">
+<strong>患者のための3つの質問</strong><br/>
+    ① この病名の背後にある上流原因は何ですか。<br/>
+    ② この治療は、症状・病名・原因のどの層に効くのですか。<br/>
+    ③ 他の病気や生活習慣と、どうつながっていますか。
+  </div><p>また、システム医学の時代には予防の意味も変わる。これまでの予防は「個別の病名を避ける」発想が強かった。だが、原因中心で見るなら、慢性炎症を減らす、代謝を整える、睡眠を改善する、運動機能を維持する、孤立を避ける、といった介入は、複数の病気に同時に効く可能性がある。つまり、<strong>上流を整える生活</strong>は、下流の複数病名をまとめて減らすかもしれない。</p><p>もちろん患者が自己責任論に巻き込まれてはいけない。遺伝、加齢、環境、偶然の要素は大きい。だが少なくとも、医療を受ける側が「病名だけを受け取る」のではなく、「自分の身体の全体地図」を少しずつ理解していくことは、治療への参加を深める。特に高齢者医療や慢性疾患では、どの検査や処方が本当に自分の全体像に合っているのかを考える姿勢が重要になる。</p><p>さらに、AIやデジタル医療の利用も今後の課題になる。患者向けアプリ、ウェアラブル端末、オンライン相談、診療情報の可視化などは、うまく使えば自分の健康の時間変化を把握する助けになる。ただしAIは万能の診断機ではない。あくまで補助であり、症状の重さ、生活背景、本人の価値観を最終的に扱うのは人間の医療者と患者自身である。</p><p>患者の立場からもう一つ大事なのは、<strong>複数科にかかっているときほど、自分の病歴を一本の物語として持つ</strong>ことである。いつから何が始まり、どの薬でどう変わり、生活のどの変化が影響したのか。これは単なるメモではなく、システム医学的には時間軸のデータである。病名が違っていても、発症順序や相互関係を追うことで、医療者側も全体像を把握しやすくなる。</p><p>また、患者は「臓器の専門医」と「全体をみる医師」の両方を必要とすることがある。局所の専門性は不可欠だが、複数疾患を束ねる視点も同じくらい重要だからだ。総合診療、かかりつけ医、老年医学、チーム医療の価値が高まるのはこのためである。システム医学は、患者に“自分で全部判断しろ”と言う考え方ではなく、むしろ医療者どうしの連結と、患者を含む情報共有を強く要請する考え方だと言える。</p><p>最後に、患者は「原因を知る」と同時に、「どこまで分かっていないか」も知る必要がある。システム医学は魅力的だが、まだ仮説や研究段階の部分も多い。何でも老化や炎症で説明しすぎると、逆に雑になる。したがって賢い患者とは、病名だけを盲信しない人であると同時に、原因論を単純化しすぎない人でもある。局所と全身、確立知と未確立知、その両方をバランスよく受け止めることが、これからの医療リテラシーになるだろう。</p></div>
+
+
+
+
+
+
+
+
+
+</section>
+<figure class="figure">
+<h3>図14　医学の未来地図：臓器医学からシステム医学へ</h3><div class="figure-actions"><button class="mini-btn" data-zoom-figure="" type="button">図を拡大</button><button class="mini-btn" data-toggle-cap="" type="button">図の説明を隠す</button></div>
+<svg viewbox="0 0 1100 420">
+<!-- 過去 -->
+<rect fill="#fde2e2" height="100" rx="20" stroke="#e57373" stroke-width="3" width="250" x="60" y="160"></rect>
+<text font-size="22" text-anchor="middle" x="185" y="205">
+臓器医学
+</text>
+<text font-size="16" text-anchor="middle" x="185" y="235">
+心臓・肺・腎臓
+</text>
+<!-- 現在 -->
+<rect fill="#e7f1ff" height="100" rx="20" stroke="#6fa8ff" stroke-width="3" width="250" x="430" y="160"></rect>
+<text font-size="22" text-anchor="middle" x="555" y="205">
+システム医学
+</text>
+<text font-size="16" text-anchor="middle" x="555" y="235">
+免疫・代謝・神経
+</text>
+<!-- 未来 -->
+<rect fill="#eaf7ea" height="100" rx="20" stroke="#6bbf6b" stroke-width="3" width="250" x="800" y="160"></rect>
+<text font-size="22" text-anchor="middle" x="925" y="205">
+原因医学
+</text>
+<text font-size="16" text-anchor="middle" x="925" y="235">
+老化・炎症・DNA
+</text>
+<!-- 矢印 -->
+<line stroke="black" stroke-width="4" x1="310" x2="430" y1="210" y2="210"></line>
+<line stroke="black" stroke-width="4" x1="680" x2="800" y1="210" y2="210"></line>
+<!-- 上説明 -->
+<text font-size="18" text-anchor="middle" x="185" y="120">
+20世紀医学
+</text>
+<text font-size="18" text-anchor="middle" x="555" y="120">
+21世紀医学
+</text>
+<text font-size="18" text-anchor="middle" x="925" y="120">
+未来医学
+</text>
+</svg>
+<p class="cap">
+医学は長い間、臓器ごとに病気を分類する「臓器医学」を中心に発展してきた。
+しかし現在では、免疫・代謝・神経などの生体システムに注目する
+「システム医学」へと移行しつつある。
+さらに将来は、老化・炎症・遺伝子などの上流原因を直接扱う
+「原因医学」が中心になると考えられている。
+</p>
+</figure>
+<section class="quiz-card" id="quiz2">
+<h2 style="margin:0 0 8px">理解チェック 2</h2>
+<p>システム医学が重視する「時間軸」と最も関係が深い説明はどれでしょうか。</p>
+<button class="quiz-option" data-feedback="違います。これは空間的な分類の話です。" type="button">A．胃・肺・腎臓など臓器ごとに病気を並べること</button>
+<button class="quiz-option" data-feedback="正解です。発症前、初期変化、病気、合併症という連鎖で病態をみるのが時間軸の発想です。" type="button"><strong>B．発症前の状態から病気、合併症までの連鎖として病態を見ること</strong></button>
+<button class="quiz-option" data-feedback="違います。これは制度や分類の整理に近い考え方です。" type="button">C．確定病名をできるだけ早く付けること</button>
+<div aria-live="polite" class="quiz-feedback"></div>
+</section><section class="card section" id="sec7">
+<h2 class="sec">7．おわりに</h2><div class="section-tools"><button class="mini-btn" data-toggle-section="" type="button">章を閉じる</button></div><div class="section-body"><p>近代医学は、臓器を分け、病名を付けることで大きな成功を収めた。だがその成功は、病気が複雑につながり、時間の中で進み、全身システムの乱れとして現れる現代の患者像を前にして、再編を迫られている。いま起きている変化は、臓器医学の否定ではなく、その上流にある原因ネットワークと下流にある進行ネットワークをつなぎ直す試みである。</p><p>病名は必要である。しかし病名は終点ではない。病名の後ろにある原因、相互作用、全身性、時間軸まで見えるようになったとき、医学は「治してから考える」学問から、「崩れ方を予測し、早く介入する」学問へ近づく。そこにAI、ビッグデータ、個別化医療が加わることで、医療は次の段階へ進みつつある。これが、本稿でたどってきた「臓器医学からシステム医学へ」という流れの本質である。</p></div>
+
+
+</section>
+<footer>
+  本HTMLは、筆者が構成しＡＩが作成したブログである。
+</footer>
+<section class="control-panel">
+<h2 style="margin:0 0 8px">対話型まとめ</h2>
+<div class="control-row">
+<a class="ctrl-btn" href="#sec1">導入へ戻る</a>
+<a class="ctrl-btn" href="#sec4">パラダイムシフトへ</a>
+<a class="ctrl-btn" href="#sec5">システム医学へ</a>
+<a class="ctrl-btn" href="#quiz2">最終チェックへ</a>
+</div>
+<p class="jump-note">この教材では「章を閉じる」「語句を押す」「図を拡大する」「理解チェックを解く」という4つの操作で学習できます。</p>
+</section></div>
+</body>
+</html>

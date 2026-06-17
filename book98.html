@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>なぜ命は“右か左か”を選んだのか？―分子の手と薬とノーベル賞の話―</title>
+<style>
+:root {
+  --bg:#f5f7fb;
+  --paper:#ffffff;
+  --ink:#1f2937;
+  --muted:#5b6472;
+  --line:#d7deea;
+  --blue:#2458d3;
+  --green:#128255;
+  --red:#c83a32;
+  --gold:#c7961d;
+  --soft:#eef4ff;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:linear-gradient(180deg,#edf2f9 0%,#f7f9fc 100%);
+  color:var(--ink);
+  font-family:"Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
+  line-height:1.95;
+}
+.wrap { width:min(980px, calc(100% - 28px)); margin:0 auto; }
+header {
+  color:#fff;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,.16), transparent 24%),
+    radial-gradient(circle at 80% 0%, rgba(255,255,255,.10), transparent 20%),
+    linear-gradient(135deg, #09162f 0%, #173161 55%, #2a56aa 100%);
+  padding:56px 0 44px;
+}
+.badge {
+  display:inline-block; padding:6px 11px; border:1px solid rgba(255,255,255,.28);
+  border-radius:999px; font-size:.93rem; margin-bottom:18px;
+}
+h1 {
+  font-size:clamp(2rem,4vw,3.1rem);
+  line-height:1.28; margin:0 0 14px;
+}
+header p {
+  margin:0; max-width:54em; color:rgba(255,255,255,.92);
+}
+main { padding:22px 0 56px; }
+.card, section {
+  background:var(--paper); border:1px solid var(--line); border-radius:24px;
+  box-shadow:0 10px 32px rgba(31,41,55,.055); padding:28px; margin:18px 0;
+}
+.lead p:first-child::first-letter {
+  float:left; font-size:2.3em; line-height:1; padding-right:.08em;
+  font-weight:800; color:var(--blue);
+}
+h2 {
+  font-size:1.72rem; line-height:1.4; margin:0 0 16px;
+  padding-bottom:10px; border-bottom:3px solid #edf2ff;
+}
+h3 {
+  font-size:1.16rem; margin:1.3em 0 .4em; color:#163d8f;
+}
+p { margin:.85em 0; }
+ul { padding-left:1.2em; margin:.4em 0; }
+li { margin:.34em 0; }
+.toc ol { margin:0; padding-left:1.18em; }
+.toc a { color:var(--blue); text-decoration:none; }
+.toc a:hover { text-decoration:underline; }
+figure {
+  margin:20px 0; border:1px solid var(--line); border-radius:18px;
+  overflow:hidden; background:#fff;
+}
+figcaption {
+  background:#fbfcff; color:var(--muted); padding:12px 16px 16px; font-size:.95rem;
+}
+img { display:block; width:100%; height:auto; }
+.note {
+  background:#f4f8ff; border-left:4px solid var(--blue);
+  padding:13px 15px; border-radius:10px; margin:15px 0;
+}
+.note.good { background:#f2fbf6; border-left-color:var(--green); }
+.note.warn { background:#fff6f4; border-left-color:var(--red); }
+.tags { margin:0 0 10px; }
+.tag {
+  display:inline-block; margin:0 7px 7px 0; padding:4px 10px; font-size:.9rem;
+  border-radius:999px; background:#eef3ff; color:#234ca8; border:1px solid #d7e2ff;
+}
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+table { width:100%; border-collapse:collapse; margin:15px 0; font-size:.96rem; }
+th,td { border:1px solid var(--line); padding:10px 12px; vertical-align:top; }
+th { background:#f4f7fc; text-align:left; }
+.small { font-size:.93rem; color:var(--muted); }
+footer { color:var(--muted); padding:6px 0 22px; }
+@media (max-width:760px) {
+  .card, section { padding:20px; border-radius:18px; }
+  .grid2 { grid-template-columns:1fr; }
+  header { padding-top:42px; }
+}
+svg text {
+  font-family:"Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="badge">高校生向け</div>
+    <h1>なぜ命は“右か左か”を選んだのか？―分子の手と薬とノーベル賞の話―</h1>
+<div style="margin-top:2rem; padding:1.5rem; background:#eef4ff; border-radius:16px; text-align:center;">
+  <p style="font-size:1.1rem; margin-bottom:0.8rem;">
+    🔰 もっとやさしく理解したい人へ
+  </p>
+  <a href="book98junior.html" style="
+    display:inline-block;
+    padding:0.6rem 1.2rem;
+    background:#2458d3;
+    color:#fff;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:bold;
+  ">
+    👉 中学生向け解説はこちら
+  </a>
+</div>
+    <p>生命はなぜ「右と左」のうち片方だけを選んだのか。分子の手、不斉合成、サリドマイド、ソアイ反応、地球史、そして野依良治博士の研究までを一つの物語としてたどります。</p>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <article class="card lead">
+    <div class="tags">
+      <span class="tag">キラリティ</span>
+      <span class="tag">生命の起源</span>
+      <span class="tag">不斉合成</span>
+      <span class="tag">野依良治</span>
+      <span class="tag">高校生向け</span>
+    </div>
+<p><strong>もし生命が左右を区別しなかったら、私たちは存在しなかったかもしれない。</strong></p>
+    <p class="note">このページは、中学生向け版を読んだ人が「わかった」を「なぜそうなるのか」に進めるための高校生版です。すでに中学生向け版を読んだ人は、ここでは<strong>理由・構造・意味</strong>に注目して読み直してください。</p>
+    <p>人の右手と左手は、ぱっと見ではよく似ています。指は五本あり、形もほとんど同じです。けれども、右手を左手の上にぴったり重ねることはできません。鏡に映したように似ているのに、同じではない。この関係は、化学の世界ではとても大切です。なぜなら、分子にも「右手型」と「左手型」があるからです。</p>
+    <p>そしてさらに驚くべきことに、地球上の生命はその両方を公平に使っていません。タンパク質の材料になるアミノ酸は、ほぼすべてがL体です。逆に、DNAやRNA、エネルギー代謝にかかわる糖は、主としてD体です。つまり生命は、最初から「片側だけを使う」ルールの上に立っています。</p>
+    <div class="note good"><strong>このブログの中心定義：</strong> 生命とは、<strong>「左右の自由を捨てることで、秩序を手に入れた存在」</strong>である。ホモキラリティは、生命の飾りではなく、生命が生命であるための設計原理かもしれません。<br><span class="small">※ここでの「選んだ」「自由を捨てた」という表現は比喩です。実際には、ごく小さな左右差が増幅され、進化の中で片側が固定されたと考えられています。</span></div>
+    <p>ここで疑問が生まれます。なぜそんな偏りが生じたのでしょうか。宇宙や地球のどこでその差が作られ、どうやって固定されたのでしょうか。そして、人間はそれを理解し、人工的に再現できるようになったのでしょうか。この問いに正面から取り組んだのが、不斉合成の研究であり、その中心人物の一人が野依良治博士でした。</p> 
+<figure>
+  <svg viewBox="0 0 900 360">
+    <rect width="900" height="360" fill="#ffffff"/>
+
+    <text x="450" y="40" font-size="28" text-anchor="middle">
+      生命のキラリティはこうして生まれた（仮説）
+    </text>
+
+    <!-- 宇宙 -->
+    <circle cx="150" cy="180" r="70" fill="#e0f0ff"/>
+    <text x="150" y="180" text-anchor="middle">宇宙</text>
+    <text x="150" y="210" text-anchor="middle">円偏光</text>
+
+    <!-- 地球 -->
+    <circle cx="450" cy="180" r="70" fill="#e8ffe8"/>
+    <text x="450" y="180" text-anchor="middle">地球</text>
+    <text x="450" y="210" text-anchor="middle">鉱物表面</text>
+
+    <!-- 生命 -->
+    <circle cx="750" cy="180" r="70" fill="#fff0f0"/>
+    <text x="750" y="180" text-anchor="middle">生命</text>
+    <text x="750" y="210" text-anchor="middle">L体</text>
+
+    <!-- 矢印 -->
+    <line x1="220" y1="180" x2="380" y2="180" stroke="black" marker-end="url(#a)"/>
+    <line x1="520" y1="180" x2="680" y2="180" stroke="black" marker-end="url(#a)"/>
+
+    <defs>
+      <marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+        <polygon points="0 0, 10 3, 0 6" fill="black"/>
+      </marker>
+    </defs>
+  </svg>
+
+  <figcaption>
+    図1：宇宙の円偏光 → 地球の鉱物 → L体の選択という流れ（人物は含めない）<br>
+    <span class="small">※この図は有力な仮説モデルを整理した模式図であり、細部まで確定した歴史をそのまま示すものではありません。</span>
+  </figcaption>
+</figure>
+<figure>
+  <!-- ホモキラリティ階層的増幅モデル -->
+  <iframe 
+    src="life_left_amino_acid_schematic.html" 
+    style="width:100%; height:760px; border:none; border-radius:16px;">
+  </iframe>
+  <figcaption>
+    図2：ホモキラリティの階層的増幅モデル（宇宙→鉱物→化学反応によるL体優勢の増幅）
+  </figcaption>
+</figure>
+
+<p>このブログで言いたいことは大きく六つあります。第一に、生命がL体だけを使うのは単なる偶然ではなく、秩序ある構造を作るための深い条件だということ。第二に、その偏りは約45億年の地球史の中で、宇宙・鉱物・化学反応の増幅を通して固定された可能性が高いこと。第三に、野依博士の仕事は、自然がしている「左右の選び分け」を人工の化学で再現したことに意味があること。第四に、博士の研究の動機は、単なる便利な反応の開発ではなく、「自然はなぜ片側を選べるのか」という本質的な問いだったこと。第五に、不斉合成は今や医薬品、香料、材料、環境調和型化学の中心技術になっていること。第六に、高校生がこの話をどう受け止めるべきかというと、これは一つの専門分野の知識ではなく、「生命とは何か」を考える入り口だということです。</p>
+  </article>
+
+  <nav class="card toc" aria-label="目次">
+    <h2>目次</h2>
+    <ol>
+      <li><a href="#sec1">不斉合成とは（不斉とは？）</a></li>
+      <li><a href="#sec2">DL体（ラセミ体）、D体、L体</a></li>
+      <li><a href="#sec3">L体からなる生命体（サリドマイド禍の教訓）</a></li>
+      <li><a href="#sec4">ソアイ反応、円偏光、約45億年の地球史</a></li>
+      <li><a href="#sec5">野依良治博士の業績（BINAPの立体構造）</a></li>
+      <li><a href="#sec6">博士は何を思って研究していたのか</a></li>
+      <li><a href="#sec7">その後の展開―不斉合成はいまどうなっているか</a></li>
+      <li><a href="#summary">まとめ―高校生はどう受け止めるべきか</a></li>
+    </ol>
+  </nav>
+
+  <section id="sec1">
+    <h2>１。不斉合成とは（不斉とは？）</h2>
+    <p>まず「不斉」という言葉を整理しましょう。不斉とは、左右が同じではないことです。幾何学的に言えば、鏡に映した像と元の物体が重ね合わさらない状態です。化学では、こうした性質をもつ分子を<strong>キラル分子</strong>と呼びます。キラルという語の語源はギリシャ語の「手」で、右手と左手の関係そのものです。</p>
+    <p>キラル分子はふつう、中心炭素に四つの異なる置換基がついたときに現れます。すると、その炭素を中心に空間配置が二通りでき、互いに鏡像関係になります。見た目はそっくりですが、完全には重なりません。これがD体・L体やR体・S体といった区別の出発点です。</p>
+    <p>ここで大事なのは、化学式が同じでも立体配置が違うだけで性質が変わりうることです。重さも、構成元素も、結合関係もほとんど同じなのに、生体の中では片方だけが強く認識されることがあります。これは生命の酵素や受容体が、単なる化学式ではなく、立体の向きまで読み取っているからです。</p>
+
+    <figure>
+      <svg viewBox="0 0 900 360" role="img" aria-label="普通の反応と不斉合成の比較図">
+        <rect width="900" height="360" fill="#fff"/>
+        <rect x="28" y="34" width="394" height="286" rx="20" fill="#f4f8ff" stroke="#c9d8ff"/>
+        <rect x="478" y="34" width="394" height="286" rx="20" fill="#f4fcf7" stroke="#c6e7d3"/>
+        <text x="225" y="72" font-size="30" text-anchor="middle" fill="#1d4aa9">普通の化学反応</text>
+        <text x="225" y="105" font-size="19" text-anchor="middle" fill="#516174">左右を選べず、両方つくる</text>
+        <circle cx="150" cy="185" r="62" fill="#9dc2ff"/>
+        <circle cx="300" cy="185" r="62" fill="#ffc0c0"/>
+        <text x="150" y="194" font-size="30" text-anchor="middle" fill="#163a86">R</text>
+        <text x="300" y="194" font-size="30" text-anchor="middle" fill="#8a1d1d">S</text>
+        <text x="225" y="263" font-size="24" text-anchor="middle" fill="#324253">50：50（ラセミ体）</text>
+
+        <text x="675" y="72" font-size="30" text-anchor="middle" fill="#0d7d4f">不斉合成</text>
+        <text x="675" y="105" font-size="19" text-anchor="middle" fill="#516174">片方を優先して多くつくる</text>
+        <circle cx="610" cy="185" r="76" fill="#94d3ac"/>
+        <circle cx="760" cy="185" r="38" fill="#ffd6d6"/>
+        <text x="610" y="194" font-size="30" text-anchor="middle" fill="#0a5c37">L</text>
+        <text x="760" y="193" font-size="21" text-anchor="middle" fill="#8a1d1d">D</text>
+        <text x="675" y="263" font-size="24" text-anchor="middle" fill="#324253">たとえば 97：3</text>
+        <path d="M425 178 L470 178" stroke="#8ea0b7" stroke-width="6" marker-end="url(#ar1)"/>
+        <defs>
+          <marker id="ar1" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#8ea0b7"/>
+          </marker>
+        </defs>
+      </svg>
+      <figcaption>図3　普通の反応では右型・左型が同程度にできやすい。不斉合成は、そのうち一方だけを選択的に多く作る技術である。</figcaption>
+    </figure>
+
+    <p>では、不斉合成とは何でしょうか。答えはシンプルです。<strong>キラル分子を、片側に偏って作る化学反応</strong>です。普通の反応では右と左が50:50でできがちですが、不斉合成では触媒や補助剤を使って、一方だけが通りやすい「立体的な道」を作ります。たとえるなら、右回りの車だけがスムーズに通れる細いゲートを用意するようなものです。</p>
+    <p>この技術が重要なのは、生命が最初から不斉な世界だからです。酵素の活性部位も、受容体のくぼみも、DNAのらせんも、細胞膜の構成も、すべてが立体的に偏っています。したがって、人間が生命に働きかける薬を作ろうとするときも、分子の向きを制御しなければなりません。不斉合成は、有機化学の高度な一分野に見えますが、その根には「生命は左右を区別する」という、非常に素朴で深い事実があるのです。</p>
+
+    <div class="note">
+      <strong>ここが本質：</strong> 不斉合成は、単に「難しい反応」ではありません。生命が立体を読む世界である以上、正しい向きの分子だけを作ることは、化学が生命に近づくための基本条件です。
+    </div>
+
+    <div class="note warn">
+      <strong>重要：D/L と R/S は別物</strong><br>
+      D体・L体と、R体・S体は同じ意味ではありません。<br>
+      <ul>
+        <li>D/L：基準分子（グリセルアルデヒド）との<strong>相対配置</strong></li>
+        <li>R/S：CIP規則による<strong>絶対配置</strong></li>
+      </ul>
+      したがって、D＝R、L＝Sとは限りません。ここを混同すると、大学レベルで必ず混乱します。
+    </div>
+  </section>
+
+  <section id="sec2">
+    <h2>２。DL体（ラセミ体）、D体、L体</h2>
+    <p>D体とL体は、分子の「右手型」「左手型」を表す歴史的な記号です。厳密には、右回り・左回りの意味そのものではなく、基準となる化合物との相対比較で決められた表記です。けれども高校生が最初に理解する上では、「鏡像だが重ならない二つの型」と考えてよいでしょう。</p>
+    <p>両者が同量混ざった状態を、DL体あるいはラセミ体と呼びます。試験管の中では「ほとんど同じもの」に見えるかもしれません。しかし、生体はそう見ません。酵素は三次元の鍵穴をもち、そこにぴったりはまる向きだけを選びます。だからL体は反応するのに、D体は反応しない、あるいは逆に邪魔をする、ということが起こりえます。</p>
+
+    <figure>
+      <svg viewBox="0 0 900 320" role="img" aria-label="L体とD体およびホモキラリティの概念図">
+        <rect width="900" height="320" fill="#fff"/>
+        <text x="450" y="43" font-size="30" text-anchor="middle" fill="#23364f">生命は「片手だけ」をそろえて使う</text>
+        <g transform="translate(120,92)">
+          <circle cx="90" cy="70" r="68" fill="#eaf4ff" stroke="#8fb6ff" stroke-width="3"/>
+          <text x="90" y="55" font-size="30" text-anchor="middle" fill="#1b4498">L体</text>
+          <text x="90" y="90" font-size="18" text-anchor="middle" fill="#556476">アミノ酸で優勢</text>
+          <path d="M48 112 L130 28" stroke="#2f7b4a" stroke-width="10" stroke-linecap="round"/>
+        </g>
+        <g transform="translate(552,92)">
+          <circle cx="90" cy="70" r="68" fill="#fff1f1" stroke="#efb2b2" stroke-width="3"/>
+          <text x="90" y="55" font-size="30" text-anchor="middle" fill="#9a2622">D体</text>
+          <text x="90" y="90" font-size="18" text-anchor="middle" fill="#556476">鏡像の相手</text>
+          <path d="M48 28 L130 112" stroke="#cf4740" stroke-width="10" stroke-linecap="round"/>
+        </g>
+        <path d="M350 160 L550 160" stroke="#95a5bb" stroke-width="6" marker-end="url(#ar2)"/>
+        <text x="450" y="143" font-size="20" text-anchor="middle" fill="#556476">鏡像だが重ならない</text>
+        <rect x="174" y="247" width="552" height="45" rx="14" fill="#f8fbff" stroke="#d6deea"/>
+        <text x="450" y="275" font-size="20" text-anchor="middle" fill="#314254">アミノ酸はほぼL体、糖は主にD体 → これをホモキラリティという</text>
+        <defs>
+          <marker id="ar2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#95a5bb"/>
+          </marker>
+        </defs>
+      </svg>
+      <figcaption>図4　L体とD体は鏡像異性体である。生命はアミノ酸をほぼL体でそろえ、糖を主としてD体でそろえている。</figcaption>
+    </figure>
+
+    <div class="note">
+      <strong>補足（より正確に）：</strong><br>
+      タンパク質を構成する標準アミノ酸はL体ですが、例外も存在します。<br>
+      ・グリシンはキラルではない<br>
+      ・一部の細菌ではDアミノ酸も利用される<br>
+      したがって「ほぼL体」と表現するのが最も正確です。
+    </div>
+
+    <p>では、なぜ生命は「両方を自由に使う世界」を選ばなかったのでしょうか。ここで鍵になるのは<strong>秩序</strong>です。タンパク質は、アミノ酸が長くつながり、さらに折りたたまれて特定の立体構造を取ることで働きます。もしL体とD体がばらばらに混ざると、その折りたたみは不安定になります。αヘリックスやβシートのようなきれいな構造が作りにくくなり、酵素の精密な働きも崩れます。</p>
+    <p>この意味で、生命は「使えるものを全部使う」方向には進まなかったと言えます。むしろ逆で、<strong>片側だけを使うという強い制限</strong>を導入することで、初めて高度な秩序と高精度の分子認識を手に入れたのです。自由度が高いことは一見よいことに見えますが、自由すぎると構造は乱れます。生命は、自由を減らすことで秩序を得た存在だと見ることもできます。</p>
+
+    <div class="grid2">
+      <div class="note good">
+        <strong>Lだけでそろえる利点</strong><br>
+        折りたたみやすい、酵素が高精度に働く、情報伝達の規格がそろう、複雑な構造を作りやすい。
+      </div>
+      <div class="note warn">
+        <strong>DL混合世界の問題</strong><br>
+        立体構造が乱れやすい、分子認識がぶれやすい、自己複製の誤差が増え、安定な生命へ進みにくい。
+      </div>
+    </div>
+
+    <p>高校生にとってここは非常に重要な視点です。生命は「便利だからL体を選んだ」のではなく、「L体だけを使わないと高い秩序が保てなかった」のかもしれません。つまり、ホモキラリティは生命の飾りではなく、生命成立の条件そのものだった可能性が高いのです。</p>
+    <p>言い換えれば、生命は「何でも使える世界」よりも、「片側だけにそろえる世界」を選んだのです。自由度は減りますが、そのかわり、折りたたみ、認識、自己複製の精度は飛躍的に上がります。ここに、生命が秩序を生み出すためには、むしろ制約が必要だったという逆説があります。</p>
+  </section>
+
+  <section id="sec3">
+    <h2>３。Ｌ体からなる生命体（サリドマイド禍の教訓）</h2>
+    <p>分子の右と左が本当に重要なのか。教科書だけ読んでいると、少し大げさに感じるかもしれません。しかし医薬品の歴史を見ると、それが命に直結する問題だとわかります。その代表例がサリドマイド事件です。</p>
+    <p>サリドマイドは、かつて睡眠薬やつわり止めとして使われましたが、多くの胎児に深刻な障害をもたらしました。この事件は、分子の立体化学が医薬品の安全性と深く結びついていることを、社会全体に突きつけました。</p>
+    <p>サリドマイド問題は単純に「片方が良く、片方が悪い」というだけではありません。重要なのは、<strong>体内で鏡像異性体が相互変換（ラセミ化）する</strong>点です。つまり、片方だけを投与しても体内で混ざってしまう可能性があります。それでもこの事件が示した核心は明快です。<strong>生体は分子の向きまで厳密に区別する</strong>ということです。</p>
+
+    <figure>
+      <svg viewBox="0 0 900 340" role="img" aria-label="薬で鏡像異性体が異なる結果をもたらすことを示す図">
+        <rect width="900" height="340" fill="#fff"/>
+        <text x="450" y="42" font-size="30" text-anchor="middle" fill="#23364f">薬では「同じ式」でも結果が同じとは限らない</text>
+        <rect x="68" y="90" width="324" height="186" rx="18" fill="#f2fbf6" stroke="#b9e1c7"/>
+        <rect x="508" y="90" width="324" height="186" rx="18" fill="#fff4f1" stroke="#efc3bc"/>
+        <text x="230" y="130" font-size="27" text-anchor="middle" fill="#137a4e">望ましい向き</text>
+        <text x="230" y="176" font-size="21" text-anchor="middle" fill="#324253">受容体に合う</text>
+        <text x="230" y="214" font-size="21" text-anchor="middle" fill="#324253">薬効を示す</text>
+        <circle cx="230" cy="242" r="18" fill="#0f9d58"/>
+        <text x="670" y="130" font-size="27" text-anchor="middle" fill="#b03429">別の向き</text>
+        <text x="670" y="176" font-size="21" text-anchor="middle" fill="#324253">合い方が違う</text>
+        <text x="670" y="214" font-size="21" text-anchor="middle" fill="#324253">無効・副作用の可能性</text>
+        <circle cx="670" cy="242" r="18" fill="#d74641"/>
+        <path d="M405 183 L495 183" stroke="#8fa0b5" stroke-width="6" marker-end="url(#ar3)"/>
+        <text x="450" y="166" font-size="18" text-anchor="middle" fill="#556476">鏡像異性体</text>
+        <defs>
+          <marker id="ar3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#8fa0b5"/>
+          </marker>
+        </defs>
+      </svg>
+      <figcaption>図5　鏡像異性体は、原子の並びが似ていても、生体内では受容体や酵素とのかみ合わせが異なり、効果と副作用が分かれることがある。</figcaption>
+    </figure>
+
+    <p>サリドマイドに限らず、薬の世界ではこの種の問題がいくらでもあります。パーキンソン病治療に使われるレボドパも、立体化学が本質です。痛み止めや抗炎症薬、香料や農薬の分野でも、片方だけが望ましい効果を示すことが珍しくありません。つまり不斉合成は、研究者の趣味ではなく、社会的に不可欠な技術なのです。</p>
+    <p>ここから逆に見えてくることもあります。生命はなぜL体だけを使うのか、という問いは、「生命は分子の形をどれだけ厳しく読んでいるか」という問いでもあります。薬が効くかどうかは、分子の形が生体の装置に合うかどうかで決まる。その装置自体が、L体中心の世界の中で進化してきたわけです。だから生命に向けて薬を作る人間も、その世界のルールに従わなければなりません。</p>
+
+    <div class="note warn">
+      <strong>サリドマイド禍の教訓：</strong> 分子式が同じでも、立体が違えば生体内での意味は変わる。薬は「物質」ではあるが、同時に「形の情報」でもある。
+    </div>
+  </section>
+
+  <section id="sec4">
+    <h2>４。ソアイ反応、円偏光、約４５億年の地球史</h2>
+    <p>では、生命の片側性はどこで始まったのでしょうか。ここから話は、薬学や有機合成から一気に生命の起源と地球史へ飛びます。この問題に対して、現在もっとも自然な考え方は、「最初から100対0だったのではなく、ごく小さな偏りが生まれ、それが時間と反応で増幅された」というものです。</p>
+    <div class="note warn"><strong>大事な科学的注意：</strong> 最初に<strong>なぜL体側が選ばれたのか</strong>は、現在も完全にはわかっていません。ここで語るのは有力な仮説の流れであり、「最初の微小な偏りがどう生まれ、どう固定されたか」を考えるのが現代科学の最前線です。</div>
+
+    <div class="note warn">
+      <strong>科学的注意：</strong><br>
+      円偏光によって「L体が選ばれる」と確定しているわけではありません。<br>
+      現在わかっているのは、<strong>一方の鏡像体にわずかな偏りを生む可能性がある</strong>という点です。<br>
+      どちらが選ばれるかは環境条件に依存し、未解明の部分も多いのが現状です。
+    </div>
+
+    <h3>宇宙からの円偏光</h3>
+    <p>星が生まれる領域には、右回りや左回りの円偏光が存在することがあります。円偏光は、普通の光と違って、電場が回転しながら進む光です。これが有機分子に当たると、一方の鏡像体のほうが壊れやすかったり、残りやすかったりする可能性があります。差はごくわずかでも、最初の「きっかけ」にはなりえます。</p>
+
+    <h3>鉱物表面による選別</h3>
+    <p>次に、地球上の鉱物や結晶表面です。結晶面もまた、立体的な模様をもっています。分子は単なる点ではなく立体物ですから、ある面にはL体のほうが吸着しやすく、別の面にはD体のほうが付きやすいことがありえます。つまり地球は、単に生命を乗せる舞台ではなく、分子を選別する装置そのものでもあったかもしれないのです。</p>
+
+    <h3>ソアイ反応―微小な差を巨大化する</h3>
+    <p>そして最も刺激的なのが、ソアイ反応＊です。ソアイ反応では、生成物そのものが次の反応を触媒し、自分と同じ向きをさらに増やしていきます。これを不斉自己触媒といいます。出発点ではほとんどゼロに見えるほど小さな偏りでも、反応が進むにつれてその差が大きくなり、最終的にはほぼ一方だけになることがあります。ここで起きていることを一言で言えば、<strong>「ほぼゼロの差が、反応だけで100に近づいていく」</strong>ということです。これは化学にとって衝撃的でした。なぜなら、左右差は最初から大きくなくてもよい、むしろごくわずかな偏りでも、反応そのものが歴史を持ち、片側だけの世界を作りうることを示したからです。ソアイ反応は、「生命のホモキラリティが化学的に説明可能かもしれない」という大きな希望を与えました。</p>
+<p>（＊注：1995年に硤合彰三（そあい しょうぞう）教授らが発見したソアイ反応の特異性は、「外部からキラルな情報を与えなくても、極めて微小な偏り（場合によっては測定限界に近い差）から一方向のキラリティが自己増幅される点」にあります。これは、従来の不斉合成が外部のキラル源に依存していたのに対し、系そのものが非対称性を生み出しうることを示したものであり、生命誕生以前の化学進化においてホモキラリティが自然発生しうる可能性を示唆する重要な実験例とされています。）</p>
+    <figure>
+      <svg viewBox="0 0 900 340" role="img" aria-label="微小な不斉が増幅されるソアイ反応の概念図">
+        <rect width="900" height="340" fill="#fff"/>
+        <text x="450" y="42" font-size="30" text-anchor="middle" fill="#23364f">ごく小さな偏りが、反応で大きな偏りになる</text>
+        <rect x="58" y="108" width="190" height="122" rx="18" fill="#f4f8ff" stroke="#c9d8ff"/>
+        <rect x="354" y="108" width="192" height="122" rx="18" fill="#fff9ef" stroke="#f0daa4"/>
+        <rect x="650" y="108" width="192" height="122" rx="18" fill="#f2fbf6" stroke="#bbe0c8"/>
+        <text x="153" y="151" font-size="24" text-anchor="middle" fill="#324253">出発点</text>
+        <text x="153" y="186" font-size="20" text-anchor="middle" fill="#324253">L 50.1：D 49.9</text>
+        <text x="450" y="151" font-size="24" text-anchor="middle" fill="#324253">自己触媒</text>
+        <text x="450" y="186" font-size="20" text-anchor="middle" fill="#324253">差を自分で広げる</text>
+        <text x="746" y="151" font-size="24" text-anchor="middle" fill="#0f7b43">増幅後</text>
+        <text x="746" y="186" font-size="20" text-anchor="middle" fill="#324253">L 99.5：D 0.5</text>
+        <path d="M250 170 L344 170" stroke="#c7961d" stroke-width="8" marker-end="url(#ar4)"/>
+        <path d="M548 170 L640 170" stroke="#c7961d" stroke-width="8" marker-end="url(#ar4)"/>
+        <defs>
+          <marker id="ar4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#c7961d"/>
+          </marker>
+        </defs>
+      </svg>
+      <figcaption>図6　ソアイ反応が示した「微小な不斉の偏りの増幅」という考え方。最初はほとんど差がなくても、自己触媒によって一方が圧倒的に優勢になりうる。</figcaption>
+    </figure>
+
+<figure>
+  <img src="soai.jpg" alt="硤合彰三（Kenso Soai）教授">
+  <figcaption>
+    硤合彰三（Kenso Soai）教授
+    「ソアイ反応」を発見。この反応は、生命の「右・左（キラリティ）」の起源に関わる重要なヒントを与えた。
+  </figcaption>
+</figure>
+    <div class="note good"><strong>ソアイ反応の衝撃：</strong> 左右差は最初から大きくある必要はない。ごく小さな差でも、自己触媒が働けば、化学はその差を拡声器のように増幅し、片側優勢の世界を生み出しうる。</div>
+
+    <div class="note">
+      <strong>重要な補足：</strong><br>
+      ソアイ反応のような自己増幅は、すべての化学反応で起こるわけではありません。<br>
+      特定の条件を満たす<strong>非常に特殊な反応系</strong>で確認されている現象です。
+    </div>
+
+    <h3>約45億年の地球史の中で考える</h3>
+    <p>地球は約45億年前に誕生しました。初期地球は高温で、火山活動が激しく、巨大隕石の衝突も多かったと考えられています。その環境で、宇宙由来の有機物、地球上で生じた有機物、鉱物表面、海洋、熱水、光などが複雑に関わりながら化学進化が進みました。最初の有機物がDL混合に近かったとしても不思議ではありません。しかし、円偏光や鉱物表面などがごくわずかな偏りを生み、さらに反応増幅が起これば、その差は決定的なものになりえます。</p>
+    <p>一度どちらか一方に偏った自己複製系が安定すると、その後は「同じ手だけを使う系」が自分を強化していくでしょう。酵素も、膜も、核酸も、そのルールで組み上がるからです。すると別の向きの分子は、役に立たないどころか、しばしば邪魔になります。こうして、ホモキラリティは単なる結果ではなく、生命系を守る規格として固定された可能性があります。</p>
+
+    <table>
+      <thead>
+        <tr><th>段階</th><th>起きたかもしれないこと</th><th>意味</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>初期地球</td><td>有機物はDL混合に近い状態で存在</td><td>出発点はほぼ対称でもよい</td></tr>
+        <tr><td>宇宙・鉱物の作用</td><td>円偏光や結晶面が微小な偏りを生む</td><td>最初の左右差が入る</td></tr>
+        <tr><td>化学的増幅</td><td>自己触媒や選択的反応で差が拡大</td><td>片側優勢が目立つ大きさになる</td></tr>
+        <tr><td>生命の成立</td><td>片側でそろった系が安定な機能を持つ</td><td>ホモキラリティが固定される</td></tr>
+      </tbody>
+    </table>
+
+    <p>ここで重要なのは、「L体が特別に神秘的だから選ばれた」と考える必要はないことです。最初は偶然に近い微差だったかもしれません。けれども、その後の増幅と固定の過程が一方向に進めば、結果として生命全体が片側で統一されます。つまり生命は、偶然の小さな差を、進化の長い時間の中で規格へ変えた存在だと言えるのです。</p>
+
+    <div class="note good">
+      <strong>一番大事な見方：</strong> 「片側だけが突然現れた」のではなく、「ごく小さな左右差が、増幅され、固定された」と考えると、宇宙・地球・化学・生命が一つの流れでつながる。
+    </div>
+
+    <div class="note good">
+      <strong>最も深い見方：</strong><br>
+      生命は「L体を選んだ」のではなく、<br>
+      <ul>
+        <li>偶然の微小な偏り</li>
+        <li>化学反応による増幅</li>
+        <li>自己複製系による固定（ロックイン）</li>
+      </ul>
+      という三段階によって、結果的に片側へ固定されたと考えるのが最も自然です。<br>
+      つまり生命とは、<strong>偶然を秩序へ変換したシステム</strong>です。
+    </div>
+  </section>
+
+  <section id="sec5">
+    <h2>５。野依良治博士の業績（BINAPの立体構造）</h2>
+<figure>
+  <img src="noyori.jpg" alt="野依良治博士">
+  <figcaption>
+    野依良治博士（2001年ノーベル化学賞）
+    不斉合成を「理論」から「社会で使える技術」へ発展させた科学者。
+  </figcaption>
+</figure>
+    <p>ここで話は、自然が行ってきた「左右の選び分け」を、人間がどう再現したかへ移ります。その中心にいるのが野依良治博士です。博士の最大の功績は、BINAPというキラルな配位子を開発し、それを用いた不斉水素化反応を、実験室の面白い現象ではなく、実用的で高効率な技術に育てたことでした。</p>
+    <p>BINAPの面白さは、中心に不斉炭素があるのではなく、二つの芳香環がねじれていることでキラリティを持つ点です。これを<strong>軸不斉</strong>と呼びます。イメージとしては、<strong>ねじれたプロペラ</strong>のような構造です。分子がねじれたまま固定されることで、右巻き・左巻きのような二種類の立体が生まれます。このねじれが、金属触媒の周囲に片側だけが通りやすい立体空間を作るのです。</p>
+
+    <figure>
+      <svg viewBox="0 0 900 390" role="img" aria-label="BINAPの軸不斉と触媒作用の模式図">
+        <rect width="900" height="390" fill="#fff"/>
+        <text x="450" y="42" font-size="30" text-anchor="middle" fill="#23364f">BINAPは「ねじれ」を使って左右を選ぶ</text>
+        <g transform="translate(108,102)">
+          <circle cx="110" cy="90" r="73" fill="#eef4ff" stroke="#cad9ff" stroke-width="3"/>
+          <circle cx="212" cy="90" r="73" fill="#eef4ff" stroke="#cad9ff" stroke-width="3"/>
+          <line x1="110" y1="90" x2="212" y2="90" stroke="#1f2d43" stroke-width="8"/>
+          <line x1="78" y1="42" x2="142" y2="138" stroke="#2458d3" stroke-width="10" stroke-linecap="round"/>
+          <line x1="182" y1="42" x2="246" y2="138" stroke="#2458d3" stroke-width="10" stroke-linecap="round"/>
+          <text x="161" y="216" font-size="24" text-anchor="middle" fill="#324253">二つの環がねじれて固定</text>
+          <text x="161" y="248" font-size="21" text-anchor="middle" fill="#324253">→ 軸不斉</text>
+        </g>
+        <g transform="translate(510,88)">
+          <rect x="0" y="18" width="278" height="180" rx="18" fill="#f4fcf7" stroke="#c7e7d4"/>
+          <circle cx="139" cy="108" r="34" fill="#ffd66d" stroke="#c7961d" stroke-width="3"/>
+          <text x="139" y="116" font-size="24" text-anchor="middle" fill="#6d5200">Ru</text>
+          <text x="139" y="58" font-size="23" text-anchor="middle" fill="#324253">金属と結合すると</text>
+          <text x="139" y="161" font-size="23" text-anchor="middle" fill="#324253">キラルな反応空間ができる</text>
+          <text x="139" y="238" font-size="23" text-anchor="middle" fill="#324253">→ 欲しい向きだけ通りやすい</text>
+        </g>
+      </svg>
+      <figcaption>図7　BINAPは軸不斉をもつキラル配位子である。金属と組み合わさると、反応の場が不斉になり、生成物の左右を選び分けられる。</figcaption>
+    </figure>
+
+    <p>水素化反応自体は、有機化学では基本的な反応です。二重結合やカルボニル基に水素を付ける、という教科書的な変換です。しかし、そのときに「どちら側から水素を入れるか」を立体的に制御するのは簡単ではありません。野依博士はBINAPを使うことで、この問題を非常に高い精度で解決しました。しかも、それは単に選択性が高いだけでなく、触媒として何度も働き、工業的にも使える効率を示しました。</p>
+    <p>その象徴的な成功例の一つがL-メントールの合成です。メントールはハッカの香り成分として有名ですが、天然抽出に頼らず、必要な立体のものだけを大量につくることができれば、産業的に大きな価値があります。野依博士の研究は、大学の基礎科学がそのまま工業技術へ結びつくことを世界に示しました。</p>
+    <p>2001年、野依博士は不斉触媒反応の研究でノーベル化学賞を受賞しました。けれども、その受賞理由を「便利な反応を作ったから」とだけ理解するのは浅すぎます。本当の意味は、自然が生命の中で当たり前にしている「片側だけを選ぶ」という働きを、人間が意識的に再現し、しかも社会で使える技術にまで高めたことにあります。</p>
+
+    <div class="note">
+      <strong>野依博士の研究の意味：</strong> 不斉合成を「きれいな学問」から「産業と医療を支える基盤技術」へ変えたこと。さらに言えば、自然の立体選択を人間が模倣できることを証明したこと。
+    </div>
+  </section>
+
+  <section id="sec6">
+    <h2>６。博士は何を思っていたか？</h2>
+    <p>科学者の研究には、実用的な目的だけでなく、もっと深い違和感や問いがあります。野依博士の仕事もそうです。博士の出発点には、「自然は片側だけを選んでいるのに、なぜ人間の化学は左右を選べないのか」という強い疑問がありました。言い換えれば、<strong>「自然ができて、人間ができないことを、どうしても理解したい」</strong>という思いです。</p>
+    <p>生命の世界では、アミノ酸はほとんどL体でそろっています。糖はD体でそろっています。つまり自然は、左右のうち片方をきっぱりと選んでいるわけです。ところが人間が普通にフラスコで反応させると、左右はたいてい50:50でできてしまう。この落差は、単に「技術が未熟だから」という話ではありません。自然は何をしているのか。対称な世界から、どうやって非対称が立ち上がるのか。博士の問いは、ここに向かっていました。</p>
+
+    <figure>
+      <svg viewBox="0 0 900 300" role="img" aria-label="自然と従来の化学の差を問う図">
+        <rect width="900" height="300" fill="#fff"/>
+        <rect x="54" y="72" width="324" height="160" rx="18" fill="#f4fcf7" stroke="#c8e8d5"/>
+        <rect x="522" y="72" width="324" height="160" rx="18" fill="#f4f8ff" stroke="#c8d9ff"/>
+        <text x="216" y="115" font-size="28" text-anchor="middle" fill="#137b4f">自然</text>
+        <text x="216" y="155" font-size="22" text-anchor="middle" fill="#324253">生命は片側だけを使う</text>
+        <text x="216" y="190" font-size="22" text-anchor="middle" fill="#324253">L体 / D体の偏りがある</text>
+        <text x="684" y="115" font-size="28" text-anchor="middle" fill="#2458d3">従来の化学</text>
+        <text x="684" y="155" font-size="22" text-anchor="middle" fill="#324253">普通は50：50になる</text>
+        <text x="684" y="190" font-size="22" text-anchor="middle" fill="#324253">左右を選べない</text>
+        <path d="M388 152 L510 152" stroke="#c7961d" stroke-width="8" marker-end="url(#ar6)"/>
+        <text x="450" y="132" font-size="20" text-anchor="middle" fill="#6f5a17">なぜこの差があるのか？</text>
+        <defs>
+          <marker id="ar6" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+            <polygon points="0 0, 10 3, 0 6" fill="#c7961d"/>
+          </marker>
+        </defs>
+      </svg>
+      <figcaption>図8　野依博士の研究を駆動した本質的な問い。自然は片側を選ぶのに、従来の化学はなぜ左右を選べないのか。</figcaption>
+    </figure>
+
+    <p>もちろん博士には、実用的な問題意識もありました。薬では、片方が効いてもう片方が効かない、あるいは副作用を示すことがある。もし必要な向きだけを作れれば、薬はより安全で効率的になります。香料や材料でも同じです。したがってこの研究は、哲学的であると同時に社会的でした。自然の秩序を理解することが、そのまま人を助ける技術になるのです。</p>
+    <p>ここに、野依博士の研究の美しさがあります。自然の片側性に対する驚きがあり、そこから「なぜ」を問う知的誠実さがあり、さらにその問いを、役に立つ技術として具体化する力があった。これは科学の理想的な姿の一つです。博士の研究は、単なる反応開発ではなく、<strong>自然の非対称性を人間の手で再現できるのか</strong>という思想的な挑戦でもありました。高校生がここから学ぶべきなのは、科学は知識を覚えることではなく、世界に対する違和感を深く掘る営みだということです。</p>
+  </section>
+
+  <section id="sec7">
+    <h2>７。その後の展開</h2>
+    <p>野依博士の時代以後、不斉合成はさらに大きく広がりました。金属触媒による不斉反応だけでなく、有機触媒、酵素触媒、光を使う不斉反応、電気化学的な手法など、多くの道具が登場しています。もはや不斉合成は特殊な技術ではなく、現代の創薬・材料科学・香料化学の基盤です。</p>
+    <p>ここで重要なのは、不斉合成が「正しい向きの分子を作る」だけでなく、「無駄を減らす」技術でもあることです。最初から欲しい鏡像体だけを作れれば、いらない相手を分離して捨てる必要が減ります。これは資源の節約になり、廃棄物も減り、反応工程も短くできます。つまり不斉合成は、グリーンケミストリー、すなわち環境調和型化学にもつながるのです。</p>
+    <p>さらに近年では、AIとの相性のよさが注目されています。不斉触媒設計は、分子が空間の中でどう向き合い、どの遷移状態が安定になるかという問題です。これは大量の候補を比較し、立体とエネルギーを読む能力が必要なため、計算化学や機械学習との結びつきが強い分野です。特にAIが強いのは、<strong>「立体の組み合わせ × エネルギーの組み合わせ」という膨大な探索空間を、人間よりはるかに多く試せる</strong>点にあります。人間の直感に加えて、AIが反応経路や触媒候補を提案する時代に入りつつあります。</p>
+
+    <table>
+      <thead>
+        <tr><th>時代</th><th>中心的な進歩</th><th>意味</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>野依以前</td><td>左右を選び分けるのは難しい</td><td>研究室レベルで限定的</td></tr>
+        <tr><td>野依の時代</td><td>BINAP・不斉水素化の実用化</td><td>工業レベルへ到達</td></tr>
+        <tr><td>現在</td><td>有機触媒、酵素、光反応、AI設計</td><td>創薬・材料・環境技術へ拡大</td></tr>
+      </tbody>
+    </table>
+
+    <p>この流れを見ると、不斉合成は「左右の選び分け」という小さな技術ではありません。生命が片側だけを使うという事実を、人間が深く理解し、工学として使えるようになっていく長い流れです。そしてその先には、人工生命設計や地球外生命の想像まで広がる可能性があります。もし宇宙のどこかに生命がいるなら、その生命も片側性を持つのか。D体中心の生命はありうるのか。DLを混ぜて使う別種の生命は理論上可能なのか。右と左の問題は、生命全体の設計原理へつながっています。</p>
+  </section>
+
+  <section id="summary">
+    <h2>まとめ―高校生はどう受け止めるべきか</h2>
+    <p>最後に、このブログのポイントを整理します。</p>
+    <ul>
+      <li>分子には右と左があり、鏡像だが重ならない。この性質をキラリティという。</li>
+      <li>生命はアミノ酸をほぼL体でそろえ、糖を主にD体でそろえている。これがホモキラリティである。</li>
+      <li>片側だけを使うのは、秩序ある立体構造と高精度な分子認識を成立させるために重要だった可能性が高い。</li>
+      <li>宇宙の円偏光や地球の鉱物表面がごく小さな偏りを生み、ソアイ反応のような増幅機構がそれを決定的な差へ広げたと考えられる。</li>
+      <li>野依良治博士は、自然が行っている「左右の選択」を人工の触媒で再現し、不斉合成を医薬品や産業で使える技術に高めた。</li>
+      <li>不斉合成は現在も発展中で、創薬、材料科学、グリーンケミストリー、AI分子設計へと広がっている。</li>
+    </ul>
+    <p>では高校生は、この話をどう受け止めればよいのでしょうか。私は、ここに科学の面白さが凝縮されていると思います。なぜなら一つの問いが、化学の立体構造から生命の起源へ、薬の安全性へ、産業技術へ、そして人間の知のあり方へつながっているからです。学校の教科はしばしば化学、生物、地学、物理に分かれていますが、本当の問いは境界を越えてきます。「なぜ命は右と左を選んだのか」という問いは、その典型です。</p>
+    <p>もう一つ大切なのは、科学は「答えを暗記すること」ではなく、「世界の不思議に対して、どこが本質かを見抜くこと」だという点です。野依博士の研究は、自然と人間の化学の間にある小さな違和感から始まりました。なぜ自然は片方だけを選ぶのに、人間の化学はそれができないのか。その違和感を真面目に追い続けた結果、ノーベル賞級の仕事が生まれたのです。</p>
+    <p>だからこのテーマを学ぶとき、高校生に必要なのは「難しい」と引くことではありません。むしろ、「生命が片側だけを使うという事実は、何を意味しているのか」と自分で考えてみることです。そこから、生命は偶然の寄せ集めではなく、強い制約の上に成立した秩序だ、という見方が見えてきます。そして人間の化学は、その秩序を少しずつ理解し、模倣し、利用し始めている。ここに現代科学のダイナミズムがあります。</p>
+    <div class="note"><strong>最後に一文で言えば：</strong> 生命とは、<strong>左右の自由を捨てることで秩序を手に入れた存在</strong>であり、不斉合成とは、その自然の深い原理を人間が理解し、再現しようとする試みなのです。<br><span class="small">※ここでの表現は比喩であり、実際には微小な左右差の増幅と進化的固定として理解するのが科学的により正確です。</span></div>
+    <div class="note good">
+      <strong>メッセージ：</strong> このテーマは「不斉合成」という専門用語を覚えるためのものではありません。生命とは何か、秩序とは何か、自然を人間はどこまで理解し再現できるのかを考えるための入口です。
+    </div>
+    <p class="small"></p>
+  </section>
+<div style="margin-top:2rem; padding:1.5rem; background:#eef4ff; border-radius:16px; text-align:center;">
+  <p style="font-size:1.1rem; margin-bottom:0.8rem;">
+    🔰 もっとやさしく理解したい人へ
+  </p>
+  <a href="book98junior.html" style="
+    display:inline-block;
+    padding:0.6rem 1.2rem;
+    background:#2458d3;
+    color:#fff;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:bold;
+  ">
+    👉 中学生向け解説はこちら
+  </a>
+</div>
+
+  <footer class="wrap">
+    読み物型HTML）
+  </footer>
+
+</div>
+</main>
+</body>
+</html>

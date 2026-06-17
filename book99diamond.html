@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ダイヤモンド半導体でCPUを作るとどうなるのか？</title>
+<style>
+:root{
+  --bg:#f4f8fc;--paper:#fff;--ink:#1f2d3d;--muted:#5f7387;--line:#d9e5f0;
+  --blue:#2b6eb3;--navy:#103a5c;--gold:#c98a14;--mint:#1f8f6d;--rose:#c45a7a;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Hiragino Sans','Yu Gothic','Meiryo','Noto Sans JP',sans-serif;line-height:1.9}
+a{color:#1f5d9b;text-decoration:none} a:hover{text-decoration:underline}
+.wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+header.hero{background:linear-gradient(135deg,#0d2842,#1f5f92);color:#fff;padding:56px 20px 44px}
+.hero h1{margin:0 0 12px;font-size:2.25rem;line-height:1.28}.hero p{margin:.3rem 0 0;max-width:920px;opacity:.96}
+.hero .meta{margin-top:12px;font-size:.92rem;opacity:.88}
+.notice,.toc,.card,.chapter,.compare,.factbox,.warn,.imagine,.summary,.tablewrap{background:var(--paper);border:1px solid var(--line);border-radius:28px;padding:22px;margin:22px 0;box-shadow:0 5px 16px rgba(18,42,68,.045)}
+.chapter-head{color:#fff;padding:2rem;border-radius:36px 36px 36px 22px;margin-bottom:18px}
+.theme1 .chapter-head{background:linear-gradient(120deg,#163552,#2b6eb3)}
+.theme2 .chapter-head{background:linear-gradient(120deg,#12463a,#2b8a6e)}
+.theme3 .chapter-head{background:linear-gradient(120deg,#58411a,#c98a14)}
+.theme4 .chapter-head{background:linear-gradient(120deg,#4f2337,#b65376)}
+.theme5 .chapter-head{background:linear-gradient(120deg,#24364c,#57779a)}
+.chapter-head h2{margin:0 0 .5rem;font-size:1.9rem;color:#fff;border:none;padding:0}.chapter-head p{margin:0;opacity:.95}
+h2{font-size:1.6rem;line-height:1.45;margin:0 0 1rem;color:#123d60;border-left:6px solid var(--blue);padding-left:.9rem}
+h3{font-size:1.22rem;line-height:1.5;margin:1.2rem 0 .6rem;color:#1f6b98}
+p{margin:.72rem 0} ul,ol{margin:.8rem 0 .8rem 1.35rem;padding:0} li{margin:.35rem 0}
+.badge{display:inline-block;border-radius:999px;padding:.24rem .8rem;font-size:.78rem;font-weight:700;margin:0 .45rem .5rem 0}
+.fact{background:#e8f2ff;color:#184f8b}.hypo{background:#fff4dd;color:#895b00}.risk{background:#fdecef;color:#9b3857}.key{background:#e7fbf3;color:#106e52}
+.factbox{background:#eef6ff;border-left:5px solid var(--blue)} .warn{background:#fff5f7;border-left:5px solid var(--rose)} .imagine{background:#fff8e8;border-left:5px solid var(--gold)} .summary{background:#e8f4fb}
+.grid2,.grid3,.steps{display:flex;flex-wrap:wrap;gap:1rem;margin:1.1rem 0}.box,.step{flex:1;min-width:230px;background:#fafcff;border:1px solid #dce6f1;border-radius:20px;padding:1rem}
+.step .n{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;margin-bottom:.5rem}
+.compare table,.tablewrap table{width:100%;border-collapse:collapse;font-size:.97rem}.compare th,.compare td,.tablewrap th,.tablewrap td{border-bottom:1px solid #dce6f1;padding:.8rem;vertical-align:top;text-align:left}.compare th,.tablewrap th{background:#f7fbff;color:#11385a}
+svg{max-width:100%;height:auto}.diagram{background:#fbfdff;border:1px solid #dbe7f2;border-radius:24px;padding:1rem;text-align:center;margin:1.25rem 0}.caption{font-size:.84rem;color:var(--muted);margin-top:.4rem}
+footer{color:#6c86a3;text-align:center;border-top:1px solid var(--line);padding:28px 0 48px;margin-top:34px;font-size:.9rem}
+@media (max-width:760px){.hero h1{font-size:1.75rem}.chapter-head h2{font-size:1.55rem}h2{font-size:1.35rem}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <h1>ダイヤモンド半導体でCPUを作るとどうなる？<br>— シリコンCPUとの対比 —</h1>
+    <p>このブログは、シリコン半導体によるCPUの作り方を土台にしながら、もし材料を「ダイヤモンド半導体」に変えたら何が同じで、何が根本的に変わるのかを対比で説明するものです。現時点で確立している事実と、そこから先の合理的な想像を分けて書きます。</p>
+<div style="background:#ffffff;border:1px solid #dce5f0;border-radius:24px;padding:1.5rem;margin:1.5rem 0;">
+  <h3 style="margin-bottom:1rem;color:#1f6392;">🔗 関連リンク</h3>
+  <ul style="line-height:2;">
+    <li>👉 <a href="book99.html">本文はこちら</a></li>
+    <li>👉 <a href="book99silicon.html">シリコン半導体によるCPUの作成法はこちら</a></li>
+    <li>👉 <a href="cpu_keyboard.html">パソコンでのCPUの仕事の例はこちら</a></li>
+  </ul>
+</div>
+      </div>
+</header>
+
+<main class="wrap">
+  <section class="notice">
+    <span class="badge fact">事実</span>
+    <span class="badge hypo">想像</span>
+    <span class="badge risk">未解決</span>
+    <p><strong>最初に結論</strong></p>
+    <p>ダイヤモンド半導体は、<strong>熱にとても強く、絶縁破壊しにくく、理論上はシリコンより高温・高電圧・高出力に向く</strong>材料です。一方で、<strong>大きくてきれいな基板を作ること、n型を作ること、MOSFETを安定して大量生産すること</strong>が非常に難しく、現時点では「いまのパソコンCPUをそのままダイヤモンド半導体に置き換える」段階にはありません。つまり、<strong>性能の夢は大きいが、製造の壁がさらに大きい</strong>というのが正直な現在地です。</p>
+  </section>
+
+  <section class="toc">
+    <h2>目次</h2>
+    <ul>
+      <li><a href="#c1">第1章　まず、何を比べるのか</a></li>
+      <li><a href="#c2">第2章　シリコンCPUの作り方を一度整理する</a></li>
+      <li><a href="#c3">第3章　ダイヤモンド半導体とは何が違うのか</a></li>
+      <li><a href="#c4">第4章　もしダイヤモンド半導体でCPUを作るなら工程はどう変わるか</a></li>
+      <li><a href="#c5">第5章　シリコンCPUとダイヤモンドCPUの対比</a></li>
+      <li><a href="#c6">第6章　なぜまだ普及していないのか</a></li>
+      <li><a href="#c7">第7章　現実的な未来予想</a></li>
+    </ul>
+  </section>
+
+  <section id="c1" class="chapter theme1">
+    <div class="chapter-head"><h2>第1章　まず、何を比べるのか</h2><p>比較の軸を決めないと、ダイヤモンド半導体のすごさも難しさも見えません。</p></div>
+    <div class="card">
+      <h2>比較の軸は3つ</h2>
+      <div class="grid3">
+        <div class="box"><span class="badge key">軸1</span><h3>材料の性質</h3><p>熱に強いか、電圧に強いか、電子や正孔が動きやすいか。</p></div>
+        <div class="box"><span class="badge key">軸2</span><h3>作りやすさ</h3><p>大きな基板を作れるか、きれいに削れるか、ドーピングできるか。</p></div>
+        <div class="box"><span class="badge key">軸3</span><h3>CPU向きか</h3><p>パワー用デバイスには強くても、論理回路の超大量集積に向くとは限りません。</p></div>
+      </div>
+      <div class="factbox">
+        <p><strong>重要</strong>：ダイヤモンド半導体は、まずは「電力制御」「高温環境」「放射線環境」などで期待されている材料です。<strong>“ノートパソコンのCPUをすぐ全部ダイヤモンド半導体化”という話ではありません。</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="c2" class="chapter theme5">
+    <div class="chapter-head"><h2>第2章　シリコンCPUの作り方を一度整理する</h2><p>ここが対比の基準です。book99-1の内容を、比較用に圧縮して整理します。</p></div>
+    <div class="card">
+      <h2>シリコンCPUの基本工程</h2>
+      <div class="steps">
+        <div class="step"><div class="n">1</div><h3>シリコンを作る</h3><p>砂の主成分シリカから高純度シリコンを作り、単結晶インゴットにし、薄いウエハへ切る。</p></div>
+        <div class="step"><div class="n">2</div><h3>回路を描く</h3><p>レジストを塗り、光でパターンを写し、必要部分だけを守る。</p></div>
+        <div class="step"><div class="n">3</div><h3>削る・積む</h3><p>エッチングや成膜で凹凸や膜を作り、トランジスタの形を整える。</p></div>
+        <div class="step"><div class="n">4</div><h3>ドーピングする</h3><p>リンやホウ素でn型・p型を作り、トランジスタの働きを与える。</p></div>
+        <div class="step"><div class="n">5</div><h3>配線する</h3><p>銅などで何層も配線し、何十億個ものトランジスタをつなぐ。</p></div>
+      </div>
+      <div class="diagram">
+        <svg viewBox="0 0 900 180" xmlns="http://www.w3.org/2000/svg">
+          <rect x="20" y="40" width="130" height="70" rx="14" fill="#dcecff" stroke="#2b6eb3"/>
+          <text x="85" y="82" text-anchor="middle" font-size="20">砂→Si</text>
+          <line x1="150" y1="75" x2="190" y2="75" stroke="#2b6eb3" stroke-width="3"/>
+          <polygon points="190,75 177,67 177,83" fill="#2b6eb3"/>
+          <rect x="190" y="40" width="130" height="70" rx="14" fill="#e8f7ff" stroke="#2b6eb3"/>
+          <text x="255" y="82" text-anchor="middle" font-size="20">露光</text>
+          <line x1="320" y1="75" x2="360" y2="75" stroke="#2b6eb3" stroke-width="3"/>
+          <polygon points="360,75 347,67 347,83" fill="#2b6eb3"/>
+          <rect x="360" y="40" width="130" height="70" rx="14" fill="#edf8ff" stroke="#2b6eb3"/>
+          <text x="425" y="82" text-anchor="middle" font-size="20">削る</text>
+          <line x1="490" y1="75" x2="530" y2="75" stroke="#2b6eb3" stroke-width="3"/>
+          <polygon points="530,75 517,67 517,83" fill="#2b6eb3"/>
+          <rect x="530" y="40" width="130" height="70" rx="14" fill="#eefaff" stroke="#2b6eb3"/>
+          <text x="595" y="82" text-anchor="middle" font-size="20">ドープ</text>
+          <line x1="660" y1="75" x2="700" y2="75" stroke="#2b6eb3" stroke-width="3"/>
+          <polygon points="700,75 687,67 687,83" fill="#2b6eb3"/>
+          <rect x="700" y="40" width="160" height="70" rx="14" fill="#f3fbff" stroke="#2b6eb3"/>
+          <text x="780" y="82" text-anchor="middle" font-size="20">多層配線</text>
+        </svg>
+        <div class="caption">シリコンCPUは「作りやすい材料」に対し、極限まで微細加工を積み上げてきた技術です。</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="c3" class="chapter theme2">
+    <div class="chapter-head"><h2>第3章　ダイヤモンド半導体とは何が違うのか</h2><p>ここが核心です。なぜ「夢の材料」と呼ばれるのか、そしてなぜ難しいのか。</p></div>
+    <div class="compare tablewrap">
+      <h2>シリコンとダイヤモンドの物性の対比</h2>
+      <table>
+        <thead><tr><th>項目</th><th>シリコン</th><th>ダイヤモンド</th><th>意味</th></tr></thead>
+        <tbody>
+          <tr><td>バンドギャップ</td><td>約1.1 eV</td><td>約5.47 eV</td><td>ダイヤモンドは超ワイドバンドギャップ。高温でも漏れにくい。</td></tr>
+          <tr><td>絶縁破壊電界</td><td>約0.3 MV/cm</td><td>約10 MV/cm級</td><td>ダイヤモンドは非常に高い電圧に耐えやすい。</td></tr>
+          <tr><td>熱伝導率</td><td>約150 W/mK前後</td><td>約2000 W/mK級</td><td>熱を逃がしやすく、発熱に強い。</td></tr>
+          <tr><td>高温動作</td><td>苦手</td><td>理論上かなり有利</td><td>高温・高出力用途で期待が大きい。</td></tr>
+          <tr><td>量産性</td><td>非常に高い</td><td>低い</td><td>ここが最大の現実差。</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="factbox">
+      <span class="badge fact">事実</span>
+      <p>ダイヤモンドは、超広いバンドギャップ、高い絶縁破壊電界、非常に高い熱伝導率を持つため、<strong>理論的にはパワーデバイス材料としてきわめて有望</strong>です。2024年にはNIMSが<strong>世界初のnチャネル・ダイヤモンドMOSFET</strong>を発表し、CMOS化への一歩と位置づけました。</p>
+    </div>
+    <div class="warn">
+      <span class="badge risk">未解決</span>
+      <p>ただし、ダイヤモンドは「硬いからすごい」で終わりません。むしろ問題はその先です。<strong>大面積で欠陥の少ない結晶、安定したn型、界面品質の高いMOS構造、細かな加工</strong>が難しいため、論理回路用CPUとしての量産には大きな壁があります。</p>
+    </div>
+  </section>
+
+  <section id="c4" class="chapter theme3">
+    <div class="chapter-head"><h2>第4章　もしダイヤモンド半導体でCPUを作るなら工程はどう変わるか</h2><p>ここからは、事実を土台にした「合理的な想像」を含めて説明します。</p></div>
+    <div class="imagine">
+      <span class="badge hypo">想像を含む</span>
+      <p>以下は、現在の研究成果と物性から考えた「もしダイヤモンド半導体でCPUを作るなら、おそらくこうなる」という設計予想です。<strong>いま量産確立している工程ではありません。</strong></p>
+    </div>
+
+    <div class="card">
+      <h2>工程1　まず土台が変わる</h2>
+      <div class="grid2">
+        <div class="box">
+          <span class="badge fact">シリコンCPU</span>
+          <p>大きな単結晶ウエハを比較的安定して作れる。300mm級の量産基板がある。</p>
+        </div>
+        <div class="box">
+          <span class="badge hypo">ダイヤモンド半導体CPU</span>
+          <p>まず最大の難所は<strong>大きく、平らで、欠陥の少ないダイヤモンド基板</strong>をそろえること。天然ダイヤモンドではなく、主にCVDで成長した人工ダイヤモンドが候補になるはずです。</p>
+        </div>
+      </div>
+      <div class="diagram">
+        <svg viewBox="0 0 860 200" xmlns="http://www.w3.org/2000/svg">
+          <rect x="40" y="40" width="280" height="120" rx="18" fill="#e8f4ff" stroke="#2b6eb3"/>
+          <text x="180" y="78" text-anchor="middle" font-size="26">シリコン</text>
+          <text x="180" y="114" text-anchor="middle" font-size="18">大口径ウエハ量産</text>
+          <text x="180" y="140" text-anchor="middle" font-size="18">製造装置も成熟</text>
+          <rect x="540" y="40" width="280" height="120" rx="18" fill="#fff5e8" stroke="#c98a14"/>
+          <text x="680" y="78" text-anchor="middle" font-size="26">ダイヤモンド</text>
+          <text x="680" y="114" text-anchor="middle" font-size="18">基板そのものが難関</text>
+          <text x="680" y="140" text-anchor="middle" font-size="18">欠陥・サイズ・コスト</text>
+          <line x1="320" y1="100" x2="540" y2="100" stroke="#6b88a6" stroke-width="3" stroke-dasharray="8 6"/>
+          <text x="430" y="85" text-anchor="middle" font-size="18" fill="#425d77">ここで難易度が急上昇</text>
+        </svg>
+        <div class="caption">シリコンは「加工」が主戦場。ダイヤモンドは「基板を作ること」からすでに主戦場です。</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>工程2　レジスト・露光は似ていても、削る相手が違う</h2>
+      <p>パターンを描くという発想自体は変わりません。レジストを塗り、露光し、不要部分を削るという流れは基本的に同じです。ただし、<strong>相手がダイヤモンドになると、加工の難しさが一段上がる</strong>はずです。</p>
+      <div class="grid2">
+        <div class="box"><span class="badge fact">シリコン</span><p>シリコン加工は何十年も積み上がった装置・条件・洗浄技術がある。</p></div>
+        <div class="box"><span class="badge hypo">ダイヤモンド半導体CPU</span><p>ダイヤモンドは非常に硬く、表面制御やエッチング条件の最適化、損傷低減がより重要になる。微細化では界面ダメージが致命傷になりやすい。</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>工程3　ドーピングが「最大の山場」になる</h2>
+      <p>CPUを作るうえで最も厳しい対比がここです。シリコンではn型・p型の制御が成熟しています。しかしダイヤモンドでは、<strong>p型は比較的進んでいても、n型が特に難しい</strong>。ここがCMOS化の大きな壁でした。2024年のnチャネルMOSFET実証は、まさにこの壁に穴を開けた出来事です。</p>
+      <div class="warn">
+        <p><strong>迎合なしで言うと</strong>、ダイヤモンド半導体でCPUを語るなら、最大の敵は「ダイヤモンドが硬いこと」ではありません。<strong>安定したn型を作り、p型と組にして、論理回路を大量に並べること</strong>です。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>工程4　トランジスタ構造そのものも変わる可能性が高い</h2>
+      <p>いまのシリコンCPUはFinFETやGAAのように、きわめて微細な3次元トランジスタへ進化してきました。ダイヤモンド半導体CPUでも最終的には似た方向へ行くかもしれませんが、初期段階では<strong>まず高温・高電圧・高耐久を重視した、もっと単純で大きめの構造</strong>から始まる可能性が高いです。</p>
+      <div class="imagine">
+        <span class="badge hypo">想像</span>
+        <p>もしダイヤモンド半導体CPUが実用化されるなら、最初は「超高クロックのノートPC用CPU」よりも、<strong>宇宙機器、原子炉近傍、航空エンジン近く、超高温センサー制御、軍用・産業用制御装置</strong>のような場所で先に使われるはずです。そのあと、そこから論理回路密度が上がってはじめて“CPUらしいCPU”に近づく、と考える方が自然です。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>工程5　配線はむしろ「熱の考え方」が変わる</h2>
+      <p>ダイヤモンドの大きな魅力は、熱を非常によく逃がせることです。つまり、もしトランジスタ形成がうまくいけば、<strong>配線やパッケージの設計自由度がシリコンより上がる可能性</strong>があります。</p>
+      <div class="grid2">
+        <div class="box"><span class="badge fact">シリコンCPU</span><p>高性能化すると熱がボトルネック。冷却機構が巨大になる。</p></div>
+        <div class="box"><span class="badge hypo">ダイヤモンド半導体CPU</span><p>同じ発熱でも、チップ内部から熱を逃がしやすい。高温環境での動作余裕は大きくなる可能性がある。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="c5" class="chapter theme4">
+    <div class="chapter-head"><h2>第5章　シリコンCPUとダイヤモンド半導体CPUの対比</h2><p>違いを一気に見える形にします。</p></div>
+    <div class="compare tablewrap">
+      <h2>対比表：いまのCPU vs ダイヤモンド半導体CPU（想像含む）</h2>
+      <table>
+        <thead><tr><th>観点</th><th>シリコンCPU</th><th>ダイヤモンド半導体CPU</th></tr></thead>
+        <tbody>
+          <tr><td>基板</td><td>大口径・低欠陥・安価</td><td>高品質大面積が難しい・高価</td></tr>
+          <tr><td>ドーピング</td><td>成熟</td><td>特にn型が難しい</td></tr>
+          <tr><td>微細加工</td><td>成熟した装置群</td><td>工程最適化がまだ重い課題</td></tr>
+          <tr><td>発熱耐性</td><td>熱が強い制約</td><td>非常に有利な可能性</td></tr>
+          <tr><td>高温動作</td><td>制限大</td><td>理論上かなり強い</td></tr>
+          <tr><td>高電圧耐性</td><td>限定的</td><td>大きく有利</td></tr>
+          <tr><td>パワー用途</td><td>得意だが限界あり</td><td>非常に期待大</td></tr>
+          <tr><td>論理CPU用途</td><td>圧倒的に現実的</td><td>まだ研究・将来構想段階</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="summary">
+      <p><strong>要するに：</strong> シリコンは「今すぐ大量にCPUを作れる材料」。ダイヤモンドは「理論上もっともすごいが、CPUとして大量に作るには壁が大きい材料」です。</p>
+    </div>
+  </section>
+
+  <section id="c6" class="chapter theme1">
+    <div class="chapter-head"><h2>第6章　なぜまだ普及していないのか</h2></p></div>
+    <div class="card">
+      <h2>理由1　「性質がよい」だけではCPUにならない</h2>
+      <p>CPUは、ただ強い材料でできていればよいわけではありません。<strong>何十億個ものトランジスタを、同じように、安く、歩留まりよく作れること</strong>が必要です。ここでシリコンは非常に強い。</p>
+    </div>
+    <div class="card">
+      <h2>理由2　CMOSは“両手”が必要</h2>
+      <p>CPUの論理回路では、p型とn型の両方をうまく使うCMOSが中心です。つまり<strong>片方だけできても足りない</strong>。ダイヤモンド半導体では、この両立が長く難しかったのです。 citeturn979628search9turn979628search20</p>
+    </div>
+    <div class="card">
+      <h2>理由3　ライバルも強い</h2>
+      <p>高温・高電圧用途では、ダイヤモンドだけでなくSiCやGaNも強力です。つまり、ダイヤモンドは「シリコンに勝てば終わり」ではなく、<strong>他のワイドバンドギャップ材料とも戦わなければならない</strong>のです。 citeturn97</p>
+    </div>
+  </section>
+
+  <section id="c7" class="chapter theme5">
+    <div class="chapter-head"><h2>第7章　現実的な未来予想</h2><p>夢だけで終わらせず、どこから進むかを考えます。</p></div>
+    <div class="card">
+      <h2>最もありそうな順番</h2>
+      <ol>
+        <li>まずは高温・高出力・特殊環境向けのダイヤモンドデバイスが伸びる</li>
+        <li>次に、ダイヤを「基板」や「放熱材」として使う用途が増える</li>
+        <li>そのあと、限定的な論理回路や制御回路へ進む</li>
+        <li>最後に、もしn型・界面・大面積基板・微細加工が全部そろえば、初めて“ダイヤモンド半導体CPU”が見えてくる</li>
+      </ol>
+      <div class="imagine">
+        <span class="badge hypo">想像</span>
+        <p>本当にダイヤモンド半導体CPUが現れるとしたら、それは「今のノートPCをそのまま置き換えるCPU」より、<strong>普通のシリコンでは生きられない場所で動くCPU</strong>として最初に登場する可能性が高いです。高熱、高放射線、高電圧、長寿命。そこではダイヤモンド半導体の価値が、シリコンよりずっとはっきり見えるからです。</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>最終結論</h2>
+      <div class="summary">
+        <p><strong>シリコンCPU</strong>は、「作りやすさ」と「積み上げられた量産技術」で王者になりました。</p>
+        <p><strong>ダイヤモンド半導体CPU</strong>は、「物理的な潜在能力」では王者候補です。</p>
+        <p>しかし現実には、<strong>CPUとは“材料の強さ”だけでなく、“同じものを何十億個も安く作れるか”で決まる</strong>のです。だから今はシリコンが主役です。けれど、極限環境では将来、ダイヤモンドが別の王者になる可能性があります。</p>
+      </div>
+      <div class="factbox">
+        <p><strong>一言で言うと</strong>：<br><strong>シリコンCPUは「今の文明を支える現実の王」。ダイヤモンド半導体CPUは「まだ現実には遠いが、物理法則の上では非常に魅力的な次の王候補」</strong>です。</p>
+      </div>
+    </div>
+  </section>
+<div style="background:#ffffff;border:1px solid #dce5f0;border-radius:24px;padding:1.5rem;margin:1.5rem 0;">
+  <h3 style="margin-bottom:1rem;color:#1f6392;">🔗 関連リンク</h3>
+  <ul style="line-height:2;">
+    <li>👉 <a href="book99.html">本文はこちら</a></li>
+    <li>👉 <a href="book99silicon.html">シリコン半導体によるCPUの作成法はこちら</a></li>
+    <li>👉 <a href="cpu_keyboard.html">パソコンでのCPUの仕事の例はこちら</a></li>
+  </ul>
+</div>
+
+  <footer>
+    参考にした主な情報：ダイヤモンド半導体レビュー論文・NIMS 2024 nチャネルダイヤMOSFET発表 など。
+      </footer>
+</main>
+</body>
+</html>

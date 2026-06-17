@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>book92child_anime_sequence</title>
+<style>
+  :root{
+    --bg1:#eaf4ff;
+    --bg2:#f9fcff;
+    --paper:#ffffff;
+    --ink:#1d2945;
+    --accent:#2f6fed;
+    --accent2:#18a999;
+    --soft:#eef5ff;
+    --line:#cddcf9;
+    --sun:#ffcb47;
+    --star:#fff3b0;
+    --good:#e9fff3;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+    color:var(--ink);
+    background:linear-gradient(180deg,var(--bg1) 0%,var(--bg2) 100%);
+    line-height:1.8;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:18px 14px 60px}
+  header{
+    background:linear-gradient(135deg,#2f6fed 0%,#79a9ff 100%);
+    color:#fff;border-radius:24px;padding:28px 22px;
+    box-shadow:0 14px 36px rgba(47,111,237,.22);
+  }
+  header h1{margin:0 0 8px;font-size:2rem;line-height:1.35}
+  header p{margin:0;font-size:1rem}
+  .controls,.scene-card,.guide{
+    background:var(--paper);border:1px solid var(--line);border-radius:22px;
+    box-shadow:0 8px 24px rgba(40,80,140,.08);
+  }
+  .controls{margin-top:18px;padding:18px}
+  .controls-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  button{
+    appearance:none;border:none;border-radius:999px;padding:12px 18px;
+    font-size:1rem;font-weight:700;cursor:pointer;
+    background:var(--accent);color:#fff;box-shadow:0 8px 18px rgba(47,111,237,.2)
+  }
+  button.secondary{background:#fff;color:var(--accent);border:1px solid var(--line);box-shadow:none}
+  button:disabled{opacity:.45;cursor:not-allowed}
+  .scene-count{margin-left:auto;font-weight:700;color:#32518d}
+  .progress{
+    margin-top:14px;height:12px;border-radius:999px;background:#edf3ff;overflow:hidden;border:1px solid #d5e3ff;
+  }
+  .bar{height:100%;width:10%;background:linear-gradient(90deg,#2f6fed,#18a999);transition:width .4s ease}
+  .layout{display:grid;grid-template-columns:1.1fr .9fr;gap:18px;margin-top:18px}
+  .scene-card{padding:20px;min-height:600px;position:relative;overflow:hidden}
+  .guide{padding:18px}
+  h2{margin:0 0 10px;font-size:1.55rem;color:#1d3f86}
+  h3{margin:0 0 8px;font-size:1.1rem;color:#2954ab}
+  p{margin:10px 0}
+  .tag{display:inline-block;background:#e9f1ff;border:1px solid #c8dafc;color:#2b53aa;border-radius:999px;padding:4px 10px;font-size:.9rem;margin:0 6px 8px 0}
+  .scene-no{display:inline-block;background:#eaf2ff;color:#2750a7;border:1px solid #c8dafc;border-radius:999px;padding:5px 12px;font-weight:700;margin-bottom:10px}
+  .stage{
+    position:relative;height:290px;border-radius:20px;overflow:hidden;margin:14px 0 18px;
+    background:linear-gradient(180deg,#8cd0ff 0%,#dff4ff 72%,#c2e89f 72%,#9cd17c 100%);
+    border:1px solid #beddff;
+  }
+  .stage.night{background:linear-gradient(180deg,#0f1d48 0%,#1d316a 62%,#2b4f2f 62%,#355f39 100%)}
+  .stage.space{background:radial-gradient(circle at 50% 20%, #264f9a 0%, #16295d 45%, #0e1836 100%)}
+  .bird{
+    position:absolute;left:-80px;top:115px;font-size:54px;filter:drop-shadow(0 6px 10px rgba(0,0,0,.18));
+    animation:flyAcross 8s linear infinite;
+  }
+  .bird.small{font-size:34px;top:85px;animation-duration:10s;opacity:.85}
+  .bird.small.two{top:155px;animation-delay:1.4s}
+  @keyframes flyAcross{
+    0%{transform:translateX(0) translateY(0)}
+    25%{transform:translateX(180px) translateY(-18px)}
+    50%{transform:translateX(370px) translateY(6px)}
+    75%{transform:translateX(570px) translateY(-14px)}
+    100%{transform:translateX(850px) translateY(0)}
+  }
+  .sun{
+    width:72px;height:72px;border-radius:50%;background:radial-gradient(circle,#ffe590 0%, var(--sun) 65%, #f4a622 100%);
+    position:absolute;right:70px;top:44px;box-shadow:0 0 30px rgba(255,203,71,.6);
+    animation:spinSlow 10s linear infinite;
+  }
+  @keyframes spinSlow{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  .cloud{position:absolute;background:rgba(255,255,255,.82);border-radius:999px}
+  .cloud:before,.cloud:after{content:"";position:absolute;background:inherit;border-radius:999px}
+  .cloud.one{width:110px;height:36px;left:70px;top:48px}
+  .cloud.one:before{width:40px;height:40px;left:15px;top:-18px}
+  .cloud.one:after{width:48px;height:48px;left:48px;top:-20px}
+  .cloud.two{width:130px;height:40px;left:260px;top:78px}
+  .cloud.two:before{width:48px;height:48px;left:18px;top:-18px}
+  .cloud.two:after{width:50px;height:50px;left:62px;top:-22px}
+  .mountain{position:absolute;bottom:78px;width:0;height:0;border-left:80px solid transparent;border-right:80px solid transparent;border-bottom:140px solid #6fa36d}
+  .mountain:after{content:"";position:absolute;left:-25px;top:30px;width:0;height:0;border-left:25px solid transparent;border-right:25px solid transparent;border-bottom:40px solid rgba(255,255,255,.8)}
+  .mountain.m1{left:80px}.mountain.m2{left:210px;transform:scale(1.2)}.mountain.m3{left:390px;transform:scale(.9)}
+  .sea{position:absolute;left:0;right:0;bottom:0;height:82px;background:linear-gradient(180deg,#6ed2ff,#2ea2d9)}
+  .sea:before{content:"";position:absolute;left:0;right:0;top:8px;height:8px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.35),rgba(255,255,255,.35) 30px,transparent 30px,transparent 60px)}
+  .compass, .fusion, .brainbox, .clockbox, .mapbox, .magbox{
+    background:rgba(255,255,255,.86);backdrop-filter:blur(2px);border:1px solid #d1e1ff;border-radius:18px;
+    padding:14px;position:absolute;box-shadow:0 6px 16px rgba(40,80,140,.1)
+  }
+  .compass{left:20px;bottom:18px;min-width:210px}
+  .clockbox{right:18px;bottom:18px;min-width:210px}
+  .fusion{left:50%;transform:translateX(-50%);bottom:18px;min-width:260px;text-align:center}
+  .brainbox{left:50%;top:50%;transform:translate(-50%,-50%);min-width:280px;text-align:center}
+  .mapbox{left:20px;top:18px;min-width:240px}
+  .magbox{right:18px;top:18px;min-width:240px}
+  .row-center{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap}
+  .chip{display:inline-block;padding:6px 10px;border-radius:999px;background:#edf4ff;border:1px solid #cfe0ff;color:#2a53ac;font-weight:700;font-size:.92rem}
+  .arrow{font-size:1.25rem;color:#2f6fed;font-weight:700}
+  .clock-face{
+    width:86px;height:86px;border-radius:50%;border:5px solid #7ea8ff;position:relative;background:#fff;margin:6px auto 0;
+    animation:spinSlow 8s linear infinite;
+  }
+  .clock-face:before,.clock-face:after{content:"";position:absolute;left:50%;top:50%;transform-origin:bottom center;background:#2f6fed;border-radius:999px}
+  .clock-face:before{width:4px;height:22px;transform:translate(-50%,-100%) rotate(35deg)}
+  .clock-face:after{width:3px;height:30px;transform:translate(-50%,-100%) rotate(110deg);background:#18a999}
+  .stars span{position:absolute;color:var(--star);font-size:18px;animation:twinkle 2s ease-in-out infinite alternate}
+  .stars span:nth-child(2){left:22%;top:18%;animation-delay:.4s}
+  .stars span:nth-child(3){left:40%;top:28%;animation-delay:.9s}
+  .stars span:nth-child(4){left:58%;top:15%;animation-delay:1.2s}
+  .stars span:nth-child(5){left:76%;top:24%;animation-delay:.7s}
+  .stars span:nth-child(6){left:68%;top:42%;animation-delay:1.4s}
+  .stars span:nth-child(1){left:10%;top:22%}
+  @keyframes twinkle{from{opacity:.3;transform:scale(.85)}to{opacity:1;transform:scale(1.15)}}
+  .earth{
+    width:130px;height:130px;border-radius:50%;background:radial-gradient(circle at 35% 35%, #79d4ff 0%, #3f8ee8 55%, #2460b0 100%);
+    position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);box-shadow:0 0 24px rgba(90,150,255,.4);overflow:hidden
+  }
+  .earth:before,.earth:after{content:"";position:absolute;background:#63c66e;border-radius:45% 55% 50% 50%}
+  .earth:before{width:44px;height:30px;left:22px;top:34px;transform:rotate(-14deg)}
+  .earth:after{width:50px;height:34px;right:20px;bottom:30px;transform:rotate(16deg)}
+  .fieldline{position:absolute;border:2px dashed rgba(255,255,255,.7);border-radius:50%}
+  .fieldline.f1{width:220px;height:110px;left:50%;top:42%;transform:translate(-50%,-50%) rotate(90deg)}
+  .fieldline.f2{width:270px;height:145px;left:50%;top:42%;transform:translate(-50%,-50%) rotate(90deg)}
+  .north,.south{position:absolute;left:50%;transform:translateX(-50%);font-weight:800;color:#fff;text-shadow:0 2px 6px rgba(0,0,0,.25)}
+  .north{top:24px}.south{bottom:30px}
+  .caption{background:#f8fbff;border:1px dashed #c7d8fb;border-radius:16px;padding:12px 14px;margin-top:10px}
+  .summary{background:var(--good);border:1px solid #b9e5c9;border-radius:16px;padding:14px 16px;margin-top:12px}
+  .scene-list{padding-left:1.2em;margin:.4em 0}
+  .scene-list li{margin:6px 0}
+  .hidden{display:none}
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr}
+    .scene-card{min-height:auto}
+    .scene-count{width:100%;margin-left:0;margin-top:8px}
+  }
+  @media (max-width:640px){
+    header h1{font-size:1.6rem}
+    .stage{height:250px}
+    .bird{font-size:42px;top:105px}
+    .sun{width:58px;height:58px;right:28px}
+    .compass,.clockbox,.fusion,.brainbox,.mapbox,.magbox{position:static;transform:none;margin:10px 0 0;min-width:auto}
+    .earth,.fieldline,.north,.south{transform:none;left:auto;top:auto;position:relative;margin:0 auto}
+    .fieldline,.north,.south{display:none}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>鳥はなぜ道に迷わない？<br>クリックで進むアニメ教材</h1>
+      <p>「次へ ▶」を押すと、10のシーンが順番に再生されます。中学生向けのやさしい説明つきです。</p>
+    </header>
+<div style="text-align:center;margin-top:15px;">
+<a href="book92.html"
+style="display:inline-block;
+padding:10px 18px;
+background:#ff8c42;
+color:#fff;
+text-decoration:none;
+border-radius:20px;
+font-weight:bold;">
+📘 くわしい科学解説はこちら
+</a>
+</div>
+<a href="book92child.html"
+style="display:inline-block;padding:10px 18px;background:#2f6fed;color:#fff;
+text-decoration:none;border-radius:20px;font-weight:bold;">
+🔰 中学生向け
+</a>
+<div style="text-align:center;margin:10px 0;">
+<a href="book92dexp.html"
+style="display:inline-block;padding:10px 18px;background:#18a999;color:#fff;
+text-decoration:none;border-radius:20px;font-weight:bold;">
+🔬 プラネタリウム実験編はこちら
+</a>
+</div>
+    <section class="controls">
+      <div class="controls-row">
+        <button id="prevBtn" class="secondary">◀ 前へ</button>
+        <button id="nextBtn">次へ ▶</button>
+        <button id="resetBtn" class="secondary">最初から</button>
+        <div class="scene-count"><span id="sceneNow">1</span> / <span id="sceneTotal">10</span></div>
+      </div>
+      <div class="progress"><div class="bar" id="bar"></div></div>
+    </section>
+
+    <div class="layout">
+      <section class="scene-card">
+        <div class="scene-no" id="sceneNo">Scene 1</div>
+        <h2 id="sceneTitle">渡り鳥の謎</h2>
+        <div id="stageArea"></div>
+        <div class="caption" id="sceneText"></div>
+        <div class="summary" id="sceneSummary"></div>
+      </section>
+
+      <aside class="guide">
+        <h3>この教材の見どころ</h3>
+        <span class="tag">クリック再生</span>
+        <span class="tag">動く図</span>
+        <span class="tag">科学ストーリー</span>
+        <span class="tag">中学生向け</span>
+        <p>
+          元の <strong>book92child</strong> の内容を、<strong>アニメのシーン構成</strong>に変換した版です。
+          太陽・星・地磁気・体内時計・風・地形を、順番に理解できるようにしています。
+        </p>
+        <h3>シーン一覧</h3>
+        <ol class="scene-list">
+          <li>渡り鳥の謎</li>
+          <li>太陽コンパス</li>
+          <li>太陽は動く</li>
+          <li>体内時計</li>
+          <li>星コンパス</li>
+          <li>地球磁場</li>
+          <li>地形と風</li>
+          <li>体内GPS</li>
+          <li>人間の脳GPS</li>
+          <li>結論</li>
+        </ol>
+        <p>
+          使い方：授業では、1シーンごとに止めて質問すると効果的です。
+          たとえば「なぜ太陽だけでは足りないの？」と聞くと、体内時計の重要性がよく伝わります。
+        </p>
+      </aside>
+    </div>
+  </div>
+
+<script>
+const scenes = [
+  {
+    title: '渡り鳥の謎',
+    text: '春になるとツバメはやってきて、秋になると見えなくなります。では、海や山をこえて何千kmも飛ぶ鳥は、どうして道に迷わないのでしょうか。',
+    summary: 'スタートの問い：鳥の体には、地図の代わりになるしくみがあるのではないか？',
+    stage: `
+      <div class="stage">
+        <div class="cloud one"></div><div class="cloud two"></div>
+        <div class="bird">🐦</div><div class="bird small">🐦</div><div class="bird small two">🐦</div>
+        <div class="mountain m1"></div><div class="mountain m2"></div><div class="mountain m3"></div>
+        <div class="sea"></div>
+        <div class="mapbox">
+          <div class="row-center"><span class="chip">海</span><span class="arrow">→</span><span class="chip">山</span><span class="arrow">→</span><span class="chip">大陸</span></div>
+          <p style="margin:8px 0 0">鳥は長い旅のあいだ、いくつもの目印を読みながら飛んでいる。</p>
+        </div>
+      </div>`
+  },
+  {
+    title: '太陽コンパス',
+    text: '昼の空でいちばん目立つのは太陽です。鳥は太陽の位置を手がかりに、おおよその方向を知ることができます。これが太陽コンパスです。',
+    summary: '太陽は「方向を知る手がかり」になる。けれど、まだこれだけでは不十分。',
+    stage: `
+      <div class="stage">
+        <div class="sun"></div>
+        <div class="cloud one"></div><div class="bird">🐦</div>
+        <div class="compass">
+          <div class="row-center"><span class="chip">東</span><span class="arrow">→</span><span class="chip">南</span><span class="arrow">→</span><span class="chip">西</span></div>
+          <p style="margin:8px 0 0">太陽は東からのぼり、南の空を通って、西へしずむように見える。</p>
+        </div>
+      </div>`
+  },
+  {
+    title: '太陽は動く',
+    text: 'ところが太陽は時間とともに動いて見えます。朝と夕方で位置がちがうので、太陽だけを見ても正しい向きは決まりません。',
+    summary: '問題発生：太陽コンパスを正しく使うには「時刻の情報」が必要。',
+    stage: `
+      <div class="stage">
+        <div class="sun" style="animation:none; right:auto; left:60px; top:150px;"></div>
+        <div class="sun" style="animation:none; right:auto; left:240px; top:60px; transform:scale(.9)"></div>
+        <div class="sun" style="animation:none; right:70px; top:150px; transform:scale(.95)"></div>
+        <div class="bird">🐦</div>
+        <div class="fusion">
+          <div class="row-center"><span class="chip">朝の太陽</span><span class="chip">昼の太陽</span><span class="chip">夕方の太陽</span></div>
+          <p style="margin:8px 0 0">同じ太陽でも、時刻によって意味が変わる。</p>
+        </div>
+      </div>`
+  },
+  {
+    title: '体内時計',
+    text: '鳥は体の中に時間を知るしくみを持っています。太陽の位置と体内時計を組み合わせることで、「この時間ならこの方向」と判断できるのです。',
+    summary: '太陽＋体内時計＝時間つきコンパス。ここが鳥の方向感覚の核心。',
+    stage: `
+      <div class="stage">
+        <div class="sun"></div>
+        <div class="bird">🐦</div>
+        <div class="clockbox">
+          <div class="row-center"><span class="chip">太陽</span><span class="arrow">＋</span><span class="chip">体内時計</span></div>
+          <div class="clock-face"></div>
+        </div>
+      </div>`
+  },
+  {
+    title: '星コンパス',
+    text: '夜に移動する鳥は、星の並びや動き方を手がかりにすることがあります。これが星コンパスです。くもりの日には、空の光の向きもヒントになると考えられています。',
+    summary: '昼は太陽、夜は星。鳥は空そのものを読んでいる。',
+    stage: `
+      <div class="stage night">
+        <div class="stars"><span>✦</span><span>✦</span><span>✦</span><span>✦</span><span>✦</span><span>✦</span></div>
+        <div class="bird">🐦</div>
+        <div class="compass">
+          <div class="row-center"><span class="chip">星の並び</span><span class="arrow">→</span><span class="chip">方向</span></div>
+          <p style="margin:8px 0 0">北の空を中心に回るような星の動きが手がかりになる。</p>
+        </div>
+      </div>`
+  },
+  {
+    title: '地球磁場',
+    text: '地球は大きな磁石のような性質を持っています。研究では、鳥が地球の磁場を感じてコンパスのように使う可能性が高いと考えられています。',
+    summary: '空が見えないときも、地球そのものがコンパスになるかもしれない。',
+    stage: `
+      <div class="stage space">
+        <div class="fieldline f1"></div><div class="fieldline f2"></div>
+        <div class="north">N</div><div class="south">S</div>
+        <div class="earth"></div>
+        <div class="magbox">
+          <div class="row-center"><span class="chip">地球</span><span class="arrow">→</span><span class="chip">磁場</span><span class="arrow">→</span><span class="chip">鳥の感知</span></div>
+          <p style="margin:8px 0 0">「どちらが北か」を知るコンパスとして役立つ可能性がある。</p>
+        </div>
+      </div>`
+  },
+  {
+    title: '地形と風',
+    text: '鳥は空の情報だけでなく、海岸線、山、大きな川、風や気圧の変化も利用します。追い風を使えば、体力を節約して長距離を飛べます。',
+    summary: '鳥は地図ではなく、世界じゅうのヒントを重ねて進んでいる。',
+    stage: `
+      <div class="stage">
+        <div class="cloud one"></div><div class="cloud two"></div>
+        <div class="bird">🐦</div>
+        <div class="mountain m1"></div><div class="mountain m2"></div><div class="mountain m3"></div>
+        <div class="sea"></div>
+        <div class="compass">
+          <div class="row-center"><span class="chip">風</span><span class="chip">海岸線</span><span class="chip">山</span></div>
+          <p style="margin:8px 0 0">地上の形や空気の流れも、重要な手がかりになる。</p>
+        </div>
+      </div>`
+  },
+  {
+    title: '体内GPS',
+    text: 'いちばん大事なのは、鳥が一つの方法だけに頼っていないことです。太陽、星、磁場、風、地形、体内時計を合わせて、体内GPSのように進む向きを決めているのです。',
+    summary: '最重要：鳥のナビゲーションは「センサーフュージョン」である。',
+    stage: `
+      <div class="stage">
+        <div class="bird">🐦</div>
+        <div class="fusion">
+          <div class="row-center">
+            <span class="chip">太陽</span><span class="chip">星</span><span class="chip">磁場</span><span class="chip">風</span><span class="chip">地形</span><span class="chip">体内時計</span>
+          </div>
+          <div style="font-size:1.4rem;margin:8px 0">↓</div>
+          <div class="row-center"><span class="chip" style="background:#e8fff1;border-color:#b9e5c9;color:#1d7e52">体内GPS</span></div>
+        </div>
+      </div>`
+  },
+  {
+    title: '人間の脳GPS',
+    text: '人間には鳥のような強い磁場コンパスはありませんが、脳の中には空間を理解するしくみがあります。場所細胞やグリッド細胞などが、頭の中の地図づくりを助けています。',
+    summary: '人間にも地図はある。ただし、鳥とは使い方と進化の方向がちがう。',
+    stage: `
+      <div class="stage">
+        <div class="brainbox">
+          <div style="font-size:66px;line-height:1">🧠</div>
+          <div class="row-center" style="margin-top:10px">
+            <span class="chip">場所細胞</span>
+            <span class="chip">グリッド細胞</span>
+            <span class="chip">頭方向細胞</span>
+          </div>
+        </div>
+      </div>`
+  },
+  {
+    title: '結論',
+    text: '鳥は道を「見つける」のではなく、地球そのものを読んでいるのかもしれません。空・地球・光・時間を合わせて読むことで、長い旅を成しとげているのです。',
+    summary: '結論：鳥の体には、太陽・星・地磁気・時間・風・地形を読む総合ナビゲーションシステムがある。',
+    stage: `
+      <div class="stage">
+        <div class="sun" style="top:42px"></div>
+        <div class="cloud one"></div>
+        <div class="bird">🐦</div><div class="bird small">🐦</div><div class="bird small two">🐦</div>
+        <div class="mountain m1"></div><div class="mountain m2"></div><div class="mountain m3"></div>
+        <div class="sea"></div>
+        <div class="fusion">
+          <p style="margin:0;font-weight:800;color:#1e4f9f">鳥は地球を読んでいる</p>
+        </div>
+      </div>`
+  }
+];
+
+let index = 0;
+const stageArea = document.getElementById('stageArea');
+const sceneTitle = document.getElementById('sceneTitle');
+const sceneText = document.getElementById('sceneText');
+const sceneSummary = document.getElementById('sceneSummary');
+const sceneNo = document.getElementById('sceneNo');
+const sceneNow = document.getElementById('sceneNow');
+const sceneTotal = document.getElementById('sceneTotal');
+const bar = document.getElementById('bar');
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const resetBtn = document.getElementById('resetBtn');
+
+sceneTotal.textContent = scenes.length;
+
+function renderScene(){
+  const s = scenes[index];
+  sceneNo.textContent = `Scene ${index + 1}`;
+  sceneTitle.textContent = s.title;
+  stageArea.innerHTML = s.stage;
+  sceneText.textContent = s.text;
+  sceneSummary.textContent = s.summary;
+  sceneNow.textContent = index + 1;
+  bar.style.width = `${((index + 1) / scenes.length) * 100}%`;
+  prevBtn.disabled = index === 0;
+  nextBtn.disabled = index === scenes.length - 1;
+}
+
+prevBtn.addEventListener('click', () => {
+  if(index > 0){ index--; renderScene(); }
+});
+nextBtn.addEventListener('click', () => {
+  if(index < scenes.length - 1){ index++; renderScene(); }
+});
+resetBtn.addEventListener('click', () => {
+  index = 0; renderScene();
+});
+
+renderScene();
+</script>
+</body>
+</html>

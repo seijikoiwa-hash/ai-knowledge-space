@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>book95の実験例</title>
+<style>
+:root{
+  --bg1:#f4f4f1;
+  --bg2:#ecebe5;
+  --ink:#222;
+  --muted:#555;
+  --card:#ffffff;
+  --line:#d7d7d2;
+
+  --cell:#1e88e5;
+  --cell-bg:#e8f3ff;
+
+  --chrom:#8e24aa;
+  --chrom-bg:#f6e9fb;
+
+  --gene:#43a047;
+  --gene-bg:#edf8ef;
+
+  --reprog:#fb8c00;
+  --reprog-bg:#fff3e5;
+
+  --system:#e53935;
+  --system-bg:#ffeded;
+
+  --micro:#8d6e63;
+  --micro-bg:#f4eeeb;
+
+  --what:#e3f2fd;
+  --how:#e8f5e9;
+  --result:#fff3e0;
+  --deep:#f8fafc;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:linear-gradient(180deg,var(--bg1) 0%,var(--bg2) 100%);
+  color:var(--ink);
+  font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;
+  line-height:1.9;
+}
+.container{
+  max-width:1120px;
+  margin:0 auto;
+  background:var(--card);
+  padding:34px 42px 70px;
+  box-shadow:0 0 18px rgba(0,0,0,.08);
+}
+h1{
+  font-size:2.2rem;
+  line-height:1.4;
+  border-bottom:4px solid #333;
+  padding-bottom:10px;
+  margin:0 0 10px;
+}
+h2{
+  margin-top:40px;
+  font-size:1.5rem;
+  border-left:8px solid #444;
+  padding-left:14px;
+  background:#f3f3ef;
+}
+h3{margin:14px 0 6px;font-size:1.1rem}
+p{margin:10px 0}
+a{color:#0d47a1}
+.subttl{font-size:1.08rem;color:#444;margin-bottom:24px}
+.lead{
+  background:linear-gradient(135deg,#f8f7f1 0%,#ece8db 100%);
+  border:1px solid #d9d5c7;
+  border-radius:14px;
+  padding:22px 24px;
+  margin:22px 0 28px;
+  box-shadow:0 8px 24px rgba(0,0,0,.05);
+}
+.ribbon{
+  display:inline-block;
+  background:#203040;
+  color:#fff;
+  padding:5px 12px;
+  border-radius:999px;
+  font-size:.92rem;
+  margin-bottom:10px;
+}
+.toc{
+  background:#fbfbf8;
+  border:1px solid #ddd;
+  padding:18px 20px;
+  margin:24px 0;
+  border-radius:14px;
+}
+.toc ol{margin:10px 0 0 1.2em}
+.toc li{margin:6px 0}
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid #ddd;
+  padding:10px 0;
+  margin:-34px -42px 24px;
+}
+.topbar .inner{
+  max-width:1120px;
+  margin:0 auto;
+  padding:0 42px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+.pill{
+  display:inline-block;
+  text-decoration:none;
+  color:#123;
+  background:#f2f3f6;
+  border:1px solid #d1d5db;
+  border-radius:999px;
+  padding:6px 12px;
+  font-size:.9rem;
+}
+.table-wrap{overflow-x:auto;margin:22px 0 30px}
+table{border-collapse:collapse;width:100%;min-width:980px}
+th,td{border:1px solid #777;padding:10px 12px;vertical-align:top}
+th{background:#efefea}
+.tag{
+  display:inline-block;border:1px solid currentColor;border-radius:999px;
+  padding:2px 10px;font-size:.85rem;background:#fff
+}
+.tag.cell{color:var(--cell);background:var(--cell-bg)}
+.tag.chrom{color:var(--chrom);background:var(--chrom-bg)}
+.tag.gene{color:var(--gene);background:var(--gene-bg)}
+.tag.reprog{color:var(--reprog);background:var(--reprog-bg)}
+.tag.system{color:var(--system);background:var(--system-bg)}
+.tag.micro{color:var(--micro);background:var(--micro-bg)}
+.tag.gray{color:#666;background:#f5f5f5}
+.note{
+  background:#faf9f4;
+  border-left:6px solid #666;
+  padding:12px 14px;
+  margin:16px 0 24px;
+}
+.summary-panel{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin:20px 0 28px;
+}
+.summary-card{
+  border-radius:16px;
+  padding:14px 14px;
+  border:1px solid #d9d9d9;
+  box-shadow:0 4px 12px rgba(0,0,0,.04);
+}
+.summary-card strong{display:block;margin-bottom:6px}
+.summary-card.cell{background:var(--cell-bg);border-color:#b8d7fb}
+.summary-card.chrom{background:var(--chrom-bg);border-color:#dfc0ec}
+.summary-card.gene{background:var(--gene-bg);border-color:#c8e7cf}
+.summary-card.reprog{background:var(--reprog-bg);border-color:#ffd7a6}
+.details-list{margin:28px 0}
+details{
+  background:#fbfbf8;
+  border:1px solid #ddd;
+  border-radius:16px;
+  padding:14px 16px 16px;
+  margin:16px 0;
+  box-shadow:0 4px 14px rgba(0,0,0,.04);
+}
+details.cell{border-left:8px solid var(--cell); background:linear-gradient(180deg,#fcfeff 0%,#f7fbff 100%)}
+details.chrom{border-left:8px solid var(--chrom); background:linear-gradient(180deg,#fffefe 0%,#fbf7fd 100%)}
+details.gene{border-left:8px solid var(--gene); background:linear-gradient(180deg,#fdfffd 0%,#f7fcf7 100%)}
+details.reprog{border-left:8px solid var(--reprog); background:linear-gradient(180deg,#fffefd 0%,#fff9f2 100%)}
+details.system{border-left:8px solid var(--system); background:linear-gradient(180deg,#fffefe 0%,#fff7f7 100%)}
+details.micro{border-left:8px solid var(--micro); background:linear-gradient(180deg,#fffefe 0%,#fbf8f7 100%)}
+details.deep{border-left:6px solid #6b7280; background:var(--deep); margin:14px 0 8px 10px}
+summary{cursor:pointer;font-weight:700;font-size:1.08rem}
+summary span{font-weight:400;color:#666;font-size:.92rem;margin-left:8px}
+.exp-head{margin:8px 0 10px;font-weight:700;color:#333}
+.box{
+  border:1px solid #e1e1d8;
+  border-radius:12px;
+  padding:14px 16px;
+  margin:12px 0;
+}
+.what{background:var(--what)}
+.how{background:var(--how)}
+.result{background:var(--result)}
+.figure{
+  background:#fcfcfa;
+  border:1px solid #ddd;
+  border-radius:14px;
+  padding:12px;
+  margin:12px 0 8px;
+}
+.figcap{font-size:.95rem;color:#444;margin-top:8px}
+svg{max-width:100%;height:auto;display:block}
+svg text{font-family:"Yu Gothic","Hiragino Sans","Noto Sans JP",sans-serif}
+.footer-box{
+  background:#eef6ff;
+  border-left:6px solid #4a7;
+  padding:12px 14px;
+  margin-top:28px;
+}
+.jump{display:inline-block;margin-top:10px;font-size:.95rem}
+.small{font-size:.95rem;color:var(--muted)}
+.sep{height:1px;background:#cfcfc7;margin:24px 0}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:12px 0}
+.fact{background:#faf9f4;border-left:6px solid #2d6a4f;padding:14px 18px;margin:14px 0;border-radius:0 12px 12px 0}
+.term{background:#f2f6f9;border:1px solid #cbd5e1;border-radius:40px;padding:4px 16px;display:inline-block;font-size:.9rem;font-weight:700;color:#1e3a5f;margin:12px 0 8px}
+.illust{background:#f1f5f9;border:1px dashed #2c5f8a;border-radius:16px;padding:16px 20px;margin:18px 0}
+@media (max-width:900px){
+  .summary-panel{grid-template-columns:repeat(2,1fr)}
+  .grid2{grid-template-columns:1fr}
+}
+@media (max-width:700px){
+  .container{padding:24px 16px 48px}
+  .topbar{margin:-24px -16px 18px}
+  .topbar .inner{padding:0 16px}
+  h1{font-size:1.72rem}
+  h2{font-size:1.28rem}
+  .summary-panel{grid-template-columns:1fr}
+}
+</style>
+
+<style>
+.ai-shell{margin:40px auto 0;max-width:980px;background:#f9fbff;border:1px solid #dbe5f2;border-radius:18px;padding:18px 18px 16px;box-shadow:0 10px 24px rgba(0,0,0,.06)}
+.ai-shell h2,.ai-shell h3{margin-top:0}
+.ai-bar,.ai-chip-row,.ai-actions{display:flex;flex-wrap:wrap;gap:8px}
+.ai-chip,.ai-send,.ai-clear,.ai-role,.ai-preset{appearance:none;border:1px solid #c8d7ea;background:#fff;border-radius:999px;padding:8px 14px;cursor:pointer;font-size:.95rem}
+.ai-chip.active,.ai-role.active,.ai-preset.active{background:#2f6fb3;color:#fff;border-color:#2f6fb3}
+.ai-log{height:260px;overflow:auto;background:#fff;border:1px solid #d9e3f0;border-radius:14px;padding:12px;margin:12px 0}
+.ai-msg{margin:10px 0;line-height:1.7;white-space:pre-wrap}
+.ai-msg.user{text-align:right}
+.ai-msg.ai{text-align:left}
+.ai-msg.system{text-align:center;color:#56657a;font-size:.92rem}
+.ai-input{display:flex;gap:10px;align-items:stretch}
+.ai-input textarea{flex:1;min-height:76px;border:1px solid #cfd9e6;border-radius:12px;padding:10px;font:inherit}
+.ai-send{border-radius:12px;background:#2f6fb3;color:#fff;padding:10px 18px}
+.ai-clear{border-radius:12px}
+.ai-side-note{margin-top:10px;color:#516072;font-size:.95rem}
+.ai-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:14px}
+.ai-card{background:#fff;border:1px solid #dbe5f2;border-radius:14px;padding:12px}
+@media (max-width:760px){.ai-grid{grid-template-columns:1fr}.ai-input{flex-direction:column}}
+</style>
+
+</head>
+<body>
+<div class="container" id="top">
+
+<div class="topbar">
+  <div class="inner">
+    <a class="pill" href="#map">対応表</a>
+    <a class="pill" href="#exp1">ヘイフリック</a>
+    <a class="pill" href="#exp2">テロメラーゼ</a>
+    <a class="pill" href="#exp3">ケニヨン</a>
+    <a class="pill" href="#exp4">山中因子</a>
+    <a class="pill" href="#exp5">若い血液</a>
+    <a class="pill" href="#exp6">糞便移植</a>
+    <a class="pill" href="#ending">使い方</a>
+  </div>
+</div>
+
+<h1>book95の実験例</h1>
+<div class="subttl">― 人物と実験を統合したクリック版 ＋ 山中iPS実験詳細 ―</div>
+
+<div class="lead">
+<div class="ribbon">インタラクティブ版</div>
+<p>上の対応表で <strong>人物 → 実験 → 研究史上の意味</strong> を確認し、各実験をクリックして学ぶ。特に <strong>山中因子</strong> の章では、さらに内部に <strong>OSKM・線維芽細胞・レトロウイルスベクター・培養ディッシュ・実験手順</strong> の詳細展開を入れてある。</p>
+</div>
+
+<div class="toc">
+<strong>目次</strong>
+<ol>
+<li><a href="#map">人物 × 実験 対応表</a></li>
+<li><a href="#flow">まず押さえる流れ</a></li>
+<li><a href="#exp1">ヘイフリック ― 混合培養実験</a></li>
+<li><a href="#exp2">ブラックバーン／グライダー ― テロメラーゼ検出実験</a></li>
+<li><a href="#exp3">ケニヨン ― daf-2変異線虫実験</a></li>
+<li><a href="#exp4">山中伸弥 ― 24因子から4因子への引き算実験（詳細展開つき）</a></li>
+<li><a href="#exp5">若い血液のパラビオーシス実験</a></li>
+<li><a href="#exp6">若いマウスの糞便移植実験</a></li>
+<li><a href="#ending">講義での使い方</a></li>
+</ol>
+</div>
+
+<h2 id="map">人物 × 実験 対応表</h2>
+<div class="table-wrap">
+<table>
+<tr>
+<th>分野</th>
+<th>人物（book95）</th>
+<th>核心アイデア</th>
+<th>対応する実験</th>
+<th>位置づけ</th>
+</tr>
+<tr>
+<td><span class="tag gray">数学</span></td>
+<td>ベンジャミン・ゴンペルツ</td>
+<td>老化は法則を持つ</td>
+<td>理論中心</td>
+<td>数理モデルが中心で、実験1では直接対応する代表実験はない</td>
+</tr>
+<tr>
+<td><span class="tag gray">分子</span></td>
+<td>デナム・ハーマン</td>
+<td>老化＝分子損傷</td>
+<td>酸化ストレス研究</td>
+<td>実験1の主役ではないが、分子損傷という考えの源流</td>
+</tr>
+<tr>
+<td><span class="tag cell">細胞</span></td>
+<td>レオナルド・ヘイフリック</td>
+<td>細胞には寿命がある</td>
+<td>混合培養実験</td>
+<td><a href="#exp1">▼ 実験詳細</a></td>
+</tr>
+<tr>
+<td><span class="tag chrom">染色体</span></td>
+<td>エリザベス・ブラックバーン／キャロル・グライダー</td>
+<td>テロメアは老化時計である</td>
+<td>テロメラーゼ検出実験</td>
+<td><a href="#exp2">▼ 実験詳細</a></td>
+</tr>
+<tr>
+<td><span class="tag gene">遺伝子</span></td>
+<td>シンシア・ケニヨン</td>
+<td>寿命は遺伝子で変えられる</td>
+<td>daf-2変異線虫実験</td>
+<td><a href="#exp3">▼ 実験詳細</a></td>
+</tr>
+<tr>
+<td><span class="tag reprog">初期化</span></td>
+<td>山中伸弥</td>
+<td>細胞の時間は巻き戻せる</td>
+<td>24因子→4因子の引き算実験</td>
+<td><a href="#exp4">▼ 実験詳細</a></td>
+</tr>
+<tr>
+<td><span class="tag system">個体</span></td>
+<td>トニー・ワイス＝コレイ系</td>
+<td>若い血液は老化個体に影響する</td>
+<td>パラビオーシス</td>
+<td><a href="#exp5">▼ 実験詳細</a></td>
+</tr>
+<tr>
+<td><span class="tag micro">腸内</span></td>
+<td>腸内細菌研究チーム</td>
+<td>微生物叢が老化を左右する</td>
+<td>糞便移植実験</td>
+<td><a href="#exp6">▼ 実験詳細</a></td>
+</tr>
+<tr>
+<td><span class="tag gray">情報・測定</span></td>
+<td>スティーブ・ホーバス</td>
+<td>若返りは測定できる</td>
+<td>エピジェネティック時計</td>
+<td>定量化の思想を与える</td>
+</tr>
+<tr>
+<td><span class="tag gray">情報</span></td>
+<td>デイビッド・シンクレア</td>
+<td>老化＝情報の乱れ</td>
+<td>部分的リプログラミング系</td>
+<td>book95側の理論の中心</td>
+</tr>
+<tr>
+<td><span class="tag gray">若返り実証</span></td>
+<td>イズピスア・ベルモンテ</td>
+<td>若返りは原理的に可能</td>
+<td>若返りマウス系</td>
+<td>山中因子系の実証的展開</td>
+</tr>
+</table>
+</div>
+
+<div class="note">
+<strong>読み方：</strong> ヘイフリック → ブラックバーン／グライダー → ケニヨン → 山中 の順に追うと、<strong>「老化は起こる」→「原因が見える」→「変えられる」→「巻き戻せる」</strong> という流れが一本の物語として理解できる。
+</div>
+
+<h2 id="flow">まず押さえる流れ</h2>
+<div class="summary-panel">
+  <div class="summary-card cell"><strong>1. ヘイフリック</strong>老化は外部環境ではなく、細胞内部にある。</div>
+  <div class="summary-card chrom"><strong>2. テロメア研究</strong>その内部時計の分子的実体の一つが染色体末端で見えてきた。</div>
+  <div class="summary-card gene"><strong>3. ケニヨン</strong>老化は単なる運命ではなく、遺伝子で制御できる。</div>
+  <div class="summary-card reprog"><strong>4. 山中</strong>細胞状態は条件次第で巻き戻せる。ここから若返り研究が加速する。</div>
+</div>
+
+<h2>クリックで開く　詳細実験ノート</h2>
+<div class="details-list">
+
+<details id="exp1" class="cell" open>
+<summary>ヘイフリック ― 混合培養実験 <span>クリックで開閉</span></summary>
+<div class="exp-head">対応人物：レオナルド・ヘイフリック（1961年）</div>
+<div class="box what"><strong>何を調べたか？</strong><br>細胞老化が培養環境の問題なのか、それとも細胞自身に刻まれた内部プログラムなのかを区別しようとした。</div>
+<div class="box how"><strong>どうやって調べたか？</strong><br>若い女性由来細胞（XX）と老化に近い男性由来細胞（XY）を同じ培養皿で混合培養し、どちらが最後まで残るかを染色体で判定した。</div>
+<div class="box result"><strong>結果と意義</strong><br>最後に残ったのは若い女性細胞だけだった。老化は環境のせいではなく、細胞内部にあることが示された。</div>
+<a class="jump" href="#top">▲ 上へ</a>
+</details>
+
+<details id="exp2" class="chrom">
+<summary>ブラックバーン／グライダー ― テロメラーゼ検出実験 <span>クリックで開閉</span></summary>
+<div class="exp-head">対応人物：エリザベス・ブラックバーン／キャロル・グライダー（1984年）</div>
+<div class="box what"><strong>何を調べたか？</strong><br>染色体末端テロメアを伸ばす酵素が本当に存在するかを調べた。</div>
+<div class="box how"><strong>どうやって調べたか？</strong><br>テトラヒメナ抽出液に人工DNAプローブを加え、反応後にゲル電気泳動とオートラジオグラフィーで階段状バンドを検出した。</div>
+<div class="box result"><strong>結果と意義</strong><br>テロメラーゼの存在が証明された。老化、がん、再生医療の理解に大きな転換点を与えた。</div>
+<a class="jump" href="#top">▲ 上へ</a>
+</details>
+
+<details id="exp3" class="gene">
+<summary>ケニヨン ― daf-2変異線虫実験 <span>クリックで開閉</span></summary>
+<div class="exp-head">対応人物：シンシア・ケニヨン（1993年）</div>
+<div class="box what"><strong>何を調べたか？</strong><br>老化が遺伝子で制御される可変な現象かどうかを調べた。</div>
+<div class="box how"><strong>どうやって調べたか？</strong><br>daf-2変異線虫と野生型の寿命を比較し、さらにdaf-16との関係も二重変異体で解析した。</div>
+<div class="box result"><strong>結果と意義</strong><br>たった一つの遺伝子変異で寿命が約2倍になった。老化は変えられるという発想を確立した。</div>
+<a class="jump" href="#top">▲ 上へ</a>
+</details>
+
+<details id="exp4" class="reprog">
+<summary>山中伸弥 ― 24因子から4因子への引き算実験 <span>クリックで開閉</span></summary>
+<div class="exp-head">対応人物：山中伸弥（2006年）</div>
+
+<div class="figure">
+<svg viewBox="0 0 920 290" aria-label="山中因子の引き算実験の模式図">
+  <text x="165" y="38" text-anchor="middle" font-size="24" fill="#ef6c00">候補群</text>
+  <rect x="35" y="62" width="260" height="155" rx="18" fill="#fff3e5" stroke="#fb8c00" stroke-width="2"/>
+  <text x="165" y="108" text-anchor="middle" font-size="22">ES細胞で働く</text>
+  <text x="165" y="140" text-anchor="middle" font-size="22">24の候補遺伝子</text>
+  <text x="165" y="178" text-anchor="middle" font-size="18">1つずつ抜いて比較</text>
+
+  <path d="M325 140 H470" stroke="#666" stroke-width="4"/>
+  <polygon points="470,140 450,130 450,150" fill="#666"/>
+  <text x="398" y="116" text-anchor="middle" font-size="20">引き算で絞る</text>
+
+  <text x="690" y="38" text-anchor="middle" font-size="24" fill="#ef6c00">最終セット</text>
+  <rect x="500" y="62" width="345" height="155" rx="18" fill="#fff3e5" stroke="#fb8c00" stroke-width="2"/>
+  <text x="672" y="105" text-anchor="middle" font-size="22">Oct3/4　Sox2</text>
+  <text x="672" y="145" text-anchor="middle" font-size="22">Klf4　c-Myc</text>
+  <text x="672" y="188" text-anchor="middle" font-size="18">→ iPS細胞形成</text>
+</svg>
+<div class="figcap">図：多数候補から本当に必要な因子だけを論理的に絞り込んだ、「引き算」の美しい設計。</div>
+</div>
+
+<div class="box what"><strong>何を調べたか？</strong><br>
+体細胞に特定の遺伝子を導入することで、胚性幹細胞のような多能性を人工的に作れるかを調べた。焦点は「細胞の運命は固定されているのか、それとも巻き戻せるのか」にあった。
+</div>
+
+<div class="box how"><strong>どうやって調べたか？</strong><br>
+ES細胞で高発現する24遺伝子を候補として選び、まず全部導入してES細胞様コロニーができることを確認した。次に1つずつ因子を抜く「引き算実験」を繰り返し、真に必要な最小セットを絞り込んだ。
+</div>
+
+<div class="box result"><strong>結果と意義</strong><br>
+最終的に残ったのは <strong>Oct3/4、Sox2、Klf4、c-Myc</strong> の4因子だった。たった4つの転写因子で分化した体細胞を初期化できることが示され、細胞分化は不可逆ではないことが明確になった。
+</div>
+
+<details class="deep" open>
+<summary>山中4因子（OSKM）の詳細 <span>クリックで開閉</span></summary>
+<div class="term">山中4因子（OSKM）</div>
+<div class="fact">
+<p><strong>Oct3/4 (Pou5f1)</strong>：初期胚やES細胞で発現する転写因子。多能性の維持に必須で、「多能性のマスター制御因子」と呼ばれる。</p>
+<p><strong>Sox2</strong>：Oct3/4と協調して働く転写因子。同じく多能性関連遺伝子の活性化に重要で、神経幹細胞の維持にも関わる。</p>
+<p><strong>Klf4</strong>：細胞増殖や分化制御に関わる転写因子。初期化効率を高める。</p>
+<p><strong>c-Myc</strong>：がん遺伝子として知られる転写因子。クロマチン構造を緩め、他因子が働きやすい状態を作る。</p>
+<p><strong>由来</strong>：ES細胞で強く発現する24遺伝子から、1つずつ抜いて比較する「引き算実験」を繰り返し、最終的にこの4因子が必要十分であることが示された。</p>
+</div>
+</details>
+
+<details class="deep">
+<summary>線維芽細胞とは何か <span>クリックで開閉</span></summary>
+<div class="term">線維芽細胞（fibroblast）</div>
+<div class="fact">
+<p><strong>線維芽細胞</strong>は、結合組織を構成する主要な細胞で、コラーゲンなどの細胞外マトリックスを産生する。皮膚や腱などに多く存在する。</p>
+<p>培養が容易で増殖能が高いため、細胞生物学実験で広く使われる。iPS細胞実験では、皮膚由来の線維芽細胞が出発材料となった。</p>
+<p>これらはすでに分化を終えた細胞であるため、ここから多能性細胞ができたこと自体が、初期化の成功を意味した。</p>
+</div>
+</details>
+
+<details class="deep">
+<summary>レトロウイルスベクターの役割 <span>クリックで開閉</span></summary>
+<div class="term">レトロウイルスベクター</div>
+<div class="fact">
+<p><strong>レトロウイルス</strong>はRNAを遺伝情報として持ち、感染後にDNAへ逆転写され、宿主ゲノムに組み込まれる性質を持つ。</p>
+<p>この仕組みを利用して、ウイルスの病原性部分を除き、代わりに目的遺伝子を運ぶよう設計したものが<strong>レトロウイルスベクター</strong>である。</p>
+<ol>
+<li>ベクターを線維芽細胞に感染させる</li>
+<li>RNAがDNAへ逆転写される</li>
+<li>DNAが染色体へ組み込まれる</li>
+<li>導入した遺伝子が持続的に発現する</li>
+</ol>
+<p><strong>利点</strong>は長期安定発現、<strong>課題</strong>はランダム挿入によるがん化リスクである。</p>
+</div>
+</details>
+
+<details class="deep">
+<summary>培養ディッシュと培養フラスコ <span>クリックで開閉</span></summary>
+<div class="term">培養ディッシュ（培養皿・フラスコ）</div>
+<div class="fact">
+<p><strong>培養ディッシュ</strong>は細胞を育てるための浅い円形容器で、底面に細胞が付着しやすい処理がなされている。</p>
+<p><strong>培養フラスコ</strong>は細胞を大量に増やすのに向き、準備段階で線維芽細胞を増殖させる際に使われる。</p>
+<ul>
+<li>最初に線維芽細胞をフラスコで増やす</li>
+<li>ウイルス感染後、ディッシュへ移す</li>
+<li>フィーダー細胞の上で2～3週間培養する</li>
+<li>毎日顕微鏡でコロニー形成を確認する</li>
+</ul>
+<p>この絞り込み実験では、数百枚規模のディッシュを並行管理する必要があった。</p>
+</div>
+</details>
+
+<details class="deep">
+<summary>具体的な培養プロセス <span>クリックで開閉</span></summary>
+<div class="illust">
+<h3>実験の流れ</h3>
+<ol>
+<li><strong>細胞準備</strong>：皮膚由来の線維芽細胞を培養フラスコで増殖。</li>
+<li><strong>遺伝子導入</strong>：OSKMを組み込んだレトロウイルスベクターで感染。</li>
+<li><strong>継代培養</strong>：フィーダー細胞上で数週間培養。</li>
+<li><strong>観察</strong>：ES細胞様コロニーの出現を顕微鏡で毎日確認。</li>
+</ol>
+</div>
+<div class="illust">
+<h3>実験を支えた粘り強さ</h3>
+<p>24因子から4因子へ絞り込む過程では、候補を1つずつ外した多くの組み合わせを試す必要があり、研究室では数百枚の培養ディッシュを同時に扱いながら、毎日培地交換と観察を繰り返した。</p>
+</div>
+<div class="illust">
+<h3>この実験の本質</h3>
+<p>この実験の美しさは「足し算」ではなく<strong>引き算</strong>にある。多数の候補から、真に必要な最小セットを論理的に見つけ出した点が最大の価値である。</p>
+</div>
+</details>
+
+<a class="jump" href="#top">▲ 上へ</a>
+</details>
+
+<details id="exp5" class="system">
+<summary>若い血液のパラビオーシス実験 <span>クリックで開閉</span></summary>
+<div class="exp-head">対応人物：トニー・ワイス＝コレイら（2000年代～）</div>
+<div class="box what"><strong>何を調べたか？</strong><br>若い個体の循環血液が老いた個体の組織機能を改善するかを調べた。</div>
+<div class="box how"><strong>どうやって調べたか？</strong><br>若いマウスと老いたマウスを外科的につなぎ、循環系を共有させるパラビオーシスモデルで脳・筋肉・肝臓などを解析した。</div>
+<div class="box result"><strong>結果と意義</strong><br>老マウスでは神経新生や筋修復の改善が見られ、血液中に全身性の若返り／老化因子がある可能性が示された。</div>
+<a class="jump" href="#top">▲ 上へ</a>
+</details>
+
+<details id="exp6" class="micro">
+<summary>若いマウスの糞便移植実験 <span>クリックで開閉</span></summary>
+<div class="exp-head">対応人物：腸内細菌と老化研究の新潮流</div>
+<div class="box what"><strong>何を調べたか？</strong><br>若い個体の腸内細菌叢を老いた個体へ移すことで老化指標が改善するかを調べた。</div>
+<div class="box how"><strong>どうやって調べたか？</strong><br>若いマウス由来の糞便懸濁液を老マウスに継続投与し、炎症、筋力、行動、ミトコンドリア機能などを比較した。</div>
+<div class="box result"><strong>結果と意義</strong><br>炎症低下、筋力向上、行動改善などが観察され、若返り研究の舞台が腸内生態系へ広がったことを示した。</div>
+<a class="jump" href="#top">▲ 上へ</a>
+</details>
+
+</div>
+
+<h2 id="ending">使い方</h2>
+<div class="footer-box">
+<p><strong>推奨する進め方：</strong></p>
+<p>まず対応表を見て研究者と実験の対応を頭に入れる。次に、<strong>ヘイフリック → テロメラーゼ → ケニヨン → 山中</strong> の順に開く。とくに山中の章では、さらに中の詳細項目を順番に開くと、iPS実験が「4因子の名前」だけでなく、<strong>どんな細胞を使い、どう遺伝子を入れ、どんな培養系で、どうやって4因子に絞り込んだのか</strong> まで理解できる。</p>
+<p>この版の強みは、単なる知識の列挙ではなく、<strong>科学者がどんな問いを立て、どんな方法で答えたか</strong> をクリックしながら段階的に追える点にある。</p>
+</div>
+
+<p class="small">インタラクティブ版。</p>
+
+</div>
+
+<section class="ai-shell" id="ai-book96c">
+  <h2>🧪 実験・批判AI（book96c専用）</h2>
+  <div class="ai-grid">
+    <div>
+      <div class="ai-bar">
+        <button class="ai-role active" data-role="meaning">意義を聞く</button>
+        <button class="ai-role" data-role="method">方法を聞く</button>
+        <button class="ai-role" data-role="critique">批判的に見る</button>
+      </div>
+      <div class="ai-log" id="b96c-log"></div>
+      <div class="ai-input">
+        <textarea id="b96c-input" placeholder="例：この実験は何を証明したのですか？&#10;例：この実験の弱点は何ですか？"></textarea>
+        <button class="ai-send" id="b96c-send">送信</button>
+      </div>
+      <div class="ai-actions" style="margin-top:10px">
+        <button class="ai-clear" id="b96c-clear">会話を消去</button>
+        <button class="ai-preset" data-q="この実験は何を調べたのですか？">何を調べた？</button>
+        <button class="ai-preset" data-q="どうやって調べたのですか？">どうやって？</button>
+        <button class="ai-preset" data-q="この実験の弱点は何ですか？">弱点は？</button>
+      </div>
+    </div>
+    <aside class="ai-card">
+      <h3>このAIの役割</h3>
+      <p>book96cの各実験を、意義・方法・限界の3方向から読み解きます。研究的な読み方の訓練に向いています。</p>
+      <div class="ai-side-note" id="b96c-note">現在は「意義を聞く」モードです。</div>
+    </aside>
+  </div>
+</section>
+
+<script>
+
+(function(){
+ let mode='meaning';
+ const log=document.getElementById('b96c-log'), input=document.getElementById('b96c-input'), note=document.getElementById('b96c-note');
+ function add(role,text){ const d=document.createElement('div'); d.className='ai-msg '+role; d.textContent=text; log.appendChild(d); log.scrollTop=log.scrollHeight; }
+ function reply(q){
+   let core='この実験の意義は、若返りを「見た目の印象」ではなく、機能や指標の変化として捉えようとした点にあります。';
+   if(mode==='method' || /どうやって|方法/.test(q)) core='方法に注目すると、対象、介入、測定指標、比較群の4点を見るのが基本です。何をどう操作し、何で若返りを判定したかが重要です。';
+   if(mode==='critique' || /弱点|限界|批判/.test(q)) core='批判的に見るなら、サンプル数、再現性、対照群、長期安全性、人間への一般化可能性を点検するべきです。マウスで有効でも人間で安全とは限りません。';
+   if(/何を調べ/.test(q)) core='この種の実験は、OSKMや関連介入で細胞・組織・機能が若い方向へ変わるかを調べています。';
+   return '実験AIです。'+core;
+ }
+ function send(text){ const q=(text||input.value).trim(); if(!q) return; add('user',q); input.value=''; add('ai',reply(q));}
+ document.querySelectorAll('#ai-book96c .ai-role').forEach(btn=>btn.addEventListener('click',()=>{ document.querySelectorAll('#ai-book96c .ai-role').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); mode=btn.dataset.role; note.textContent='現在は「'+btn.textContent+'」モードです。'; add('system',btn.textContent+'モードに切り替えました。');}));
+ document.getElementById('b96c-send').addEventListener('click',()=>send());
+ input.addEventListener('keydown',e=>{ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); send(); }});
+ document.getElementById('b96c-clear').addEventListener('click',()=>{ log.innerHTML=''; add('system','会話をリセットしました。'); add('ai','実験について質問してください。');});
+ document.querySelectorAll('#ai-book96c .ai-preset').forEach(btn=>btn.addEventListener('click',()=>send(btn.dataset.q)));
+ add('system','book96c専用の実験AIです。');
+ add('ai','例：この実験の弱点は何ですか？');
+})();
+
+</script>
+</body>
+</html>

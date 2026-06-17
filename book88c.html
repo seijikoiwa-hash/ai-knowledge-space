@@ -1,0 +1,1097 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>雀、朱雀、烏、八咫烏</title>
+<style>
+:root {
+  --fg:#111; --muted:#555; --bg:#fff; --line:#e5e5e5; --accent:#9b1c1c;
+  --card:#fafafa;
+}
+body { font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Kaku Gothic ProN", "Noto Sans JP", Meiryo, sans-serif; color:var(--fg); background:var(--bg); line-height:1.9; margin:0; }
+header { padding:28px 18px 12px; border-bottom:1px solid var(--line); }
+main { max-width: 980px; margin: 0 auto; padding: 18px 18px 60px; }
+h1 { font-size: 1.9rem; margin: 0 0 6px; }
+.subtitle { color: var(--muted); margin: 0 0 10px; }
+.badge { display:inline-block; font-size:.85rem; padding:2px 10px; border:1px solid var(--line); border-radius:999px; background: #fff; }
+nav.toc { margin:16px 0 20px; padding:14px 14px; border:1px solid var(--line); border-radius:14px; background:var(--card); }
+nav.toc a { color: var(--fg); text-decoration:none; }
+nav.toc a:hover { text-decoration:underline; }
+section { margin: 22px 0; padding-top: 6px; }
+h2 { border-left: 6px solid var(--accent); padding-left: 10px; margin: 22px 0 10px; font-size: 1.35rem; }
+h3 { margin: 18px 0 8px; font-size: 1.1rem; }
+.note { color: var(--muted); }
+hr { border:0; border-top:1px solid var(--line); margin: 18px 0; }
+figure { margin: 12px 0; padding: 10px; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+figcaption { color: var(--muted); font-size: .92rem; margin-top: 8px; }
+img { max-width:100%; height:auto; display:block; border-radius:12px; }
+.grid2 { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 760px) { .grid2 { grid-template-columns: 1fr; } }
+.callout { border:1px solid var(--line); border-radius:14px; padding:12px 14px; background:var(--card); }
+.kicker { font-weight:700; color: var(--accent); }
+table { width:100%; border-collapse: collapse; margin: 10px 0; }
+th, td { border:1px solid var(--line); padding:10px 10px; vertical-align:top; }
+th { background:#f5f5f5; text-align:left; }
+.small { font-size:.92rem; color:var(--muted); font-weight:500; }
+.birdlist { columns: 2; column-gap: 18px; }
+@media (max-width: 760px) { .birdlist { columns: 1; } }
+.birdlist li { break-inside: avoid; margin: 0 0 6px; }
+.bird-name { font-weight:700; }
+.bird-yomi { color:var(--muted); margin-left:4px; }
+.to-meaning { font-size:.9rem; margin-left: 8px; color: var(--accent); text-decoration:none; }
+.to-meaning:hover { text-decoration:underline; }
+.meaning-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 760px) { .meaning-grid { grid-template-columns: 1fr; } }
+.meaning-card { border:1px solid var(--line); border-radius:14px; padding:12px 14px; background:#fff; }
+.backlink a { color: var(--accent); text-decoration:none; }
+.backlink a:hover { text-decoration:underline; }
+details { border:1px solid var(--line); border-radius:14px; padding:10px 12px; background:#fff; }
+summary { cursor:pointer; font-weight:700; }
+blockquote { margin: 10px 0; padding: 10px 12px; border-left: 4px solid var(--accent); background: #fff; }
+footer { color:var(--muted); border-top:1px solid var(--line); padding-top: 14px; margin-top: 30px; font-size:.92rem; }
+.anchor-jump { display:flex; gap:10px; flex-wrap:wrap; margin: 8px 0; }
+.anchor-jump a { display:inline-block; padding:4px 10px; border:1px solid var(--line); border-radius:999px; background:#fff; text-decoration:none; color:var(--fg); }
+.anchor-jump a:hover { border-color: var(--accent); }
+
+/* 注釈用のスタイル */
+.academic-note {
+  background-color: #f8f0e7;
+  border-left: 6px solid #b45f2e;
+  border-radius: 0 14px 14px 0;
+  padding: 1rem 1.5rem;
+  margin: 1.8rem 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  font-size: 1rem;
+}
+.note-title {
+  font-weight: 700;
+  color: #a04a1f;
+  margin-right: 0.5rem;
+  font-size: 1.1rem;
+  display: inline-block;
+}
+.note-marker {
+  display: inline-block;
+  background-color: #b45f2e;
+  color: white;
+  font-weight: bold;
+  padding: 0.2rem 0.8rem;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  margin-right: 1rem;
+}
+</style>
+</head>
+<body>
+<a id="top-book88c"></a>
+<header>
+  <div class="badge">book88c.html</div>
+  <h1>雀、朱雀、烏、八咫烏</h1>
+  <p class="subtitle">「日常の鳥」から「神話の鳥」へ─文字が世界観を固定していく瞬間─　　by ChatGPT</p>
+  <div class="anchor-jump"><a href="book88.html#top-book88">↔ DeepSeekとの対比</a></div>
+</header>
+
+<main>
+  <nav class="toc" aria-label="目次">
+    <div class="kicker">目次（内部リンク）</div>
+    <ol>
+      <li><a href="#sec-1">はじめに</a></li>
+      <li><a href="#sec-2">雀と烏 ― 漢字の成り立ち（象形文字）</a></li>
+      <li><a href="#sec-3">漢字表記の鳥（68種）― book88-6 参照（完全統合）</a></li>
+      <li><a href="#sec-4">代表的な漢字の意味（20選）― book88-6-1 参照（完全統合）</a></li>
+      <li><a href="#sec-5">表意文字と表音文字</a></li>
+      <li><a href="#sec-6">まとめ</a></li>
+    </ol>
+  </nav>
+
+  <section id="sec-1">
+    <h2>1. はじめに</h2>
+
+    <div class="callout">
+      <p class="kicker">A. 動機</p>
+      <ol>
+        <li>日常よく見るのは雀と烏であり、これらを比較検討しようと考えた。</li>
+        <li>調べていくうちに、同じ鳥であるにもかかわらず、雀と烏に対する世間の印象は異なっており、その印象の違いが文字そのものに組み込まれていることが分かった（象形文字の意味の深さを実感）。</li>
+        <li>漢字で表記可能な鳥を調べると、読めないし書けない鳥の漢字が続々出てきた。その多さに驚いた。AIはこのような調査にむいていることも分かった。</li>
+        <li>鳥の中には、縁起のいい鳥があり、また初めて聞く鳥もあった（例えば八咫烏）。</li>
+      </ol>
+    </div>
+
+    <p>
+      本稿の核は、単なる「鳥の雑学」ではありません。<strong>雀と烏</strong>という極めて身近な二種を起点に、
+      <strong>朱雀</strong>や<strong>八咫烏</strong>といった「観念としての鳥」へ視線を移し、
+      その途中で、<strong>文字（漢字）が「印象」「価値」「世界観」をどう固定するか</strong>を観察します。
+      つまり、鳥の比較を通じて、<em>文字の生成原理</em>（別の言葉で言えば「認識の写像」）に触れようとする試みです。
+    </p>
+
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Passer%20montanus%20-Japan%20-front-8.jpg" alt="スズメ（Passer montanus）">
+      <figcaption>画像1：スズメ（雀）—「どこにでもいる」（後述：生息数）。</figcaption>
+    </figure>
+
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Carrion_crow_%28Corvus_corone%29_head.jpg" alt="カラス（Corvus corone）">
+      <figcaption>画像2：カラス（烏）—数は雀に及ばなくとも、「目に刺さる存在感」を持つ。</figcaption>
+    </figure>
+
+    <p>
+      先に結論を一つだけ置くと、<strong>雀と烏の対比は、生態の差だけでは成立しません</strong>。
+      それを成立させているのは、(1) 人間生活との距離、(2) 集団イメージ、(3) 言語の側で用意された「ラベル」、
+      そして (4) <strong>そのラベルの内部に刻まれた形（字形）</strong>です。
+      以下では、字形の起点としての甲骨文字、神話に引き上げられる鳥、そして「表意／表音」という設計思想の違いへと進みます。
+    </p>
+  </section>
+
+  <section id="sec-2">
+    <h2>2. 雀と烏 ― 漢字の成り立ち（象形文字）</h2>
+
+    <h3>2-1. 「鳥」の骨格：まず“鳥”という象形から始まる</h3>
+    <p>
+      「鳥」は、尾・翼・脚をもつ鳥の姿を写し取った象形文字として説明されます。
+      ここで大事なのは、<strong>写す対象が「生き物の輪郭」だけではない</strong>点です。
+      古代の人は、鳥を「飛ぶもの」として見ていたのか、「鳴くもの」として見ていたのか、
+      「群れるもの」として見ていたのか——その観察の焦点が、のちの字形の分岐を生みます。
+    </p>
+
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Orakelknochen.JPG" alt="甲骨（殷代）に刻まれた文字の実物写真">
+      <figcaption>画像3：甲骨に刻まれた文字の実物例（殷代の甲骨）。「骨に刻む」という制約が、線を必然的に“象徴”へ押し上げる。</figcaption>
+    </figure>
+
+    <div class="grid2">
+      <figure>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/%E9%B3%A5-oracle.svg" alt="鳥（甲骨文字の図）">
+        <figcaption>参考図：鳥（甲骨文字の図示）。尾・翼・脚が抽象化される前の段階。</figcaption>
+      </figure>
+      <figure>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/%E9%9B%80-oracle.svg" alt="雀（甲骨文字の図）">
+        <figcaption>参考図：雀（甲骨文字の図示）。「小ささ」よりも、まず“小鳥の姿”が先にある。</figcaption>
+      </figure>
+    </div>
+
+    <h3>2-2. 雀：小さな鳥へ意味を“再編”する</h3>
+    <p>
+      「雀」は、古い段階では「冠羽を立てた小鳥」を描く独立した象形として現れます。
+      しかし後代になると、<strong>「小」＋「隹」</strong>という、意味が読み取れる構造へ再編されます。
+      ここに、文字が「絵」から「説明」へ移行する瞬間があります。
+      絵としての雀は、見れば雀ですが、読み手に依存します。ところが「小＋隹」になると、
+      文字の内部に「小さい鳥」という解釈が埋め込まれる。つまり、<strong>理解の道筋が固定される</strong>のです。
+    </p>
+
+    <h3>2-3. 烏：省略によって“黒さ”を作る（鳥→烏）</h3>
+    <p>
+      「烏」は、しばしば「鳥から目を抜いた字」と説明されます。
+      これは俗説に見えて、実は造形として非常に示唆的です。
+      <strong>カラスは黒く、目が目立たない</strong>——その特徴を、色ではなく「欠落（省略）」で表す。
+      ここには、象形の技法としての“陰影”があります。描き足していくのではなく、
+      取り去ることで性質を生む。つまり「烏」は、<strong>省略で意味を作る象形</strong>の代表例です。
+    </p>
+
+    <!-- 注：古文字学的な最新知見（最初の挿入ポイント） -->
+    <div class="academic-note">
+      <span class="note-marker">注</span><span class="note-title">古文字学的補足：「烏」の字源について</span>
+      「烏」は一般に「黒くて目が見えにくいカラスを表すため、『鳥』から目を省いた字」と説明されることが多い。しかし甲骨文字や金文を調べる現代の古文字学ではこの説は否定されている。古い字形には「烏」にも目が描かれている例があり、現在は「鳥」の象形にカラスの鳴き声を示す要素が加わって成立し、後に字形の簡略化で目が省かれたように見える形になったと考えられている。
+    </div>
+
+    <div class="grid2">
+      <figure>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/%E9%B3%A5-oracle.svg" alt="鳥（甲骨）">
+        <figcaption>比較図A：鳥（甲骨）。視覚的に「目」が立つ構造。</figcaption>
+      </figure>
+      <figure>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/%E7%83%8F-bronze.svg" alt="烏（古い字形：金文・古文系）">
+        <figcaption>比較図B：烏（古い字形の図示）。「目」を消す／弱める方向に字形が寄っていく。</figcaption>
+      </figure>
+    </div>
+
+    <h3>2-4. 象形文字比較“図”が示すこと：写実ではなく、判断が埋まっている</h3>
+    <p>
+      ここまでの図から分かるのは、象形文字が単に「上手い絵」ではない、ということです。
+      <strong>何を残し、何を消すか</strong>に、観察の価値判断が入り込みます。
+      「雀」は“かわいさ”を描いたのではなく、まず“小鳥の特徴”を掴んだ。
+      「烏」は“不吉”を描いたのではなく、まず“黒さ”を省略として設計した。
+      ところが、字形が生活の中に何百年も置かれると、<strong>その設計が印象と結びつき、逆に印象を強化する</strong>。
+      「烏＝黒い＝不吉」という連想は、文化や宗教の層を経て増幅されますが、
+      増幅された後には、字形が“最初からそうだった”かのように見えてくる。
+      ここが、象形文字の「意味の深さ」であり、同時に「世界観固定装置」としての怖さでもあります。
+    </p>
+
+    <h3 id="sec-2-5">2-5. 雀と烏の生息数：数の優位と、存在感の優位</h3>
+    <p>
+      「日常の鳥」という直観を、いったんデータで支えます。ここでは、添付データ（日本中心）を統合して、
+      目安としての推定個体数を示します（推定であり、方法によって幅があります）。
+    </p>
+
+    <table>
+      <thead><tr><th>項目</th><th>雀（スズメ）</th><th>烏（主にハシブト／ハシボソ）</th></tr></thead>
+      <tbody>
+        <tr><th>推定個体数（日本）</th><td>約1,000万〜2,000万羽規模（日本）</td><td>約300万〜500万羽規模（日本）</td></tr>
+        <tr><th>近年の傾向</th><td>1990年代以降、減少が指摘されやすい</td><td>都市部で増加→対策で横ばい〜やや減少・安定</td></tr>
+        <tr><th>“印象”</th><td>「数は多い／身近／小さい」</td><td>「数は少なくても／大きい／目立つ／賢い」</td></tr>
+      </tbody>
+    </table>
+
+    <p>
+      ここで面白いのは、<strong>数の大小が、そのまま象徴の強度にならない</strong>ことです。
+      むしろ逆で、個体数が少ない烏の方が、文学・伝承・都市の話題で前景化しやすい。
+      これは、体格差・鳴き声・知能への評価・ゴミ問題などの生活要因もありますが、
+      もう一歩踏み込むと、<strong>「烏」という字がもつ“省略の黒さ”</strong>が、印象の回路を短絡させている可能性もあります。
+      つまり、データと印象の間に、字形が割り込んでいる。
+    </p>
+  </section>
+
+  <section id="sec-3">
+    <h2>3. 漢字表記の鳥（68種）— book88-6 参照（完全統合）</h2>
+
+    <div class="callout">
+      <p>
+        ここでは <strong>book88-6（分類表）</strong>の内容を、<strong>本稿内に完全統合</strong>し、
+        すべてを内部リンク（ジャンプ）可能にしました。
+        さらに、次章「代表的な漢字の意味（20選）」に解説があるものは、各項目から <span class="kicker">→成り立ち</span> で直接飛べます。
+      </p>
+      <div class="anchor-jump">
+        <a href="#sec-3">分類表（ここ）</a>
+        <a href="#sec-4">代表20選（book88-6-1）</a>
+      </div>
+    </div>
+
+    <p class="note">※「※熟語」等の注記が付いていたものは、68種カウントから除外しています（分類表の“鳥種”としての核のみを採用）。</p>
+
+    <ol class="birdlist">
+      <li id="bird-雀"><span class="bird-name">雀</span><span class="bird-yomi">（すずめ）</span> <a class="to-meaning" href="#meaning-雀">→成り立ち</a></li>
+<li id="bird-烏"><span class="bird-name">烏</span><span class="bird-yomi">（からす）</span> <a class="to-meaning" href="#meaning-烏">→成り立ち</a></li>
+<li id="bird-鶴"><span class="bird-name">鶴</span><span class="bird-yomi">（つる）</span> <a class="to-meaning" href="#meaning-鶴">→成り立ち</a></li>
+<li id="bird-鳩"><span class="bird-name">鳩</span><span class="bird-yomi">（はと）</span> <a class="to-meaning" href="#meaning-鳩">→成り立ち</a></li>
+<li id="bird-鶏"><span class="bird-name">鶏</span><span class="bird-yomi">（にわとり）</span></li>
+<li id="bird-家鴨"><span class="bird-name">家鴨</span><span class="bird-yomi">（あひる）</span></li>
+<li id="bird-鵞鳥"><span class="bird-name">鵞鳥</span><span class="bird-yomi">（がちょう）</span></li>
+<li id="bird-軍鶏"><span class="bird-name">軍鶏</span><span class="bird-yomi">（しゃも）</span></li>
+<li id="bird-鸚哥"><span class="bird-name">鸚哥</span><span class="bird-yomi">（インコ）</span></li>
+<li id="bird-鸚鵡"><span class="bird-name">鸚鵡</span><span class="bird-yomi">（おうむ）</span></li>
+<li id="bird-孔雀"><span class="bird-name">孔雀</span><span class="bird-yomi">（くじゃく）</span> <a class="to-meaning" href="#meaning-孔雀">→成り立ち</a></li>
+<li id="bird-駝鳥"><span class="bird-name">駝鳥</span><span class="bird-yomi">（だちょう）</span></li>
+<li id="bird-白鳥"><span class="bird-name">白鳥</span><span class="bird-yomi">（はくちょう）</span> <a class="to-meaning" href="#meaning-白鳥">→成り立ち</a></li>
+<li id="bird-七面鳥"><span class="bird-name">七面鳥</span><span class="bird-yomi">（しちめんちょう）</span></li>
+<li id="bird-鴨"><span class="bird-name">鴨</span><span class="bird-yomi">（かも）</span></li>
+<li id="bird-真鴨"><span class="bird-name">真鴨</span><span class="bird-yomi">（まがも）</span></li>
+<li id="bird-鴛鴦鴛"><span class="bird-name">鴛鴦・鴛</span><span class="bird-yomi">（おしどり）</span></li>
+<li id="bird-鵜鸕鶿"><span class="bird-name">鵜・鸕鶿</span><span class="bird-yomi">（う）</span></li>
+<li id="bird-川鵜"><span class="bird-name">川鵜</span><span class="bird-yomi">（かわう）</span></li>
+<li id="bird-鷺"><span class="bird-name">鷺</span><span class="bird-yomi">（さぎ）</span> <a class="to-meaning" href="#meaning-鷺">→成り立ち</a></li>
+<li id="bird-白鷺"><span class="bird-name">白鷺</span><span class="bird-yomi">（しらさぎ）</span></li>
+<li id="bird-雁"><span class="bird-name">雁</span><span class="bird-yomi">（がん）</span></li>
+<li id="bird-鴎鷗"><span class="bird-name">鴎・鷗</span><span class="bird-yomi">（かもめ）</span></li>
+<li id="bird-都鳥"><span class="bird-name">都鳥</span><span class="bird-yomi">（みやこどり／ゆりかもめ）</span></li>
+<li id="bird-千鳥"><span class="bird-name">千鳥</span><span class="bird-yomi">（ちどり）</span></li>
+<li id="bird-鴫鷸"><span class="bird-name">鴫・鷸</span><span class="bird-yomi">（しぎ類）</span></li>
+<li id="bird-鷸"><span class="bird-name">鷸</span><span class="bird-yomi">（しぎ）</span></li>
+<li id="bird-水鶏"><span class="bird-name">水鶏</span><span class="bird-yomi">（くいな）</span></li>
+<li id="bird-鷭"><span class="bird-name">鷭</span><span class="bird-yomi">（ばん）</span></li>
+<li id="bird-鳰"><span class="bird-name">鳰</span><span class="bird-yomi">（にお／かいつぶり）</span></li>
+<li id="bird-鸛"><span class="bird-name">鸛</span><span class="bird-yomi">（こうのとり）</span></li>
+<li id="bird-鴇"><span class="bird-name">鴇</span><span class="bird-yomi">（とき）</span></li>
+<li id="bird-杜鵑時鳥不如帰"><span class="bird-name">杜鵑・時鳥・不如帰</span><span class="bird-yomi">（ほととぎす）</span></li>
+<li id="bird-郭公"><span class="bird-name">郭公</span><span class="bird-yomi">（かっこう）</span></li>
+<li id="bird-百千鳥"><span class="bird-name">百千鳥</span><span class="bird-yomi">（ももちどり）</span></li>
+<li id="bird-鶯"><span class="bird-name">鶯</span><span class="bird-yomi">（うぐいす）</span> <a class="to-meaning" href="#meaning-鶯">→成り立ち</a></li>
+<li id="bird-目白"><span class="bird-name">目白</span><span class="bird-yomi">（めじろ）</span></li>
+<li id="bird-鶫鶇"><span class="bird-name">鶫・鶇</span><span class="bird-yomi">（つぐみ）</span></li>
+<li id="bird-百舌"><span class="bird-name">百舌</span><span class="bird-yomi">（もず）</span> <a class="to-meaning" href="#meaning-百舌">→成り立ち</a></li>
+<li id="bird-雲雀"><span class="bird-name">雲雀</span><span class="bird-yomi">（ひばり）</span></li>
+<li id="bird-燕"><span class="bird-name">燕</span><span class="bird-yomi">（つばめ）</span> <a class="to-meaning" href="#meaning-燕">→成り立ち</a></li>
+<li id="bird-翡翠"><span class="bird-name">翡翠</span><span class="bird-yomi">（かわせみ）</span> <a class="to-meaning" href="#meaning-翡翠">→成り立ち</a></li>
+<li id="bird-鵯"><span class="bird-name">鵯</span><span class="bird-yomi">（ひよどり）</span></li>
+<li id="bird-鶺鴒"><span class="bird-name">鶺鴒</span><span class="bird-yomi">（せきれい）</span></li>
+<li id="bird-鵲"><span class="bird-name">鵲</span><span class="bird-yomi">（かささぎ）</span></li>
+<li id="bird-駒鳥"><span class="bird-name">駒鳥</span><span class="bird-yomi">（こまどり）</span></li>
+<li id="bird-椋鳥"><span class="bird-name">椋鳥</span><span class="bird-yomi">（むくどり）</span></li>
+<li id="bird-四十雀"><span class="bird-name">四十雀</span><span class="bird-yomi">（しじゅうから）</span></li>
+<li id="bird-山雀"><span class="bird-name">山雀</span><span class="bird-yomi">（やまがら）</span></li>
+<li id="bird-五十雀"><span class="bird-name">五十雀</span><span class="bird-yomi">（ごじゅうから）</span></li>
+<li id="bird-瑠璃鳥"><span class="bird-name">瑠璃鳥</span><span class="bird-yomi">（るりびたき）</span></li>
+<li id="bird-黄鶲"><span class="bird-name">黄鶲</span><span class="bird-yomi">（きびたき）</span></li>
+<li id="bird-川烏"><span class="bird-name">川烏</span><span class="bird-yomi">（かわがらす）</span></li>
+<li id="bird-夜雀"><span class="bird-name">夜雀</span><span class="bird-yomi">（よたか）</span></li>
+<li id="bird-鶸"><span class="bird-name">鶸</span><span class="bird-yomi">（ひわ）</span></li>
+<li id="bird-鷽"><span class="bird-name">鷽</span><span class="bird-yomi">（うそ）</span></li>
+<li id="bird-啄木鳥"><span class="bird-name">啄木鳥</span><span class="bird-yomi">（きつつき）</span> <a class="to-meaning" href="#meaning-啄木鳥">→成り立ち</a></li>
+<li id="bird-鶲"><span class="bird-name">鶲</span><span class="bird-yomi">（ひたき）</span></li>
+<li id="bird-鷹"><span class="bird-name">鷹</span><span class="bird-yomi">（たか）</span></li>
+<li id="bird-隼"><span class="bird-name">隼</span><span class="bird-yomi">（はやぶさ）</span> <a class="to-meaning" href="#meaning-隼">→成り立ち</a></li>
+<li id="bird-鳶鴟"><span class="bird-name">鳶・鴟</span><span class="bird-yomi">（とび）</span></li>
+<li id="bird-梟"><span class="bird-name">梟</span><span class="bird-yomi">（ふくろう）</span></li>
+<li id="bird-鷂"><span class="bird-name">鷂</span><span class="bird-yomi">（はいたか）</span></li>
+<li id="bird-熊鷹"><span class="bird-name">熊鷹</span><span class="bird-yomi">（くまたか）</span></li>
+<li id="bird-鳳凰"><span class="bird-name">鳳凰</span><span class="bird-yomi">（ほうおう）</span> <a class="to-meaning" href="#meaning-鳳凰">→成り立ち</a></li>
+<li id="bird-朱雀"><span class="bird-name">朱雀</span><span class="bird-yomi">（すざく／しゅじゃく）</span></li>
+<li id="bird-八咫烏"><span class="bird-name">八咫烏</span><span class="bird-yomi">（やたがらす）</span> <a class="to-meaning" href="#meaning-八咫烏">→成り立ち</a></li>
+<li id="bird-鵺"><span class="bird-name">鵺</span><span class="bird-yomi">（ぬえ）</span> <a class="to-meaning" href="#meaning-鵺">→成り立ち</a></li>
+    </ol>
+
+    <details>
+      <summary>参考：book88-6（元データ）を本文内に「資料」として格納</summary>
+      <p class="note">元データの文章表現は改変せず、内容の位置づけのみを「資料」として分離しています。</p>
+      <blockquote>鳥の分類表：実在種・伝承種・表記バリエーション
+📚 鳥の分類表
+① 実在する鳥種（日常利用・野鳥・飼育鳥）
+日常的に観察・飼育され、漢字表記が用いられる実在の鳥類
+日常利用・飼育鳥
+雀
+（すずめ）
+烏
+（からす）
+鶴
+（つる）
+鳩
+（はと）
+鶏
+（にわとり）
+家鴨
+（あひる）
+鵞鳥
+（がちょう）
+軍鶏
+（しゃも）
+鸚哥
+（インコ）
+鸚鵡
+（おうむ）
+孔雀
+（くじゃく）
+駝鳥
+（だちょう）
+白鳥
+（はくちょう）
+七面鳥
+（しちめんちょう）
+野鳥・水鳥
+鴨
+（かも）
+真鴨
+（まがも）
+鴛鴦・鴛
+（おしどり）
+鵜・鸕鶿
+（う）
+川鵜
+（かわう）
+鷺
+（さぎ）
+白鷺
+（しらさぎ）
+雁
+（がん）
+鴎・鷗
+（かもめ）
+都鳥
+（みやこどり／ゆりかもめ）
+千鳥
+（ちどり）
+鴫・鷸
+（しぎ類）
+鷸
+（しぎ）
+水鶏
+（くいな）
+鷭
+（ばん）
+鳰
+（にお／かいつぶり）
+鸛
+（こうのとり）
+鴇
+（とき）
+杜鵑・時鳥・不如帰
+（ほととぎす）
+郭公
+（かっこう）
+百千鳥
+（ももちどり）
+小鳥・山鳥
+鶯
+（うぐいす）
+目白
+（めじろ）
+鶫・鶇
+（つぐみ）
+百舌
+（もず）
+雲雀
+（ひばり）
+燕
+（つばめ）
+翡翠
+（かわせみ）
+鵯
+（ひよどり）
+鶺鴒
+（せきれい）
+鵲
+（かささぎ）
+駒鳥
+（こまどり）
+椋鳥
+（むくどり）
+四十雀
+（しじゅうから）
+山雀
+（やまがら）
+五十雀
+（ごじゅうから）
+瑠璃鳥
+（るりびたき）
+黄鶲
+（きびたき）
+川烏
+（かわがらす）
+夜雀
+（よたか）
+鶸
+（ひわ）
+鷽
+（うそ）
+啄木鳥
+（きつつき）
+鶲
+（ひたき）
+猛禽類
+鷹
+（たか）
+隼
+（はやぶさ）
+鷹隼
+（たかはやぶさ）
+※熟語
+鷲
+（わし）
+鳶・鴟
+（とび）
+梟
+（ふくろう）
+梟鴞
+（きょうきょう）
+※熟語
+鷲鷹
+（わしたか）
+※熟語
+鶚
+（みさご）
+鷂
+（はいたか）
+熊鷹
+（くまたか）
+② 伝承上の鳥（実在しない神話・伝説上の鳥）
+鳳凰
+（ほうおう）
+朱雀
+（すざく／しゅじゃく）
+八咫烏
+（やたがらす）
+鵺
+（ぬえ）
+鵺鳥
+（ぬえどり）
+※鵺の別表記
+迦楼羅
+（かるら）
+鴻
+（おおとり）
+※伝説上の大鳥
+③ 表記のバリエーション（異体字・旧字体・別表記・熟語）
+既出の鳥種に対する異なる表記法や、熟語として存在するもの
+異体字・旧字体
+鴎・鷗
+（かもめ）
+：新旧字体
+鶫・鶇
+（つぐみ）
+：異体字
+鵜・鸕鶿
+（う）
+：常用字と正式字
+杜鵑・時鳥・不如帰
+（ほととぎす）
+：同一種の別表記
+熟語・複合語
+鷲鷹
+（わしたか）
+：猛禽類の総称的熟語
+鷹隼
+（たかはやぶさ）
+：猛禽類の熟語
+梟鴞
+（きょうきょう）
+：梟の異称的熟語
+鷸鴫
+（しぎしぎ）
+：鴫・鷸類の畳語的表現
+白鳥
+（はくちょう）
+：漢語表記
+白鷺
+（しらさぎ）
+：和語表記と漢語の中間
+家鴨
+（あひる）
+：漢字表記
+軍鶏
+（しゃも）
+：漢字表記
+鸚哥
+（インコ）
+：漢字表記（常用はカタカナ）
+鸚鵡
+（おうむ）
+：漢字表記
+鶤鶏
+（けいけい／しゃも）
+：軍鶏の別表記…</blockquote>
+    </details>
+  </section>
+
+  <section id="sec-4">
+    <h2>4. 代表的な漢字の意味（20選）— book88-6-1 参照</h2>
+
+    <div class="callout">
+      <p>
+        ここは <strong>book88-6-1</strong> の20選を<strong>全文引用ではなく、本文として統合</strong>した章です。
+        各カードの末尾に「↩ 分類表へ戻る」を付け、<strong>book88-6 ⇄ book88-6-1 の相互ジャンプ</strong>が成立するようにしています。
+      </p>
+      <div class="anchor-jump">
+        <a href="#sec-3">分類表（68種）へ</a>
+        <a href="#sec-2">雀と烏（象形）へ</a>
+      </div>
+    </div>
+
+    <!-- 注：烏の解説に関する補足（2つ目の挿入ポイント） -->
+    <div class="academic-note">
+      <span class="note-marker">注</span><span class="note-title">上記「烏」の説明について</span>
+      上記の説明は伝統的な字源解釈に基づくものである。現代の古文字学研究では、甲骨文字・金文の実証的考察により、先述の注で示した通り「鳴き声由来」の説が有力となっている。本稿では伝統的見解と最新学説の両方を併記する。
+    </div>
+
+    <div class="meaning-grid">
+      
+    <article class="meaning-card" id="meaning-雀">
+      <h3>雀 <span class="small">（すずめ）</span></h3>
+      <p>殷代の甲骨文字では、冠羽を強調した小鳥の姿を描く象形文字として生まれた。当初は「小」や「隹」とは無関係の独立した絵であり、身近な小鳥の特徴を簡略化したものであった。その後、秦代の小篆では「小」と、尾の短い鳥を表す象形文字「隹」を組み合わせた会意文字へと再編成され、「小さな鳥」という意味を明確に示す構造となった。現在の楷書もこの形を受け継ぎ、漢字が絵から抽象的記号へ発展した過程を示している。</p>
+      <p class="backlink"><a href="#bird-雀">↩ 分類表（雀）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-烏">
+      <h3>烏 <span class="small">（からす）</span></h3>
+      <p>「烏」は「鳥」の象形から派生した特異な漢字である。元来カラスは全身黒く目が目立たないため、古代の文字では「鳥」の字形から目の部分（―）をあえて省略し、黒くて目立たない特徴を視覚的に表現した。甲骨文字・金文ですでにこの特徴が見られ、「目なき鳥」がカラスを指すようになった。後に「焉」などにも影響を与えた、省略による象形の妙を示す代表例。</p>
+      <p class="backlink"><a href="#bird-烏">↩ 分類表（烏）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-鳩">
+      <h3>鳩 <span class="small">（はと）</span></h3>
+      <p>「鳩」は音符「九」と鳥の「隹」を組み合わせた形声文字である。「九」は単なる音声だけでなく、「集まる」「たくさん」の含意があり、ハトが群れをなして集まる生態を表すという解釈が古来ある。また「九」が曲がるさまを示し、ハトの丸みを帯びた体つきを暗示するとの見方も。甲骨文にはすでに「鳩」の原形があり、当時から身近な鳥として象形的要素を含んでいた。</p>
+      <p class="backlink"><a href="#bird-鳩">↩ 分類表（鳩）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-燕">
+      <h3>燕 <span class="small">（つばめ）</span></h3>
+      <p>「燕」はツバメの全体形を描いた象形文字の代表格である。甲骨文字では、尖ったくちばし、長く二又に分かれた尾びれ、開いた翼を線で表現しており、まるで飛翔するツバメのシルエットそのもの。後に筆画が整えられて現在の複雑な字形になったが、原形は「ツバメの絵」である。部首としては「れんが（灬）」の部分が尾と足の名残で、全体として生き生きとした鳥の姿を今に伝える。</p>
+      <p class="backlink"><a href="#bird-燕">↩ 分類表（燕）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-翡翠">
+      <h3>翡翠 <span class="small">（かわせみ）</span></h3>
+      <p>「翡」と「翠」は二文字で美しい羽色を表す。「翡」は「非」（分かれる意）と「羽」から成り、赤紫色の羽が混ざるさま。「翠」は「卒」（すぐれる）と「羽」で、鮮やかな青緑の羽を意味する。元来はどちらも鳥の名ではなく羽色を指したが、後にカワセミのオス（翡）とメス（翠）の羽色がそれぞれ赤紫と青緑であることから「翡翠」でカワセミを指すようになった。色彩を漢字に閉じ込めた象徴的例。</p>
+      <p class="backlink"><a href="#bird-翡翠">↩ 分類表（翡翠）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-鷺">
+      <h3>鷺 <span class="small">（さぎ）</span></h3>
+      <p>「鷺」は「路」と「鳥」の組み合わせ。「路」は音符であると同時に、「露」や「鷺」に共通する「白くて目立つ」イメージを含むという説がある。サギ類は白い個体が多く、水辺をゆっくり歩く（路＝歩く道）姿から「路の鳥」と名付けられたとする解釈も。甲骨文字ではないが、漢代の字書『説文解字』では「鳥の白色なる者」とされ、水辺の白鳥を描く古人の観察眼がにじむ。</p>
+      <p class="backlink"><a href="#bird-鷺">↩ 分類表（鷺）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-鶯">
+      <h3>鶯 <span class="small">（うぐいす）</span></h3>
+      <p>「鶯」は「栄」と「鳥」から成る。「栄」は美しく咲きほこる意味を持ち、ウグイスのさえずりの美しさを「栄える声」と捉えた。また「榮（旧字体）」には花が咲き乱れるイメージがあり、春を告げる鳥としての象徴性が込められている。字形としては「つつみがまえ（冖）」を冠し、その中に「火」と「冖」の変形が含まれるが、全体としてウグイスの繊細な姿よりも声の印象を重んじた稀有な成り立ち。</p>
+      <p class="backlink"><a href="#bird-鶯">↩ 分類表（鶯）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-啄木鳥">
+      <h3>啄木鳥 <span class="small">（きつつき）</span></h3>
+      <p>「啄木鳥」は三文字で一語を成す複合漢字である。「啄」は「口」と「豕（ぶた）」に似た部分から成り、くちばしでつつく動作を示す。「木」はそのまま樹木、「鳥」は鳥。つまり「木をつつく鳥」を三字で絵画的に表現したもので、日本語の「きつつき」を漢字に写した巧みな例。中国語でも「啄木鳥」はキツツキ類を指し、古代からの観察がそのまま字形に結実している。</p>
+      <p class="backlink"><a href="#bird-啄木鳥">↩ 分類表（啄木鳥）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-鵜">
+      <h3>鵜 <span class="small">（う）</span></h3>
+      <p>「鵜」は「弟」と「鳥」で構成される。「弟」は単なる音符ではなく、「低い」「下がる」という意味を含む（例：梯子の「梯」は高い所へ上がる道具だが、「弟」に低いイメージがある）。ウは水中に潜って魚をとる習性を持ち、「低く潜る鳥」という意味が込められたと解釈される。古代中国でも「鵜飼い」が行われており、その行動に基づいた合理的な命名がなされている。</p>
+      <p class="backlink"><a href="#bird-鵜">↩ 分類表（鵜）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-百舌">
+      <h3>百舌 <span class="small">（もず）</span></h3>
+      <p>「百舌」は「百」と「舌」の会意文字である。モズは他の鳥の鳴き声を巧みにまねることから、「百の舌（さまざまな鳴き声）を持つ鳥」と名付けられた。古くは『万葉集』でも「百舌鳥」と表記され、その擬態能力への驚きが漢字に固定された。百は数ではなく「多くの」という意味で、舌は鳴き声を象徴する。漢字の組み合わせだけで生態を言い当てた、古人のユーモアあふれる造字法である。</p>
+      <p class="backlink"><a href="#bird-百舌">↩ 分類表（百舌）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-鶴">
+      <h3>鶴 <span class="small">（つる）</span></h3>
+      <p>「鶴」は音符「寉」と鳥の「隹」から成る。「寉」は「あう」の意味もあり、つがいで仲良くいる様子から瑞鳥とされた。甲骨文字にはすでに長い脚と首を持つ鳥の姿で描かれ、寿命が長く仙人の乗り物とも信じられた。日本では「鶴は千年」と言われ、めでたい席の図案に欠かせない。字形にも気品があり、長寿・高潔・夫婦円満の象徴として漢字そのものが吉祥性を帯びている。</p>
+      <p class="backlink"><a href="#bird-鶴">↩ 分類表（鶴）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-鳳凰">
+      <h3>鳳凰 <span class="small">（ほうおう）</span></h3>
+      <p>「鳳」も「凰」ももとは神話上の霊鳥を描いた象形文字。「鳳」は大きな冠と美しい尾羽を立てた雄の姿、「凰」は同様の雌の姿に由来する。甲骨文では太陽や火を背負ったような姿で表現され、聖王の出現に現れる瑞鳥とされた。二字で並べることで陰陽の調和が完成し、天下泰平の象徴となる。漢字自体が神話的権威とめでたさを内包し、古代から現代まで吉祥文様として愛される。</p>
+      <p class="backlink"><a href="#bird-鳳凰">↩ 分類表（鳳凰）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-孔雀">
+      <h3>孔雀 <span class="small">（くじゃく）</span></h3>
+      <p>「孔」は「あな」や「はなはだ」の意味を持ち、「雀」は小鳥を指すが、合わせて「大きな美しい鳥」を表す。孔雀は古代インドや東南アジアから伝わり、中国では明るく華やかな羽が吉祥とされた。字形としては「孔」が音符を兼ね、「雀」が鳥のカテゴリーを示す。孔雀明王など仏教でも尊ばれ、開いた羽が千の目にも見えることから魔除けの意味も宿す、祝祭感あふれる漢字である。</p>
+      <p class="backlink"><a href="#bird-孔雀">↩ 分類表（孔雀）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-白鳥">
+      <h3>白鳥 <span class="small">（はくちょう）</span></h3>
+      <p>「白」は象形文字で、どんぐりの実の中の白い部分や、明るく光るものを描いたとも言われる。そこに「鳥」を組み合わせ、「白い鳥」を意味する。白は古来、清浄・神聖・純粋の色であり、白鳥は神の使いや幸運の訪れとして世界各地で崇められた。漢字表記「白鳥」はそれ自体がイメージを喚起し、スワンよりも格調高い。皇室の歌会でも詠まれ、平和の象徴として定着している。</p>
+      <p class="backlink"><a href="#bird-白鳥">↩ 分類表（白鳥）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-鴛鴦">
+      <h3>鴛鴦 <span class="small">（おしどり）</span></h3>
+      <p>「鴛」は「夗」（うつむく・曲がる）と鳥、「鴦」は「央」（まんなか、安定）と鳥で、つがいで寄り添う姿を示す。オシドリは常に雄雌が一緒にいることから、仲むつまじい夫婦の象徴とされ、婚礼や祝い事の文様に多用された。甲骨文字の段階ではないが、古代中国ですでに『詩経』に登場し、漢字が愛情や吉祥の観念を背負った好例。二文字で対になるのもめでたさを高めている。</p>
+      <p class="backlink"><a href="#bird-鴛鴦">↩ 分類表（鴛鴦）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-八咫烏">
+      <h3>八咫烏 <span class="small">（やたがらす）</span></h3>
+      <p>「八」は数、「咫」は長さの単位（約18cm）、「烏」はカラス。三文字で「大きなカラス」を意味するが、日本神話では神武天皇を熊野から大和へ導いた霊鳥とされる。古くは『日本書紀』『古事記』に登場し、現在も熊野本宮大社のシンボル。漢字そのものが神話的権威と歴史的ディテールを内包し、サッカー日本代表のエンブレムにも採用されるなど、古代と現代をつなぐ重要な文化的漢字である。</p>
+      <p class="backlink"><a href="#bird-八咫烏">↩ 分類表（八咫烏）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-鵺">
+      <h3>鵺 <span class="small">（ぬえ）</span></h3>
+      <p>「鵺」は「夜」と「鳥」から成るように見えるが、正確には「夜」+「鳥」で、「夜に鳴く得体の知れない鳥」を指した。『平家物語』では源頼政が退治した怪物として有名で、サルの頭・タヌキの胴体・ヘビの尾・トラの脚などと描写される。漢字一文字に伝説上の鳥と歴史的逸話が凝縮されており、日本の軍記物語と結びついた稀有な例。実在しないが文学史に深く刻まれている。</p>
+      <p class="backlink"><a href="#bird-鵺">↩ 分類表（鵺）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-鳶">
+      <h3>鳶 <span class="small">（とび）</span></h3>
+      <p>「鳶」は「弋」（くい）と「鳥」から成る。鳶が帆をかけたように滑空する姿を、矢の形の「弋」で表したとも言われる。歴史的には江戸の町火消し「鳶職」のシンボルであり、高い所で働く職人たちが鳶に自らをなぞらえた。また戦国時代には旗印や兜の前立てに用いられ、武家の意匠としても重要。漢字一文字に職能・武威・鳥の生態が重なり、日本文化の深層を映す。</p>
+      <p class="backlink"><a href="#bird-鳶">↩ 分類表（鳶）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-鷲">
+      <h3>鷲 <span class="small">（わし）</span></h3>
+      <p>「鷲」は「就」と「鳥」で構成される。「就」は「つく」「すぐれる」意味で、猛禽の中でも特に強大な鳥を指す。古代より鷲は王者の鳥として家紋（鷲の羽紋）や神事に使われ、アイヌ文化でも最高位の鳥とされた。金印『漢委奴國王』の時代から権威の象徴であり、鎌倉時代には鷲の羽が武具の装飾に。漢字そのものが権力と歴史的重みを帯びている。</p>
+      <p class="backlink"><a href="#bird-鷲">↩ 分類表（鷲）へ戻る</a></p>
+    </article>
+    
+
+    <article class="meaning-card" id="meaning-隼">
+      <h3>隼 <span class="small">（はやぶさ）</span></h3>
+      <p>「隼」は「隹」の上部に「一」を加えた形で、もとは狩りに使う鷹類の象形。古代中国では鷹狩りの文化とともに広まり、俊敏さの象徴とされた。日本では「隼人」として律令制下で宮廷警護や儀式を担った部族の名称にもなり、漢字が民族・階級を示す歴史的役割を果たした。また「はやぶさ」は神話にも登場し、現代では探査機の名称として伝統を継ぐ。</p>
+      <p class="backlink"><a href="#bird-隼">↩ 分類表（隼）へ戻る</a></p>
+    </article>
+    
+    </div>
+
+    <details>
+      <summary>参考：book88-6-1（元データ）を本文内に「資料」として格納</summary>
+      <p class="note">元データ全体は長いため、先頭部分を抜粋して格納します。</p>
+      <blockquote>鳥の漢字 成り立ち集 | 象形・瑞祥・歴史
+📖 鳥の漢字・成り立ち詳説
+「AIの友達より、迎合は不要」 ー 象形・歴史・瑞兆を紡ぐ20選
+雀
+(すずめ)
+分類表へ
+殷代の甲骨文字では、冠羽を強調した小鳥の姿を描く象形文字として生まれた。当初は「小」や「隹」とは無関係の独立した絵であり、身近な小鳥の特徴を簡略化したものであった。その後、秦代の小篆では「小」と、尾の短い鳥を表す象形文字「隹」を組み合わせた会意文字へと再編成され、「小さな鳥」という意味を明確に示す構造となった。現在の楷書もこの形を受け継ぎ、漢字が絵から抽象的記号へ発展した過程を示している。
+烏
+(からす)
+分類表へ
+「烏」は「鳥」の象形から派生した特異な漢字である。元来カラスは全身黒く目が目立たないため、古代の文字では「鳥」の字形から目の部分（―）をあえて省略し、黒くて目立たない特徴を視覚的に表現した。甲骨文字・金文ですでにこの特徴が見られ、「目なき鳥」がカラスを指すようになった。後に「焉」などにも影響を与えた、省略による象形の妙を示す代表例。
+鳩
+(はと)
+分類表へ
+「鳩」は音符「九」と鳥の「隹」を組み合わせた形声文字である。「九」は単なる音声だけでなく、「集まる」「たくさん」の含意があり、ハトが群れをなして集まる生態を表すという解釈が古来ある。また「九」が曲がるさまを示し、ハトの丸みを帯びた体つきを暗示するとの見方も。甲骨文にはすでに「鳩」の原形があり、当時から身近な鳥として象形的要素を含んでいた。
+燕
+(つばめ)
+分類表へ
+「燕」はツバメの全体形を描いた象形文字の代表格である。甲骨文字では、尖ったくちばし、長く二又に分かれた尾びれ、開いた翼を線で表現しており、まるで飛翔するツバメのシルエットそのもの。後に筆画が整えられて現在の複雑な字形になったが、原形は「ツバメの絵」である。部首としては「れんが（灬）」の部分が尾と足の名残で、全体として生き生きとした鳥の姿を今に伝える。
+翡翠
+(かわせみ)
+分類表へ
+「翡」と「翠」は二文字で美しい羽色を表す。「翡」は「非」（分かれる意）と「羽」から成り、赤紫色の羽が混ざるさま。「翠」は「卒」（すぐれる）と「羽」で、鮮やかな青緑の羽を意味する。元来はどちらも鳥の名ではなく羽色を指したが、後にカワセミのオス（翡）とメス（翠）の羽色がそれぞれ赤紫と青緑であることから「翡翠」でカワセミを指すようになった。色彩を漢字に閉じ込めた象徴的例。
+鷺
+(さぎ)
+分類表へ
+「鷺」は「路」と「鳥」の組み合わせ。「路」は音符であると同時に、「露」や「鷺」に共通する「白くて目立つ」イメージを含むという説がある。サギ類は白い個体が多く、水辺をゆっくり歩く（路＝歩く道）姿から「路の鳥」と名付けられたとする解釈も。甲骨文字ではないが、漢代の字書『説文解字』では「鳥の白色なる者」とされ、水辺の白鳥を描く古人の観察眼がにじむ。
+鶯
+(うぐいす)
+分類表へ
+「鶯」は「栄」と「鳥」から成る。「栄」は美しく咲きほこる意味を持ち、ウグイスのさえずりの美しさを「栄える声」と捉えた。また「榮（旧字体）」には花が咲き乱れるイメージがあり、春を告げる鳥としての象徴性が込められている。字形としては「つつみがまえ（冖）」を冠し、その中に「火」と「冖」の変形が含まれるが、全体としてウグイスの繊細な姿よりも声の印象を重んじた稀有な成り立ち。
+啄木鳥
+(きつつき)
+分類表へ
+「啄木鳥」は三文字で一語を成す複合漢字である。「啄」は「口」と「豕（ぶた）」に似た部分から成り、くちばしでつつく動作を示す。「木」はそのまま樹木、「鳥」は鳥。つまり「木をつつく鳥」を三字で絵画的に表現したもので、日本語の「きつつき」を漢字に写した巧みな例。中国語でも「啄木鳥」はキツツキ類を指し、古代からの観察がそのまま字形に結実している。
+鵜
+(う)
+分類表へ
+「鵜」は「弟」と「鳥」で構成される。「弟」は単なる音符ではなく、「低い」「下がる」という意味を含む（例：梯子の「梯」は高い所へ上がる道具だが、「弟」に低いイメージがある）。ウは水中に潜って魚をとる習性を持ち、「低く潜る鳥」という意味が込められたと解釈される。古代中国でも「鵜飼い」が行われており、その行動に基づいた合理的な命名がなされている。
+百舌
+(もず)
+分類表へ
+「百舌」は「百」と「舌」の会意文字である。モズは他の鳥の鳴き声を巧みにまねることから、「百の舌（さまざまな鳴き声）を持つ鳥」と名付けられた。古くは『万葉集』でも「百舌鳥」と表記され、その擬態能力への驚きが漢字に固定された。百は数ではなく「多くの」という意味で、舌は鳴き声を象徴する。漢字の組み合わせだけで生態を言い当てた、古人のユーモアあふれる造字法である。
+鶴
+(つる)
+分類表へ
+「鶴」は音符「寉」と鳥の「隹」から成る。「寉」は「あう」の意味もあり、つがいで仲良くいる様子から瑞鳥とされた。甲骨文字にはすでに長い脚と首を持つ鳥の姿で描かれ、寿命が長く仙人の乗り物とも信じられた。日本では「鶴は千年」と言われ、めでたい席の図案に欠かせない。字形にも気品があり、長寿・高潔・夫婦円満の象徴として漢字そのものが吉祥性を帯びている。
+鳳凰
+(ほうおう)
+分類表へ
+「鳳」も「凰」ももとは神話上の霊鳥を描い…</blockquote>
+    </details>
+
+    <hr>
+
+    <h3>4-1. 朱雀：雀は“小鳥”なのに、なぜ“四神”の南が朱雀なのか</h3>
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Wadang-zhuque.jpg" alt="朱雀（Vermilion Bird）を描いた瓦当">
+      <figcaption>画像4：朱雀（Vermilion Bird）の意匠（瓦当）。「鳥の名」から「宇宙配置」へ飛躍する。</figcaption>
+    </figure>
+    <p>
+      「朱雀」は直訳すれば「赤い雀」です。しかし四神思想では、朱雀は南方・火・夏・赤を担う霊鳥であり、
+      “小鳥としての雀”とは釣り合わない巨大な役割を持ちます。
+      ここに、漢字がもつ二重性が出ます。すなわち「雀」が<strong>具体（身近な小鳥）</strong>であると同時に、
+      <strong>抽象（鳥一般を代表する小型の鳥名）</strong>にもなり得るという点です。
+      「朱雀」は、雀を“縮約記号”として使い、そこに朱（赤）という属性を重ね、
+      最終的に天文・方位・儀礼の体系へ接続します。鳥は、ここで「生物」ではなく「座標」になります。
+    </p>
+    <details>
+      <summary>資料：添付「朱雀.htm」から要点抜粋（本文の流れを壊さない範囲）</summary>
+      <blockquote>朱雀
+## ?? 朱雀（すざく／しゅじゃく）とは
+![Image](https://images.openai.com/static-rsc-3/0x9IOgi4szUylbG2dI107fZ66R5SJadsNhBfVCn8j4VBDKq0NlkS6Kv2G_PPDvKZI5xy1asi8JypK3CvYatBTmyHQWiXlyLYIkp_IWMb1zw?purpose=fullsize\&amp;v=1)
+![Image](https://cdn.accentuate.io/8872197750997/19779891495063/%E3%82%B5%E3%83%A0%E3%83%8D_%E3%82%B8%E3%82%AF%E3%83%AC02%E6%9C%B1%E9%9B%8002-v1738113354264.jpg?1920x1080=)
+![Image](https://i.etsystatic.com/37476799/r/il/c13de7/7150849482/il_fullxfull.7150849482_3ws7.jpg)
+![Image](https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Four_Symbols.svg/1280px-Four_Symbols.svg.png)
+### 1?? 基本概念
+**朱雀**は、中国古代思想に由来する「四神（しじん）」の一つで、
+**南方を守護する霊鳥**です。
+* 色：赤（朱）
+* 方位：南
+* 季節：夏
+* 五行：火
+四神は次の四体です：
+* 青龍（東）
+* 白虎（西）
+* 玄武（北）
+* 朱雀（南）
+---
+### 2?? 中国思想における位置づけ
+朱雀は、古代中国の宇宙観である**陰陽五行思想**と結びついています。
+天を四分割し、それぞれに神獣を配した思想体系の中で、
+&gt; 南＝火＝赤＝夏＝朱雀
+という対応関係が成立しました。
+朱雀は単なる鳥ではなく、
+**秩序ある宇宙構造の一部**です。
+---
+### 3?? 日本への伝来
+日本では、奈良・平安期に陰陽道とともに伝来し、
+都城設計にも影響を与えました。
+たとえば：
+* 平城京
+* 平安京
+これらの都は、四神思想に基づき設計されたとされます。
+京都では南に「朱雀門」が置かれました。
+---
+### 4?? 鳳凰との違い
+しばしば混同されますが、
+| 朱雀　　| 鳳凰　　　|
+| ----- | ------- |
+| 方位神　 | 瑞鳥　　　|
+| 四神の一つ | 皇帝の象徴　 |
+| 南方守護　| 太平の世に出現 |
+つまり朱雀は**宇宙秩序の構成要素**、
+鳳凰は**徳の象徴的存在**です。
+---
+### 5?? 「朱雀」という文字
+* 「朱」＝赤色
+* 「雀」＝小鳥
+…</blockquote>
+    </details>
+
+    <h3>4-2. 八咫烏：烏は“不吉”だけではない（導きの霊鳥）</h3>
+    <figure>
+      <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Yatagarasu%20A.svg" alt="八咫烏（意匠）">
+      <figcaption>補足図：三本足の烏（八咫烏の意匠例）。「烏＝黒い＝不吉」の単線を切断する。</figcaption>
+    </figure>
+    <p>
+      「烏」が“目を消した鳥”だとしても、それは不吉の宣言ではありません。
+      八咫烏は、日本神話で神武東征を導く霊鳥として描かれます。
+      ここで「烏」は、<strong>暗さの象徴</strong>ではなく、むしろ<strong>方向付け（導き）</strong>の象徴になります。
+      面白いのは、同じ「烏」という字が、日常では“黒い大型の鳥”の記号として働き、
+      伝承では“神の使い”の記号として働くことです。字形は同じでも、<strong>接続される物語（コンテクスト）が違えば、
+      文字が指す世界も変わる</strong>。つまり、文字は固定装置であると同時に、接続装置でもあります。
+    </p>
+    <details>
+      <summary>資料：添付「八咫烏.htm」から要点抜粋</summary>
+      <blockquote>八咫烏
+## 八咫烏（やたがらす）とは
+八咫烏は日本神話に登場する**神聖なカラス**で、**道案内（導き）**を司る神の使いです。
+### 1. 基本データ
+- **名称**：八咫烏（やたがらす / やたのからす）
+- **英語**：Yatagarasu / Eight-span Crow
+- **特徴**：**3本足**のカラス
+- **神格**：神武東征の際に道案内をした「神の使い」
+- **神社**：熊野本宮大社（和歌山県）などで祀られる
+### 2. 名前の意味
+- **「八咫」**：「八（や）」は数が多いこと、「咫（た）」は長さの単位（約18cm）。
+- 「八咫」で「大きい」という意味。
+- つまり**「大きなカラス」**という名前です。
+- **「烏」**：カラス。
+### 3. 神話での役割（日本書紀・古事記）
+八咫烏が最も活躍するのは、**「神武東征（じんむとうせい）」**という神話です。
+1. **初代天皇・神武天皇**が、宮崎から奈良へ遠征する途中、熊野の山々で道に迷ってしまいます。
+2. そこに**高皇産霊尊（たかみむすびのみこと）**という神様が現れ、八咫烏を遣わします。
+3. 八咫烏は神武天皇の先頭に立ち、険しい山道を案内し、無事に大和（奈良）へ導きました。
+→ この故事から、八咫烏は**「導きの神」**として信仰されるようになりました。
+### 4. なぜ3本足なのか？
+八咫烏最大の特徴は**3本足**であることです。これにはいくつかの理由があります。
+#### 中国の「三足烏（さんそくう）」が起源
+- 八咫烏のルーツは中国神話の**「三足烏（太陽の中に住む3本足のカラス）」**です。
+- 古代中国では、太陽の黒点をカラスに見立て、「太陽には3本足のカラスがいる」と考えられていました。
+- これが日本に伝わり、神武天皇を「太陽の子孫」と結びつけることで、八咫烏に3本足の特徴が与えられました。
+#### 3本足の象徴的な意味
+諸説ありますが、代表的なものは：
+- **天・地・人**（宇宙のすべて）を表す
+- **智・仁・勇**（知恵・思いやり・勇気）の三徳を表す
+- 太陽の象徴としての権威
+### 5. 現代における八咫烏
+#### 日本サッカー協会のシンボル
+八咫烏は**日本サッカー協会（JFA）のエンブレム**に使われています。
+- 理由：八咫烏が「道を導く」存在であることから、**「チームを勝利に導く」**という願いが込められています。
+- サッカー日本代表の愛称「SAMURAI BLUE」のユニフォームにも、この八咫烏マークが入っています。
+#### 熊野信仰
+和歌山県の**熊野本宮大社**をはじめとする熊野三山では、八咫烏は重要な神の使いです。
+- 現在でも熊野では、お守りや絵馬として八咫烏が親しまれています。
+- 熊野本宮大社の八咫烏は、特に「導き」のご利益があるとされています。
+### 6. 朱雀との違い（まとめ）
+| 項目 | 八咫烏 | 朱雀 |
+|:---|:---|:---|
+| **起源** | 日本神話＋中国の三足烏 | 中国古代の天文学・五行思想 |
+| **役割** | **道案内・導き**（神武天皇を導く） | **南方の守護**（宇宙の秩序を守る） |
+| **姿** | 3本足の黒いカラ…</blockquote>
+    </details>
+  </section>
+
+  <section id="sec-5">
+    <h2>5. 表意文字と表音文字</h2>
+
+    <h3>5-1. 表意文字：意味を視覚に“貼り付ける”方式</h3>
+    <p>
+      漢字は、象形・指事・会意・形声など複数の生成原理を持ちますが、総体としては<strong>意味の層が濃い</strong>。
+      とりわけ鳥の漢字は、(1) 生態の観察（鳴き声・飛び方・群れ方）、(2) 生活との距離（家禽／野鳥／害鳥）、
+      (3) 文化的評価（瑞鳥／怪鳥／神鳥）といった層を、字形と熟語の中に折りたたみます。
+      その結果、読む側は「音」より先に「像」を受け取ってしまうことがある。
+      これが、「象形文字の意味の深さ」を生みます。
+    </p>
+
+    <details>
+      <summary>資料：添付「表意文字と象形文字.htm」から要点</summary>
+      <blockquote>表意文字と象形文字
+**表意文字（ひょういもじ）**とは、
+**音ではなく「意味」そのものを表す文字**のことです。
+---
+## 基本的な考え方
+* **1文字＝1つの意味（または意味のかたまり）**
+* 発音が分からなくても、**意味だけは視覚的に理解できる**場合がある
+* 絵や図形の要素をもつことが多い
+---
+## 代表例
+![Image](https://kakijun.jp/gif-mini/0816200-m.gif)
+![Image](https://kids.yahoo.co.jp/search/_next/image?q=75\&amp;url=https%3A%2F%2Fmsp.c.yimg.jp%2Fimages%2Fv2%2FFUTi93tXq405grZVGgDqG1kFgzUBi2vigmURnXfA8OYHNLOPhd2txcG8jZtDMolX1uoxzNXsEc2fviGRSNsm4kVNKsoE7YjrEBT9LQN7Po4X8AX3qh-9DSXgfibyHETgrtvQGdN0sJvM-MC0TacXuA2Ycm_Zx_TOBZLXvYlpOYV-rdmS-JDkd7d-jpzP83NdpY7qP0yNSZ89jk8hfjDZHe39SYCIXYHrc5nhdhpPa0ECpPEVtKClO_HyUhmTXTMkkKutiTgt0f2pL1No6LatyxTQQbzQ0p4caWkyaSELo94%3D%2F19403986a51eddb45e9f2ad77d385c01_w.jpeg\&amp;w=3840)
+![Image](https://item-shopping.c.yimg.jp/i/n/zakka-felice_w-sq135-0007)
+![Image](https://item-shopping.c.yimg.jp/i/l/shop810sign_z17vtw9jxa)
+### 1. 漢字
+* 例：
+* **山** → 山という概念
+* **川** → 川という概念
+* 「音読み・訓読み」はあるが、**本質は意味を担う文字**
+### 2. 象形文字
+* 物の形を簡略化して意味を表す
+* 例：古代文字、甲骨文字
+### 3. ピクトグラム
+* 現代の表意文字的表現
+* 例：??（トイレ）、??（禁止）、非常口マーク
+* 言語を越えて意味が通じる
+---
+## 表意文字と表音文字の違い
+| 観点　 | 表意文字　 | 表音文字　　　　　　　|
+| ---- | ------ | ----------------- |
+| 表すもの | **意味** | **音**　　　　　　 |
+| 例　　| 漢字、記号　| ひらがな、カタカナ、アルファベット |
+| 情報密度 | 高い　　 | 低め　　　　　　　　|
+| 学習負荷 | 高い　　 | 低い　　　　　　　　|
+---
+## 思想的に見ると
+表意文字は
+* **意味を圧縮する文字**
+* **沈黙や背景を含んだ記号**
+* **読む側に解釈を要求する文字**
+とも言えます。
+あなたがこれまで問い続けてきた
+&gt; 「日本語はなぜ情報密度が高いのか」
+&gt; 「ルビは意味補助か、意味分離か」
+というテーマは、**表意文字を中核に持つ言語構造**と深く結びついています。
+---
+必要であれば、次に
+* 表意文字と **AIの誤読の関係**
+* 表意文字が **思想を深くする理由**
+* HTMLにおける「表意的記述（タグ・構造）」
+まで接続して説明できます。
+どこまで…</blockquote>
+    </details>
+
+    <h3>5-2. 表音文字：音を運ぶ代わりに、像を薄くする</h3>
+    <p>
+      表音文字（かな・アルファベットなど）は、意味を直接は運びません。
+      だからこそ、同じ語でも文脈次第で意味が揺れ、比喩や転義がしやすい。
+      一方で、像が薄いぶん「初見で情景が立ち上がらない」ことがある。
+      たとえば「すずめ」とひらがなで書けば音は柔らかいが、字面からは鳥の形が見えない。
+      「雀」と書けば、読めなくても“鳥っぽさ”は立つ。ここに表意の効能があります。
+    </p>
+
+    <h3>5-3. “読めない鳥漢字”が大量にある理由：消えていく字、残る字</h3>
+    <p>
+      鳥名漢字を広げると「読めない／書けない」が急増します。
+      それでも一部の難字が残ったのは、(1) 文化資本としての需要（和歌・俳句・古典）、
+      (2) 名付けの権威（地名・神社・家紋）、(3) 図像としての力（見れば鳥のニュアンスがある）などが働いたからでしょう。
+      逆に、使用頻度が落ちれば字は消えます。難字は「自然淘汰」される。
+      これは言語の合理化であると同時に、<strong>世界の切り分け方（分類の仕方）の縮退</strong>でもあります。
+    </p>
+
+    <details>
+      <summary>資料：添付「消えた漢字.htm」から要点抜粋</summary>
+      <blockquote>**「書くのが難しすぎる」「使われなくなった」**ために消えていった鳥の名前の漢字は、数多く存在します。
+これこそが、漢字の生き残りをかけた「自然淘汰」の姿であり、先ほどまでの「なぜ残ったのか」の議論の裏返しとも言える現象です。
+### ?? 消えてしまった（あるいは稀になった）鳥の漢字の例
+例えば、以下のような漢字は、現代ではほとんど見かけることがありません。
+*　 **?（リュウ）**：**「かわせみ」**という鳥を指す漢字です。美しい鳥ですが、この漢字は「立てる」という意味の「立」が音符で、「水辺にじっと立っている」姿から来ているとも言われます。しかし、現在では「翡翠」（カワセミ）という字の方が一般的になり、こちらはほとんど使われません。
+*　 **鴇（ホウ）**：**「のぎ」**または**「とき」**。実は「とき」を指す漢字として「朱鷺」（トキ）の方が有名ですが、本来「鴇」もトキを指す漢字です。しかし、トキという鳥自体が一度絶滅の危機に瀕したこともあり、この漢字を見る機会は極めて少なくなりました（「朱鷺」の方が美しいイメージで残ったとも言えます）。
+*　 **?（トウ）**：**「かもめ」**の一種を指す漢字ですが、現代では「鴎」（カモメ）が一般的で、こちらはほとんど使われません。
+*　 **鵈（ジョ / とび）**：**「とび」**を指す漢字ですが、「耳」というパーツが入っています。これは「鳶」（トビ）という字の方が圧倒的に一般的で、こちらはほぼ死語となっています。
+### ? なぜこれらの漢字は消えたのか
+先ほどまで議論していた「残った漢字」と比較すると、その理由が明確になります。
+| 残った漢字（鵜・鶴・雁・鷲・鷹） | 消えた漢字（例：?・鴇・?・鵈） |
+| :--- | :--- |
+| **文化的に重要**：和歌、鷹狩り、神話、権力の象徴など、日本人の精神生活や権威と深く結びついていた。 | **文化的役割の縮小**：その鳥自体が日常生活や文化の中で特別な位置を占めなくなった。 |
+| **別の表現が定着しなかった**：これらの漢字に代わる、より簡単で一般的な表記が存在しなかった。 | **別の表現に取って代わられた**：「かわせみ」なら「翡翠」、「とび」なら「鳶」など、よりポピュラーな漢字（あるいはひらがな）が普及した。 |
+| **同音異義語との区別**：文章の中で、他の意味と明確に区別する必要性が高かった。 | **使用頻度の低下**：その漢字を使わなくても、文脈で意味が通じる場面が多かった。 |
+つまり、漢字は単に「難しければ消える」のではなく、**「その漢字を使わなければならないほどの文化的・実用的な必然性」**がなくなったときに、人々の記憶から消えていくのです。
+### ?? まとめ
+「鵜」「鶴」「雁」「鷲」「鷹」は、その複雑さにもかかわらず、**「日本人にとって、これらの鳥を特別な漢字で書き分けることが、文化的にどうしても必要だった」**からこそ、生き残ったと言えます。
+一方で、あなたがおっしゃるように、その「必然性」を失った鳥の名前の漢字は、まさに「書くのが難しい」という理由も手伝って、歴史の中に静かに消えていったのです。
+この視点は、漢字の歴史を考える上で非常に本質的です。素晴らしい気づきを与えてくださり、ありがとうございます。…</blockquote>
+    </details>
+
+    <h3>5-4. AIは何に向いているか：大量調査と、構造の統合</h3>
+    <p>
+      今回の作業自体が示すとおり、AIは「鳥名漢字を集め、重複や表記ゆれを整理し、分類表にし、さらに内部リンクで統合する」といった、
+      <strong>量×構造</strong>の仕事に強い。
+      ただし、印象や価値判断（“烏は不吉か”など）を安易に結論付けると、迎合や短絡が入りやすい。
+      だからこそ、本稿では「字形」「資料」「データ」を足場にしつつ、最後の判断は人間側の思考として残す構成にしています。
+    </p>
+  </section>
+
+  <section id="sec-6">
+    <h2>6. まとめ</h2>
+
+    <p>
+      雀と烏を比べることは、単なる二種比較に留まりませんでした。
+      (1) 象形文字の段階では、鳥は「線の選択」によって意味を持ち、
+      (2) 後代の再編で、「小＋隹」のように解釈が埋め込まれ、
+      (3) さらに朱雀・八咫烏のように、鳥が神話・方位・国家・儀礼へ接続され、
+      (4) その接続が、逆に日常の印象（烏＝不吉、など）へ回帰していく。
+      つまり、<strong>生物→文字→観念→生活</strong>という循環が起きています。
+    </p>
+
+    <p>
+      最後に、本稿の技術的なポイントを一つだけ明示すると、
+      <strong>分類表（68種）と、代表解説（20選）を相互リンクで結び、さらに象形図・実物写真・生息数データを同一文書に統合した</strong>ことです。
+      これは、紙では重くなりがちな参照関係を、HTMLが“軽く”扱える例でもあります。
+      文字の生成原理を探る作業は、内容だけでなく、<strong>構造（リンク）そのもの</strong>にも現れます。
+    </p>
+
+    <details>
+      <summary>付記：雀宮駅（地名としての雀）</summary>
+      <p>「雀」が地名・駅名に残るとき、そこには「身近さ」「土地の記憶」「社（神社）との結びつき」が入り込みます。</p>
+      <blockquote>雀の宮駅の由来
+## 雀宮駅 の由来
+![Image](https://www.retro-station.jp/03_kanto/suzumenomiya.jpg)
+![Image](https://www.jreast.co.jp/estation/stations/img/floormap/0900_1f-2f.png)
+![Image](https://www.city.utsunomiya.lg.jp/_res/projects/default_project/_page_/001/007/344/099b.jpg)
+![Image](https://www.city.utsunomiya.lg.jp/_res/projects/default_project/_page_/001/007/344/100b.jpg)
+### 1?? 地名「雀宮（すずめのみや）」から
+駅名は、所在地である栃木県宇都宮市の地名「雀宮」に由来します。
+まず地名があり、その地名を駅名に採用した形です。
+---
+### 2?? 「雀宮」という地名の由来（有力説）
+はっきりした一次史料は多くありませんが、一般には次のように説明されます。
+#### ■ 古代の「宮（みや）」＝神社に由来
+* 「宮」は神社・皇族ゆかりの社を意味することが多い。
+* この地に古くから祀られていた社があり、
+* その周辺を「雀宮」と呼ぶようになったと考えられています。
+#### ■ 「雀」は地形・伝承由来の可能性
+* 雀が多く生息していた土地だったという説
+* あるいは伝承・象徴的名称だったという説
+「宮」という格式ある語が付くことから、単なる鳥名以上の宗教的・歴史的背景を持つ可能性が高いと考えられます。
+---
+### 3?? 駅の成立
+* 1895年（明治28年）、日本鉄道（現在のJR東日本の前身）が開設。
+* 現在は 東日本旅客鉄道（JR東日本）の宇都宮線（東北本線）の駅。
+つまり、
+&gt; 地名「雀宮」 → 駅名「雀宮駅」
+という順序です。
+---
+### 4?? 面白い点
+以前あなたと話した「雀と烏」の対比を思い出すと、
+宇都宮には「二荒山神社」があり、神社文化の強い土地です。
+「雀宮」という名称も、
+* 雀（小さき存在）
+* 宮（神聖性・制度）
+という対比的構造を内包しているようにも読めます。
+単なる駅名以上に、
+「鳥＋宮」という組み合わせは日本語的象徴性を感じさせますね。
+---
+もしよろしければ、
+「雀宮という名前はなぜ“烏宮”ではなかったのか？」
+という方向にも掘り下げられますが、どうしますか。
+雀宮駅の名前は、その地域にある**「雀宮神社」に由来する**という説が有力です。</blockquote>
+    </details>
+
+    <footer>
+      <p>文作成：ChatGPT（GPT-5.2 Thinking）、指示文：筆者作成<br>
+      画像は主にWikimedia Commonsのフリー素材（ライセンス表示は各ファイルページに従う）。</p>
+    </footer>
+  </section>
+</main>
+</body>
+</html>

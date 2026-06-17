@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>テニスボールの科学 ─ 「回転」と「空気」の不思議な関係 ─</title>
+<style>
+:root{
+  --bg:#f7f4ee;
+  --paper:#fffdf9;
+  --ink:#1f2937;
+  --muted:#5f6b7a;
+  --line:#e6dccf;
+  --accent:#9ccf5c;
+  --accent-deep:#5e8d25;
+  --accent-2:#ffd166;
+  --accent-3:#7db7ff;
+  --accent-4:#ff8c69;
+  --shadow:0 12px 28px rgba(63,43,24,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"Hiragino Sans","Yu Gothic","Meiryo",system-ui,sans-serif;background:linear-gradient(180deg,#f2ede4 0%, #faf8f3 220px, var(--bg) 100%);color:var(--ink);line-height:1.95}
+a{color:#2458a6}
+.wrap{max-width:1080px;margin:0 auto;padding:24px}
+.hero{background:linear-gradient(135deg,#eff8d8,#fff7df 55%,#eef6ff);border:1px solid var(--line);border-radius:28px;padding:34px;box-shadow:var(--shadow)}
+.kicker{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:.92rem;color:var(--muted)}
+h1{font-size:clamp(2rem,4.3vw,3.4rem);line-height:1.2;margin:14px 0 10px}
+.subtitle{font-size:1.1rem;color:var(--muted);margin:0 0 18px}
+.lead{font-size:1.05rem;margin:0}
+.grid2{display:grid;grid-template-columns:1.1fr .9fr;gap:22px;align-items:start}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
+.toc{padding:24px}
+.toc h2,.chapter h2{margin-top:0}
+.toc ol{margin:0;padding-left:1.3em}
+.toc li{margin:.45em 0}
+.chapter{margin-top:24px;padding:28px 28px 34px}
+.chapter h2{font-size:1.8rem;border-left:8px solid var(--accent-deep);padding-left:14px}
+.chapter h3{margin-top:1.6em;font-size:1.18rem;color:#24354b}
+.point{background:#fbf8f0;border-left:5px solid var(--accent-4);padding:14px 16px;border-radius:14px;margin:18px 0}
+.summary{background:#f1f8e6;border:1px solid #d8eab7;border-radius:16px;padding:16px 18px;margin-top:18px}
+figure{margin:22px 0}
+figcaption{font-size:.94rem;color:var(--muted);margin-top:8px}
+svg.illust{width:100%;height:auto;border:1px solid var(--line);border-radius:22px;background:#fff;box-shadow:var(--shadow)}
+.columns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.smallnote{font-size:.92rem;color:var(--muted)}
+iframe.ui{width:100%;aspect-ratio:16/10;min-height:420px;height:auto;border:1px solid var(--line);border-radius:22px;background:#0f172a;box-shadow:var(--shadow)}
+.footer{margin:28px 0 12px;color:var(--muted);font-size:.94rem;text-align:center}
+.badge{display:inline-block;padding:4px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:.85rem;color:var(--muted);margin-right:8px}
+
+.learning-map{margin-top:18px;padding:18px 20px;background:linear-gradient(135deg,#fffef9,#f6fbff);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}
+.learning-map h2{margin:0 0 10px;font-size:1.25rem}
+.learning-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.pillcard{background:#fff;border:1px solid var(--line);border-radius:18px;padding:14px}
+.pillcard strong{display:block;margin-bottom:6px;color:#203047}
+.pillcard span{font-size:.94rem;color:var(--muted)}
+@media (max-width:860px){.learning-grid{grid-template-columns:1fr 1fr}}
+
+@media (max-width:860px){.grid2,.columns{grid-template-columns:1fr} .hero{padding:24px} .chapter{padding:22px} iframe.ui{aspect-ratio:4/5;min-height:520px} }
+
+.mutual-links{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 0}
+.mutual-links a{display:inline-block;padding:10px 14px;border:1px solid var(--line,#ddd);border-radius:999px;background:#fff;color:#2458a6;text-decoration:none;box-shadow:var(--shadow,none)}
+.mutual-links a:hover{text-decoration:underline}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <section class="hero">
+    <span class="kicker">book97</span>
+    <h1>テニスボールの科学<br>─ 「回転」と「空気」の不思議な関係 ─</h1>
+    <p class="subtitle">歴史・構造・空力・脳のはたらきまで</p>
+    
+  <nav class="mutual-links" aria-label="関連ページ">
+    <a href="book97.html">通常版へ</a>
+    <a href="book97_kamishibai.html">クリック紙芝居版へ</a>
+  </nav>
+
+    <div class="grid2">
+      <div>
+        <p class="lead">テニスボールは、ただの黄色い玉ではありません。中にはゴムの弾力があり、外にはフェルトの毛羽があり、そのまわりには見えない空気が流れています。しかも、そのボールを追いかけるのは人間の目と脳です。つまりテニスとは、筋力だけの勝負ではなく、<strong>球・空気・回転・予測</strong>の科学そのものなのです。</p>
+        <p>このブログでは、ボールをめぐる数万年の歴史から出発して、真球という理想、ボールの中身、マグナス効果、雨や風の影響、そして「なぜ人は円はわかるのに球は苦手なのか」という不思議まで、ストーリーの流れで学んでいきます。読み終わるころには、テニスボールを見る目が少し変わっているはずです。</p>
+      </div>
+      <div class="card toc">
+        <h2>目次</h2>
+        <ol>
+          <li><a href="#ch1">第1章：はじめに</a></li>
+          <li><a href="#ch2">第2章：ボールの長い歴史</a></li>
+          <li><a href="#ch3">第3章：「真球」ってなんだ？</a></li>
+          <li><a href="#ch4">第4章：ボールのウラ側を大解剖！</a></li>
+          <li><a href="#ch5">第5章：ボールが曲がる！飛ぶ！止まる！</a></li>
+          <li><a href="#ch6">第6章：なぜ「円」は好きで「球」は苦手？</a></li>
+          <li><a href="#ch7">第7章：おわりに</a></li>
+        </ol>
+        <p class="smallnote">途中に6種類の図と、「球をクリックで理解」する断面アニメーションを組み込んであります。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="learning-map">
+    <h2>1分でつかむ学びの地図</h2>
+    <div class="learning-grid">
+      <div class="pillcard"><strong>歴史</strong><span>ボールは遊びから科学へ進化した</span></div>
+      <div class="pillcard"><strong>構造</strong><span>中身と表面が性能を決める</span></div>
+      <div class="pillcard"><strong>空力</strong><span>回転が空気の流れを変え、軌道を変える</span></div>
+      <div class="pillcard"><strong>認知</strong><span>人間は断面や影で球を理解している</span></div>
+    </div>
+  </section>
+
+  <article id="ch1" class="card chapter">
+    <h2>第1章：はじめに</h2>
+    <p>このブログでわかることは大きく5つあります。第一に、ボールが長い歴史の中でどう進化してきたか。第二に、完全な丸である「真球」がなぜ特別なのか。第三に、テニスボールの中身と表面がどんな役目をしているか。第四に、回転と空気の流れがどうやってボールの軌道を変えるか。第五に、私たちの脳がなぜ球を理解しにくいのか、ということです。</p>
+    <p>私たちの身の回りは球であふれています。テニスボール、野球、サッカー、ビー玉、地球、月、シャボン玉、水滴。少し視野を広げると、分子や細胞の世界でも「球に近い形」はたくさん登場します。自然は、力が均等にかかると、よく球に近い形を選びます。だから球を理解することは、スポーツを理解するだけでなく、自然のしくみそのものに近づくことでもあるのです。</p>
+    <div class="point">このブログの合言葉はひとつです。<strong>テニスボールは「回転で未来を操作し、空気でその未来を実現する道具」</strong>だ、ということです。</div>
+    <figure>
+      <svg class="illust" viewBox="0 0 920 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig1-title fig1-desc"><title id="fig1-title">身の回りの球の例</title><desc id="fig1-desc">テニスボール、野球、サッカー、地球、水滴、月を横並びに示し、私たちの世界に球が多いことを示す図。</desc>
+        <rect width="920" height="340" fill="#fffdf9"/>
+        <text x="32" y="42" font-size="28" font-weight="700" fill="#203047">図1　私たちの世界は「球」でできている</text>
+        <g font-size="18" fill="#39485c" font-weight="600">
+          <circle cx="110" cy="180" r="54" fill="#dff27f" stroke="#789d22" stroke-width="4"/>
+          <path d="M76 152c14 18 29 27 34 55M144 152c-14 18-29 27-34 55" stroke="#fff" stroke-width="8" fill="none" stroke-linecap="round"/>
+          <text x="66" y="265">テニス</text>
+          <circle cx="260" cy="180" r="54" fill="#fff" stroke="#d84b47" stroke-width="4"/>
+          <path d="M214 166c30-18 62-18 92 0M214 194c30 18 62 18 92 0" stroke="#d84b47" stroke-width="4" fill="none"/>
+          <text x="229" y="265">野球</text>
+          <circle cx="410" cy="180" r="54" fill="#fff" stroke="#444" stroke-width="3"/>
+          <polygon points="410,135 386,153 394,182 426,182 434,153" fill="#111"/>
+          <text x="378" y="265">サッカー</text>
+          <circle cx="560" cy="180" r="54" fill="#69b7ff" stroke="#2563eb" stroke-width="4"/>
+          <path d="M510 180h100M560 130v100" stroke="#ffffff88" stroke-width="3"/>
+          <text x="542" y="265">地球</text>
+          <circle cx="710" cy="180" r="54" fill="#cfe6ff" stroke="#7c93aa" stroke-width="4"/>
+          <circle cx="690" cy="164" r="10" fill="#fff" opacity=".8"/>
+          <text x="686" y="265">水滴</text>
+          <circle cx="840" cy="180" r="44" fill="#ffe8b1" stroke="#d5a128" stroke-width="4"/>
+          <circle cx="822" cy="162" r="8" fill="#fff6da"/>
+          <text x="813" y="265">月</text>
+        </g>
+      </svg>
+      <figcaption>テニスボールは身近な入口ですが、その先には地球や宇宙までつながる「球の科学」が広がっています。</figcaption>
+    </figure>
+  </article>
+
+  <article id="ch2" class="card chapter">
+    <h2>第2章：ボールの長い歴史</h2>
+    <p>ボールの歴史はとても古く、人類がまだ高度な機械を持っていなかった時代にまでさかのぼります。最初のボールは、今のようにきれいな丸ではありませんでした。石や木をなるべく丸く削ったもの、動物の皮に草や毛を詰めたものなど、「転がるもの」「投げられるもの」がボールの原型でした。大事なのは、最初から完璧な形があったのではなく、<strong>人間が必要に応じて少しずつ球に近づけていった</strong>ということです。</p>
+    <p>古代メソアメリカでは、天然ゴムを使った球技が生まれました。これはただの遊びではなく、宗教儀式とも結びついた特別な行為でした。ボールは神様と人間をつなぐ道具のような意味まで持っていたのです。一方、中国では蹴鞠の流れの中で、革を縫い合わせた球や、空気を入れて弾ませる発想が育っていきました。ここで大きいのは、「丸いものを作る」だけでなく、「軽く」「弾み」「長持ちさせる」という工夫が始まったことです。</p>
+    <p>ボールが本格的に変わるのは近代です。19世紀、チャールズ・グッドイヤーが硫化ゴムを実用化すると、ゴムは暑さ寒さに強くなり、弾力も安定しました。これによって、ボールは“その場しのぎの遊具”ではなく、性能をそろえられる工業製品へと変わっていきます。さらにスポーツのルール化が進むと、ボールの大きさ、重さ、弾み方まで規格化されました。つまり、ボールは「遊び」から「科学」へ進化したのです。</p>
+    <figure>
+      <svg class="illust" viewBox="0 0 920 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig2-title fig2-desc"><title id="fig2-title">ボールの歴史年表</title><desc id="fig2-desc">先史時代から現代まで、石や木の球、古代文明、中国東アジア、硫化ゴム、規格化と空力設計へ続く流れを示す年表。</desc>
+        <rect width="920" height="320" fill="#fffdf9"/>
+        <text x="30" y="42" font-size="28" font-weight="700" fill="#203047">図2　ボールの長い歴史のざっくり年表</text>
+        <line x1="70" y1="180" x2="850" y2="180" stroke="#8a9aad" stroke-width="6" stroke-linecap="round"/>
+        <g font-size="16" fill="#334155" font-weight="700">
+          <circle cx="110" cy="180" r="20" fill="#b28b67"/><text x="74" y="120">先史時代</text><text x="64" y="145">石や木</text>
+          <circle cx="270" cy="180" r="20" fill="#efb366"/><text x="220" y="120">古代文明</text><text x="214" y="145">宗教と球技</text>
+          <circle cx="430" cy="180" r="20" fill="#8bc5ff"/><text x="372" y="120">中国・東アジア</text><text x="382" y="145">革と空気</text>
+          <circle cx="590" cy="180" r="20" fill="#8fd26a"/><text x="534" y="120">19世紀</text><text x="520" y="145">硫化ゴム</text>
+          <circle cx="750" cy="180" r="20" fill="#ffd166"/><text x="690" y="120">20〜21世紀</text><text x="662" y="145">規格化・空力設計</text>
+        </g>
+        <path d="M110 180 Q190 235 270 180 T430 180 T590 180 T750 180" fill="none" stroke="#ff8c69" stroke-width="5"/>
+        <text x="34" y="280" font-size="19" fill="#5f6b7a">石 → 皮 → 空気入り → ゴム → 工業製品。ボールは人類の技術の進歩をそのまま映している。</text>
+      </svg>
+      <figcaption>ボールの進化は、素材の進化、加工技術の進化、ルールの進化と一緒に進みました。</figcaption>
+    </figure>
+    <div class="summary"><strong>【まとめ】</strong> ボールは最初から完成品ではありませんでした。古代では祈りや儀式と結びつき、さまざまな時代の遊びや訓練の中で使われ、近代になるとゴムと工業化によって性能が安定しました。つまりボールの歴史は、<strong>遊びの歴史であると同時に、科学技術の歴史</strong>でもあるのです。</div>
+  </article>
+
+  <article id="ch3" class="card chapter">
+    <h2>第3章：「真球」ってなんだ？ ～完全な丸を追い求めて～</h2>
+    <p>「真球」とは、中心から表面までの距離がどの方向でもまったく同じである立体のことです。数学では美しい定義ですが、現実の世界ではこれが難しい。なぜなら、どんな物体にもわずかなへこみ、素材のムラ、温度差、空気圧の変化があるからです。つまり、<strong>完全な真球は理想であって、現実には“真球にどれだけ近いか”が勝負</strong>になります。</p>
+    <p>人類が「ほぼ完全な球」を作れるようになった代表例が、ボールベアリングです。金属を精密に削り、磨き、ほんのわずかな誤差まで小さくした球は、機械の回転をなめらかにするために使われます。自転車の車輪、自動車、工場の機械など、見えないところでたくさん働いています。ここでは「転がること」が目的なので、真球に近いほど性能がよくなるのです。</p>
+    <p>でも、世の中の球が全部真球である必要はありません。地球だって自転しているので、赤道のほうが少しふくらんだ扁平な形をしています。ラグビーボールが楕円形なのも、失敗ではなく工夫です。もしラグビーボールが完全な球なら、バウンドの向きが安定しすぎたり、持ちにくかったり、競技の面白さが変わってしまいます。現実の道具は、「完全」より「便利」や「目的に合うこと」を優先して形を決めるのです。</p>
+    <figure>
+      <svg class="illust" viewBox="0 0 920 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig3-title fig3-desc"><title id="fig3-title">真球と現実の球の違い</title><desc id="fig3-desc">理想の真球、少しふくらんだ地球、楕円のラグビーボールを比較し、目的によって形が異なることを示す図。</desc>
+        <rect width="920" height="360" fill="#fffdf9"/>
+        <text x="30" y="42" font-size="28" font-weight="700" fill="#203047">図3　理想の球と現実の球</text>
+        <g>
+          <circle cx="180" cy="190" r="88" fill="#eef6ff" stroke="#2f6fb3" stroke-width="5"/>
+          <line x1="180" y1="190" x2="260" y2="190" stroke="#2f6fb3" stroke-width="4"/>
+          <text x="120" y="300" font-size="22" font-weight="700" fill="#203047">理想の真球</text>
+          <text x="102" y="326" font-size="17" fill="#5f6b7a">どの方向でも半径が同じ</text>
+        </g>
+        <g>
+          <ellipse cx="470" cy="190" rx="98" ry="84" fill="#fff5df" stroke="#c28219" stroke-width="5"/>
+          <text x="414" y="300" font-size="22" font-weight="700" fill="#203047">地球</text>
+          <text x="374" y="326" font-size="17" fill="#5f6b7a">自転で少しふくらむ</text>
+        </g>
+        <g>
+          <ellipse cx="760" cy="190" rx="108" ry="66" fill="#ffe6df" stroke="#cf5936" stroke-width="5"/>
+          <path d="M682 190c40-24 120-24 156 0M682 190c40 24 120 24 156 0" fill="none" stroke="#fff" stroke-width="6"/>
+          <text x="676" y="300" font-size="22" font-weight="700" fill="#203047">ラグビーボール</text>
+          <text x="648" y="326" font-size="17" fill="#5f6b7a">持ちやすさと競技性を優先</text>
+        </g>
+      </svg>
+      <figcaption>真球は数学の理想形。現実の球は、目的に合わせて少しずつ形を変えています。</figcaption>
+    </figure>
+    <div class="summary"><strong>【まとめ】</strong> 「理想の球」と「現実の球」は違います。真球は計算しやすく、機械にはとても重要です。でもスポーツや自然の世界では、少しゆがんでいたり、目的に合わせて変形していたりする球のほうが役に立つことも多いのです。<strong>理想どおりでないこと自体が、むしろ面白さ</strong>なのです。</div>
+  </article>
+
+  <article id="ch4" class="card chapter">
+    <h2>第4章：ボールのウラ側を大解剖！ ～中身を見れば性能がわかる～</h2>
+    <p>ボールは外から見ると同じように丸いのに、中身はスポーツごとにかなり違います。そこには「何をさせたいか」がはっきり出ます。よく弾ませたいのか、重くしたいのか、空気を受けにくくしたいのか、握りやすくしたいのか。ボールの構造は、まるで道具の設計図のように、その競技の性格を語っているのです。</p>
+    <p>テニスボールは大きく見ると3層構造と考えるとわかりやすいです。中心にあるのは空気を閉じこめたゴムの殻。ここが弾む力の土台になります。その外側をおおうのがフェルトです。フェルトは見た目を柔らかくする飾りではありません。空気をつかみ、地面やラケットとの摩擦を調整し、回転を効きやすくするという大事な仕事をしています。だからテニスボールの表面が毛羽立つと、スピンのかかり方やスピードの出方が変わるのです。</p>
+    <p>野球ボールはコルク芯やゴム芯のまわりに糸を何重にも巻いて、その外を革で包み、最後に縫い目をつけます。つまり「巻き巻き構造」です。縫い目は単なるつなぎ目ではなく、空気の流れに影響を与え、変化球の性質にまで関係します。サッカーボールは、昔は32枚パネルが定番でしたが、熱接着技術の発達でパネル数は少なくなってきました。パネルが少ないほど表面がなめらかになり、真球に近づきやすいのです。ゴルフボールのディンプルも有名です。あのくぼみは空気の流れをあえて乱して、後ろにできる大きな渦を小さくし、結果として遠くまで飛びやすくしています。</p>
+    <figure>
+      <svg class="illust" viewBox="0 0 920 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig4-title fig4-desc"><title id="fig4-title">テニスボールの三層構造</title><desc id="fig4-desc">フェルト、ゴムの殻、内部の空気の三層を示し、それぞれの役割を説明する図。</desc>
+        <rect width="920" height="380" fill="#fffdf9"/>
+        <text x="30" y="42" font-size="28" font-weight="700" fill="#203047">図4　テニスボールは「三層構造」でできている</text>
+        <g transform="translate(90,80)">
+          <circle cx="210" cy="120" r="118" fill="#dff27f" stroke="#7ca42b" stroke-width="6"/>
+          <circle cx="210" cy="120" r="84" fill="#a5dd57" stroke="#6c9327" stroke-width="4"/>
+          <circle cx="210" cy="120" r="48" fill="#eaf5ff" stroke="#5f83aa" stroke-width="4"/>
+          <path d="M132 62c22 28 45 41 54 116M288 62c-22 28-45 41-54 116" stroke="#fff" stroke-width="10" fill="none" stroke-linecap="round"/>
+        </g>
+        <g font-size="20" fill="#23354b">
+          <text x="470" y="132" font-weight="700">① フェルト</text>
+          <text x="470" y="160">空気をつかみ、摩擦を調整し、回転を効きやすくする</text>
+          <text x="470" y="218" font-weight="700">② ゴムの殻</text>
+          <text x="470" y="246">形を保ちながら、押された力をはね返す</text>
+          <text x="470" y="304" font-weight="700">③ 内部の空気</text>
+          <text x="470" y="332">つぶれたあと元にもどる力を助ける</text>
+        </g>
+      </svg>
+      <figcaption>テニスボールは、見た目以上に「精密に役割分担されたボール」です。</figcaption>
+    </figure>
+    <figure>
+      <svg class="illust" viewBox="0 0 920 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig5-title fig5-desc"><title id="fig5-title">スポーツボールの構造比較</title><desc id="fig5-desc">野球、サッカー、ゴルフのボール構造を比較し、芯、パネル、ディンプルなどの違いを示す図。</desc>
+        <rect width="920" height="420" fill="#fffdf9"/>
+        <text x="30" y="42" font-size="28" font-weight="700" fill="#203047">図5　スポーツによってボールの「中身」はちがう</text>
+        <g font-size="19" fill="#203047" font-weight="700">
+          <text x="84" y="92">野球</text><text x="330" y="92">サッカー</text><text x="620" y="92">ゴルフ</text>
+        </g>
+        <g>
+          <circle cx="150" cy="220" r="88" fill="#fff" stroke="#d84b47" stroke-width="5"/>
+          <circle cx="150" cy="220" r="22" fill="#b88b63"/>
+          <circle cx="150" cy="220" r="52" fill="none" stroke="#d1b38c" stroke-width="10" stroke-dasharray="4 8"/>
+          <path d="M78 196c46-26 98-26 144 0M78 244c46 26 98 26 144 0" stroke="#d84b47" stroke-width="4" fill="none"/>
+          <text x="56" y="340" font-size="17" fill="#5f6b7a">芯＋巻き糸＋革＋縫い目</text>
+        </g>
+        <g>
+          <circle cx="450" cy="220" r="92" fill="#fff" stroke="#444" stroke-width="4"/>
+          <polygon points="450,136 412,162 426,206 474,206 488,162" fill="#111"/>
+          <polygon points="402,214 366,236 382,276 426,272 442,234" fill="#fff" stroke="#111" stroke-width="2"/>
+          <polygon points="498,214 458,234 474,272 520,276 536,236" fill="#fff" stroke="#111" stroke-width="2"/>
+          <text x="346" y="340" font-size="17" fill="#5f6b7a">空気＋パネル / 今は少パネル化</text>
+        </g>
+        <g>
+          <circle cx="740" cy="220" r="84" fill="#fff" stroke="#999" stroke-width="4"/>
+          <g fill="#d6d6d6">
+            <circle cx="700" cy="190" r="6"/><circle cx="740" cy="175" r="6"/><circle cx="780" cy="190" r="6"/>
+            <circle cx="690" cy="230" r="6"/><circle cx="725" cy="220" r="6"/><circle cx="760" cy="228" r="6"/><circle cx="792" cy="220" r="6"/>
+            <circle cx="710" cy="265" r="6"/><circle cx="748" cy="255" r="6"/><circle cx="780" cy="268" r="6"/>
+          </g>
+          <text x="668" y="340" font-size="17" fill="#5f6b7a">くぼみが空気の流れを調整</text>
+        </g>
+      </svg>
+      <figcaption>「弾む」「形を保つ」「扱いやすくする」。どのボールもこの3つをちがう方法で実現しています。</figcaption>
+    </figure>
+    <div class="summary"><strong>【まとめ】</strong> ボールの中身は、まさに科学の宝石箱です。テニスボールのフェルト、野球の縫い目、サッカーのパネル、ゴルフボールのディンプル。どれも見た目では小さな違いですが、動きは大きく変わります。<strong>ボールは「丸い物体」ではなく、「目的に合わせて設計された機械」</strong>なのです。</div>
+  </article>
+
+  <article id="ch5" class="card chapter">
+    <h2>第5章：ボールが曲がる！ 飛ぶ！ 止まる！ ～テニスボールの場合～</h2>
+    <p>ここがこのブログの中心です。テニスボールは、回転していないときと回転しているときで、まるで別の物体のようにふるまいます。トップスピンがかかったボールは、前に進みながら下向きに引きこまれるように落ちていきます。これがマグナス効果です。ボールが回転すると、まわりの空気の流れに非対称が生まれ、圧力差によって力の向きが決まり、ボールは曲がるのです。トップスピンでは下向き、バックスピンでは上向き、横回転では横向きの力が出ます。</p>
+    <p>テニスボールではフェルトがとても重要です。フェルトが空気をつかむことで、回転の影響が大きく表れます。毛羽立ちが増えると、空気抵抗も増え、ボールは遅く、重く感じられるようになります。そのかわりスピンは効きやすくなり、ボールは落ちやすくなります。つまり新品のボールと使いこんだボールでは、同じように打っても飛び方が少し違います。プレーヤーは無意識のうちに、その違いを読み取りながら調整しています。</p>
+    <p>天気の影響も無視できません。雨の日はボール表面が湿り、コートも重くなります。一般にはラリーはやや遅くなり、ボールは重く感じられやすいです。晴れて乾いた日は、よく弾み、スピードのある展開になりやすい。風が強い日はさらに難しくなります。向かい風ではボールは失速し、追い風では伸び、横風では思ったより流されます。だから上手い選手ほど、「いま打っている球」だけでなく、「この先どこに落ち、どうはね、相手がどう反応するか」を先に考えています。</p>
+    <p>では、プロの選手はどのくらい先を読んでいるのでしょうか。実際には、ボールを打った後の1回の反応だけではなく、相手の構え、ラケット面の向き、スイングの速さ、風、回転量などを手がかりに、数手先までの候補を頭の中でしぼっていると考えるとわかりやすいです。ボールを「見てから」では遅いので、途中からは予測が主役になります。初心者がボールを見ているのに当たらないのは、目が悪いからではなく、<strong>予測がまだ育っていない</strong>からです。</p>
+    <p>さらに、ボールの空気が抜けると弾み方が変わります。つぶれやすくなるので、エネルギーが表面や内部の変形に使われ、元に戻る勢いが弱くなります。すると弾みにくく、重く、のびないボールになります。ここでも「空気」は見えないのに決定的です。テニスボールは黄色い毛玉に見えますが、実際には、<strong>中の空気、ゴムの反発、表面のフェルト、外の空気の流れ</strong>が重なって動いているのです。</p>
+    <figure>
+      <svg class="illust" viewBox="0 0 920 390" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig6-title fig6-desc"><title id="fig6-title">マグナス効果の説明図</title><desc id="fig6-desc">トップスピンしたテニスボールに働く回転と空気の流れ、そして下向きの力が増えて早く落ちる様子を示す図。</desc>
+        <rect width="920" height="390" fill="#fffdf9"/>
+        <text x="30" y="42" font-size="28" font-weight="700" fill="#203047">図6　トップスピンでボールが落ちる理由</text>
+        <defs>
+          <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#2f6fb3"/></marker>
+          <marker id="arrow2" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#cf5936"/></marker>
+        </defs>
+        <circle cx="360" cy="210" r="82" fill="#dff27f" stroke="#7ca42b" stroke-width="6"/>
+        <path d="M306 153c18 24 37 37 45 113M414 153c-18 24-37 37-45 113" stroke="#fff" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <path d="M248 210 H116" stroke="#2f6fb3" stroke-width="7" marker-end="url(#arrow)"/>
+        <path d="M472 210 H616" stroke="#2f6fb3" stroke-width="7" marker-end="url(#arrow)"/>
+        <path d="M360 106 C420 116 448 162 446 208" stroke="#cf5936" stroke-width="6" fill="none" marker-end="url(#arrow2)"/>
+        <path d="M695 114 C782 138 820 208 790 284" stroke="#cf5936" stroke-width="6" fill="none" marker-end="url(#arrow2)"/>
+        <path d="M652 96 C760 96 842 136 858 210 C874 282 826 334 732 350" stroke="#203047" stroke-width="4" fill="none" stroke-dasharray="10 8"/>
+        <text x="96" y="196" font-size="18" fill="#2f6fb3">前へ進む</text>
+        <text x="513" y="196" font-size="18" fill="#2f6fb3">空気の流れ</text>
+        <text x="430" y="120" font-size="18" fill="#cf5936">回転</text>
+        <text x="648" y="78" font-size="20" font-weight="700" fill="#203047">下向きの力が増え、ボールは早く落ちる</text>
+        <text x="640" y="334" font-size="18" fill="#5f6b7a">これがトップスピンの安全さの秘密</text>
+      </svg>
+      <figcaption>速く打ってもコートに収まりやすいのは、回転が下向きの力を助けるからです。</figcaption>
+    </figure>
+    <div class="columns">
+      <div class="point"><strong>雨の日</strong>：ボールやコートが重くなりやすく、ラリーは遅め。フェルトが水を含むと感触も変わる。</div>
+      <div class="point"><strong>風の日</strong>：ボールは思った以上に流される。上級者ほど「今の球」ではなく「次の位置」を読む。</div>
+    </div>
+    <div class="point"><strong>核心：</strong>ボールは「空気を押す力」で曲がる</div>
+    <div class="point"><strong>重要：</strong>すべてのボールは“毎回少し違う”</div>
+    <div class="summary"><strong>【まとめ】</strong> テニスボールは「空気」と「回転」で思い通りになる、と言ってよいほど、空力の影響が大きい球です。トップスピン、スライス、風、雨、毛羽立ち、空気圧。どれも小さな違いに見えますが、実戦では結果を大きく変えます。だからテニスは、<strong>力のスポーツであると同時に、予測と制御のスポーツ</strong>なのです。</div>
+  </article>
+
+  <article id="ch6" class="card chapter">
+    <h2>第6章：なぜ「円」は好きで「球」は苦手？ ～人間の脳と図形のヒミツ～</h2>
+    <p>ここで少し不思議な話に入ります。私たちは円には親しみがあります。ノートにコンパスで円を描けるし、円周や面積の話も学校で何度も学びます。でも球になると急に難しく感じる。なぜでしょうか。理由はシンプルで、円は紙の上にそのまま描けるけれど、球は紙の上に本物の形では描けないからです。私たちが見ている球の絵は、じつは「影」や「見かけ」を平面に写したものにすぎません。</p>
+    <p>もうひとつ大きな理由は、脳が2次元の情報から3次元を想像していることです。目の網膜に映る像は2次元です。そこから「これは前に出ている」「これは丸い」「裏側は見えないけど続いている」と推理して、脳は3次元世界を作っています。だから球を理解するには、見えていない裏側まで想像しなければいけません。円は全部見えるけれど、球は半分しか見えない。ここが難しさの正体です。</p>
+    <p>学校で球をあまり勉強しない理由も、ここにつながります。平面図形は紙の上で説明しやすく、定理もたくさんあり、テストもしやすい。しかし球は、断面、投影、回転、体積など、空間的なイメージが必要です。だから多くの学校では最後に少しだけ扱って終わってしまいます。でも自然の世界では、球はとても大切です。地球、太陽、水滴、シャボン玉、細胞、惑星。むしろ自然の本質に近いのは球のほうです。つまり、<strong>円は人間の都合、球は自然の本質</strong>と言えるのです。</p>
+    <p>そこで役立つのが「断面で考える」方法です。球をスッと切ると、切り口は円になります。中心を通れば大きい円、端に近いほど小さい円。この発想を使えば、見えない球を見える円の集まりとして理解できます。さらに発展すると、4次元の球、つまり超球という考え方にもつながります。4次元は見えませんが、3次元の球を時間とともに大きくなったり小さくなったりする断面の列として考えると、少しだけ近づけます。円周率πがなぜ無限に続くのか、という問いも、曲線や球のような「なめらかな形」を正確に表すときに、世界が簡単には終わらないことを示しています。</p>
+    <figure>
+      <svg class="illust" viewBox="0 0 920 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="fig7-title fig7-desc"><title id="fig7-title">円と球の認知のちがい</title><desc id="fig7-desc">円は紙に描けて全体が見えるが、球は見えない裏側を断面や影で想像する必要があることを示す図。</desc>
+        <rect width="920" height="330" fill="#fffdf9"/>
+        <text x="30" y="42" font-size="28" font-weight="700" fill="#203047">図7　なぜ円はわかりやすく、球はむずかしいのか</text>
+        <g>
+          <rect x="62" y="88" width="320" height="190" rx="18" fill="#f6fbff" stroke="#bfd7ef" stroke-width="3"/>
+          <circle cx="222" cy="184" r="72" fill="none" stroke="#2f6fb3" stroke-width="5"/>
+          <text x="146" y="120" font-size="24" font-weight="700" fill="#203047">円</text>
+          <text x="108" y="246" font-size="18" fill="#5f6b7a">紙に描ける / 全部見える / 作図しやすい</text>
+        </g>
+        <g>
+          <rect x="538" y="88" width="320" height="190" rx="18" fill="#fff8ef" stroke="#eed8b0" stroke-width="3"/>
+          <circle cx="698" cy="184" r="72" fill="#e8f2ff" stroke="#c28219" stroke-width="5"/>
+          <ellipse cx="698" cy="184" rx="72" ry="22" fill="none" stroke="#cf5936" stroke-width="4" stroke-dasharray="8 6"/>
+          <text x="626" y="120" font-size="24" font-weight="700" fill="#203047">球</text>
+          <text x="585" y="246" font-size="18" fill="#5f6b7a">裏側は見えない / 断面や影で想像する</text>
+        </g>
+        <path d="M398 184 H522" stroke="#8a9aad" stroke-width="4" marker-end="url(#arrowGrey)"/>
+        <defs>
+          <marker id="arrowGrey" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#8a9aad"/></marker>
+        </defs>
+        <text x="422" y="168" font-size="17" fill="#5f6b7a">理解の壁</text>
+      </svg>
+<div class="point">
+  <strong>【練習ドリル】</strong> 目を閉じてテニスボールを手で触りながら「今、断面はどんな円か？」を想像してみましょう。
+  これだけで空間認識能力が鍛えられます。
+</div>
+      <figcaption>人間は2次元の情報から3次元を想像しているため、球は最初から少し難しい図形です。</figcaption>
+    </figure>
+    <h3>球を「クリックで理解」する断面アニメーション</h3>
+    <p>下の埋め込みは、球を断面・回転・影の3つの見方で理解するためのインタラクティブ教材です。スライダーを動かすと、球を真ん中で切ったときに大きな円が現れ、端に近づくほど小さな円になることが体感できます。中学生にとって難しい「球」を、円の変化として目で追えるようにしたのがポイントです。</p>
+<iframe 
+  id="sphereUI" 
+  class="ui"
+  title="球の断面アニメーション"
+  loading="lazy">
+</iframe>    
+    <p class="smallnote">この教材は book97.html の中に埋め込まれており、追加ファイルなしで動作します。</p>
+    <div class="point"><strong>核心：</strong>人間は「見えないもの」が苦手</div>
+    <div class="point"><strong>問い：</strong>では次に打つ1球、どこに落ちる？</div>
+    <div class="summary"><strong>【まとめ】</strong> 円は人間の都合に合った図形で、球は自然の本質に近い図形です。球は見えない部分まで想像しなければならないので難しく感じます。でも、断面で見たり、影で見たり、回転を層で考えたりすれば、一気に理解しやすくなります。だから「球が苦手」なのは能力不足ではなく、<strong>見せ方の問題</strong>でもあるのです。</div>
+  </article>
+
+  <article id="ch7" class="card chapter">
+    <h2>第7章：おわりに</h2>
+    <p>ここまで読んでくると、もうテニスボールをただの丸いものとは見られないかもしれません。手の中の1個のボールに、長い歴史、真球への挑戦、材料工学、空気の流れ、脳の認知、予測の力が全部つまっているからです。スポーツ用品売り場で並んでいるボールたちも、ただの道具ではなく、「どんな動きをさせたいか」という人間の知恵の結晶に見えてくるはずです。</p>
+    <p>そして、自分がテニスを続けているなら、今日の話はすぐ実感に変わります。トップスピンがなぜ安全なのか。新品のボールがなぜ気持ちよく飛ぶのか。風の日にどれだけ予測が大事になるのか。フェルトが毛羽立つと、なぜ打球感が変わるのか。こうしたことを知ると、練習はただの反復ではなく、「自分の体で科学を確かめる実験」に変わります。</p>
+    <p>次にボールで遊ぶとき、打つ前に少しだけ考えてみてください。このボールはいま、どんな回転をしているだろう。空気はどちらに流れているだろう。自分はどこまで先を読めているだろう。そんな見方ができたら、テニスはもっと面白くなります。<strong>テニスボールの科学</strong>は、コートの上だけで終わらず、自然を見る目そのものを少し深くしてくれます。</p>
+  </article>
+
+  <p class="footer">book97.html</p>
+</div>
+<script>
+const sphereSrcdoc = `<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>球の断面がクリックで動くHTML</title>
+<style>
+  :root{
+    --bg1:#0f172a;
+    --bg2:#111827;
+    --panel:#ffffff10;
+    --text:#e5eefc;
+    --sub:#b8c4da;
+    --accent:#60a5fa;
+    --accent2:#f59e0b;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic","Meiryo",sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(circle at 20% 20%, #1d4ed8 0%, transparent 35%),
+      radial-gradient(circle at 80% 15%, #7c3aed 0%, transparent 30%),
+      linear-gradient(135deg,var(--bg1),var(--bg2));
+    min-height:100vh;
+  }
+  .wrap{max-width:1200px;margin:0 auto;padding:28px 20px 40px}
+  h1{margin:0 0 8px;font-size:clamp(1.8rem,3vw,2.8rem);line-height:1.15}
+  .lead{color:var(--sub);font-size:1.05rem;margin:0 0 20px}
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+  .panel{
+    background:var(--panel);
+    border:1px solid #ffffff18;
+    border-radius:24px;
+    box-shadow:0 10px 35px rgba(0,0,0,.18);
+    backdrop-filter: blur(10px);
+  }
+  .viz,.side{padding:18px}
+  .toolbar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+  button{
+    border:none;border-radius:999px;padding:11px 16px;background:#1e293b;color:var(--text);
+    cursor:pointer;font-size:.95rem;transition:.18s transform,.18s background
+  }
+  button:hover{transform:translateY(-1px);background:#243245}
+  button.active{background:linear-gradient(135deg,var(--accent),#3b82f6);color:#fff}
+  button.warn.active{background:linear-gradient(135deg,var(--accent2),#ea580c)}
+  .canvasbox{
+    background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+    border-radius:20px;padding:12px;min-height:620px
+  }
+  svg{width:100%;height:auto;display:block}
+  .controls{display:grid;gap:16px;margin-top:10px}
+  .row{display:grid;gap:8px}
+  label{color:var(--sub);font-size:.95rem}
+  input[type="range"]{width:100%}
+  .readout{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:16px}
+  .card{background:#ffffff0a;border:1px solid #ffffff14;border-radius:18px;padding:14px}
+  .card h3{margin:0 0 8px;font-size:1rem}
+  .big{font-size:1.35rem;font-weight:700}
+  .formula{
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    background:#ffffff0a;border-radius:12px;padding:8px 10px;display:inline-block
+  }
+  .explain{margin-top:18px;display:grid;gap:12px}
+  .step{background:#ffffff0a;border-left:4px solid var(--accent);border-radius:14px;padding:12px 14px}
+  .step strong{display:block;margin-bottom:5px}
+  .footer-note{margin-top:18px;color:var(--sub);font-size:.95rem}
+  .mini{font-size:.9rem;color:var(--sub)}
+  @media (max-width:960px){
+    .hero{grid-template-columns:1fr}
+    .canvasbox{min-height:auto}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>球を「クリックで理解」する断面アニメーション</h1>
+  <p class="lead">球を <strong>断面（円）</strong>・<strong>回転のスライス</strong>・<strong>影（投影）</strong> の3つで理解するHTMLです。クリックすると説明モードが切り替わり、断面が動きます。</p>
+
+  <div class="hero">
+    <section class="panel viz">
+      <div class="toolbar">
+        <button id="mode-section" class="active">① 断面で見る</button>
+        <button id="mode-spin">② 回転をスライスで見る</button>
+        <button id="mode-shadow" class="warn">③ 影で見る</button>
+        <button id="playBtn">▶ 自動再生</button>
+        <button id="resetBtn">↺ 戻す</button>
+      </div>
+
+      <div class="canvasbox">
+        <svg id="scene" viewBox="0 0 980 620" aria-label="球の断面インタラクティブ図">
+          <defs>
+            <radialGradient id="sphereGrad" cx="35%" cy="30%">
+              <stop offset="0%" stop-color="#dbeafe" stop-opacity="0.95"/>
+              <stop offset="45%" stop-color="#60a5fa" stop-opacity="0.75"/>
+              <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0.30"/>
+            </radialGradient>
+            <linearGradient id="planeGrad" x1="0" x2="1">
+              <stop offset="0%" stop-color="#fca5a5" stop-opacity="0.85"/>
+              <stop offset="100%" stop-color="#fb7185" stop-opacity="0.55"/>
+            </linearGradient>
+          </defs>
+
+          <g id="mainGroup">
+            <text x="180" y="48" fill="#dbeafe" font-size="28" font-weight="700">球</text>
+            <circle id="sphere" cx="250" cy="300" r="170" fill="url(#sphereGrad)" stroke="#bfdbfe" stroke-width="2" />
+            <ellipse cx="250" cy="442" rx="130" ry="26" fill="#00000040"/>
+
+            <g id="planeGroup">
+              <rect id="slicePlane" x="70" y="293" width="360" height="14" rx="7" fill="url(#planeGrad)" opacity="0.95"/>
+              <text id="sliceLabel" x="445" y="304" fill="#fecaca" font-size="18" font-weight="700">切る位置</text>
+            </g>
+
+            <g id="crossPreview">
+              <circle id="crossCircleGhost" cx="250" cy="300" r="120" fill="none" stroke="#fda4af" stroke-width="3" stroke-dasharray="7 7" opacity="0.95"/>
+            </g>
+          </g>
+
+          <g id="rightZone">
+            <text x="630" y="48" fill="#dbeafe" font-size="28" font-weight="700">断面として現れる円</text>
+
+            <circle id="sectionCircle" cx="740" cy="300" r="120" fill="#ffffff08" stroke="#fda4af" stroke-width="4" />
+            <line x1="620" y1="300" x2="860" y2="300" stroke="#ffffff18"/>
+            <line x1="740" y1="180" x2="740" y2="420" stroke="#ffffff18"/>
+            <text id="radiusText" x="630" y="458" fill="#fecaca" font-size="20">断面の半径 r = 120</text>
+
+            <g id="shadowGroup" opacity="0">
+              <text x="655" y="70" fill="#fde68a" font-size="22" font-weight="700">影（投影）</text>
+              <line x1="500" y1="140" x2="585" y2="215" stroke="#fde68a" stroke-width="3"/>
+              <line x1="500" y1="460" x2="585" y2="385" stroke="#fde68a" stroke-width="3"/>
+              <circle id="shadowCircle" cx="740" cy="300" r="170" fill="#fde68a22" stroke="#fde68a" stroke-width="4" />
+              <text x="618" y="505" fill="#fde68a" font-size="20">球の影は円になる</text>
+            </g>
+
+            <g id="spinGroup" opacity="0">
+              <text x="620" y="70" fill="#86efac" font-size="22" font-weight="700">層ごとのズレ = 回転</text>
+              <g id="spinSlices"></g>
+              <line x1="740" y1="150" x2="740" y2="450" stroke="#86efac" stroke-width="3" stroke-dasharray="8 8"/>
+              <text x="768" y="305" fill="#86efac" font-size="18">回転軸</text>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </section>
+
+    <aside class="panel side">
+      <div class="controls">
+        <div class="row">
+          <label for="sliceRange">切る位置（上 ↕ 下）</label>
+          <input id="sliceRange" type="range" min="-170" max="170" value="0" step="1" />
+          <div class="mini">真ん中ほど大きい円、端ほど小さい円になります。</div>
+        </div>
+
+        <div class="row">
+          <label for="spinRange">回転の強さ</label>
+          <input id="spinRange" type="range" min="0" max="100" value="35" step="1" />
+          <div class="mini">「回転をスライスで見る」モードで層のズレが大きくなります。</div>
+        </div>
+      </div>
+
+      <div class="readout">
+        <div class="card">
+          <h3>いまの理解</h3>
+          <div id="mainReadout" class="big">球 ＝無限の円の積み重ね</div>
+        </div>
+        <div class="card">
+          <h3>超簡略式</h3>
+          <div id="formulaReadout" class="formula">r断面 = √(R² - h²)</div>
+        </div>
+      </div>
+
+      <div class="explain">
+        <div class="step">
+          <strong>① 断面で見る</strong>
+          球を切ると、切り口は円になります。真ん中で切ると最大の円、端に近づくほど小さい円です。
+        </div>
+        <div class="step">
+          <strong>② 回転をスライスで見る</strong>
+          球の中の各層が、回転軸のまわりで少しずつ動くと考えると、「回転」が直感になります。
+        </div>
+        <div class="step">
+          <strong>③ 影で見る</strong>
+          3次元の球も、2次元の紙や画面に映ると円に見えます。人間はこの投影で球を理解しています。
+        </div>
+      </div>
+
+      <div class="footer-note">
+        使い方：上のモードボタンをクリック → スライダーを動かす → 自動再生で変化を見る。<br>
+         </div>
+    </aside>
+  </div>
+</div>
+
+<script>
+(() => {
+  const R = 170;
+  const cy = 300;
+  const sliceRange = document.getElementById('sliceRange');
+  const spinRange = document.getElementById('spinRange');
+  const playBtn = document.getElementById('playBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const modeBtns = {
+    section: document.getElementById('mode-section'),
+    spin: document.getElementById('mode-spin'),
+    shadow: document.getElementById('mode-shadow')
+  };
+  const slicePlane = document.getElementById('slicePlane');
+  const sliceLabel = document.getElementById('sliceLabel');
+  const crossCircleGhost = document.getElementById('crossCircleGhost');
+  const sectionCircle = document.getElementById('sectionCircle');
+  const radiusText = document.getElementById('radiusText');
+  const mainReadout = document.getElementById('mainReadout');
+  const formulaReadout = document.getElementById('formulaReadout');
+  const shadowGroup = document.getElementById('shadowGroup');
+  const spinGroup = document.getElementById('spinGroup');
+  const spinSlices = document.getElementById('spinSlices');
+
+  let mode = 'section';
+  let playing = false;
+  let raf = null;
+  let t = 0;
+
+  function setMode(next) {
+    mode = next;
+    Object.entries(modeBtns).forEach(([k, btn]) => btn.classList.toggle('active', k === next));
+    if (mode === 'section') {
+      shadowGroup.setAttribute('opacity', '0');
+      spinGroup.setAttribute('opacity', '0');
+      mainReadout.textContent = '球 ＝ 円の集まり';
+      formulaReadout.textContent = 'r断面 = √(R² - h²)';
+    } else if (mode === 'spin') {
+      shadowGroup.setAttribute('opacity', '0');
+      spinGroup.setAttribute('opacity', '1');
+      mainReadout.textContent = '回転 ＝ 層のズレ';
+      formulaReadout.textContent = 'ズレ ~ 回転の強さ';
+    } else {
+      shadowGroup.setAttribute('opacity', '1');
+      spinGroup.setAttribute('opacity', '0');
+      mainReadout.textContent = '球の影 ＝ 円';
+      formulaReadout.textContent = '投影 → 円';
+    }
+    render();
+  }
+
+  function renderSpinSlices() {
+    const power = Number(spinRange.value);
+    const slices = [-120,-80,-40,0,40,80,120];
+    spinSlices.innerHTML = slices.map(y => {
+      const rr = Math.sqrt(Math.max(0, 170*170 - y*y));
+      const shift = (power / 100) * (y / 120) * 44;
+      const cx = 740 + shift;
+      const ry = Math.max(10, rr * 0.26);
+      return \`
+        <ellipse cx="\${cx}" cy="\${300 + y}" rx="\${rr}" ry="\${ry}"
+                 fill="none" stroke="#86efac" stroke-width="3"
+                 opacity="\${0.35 + (rr/170)*0.5}" />
+        <line x1="740" y1="\${300 + y}" x2="\${cx}" y2="\${300 + y}"
+              stroke="#86efac" stroke-width="2" opacity="0.35" />
+      \`;
+    }).join('');
+  }
+
+  function render() {
+    const h = Number(sliceRange.value);
+    const y = cy + h;
+    const r = Math.sqrt(Math.max(0, R*R - h*h));
+
+    slicePlane.setAttribute('y', (y - 7).toFixed(1));
+    sliceLabel.setAttribute('y', (y + 4).toFixed(1));
+    crossCircleGhost.setAttribute('cy', y.toFixed(1));
+    crossCircleGhost.setAttribute('r', r.toFixed(1));
+    sectionCircle.setAttribute('r', Math.max(2, r).toFixed(1));
+    radiusText.textContent = \`断面の半径 r = \${r.toFixed(1)}\`;
+
+    if (mode === 'shadow') {
+      slicePlane.setAttribute('opacity', '0.28');
+      crossCircleGhost.setAttribute('opacity', '0.18');
+      sectionCircle.setAttribute('stroke', '#fde68a');
+      sectionCircle.setAttribute('fill', '#fde68a12');
+    } else {
+      slicePlane.setAttribute('opacity', '0.95');
+      crossCircleGhost.setAttribute('opacity', '0.95');
+      sectionCircle.setAttribute('stroke', '#fda4af');
+      sectionCircle.setAttribute('fill', '#ffffff08');
+    }
+    renderSpinSlices();
+  }
+
+  function animate() {
+    if (!playing) return;
+    t += 0.018;
+    sliceRange.value = Math.round(Math.sin(t) * R);
+    render();
+    raf = requestAnimationFrame(animate);
+  }
+
+  playBtn.addEventListener('click', () => {
+    playing = !playing;
+    playBtn.textContent = playing ? '■ 停止' : '▶ 自動再生';
+    if (playing) animate();
+    else if (raf) cancelAnimationFrame(raf);
+  });
+
+  resetBtn.addEventListener('click', () => {
+    playing = false;
+    playBtn.textContent = '▶ 自動再生';
+    if (raf) cancelAnimationFrame(raf);
+    t = 0;
+    sliceRange.value = 0;
+    spinRange.value = 35;
+    setMode('section');
+    render();
+  });
+
+  sliceRange.addEventListener('input', render);
+  spinRange.addEventListener('input', render);
+  modeBtns.section.addEventListener('click', () => setMode('section'));
+  modeBtns.spin.addEventListener('click', () => setMode('spin'));
+  modeBtns.shadow.addEventListener('click', () => setMode('shadow'));
+
+  render();
+})();
+<\/script>
+</body>
+</html>`;
+document.getElementById('sphereUI').srcdoc = sphereSrcdoc;
+</script>
+</body>
+</html>

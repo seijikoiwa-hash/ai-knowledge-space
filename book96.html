@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>興味レベルから始める若返り研究</title>
+<style>
+/* ===== AIモード用CSS（これが不足していた） ===== */
+
+.panel{
+  background:#fff;
+  margin-top:24px;
+  padding:20px;
+  border-radius:16px;
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+.section-title{
+  font-size:1.4rem;
+}
+
+.small-btn{
+  padding:8px 14px;
+  border:none;
+  background:#e5ecff;
+  border-radius:999px;
+  cursor:pointer;
+}
+
+.small-btn.active{
+  background:#4a7;
+  color:#fff;
+}
+
+.mode-row, .teacher-row, .quiz-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.hide{
+  display:none;
+}
+
+/* チャット */
+.chat-layout{
+  display:grid;
+  grid-template-columns:2fr 1fr;
+  gap:20px;
+}
+
+.chat-box{
+  background:#fafafa;
+  border-radius:12px;
+  padding:10px;
+  border:1px solid #ddd;
+}
+
+.chat-log{
+  height:260px;
+  overflow-y:auto;
+  padding:10px;
+}
+
+.msg{
+  margin:8px 0;
+}
+
+.msg.user{
+  text-align:right;
+}
+
+.msg.ai{
+  text-align:left;
+}
+
+.msg.system{
+  text-align:center;
+  font-size:0.9em;
+  color:#666;
+}
+
+.chat-input{
+  display:flex;
+  gap:10px;
+  margin-top:10px;
+}
+
+.chat-input textarea{
+  flex:1;
+  padding:8px;
+}
+
+.chat-tools{
+  margin-top:10px;
+}
+
+/* 教師ボタン */
+.teacher-chip{
+  padding:6px 12px;
+  border-radius:999px;
+  border:1px solid #ccc;
+  cursor:pointer;
+}
+
+.teacher-chip.active{
+  background:#333;
+  color:#fff;
+}
+
+/* クイズ */
+.quiz-options button{
+  display:block;
+  width:100%;
+  margin:6px 0;
+  padding:10px;
+  border:none;
+  background:#f0f4ff;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.progressbar{
+  height:8px;
+  background:#eee;
+  border-radius:10px;
+}
+
+.progressfill{
+  height:100%;
+  width:0%;
+  background:#4a7;
+  border-radius:10px;
+}
+
+/* スライド */
+.slide{
+  background:#fff;
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.slide-visual{
+  margin-top:10px;
+  padding:10px;
+  background:#eef6ff;
+  border-radius:10px;
+  text-align:center;
+}
+body{
+  margin:0;
+  font-family:"Yu Gothic","Meiryo",sans-serif;
+  background:linear-gradient(135deg,#f5f7fb,#eaf3ff);
+}
+.container{
+  max-width:1000px;
+  margin:0 auto;
+  padding:40px 20px;
+}
+h1{
+  font-size:2.4rem;
+}
+.grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:20px;
+}
+.card{
+  background:#fff;
+  padding:24px;
+  border-radius:20px;
+  box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+.card h2{
+  margin-top:0;
+}
+a{
+  display:block;
+  margin-top:10px;
+  padding:12px;
+  background:#f5f7ff;
+  border-radius:10px;
+  text-decoration:none;
+  color:#222;
+  font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+<div class="container">
+
+<h1>興味レベルから始める若返り研究</h1>
+
+<div class="grid">
+
+<div class="card">
+<h2>🔰 中学生</h2>
+<p>やさしく全体像を理解する</p>
+<a href="book94junior.html">山中因子と若返り（中学生版）へ</a>
+</div>
+
+<div class="card">
+<h2>🎓 一般</h2>
+<p>理論と研究の全体像を学ぶ</p>
+<a href="book94.html">若返り医学（本編）へ</a>
+</div>
+
+<div class="card">
+<h2>🔬 深掘り（研究・物語）</h2>
+<p>科学の背景・実験・歴史</p>
+<a href="book95.html">研究物語へ</a>
+<a href="book96c.html">実験・応用へ</a>
+</div>
+
+<section class="panel">
+    <h2 class="section-title" style="margin-top:0">学習モード</h2>
+    <div class="mode-row" id="modeRow">
+      <button class="small-btn active" data-mode="guide">案内</button>
+      <button class="small-btn" data-mode="chat">AI質問</button>
+      <button class="small-btn" data-mode="quiz">クイズ</button>
+      <button class="small-btn" data-mode="story">紙芝居</button>
+      <button class="small-btn" data-mode="api">API接続</button>
+    </div>
+
+    <div id="mode-guide" class="status-box" style="margin-top:16px">
+      <div class="status-grid">
+        <div class="status-item">
+          <strong>おすすめ導線</strong>
+          初心者は junior → 本編。標準は本編 → 物語 → 実験。授業なら紙芝居 → 本編 → クイズ。
+        </div>
+        <div class="status-item">
+          <strong>このページでできること</strong>
+          わからない語句を質問、理解度チェック、科学者キャラとの対話、章ごとの要点確認。
+        </div>
+        <div class="status-item">
+          <strong>本物AI接続について</strong>
+          このHTMLだけでは外部AIに自動接続できません。API欄に設定を入れれば接続用の枠として使えます。
+        </div>
+      </div>
+      <p class="footer-note">まずは下の「現在の章」を選んでからAI質問に進むと、答えが章に合わせて出やすくなります。</p>
+    </div>
+  </section>
+
+  <section class="panel" id="chapterPanel">
+    <h2 class="section-title" style="margin-top:0">現在の章を選ぶ</h2>
+    <div class="teacher-row">
+      <button class="small-btn active chapter-btn" data-chapter="intro">導入</button>
+      <button class="small-btn chapter-btn" data-chapter="aging">老化とは何か</button>
+      <button class="small-btn chapter-btn" data-chapter="oskm">山中因子</button>
+      <button class="small-btn chapter-btn" data-chapter="clock">エピジェネティック時計</button>
+      <button class="small-btn chapter-btn" data-chapter="partial">部分的リプログラミング</button>
+      <button class="small-btn chapter-btn" data-chapter="mouse">マウス実験</button>
+      <button class="small-btn chapter-btn" data-chapter="ethics">医療化と倫理</button>
+    </div>
+    <div class="note" id="chapterDescription">現在は「導入」。若返り研究の全体像、なぜ今この研究が注目されるのか、どこから読むべきかを案内します。</div>
+  </section>
+
+  <section class="panel" id="chatSection">
+    <h2 class="section-title" style="margin-top:0">🤖 AI質問・キャラ対話</h2>
+    <div class="chat-layout">
+      <div class="chat-box">
+        <div class="meta">通常モードでは教材の内容に沿った応答を返します。科学者モードでは、その人物っぽい語り口で説明します。外部AI未接続でも動作します。</div>
+        <div class="chat-log" id="chatLog"></div>
+        <div class="chat-input">
+          <textarea id="userInput" placeholder="例：山中因子はなぜ若返りと関係するのですか？&#10;例：ゴンペルツ法則を中学生向けに説明して"></textarea>
+          <button id="sendBtn">送信</button>
+        </div>
+        <div class="chat-tools">
+          <button class="small-btn" id="clearChat">会話を消去</button>
+          <button class="small-btn" id="summaryBtn">今の会話を要約</button>
+          <button class="small-btn" id="suggestBtn">質問例を出す</button>
+        </div>
+      </div>
+
+      <div class="status-box">
+        <strong>対話モード</strong>
+        <div class="teacher-row" style="margin-top:10px" id="teacherRow">
+          <button class="teacher-chip active" data-teacher="guide">案内役AI</button>
+          <button class="teacher-chip" data-teacher="yamanaka">山中伸弥</button>
+          <button class="teacher-chip" data-teacher="gompertz">ゴンペルツ</button>
+          <button class="teacher-chip" data-teacher="sinclair">シンクレア</button>
+          <button class="teacher-chip" data-teacher="student">やさしい先生</button>
+        </div>
+        <hr class="sep">
+        <strong>対話のヒント</strong>
+        <div class="meta" id="teacherHint">教材の道案内役として、章に沿って端的に説明します。</div>
+        <hr class="sep">
+        <strong>おすすめ質問</strong>
+        <div class="meta" id="suggestionsBox">
+          ・老化はなぜ病気と関係するの？<br>
+          ・OSKMは何を巻き戻すの？<br>
+          ・若返り研究はどこまで本当？
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel hide" id="quizSection">
+    <h2 class="section-title" style="margin-top:0">🧪 理解度クイズ</h2>
+    <div class="quiz-row" style="margin-bottom:14px">
+      <button class="small-btn active quiz-set-btn" data-set="basic">基本</button>
+      <button class="small-btn quiz-set-btn" data-set="standard">標準</button>
+      <button class="small-btn quiz-set-btn" data-set="deep">深掘り</button>
+      <button class="small-btn" id="resetQuiz">最初から</button>
+    </div>
+    <div class="progressbar"><div class="progressfill" id="quizProgress"></div></div>
+    <div class="quiz-box" style="margin-top:14px">
+      <div class="quiz-q" id="quizQ"></div>
+      <div class="quiz-options" id="quizOptions"></div>
+      <div class="quiz-result" id="quizResult"></div>
+    </div>
+    <p class="footer-note" id="quizScoreText">正答数：0 / 0</p>
+  </section>
+
+  <section class="panel hide" id="storySection">
+    <h2 class="section-title" style="margin-top:0">🎞 デジタル紙芝居モード</h2>
+    <div class="slide-controls" style="margin-bottom:14px">
+      <button class="small-btn" id="prevSlide">← 前へ</button>
+      <button class="small-btn" id="nextSlide">次へ →</button>
+      <button class="small-btn" id="autoPlayBtn">自動再生</button>
+      <button class="small-btn" id="stopPlayBtn">停止</button>
+    </div>
+    <div class="slide-wrap" id="slideWrap"></div>
+    <p class="footer-note">授業ではこの順で見せると流れが作りやすいです：問題意識 → 老化 → 時計 → OSKM → 部分的リプログラミング → 実験 → 医療と倫理。</p>
+  </section>
+
+  <section class="panel hide" id="apiSection">
+    <h2 class="section-title" style="margin-top:0">🔌 API接続枠</h2>
+    <div class="code-note">
+      このHTMLは単体ファイルなので、外部AIを自動で安全接続するにはサーバー側の中継が必要です。ここでは接続先URLとAPIキー欄を用意し、<strong>Fetchで呼ぶ雛形</strong>を入れています。実運用では、ブラウザ直書きではなくサーバー経由にしてください。
+    </div>
+    <div class="api-grid">
+      <div>
+        <label for="apiEndpoint">APIエンドポイント</label>
+        <input id="apiEndpoint" type="text" placeholder="https://your-server.example.com/chat">
+      </div>
+      <div>
+        <label for="apiKey">APIキー（実運用ではブラウザ保存非推奨）</label>
+        <input id="apiKey" type="password" placeholder="ここに入力しても保存はされません">
+      </div>
+    </div>
+    <div class="api-row" style="margin-top:12px">
+      <button class="small-btn" id="testApiBtn">接続テスト</button>
+      <button class="small-btn" id="useApiBtn">以後の質問でAPIを使う</button>
+      <button class="small-btn" id="stopApiBtn">ローカル応答に戻す</button>
+    </div>
+    <div class="status-box" id="apiStatus" style="margin-top:14px">現在はローカル応答モードです。</div>
+    <p class="footer-note">サーバーが受け取る想定JSON：<br><code>{ message, chapter, teacher, history }</code></p>
+  </section>
+</div>
+
+<script>
+const chapterInfo = {
+  intro: {
+    title: '導入',
+    desc: '現在は「導入」。若返り研究の全体像、なぜ今この研究が注目されるのか、どこから読むべきかを案内します。'
+  },
+  aging: {
+    title: '老化とは何か',
+    desc: '現在は「老化とは何か」。老化の意味、損傷の蓄積、死亡率上昇、病気とのつながりを中心に扱います。'
+  },
+  oskm: {
+    title: '山中因子',
+    desc: '現在は「山中因子」。OSKMとは何か、iPS細胞、初期化、若返りとの関係を重点的に扱います。'
+  },
+  clock: {
+    title: 'エピジェネティック時計',
+    desc: '現在は「エピジェネティック時計」。細胞年齢の測定、暦年齢との違い、若返りを測る意味がテーマです。'
+  },
+  partial: {
+    title: '部分的リプログラミング',
+    desc: '現在は「部分的リプログラミング」。細胞の種類を保ちながら年齢だけを巻き戻すという考え方を扱います。'
+  },
+  mouse: {
+    title: 'マウス実験',
+    desc: '現在は「マウス実験」。視神経、寿命、組織機能など、動物実験で見えてきた可能性と限界がテーマです。'
+  },
+  ethics: {
+    title: '医療化と倫理',
+    desc: '現在は「医療化と倫理」。安全性、がん化リスク、格差、誰にどう使うかという問題を扱います。'
+  }
+};
+
+const teacherInfo = {
+  guide: {
+    hint: '教材の道案内役として、章に沿って端的に説明します。',
+    style: 'わかりやすく整理して説明する。'
+  },
+  yamanaka: {
+    hint: '再生医療と初期化の視点から、慎重で実証的に語ります。',
+    style: '希望を語りつつも、過剰な断言は避ける。'
+  },
+  gompertz: {
+    hint: '老化を法則として眺め、年齢と死亡率の関係を重視して語ります。',
+    style: '数理的・俯瞰的に語る。'
+  },
+  sinclair: {
+    hint: '老化を情報の乱れとして捉え、若返り可能性を前向きに語ります。',
+    style: '挑戦的で未来志向に語る。'
+  },
+  student: {
+    hint: '中学生にもわかる言葉で、たとえを多く使って説明します。',
+    style: 'やさしく、かみくだいて説明する。'
+  }
+};
+
+const questionSuggestions = {
+  intro: ['若返り研究はなぜ今注目されているの？','どの順番で読めば理解しやすい？','再生医療と若返り研究は何が違うの？'],
+  aging: ['老化はなぜ病気の土台になるの？','ゴンペルツ法則とは？','老化を情報の乱れと考えるのはどういう意味？'],
+  oskm: ['山中因子とは何ですか？','OSKMはなぜ細胞を若くできるの？','iPS細胞と若返りはどうつながるの？'],
+  clock: ['エピジェネティック時計とは？','若返りをどうやって測るの？','暦年齢と生物学的年齢は何が違うの？'],
+  partial: ['部分的リプログラミングとは？','全部初期化すると何が危険？','細胞の身分を保つとはどういうこと？'],
+  mouse: ['マウス実験で何がわかったの？','人間にすぐ使えない理由は？','視神経回復の実験はなぜ有名？'],
+  ethics: ['若返り医療で一番大事な安全性は？','がん化リスクとは？','若返り医療は誰が使うことになるの？']
+};
+
+const localKnowledge = {
+  aging: '老化は単なる年の取り方ではなく、細胞や組織に損傷や情報の乱れが積み重なって、機能が落ちていく現象です。多くの病気は老化を土台として起こりやすくなります。',
+  oskm: '山中因子は Oct3/4、Sox2、Klf4、c-Myc の4因子で、成熟した細胞を初期化方向へ引き戻す力があります。若返り研究では、この力を完全初期化ではなく部分的に使うことが重要です。',
+  clock: 'エピジェネティック時計は、DNAメチル化などのパターンから細胞の生物学的年齢を推定する考え方です。若返りを論じるには、まず年齢を測る物差しが必要です。',
+  partial: '部分的リプログラミングとは、細胞の種類を壊さずに、年齢情報だけを若い方向へ戻そうとする考え方です。やりすぎると細胞の正体が崩れるため、加減が極めて重要です。',
+  mouse: 'マウス実験では、視神経や組織機能の一部改善、老化指標の改善などが報告されています。ただし、効果の再現性、安全性、長期影響は人間でまだ未確定です。',
+  ethics: '若返り医療が本当に実用化されるなら、安全性、費用、アクセス格差、対象年齢、治療か強化かという境界が大きな論点になります。',
+  intro: '若返り研究が注目される理由は、超高齢社会で健康寿命を延ばす必要があること、老化研究が測定可能な科学へ進んだこと、そして山中因子が細胞時間の可逆性を示したことにあります。'
+};
+
+const slides = [
+  {
+    title:'1. なぜ若返り研究が始まったのか',
+    text:'人は長く生きられるようになりましたが、最後の10年ほどを病気や介護とともに過ごすことも少なくありません。そこで医学の課題は、単なる長寿ではなく、健康な時間を延ばすことへ移りました。',
+    visual:'<div class="slide-num">Slide 1</div><div class="slide-visual">長寿 → しかし衰えは残る → だから「老化そのもの」に注目する</div>'
+  },
+  {
+    title:'2. 老化は何か',
+    text:'老化は、細胞の損傷、炎症、情報の乱れ、分裂限界などが積み重なって機能が落ちる現象です。がん、認知症、虚弱など多くの疾患の背景にあります。',
+    visual:'<div class="slide-num">Slide 2</div><div class="slide-visual">老化 = 多層の乱れの蓄積。病気の共通土台になる。</div>'
+  },
+  {
+    title:'3. まず年齢を測る',
+    text:'若返ったかどうかを言うには、年齢を測る物差しが必要です。その代表がエピジェネティック時計です。暦年齢ではなく、生物学的年齢を見る発想です。',
+    visual:'<div class="slide-num">Slide 3</div><div class="slide-visual">若返り研究は「測定」なしでは成立しない</div>'
+  },
+  {
+    title:'4. 山中因子の登場',
+    text:'OSKMは、成熟した細胞でも初期化方向へ引き戻せることを示しました。この発見は、細胞の時間が一方通行ではない可能性を開きました。',
+    visual:'<div class="slide-num">Slide 4</div><div class="slide-visual">成熟細胞 → OSKM → 若い状態へ近づく可能性</div>'
+  },
+  {
+    title:'5. しかし全部戻すと危険',
+    text:'完全な初期化は細胞の身分証明書を消してしまい、腫瘍化などの危険もあります。そこで「年齢だけを少し戻す」部分的リプログラミングが重要になります。',
+    visual:'<div class="slide-num">Slide 5</div><div class="slide-visual">全部戻す × / 年齢だけ戻す ○ を目指す</div>'
+  },
+  {
+    title:'6. 動物実験で見えた可能性',
+    text:'マウス実験では視神経機能や老化指標の改善が報告されました。ただし、それはそのまま人間で確立した医療を意味しません。安全性が最大の壁です。',
+    visual:'<div class="slide-num">Slide 6</div><div class="slide-visual">実験成功 ≠ すぐ臨床。橋渡しには長い検証が必要。</div>'
+  },
+  {
+    title:'7. 若返り医療の未来',
+    text:'本当に重要なのは、不老不死ではなく、健康寿命の延長です。若返り医療は、再生医療・予防医療・高齢社会設計をつなぐ新しい医学になる可能性があります。',
+    visual:'<div class="slide-num">Slide 7</div><div class="slide-visual">目標は「若く見える」より「長く元気に生きる」</div>'
+  }
+];
+
+const quizSets = {
+  basic: [
+    {q:'山中因子として正しい組み合わせはどれですか。', options:['OSKM','ATP','DNA','RNA'], answer:0, exp:'山中因子は Oct3/4, Sox2, Klf4, c-Myc の4因子で、まとめて OSKM と呼ばれます。'},
+    {q:'若返り研究でまず必要になるものは何ですか。', options:['年齢を測る物差し','派手な宣伝','長い名前','難しい数式だけ'], answer:0, exp:'若返りを語るには、若返ったかどうかを測る指標が必要です。代表例がエピジェネティック時計です。'},
+    {q:'若返り研究の主目的として最も近いものはどれですか。', options:['健康寿命を延ばすこと','一瞬で不老不死になること','眠らなくすること','身長を急に伸ばすこと'], answer:0, exp:'現実的な目的は健康寿命の延長であり、不老不死ではありません。'}
+  ],
+  standard: [
+    {q:'部分的リプログラミングの狙いとして最も適切なのはどれですか。', options:['細胞の種類を保ちつつ年齢情報を若い方向へ戻す','全細胞を胚に戻す','病名を増やす','炎症をゼロにする'], answer:0, exp:'部分的リプログラミングの要点は、細胞の正体を壊さずに年齢だけ戻すことです。'},
+    {q:'エピジェネティック時計が重要な理由は何ですか。', options:['若返りの程度を測れるから','遺伝子を全部書き換えるから','寿命を完全予言できるから','病院が儲かるから'], answer:0, exp:'若返り研究では介入の前後で生物学的年齢がどう変わったかを見る必要があります。'},
+    {q:'マウス実験の成功がそのまま人間医療を意味しない理由として最も重要なのはどれですか。', options:['安全性と再現性の確認が必要だから','マウスが小さいから','英語論文だから','器具が高いから'], answer:0, exp:'人間での長期安全性、がん化リスク、再現性の確認が欠かせません。'}
+  ],
+  deep: [
+    {q:'ゴンペルツ法則が示すものとして最も近いものはどれですか。', options:['年齢とともに死亡率が指数関数的に増える傾向','すべての人が同じ年齢で死ぬこと','若返りが起こらないこと','細胞が分裂しないこと'], answer:0, exp:'ゴンペルツ法則は加齢に伴う死亡率上昇の経験法則として有名です。'},
+    {q:'若返り研究で「完全初期化」が危険視される主な理由は何ですか。', options:['細胞の身分が失われ腫瘍化などの危険があるから','色が変わるから','温度が下がるから','論文が長くなるから'], answer:0, exp:'完全初期化では細胞のアイデンティティが崩れ、がん化などのリスクが問題になります。'},
+    {q:'若返り医療の社会的論点として適切でないものはどれですか。', options:['誰がアクセスできるかという格差問題','安全性と費用の問題','治療と強化の境界','地球の自転を止める問題'], answer:3, exp:'格差、安全性、費用、適応対象は重要な論点ですが、地球の自転は関係ありません。'}
+  ]
+};
+
+let currentMode = 'guide';
+let currentChapter = 'intro';
+let currentTeacher = 'guide';
+let currentQuizSet = 'basic';
+let quizIndex = 0;
+let quizCorrect = 0;
+let autoplay = null;
+let currentSlide = 0;
+let useExternalApi = false;
+const chatHistory = [];
+
+const $ = sel => document.querySelector(sel);
+const $$ = sel => document.querySelectorAll(sel);
+
+function setMode(mode){
+  currentMode = mode;
+  $$('#modeRow .small-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.mode === mode));
+  $('#chatSection').classList.toggle('hide', mode !== 'chat');
+  $('#quizSection').classList.toggle('hide', mode !== 'quiz');
+  $('#storySection').classList.toggle('hide', mode !== 'story');
+  $('#apiSection').classList.toggle('hide', mode !== 'api');
+  $('#mode-guide').classList.toggle('hide', mode !== 'guide');
+}
+
+function setChapter(ch){
+  currentChapter = ch;
+  $$('.chapter-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.chapter === ch));
+  $('#chapterDescription').textContent = chapterInfo[ch].desc;
+  refreshSuggestionBox();
+}
+
+function setTeacher(t){
+  currentTeacher = t;
+  $$('#teacherRow .teacher-chip').forEach(btn => btn.classList.toggle('active', btn.dataset.teacher === t));
+  $('#teacherHint').textContent = teacherInfo[t].hint;
+}
+
+function refreshSuggestionBox(){
+  const arr = questionSuggestions[currentChapter] || [];
+  $('#suggestionsBox').innerHTML = arr.map(v => '・' + v).join('<br>');
+}
+
+function addMessage(role, text){
+  const div = document.createElement('div');
+  div.className = `msg ${role}`;
+  div.textContent = text;
+  $('#chatLog').appendChild(div);
+  $('#chatLog').scrollTop = $('#chatLog').scrollHeight;
+}
+
+function introMessage(){
+  addMessage('system', 'AI対話型教材へようこそ。現在の章と対話モードに応じて説明します。外部AI未接続でも、この教材専用のローカル応答で学習できます。');
+  addMessage('ai', 'まずは「現在の章」を選び、質問してみてください。例：\n・山中因子はなぜ若返り研究で重要？\n・老化を中学生向けに説明して');
+}
+
+function localReply(message){
+  const chapter = currentChapter;
+  const teacher = currentTeacher;
+  const msg = message.trim();
+  const lower = msg.toLowerCase();
+  let core = localKnowledge[chapter] || localKnowledge.intro;
+
+  if(msg.includes('山中因子') || msg.includes('OSKM') || lower.includes('oskm')) core = localKnowledge.oskm;
+  else if(msg.includes('老化') || msg.includes('ゴンペルツ')) core = localKnowledge.aging + ' ゴンペルツ法則は、年齢とともに死亡率が指数関数的に増える傾向を示す経験法則です。';
+  else if(msg.includes('時計') || msg.includes('DNAメチル') || msg.includes('生物学的年齢')) core = localKnowledge.clock;
+  else if(msg.includes('部分的') || msg.includes('リプログラミング')) core = localKnowledge.partial;
+  else if(msg.includes('マウス') || msg.includes('視神経') || msg.includes('実験')) core = localKnowledge.mouse;
+  else if(msg.includes('倫理') || msg.includes('危険') || msg.includes('がん') || msg.includes('安全')) core = localKnowledge.ethics;
+  else if(msg.includes('順番') || msg.includes('どこから')) core = 'おすすめは junior → book94 → book95 → book96c です。最短で理解したいなら、まず book94 の全体像を読み、わからないところをこのAIで確認してください。';
+  else if(msg.includes('要約')) core = chapterInfo[currentChapter].desc + ' 要点は「老化を測る・巻き戻す・安全に使う」の3本柱です。';
+
+  if(teacher === 'guide') return '案内役AIです。' + core;
+  if(teacher === 'yamanaka') return '山中伸弥モードです。再生医療の観点から言えば、' + core + ' ただし、希望だけでなく安全性の確認が欠かせません。';
+  if(teacher === 'gompertz') return 'ゴンペルツの視点で言えば、生命現象は法則を持って見えてきます。' + core + ' 老化を数量化する視点を忘れてはいけません。';
+  if(teacher === 'sinclair') return 'シンクレア風に言えば、老化は情報の乱れとして理解できます。' + core + ' 重要なのは、その乱れが可逆かもしれないという点です。';
+  if(teacher === 'student') return 'やさしい先生モードです。かんたんに言うと、' + core.replace(/生物学的年齢/g,'体のほんとうの年齢').replace(/エピジェネティック時計/g,'細胞の年齢計');
+  return core;
+}
+
+async function externalReply(message){
+  const endpoint = $('#apiEndpoint').value.trim();
+  const apiKey = $('#apiKey').value.trim();
+  if(!endpoint) throw new Error('APIエンドポイントが未入力です。');
+  const payload = {
+    message,
+    chapter: currentChapter,
+    teacher: currentTeacher,
+    history: chatHistory.slice(-8)
+  };
+  const headers = {'Content-Type':'application/json'};
+  if(apiKey) headers['Authorization'] = 'Bearer ' + apiKey;
+  const res = await fetch(endpoint, {
+    method:'POST',
+    headers,
+    body: JSON.stringify(payload)
+  });
+  if(!res.ok) throw new Error('API応答エラー: ' + res.status);
+  const data = await res.json();
+  return data.reply || data.message || JSON.stringify(data);
+}
+
+async function sendMessage(){
+  const text = $('#userInput').value.trim();
+  if(!text) return;
+  addMessage('user', text);
+  chatHistory.push({role:'user', text});
+  $('#userInput').value = '';
+  try{
+    let reply;
+    if(useExternalApi) reply = await externalReply(text);
+    else reply = localReply(text);
+    addMessage('ai', reply);
+    chatHistory.push({role:'ai', text: reply});
+  }catch(err){
+    const msg = '外部APIで応答できませんでした。ローカル応答に切り替えます。\n理由: ' + err.message;
+    addMessage('system', msg);
+    useExternalApi = false;
+    $('#apiStatus').textContent = '外部APIエラーのため、ローカル応答モードに戻りました。';
+    const reply = localReply(text);
+    addMessage('ai', reply);
+    chatHistory.push({role:'ai', text: reply});
+  }
+}
+
+function summarizeChat(){
+  if(chatHistory.length === 0){ addMessage('system','まだ会話がありません。'); return; }
+  const recent = chatHistory.slice(-6).map(x => x.text).join(' / ');
+  const summary = '最近の会話要約：' + recent.slice(0,220) + (recent.length>220 ? '…' : '') + '。中心テーマは「' + chapterInfo[currentChapter].title + '」です。';
+  addMessage('ai', summary);
+}
+
+function suggestQuestion(){
+  const arr = questionSuggestions[currentChapter] || [];
+  const pick = arr[Math.floor(Math.random()*arr.length)] || '山中因子はなぜ重要ですか？';
+  $('#userInput').value = pick;
+  $('#userInput').focus();
+}
+
+function renderQuiz(){
+  const set = quizSets[currentQuizSet];
+  const item = set[quizIndex];
+  $('#quizQ').textContent = `Q${quizIndex+1}. ${item.q}`;
+  $('#quizOptions').innerHTML = '';
+  $('#quizResult').style.display = 'none';
+  $('#quizResult').textContent = '';
+  item.options.forEach((opt, idx) => {
+    const b = document.createElement('button');
+    b.textContent = opt;
+    b.addEventListener('click', ()=>answerQuiz(idx));
+    $('#quizOptions').appendChild(b);
+  });
+  $('#quizProgress').style.width = ((quizIndex)/set.length*100) + '%';
+  $('#quizScoreText').textContent = `正答数：${quizCorrect} / ${quizIndex}`;
+}
+
+function answerQuiz(idx){
+  const set = quizSets[currentQuizSet];
+  const item = set[quizIndex];
+  const ok = idx === item.answer;
+  if(ok) quizCorrect += 1;
+  $('#quizResult').style.display = 'block';
+  $('#quizResult').innerHTML = (ok ? '○ 正解。' : '× ちがいます。') + item.exp;
+  $('#quizScoreText').textContent = `正答数：${quizCorrect} / ${quizIndex+1}`;
+  $('#quizProgress').style.width = (((quizIndex+1)/set.length)*100) + '%';
+  setTimeout(()=>{
+    quizIndex += 1;
+    if(quizIndex >= set.length){
+      $('#quizQ').textContent = 'クイズ終了';
+      $('#quizOptions').innerHTML = '';
+      $('#quizResult').style.display = 'block';
+      $('#quizResult').innerHTML = `最終結果：${quizCorrect} / ${set.length} 正解。<br>もう一度やるときは「最初から」を押してください。`;
+      return;
+    }
+    renderQuiz();
+  }, 1400);
+}
+
+function resetQuiz(){
+  quizIndex = 0;
+  quizCorrect = 0;
+  renderQuiz();
+}
+
+function setQuizSet(name){
+  currentQuizSet = name;
+  $$('.quiz-set-btn').forEach(btn => btn.classList.toggle('active', btn.dataset.set === name));
+  resetQuiz();
+}
+
+function renderSlide(){
+  const s = slides[currentSlide];
+  $('#slideWrap').innerHTML = `
+    <article class="slide">
+      <h3>${s.title}</h3>
+      <p>${s.text}</p>
+      ${s.visual}
+      <p class="footer-note">${currentSlide+1} / ${slides.length}</p>
+    </article>`;
+}
+
+function nextSlide(){ currentSlide = (currentSlide + 1) % slides.length; renderSlide(); }
+function prevSlide(){ currentSlide = (currentSlide - 1 + slides.length) % slides.length; renderSlide(); }
+function startAuto(){ if(autoplay) return; autoplay = setInterval(nextSlide, 3200); }
+function stopAuto(){ clearInterval(autoplay); autoplay = null; }
+
+function testApi(){
+  const endpoint = $('#apiEndpoint').value.trim();
+  if(!endpoint){ $('#apiStatus').textContent = 'APIエンドポイントが未入力です。'; return; }
+  $('#apiStatus').textContent = '接続テスト準備OK。実際の応答確認は「以後の質問でAPIを使う」を押してから質問してください。';
+}
+
+function enableApi(){
+  useExternalApi = true;
+  $('#apiStatus').textContent = '外部APIモードを有効にしました。以後の質問はAPI優先で送信します。';
+}
+
+function disableApi(){
+  useExternalApi = false;
+  $('#apiStatus').textContent = 'ローカル応答モードに戻しました。';
+}
+
+$$('#modeRow .small-btn').forEach(btn => btn.addEventListener('click', ()=>setMode(btn.dataset.mode)));
+$$('.chapter-btn').forEach(btn => btn.addEventListener('click', ()=>setChapter(btn.dataset.chapter)));
+$$('#teacherRow .teacher-chip').forEach(btn => btn.addEventListener('click', ()=>setTeacher(btn.dataset.teacher)));
+$$('.quiz-set-btn').forEach(btn => btn.addEventListener('click', ()=>setQuizSet(btn.dataset.set)));
+$('#sendBtn').addEventListener('click', sendMessage);
+$('#userInput').addEventListener('keydown', e => {
+  if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); sendMessage(); }
+});
+$('#clearChat').addEventListener('click', ()=>{ $('#chatLog').innerHTML=''; chatHistory.length=0; introMessage(); });
+$('#summaryBtn').addEventListener('click', summarizeChat);
+$('#suggestBtn').addEventListener('click', suggestQuestion);
+$('#resetQuiz').addEventListener('click', resetQuiz);
+$('#nextSlide').addEventListener('click', nextSlide);
+$('#prevSlide').addEventListener('click', prevSlide);
+$('#autoPlayBtn').addEventListener('click', startAuto);
+$('#stopPlayBtn').addEventListener('click', stopAuto);
+$('#testApiBtn').addEventListener('click', testApi);
+$('#useApiBtn').addEventListener('click', enableApi);
+$('#stopApiBtn').addEventListener('click', disableApi);
+
+refreshSuggestionBox();
+renderQuiz();
+renderSlide();
+introMessage();
+</script>
+
+<section class="panel" id="aiHubPanel">
+  <h2 class="section-title" style="margin-top:0">🧭 役割別AIの使い分け</h2>
+  <div class="status-box" style="margin-top:12px">
+    <p><strong>book94</strong> → 解説AI：概念の意味を整理する</p>
+    <p><strong>book95</strong> → 科学者キャラAI：物語を会話で理解する</p>
+    <p><strong>book96c</strong> → 実験・批判AI：方法・意義・限界を点検する</p>
+    <p><strong>book94junior</strong> → やさしい先生AI：中学生向けに言い換える</p>
+  </div>
+  <div class="mode-row" style="margin-top:12px">
+    <button class="small-btn" onclick="location.href='book94_with_ai.html'">book94 解説AIへ</button>
+    <button class="small-btn" onclick="location.href='book95_with_ai.html'">book95 科学者AIへ</button>
+    <button class="small-btn" onclick="location.href='book96c_with_ai.html'">book96c 実験AIへ</button>
+    <button class="small-btn" onclick="location.href='book94junior_with_ai.html'">中学生AIへ</button>
+  </div>
+</section>
+
+<script>
+
+</script>
+</body>
+</html>
+
+
