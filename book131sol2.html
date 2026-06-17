@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>ゴムが強くなる秘密｜研究の目的と3つの結論（中学生版）</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #f0f7ff;
+      font-family: system-ui, -apple-system, 'Segoe UI', 'Noto Sans JP', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
+      line-height: 1.6;
+      color: #1e293b;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* カード共通 */
+    .card {
+      background: white;
+      border-radius: 2rem;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-header {
+      padding: 1.5rem 1.8rem 0.8rem 1.8rem;
+      border-bottom: 4px solid;
+    }
+
+    .card-header h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      display: inline-block;
+      background: #fef9e3;
+      padding: 0.1rem 1rem;
+      border-radius: 40px;
+      font-size: 1.5rem;
+    }
+
+    .card-content {
+      padding: 1.5rem 1.8rem 2rem 1.8rem;
+    }
+
+    /* テーマカラー 目的用 */
+    .objectives .card-header {
+      border-bottom-color: #8b5cf6;
+    }
+    .objectives .card-header h2 {
+      background: #ede9fe;
+      color: #5b21b6;
+    }
+
+    /* 結論用 */
+    .conclusion-1 .card-header { border-bottom-color: #3b82f6; }
+    .conclusion-1 .card-header h2 { background: #eef4ff; color: #1e40af; }
+    .conclusion-2 .card-header { border-bottom-color: #10b981; }
+    .conclusion-2 .card-header h2 { background: #e6f9f0; color: #065f46; }
+    .conclusion-3 .card-header { border-bottom-color: #f59e0b; }
+    .conclusion-3 .card-header h2 { background: #fffbeb; color: #b45309; }
+
+    h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin: 1.2rem 0 0.5rem 0;
+      color: #0f172a;
+      border-left: 5px solid;
+      padding-left: 0.8rem;
+    }
+    .objectives h3 { border-left-color: #8b5cf6; }
+    .conclusion-1 h3 { border-left-color: #3b82f6; }
+    .conclusion-2 h3 { border-left-color: #10b981; }
+    .conclusion-3 h3 { border-left-color: #f59e0b; }
+
+    p {
+      margin-bottom: 0.9rem;
+    }
+
+    ul, .bullet-list {
+      margin: 0.8rem 0 1rem 1.5rem;
+    }
+
+    li {
+      margin-bottom: 0.4rem;
+    }
+
+    .analogy-box, .highlight-box {
+      background: #f8fafc;
+      padding: 1rem 1.3rem;
+      border-radius: 1.5rem;
+      margin: 1rem 0;
+      border: 1px solid #e2e8f0;
+    }
+
+    .strong-text {
+      font-weight: 700;
+      background: linear-gradient(120deg, #fef9c3 0%, #fef9c3 40%, transparent 60%);
+      padding: 0 0.2rem;
+    }
+
+    .arrow-flow {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #2563eb;
+      margin: 0.8rem 0;
+      text-align: center;
+    }
+
+    hr {
+      margin: 1rem 0;
+      border: 0;
+      height: 2px;
+      background: linear-gradient(to right, #cbd5e1, transparent);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #5b6e8c;
+    }
+
+    @media (max-width: 640px) {
+      .card-content {
+        padding: 1.2rem;
+      }
+      .card-header h2 {
+        font-size: 1.3rem;
+      }
+      h3 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div style="margin:28px 0;padding:18px;border-radius:18px;background:#eef6ff;border:2px solid #bcd3ff;">
+<div style="font-weight:800;font-size:1.1rem;margin-bottom:12px;">🔗 BOOK131 相互ナビゲーション</div>
+<div style="display:flex;flex-wrap:wrap;gap:10px;">
+<a href="book131sol.html" style="text-decoration:none;background:#2563eb;color:white;
+padding:10px 16px;border-radius:999px;font-weight:700;display:inline-block;">
+TPAI解析
+</a>
+<a href="book131sol2.html" style="text-decoration:none;background:#2563eb;color:white;
+padding:10px 16px;border-radius:999px;font-weight:700;display:inline-block;">
+中学生向け解説
+</a>
+<a href="book131paper.html" style="text-decoration:none;background:#2563eb;color:white;
+padding:10px 16px;border-radius:999px;font-weight:700;display:inline-block;">
+原文
+</a>
+<a href="book131jap.html" style="text-decoration:none;background:#2563eb;color:white;
+padding:10px 16px;border-radius:999px;font-weight:700;display:inline-block;">
+日本語訳
+</a>
+<a href="book131counter.html" style="text-decoration:none;background:#2563eb;color:white;
+padding:10px 16px;border-radius:999px;font-weight:700;display:inline-block;">
+反論編
+</a>
+<a href="book131navi.html" style="text-decoration:none;background:#2563eb;color:white;
+padding:10px 16px;border-radius:999px;font-weight:700;display:inline-block;">
+ナビ
+</a>
+</div>
+</div>
+<div class="container">
+
+  <!-- ========= 新：研究の3つの目的（肉付け版） ========= -->
+  <div class="card objectives">
+    <div class="card-header">
+      <h2>🎯 なぜこの研究をしたのか？ 3つの目的</h2>
+    </div>
+    <div class="card-content">
+      <p>タイヤのゴムに「カーボンブラック」という黒い粒を入れると、<strong>100年以上もの間</strong>ゴムが強くなることが知られていました。<br>
+      でも「<strong>なぜ強くなるのか、本当の理由</strong>」ははっきりしていませんでした。この研究には、次の3つの目的があります。</p>
+
+      <!-- 目的a　肉付け -->
+      <h3>📌 目的① 本当の理由を解明する</h3>
+      <p>「タイヤのゴムにカーボンブラックを入れると、なぜ強くなるのか？」<br>
+      これまで「なんとなく強くなる」という経験則はあったけれど、<span class="strong-text">「ゴムの中の何が効いているのか」</span>は正しくわかっていませんでした。</p>
+      <p>この研究では、最新の実験とコンピューターシミュレーションを使い、<strong>「体積膨張への抵抗」</strong>が中心的な仕組みであることを発見しました。<br>
+      つまり、<strong>ゴムが“ふくらみにくい”から強い</strong>。そのしくみを、はっきりと証明することが <strong>目的①</strong> です。</p>
+      <div class="analogy-box">
+        💡 <strong>たとえ話</strong>：まるで「風船がふくらみたがるのをぎゅっと押さえつけると、かえって強くなる」ようなもの。なぜそうなるのか、世界で初めてしくみを解き明かしました。
+      </div>
+
+      <!-- 目的b　肉付け -->
+      <h3>🔗 目的② バラバラの説明を「1つのしくみ」としてまとめる</h3>
+      <p>これまでの研究者たちは、ゴムが強くなる理由をいろいろに説明していました。</p>
+      <ul>
+        <li>「粒どうしがネットワークを作るから」</li>
+        <li>「粒のまわりのゴムが硬くなるから」</li>
+        <li>「粒がぎっしり詰まって動けなくなるから」</li>
+      </ul>
+      <p>しかし、これらは<strong>別々の現象ではなく、ぜんぶつながっている</strong>と考えました。<br>
+      目的②は、<strong>「粒のつながり」＋「まわりの硬いゴム」＋「ぎゅうぎゅう詰め効果」</strong> をバラバラにせず、<br>
+      「ぜんぶが『ゴムのふくらみにくさ』に協力している」という<span class="strong-text">ひとつの大きな理論</span>としてまとめることです。</p>
+      <div class="analogy-box">
+        🧩 <strong>パズルのたとえ</strong>：今までは「青いピースが大事」「赤いピースが大事」と別々に議論していた。この研究では、それらがひとつの絵（ゴム強化の全体像）を完成させていることを示しました。
+      </div>
+
+      <!-- 目的c　肉付け -->
+      <h3>⚙️ 目的③ 開発の方法を「科学で予測する方法」へ進化させる</h3>
+      <p>これまでのタイヤ開発は、<strong>「作って試す」を何度も繰り返す</strong>方法がほとんどでした。<br>
+      たとえば、「粒の大きさを変えてみる」「混ぜる量を変えてみる」→ タイヤを作ってテスト → また作り直す… という、とても時間とコストがかかる方法です。</p>
+      <p>目的③は、<strong>科学の法則（ゴムがふくらみにくくなる理論）を使って、コンピューター上で性能を予測しながら作る</strong>方法へ進化させることです。</p>
+      <p>そうすれば、無駄な試作を減らし、<strong>より早く、より高性能なタイヤ</strong>を開発できるようになります。<br>
+      つまり、<span class="strong-text">「なぜ強くなるか」がわかれば、「どう作ればもっと強くなるか」も計算でわかる</span>というわけです。</p>
+      <div class="analogy-box">
+        🏎️ <strong>レースカーの設計に例えると</strong>：昔は「適当に部品を変えて走らせてみる」しかなかった。今は「空気の流れを計算してから作る」ように、ゴムも科学で設計する時代へ。これが目的③です。
+      </div>
+      <hr>
+      <p>✨ つまり、この研究の3つの目的は…<br>
+      <strong>①「なぜ？」を解明し、② バラバラな説を1つにまとめ、③ 未来のタイヤ作りを科学で変える</strong> ことです。</p>
+    </div>
+  </div>
+
+  <span>🧪</span> 実験の舞台裏：コンピューターの中でゴムを引っぱる！
+  </h2>
+  <p style="font-size: 1.1rem; margin-bottom: 28px;">研究者たちは、実際のゴムだけではなく、<strong>コンピューターの中に「ゴムのミニチュア世界」を作って実験</strong>しました。なぜなら、分子レベルの動きは顕微鏡でも直接見えないからです。ここでは、その「超リアルな仮想実験」を3つ紹介します。</p>
+
+  <!-- 実験a -->
+  <div style="background: white; border-radius: 24px; padding: 20px 24px; margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); border-left: 12px solid #3b82f6;">
+    <h3 style="margin: 0 0 12px 0; font-size: 1.5rem; display: flex; gap: 10px; align-items: center;">
+      <span>🔬</span> 実験① ～1,500回も引っぱる！ 15年分の計算～
+    </h3>
+    <p><strong>実験a</strong>：「1,500本の分子動力学シミュレーションを実施し、計算時間は約15年相当」</p>
+    <div style="background: #f0f9ff; border-radius: 20px; padding: 15px; margin: 12px 0;">
+      <p>🎮 <strong>ゲームの例え</strong>：ふつうのゲームなら、1回キャラクターを動かすだけで一瞬です。しかし研究者たちは、<strong>ゴムの中の分子ひとつひとつ</strong>を動かす“スーパー精密な物理ゲーム”を開発しました。そのゲームを<strong>1,500回</strong>もプレイし、それぞれ「ゴムを引っぱる速さ」「粒の大きさ」「粒の数」などを少しずつ変えました。</p>
+      <p>💻 <strong>どれくらい重い計算？</strong> 普通のパソコンでやると <strong>約15年</strong> かかる計算量です！ 研究チームは高性能コンピューターを何台も同時に動かして、この“仮想実験”を現実的な時間で終わらせました。</p>
+      <p>✨ <strong>結果</strong>：どの条件でゴムが特に強くなるか、パターンが見えてきました。それが「体積を変えにくいゴムほど強い」という発見につながったのです。</p>
+    </div>
+  </div>
+
+  <!-- 実験b -->
+  <div style="background: white; border-radius: 24px; padding: 20px 24px; margin-bottom: 28px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); border-left: 12px solid #10b981;">
+    <h3 style="margin: 0 0 12px 0; font-size: 1.5rem; display: flex; gap: 10px; align-items: center;">
+      <span>⚛️</span> 実験② ～数十万原子の超ミニチュアタイヤ～
+    </h3>
+    <p><strong>実験b</strong>：「数十万原子スケールで、ゴム中のカーボンブラック粒子の形状・分布をモデル化」</p>
+    <div style="background: #f0fdf4; border-radius: 20px; padding: 15px; margin: 12px 0;">
+      <p>🔍 <strong>「原子スケール」ってどれくらい？</strong> 原子は、人間の髪の毛の太さの <strong>100万分の1</strong> よりも小さい世界です。その小さな原子を <strong>数十万個</strong> もコンピューターの中に並べて、「タイヤの中の小さな部分」を再現しました。</p>
+      <p>🧩 <strong>まるでレゴの超精密版</strong>：黒い粒（カーボンブラック）をどんな形で、どんなふうに散らばせるか。粒のまわりのゴム分子がどうなっているか。これを現実に近づけるために、モデルを何度も調整しました。</p>
+      <p>✨ <strong>すごいところ</strong>：普通の実験では「粒が全体に均等に混ざっている」とざっくり考えるだけですが、この実験では「粒がたまに固まっている」「粒の表面がでこぼこしている」などのリアルな特徴も再現。そのおかげで、実際のタイヤの性質をよく説明できるようになりました。</p>
+    </div>
+  </div>
+
+  <!-- 実験c -->
+  <div style="background: white; border-radius: 24px; padding: 20px 24px; margin-bottom: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.03); border-left: 12px solid #f59e0b;">
+    <h3 style="margin: 0 0 12px 0; font-size: 1.5rem; display: flex; gap: 10px; align-items: center;">
+      <span>📊</span> 実験③ ～現実のゴムと同じように動くかテスト～
+    </h3>
+    <p><strong>実験c</strong>：「既存実験と合うようにモデルを改良し、強化ゴムの変形挙動を再現した」</p>
+    <div style="background: #fffbeb; border-radius: 20px; padding: 15px; margin: 12px 0;">
+      <p>🎯 <strong>「モデルが正しいか」を確かめるステップ</strong>：コンピューターの中のゴムが引っぱられたとき、<strong>実際に実験室で測ったゴム</strong>と同じように伸びたり、硬くなったりするかチェックしました。</p>
+      <p>🔄 <strong>改良のくり返し</strong>：最初はズレがあったので、「粒子のくっつき方」「ゴム分子のからまり具合」などを修正。まるで「仮想タイヤの微調整」を何度も行いました。</p>
+      <p>✅ <strong>ついに成功！</strong> 最終的にコンピューター上のゴムは、現実の強化ゴムと <strong>ほぼ完璧に一致</strong> する変形を見せました。つまり、「このコンピューターモデルは本物のゴムの心を正しく再現している」と証明されたのです。</p>
+      <p>💡 <strong>なぜこれが重要？</strong> 正しいモデルがあれば、もう「作っては壊し、作っては壊し」を繰り返さなくてよくなります。コンピューターの上で「もし粒の大きさを半分にしたら？」「もっとぎゅうぎゅうに詰めたら？」と試せるからです。これが、未来のタイヤ開発を変える「<strong>科学で予測する設計</strong>」への第一歩です。</p>
+    </div>
+  </div>
+
+  <div style="background: #e6f7f0; border-radius: 20px; padding: 18px 22px; margin-top: 20px; text-align: center;">
+    <p style="margin: 0; font-weight: bold;">📌 まとめ：これらの3つの実験によって…</p>
+    <p style="margin: 8px 0 0;">「ゴムが<strong>ふくらみにくい</strong>ほど強くなる」という理論が、分子レベルで正しいことが証明された。<br>そして、タイヤの100年謎が、コンピューターの中で解き明かされたのだ。</p>
+  </div>
+  <!-- ========= 既存の3つの結論（よりわかりやすく維持） ========= -->
+  <!-- 結論１ -->
+  <div class="card conclusion-1">
+    <div class="card-header">
+      <h2>🔬 結論１ ゴムの中に「細かい粒」があるとどうなる？</h2>
+    </div>
+    <div class="card-content">
+      <p>ふつうのゴムは引っぱると「<strong>細く長く</strong>」なります。でも<strong>タイヤのゴム</strong>には<strong>カーボンブラック</strong>という細かい粒がたくさん入っています。<br>
+      するとゴムの中ではこんな変化が起こります。</p>
+      <ul>
+        <li>⚡ ゴムの分子が<strong>自由に動きにくくなる</strong></li>
+        <li>⚡ ゴムの中に「<strong>ぎゅうぎゅうの場所</strong>」ができる</li>
+        <li>⚡ ゴムが簡単には<strong>広がったり、ふくらんだりできなくなる</strong></li>
+      </ul>
+      <p>その結果、ゴムは…</p>
+      <ul>
+        <li>✅ <strong>変形しにくい</strong>（形を変えづらい）</li>
+        <li>✅ <strong>かたく感じる</strong></li>
+        <li>✅ <strong>強い力でも壊れにくい</strong></li>
+      </ul>
+      <div class="analogy-box">
+        <p>🎈 <strong>たとえると</strong></p>
+        <p>• <strong>何も入っていない風船</strong> → やわらかく、すぐ形が変わる</p>
+        <p>• <strong>中にたくさんボールを詰めた風船</strong> → 押しても変形しにくい</p>
+      </div>
+      <div class="arrow-flow">
+        ⬇ 「ゴムが自由にふくらめない」 ⬇<br>
+        「変形しにくくなる」 ⬇ 「硬くて強いゴムになる」
+      </div>
+      <p>つまり、<span class="strong-text">「ゴムがふくらむ自由をうばう」ことで、硬くて強いゴムに生まれ変わる</span>のです。</p>
+    </div>
+  </div>
+
+  <!-- 結論２ -->
+  <div class="card conclusion-2">
+    <div class="card-header">
+      <h2>🧪 結論２ 「体積膨張への抵抗」がゴムを強くする中心メカニズム</h2>
+    </div>
+    <div class="card-content">
+      <p><strong>「体積膨張への抵抗が、強化ゴムの剛性・強度増加の中心機構」</strong> というのは、<br>
+      💡 <span class="strong-text">「ゴムが“ふくらみにくい”ほど、硬くて強いゴムになる」</span> という意味です。</p>
+      
+      <h3>① 普通のゴムは自由に変形する</h3>
+      <p>ゴムを引っぱると → 長く伸びる・横は細くなる。<br>これはゴムの中の分子が自由に動けるから。</p>
+      
+      <h3>② カーボンブラックを入れると自由に動けなくなる</h3>
+      <p>小さな黒い粒（カーボンブラック）が入ると…</p>
+      <ul>
+        <li>分子が引っかかる</li>
+        <li>ゴムが動きにくい</li>
+        <li>空間が広がりにくい</li>
+      </ul>
+      
+      <h3>③ 「ふくらむ変形」が止められる</h3>
+      <p>ゴムは引っぱられると中で「広がろう・ふくらもう」とする場所ができます。<br>
+      でも粒子があると…</p>
+      <ul>
+        <li>その広がりを邪魔する</li>
+        <li>体積が増えにくくなる</li>
+        <li>無理やり押さえつけられる</li>
+      </ul>
+      <p>これが<strong>「体積膨張への抵抗」</strong>です。</p>
+      
+      <h3>④ 抵抗が大きいほど、硬く強くなる</h3>
+      <p>広がれないゴムは → 変形しにくい・強く引っぱっても耐える・簡単に壊れない。<br>
+      つまり、「<strong>ふくらめない苦しさ</strong>」がゴムを強くしているという考え方です。</p>
+      
+      <div class="analogy-box">
+        <p>🚃 <strong>身近なたとえ（満員電車）</strong></p>
+        <p>• <strong>人が少ない電車</strong> → 自由に動ける → やわらかいゴム</p>
+        <p>• <strong>満員電車</strong> → 動きにくい → 硬く強いゴム</p>
+        <p>📌 カーボンブラックは、ゴムの中を<strong>「満員電車状態」</strong>にしているイメージです。</p>
+      </div>
+      <p>✨ <strong>これは、</strong>「どの理論が正しいか研究者たちが争っていたけれど、実は<strong>全部が協力してゴムを強くしていた</strong>」という意味につながります。</p>
+    </div>
+  </div>
+
+  <!-- 結論３ -->
+  <div class="card conclusion-3">
+    <div class="card-header">
+      <h2>🧩 結論３ バラバラだった理由を「1つの大きな考え方」でまとめた</h2>
+    </div>
+    <div class="card-content">
+      <h3>📚 これまでの問題点</h3>
+      <p>タイヤのゴムがなぜ強くなるのか？ 研究者たちは長い間、いろいろな説明をしていました。</p>
+      <ul>
+        <li>「粒同士がネットワークを作るから強い」</li>
+        <li>「粒のまわりのゴムが特別に硬くなるから強い」</li>
+        <li>「粒がたくさん入って動けなくなるから強い」</li>
+      </ul>
+      <p>そして<span class="strong-text">「どれが本当の理由なのか？」</span>と議論していたのです。</p>
+      
+      <h3>💡 新しい考え方</h3>
+      <p>今回の研究では、<strong>「実は全部がつながっていた」</strong>と考えました。</p>
+      <p>つまり…</p>
+      <ul>
+        <li>✅ 粒子ネットワーク</li>
+        <li>✅ 界面の硬いゴム</li>
+        <li>✅ ぎゅうぎゅう詰め効果</li>
+      </ul>
+      <p>これらはバラバラの現象ではなく、<strong>全部が「ゴムがふくらみにくくなる」こと</strong>に協力していたのです。</p>
+      
+      <div class="analogy-box">
+        <p>⚽ <strong>サッカーのたとえ</strong></p>
+        <p>【昔の考え】<br>
+        「守備が勝因だ！」「いや攻撃だ！」「いやパス回しだ！」と争っている状態。</p>
+        <p>【新しい考え】<br>
+        実は <strong>守備・攻撃・パス回し 全部が協力して勝っていた</strong> という整理。</p>
+      </div>
+      
+      <p>ゴムで言うと、いろいろな仕組みは全部、<strong>「ゴムを自由に変形させない」方向</strong>に働いていました。<br>
+      その結果…</p>
+      <ul>
+        <li>✅ 硬くなる</li>
+        <li>✅ 強くなる</li>
+        <li>✅ 壊れにくくなる</li>
+      </ul>
+      <p>という<strong>共通の効果</strong>を生んでいたのです。</p>
+      <hr>
+      <p>🎯 <strong>この論文の一番大切なポイント</strong><br>
+      「今までバラバラだった説明を、<strong>1つの大きな考え方でまとめた</strong>」ところが重要なのです。</p>
+      <p>これは、上の「目的②」の達成そのものです。</p>
+    </div>
+  </div>
+  
+  <footer>
+    🧠 研究の目的 ＋ 3つの結論 → ゴムを強くする「ふくらみにくさ」の科学がよくわかります
+  </footer>
+</div>
+<div style="margin:28px 0;padding:18px;border-radius:18px;background:#eef6ff;border:2px solid #bcd3ff;">
+<div style="font-weight:800;font-size:1.1rem;margin-bottom:12px;">🔗 BOOK131 相互ナビゲーション</div>
+<div style="display:flex;flex-wrap:wrap;gap:10px;">
+<a href="book131sol.html" style="text-decoration:none;background:#2563eb;color:white;
+padding:10px 16px;border-radius:999px;font-weight:700;display:inline-block;">
+TPAI解析
+</a>
+<a href="book131sol2.html" style="text-decoration:none;background:#2563eb;color:white;
+padding:10px 16px;border-radius:999px;font-weight:700;display:inline-block;">
+中学生向け解説
+</a>
+<a href="book131paper.html" style="text-decoration:none;background:#2563eb;color:white;
+padding:10px 16px;border-radius:999px;font-weight:700;display:inline-block;">
+原文
+</a>
+<a href="book131jap.html" style="text-decoration:none;background:#2563eb;color:white;
+padding:10px 16px;border-radius:999px;font-weight:700;display:inline-block;">
+日本語訳
+</a>
+<a href="book131counter.html" style="text-decoration:none;background:#2563eb;color:white;
+padding:10px 16px;border-radius:999px;font-weight:700;display:inline-block;">
+反論編
+</a>
+<a href="book131navi.html" style="text-decoration:none;background:#2563eb;color:white;
+padding:10px 16px;border-radius:999px;font-weight:700;display:inline-block;">
+ナビ
+</a>
+</div>
+</div>
+</body>
+</html>
