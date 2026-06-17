@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTMLとはなにか - 入門解説</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Yu Gothic', sans-serif;
+            line-height: 1.7;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #2c3e50, #4a6491);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        main {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        h2 {
+            color: #2c3e50;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+            margin: 50px 0 25px;
+            font-size: 1.8rem;
+        }
+        h3 {
+            color: #2980b9;
+            margin: 30px 0 15px;
+            font-size: 1.4rem;
+        }
+        p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        .image-container {
+            text-align: center;
+            margin: 35px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .image-container img:hover {
+            transform: scale(1.02);
+        }
+        .caption {
+            font-size: 0.9rem;
+            color: #666;
+            padding: 10px;
+            background: #f9f9f9;
+            font-style: italic;
+        }
+        .highlight-box {
+            background: #e8f4fc;
+            border-left: 4px solid #3498db;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+        .comparison-table th {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: 600;
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+            color: #777;
+            font-size: 0.95rem;
+        }
+        .section-number {
+            background: #3498db;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            h1 { font-size: 2rem; }
+            main { padding: 25px; }
+            .subtitle { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HTMLとはなにか</h1>
+        <p class="subtitle">「HTML」と「HTMLファイル」を分けて考えると、Webの仕組みが一気に見えてくる</p>
+    </header>
+
+    <main>
+        <p>みなさんは、スマホやパソコンでふつうに見ているWebページが、じつは「ある決まった形の文章」からできていることを知っていますか？ その文章の形が HTML です。 そして、そのHTMLで書かれた「一枚の文書（データ）」が HTMLファイル です。 ここでは、まずこの区別をハッキリさせた上で、HTMLの歴史、ブログでの役割、そしてAI時代のこれからを、できるだけやさしい言葉で説明します。</p>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="HTMLコードとブラウザ表示の関係イメージ">
+            <div class="caption">HTMLコードはブラウザによって見やすい形に解釈・表示されます</div>
+        </div>
+
+        <h2><span class="section-number">1</span>HTMLとは</h2>
+
+        <h3>（1）「HTML」と「HTMLファイル」は別もの</h3>
+        <p>まず、いちばん大事な区別をします。 ふだん「HTML」と言うとき、意味が2つに分かれていることがあります。</p>
+
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>用語</th>
+                    <th>意味</th>
+                    <th>たとえ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>HTML</strong></td>
+                    <td>Webページを書くための「書き方のルール（言語・決まり）」</td>
+                    <td>日本語（言語そのもの）</td>
+                </tr>
+                <tr>
+                    <td><strong>HTMLファイル</strong></td>
+                    <td>そのルールで書かれた「実物の文書（たとえば index.html というファイル）」</td>
+                    <td>日本語で書かれた作文（具体的な文章）</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>たとえるなら、日本語と日本語の作文の関係に似ています。 「日本語」はルール（言語）で、「作文」はそのルールで書いた具体的な文章です。 同じように、HTMLはルール、HTMLファイルはそのルールで書かれた一枚の文書です。</p>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="プログラミングコードのテキストエディタ">
+            <div class="caption">HTMLファイルはテキストエディタで編集できる「ただの文書」です</div>
+        </div>
+
+        <h3>（2）HTMLの本当の役割は「見た目」ではない</h3>
+        <p>「HTMLって、文字を大きくしたり色をつけたりするものだよね」と思う人は多いです。 でも、それは半分だけ正解です。 HTMLの本当の役割は、見た目よりも先に、 文章が何であるか（役割）を示すことです。</p>
+        <p>たとえば、HTMLでは「ここは見出し」「ここは段落」「ここは箇条書き」「ここはリンク」と、 文章の意味の区切りをタグで示します。 見た目（色・配置・デザイン）は、ふつうCSSという別の仕組みで決めます。</p>
+        <div class="highlight-box">
+            <strong>重要なポイント：</strong> 「きれいに見せる」よりも先に、 意味の骨組み（構造）があることです。この骨組みがあるから、ページを読む人にも、機械（検索エンジンやAI）にも、内容が伝わります。
+        </div>
+
+        <h3>（3）HTMLの長所：強すぎない「ただの文書」</h3>
+        <p>ここからがHTMLのいちばん面白いところです。 HTMLは、プログラムのように勝手に動きません。「実行して何かをする」より、「書いてあることを見せる」側に寄った仕組みです。HTMLの強みは、便利だからではなく、無害だから――という見方があります。 つまり、HTMLは「余計な力」を持たず、読む側にも作る側にも、過剰な負担をかけにくい。 だから長く残りやすいのです。</p>
+        <p>「強すぎない」ことは、一見弱点に見えます。 でも、長く残す世界では、強すぎないことが最大の武器になります。</p>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="古いコンピュータと現代のノートパソコン">
+            <div class="caption">HTMLは技術の変化を超えて読み続けられる「耐久性」を持っています</div>
+        </div>
+
+        <h2><span class="section-number">2</span>HTMLの歴史</h2>
+        <h3>（1）HTMLは「見せる」ためより「共有」するために生まれた</h3>
+        <p>HTMLは1989年ごろ、ティム・バーナーズ＝リーが研究の場（CERN）で考えました。 重要なのは、当初のHTMLは「かっこいいホームページ」を作るためではなく、 研究者が文書を共有するための仕組みとして生まれた点です。だから初期のHTMLは、見た目は地味でも、 見出し・段落・箇条書き・リンクといった「文書の基本」を大事にしました。</p>
+
+        <h3>（2）1990年代：「見た目をよくしたい」欲望との綱引き</h3>
+        <p>Webが広まると、「もっと派手にしたい」「レイアウトを自由にしたい」という声が強くなります。 その結果、HTMLが見た目の役割まで背負わされて混乱した時期がありました。 でも、その混乱は、CSSの登場によって整理されます。</p>
+        <p>HTMLは意味（構造）、CSSは見た目、JavaScriptは動き―― こうして分業がはっきりし、HTMLは「変わらない土台」として強くなりました。</p>
+
+        <h3>（3）「HTMLファイルの歴史」は、欲望と思想の綱引き</h3>
+        <p>あるPDFでは、HTMLファイルの歴史を 「表示したい欲望」と「意味を保ちたい思想」の綱引きだ、とまとめています。これは、すごく大事な見方です。 人はどうしても「見た目」に引っぱられます。 でも、意味が壊れると、長く残りません。 HTMLはその間で、ぎりぎりのバランスを取り続けて、今日まで生き残ってきました。</p>
+
+        <h2><span class="section-number">3</span>ブログ作成でのHTMLの役割</h2>
+        <h3>（1）今はHTMLを直接書かなくても、最後はHTMLになる</h3>
+        <p>いまはWordPressなどでブログを書く人が多く、HTMLを一字ずつ打つ場面は減りました。 けれど大事なのは、どんなブログも最後は ブラウザが読める形＝HTMLとして表示される、ということです。つまり、ブログ作りでHTMLは「表に出ない主役」です。 背景で静かに働きながら、記事の骨組みを保ちます。</p>
+
+        <h3>（2）SNSとブログの違い：流れる言葉と、残る言葉</h3>
+        <p>SNSは、今この瞬間の会話には強いです。 でも流れて消えやすく、あとから読み返すのは苦手です。それに対してHTMLで書かれた記事は、URLと構造が保たれている限り、 何年後でも同じ場所で読み返せます。 だからHTMLは「そのときの反応のための文章」ではなく、 「あとで読み直される文章」の器になる、という言い方ができます。</p>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="ブログ執筆の様子">
+            <div class="caption">ブログはHTMLという構造化された器に言葉を載せて残します</div>
+        </div>
+
+        <h3>（3）「書く人が楽」より「読む未来が楽」</h3>
+        <p>便利な書き方はたくさんあります。 けれど、長い時間の中で本当に大事になるのは、 「書く人が楽」かどうかより、 未来の読む人（そしてAI）が迷わないことです。</p>
+        <p>HTMLは、少し回りくどくても意味を明示します。 その姿勢が、長く残る文章の土台になります。</p>
+
+        <h2><span class="section-number">4</span>今後の展開（AI時代のHTML）</h2>
+        <h3>（1）AIは「見た目」ではなく「構造」を読む</h3>
+        <p>AIが文章を理解するとき、人間のように「見た目の雰囲気」で判断しません。 見出し、段落、箇条書きなどの「構造」を手がかりにします。 HTMLはその構造を最初から明示しているので、AIにとって読みやすい形式です。</p>
+        <p>PDFや画像の文章は、まず「どこからどこまでが文章なのか」を推測しないといけません。 でもHTMLは、見出しや段落がタグで分かれているので、意味の区切りを保ったまま扱いやすい。 だから、要約・翻訳・検索・知識整理で有利になります。</p>
+
+        <h3>（2）HTMLの長所が、そのまま「AI時代の強さ」になる</h3>
+        <p>先ほど、HTMLの長所を「控えめさ」と言いました。 具体的には、</p>
+        <ul style="margin-left: 30px; margin-bottom: 20px;">
+            <li>派手ではない</li>
+            <li>自動で何かをしない</li>
+            <li>書かれたこと以上のことをしない</li>
+        </ul>
+        <p>という性質です。</p>
+        <p>これがなぜ強いかというと、AI時代は「情報が多すぎる」からです。 情報が多いと、勝手に動く仕組みや、余計な装飾や、文脈が飛び飛びの文章が増えます。 その中で、HTMLのように「意味の骨組みがある文書」は、 AIにとっても人間にとっても、信頼できる材料になります。</p>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="AIと人間のコラボレーション">
+            <div class="caption">AIはHTMLの構造を正確に読み、人間の意図を理解します</div>
+        </div>
+
+        <h3>（3）AIがHTMLを作れる時代、人は何を書くのか</h3>
+        <p>これからは、AIがHTMLをきれいに生成すること自体は、当たり前になっていきます。 では人間は不要でしょうか。</p>
+        <p>ある文章では、AIが得意なのは「正しいタグ」「整った構造」「意図に忠実な文」だが、 人間が書く意味は別のところに移る、と述べています。 それは、なぜそうしたのか、なぜ迷ったのか、なぜ言い切らなかったのか、 つまり「判断と躊躇」の部分だ、という見方です。</p>
+        <p>そして、その人間の痕跡を、壊さずに残しておける器がHTMLです。 HTMLは、技術が変わっても読める可能性が高く、 人と機械の両方が読む「共通文書形式」として生き残り続ける―― そうまとめられています。</p>
+
+        <h2><span class="section-number">5</span>まとめ</h2>
+        <p>HTMLは、Webページを書くための「書き方のルール」です。HTMLファイルは、そのルールで書かれた「一枚の文書の実物」です。</p>
+        <p>HTMLの本当の力は、見た目ではなく、文章の意味と構造を壊さず残せるところにあります。だからHTMLは、30年以上たっても消えませんでした。 便利だからというより、強すぎず、勝手に動かず、ただの文書として残れる「無害さ」が強みだった、 という言い方もできます。</p>
+        <p>そしてAI時代には、AIが「見た目」より「構造」を読むため、 HTMLの価値はむしろ上がっています。もし、いまからブログを作るなら、難しいことを全部やる必要はありません。 でも、ひとつだけ覚えておくと強い考え方があります。</p>
+
+        <div class="highlight-box">
+            <strong>最も大切な考え方：</strong> 「見た目より先に、意味の骨組みを作る」ということです。 その骨組みを、一番シンプルに作れるのがHTMLです。 HTMLは、未来の読者と未来のAIに向けて、あなたの言葉を手渡すための「静かな器」なのです。
+        </div>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1545239351-ef35f43d514b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="未来へ続く道と光">
+            <div class="caption">HTMLは未来へ言葉をつなぐ確かな器です</div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2023 HTML入門解説 - 未来へ残す文章の技術</p>
+        <p style="margin-top: 5px; font-size: 0.85rem; color: #999;">画像出典: Unsplash</p>
+    </footer>
+</body>
+</html>

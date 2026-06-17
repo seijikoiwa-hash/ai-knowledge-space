@@ -1,0 +1,354 @@
+添付PDFの要点（Webブックの「遺産性」＝著作権と契約の分離、資産価値の二層（金融＋文化/知）、相続の実務（鍵・分散・事前設定・デジタル遺言）、主要プラットフォームの死亡時対応、3-2-1バックアップ等）を踏まえて、book16.htmlの体裁で **book34.html** を作りました。   
+
+```html
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ｗｅｂブックは遺産となり得るか？－デジタル時代の「本」と相続－</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body{
+      font-family: "Hiragino Mincho Pro","游明朝","YuMincho","MS PMincho",serif;
+      line-height: 1.8;
+      color: #333;
+      background-color: #f9f7f1;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header{
+      text-align: center;
+      padding: 40px 20px;
+      border-bottom: 3px double #8b4513;
+      margin-bottom: 40px;
+      background: linear-gradient(to right, #f5efe0, #e8dfca);
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(139, 69, 19, 0.1);
+    }
+
+    h1{
+      font-size: 2.5rem;
+      color: #5d4037;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .subtitle{
+      font-size: 1.15rem;
+      color: #795548;
+      font-style: italic;
+    }
+
+    .chapter{
+      margin: 50px 0;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+      border-left: 5px solid #8b4513;
+    }
+
+    h2{
+      color: #5d4037;
+      border-bottom: 1px solid #d7ccc8;
+      padding-bottom: 10px;
+      margin-bottom: 25px;
+      font-size: 1.8rem;
+    }
+
+    h3{
+      color: #795548;
+      margin: 25px 0 15px 0;
+      font-size: 1.35rem;
+    }
+
+    p{
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    ul, ol{
+      margin: 20px 0;
+      padding-left: 30px;
+    }
+
+    li{ margin-bottom: 10px; }
+
+    .highlight{
+      background-color: #fff9c4;
+      padding: 2px 5px;
+      border-radius: 3px;
+    }
+
+    .image-container{
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .image-container img{
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border: 1px solid #d7ccc8;
+      min-height: 300px;
+      background-color: #f5f0e6;
+      object-fit: cover;
+    }
+
+    .caption{
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 10px;
+      font-style: italic;
+    }
+
+    .quote{
+      border-left: 4px solid #8b4513;
+      padding: 20px;
+      margin: 30px 0;
+      background-color: #f5f0e6;
+      font-style: italic;
+    }
+
+    .conclusion{
+      background: linear-gradient(to right, #e8dfca, #d7ccc8);
+      padding: 40px;
+      border-radius: 10px;
+      margin-top: 50px;
+      border: 1px solid #bcaaa4;
+    }
+
+    footer{
+      text-align: center;
+      margin-top: 50px;
+      padding-top: 20px;
+      border-top: 1px solid #d7ccc8;
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 768px){
+      h1{ font-size: 2rem; }
+      .chapter{ padding: 20px; }
+      body{ padding: 10px; }
+      .image-container img{ min-height: 200px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>「Ｗｅｂブックは遺産となり得るか？」</h1>
+    <div class="subtitle">SNS・ブログ・ホームページを「本」に変え、死後も読める形で残すために</div>
+  </header>
+
+  <div class="chapter">
+    <h2>１．遺産としてのＷｅｂブック</h2>
+
+    <div class="image-container">
+      <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=80" alt="書棚と本">
+      <div class="caption">紙の本が自然に「遺産」になるように、Webブックも条件次第で遺産になりうる</div>
+    </div>
+
+    <p>
+      Ｗｅｂブックとは、SNS・ブログ・ホームページなど散在するコンテンツを、ひとつの体系にまとめ、
+      <span class="highlight">保存・検索・再読ができる「本の姿」に整えたもの</span>である。
+      ここで重要なのは、Ｗｅｂブックが「データの寄せ集め」ではなく、編集によって構造を持つ点だ。
+      章立て、目次、日付、文脈、そして「これは何を残すのか」という意図が付与された瞬間、
+      それは単なる投稿群から「作品」に変わる。
+    </p>
+
+    <p>
+      そして、遺産としての成立を考えるとき、まず押さえるべき大原則がある。
+      Webコンテンツは死亡時に、しばしば <span class="highlight">「内容（著作物）」と「場所（アカウント・契約）」</span> に割れて扱われる。
+      内容は相続の対象になりうる一方で、場所は各サービスの利用規約や手続きに左右される。
+      つまり、相続されやすいのは「書いたもの」だが、「置いてある場所」は相続されないことが多い。
+      ここに、デジタル時代の遺産の難しさがある。
+    </p>
+
+    <div class="quote">
+      <p>
+        Webの文章は「残るもの」ではなく「残すもの」だ。<br>
+        放置すれば消え、整えれば残る。Ｗｅｂブックは、その分岐点を人の側へ引き寄せる装置である。
+      </p>
+    </div>
+
+    <p>
+      紙の本は、出版されれば図書館や古書市場を通じて「社会が勝手に残してくれる」面がある。
+      一方、Webは便利さと引き換えに、保存の責任が個人へ移った。
+      だからこそ、Ｗｅｂブックという形式は、デジタル時代における「自分で作る図書館」としての意味を持つ。
+    </p>
+  </div>
+
+  <div class="chapter">
+    <h2>２．Ｗｅｂブックの資産価値</h2>
+
+    <div class="image-container">
+      <img src="https://images.unsplash.com/photo-1553729459-efe14ef6055d?auto=format&fit=crop&w=1200&q=80" alt="価値と資産のイメージ">
+      <div class="caption">価値は「売れる」だけではない。読める・探せる・使える形はそれ自体が資産になる</div>
+    </div>
+
+    <p>
+      「資産価値」と聞くと、すぐに金銭的価値を想像しがちだが、Ｗｅｂブックの価値は少なくとも二層ある。
+      第一層は、再出版・教材化・研究利用・ブランド価値など、収益に接続しうる金銭的価値。
+      第二層は、家族や社会が手を伸ばせる文化的・知的価値である。
+      デジタルコンテンツは「モノ」ではなく「契約」でもあるため、放置すると失われやすい。
+      だから逆に、<span class="highlight">残す設計があるコンテンツほど希少性が増し、価値が立ち上がる</span>。
+    </p>
+
+    <h3>（１）金銭的価値が生まれる条件</h3>
+    <ul>
+      <li><span class="highlight">再利用可能</span>：再編集、再出版、二次展開ができる（素材が整っている）。</li>
+      <li><span class="highlight">検索可能</span>：目次・タグ・年代・キーワードで「探せる」。</li>
+      <li><span class="highlight">権利が明確</span>：著者・出典・引用範囲が整理され、公開条件が示されている。</li>
+      <li><span class="highlight">社会的意味</span>：専門知、時代の記録、独自視点など、読み手が増える理由がある。</li>
+    </ul>
+
+    <h3>（２）文化的・家族的価値が生まれる条件</h3>
+    <p>
+      Ｗｅｂブックの強みは「未来の読者」を最初から想定できることにある。
+      たとえば、家族にとっては、写真と短い言葉が、記憶の背骨になる。
+      社会にとっては、個人の記録が、時代の一次資料になる。
+      とくにAI時代は、検索と要約が容易になる一方で、元データの品質が問われる。
+      <span class="highlight">粗い投稿の山</span>より、<span class="highlight">編集された一冊</span>の方が、後から圧倒的に扱いやすい。
+    </p>
+
+    <p>
+      つまり、Ｗｅｂブックの資産価値とは、「高値で売れる」より先に、
+      「捨てられない」「読み直される」「引用される」状態を作ることから始まる。
+      その状態に到達した時点で、すでに遺産としての基礎はできている。
+    </p>
+  </div>
+
+  <div class="chapter">
+    <h2>３．相続の手続き</h2>
+
+    <div class="image-container">
+      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1200&q=80" alt="鍵と管理">
+      <div class="caption">相続の最大の壁は「権利」よりも「鍵」──パスワードと二段階認証</div>
+    </div>
+
+    <p>
+      デジタル相続の実務は、法律の条文より先に、現場の障壁が立ち上がる。
+      それが「鍵」の問題だ。パスワード、二段階認証、端末ロック、生体認証。
+      遺族がそこにアクセスできるかどうかで、同じコンテンツが「遺せる記憶」にも「暗号化された箱」にもなる。
+      さらに、データが複数のプラットフォームに分散していると、サービスごとに手続きが必要になり、負担は増大する。
+    </p>
+
+    <h3>（１）基本の考え方：「データの引き出し」と「アカウント継承」は別</h3>
+    <p>
+      多くのサービスでは、遺族がアカウントそのものを操作する「継承」は難しい。
+      ただし、本人が生前に準備していれば、データを取り出して引き渡す仕組みは整いつつある。
+      ここでＷｅｂブックの利点が出る。もし生前に「内容」をローカルへ整理保存しておけば、
+      相続は「アカウントの壁」を迂回し、作品として引き渡しやすくなる。
+    </p>
+
+    <h3>（２）事前にやっておくと相続が劇的に簡単になること</h3>
+    <ol>
+      <li><span class="highlight">デジタル遺言</span>：何を残すか／誰に渡すか／公開するか削除するか、方針を明文化する。</li>
+      <li><span class="highlight">パスワード共有計画</span>：パスワードマネージャーの緊急アクセス、復旧キーの物理保管など。</li>
+      <li><span class="highlight">主要プラットフォームの事前設定</span>：Googleの非アクティブ設定、Appleのレガシー設定、追悼設定など。</li>
+      <li><span class="highlight">ローカルへの定期バックアップ</span>：外付けHDD/NASに統合し、媒体の場所を家族に伝える。</li>
+      <li><span class="highlight">継承用アーカイブ</span>：閲覧用の簡易HTMLを作り、USB等で遺す。</li>
+    </ol>
+
+    <p>
+      相続の現実は、法的な正しさだけでは動かない。「アクセスできること」「どこにあるか分かること」
+      「遺族が迷わないこと」が、価値を価値のまま受け渡すための条件になる。
+      だからＷｅｂブックの相続は、手続きというより<span class="highlight">設計</span>に近い。
+    </p>
+  </div>
+
+  <div class="chapter">
+    <h2>４．日本・世界の動き</h2>
+
+    <div class="image-container">
+      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1200&q=80" alt="世界とネットワーク">
+      <div class="caption">国・企業・公共アーカイブがそれぞれ別の目的で「保存」に関わり始めている</div>
+    </div>
+
+    <p>
+      Webコンテンツ保存をめぐる動きは、大きく「国・公共機関」「企業（プラットフォーム）」「個人」の三者で進む。
+      ただし、三者は同じ方向に進んでいるように見えて、目的は異なる。
+      国や公共機関は文化資産・公共記録としての保存を志向し、
+      企業はエコシステム強化や利便性、あるいはAI時代の資源としてデータを捉える傾向がある。
+      そして個人は、人生の記録と家族への継承のために保存を望む。
+      この目的の違いが、「誰が最後に責任を持つのか」を曖昧にしてきた。
+    </p>
+
+    <h3>（１）日本：公的保存は進むが、個人投稿の自動保存は難しい</h3>
+    <p>
+      日本でも、公的機関によるWebアーカイブやデジタルアーカイブ整備は進む。
+      しかしSNSや個人ブログを無差別に収集して永久保存することは、著作権・プライバシー・コストの面で困難が大きい。
+      そのため、現実的には「価値あるものを選別して残す」方向が中心になりやすい。
+      だからこそ、個人が自分の作品を「残せる形」に整えておく意味が増す。
+    </p>
+
+    <h3>（２）世界：公共アーカイブと企業の仕組みが並走する</h3>
+    <p>
+      世界では、公共アーカイブがWebの歴史を残そうとする一方で、
+      主要プラットフォームは「死亡時の扱い」を制度化し始めている。
+      たとえば、事前に指定した相手へデータ共有・削除を選べる仕組み、
+      レガシーコンタクト（遺族アクセス）、
+      追悼アカウント化や削除申請などである。
+      ただし、サービスごとに方針が異なるため、個人の側は「各社の仕組みを使いつつ、最後は自分で保存する」ハイブリッドが現実的になる。
+    </p>
+
+    <h3>（３）「分散型保管」への流れ：個人主権を取り戻す発想</h3>
+    <p>
+      大きな流れとして、クラウドに全てを預けるだけではなく、
+      <span class="highlight">最終マスターはローカルに置く</span>という考え方が現場で強まっている。
+      3-2-1バックアップ（3つのコピー／2種類の媒体／1つは別拠点）や、
+      オープンフォーマットへの定期変換、メタデータの自己管理などは、
+      Ｗｅｂブックを「プラットフォームに依存しない遺産」にするための実践的な知恵である。
+    </p>
+  </div>
+
+  <div class="conclusion">
+    <h2>５．まとめ</h2>
+
+    <p>
+      Ｗｅｂブックは、条件を満たせば遺産となり得る。
+      しかしそれは、紙の本のように「いつの間にか遺産になる」のではなく、
+      <span class="highlight">意志と設計によって遺産に変わる</span>。
+      とくに重要なのは、内容（著作物）と場所（契約）を切り分け、
+      内容をローカルに、オープン形式で、検索可能な構造にしておくことだ。
+    </p>
+
+    <p>
+      資産価値は金銭だけではない。
+      家族が読み返せること、社会が引用できること、未来の自分（あるいはAI）が探し出せること。
+      その「手を伸ばせる状態」こそ、遺産の条件である。
+      Ｗｅｂブックは、散らかった投稿を「読める一冊」に変え、相続の障壁（鍵と分散）を小さくし、
+      個人の思考を時間へ渡すための形式となる。
+    </p>
+
+    <div class="quote">
+      <p>
+        遺産とは、高価なものではない。<br>
+        後の人が、迷わず手を伸ばせる形をしているものだ。<br>
+        Ｗｅｂブックは、デジタル時代における「手を伸ばせる本」になりうる。
+      </p>
+    </div>
+
+    <p>
+      最後に、最小の実務だけ確認しておく。
+      HTML＋PDFで保存し、目次と年代と作者を付け、「残してよい」と明記する。
+      そして鍵（アクセス）を遺族がたどれるように整える。
+      これだけで、Web上の断片は「消えるデータ」から「遺産候補」へ、さらに「遺産」へと変わっていく。
+    </p>
+  </div>
+
+  <footer>
+    <p>© 2025 Webブック研究ノート</p>
+    <p>本資料は、SNS・ブログ・ホームページ等を「Webブック」として保存し、遺産化しうる条件を整理したものです。</p>
+    <p>画像出典: Unsplash</p>
+  </footer>
+</body>
+</html>
+```

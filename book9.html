@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>book9｜パソコンは金の宝庫</title>
+
+  <style>
+    :root {
+      --bg: #f7fbff;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #4b5563;
+      --line: #dbeafe;
+      --accent: #2563eb;
+      --accent2: #059669;
+      --warn: #b45309;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",
+        "Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+      background:
+        radial-gradient(900px 400px at 10% 0%, #e0f2fe, transparent 60%),
+        radial-gradient(700px 300px at 90% 10%, #ecfeff, transparent 60%),
+        linear-gradient(180deg, #f7fbff 0%, #eef6ff 100%);
+      color: var(--text);
+      line-height: 1.9;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 24px 16px 64px;
+    }
+
+    header {
+      padding: 22px 18px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--card);
+      box-shadow: 0 12px 28px rgba(0,0,0,.06);
+    }
+
+    .kicker {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      font-size: .95rem;
+      color: var(--muted);
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: #e0f2fe;
+      border: 1px solid #bae6fd;
+      font-weight: 600;
+    }
+
+    h1 {
+      margin: 12px 0 8px;
+      font-size: clamp(1.6rem, 2.8vw, 2.3rem);
+      line-height: 1.3;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .hero {
+      margin-top: 18px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: linear-gradient(90deg, #e0f2fe 0%, #ecfeff 50%, #eef6ff 100%);
+      padding: 18px;
+    }
+
+    .hero-grid{
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 14px;
+      align-items: center;
+    }
+    @media (max-width: 720px){
+      .hero-grid{ grid-template-columns: 1fr; }
+    }
+
+    .hero h3{
+      margin: 0 0 6px;
+      font-size: 1.1rem;
+    }
+    .hero p{
+      margin: 0;
+      color: var(--muted);
+      font-size: .98rem;
+    }
+
+    .pillrow{
+      margin-top: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      font-size: .92rem;
+      color: #1e3a8a;
+      white-space: nowrap;
+    }
+
+    main { margin-top: 28px; }
+
+    section {
+      padding: 22px 20px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--card);
+      box-shadow: 0 10px 24px rgba(0,0,0,.05);
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.3rem;
+    }
+
+    .strong { font-weight: 800; }
+
+    .callout {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+    }
+
+    .quote {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--accent);
+      background: #f0f9ff;
+      border-radius: 12px;
+      font-weight: 650;
+    }
+
+    .warn {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--warn);
+      background: #fffbeb;
+      border-radius: 12px;
+    }
+
+    ul { margin-left: 1.2em; }
+    li { margin: 6px 0; }
+
+    .mini {
+      font-size: .92rem;
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    .backlink {
+      text-align: center;
+      margin-top: 28px;
+    }
+
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      color: var(--muted);
+      font-size: .9rem;
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">
+    <span class="badge">book9</span>
+    <span>都市鉱山・社会設計・リスクと価値</span>
+  </div>
+
+  <h1>パソコンは金の宝庫</h1>
+
+  <p class="lead">
+    金鉱山の原石と比べると、パソコンは本当に「金の宝庫」なのか。<br>
+    物質としての事実を押さえたうえで、なぜ宝庫が掘られないのか――社会の設計から考える。
+  </p>
+
+  <div class="hero">
+    <div class="hero-grid">
+      <div>
+        <h3>この記事の要点</h3>
+        <p>
+          パソコンは高品位の「人工鉱石」である。にもかかわらず、現実には宝庫として機能しにくい。
+          その原因は金の量ではなく、回収・責任・行動摩擦をめぐる社会の設計にある。
+        </p>
+        <div class="pillrow">
+          <span class="pill">⛏️ 金鉱石：1〜5g/トン</span>
+          <span class="pill">🧩 電子基板：高濃度に相当</span>
+          <span class="pill">🧱 利益は分散・責任は集中</span>
+          <span class="pill">🔧 動かす鍵：摩擦の除去</span>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>結論（先に一言）</strong><br>
+        パソコンは物質的には「金の宝庫」だが、<span class="strong">掘られないように設計された宝庫</span>でもある。
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>序 ― 物質として見た「金の宝庫」</h2>
+
+  <p>
+    「パソコンは金の宝庫である」という言い方は、一見すると誇張のように思われる。
+    しかし、金鉱山の原石と比較し、金の含有量を数量として捉えると、
+    この表現が単なる比喩ではないことが分かる。
+  </p>
+
+  <p>
+    一般的な金鉱山では、原石1トンあたりに含まれる金は1～5グラム程度である。
+    条件の良い鉱山であっても10グラム前後にとどまり、多くの場合はそれ以下の品位で操業が成り立っている。
+    金鉱山とは、本質的に、極めて低濃度の金を大量の岩石から回収する産業である。
+  </p>
+
+  <p>
+    これに対して、パソコンを構成するCPU、マザーボード、メモリーなどには、
+    電気的信頼性や耐腐食性といった理由から金が意図的に使われている。
+    1台あたりに含まれる金の量は0.4～1.0グラム程度と少量であるが、
+    重量当たりの含有率で見れば、電子基板は金鉱山の原石をはるかに上回る。
+    数値上は、天然鉱石の100倍から1000倍という高濃度に相当し、
+    物質として見ればパソコンは極めて高品位な「人工鉱石」である。
+  </p>
+
+  <div class="quote">
+    この意味において、「パソコンは金の宝庫である」という表現は成立する。<br>
+    しかし、次の疑問が生じる――なぜ現実には「宝庫」として機能していないのか。
+  </div>
+</section>
+
+<section>
+  <h2>本論 ― なぜ「宝庫」は掘られないのか</h2>
+
+  <p>
+    この問いに対する答えは、金の量や技術の問題ではなく、社会の設計そのものにある。
+  </p>
+
+  <p>
+    社会制度は本質的に、「最大の価値を取りに行く」よりも、「最小のリスクを避ける」ように設計されている。
+    パソコンの都市鉱山を例にすると、金を回収できれば社会全体としては利益が生じる。
+    しかし同時に、データ流出、不法投棄、環境汚染、事故といったリスクが伴う。
+    これらが一度でも発生すれば、その責任は特定の企業や行政に集中する。
+  </p>
+
+  <p>
+    一方で、金回収による利益は国全体に薄く分散し、個々の主体にとっては限定的である。
+    この「利益は分散し、責任は集中する」という非対称な構造のもとでは、
+    「やらない」「触らない」「前例が出るまで待つ」ことが、制度設計上きわめて合理的な選択になる。
+  </p>
+
+  <div class="warn">
+    <strong>ポイント</strong><br>
+    社会は「価値の最大化」より「事故の最小化」に傾く。<br>
+    だから宝があっても、動かない設計が温存されやすい。
+  </div>
+
+  <p>
+    さらに、日本のような成熟社会では、多少の非効率があっても社会は直ちに破綻しない。
+    生活や経済の最低限はすでに成立しており、改革は「利益」よりも「不確実性」として認識されやすい。
+    その結果、現状維持そのものが最適戦略となり、「宝があると分かっていても掘らない」設計が温存される。
+  </p>
+</section>
+
+<section>
+  <h2>どこを変えれば社会は動き出すのか</h2>
+
+  <p>
+    では、どこを変えれば社会は動き出すのか。重要なのは、価値を説得することではない。
+    社会が動くのは、「正しいから」でも「儲かるから」でもなく、<span class="strong">動かない理由が消えたとき</span>である。
+  </p>
+
+  <div class="callout">
+    <strong>設計変更の要点（4つ）</strong>
+    <ul>
+      <li><span class="strong">入口（行動摩擦）</span>：申し込み・梱包・判断を極小化し、「渡すだけ」に近づける。</li>
+      <li><span class="strong">責任の切り離し</span>：データ消去や回収後の責任を制度側が吸収し、引き渡し時点で免責する。</li>
+      <li><span class="strong">即時性</span>：金額より、即時ポイントや可視化など「その場の報酬」で動線を作る。</li>
+      <li><span class="strong">デフォルト設計</span>：回収が標準、拒否は明示手続き――という構造に寄せる。</li>
+    </ul>
+  </div>
+
+  <p class="mini">
+    社会が動く条件は、「儲かる説明」ではなく「面倒が消える設計」である。
+  </p>
+</section>
+
+<section>
+  <h2>結論</h2>
+
+  <p>
+    パソコンは、金鉱山の原石と比べても、物質的には間違いなく「金の宝庫」である。
+    しかし同時に、それは「掘られないように設計された宝庫」でもある。
+    金が存在しないから掘られないのではない。社会が、動かないことを合理的とする仕組みを選び続けているからである。
+  </p>
+
+  <p>
+    したがって、「パソコンは金の宝庫か」という問いへの答えは、次のように整理できる。
+  </p>
+
+  <div class="quote">
+    宝は確かに存在する。<br>
+    しかし、それを宝にするかどうかは、金ではなく社会の設計が決めている。
+  </div>
+
+  <p>
+    この点において、パソコンの都市鉱山は、現代社会が価値とリスクをどのように天秤にかけているかを映し出す、
+    象徴的な存在なのである。
+  </p>
+</section>
+
+</main>
+
+<div class="backlink">
+  <a href="index.html">← book一覧に戻る</a>
+</div>
+
+<footer>
+  <div>本記事は、AIとの対話をもとに構成したものである。</div>
+</footer>
+
+</div>
+</body>
+</html>

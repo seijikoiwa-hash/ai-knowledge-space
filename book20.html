@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>苦笑い、愛想笑い、高笑い、</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Yu Gothic', sans-serif;
+            line-height: 1.7;
+        }
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #e67e22, #d35400);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        main {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        h2 {
+            color: #2c3e50;
+            border-left: 5px solid #e67e22;
+            padding-left: 15px;
+            margin: 50px 0 25px;
+            font-size: 1.8rem;
+        }
+        h3 {
+            color: #d35400;
+            margin: 30px 0 15px;
+            font-size: 1.4rem;
+        }
+        p {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        .image-container {
+            text-align: center;
+            margin: 35px 0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 1px solid #eee;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .image-container img:hover {
+            transform: scale(1.02);
+        }
+        .caption {
+            font-size: 0.9rem;
+            color: #666;
+            padding: 10px;
+            background: #f9f9f9;
+            font-style: italic;
+        }
+        .highlight-box {
+            background: #fef5e7;
+            border-left: 4px solid #e67e22;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+        .comparison-table th {
+            background-color: #d35400;
+            color: white;
+            font-weight: 600;
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid #eee;
+            color: #777;
+            font-size: 0.95rem;
+        }
+        .section-number {
+            background: #e67e22;
+            color: white;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            h1 { font-size: 2rem; }
+            main { padding: 25px; }
+            .subtitle { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>苦笑い、愛想笑い、高笑い、</h1>
+        <p class="subtitle">―感情が外に出る出口</p>
+    </header>
+
+    <main>
+        <p>苦笑い、愛想笑い、高笑い……。笑いは、感情そのものではない。それは感情が外に出るときの、いくつもある出口のひとつにすぎない。にもかかわらず、私たちはつい、笑っている＝楽しいと考えてしまう。だが日常を振り返れば、笑いが必ずしも喜びから生まれていないことは、誰もが知っているはずだ。</p>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="様々な笑顔を表現した人物のモンタージュ">
+            <div class="caption">笑いには様々な表情があり、それぞれが異なる感情の表現である</div>
+        </div>
+
+        <h2><span class="section-number">1</span>社交の笑い ― 愛想笑いと作り笑い</h2>
+        <p>初対面の相手と向き合うとき、人は無意識のうちに「愛想笑い」を浮かべる。それは共感というより、敵意はありませんという合図に近い。場を円滑に始めるための、静かな準備である。</p>
+        <p>似て非なるものに「作り笑い」がある。こちらは感情より役割が前に出る笑いで、立場上必要なとき、人は意識的に表情を整える。静かな微笑みのように、言葉にしない感情は表情として現れるのである。</p>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="社交場面での丁寧な笑顔">
+            <div class="caption">愛想笑いは場を円滑にする静かな合図である</div>
+        </div>
+
+        <h2><span class="section-number">2</span>曖昧さの表現 ― 苦笑いとその効用</h2>
+        <p>心の中に引っかかりがあるときに現れるのが「苦笑い」だ。納得できないが、はっきり否定するほどでもない。その曖昧な感情を、笑いという形で一時停止させる。「苦笑い」は同意でも反抗でもなく、沈黙の代用品なのである。</p>
+        
+        <div class="highlight-box">
+            <strong>苦笑いの本質：</strong> それは曖昧な感情の「一時停止ボタン」であり、同意と拒絶の狭間を漂う繊細な表現である。
+        </div>
+
+        <h2><span class="section-number">3</span>笑いのグラデーション ― 微笑から高笑いまで</h2>
+        <p>声を立てず口元だけが緩む「微笑」には安心や理解が宿る一方、思わず吹き出す「失笑」には感情の制御が外れた正直さがある。場合体を包み込む「哄笑」や、感情をそのまま音に変える「高笑い」になると、笑いは個人を越え、空間そのものを揺らす。</p>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="大笑いしている人々のグループ">
+            <div class="caption">集団の笑いは、時に空間そのものを支配する力を持つ</div>
+        </div>
+
+        <h2><span class="section-number">4</span>笑いの暗部 ― 嘲笑と距離の表現</h2>
+        <p>笑いは温かいものばかりではない。「嘲笑」や「冷笑」は距離を取るための笑いであり、拒絶の意思を静かに伝える。「含み笑い」「忍び笑い」「照れ笑い」もまた、状況に応じた選択なのだ。</p>
+        <p>これらの笑いは、単なる感情表現を超え、人間関係における立場表明や境界設定の機能をも果たしている。笑いが時に鋭い刃となり得るのは、このような側面によるものである。</p>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1565538820893-b7e3c1b83c24?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="複雑な表情の人物">
+            <div class="caption">笑いには温かさだけでなく、距離や拒絶を表現する側面もある</div>
+        </div>
+
+        <h2><span class="section-number">5</span>感情の溢れ ― 泣き笑いという極点</h2>
+        <p>そして「泣き笑い」。それは作ろうとして作れるものではない。悲しみと安堵が同時に押し寄せ、感情の整理が追いつかなくなったとき、人は泣きながら笑う。</p>
+        
+        <div class="highlight-box">
+            <strong>泣き笑いの本質：</strong> これはもっとも人間的な笑いの形であり、感情の整理が追いつかないときに現れる、心の正直すぎる瞬間である。
+        </div>
+
+        <div class="image-container">
+            <img src="https://images.unsplash.com/photo-1543083115-538c53df3fcf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="感動して涙を浮かべながら笑う人">
+            <div class="caption">泣き笑いは感情が溢れ出る、もっとも正直な表現である</div>
+        </div>
+
+        <h2><span class="section-number">6</span>結論：笑いとは人間的な知恵である</h2>
+        <p>私たちは今日も、「愛想笑い」で場を整え、「苦笑い」でやり過ごし、ときに「作り笑い」で身を守り、「高笑い」で感情を放ち、まれに「泣き笑い」に至る。</p>
+        <p>これは不誠実なのではない。感情と折り合いをつけながら生きるための、人間的な知恵なのである。笑いは単なる感情表現ではなく、社会を生き抜くための繊細なコミュニケーションツールであり、私たちが日々無意識に行っている複雑な感情調整の現れなのである。</p>
+
+        <div class="highlight-box">
+            <strong>重要なポイント：</strong> 笑いは感情の単なる表現ではなく、社会を生き抜くための人間的な知恵であり、複雑な感情調整の繊細な現れである。
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2023 笑いの解剖学 ― 感情が外に出るいくつもの出口</p>
+        <p style="margin-top: 5px; font-size: 0.85rem; color: #999;">画像出典: Unsplash</p>
+        <p style="margin-top: 5px; font-size: 0.85rem; color: #999;">本文は、AIとの会話をまとめたものです。</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>今日から使える！かんたん家事のヒント - レシート家計簿</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      background: #fffaf3;          /* クリーム色の背景 */
+      color: #333;
+      line-height: 1.7;
+    }
+
+    .wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
+    }
+
+    header {
+      background: #ffe7ec;          /* 淡いピンク */
+      border-radius: 12px;
+      padding: 18px 16px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 1.8rem;
+      color: #d75b7d;
+    }
+
+    header h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #555;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      margin-top: 30px;
+      margin-bottom: 8px;
+      padding-left: 10px;
+      border-left: 5px solid #ffb6c1;   /* 見出しのピンクライン */
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      margin-top: 18px;
+      margin-bottom: 6px;
+      color: #555;
+    }
+
+    p {
+      margin: 8px 0;
+    }
+
+    ol, ul {
+      padding-left: 1.4em;
+      margin-top: 4px;
+      margin-bottom: 10px;
+    }
+
+    li {
+      margin-bottom: 4px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px dashed #e0cfc0;
+      margin: 24px 0;
+    }
+
+    section {
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 14px 14px 10px;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+
+    blockquote {
+      margin: 10px 0;
+      padding: 8px 12px;
+      border-left: 4px solid #ffd3a5;
+      background: #fff7eb;
+      font-style: normal;
+    }
+
+    code {
+      background: #f7f2ea;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+
+    strong {
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+      header h2 {
+        font-size: 1.05rem;
+      }
+      .wrapper {
+        padding: 12px 10px 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+
+    <header>
+      <h1>今日から使える！かんたん家事のヒント</h1>
+      <h2>家計簿を簡単に作成する方法</h2>
+    </header>
+
+    <section>
+      <p>１。chatGPTに、「スマホを使い、レシートを写真に撮り、NotebookLMのソースにその都度入力して家計簿を作る方法を、教えて」と尋ねました。</p>
+
+      <p><strong>答え</strong></p>
+
+      <p>
+        スマホ＋NotebookLMで「レシート家計簿」、いいですね😊<br>
+        できるだけカンタンな<strong>現実的なやり方</strong>をステップ順でまとめます。
+      </p>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>① 全体イメージ（どんな流れ？）</h2>
+
+      <ol>
+        <li><strong>買い物したらスマホでレシートを撮る</strong></li>
+        <li>その写真を <strong>NotebookLM の「ソース」</strong> として登録する</li>
+        <li>NotebookLMに
+          <ul>
+            <li>「今日の支出を表にして」</li>
+            <li>「11月分の食費はいくら？」</li>
+          </ul>
+          などと質問して <strong>家計簿として使う</strong>
+        </li>
+      </ol>
+
+      <p>
+        つまり、<br>
+        <strong>「レシート写真 = 家計簿の元データ」</strong><br>
+        <strong>「NotebookLM = 家計簿を計算・整理してくれる人」</strong><br>
+        という役割分担です。
+      </p>
+    </section>
+
+    <section>
+      <h2>② 準備：NotebookLM側でやること</h2>
+
+      <h3>1. 家計簿用ノートブックを作る</h3>
+
+      <ol>
+        <li>パソコン or タブレットで NotebookLM を開く</li>
+        <li>「新しいノートブックを作成」</li>
+        <li>名前を
+          <ul>
+            <li>「家計簿2025」</li>
+            <li>「家計ノート（夫婦共有）」</li>
+          </ul>
+          などにする
+        </li>
+      </ol>
+
+      <p>👉 家計簿用に <strong>1冊のノートブック</strong> を作っておくと楽です。</p>
+    </section>
+
+    <section>
+      <h2>③ スマホでレシートを撮るときのコツ</h2>
+
+      <ol>
+        <li><strong>レシート全体が写るように</strong> 撮る
+          <ul>
+            <li>上下が切れないように</li>
+            <li>文字が読めるようにピントを合わせる</li>
+          </ul>
+        </li>
+        <li>影や光の反射が少ない場所を選ぶ</li>
+        <li>できれば
+          <ul>
+            <li>「食費」だとわかるもの</li>
+            <li>「日用品」だとわかるもの</li>
+          </ul>
+          など、お店の種類も意識しておくと後で楽です
+        </li>
+      </ol>
+
+      <p>📌 長いレシートは</p>
+      <ul>
+        <li><strong>1枚に収まるなら1枚で</strong></li>
+        <li>どうしても無理なら
+          <ul>
+            <li>上半分</li>
+            <li>下半分</li>
+          </ul>
+          と <strong>2枚に分けて撮る（少し重なるように）</strong>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>④ レシート写真を NotebookLM の「ソース」にする方法</h2>
+
+      <p>ここは、スマホの種類や環境で少し違いますが、考え方は同じです。</p>
+
+      <h3>パターンA：パソコンでNotebookLMを使う場合</h3>
+
+      <ol>
+        <li><strong>スマホで撮った写真をPCに送る</strong>
+          <ul>
+            <li>メールで自分に送る</li>
+            <li>GoogleフォトやiCloud経由</li>
+            <li>ケーブルでコピー など</li>
+          </ul>
+        </li>
+        <li>PCで NotebookLM を開く</li>
+        <li>家計簿ノートブックを開く</li>
+        <li>「ソースを追加」→「ファイルをアップロード」</li>
+        <li>レシート写真（JPEG/PNG）を選んでアップロード</li>
+      </ol>
+
+      <p>
+        👉 この時、<strong>月ごとにフォルダを分けておく</strong>と後で便利です。<br>
+        （例：2025-11, 2025-12…）
+      </p>
+
+      <h3>パターンB：スマホのブラウザでNotebookLMを操作</h3>
+
+      <p>※もしスマホからNotebookLMサイトにログインできる場合：</p>
+
+      <ol>
+        <li>スマホで NotebookLM を開く</li>
+        <li>家計簿ノートブックを選ぶ</li>
+        <li>「ソース追加」→「このデバイスからアップロード」</li>
+        <li>写真フォルダからレシート画像を選ぶ</li>
+      </ol>
+
+      <p>
+        ✅ 買い物をしたその場で<br>
+        →「撮る」→「NotebookLMに追加」<br>
+        までできると、家計簿がかなりラクになります。
+      </p>
+    </section>
+
+    <section>
+      <h2>⑤ NotebookLMに何をさせるか？（家計簿としての使い方）</h2>
+
+      <p>レシート写真をいくつか入れたら、NotebookLMに次のように頼めます。</p>
+
+      <h3>1. 1日分の支出を表にする</h3>
+
+      <blockquote>
+        「今日アップロードしたレシートから、<br>
+        日付・店名・品目・金額を表にして下さい。」
+      </blockquote>
+
+      <h3>2. 月ごとの合計を出してもらう</h3>
+
+      <blockquote>
+        「2025年11月の食費の合計を出して下さい。」<br>
+        「日用品・食費・外食・交通費に分類して合計してください。」
+      </blockquote>
+
+      <h3>3. 費目分類をお任せする</h3>
+
+      <blockquote>
+        「各レシートの内容から、<br>
+        食費／日用品／外食／医療費／その他 に自動分類して表にして下さい。」
+      </blockquote>
+
+      <p>⚠️ 完全に完璧ではないので、</p>
+      <ul>
+        <li>明らかに分類違いのものがあったら<br>
+          → 「これは日用品です」などと補正していくイメージです。
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>⑥ 長いレシートを2枚に分けた場合の注意</h2>
+
+      <p>あなたが前に質問していたポイントですね：</p>
+
+      <ul>
+        <li>NotebookLMは、<strong>2枚の写真を別々のレシートと見る可能性があります</strong>。</li>
+        <li>そのため、アップロード後に一言添えると親切です。</li>
+      </ul>
+
+      <p>例：</p>
+
+      <blockquote>
+        「この2枚の画像（receipt_2025-11-27_a/b）は、<br>
+        1枚の長いレシートを上下で分割したものです。1つのレシートとして扱ってください。」
+      </blockquote>
+
+      <p>またはソース名を</p>
+
+      <ul>
+        <li><code>2025-11-27_スーパーA_レシート(1/2)</code></li>
+        <li><code>2025-11-27_スーパーA_レシート(2/2)</code></li>
+      </ul>
+
+      <p>のようにしておくと、後で見分けやすいです。</p>
+    </section>
+
+    <section>
+      <h2>⑦ 最初はシンプルに始めるのがおすすめ</h2>
+
+      <p>最初から完璧な家計簿を目指すと挫折しがちなので…</p>
+
+      <p><strong>第1ステップ：</strong></p>
+      <ul>
+        <li>「日付・店名・合計金額」だけ記録<br>
+          → “使い過ぎチェック” 用
+        </li>
+      </ul>
+
+      <p><strong>第2ステップ：</strong></p>
+      <ul>
+        <li>慣れてきたら「費目分類（食費、日用品など）」も頼む</li>
+      </ul>
+
+      <p><strong>第3ステップ：</strong></p>
+      <ul>
+        <li>さらに慣れたら<br>
+          → 「今月の支出のグラフ」<br>
+          → 「先月との比較」<br>
+          などをNotebookLMに作ってもらう
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>⑧ 奥さまと一緒に使う場合</h2>
+
+      <blockquote>
+        「私が、このパソコンのNotebookLMを使い、家内が別のパソコンのNotebookLMを使って、家計簿とする場合、私と家内のデータを１つのNotebookLMち纏めることができますか？」
+      </blockquote>
+
+      <p>基本的な考え方は：</p>
+
+      <ul>
+        <li><strong>同じGoogleアカウントでNotebookLMを使えば</strong><br>
+          → 同じノートブックを共有できます。
+        </li>
+        <li>それぞれが撮ったレシートを<br>
+          → 共通の「家計簿ノートブック」にアップロードする
+        </li>
+      </ul>
+
+      <p>という形にすると、「夫婦で1つの家計簿」が作れます。</p>
+    </section>
+
+    <section>
+      <h2>⑨ ここまでを一言でまとめると</h2>
+
+      <ol>
+        <li>「家計簿用ノートブック」を1冊作る</li>
+        <li>スマホでレシートを撮る</li>
+        <li>その写真をノートブックのソースとして追加</li>
+        <li>NotebookLMに
+          <ul>
+            <li>表作成</li>
+            <li>カテゴリー別合計</li>
+            <li>月ごとの集計</li>
+          </ul>
+          をお願いする
+        </li>
+      </ol>
+    </section>
+
+  </div>
+</body>
+</html>

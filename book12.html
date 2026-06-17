@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>book12｜ヒトは善人？ＡＩは悪人？</title>
+  <style>
+    :root{
+      --bg:#f7fbff;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#4b5563;
+      --line:#dbeafe;
+      --accent:#2563eb;
+      --accent2:#10b981;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+      color:var(--text);
+      line-height:1.95;
+      background:
+        radial-gradient(900px 420px at 10% 0%, #e0f2fe, transparent 60%),
+        radial-gradient(820px 360px at 90% 10%, #ecfeff, transparent 60%),
+        linear-gradient(180deg, var(--bg) 0%, #eef6ff 100%);
+    }
+    a{color:var(--accent); text-decoration:none;}
+    a:hover{text-decoration:underline;}
+    .wrap{max-width:980px; margin:0 auto; padding:22px 16px 64px;}
+    header{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow:0 12px 26px rgba(0,0,0,.06);
+      padding:22px 18px;
+      overflow:hidden;
+    }
+    .kicker{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      color:var(--muted); font-size:.95rem;
+    }
+    .badge{
+      display:inline-block;
+      padding:4px 12px;
+      border-radius:999px;
+      background:#e0f2fe;
+      border:1px solid #bae6fd;
+      font-weight:700;
+      color:#0f172a;
+    }
+    h1{
+      margin:12px 0 8px;
+      font-size:clamp(1.8rem, 3vw, 2.5rem);
+      line-height:1.25;
+    }
+    .lead{margin:0; color:var(--muted); font-size:1.05rem;}
+    .hero{
+      margin-top:16px;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid var(--line);
+    }
+    .hero img{width:100%; display:block;}
+    main{margin-top:26px;}
+    section{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow:0 10px 22px rgba(0,0,0,.05);
+      padding:22px 20px;
+      margin-bottom:22px;
+    }
+    h2{margin:0 0 10px; font-size:1.35rem;}
+    p{margin:.6em 0;}
+    .note{
+      margin-top:14px;
+      padding:14px 16px;
+      background:#eff6ff;
+      border:1px solid #bfdbfe;
+      border-radius:14px;
+      color:#0f172a;
+    }
+    .quote{
+      margin-top:14px;
+      padding:14px 16px;
+      background:#f0f9ff;
+      border-left:4px solid var(--accent);
+      border-radius:12px;
+      font-weight:650;
+    }
+    .imgbox{
+      margin:14px 0 10px;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--line);
+    }
+    .imgbox img{width:100%; display:block;}
+    .caption{
+      text-align:center;
+      color:var(--muted);
+      font-size:.85rem;
+      margin:6px 0 2px;
+    }
+    footer{
+      margin-top:30px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    .small{font-size:.85rem;}
+    .backlink{
+      margin-top:18px;
+      text-align:center;
+    }
+    .highlight {
+      background: #fff9d6;
+      padding: 4px 6px;
+      border-radius: 6px;
+    }
+    .point-list {
+      padding-left: 1.1em;
+      margin-top: 6px;
+    }
+    .point-list li {
+      margin-bottom: 4px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">
+      <span class="badge">book12</span>
+      <span>ヒトとAIの比較／悪口の心理学／感情の構造</span>
+    </div>
+    <h1>「ヒトは善人？ＡＩは悪人？」</h1>
+    <p class="lead">
+      悪口をめぐるヒトとAIのふしぎな関係を探る。人間の感情から生まれる悪口の心理学的意味と、
+      AIが悪口を言わない構造的な理由を対比し、両者の本質的な違いを明らかにする。
+    </p>
+
+    <!-- 画像1/4：全体導入（ヒトとAIの対比イメージ） -->
+    <div class="hero">
+      <img src="https://picsum.photos/1200/420?random=6201" alt="ヒトとAIの対比イメージ挿絵">
+    </div>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>第一章　人間って、そんなに悪いヤツ？</h2>
+      
+      <!-- 画像2/4：考えごとをする人物のイメージ -->
+      <div class="imgbox">
+        <img src="https://picsum.photos/1200/520?random=6202" alt="考えごとをする人物のイメージ">
+      </div>
+      <div class="caption">▲ ついポロッと悪口が出ちゃうのも、人間らしさのひとつ…？</div>
+      
+      <p>
+        みなさん、人間ってすぐ悪口を言っちゃいますよね。<br>
+        「あいつマジで宿題やってねぇ〜」とか、<br>
+        「先生のジョーク、ちょっと寒くない？」みたいなやつです。
+      </p>
+      <p>
+        でも実は、悪口って
+        <span class="highlight">「人間が一生懸命生きている証拠」</span>
+        でもあるんです。
+      </p>
+      <p>
+        人間の悪口には、単なる攻撃以上の心理的・社会的機能が隠されています。
+        それはコミュニケーションの潤滑油であり、集団の結束を確認する手段であり、
+        時には自己防衛のメカニズムでもあります。
+      </p>
+      <div class="note">
+        <strong>要点：</strong>悪口は人間関係の単純な破壊行為ではなく、複雑な社会的相互作用の一部である。
+      </div>
+    </section>
+
+    <section>
+      <h2>第二章　人間が悪口を言っちゃうワケ</h2>
+      
+      <!-- 画像3/4：友達同士で話すイメージ -->
+      <div class="imgbox">
+        <img src="https://picsum.photos/1200/520?random=6203" alt="友達同士で話すイメージ">
+      </div>
+      <div class="caption">▲「あのさ〜聞いてよ！」から、つい悪口タイムに突入することも。</div>
+      
+      <p>人間には、感情があります。だから…</p>
+      <ul class="point-list">
+        <li>イライラしてつい言ってしまう</li>
+        <li>仲間と「同じ気持ちだよね」と確認したくなる</li>
+        <li>不安や嫉妬をごまかしたい</li>
+        <li>自分を守りたい（先に攻撃しておこう…みたいな）</li>
+      </ul>
+      <p>
+        つまり、心の中で
+        <span class="highlight">感情がぐわんぐわん揺れている</span>
+        からこそ、悪口が出てくるわけです。
+      </p>
+      <p>
+        生きていて大変だからこそ、揺れながら前に進んでいる。<br>
+        人間って、実はかなりがんばり屋さんなんです。
+      </p>
+    </section>
+
+    <section>
+      <h2>第三章　じゃあ、ＡＩが悪口を言わないのはなぜ？</h2>
+      
+      <!-- 画像4/4：ロボットやコンピューターのイメージ -->
+      <div class="imgbox">
+        <img src="https://picsum.photos/1200/520?random=6204" alt="ロボットやコンピューターのイメージ">
+      </div>
+      <div class="caption">▲ ＡＩは静かに計算中。感情のジェットコースターはありません。</div>
+      
+      <p>
+        ＡＩには、こんなものがありません。
+      </p>
+      <ul class="point-list">
+        <li>うらやましい！という「嫉妬」</li>
+        <li>イラッとする「怒り」</li>
+        <li>「オレのほうが上だ！」という自尊心</li>
+        <li>反抗期的な「ムカつくから言い返す！」</li>
+      </ul>
+      <p>
+        さらに、つくられたときから
+        <span class="highlight">「悪口禁止」「差別禁止」「暴力をあおらない」</span>
+        というルールが組み込まれています。
+      </p>
+      <p>
+        だからＡＩは、悪口を言いたくても言えない…というより、<br>
+        そもそも
+        <strong>「悪口を言う理由がない」</strong>
+        のです。
+      </p>
+      <div class="quote">
+        AIはプログラムに過ぎず、感情や欲求を持たない。<br>
+        その無感情性が、悪口から解放された「清潔な」コミュニケーションを可能にしている。
+      </div>
+    </section>
+
+    <section>
+      <h2>第四章　ヒトとＡＩ、どっちが善人？</h2>
+      <p>
+        ＡＩは、ただのプログラム。<br>
+        本当は「善人」でも「悪人」でもありません。<br>
+        入力された情報とルールに従って、まじめに仕事しているだけです。
+      </p>
+      <p>
+        じゃあ、人間はどうでしょう？
+      </p>
+      <p>
+        時々失敗するし、つい悪口も言っちゃう。<br>
+        でも、その分だけ
+        <span class="highlight">優しくなれる余地</span>
+        があります。
+      </p>
+      <p>
+        怒ったり、笑ったり、泣いたり。<br>
+        その全部が
+        <strong>「ヒトの魅力」</strong>
+        なんです。
+      </p>
+    </section>
+
+    <section>
+      <h2>第五章　まとめ：ヒトは青春ど真ん中、ＡＩは優等生</h2>
+      <p>
+        一言でまとめると、こんな感じです。
+      </p>
+      <ul class="point-list">
+        <li>ＡＩ：悪口を言わない優等生（でも感情はない）</li>
+        <li>ヒト：悪口も言っちゃうけど、心がある青春ど真ん中</li>
+      </ul>
+      <p>
+        だから、悪口を言いたくなったときは、ちょっと深呼吸して、<br>
+        「ああ、オレ（私）、ちゃんと生きてるな〜」と一度思い出してみてください。
+      </p>
+      <p>
+        ヒトもＡＩも、「使い方」しだい。<br>
+        一緒に、うまく付き合っていけるといいですね。
+      </p>
+
+      <div class="note">
+        <strong>補記：</strong><span class="small">本記事は、AIとの対話をもとに構成したものである。</span>
+      </div>
+    </section>
+
+    <div class="backlink">
+      <a href="index.html">← 戻る</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="small">© book12</div>
+  </footer>
+
+</div>
+</body>
+</html>

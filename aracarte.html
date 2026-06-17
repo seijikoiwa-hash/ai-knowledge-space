@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>アラカルト - 生命の始まり「受精卵」のふしぎ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Hiragino Kaku Gothic Pro', 'Noto Sans JP', 'メイリオ', Meiryo, 'Helvetica Neue', sans-serif;
+            background: #f9f7f2;
+            color: #1e2a2a;
+            line-height: 1.75;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+            padding: 2rem 1.8rem;
+        }
+        h1 {
+            font-size: 2.2rem;
+            text-align: center;
+            border-bottom: 4px solid #6ab0b0;
+            display: inline-block;
+            width: auto;
+            margin: 0 auto 1rem;
+            padding-bottom: 0.25rem;
+            letter-spacing: 2px;
+            color: #2c5e5e;
+        }
+        .title-wrapper {
+            text-align: center;
+            margin-bottom: 1.2rem;
+        }
+        .sub {
+            text-align: center;
+            font-size: 0.95rem;
+            color: #5b7a7a;
+            margin-top: -0.5rem;
+            margin-bottom: 2rem;
+        }
+        h2 {
+            font-size: 1.6rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            padding-left: 0.8rem;
+            border-left: 6px solid #6ab0b0;
+            color: #2a5f5f;
+        }
+        h3 {
+            font-size: 1.25rem;
+            margin: 1.2rem 0 0.5rem;
+            color: #3b6e6e;
+        }
+        p {
+            margin-bottom: 1rem;
+            text-align: justify;
+        }
+        .toc {
+            background: #eff7f7;
+            padding: 1.2rem 1.5rem;
+            border-radius: 24px;
+            margin: 1.8rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .toc p {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .toc ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 0.4rem 1rem;
+        }
+        .toc li {
+            margin: 0.2rem 0;
+        }
+        .toc a {
+            text-decoration: none;
+            color: #2a6b6b;
+            font-weight: 500;
+            border-bottom: 1px dotted #bdd7d7;
+        }
+        .toc a:hover {
+            color: #d9894a;
+            border-bottom: 1px solid #d9894a;
+        }
+        .info-box {
+            background: #fef6e0;
+            border-left: 6px solid #f3b33d;
+            padding: 1rem 1.2rem;
+            border-radius: 16px;
+            margin: 1.2rem 0;
+        }
+        .info-box strong {
+            color: #b45f1b;
+        }
+        .year-table {
+            overflow-x: auto;
+            margin: 1.2rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        th, td {
+            border: 1px solid #d4e2e2;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #e2f0f0;
+            font-weight: 600;
+            width: 25%;
+        }
+        footer {
+            margin-top: 3rem;
+            padding-top: 1rem;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #7c9797;
+            border-top: 1px solid #d9e7e7;
+        }
+
+        .world-box {
+            background: #eef8f4;
+            border: 1px solid #c9e6dc;
+            border-left: 7px solid #4aa382;
+            padding: 1rem 1.2rem;
+            border-radius: 18px;
+            margin: 1.2rem 0;
+        }
+        .world-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1rem;
+            margin: 1.2rem 0;
+        }
+        .world-card, .researcher-card {
+            background: #fbfefe;
+            border: 1px solid #d4e7e7;
+            border-radius: 18px;
+            padding: 1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .world-card h3, .researcher-card h3 {
+            margin-top: 0;
+            color: #255f5f;
+        }
+        .researcher-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin: 1.2rem 0;
+        }
+        .role-tag {
+            display: inline-block;
+            background: #e2f0f0;
+            color: #286161;
+            border-radius: 999px;
+            padding: 0.15rem 0.7rem;
+            font-size: 0.82rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .source-list {
+            background: #f7fbfb;
+            border: 1px solid #d9e7e7;
+            border-radius: 16px;
+            padding: 1rem 1.2rem;
+            margin: 1.5rem 0;
+            font-size: 0.92rem;
+        }
+        .source-list ul {
+            padding-left: 1.2rem;
+        }
+        .source-list li {
+            margin: 0.35rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.2rem;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+        .highlight {
+            background: linear-gradient(120deg, #f9f1cf 0%, #f9f1cf 40%, transparent 60%);
+            padding: 0 0.2rem;
+            font-weight: 500;
+        }
+        .ruby {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+<nav style="background:#eef3ff;padding:12px 15px;border-radius:10px;margin-bottom:20px;">
+<b>関連ページ：</b>
+<a href="book134navi.html">総合ナビ</a> |
+<a href="book134.html">中学生向け解説</a> |
+<a href="book134paper.html">論文版</a> |
+<a href="book134sol.html">TPAI解析</a> |
+<a href="book134note.html">NotebookLM解説</a> |
+<a href="book134counter.html">反論</a> |
+<a href="book134jap.html">日本語解説</a> |
+<a href="book134stu.html">図対比</a> |
+<a href="book134stu1.html">やさしい説明</a> |
+<a href="book134stu2.html">中1向け版</a> |
+<a href="aracarte.html">アラカルト</a>
+</nav>
+<div class="container">
+    <div class="title-wrapper">
+        <h1>アラカルト</h1>
+        <div class="sub">～生命の始まり「受精卵」のふしぎ～</div>
+    </div>
+
+    <!-- 目次 -->
+    <div class="toc">
+        <p>📖 目次</p>
+        <ul>
+            <li><a href="#sec1">１．受精卵はどうやってできるの？</a></li>
+            <li><a href="#sec2">２．DNAって何だろう？</a></li>
+            <li><a href="#sec3">３．前核とは？</a></li>
+            <li><a href="#sec4">４．お父さんDNAとお母さんDNAはなぜ別々なの？</a></li>
+            <li><a href="#sec5">５．ゲノムインプリンティングとは？</a></li>
+            <li><a href="#sec6">６．エピジェネティクスって何？</a></li>
+            <li><a href="#sec7">７．理研が発見した「前核競争説」</a></li>
+            <li><a href="#sec8">８．なぜ正常な赤ちゃんが生まれるの？</a></li>
+            <li><a href="#sec9">９．流産や発生異常との関係</a></li>
+            <li><a href="#sec10">10．不妊治療や再生医療への応用</a></li>
+            <li><a href="#sec11">11．この研究の世界的な価値</a></li>
+            <li><a href="#sec12">12．研究者紹介</a></li>
+            <li><a href="#sec13">13．年表で見る発生学の歴史</a></li>
+        </ul>
+    </div>
+
+    <!-- 1 -->
+    <h2 id="sec1">１．受精卵はどうやってできるの？</h2>
+    <p>私たち人間は、お父さんの<span class="highlight">精子</span>とお母さんの<span class="highlight">卵子</span>が合体してできる「受精卵」から成長します。受精卵はたった<strong>1個の細胞</strong>ですが、その中には「これからどう成長するか」という大切な設計図が入っています。<br>
+    お父さんの精子とお母さんの卵子は、それぞれ<strong>半分ずつ</strong>の設計図を持っています。それが合体して、一人分の完全な設計図（DNA）が完成するのです。</p>
+
+    <h2 id="sec2">２．DNAって何だろう？</h2>
+    <p>DNA（デオキシリボ核酸）は、生命の設計図です。家に例えると、間取りや壁の色、階段の位置などが書かれた「建築計画書」のようなもの。<br>
+    この設計図は「A・T・G・C」という4つの文字の並び方で情報を記録しています。人間の場合、この設計図は約<strong>30億文字</strong>もある長大なものです。</p>
+
+    <h2 id="sec3">３．前核とは？</h2>
+    <p>受精した直後の受精卵の中では、お父さん由来の核とお母さん由来の核が、しばらく<strong>別々に存在</strong>しています。この状態の核を「<span class="highlight">前核（ぜんかく）</span>」と呼びます。<br>
+    前核は、まだ合体していない「半分ずつの設計図」が入った袋のようなもの。やがてこの2つの前核が融合して、1つの受精卵の核になります。</p>
+    <div class="info-box">
+        💡 <strong>中学生向け一言メモ</strong><br>
+        受精卵の中では、お父さんのDNAとお母さんのDNAが勝手に暴走しないように、お互いを見張りながら「どの遺伝子を使うか」という大切な目印を守っているんだ！
+    </div>
+
+    <h2 id="sec4">４．お父さんDNAとお母さんDNAはなぜ別々なの？</h2>
+    <p>昔の科学者は「受精後すぐに2つの核はくっつく」と考えていました。しかし最近の研究で、<strong>しばらく別々のまま、お互いに影響し合っている</strong>ことがわかりました。<br>
+    なぜ別々のままいるのでしょうか？それは、<strong>お互いのDNAが「暴走しないように見張り合う」</strong>ためだと考えられています。父親の設計図と母親の設計図が少し離れて並ぶことで、「どちらの遺伝子をいつ使うか」を調整しているのです。</p>
+
+    <h2 id="sec5">５．ゲノムインプリンティングとは？</h2>
+    <p>普通、遺伝子はお父さん由来とお母さん由来の<strong>両方が働きます</strong>。しかし中には、<strong class="highlight">「お父さん由来だけ働く」「お母さん由来だけ働く」</strong>という特殊な遺伝子があります。これを「ゲノムインプリンティング（ゲノム刷り込み）」といいます。<br>
+    例えば、ある遺伝子は「お父さんからもらった方だけON、お母さんのはOFF」といった具合。これは胎児の成長をコントロールするためにとても重要な仕組みです。バランスが崩れると正常に生まれてこれません。</p>
+
+    <h2 id="sec6">６．エピジェネティクスって何？</h2>
+    <p>エピジェネティクスとは、<strong>DNAの文字（A,T,G,C）は変えずに、遺伝子のON/OFFを変える仕組み</strong>のことです。<br>
+    例えるなら、設計図の文字はそのままに、「このページは使う」「このページは使わない」と付箋を貼るようなもの。この「付箋」にあたるのが「DNAメチル化」や「ヒストン修飾」です。この仕組みがあるからこそ、私たちの体の細胞（脳の細胞、筋肉の細胞など）は、同じDNAを持ちながら違う働きができるのです。</p>
+
+    <h2 id="sec7">７．理研が発見した「前核競争説」</h2>
+    <p>2026年、日本の<span class="highlight">理化学研究所（理研）</span>のグループがとても面白いことを発見しました。それが「<strong>前核競争説</strong>」です。<br>
+    受精直後、お父さんとお母さんの前核は、細胞の中にある限られた材料（タンパク質など）を<strong>奪い合っています</strong>。この競争によって、お互いの前核が大きくなりすぎないように調節し、エピジェネティックな印（付箋）を守っているというのです。<br>
+    もし競争がうまくいかないと、前核が大きくなりすぎたり小さくなりすぎたりして、遺伝子のスイッチが正しく入らなくなります。つまり、<strong>生命は最初の一瞬から、すでに「対話」と「競争」をしている</strong>という驚きの事実が明らかになりました。</p>
+
+    <h2 id="sec8">８．なぜ正常な赤ちゃんが生まれるの？</h2>
+    <p>私たちが健康な赤ちゃんとして生まれてくるのは、受精卵の最初の段階で、<strong>お父さんとお母さんのDNAがうまく協力しているから</strong>です。<br>
+    理研の研究によると、この協力は「核融合の後」ではなく、「受精直後の前核の段階」から始まっています。生命の発生プログラムは思っていたよりずっと早いタイミングで動き出しているのです。<br>
+    お父さんとお母さんの設計図がお互いの間違いをチェックし合い、適切なバランスを取ることで「この胚はちゃんと育つ」という判断ができるようになります。</p>
+
+    <h2 id="sec9">９．流産や発生異常との関係</h2>
+    <p>実は、人間の受精卵の多くは途中で発生を止めてしまいます。いわゆる「初期流産」です。<br>
+    この原因の一つとして考えられているのが、<strong>前核段階での失敗</strong>です。例えば、前核の競争がうまくいかず、遺伝子のスイッチが正しく入らなかったり、エピジェネティックな印が壊れたりすると、その後どんなに細胞分裂が進んでも正常な個体にはなれません。<br>
+    つまり、<strong>最初の品質チェックに通らなかった胚は、早い段階で自然に淘汰される</strong>仕組みになっているのです。これは「異常な発生を防ぐための生命の工夫」と言えます。</p>
+
+    <h2 id="sec10">10．不妊治療や再生医療への応用</h2>
+    <p>この研究は、体外受精（IVF）や顕微授精（ICSI）にも大きなヒントを与えています。<br>
+    今の生殖医療では、受精卵が何個の細胞に分裂したかという見た目で「良い胚」を選んでいます。しかし、<strong>前核の状態やエピジェネティックな印の状態を調べられれば</strong>、もっと精度の高い胚選別ができるかもしれません。<br>
+    また、クローン技術やiPS細胞の研究でも「初期化（リセット）」の仕組みを理解するのに役立ちます。つまり、この研究は「不妊治療を否定する」ものではなく、<strong>「より精密にするための基礎研究」</strong>なのです。</p>
+
+    <h2 id="sec11">11．この研究の世界的な価値</h2>
+    <p>この研究の世界的な意義は、単に「受精卵の中で父母の前核が分かれている」と確認したことではありません。重要なのは、長い間「なぜ分かれているのか」が十分に説明されてこなかった現象に対して、<strong>「前核どうしが細胞質中の限られた因子を取り合うことで、核の大きさとエピジェネティックな状態を整える」</strong>という、はっきりした機能モデルを示した点です。</p>
+
+    <div class="world-box">
+        <strong>世界的意義を一言でいうと：</strong><br>
+        生命の最初の一細胞で、父母ゲノムが「ただ同居する」のではなく、別々の前核として存在すること自体に、発生能力を守る積極的な意味があることを示した研究です。
+    </div>
+
+    <div class="world-grid">
+        <div class="world-card">
+            <h3>① 発生学への意義</h3>
+            <p>哺乳類の受精卵では、母由来ゲノムと父由来ゲノムが最初の細胞分裂まで別々の前核に入ります。本研究は、この「二前核状態」が偶然の形ではなく、初期胚発生を支える仕組みであることを示しました。</p>
+        </div>
+        <div class="world-card">
+            <h3>② エピジェネティクスへの意義</h3>
+            <p>DNA配列そのものではなく、ヒストン修飾などの「遺伝子の使い方を決める印」が、前核の空間配置によって守られる可能性を示しました。これは、生命の始まりとエピジェネティック制御を直接つなぐ重要な視点です。</p>
+        </div>
+        <div class="world-card">
+            <h3>③ 生殖医療への意義</h3>
+            <p>体外受精や顕微授精では、1前核胚が観察されることがあります。本研究は、1前核・両親性胚では前核間競争が失われ、発生能が下がる可能性を示し、胚評価をより精密にするための基礎情報を与えます。</p>
+        </div>
+        <div class="world-card">
+            <h3>④ 再生医療への意義</h3>
+            <p>iPS細胞やクローン技術では、細胞の状態を初期化する「リプログラミング」が重要です。受精卵で自然に起こる初期化の仕組みを理解することは、再生医療の基礎にもつながります。</p>
+        </div>
+    </div>
+
+    <p>この研究は、1980年代にアジム・スラニやダボル・ソルターらが切り開いた「父母ゲノムは同じではない」というゲノムインプリンティング研究の流れを、さらに一歩進めるものです。スラニは、父方ゲノムと母方ゲノムが哺乳類の正常発生にともに必要であり、それぞれ異なる印を持つことを示した研究で、2025年の京都賞基礎科学部門を受賞しています。</p>
+
+    <p>今回の理研研究の新しさは、父母ゲノムの違いを「遺伝子の印」だけでなく、<strong>受精卵の中の空間配置、前核の大きさ、細胞質因子の取り合い</strong>という物理的・細胞生物学的な仕組みとして説明した点にあります。つまり、発生学、エピジェネティクス、細胞物理学、生殖医療をつなぐ研究なのです。</p>
+
+    <div class="info-box">
+        🌍 <strong>なぜNature級なのか</strong><br>
+        この研究は、生命の始まりにある「父母ゲノムの別居」という古くから知られていた現象に、初めて明確な機能的意味を与えました。しかも、単なる観察ではなく、マウス胚操作、定量イメージング、エピジェネティック解析、理論モデルを組み合わせて説明した点が高く評価されます。
+    </div>
+
+    <h2 id="sec12">12．研究者紹介</h2>
+    <p>この研究は、理研を中心に、神戸大学、九州大学などの研究者が参加した共同研究です。発生学だけでなく、染色体分配、細胞物理、エピゲノム解析、無細胞タンパク質合成など、複数分野の力を合わせたところに大きな特徴があります。</p>
+
+    <div class="researcher-grid">
+        <div class="researcher-card">
+            <span class="role-tag">筆頭著者・研究主導</span>
+            <h3>🧪 京極博久<br><small>きょうごく ひろひさ</small></h3>
+            <p>理化学研究所 生命機能科学研究センター 染色体分配研究チームの客員研究員で、神戸大学大学院農学研究科の准教授。受精卵を実際に操作し、1前核・2前核の違いを調べる実験系を組み立てた中心人物です。</p>
+            <p>この研究では、「父母ゲノムが別々の前核に入っていることには意味があるのではないか」という問いを、実験で検証できる形にした点が重要です。</p>
+        </div>
+
+        <div class="researcher-card">
+            <span class="role-tag">責任著者・研究統括</span>
+            <h3>🧬 北島智也<br><small>きたじま ともや</small></h3>
+            <p>理化学研究所 生命機能科学研究センター 染色体分配研究チームのチームディレクター。卵子や受精卵における染色体分配、細胞分裂、初期発生の仕組みを研究しています。</p>
+            <p>本研究では、前核が二つあることの意味を「染色体をどう正しく次世代へ渡すか」という大きな問題の中に位置づけ、研究全体を統括しました。</p>
+        </div>
+
+        <div class="researcher-card">
+            <span class="role-tag">エピゲノム解析</span>
+            <h3>🔬 井上梓<br><small>いのうえ あずさ</small></h3>
+            <p>理化学研究所 生命医科学研究センター 疾患エピゲノム遺伝研究チームのチームディレクター。受精卵や初期胚におけるエピジェネティック制御を専門とする研究者です。</p>
+            <p>今回の研究では、受精卵というごく少数の細胞でヒストン修飾を調べる低入力ChIP-seq解析に貢献し、前核競争とエピジェネティック状態の関係を支えました。</p>
+        </div>
+
+        <div class="researcher-card">
+            <span class="role-tag">理論・物理モデル</span>
+            <h3>📐 柴田達夫<br><small>しばた たつお</small></h3>
+            <p>理化学研究所 生命機能科学研究センター フィジカルバイオロジー研究チームのチームディレクター。生命現象を物理学・数理モデルの視点から読み解く研究者です。</p>
+            <p>前核が細胞質因子を取り合うという考えは、単なる比喩ではなく、限られた資源を複数の核が共有するという物理的な問題でもあります。その定量的な理解に貢献しました。</p>
+        </div>
+
+        <div class="researcher-card">
+            <span class="role-tag">分子基盤</span>
+            <h3>🧫 清水義宏<br><small>しみず よしひろ</small></h3>
+            <p>理化学研究所 生命機能科学研究センター 無細胞タンパク質合成研究チームのチームディレクター。タンパク質合成や細胞内因子の働きに関する専門性を持ちます。</p>
+            <p>前核の大きさや機能を決める細胞質因子を考える上で、分子レベルの仕組みを理解するための重要な共同研究者です。</p>
+        </div>
+
+        <div class="researcher-card">
+            <span class="role-tag">生殖医学との接点</span>
+            <h3>🏥 原田哲仁<br><small>はらだ てつひと</small></h3>
+            <p>九州大学大学院医学研究院の教授。生殖医学・産婦人科学の視点から、この研究を臨床的な問題、特に不妊治療や胚発生能力の理解へつなげる役割を担いました。</p>
+            <p>1前核胚が臨床の場で観察されることを考えると、この研究は基礎生物学にとどまらず、生殖医療の現場にも重要な問いを投げかけています。</p>
+        </div>
+    </div>
+
+    <h3>歴史的背景をつくった研究者</h3>
+    <div class="researcher-grid">
+        <div class="researcher-card">
+            <span class="role-tag">ゲノムインプリンティングの開拓者</span>
+            <h3>🌱 アジム・スラニ<br><small>Azim Surani</small></h3>
+            <p>哺乳類の発生では、父方ゲノムと母方ゲノムの両方が必要であり、両者は同じ働きをするわけではないことを示した発生生物学者です。ゲノムインプリンティング研究の創始者の一人で、2025年の京都賞基礎科学部門を受賞しました。</p>
+            <p>今回の理研研究は、スラニらが示した「父母ゲノムの違い」という概念を、受精直後の前核空間にまで広げた研究と見ることができます。</p>
+        </div>
+
+        <div class="researcher-card">
+            <span class="role-tag">同時代の発見者</span>
+            <h3>🌿 ダボル・ソルター<br><small>Davor Solter</small></h3>
+            <p>1984年、スラニらとは独立に、哺乳類の正常発生には父方・母方のゲノムがともに必要であることを示しました。この発見は「父母ゲノムは単なるコピーではない」という発生学の大転換でした。</p>
+            <p>スラニとソルターの研究が、のちのゲノムインプリンティング、エピジェネティクス、初期胚研究の土台になりました。</p>
+        </div>
+    </div>
+
+    <div class="source-list">
+        <strong>参考情報</strong>
+        <ul>
+            <li>理化学研究所プレスリリース「命の始まりは父母ゲノムの『別居』から」（2026年4月30日）</li>
+            <li>Nature: <em>Cytoplasmic competition between separate parental pronuclei in zygotes</em>（2026年4月29日公開）</li>
+            <li>理研 染色体分配研究チーム 研究成果紹介</li>
+            <li>京都賞公式サイト：Azim Surani, 2025 Kyoto Prize Laureate in Basic Sciences</li>
+            <li>Max Planck Society: Davor Solter, Paul Ehrlich and Ludwig Darmstaedter Prize 2026</li>
+        </ul>
+    </div>
+
+    <h2 id="sec13">13．年表で見る発生学の歴史</h2>
+    <div class="year-table">
+        <table>
+            <thead>
+                <tr><th>年</th><th>できごと</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>1875</td><td>受精過程の観察が始まる</td></tr>
+                <tr><td>1880年代</td><td>「前核」が発見される</td></tr>
+                <tr><td>1953</td><td>DNAの二重らせん構造が発見される</td></tr>
+                <tr><td>1984</td><td>スラニとソルターが「父母ゲノムは同等でない」ことを証明</td></tr>
+                <tr><td>1990年代</td><td>ゲノムインプリンティングの遺伝子が次々と見つかる</td></tr>
+                <tr><td>2000年代</td><td>エピジェネティクスの仕組みが解明され始める</td></tr>
+                <tr><td>2026</td><td>理研が「前核競争説」を発表</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <p>この年表を見ると、科学は一気に進歩するのではなく、長い時間をかけて少しずつ「生命の謎」を解き明かしてきたことがわかります。</p>
+
+    <div class="info-box">
+        🌟 <strong>まとめ</strong><br>
+        私たちの命は、受精した瞬間からすでに「お父さんDNAとお母さんDNAの対話と競争」によって動いています。その最初のステージが「前核」です。<br>
+        理研の発見は、前核の段階で大きさの調整・エピジェネティックな印の保護・遺伝子のON/OFFの準備が行われていることを示しました。<br>
+        これは、生命がどれほど厳密に、そして賢くできているかを教えてくれる、とてもワクワクする研究です。将来の不妊治療や再生医療にもつながるこの発見は、まさに「発生学の教科書を書き換える可能性」を秘めています。<br>
+        <strong>中学生の皆さんには、「自分の命の始まりには、こんなにドラマがあるんだ」ということを感じてもらえたら嬉しいです。</strong>
+    </div>
+
+    <footer>
+        © 2026 アラカルト | 中学生のための発生学・エピジェネティクス入門<br>
+        参考：理化学研究所プレスリリース / 京都賞公式サイト / Nature論文ほか
+    </footer>
+</div>
+<nav style="background:#eef3ff;padding:12px 15px;border-radius:10px;margin-bottom:20px;">
+<b>関連ページ：</b>
+<a href="book134navi.html">総合ナビ</a> |
+<a href="book134.html">中学生向け解説</a> |
+<a href="book134paper.html">論文版</a> |
+<a href="book134sol.html">TPAI解析</a> |
+<a href="book134note.html">NotebookLM解説</a> |
+<a href="book134counter.html">反論</a> |
+<a href="book134jap.html">日本語解説</a> |
+<a href="book134stu.html">図対比</a> |
+<a href="book134stu1.html">やさしい説明</a> |
+<a href="book134stu2.html">中1向け版</a> |
+<a href="aracarte.html">アラカルト</a>
+</nav>
+</body>
+</html>

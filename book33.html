@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>新たな本Ｗｅｂブック</title>
+  <style>
+    :root{
+      --bg1:#f7fbff;
+      --bg2:#fff7fb;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#4b5563;
+      --line:#dbeafe;
+      --accent:#1a56db;
+      --accent2:#0ea5e9;
+      --shadow:0 10px 28px rgba(0,0,0,.08);
+      --radius:18px;
+      --max:980px;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:"Yu Mincho","Hiragino Mincho ProN","MS Mincho",serif;
+      color:var(--text);
+      line-height:1.95;
+      background:
+        radial-gradient(1100px 600px at 10% 0%, rgba(26,86,219,.10), transparent 60%),
+        radial-gradient(900px 520px at 95% 10%, rgba(14,165,233,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+    }
+    header{
+      padding:42px 18px 22px;
+    }
+    .wrap{max-width:var(--max); margin:0 auto;}
+    .hero{
+      background:rgba(255,255,255,.7);
+      border:1px solid rgba(219,234,254,.9);
+      box-shadow:var(--shadow);
+      border-radius:var(--radius);
+      padding:26px 22px;
+      backdrop-filter: blur(6px);
+    }
+    .kicker{
+      display:inline-block;
+      font-size:13px;
+      letter-spacing:.12em;
+      color:var(--muted);
+      border:1px solid rgba(219,234,254,.9);
+      padding:6px 10px;
+      border-radius:999px;
+      background:#ffffffcc;
+    }
+    h1{
+      margin:14px 0 6px;
+      font-size:30px;
+      line-height:1.35;
+      letter-spacing:.04em;
+      color:#0f172a;
+    }
+    .lead{
+      margin:10px 0 0;
+      color:var(--muted);
+      font-size:16px;
+    }
+
+    nav{
+      padding:0 18px 18px;
+    }
+    .toc{
+      max-width:var(--max);
+      margin:14px auto 0;
+      background:var(--card);
+      border:1px solid rgba(219,234,254,.9);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px 18px 12px;
+    }
+    .toc h2{
+      margin:0 0 8px;
+      font-size:18px;
+      color:#0f172a;
+    }
+    .toc ul{
+      margin:0;
+      padding:0 0 0 18px;
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:6px 18px;
+    }
+    .toc a{
+      color:var(--accent);
+      text-decoration:none;
+    }
+    .toc a:hover{ text-decoration:underline; }
+
+    main{ padding: 10px 18px 44px; }
+    section.card{
+      max-width:var(--max);
+      margin:18px auto;
+      background:var(--card);
+      border:1px solid rgba(219,234,254,.9);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:24px 22px;
+    }
+    section.card h2{
+      margin:0 0 8px;
+      font-size:22px;
+      color:#0f172a;
+    }
+    .sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:14px;
+    }
+    hr.sep{
+      border:0;
+      height:1px;
+      background:linear-gradient(90deg, transparent, rgba(26,86,219,.25), transparent);
+      margin:16px 0 18px;
+    }
+
+    figure{
+      margin:18px 0;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid rgba(219,234,254,.9);
+      background:#fff;
+      box-shadow:0 8px 22px rgba(0,0,0,.06);
+    }
+    figure img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+    figcaption{
+      padding:10px 12px;
+      font-size:13px;
+      color:var(--muted);
+      background:linear-gradient(180deg, #ffffff, #f8fbff);
+    }
+
+    .note{
+      background:linear-gradient(180deg, rgba(14,165,233,.08), rgba(26,86,219,.06));
+      border:1px solid rgba(14,165,233,.22);
+      border-radius:14px;
+      padding:14px 14px;
+      margin:16px 0;
+      color:#0f172a;
+    }
+    .pill{
+      display:inline-block;
+      font-size:12px;
+      padding:4px 10px;
+      border-radius:999px;
+      border:1px solid rgba(26,86,219,.25);
+      color:#0f172a;
+      background:#ffffffb3;
+      margin-right:6px;
+      margin-bottom:6px;
+    }
+
+    footer{
+      padding:22px 18px 42px;
+      color:var(--muted);
+    }
+    .footerbox{
+      max-width:var(--max);
+      margin:0 auto;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(219,234,254,.9);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px 18px;
+    }
+    .small{ font-size:12px; }
+    @media (max-width: 760px){
+      .toc ul{ grid-template-columns: 1fr; }
+      h1{ font-size:26px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="wrap">
+      <div class="hero">
+        <span class="kicker">Web時代の「本」を考える</span>
+        <h1>新たな本Ｗｅｂブック</h1>
+        <p class="lead">
+          本は、紙に印刷された冊子だけを指す言葉ではなくなりました。いま私たちは、SNS・ブログ・ホームページ・PDF・電子書籍など、
+          多様な媒体に「残したい知」を置いています。では、それらを“書物のように”残し、読み返し、継承していくために、何を設計すればよいのでしょうか。
+          本稿では、書物の定義と歴史を踏まえたうえで、書物に代わる新しい読み物＝Webブックの姿を描きます。
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="toc">
+      <h2>目次</h2>
+      <ul>
+        <li><a href="#sec1">1. 本とは</a></li>
+        <li><a href="#sec2">2. 本の歴史</a></li>
+        <li><a href="#sec3">3. 書物にかわるもの：新たな読み物 Webブック</a></li>
+        <li><a href="#sec4">4. Webブックの将来</a></li>
+        <li><a href="#sec5">5. 国・世界の動き</a></li>
+        <li><a href="#sec6">6. まとめ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- 画像1 -->
+    <section class="card" id="sec1">
+      <h2>1．本とは</h2>
+      <p class="sub">「形」より先に、「役割」がある。</p>
+      <hr class="sep" />
+
+      <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Todaiji_Builder_Document_Shosoin.JPG/1280px-Todaiji_Builder_Document_Shosoin.JPG" alt="古い文書のイメージ">
+        <figcaption>古い記録は、時代を越えて「同じ文章」を差し出し続ける。そこに本の本質がある。</figcaption>
+      </figure>
+
+      <p>
+        書物（本）とは、一般には「紙などの媒体に文字や図を記し、一冊の形にまとめたもの」を指します。
+        しかし、より重要なのは外形ではなく、書物が果たしてきた機能です。
+      </p>
+      <p>
+        書物の核心は大きく三つに整理できます。第一に「記憶する」――個人の頭脳を越えて知や経験を保存すること。
+        第二に「伝える」――時間・場所・人を越えて内容を届けること。
+        第三に「再読される」――何度も読み返され、読むたびに解釈が深まることです。
+        つまり書物は、単なる情報の容器ではなく、「設計された思考の器」であり、人間の外部記憶装置でもあります。
+      </p>
+
+      <div class="note">
+        <span class="pill">ポイント</span>
+        本は「一回読まれて終わる文章」ではなく、繰り返し参照される前提をもつ。だからこそ章立てや流れが必要になる。
+      </div>
+
+      <p>
+        この観点に立つなら、電子書籍やPDF、長期保存を前提としたWeb文章も、十分に「書物」になり得ます。
+        逆に、流れて消えていくSNS投稿は文章ではあっても、書物の条件（再読・参照・継承の設計）を満たしにくい。
+        ここに、Web時代の「本の再定義」が始まります。
+      </p>
+    </section>
+
+    <section class="card" id="sec2">
+      <h2>2．本の歴史</h2>
+      <p class="sub">書物は、技術の変化とともに「読む人」を増やしてきた。</p>
+      <hr class="sep" />
+
+      <!-- 画像2 -->
+      <figure>
+        <img src="https://www.spurlock.illinois.edu/img/collections/notable-collections/mesopotamian-tablet/hero_1920.jpg" alt="粘土板のイメージ">
+        <figcaption>口承から粘土板・巻物へ。書物は「記録される知」を生み、社会を変えてきた。</figcaption>
+      </figure>
+
+      <p>
+        世界の書物史は、口承中心の時代から始まり、メソポタミアの粘土板、エジプトのパピルス巻物へと展開しました。
+        その後、巻物から冊子（コデックス）へ移行し、宗教の書物が「改変されない言葉」を支える器となります。
+        中世には写本が制作され、印刷技術の発達は書物を大量複製し、知の流通速度を一気に上げました。
+      </p>
+
+      <!-- 画像3 -->
+      <figure>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Genji_emaki_azumaya.jpg/1280px-Genji_emaki_azumaya.jpg" alt="源氏物語絵巻のイメージ">
+        <figcaption>日本では、仮名文字の成立とともに『源氏物語』『枕草子』など独自の書物文化が育った。</figcaption>
+      </figure>
+
+      <p>
+        日本では、漢字伝来や木簡・写経を通じて「国家運営の道具」として書物が整備されました。
+        平安期には仮名文字の成立により、感情・内面・美意識を記録する文学が花開きます。
+        江戸時代は出版の黄金期で、木版印刷、貸本屋、寺子屋などを背景に、読書が庶民の教養と娯楽へ広がりました。
+        近代以降は活版印刷と翻訳書の増大により、「西洋知を日本語化する装置」としての書物が重要性を増します。
+      </p>
+
+      <p>
+        こうして見ると、書物の歴史は、技術が変わるたびに「残せる知」と「読める人」の範囲を拡大してきた歴史でもあります。
+        そしていま、紙からデータへ移行した世界で、次の拡張――「個人の発信をどう残すか」が問われています。
+      </p>
+    </section>
+
+    <section class="card" id="sec3">
+      <h2>3．書物にかわるもの：新たな読み物 Webブック</h2>
+      <p class="sub">Webの断片を、「再読される構造」に組み替える。</p>
+      <hr class="sep" />
+
+      <!-- 画像4 -->
+      <figure>
+        <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1600&q=70" alt="デジタルの本棚のイメージ">
+        <figcaption>SNSやブログの断片を、章立て・索引・検索性をもつ「読む単位」にまとめ直すのがWebブックの発想。</figcaption>
+      </figure>
+
+      <p>
+        「Web読本」「ウェブ本」という言葉は使われることはあるものの、まだ定義が固まった一般語とは言いにくい面があります。
+        しかし、“本に代わる概念”を指す言葉群はすでに存在し、用途に応じた呼び分けが可能です。
+        たとえば、体系性と保存志向を強めるなら「デジタルモノグラフ」や「オンライン出版物」、
+        実務的には「Webブック」、横断的に蓄積・検索するなら「デジタルアーカイブ（パーソナルアーカイブ）」という言い方が合います。
+      </p>
+
+      <div class="note">
+        <span class="pill">ここでの定義</span>
+        本稿では <b>Webブック</b> を「SNS・ブログ・ホームページ等のWebコンテンツを、書物のように“再読・参照・継承”できる構造へまとめ直したもの」と定義します。
+      </div>
+
+      <p>
+        Webブックが“本”らしくなる条件は、情報量ではなく設計にあります。具体的には次の五点です。
+      </p>
+      <ol>
+        <li><b>章立て</b>：時系列やテーマで分け、読み返せる単位をつくる。</li>
+        <li><b>索引・目次</b>：ページ内リンクやタグで「探せる」状態にする。</li>
+        <li><b>引用可能性</b>：日付・出典・URLを残し、後から根拠を辿れるようにする。</li>
+        <li><b>固定版</b>：一定時点でPDF化などを行い「版」をつくる（改変履歴を残す）。</li>
+        <li><b>保存戦略</b>：クラウド＋ローカル＋第三者保管（必要に応じ）を組み合わせる。</li>
+      </ol>
+
+      <p>
+        SNSの良さは即時性と交流ですが、書物性（再読・継承）の観点では弱点もあります。
+        だからこそ、SNS投稿を「素材」として吸い上げ、ブログや自前サイトに“整理して置く”ことで、Webブックは成立します。
+        Webブックとは、Webの自由さを捨てることではなく、自由さの上に「読み返せる骨格」を足す行為だと言えます。
+      </p>
+    </section>
+
+    <section class="card" id="sec4">
+      <h2>4．Webブックの将来</h2>
+      <p class="sub">「検索」と「継承」を前提に、個人の知が再び“本棚”へ戻ってくる。</p>
+      <hr class="sep" />
+
+      <p>
+        Webブックの将来を考える鍵は、二つあります。第一は、情報が増えすぎた社会で「再読できる形」が価値を持つこと。
+        第二は、サービス依存のリスクが常にあることです。
+      </p>
+
+      <p>
+        保存期間という観点では、SNS・ブログ・ホームページ・PDFは同じではありません。
+        SNSは原則無期限でも、運営都合や規約、サービス終了で“見えなくなる／消える”可能性が高い。
+        ブログは比較的長命ですが、統合や終了のリスクは残る。
+        独自ドメインのホームページは、更新と支払いを続ける限り長期保存が可能で、
+        PDF・ローカル保存は「壊れない限り事実上無期限」という強さを持ちます。
+      </p>
+
+      <div class="note">
+        <span class="pill">未来の基本戦略</span>
+        Webブックは「日々更新するWeb」と「固定して残すPDF」を往復しながら、<b>更新される本</b>と<b>版として残る本</b>を両立させていくのが現実的です。
+      </div>
+
+      <p>
+        さらにAI時代には、長い文章や大量の投稿を「要約して検索する」技術が一般化します。
+        ただし重要なのは、AIが魔法の保存庫になることではありません。保存されていないものは検索できず、
+        権利やプライバシーの制約がある情報は“誰でも自由に”扱えるわけでもないからです。
+        だからこそ、個人が自分の知を「持ち運べる形」に整えておくこと――これがWebブックの未来価値になります。
+      </p>
+    </section>
+
+    <section class="card" id="sec5">
+      <h2>5．国・世界の動き</h2>
+      <p class="sub">公的アーカイブは進むが、個人の投稿は「自分で守る」領域が大きい。</p>
+      <hr class="sep" />
+
+      <p>
+        日本では、国立国会図書館がウェブサイト等のネット情報を収集・保存する権限を持ち、
+        クローリングや選択的収集でアーカイブを進めています。ただし、パスワード保護や動的コンテンツは収集が難しく、
+        SNSの非公開情報は対象外になるなど制約もあります。
+      </p>
+
+      <p>
+        また、文化的・歴史的価値のあるデジタル資産を横断検索する枠組みとして「ジャパンサーチ」などの整備が進められ、
+        デジタル文化資産の保存・活用が政策課題として位置付けられています。
+        一方で、SNS・ブログ等の個人発信情報を“体系的に国が網羅保存する制度”は限定的で、
+        著作権・プライバシー・保存コスト・運営仕様などの理由から、無差別な永久保存は現状ありません。
+      </p>
+
+      <p>
+        海外でもウェブアーカイブの取り組みはあり、政府サイトを体系的に保存する動きや、
+        国立図書館が大型のウェブアーカイブを運営する例が見られます。
+        さらにEUではGDPRが「忘れられる権利」を掲げ、データ保存と削除のバランスを制度化しています。
+        つまり世界は、「残す」方向へも、「消す」方向へも同時に動いているのです。
+      </p>
+
+      <div class="note">
+        <span class="pill">結論</span>
+        公的アーカイブは「公共性の高い情報」を中心に進む。個人のWebブック（自分の投稿・写真・文章）を確実に残すには、<b>自己アーカイブ（エクスポート＋多重バックアップ）</b>が最も確実です。
+      </div>
+    </section>
+
+    <section class="card" id="sec6">
+      <h2>6．まとめ</h2>
+      <p class="sub">Webブックとは、「残す意思」を構造に変えること。</p>
+      <hr class="sep" />
+
+      <p>
+        本とは、紙の束ではなく、記憶し、伝え、再読されるために設計された思考の器です。
+        書物の歴史は、媒体が変わっても「時間を越えて知を残す」営みが続いてきた歴史でした。
+      </p>
+      <p>
+        いまWeb上には、SNS・ブログ・ホームページという形で、膨大な個人の知と経験が散らばっています。
+        しかし散らばったままでは、再読も継承も難しく、サービス終了や仕様変更で失われる危険もあります。
+        そこで、断片を章立てと目次で束ね、引用可能性と固定版（PDFなど）を併設し、保存戦略を組み合わせる。
+        それが、本稿で定義した「新たな本 Webブック」です。
+      </p>
+      <p>
+        国や世界はデジタルアーカイブを整備しつつありますが、個人の投稿を自動的にすべて守ってくれる仕組みは限定的です。
+        だからこそWebブックは、技術より先に「残す意思」を前提に成立します。
+        残す意思が、章立てになり、目次になり、バックアップになり、やがて未来の自分への“沈黙する対話相手”になります。
+      </p>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footerbox">
+      <div class="small">
+        ※画像は外部URLを使用しています。ローカル画像に差し替える場合は、<code>images/</code>フォルダを作り、
+        <code>&lt;img src="images/xxx.jpg"&gt;</code> に変更してください。<br />
+        ※本ページは、添付PDFの要点をもとに構成し直した「Webブック」形式のまとめです。
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>book13｜AI 同時通訳と HTML</title>
+  <style>
+    :root{
+      --bg:#f7fbff;
+      --card:#ffffff;
+      --text:#1f2937;
+      --muted:#4b5563;
+      --line:#dbeafe;
+      --accent:#2563eb;
+      --accent2:#10b981;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic","Meiryo",sans-serif;
+      color:var(--text);
+      line-height:1.95;
+      background:
+        radial-gradient(900px 420px at 10% 0%, #e0f2fe, transparent 60%),
+        radial-gradient(820px 360px at 90% 10%, #ecfeff, transparent 60%),
+        linear-gradient(180deg, var(--bg) 0%, #eef6ff 100%);
+    }
+    a{color:var(--accent); text-decoration:none;}
+    a:hover{text-decoration:underline;}
+    .wrap{max-width:980px; margin:0 auto; padding:22px 16px 64px;}
+    header{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow:0 12px 26px rgba(0,0,0,.06);
+      padding:22px 18px;
+      overflow:hidden;
+    }
+    .kicker{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+      color:var(--muted); font-size:.95rem;
+    }
+    .badge{
+      display:inline-block;
+      padding:4px 12px;
+      border-radius:999px;
+      background:#e0f2fe;
+      border:1px solid #bae6fd;
+      font-weight:700;
+      color:#0f172a;
+    }
+    h1{
+      margin:12px 0 8px;
+      font-size:clamp(1.8rem, 3vw, 2.5rem);
+      line-height:1.25;
+    }
+    .lead{margin:0; color:var(--muted); font-size:1.05rem;}
+    .hero{
+      margin-top:16px;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid var(--line);
+    }
+    .hero img{width:100%; display:block;}
+    main{margin-top:26px;}
+    section{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:20px;
+      box-shadow:0 10px 22px rgba(0,0,0,.05);
+      padding:22px 20px;
+      margin-bottom:22px;
+    }
+    h2{margin:0 0 10px; font-size:1.35rem;}
+    p{margin:.6em 0;}
+    .note{
+      margin-top:14px;
+      padding:14px 16px;
+      background:#eff6ff;
+      border:1px solid #bfdbfe;
+      border-radius:14px;
+      color:#0f172a;
+    }
+    .quote{
+      margin-top:14px;
+      padding:14px 16px;
+      background:#f0f9ff;
+      border-left:4px solid var(--accent);
+      border-radius:12px;
+      font-weight:650;
+    }
+    .imgbox{
+      margin:14px 0 10px;
+      border-radius:16px;
+      overflow:hidden;
+      border:1px solid var(--line);
+    }
+    .imgbox img{width:100%; display:block;}
+    .caption{
+      text-align:center;
+      color:var(--muted);
+      font-size:.85rem;
+      margin:6px 0 2px;
+    }
+    footer{
+      margin-top:30px;
+      text-align:center;
+      color:var(--muted);
+      font-size:.9rem;
+    }
+    .small{font-size:.85rem;}
+    .backlink{
+      margin-top:18px;
+      text-align:center;
+    }
+    .svg-container {
+      margin: 14px 0 10px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: white;
+      padding: 20px;
+    }
+    .svg-container svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="kicker">
+      <span class="badge">book13</span>
+      <span>AI同時通訳／HTMLの構造／言語処理技術</span>
+    </div>
+    <h1>「AI 同時通訳と HTML」</h1>
+    <p class="lead">
+      AI同時通訳が正確にできる理由を、HTMLの構造化の原理から解き明かす。
+      音声認識、意味解析、言語生成のプロセスにおける「構造」の重要性と、
+      HTMLが持つ普遍的な価値を探る。
+    </p>
+
+    <!-- 画像1/4：全体導入（ことばを世界へ届けるイメージ） -->
+    <div class="hero">
+      <img src="https://picsum.photos/1200/420?random=6301" alt="ことばを世界へ届けるイメージ挿絵">
+    </div>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>第一章　はじめに</h2>
+      <p>
+        外国の人と話すとき、「言葉が違って話せない」と困ったことはありませんか。
+      </p>
+      <p>
+        現在では、AI が話を聞いて、すぐに別の言語に変えてくれる <strong>同時通訳</strong> があります。
+      </p>
+      <p>
+        では、AI はどのようにして、速く、しかも正確に言葉を変えているのでしょうか。
+      </p>
+      <p>
+        その仕組みは、<strong>HTML（エイチティーエムエル）</strong> という、ホームページを作るときに使われる考え方と、とてもよく似ています。
+      </p>
+    </section>
+
+    <section>
+      <h2>第二章　HTML とは何か</h2>
+      
+      <!-- SVG図解1：HTMLの構造化 -->
+      <div class="svg-container">
+        <svg viewBox="0 0 980 220" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="文章が構造化される">
+          <rect x="20" y="20" width="940" height="180" rx="22" fill="#ffffff" stroke="#dbeafe" stroke-width="2"/>
+          <rect x="80" y="60" width="820" height="28" rx="10" fill="#2563eb" opacity="0.85"/>
+          <rect x="80" y="102" width="820" height="22" rx="10" fill="#60a5fa" opacity="0.85"/>
+          <rect x="80" y="136" width="620" height="22" rx="10" fill="#93c5fd" opacity="0.95"/>
+          <text x="110" y="80" font-size="14" fill="#ffffff"
+                font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">見出し</text>
+          <text x="110" y="118" font-size="14" fill="#ffffff"
+                font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">段落</text>
+          <text x="110" y="152" font-size="14" fill="#1f2937"
+                font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif">補足</text>
+
+          <circle cx="880" cy="145" r="26" fill="#a7f3d0"/>
+          <path d="M872 145 l8 8 l16-18" stroke="#047857" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="caption">▲ 構造（見出し・段落）があると意味がまとまりやすい。</div>
+      
+      <p>HTML とは、<strong>ホームページを書くときの決まり</strong>です。</p>
+      <p>HTML では、「題名」「説明」「重要な点」など、文章の役割をはっきり分けて書きます。</p>
+      <p>HTML は見た目を美しくするためだけのものではありません。</p>
+      <p>本当に大切な役割は、<strong>文章の意味の構造を、壊れない形で残すこと</strong>です。</p>
+      <p>この考え方が、後で AI の同時通訳と深く関係してきます。</p>
+    </section>
+
+    <section>
+      <h2>第三章　なぜ翻訳は難しいのか</h2>
+      <p>翻訳というと、「日本語を英語に言い換えること」だと思われがちです。</p>
+      <p>しかし本当に難しいのは、単語の置き換えだけではありません。</p>
+      <p>一番の問題は、<strong>どこからどこまでが同じ意味なのかが分からなくなること</strong>です。</p>
+      <p>例えば PDF やワードの文章では、改行が見た目の都合で入ったり、図や注が混ざったりして、意味の区切りが曖昧になることがあります。</p>
+      <p>すると AI も人間も、文章の順番や意味の区切りを間違えやすくなります。</p>
+    </section>
+
+    <section>
+      <h2>第四章　HTML が翻訳に強い理由</h2>
+      <p>HTML では、文章が「見出し（話題の中心）」「段落（説明）」「箇条書き（並び）」のように、きちんと分けられています。</p>
+      <p>これは見た目のためではなく、<strong>意味の区切り</strong>です。</p>
+      <p>そのため翻訳するときも、ただ言葉を入れ替えるのではなく、<strong>意味の構造を保ったまま、言い直す</strong>ことができます。</p>
+      <p>だから、HTML で書かれた文章は、翻訳しても意味が分かりやすくなります。</p>
+      
+      <div class="note">
+        <strong>要点：</strong>構造化された情報は、機械処理（AI翻訳）においても人間の理解においても優位性を持つ。
+      </div>
+    </section>
+
+    <section>
+      <h2>第五章　AI の同時通訳はどのように動くか</h2>
+      
+      <!-- SVG図解2：AI同時通訳の流れ -->
+      <div class="svg-container">
+        <svg viewBox="0 0 980 220" role="img" aria-label="同時通訳の流れ（音声→文字→意味構造→別言語→音声）" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <style>
+              .b{fill:#ffffff;stroke:#dbeafe;stroke-width:2;}
+              .t{font: 16px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; fill:#1f2937;}
+              .m{font: 13px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; fill:#4b5563;}
+              .a{stroke:#2563eb;stroke-width:3;fill:none;marker-end:url(#arrow);}
+            </style>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
+              <path d="M0,0 L8,3 L0,6 Z" fill="#2563eb"/>
+            </marker>
+          </defs>
+          <rect x="20" y="50" width="170" height="120" rx="18" class="b"/>
+          <text x="105" y="95" text-anchor="middle" class="t">音声</text>
+          <text x="105" y="125" text-anchor="middle" class="m">人の声</text>
+
+          <rect x="215" y="50" width="170" height="120" rx="18" class="b"/>
+          <text x="300" y="95" text-anchor="middle" class="t">文字</text>
+          <text x="300" y="125" text-anchor="middle" class="m">書き起こし</text>
+
+          <rect x="410" y="50" width="170" height="120" rx="18" class="b"/>
+          <text x="495" y="88" text-anchor="middle" class="t">意味の</text>
+          <text x="495" y="110" text-anchor="middle" class="t">構造</text>
+          <text x="495" y="140" text-anchor="middle" class="m">主題・関係</text>
+
+          <rect x="605" y="50" width="170" height="120" rx="18" class="b"/>
+          <text x="690" y="95" text-anchor="middle" class="t">別言語</text>
+          <text x="690" y="125" text-anchor="middle" class="m">語順に組立て</text>
+
+          <rect x="800" y="50" width="160" height="120" rx="18" class="b"/>
+          <text x="880" y="95" text-anchor="middle" class="t">音声</text>
+          <text x="880" y="125" text-anchor="middle" class="m">読み上げ</text>
+
+          <path class="a" d="M190 110 L215 110"/>
+          <path class="a" d="M385 110 L410 110"/>
+          <path class="a" d="M580 110 L605 110"/>
+          <path class="a" d="M775 110 L800 110"/>
+
+          <text x="490" y="205" text-anchor="middle" class="m">ポイント：途中で「意味の構造」を作ってから、別の言語に組み直す</text>
+        </svg>
+      </div>
+      
+      <p>AI の同時通訳は、主に次の四つの段階で動いています。</p>
+      <p>① 音声を文字にする：人の声を聞き取り、まず文字に変えます（この段階では、まだ意味は考えません）。</p>
+      <p>② 文字を意味の構造にする：「何についての話か」「誰が何をしたか」などを考え、言語に関係しない意味の構造を作ります（これは HTML で「ここは見出し」「ここは説明」と分ける作業とよく似ています）。</p>
+      <p>③ 別の言語の形に組み直す：意味の構造を、英語などの語順に合わせて並べ直します。</p>
+      <p>④ 音声にする：最後に、音声として出力します。これによって同時通訳が行われます。</p>
+      
+      <div class="quote">
+        AI翻訳の本質は、単語の置き換えではなく、<br>
+        「意味の構造」を別の言語体系に移植することにある。
+      </div>
+    </section>
+
+    <section>
+      <h2>第六章　まとめ</h2>
+      <p>HTML は文章の意味の構造を守る仕組みで、AI はその構造を手がかりに翻訳を行います。</p>
+      <p>同時通訳でも、内部では「HTML 的な構造」が作られています。</p>
+      <p>そのため、構造がはっきりした文章は AI にとって理解しやすいのです。</p>
+      <p>最後に一文でまとめるなら、<strong>HTML とは、人の考えを壊さずに、AI と共に世界へ伝えるための文章の器である</strong>、ということです。</p>
+
+      <div class="note">
+        <strong>補記：</strong><span class="small">本記事は、AIとの対話をもとに構成したものである。</span>
+      </div>
+    </section>
+
+    <div class="backlink">
+      <a href="index.html">← 戻る</a>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="small">© book13</div>
+  </footer>
+
+</div>
+</body>
+</html>
