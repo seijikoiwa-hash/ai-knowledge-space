@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>論文分解：アインシュタイン「運動物体の電気力学」</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      line-height: 1.8;
+      margin: 0;
+      padding: 0;
+      background: #f5f7fb;
+      color: #222;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 40px;
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      border-bottom: 3px solid #333;
+      padding-bottom: 16px;
+    }
+    h2 {
+      font-size: 1.45rem;
+      margin-top: 44px;
+      padding: 12px 16px;
+      background: #eef3ff;
+      border-left: 6px solid #4b6cb7;
+      border-radius: 8px;
+    }
+    h3 {
+      font-size: 1.18rem;
+      margin-top: 32px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid #ddd;
+    }
+    ul {
+      padding-left: 1.5em;
+    }
+    li {
+      margin: 8px 0;
+    }
+    .note {
+      background: #fff8df;
+      border-left: 5px solid #e0b100;
+      padding: 10px 14px;
+      margin: 14px 0;
+      border-radius: 6px;
+    }
+    .answer-line {
+      display: inline-block;
+      min-width: 260px;
+      border-bottom: 1px solid #aaa;
+      height: 1.2em;
+      vertical-align: middle;
+    }
+    .filled {
+      border-bottom: none;
+      background: #f0f0f0;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-weight: 500;
+    }
+    .arrow {
+      font-weight: bold;
+      color: #333;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #ddd;
+      margin: 32px 0;
+    }
+    .section-box {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 22px;
+      background: #fcfcff;
+    }
+    footer {
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
+      margin-top: 50px;
+    }
+    .evidence-strong {
+      background: #e8f5e9;
+      border-left: 4px solid #2e7d32;
+      padding: 8px 12px;
+    }
+    .evidence-medium {
+      background: #fff3e0;
+      border-left: 4px solid #f57c00;
+      padding: 8px 12px;
+    }
+    @media print {
+      body { background: #fff; }
+      .container { box-shadow: none; margin: 0; max-width: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="toplinks">
+
+<a href="book121navi.html">🏠 Navi</a>
+
+<a href="book121.html">🚀 中学生向け</a>
+
+<a href="book121jap.html">📘 日本語抄訳</a>
+
+<a href="book121eng.html">🌍 English</a>
+
+<a href="book121contrast.html">⚡ 対比読解</a>
+
+<a href="book121sol.html">🧠 TPAI解析</a>
+
+<a href="book121method.html">📚 方法論</a>
+
+<a href="book121paper.html">🌍原文</a>
+
+</div>
+
+  <main class="container">
+    <h1>論文分解テンプレート<br>「運動物体の電気力学」（アインシュタイン, 1905）</h1>
+
+    <section>
+      <h2>■ 基本情報</h2>
+      <ul>
+        <li>論文タイトル：<span class="filled">Zur Elektrodynamik bewegter Körper (運動物体の電気力学)</span></li>
+        <li>著者：<span class="filled">アルベルト・アインシュタイン (Albert Einstein)</span></li>
+        <li>分野：<span class="filled">理論物理学, 電磁気学, 相対性理論</span></li>
+        <li>発表年・雑誌：<span class="filled">1905年, Annalen der Physik (17, 891-921)</span></li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>■ A：論文本文の論理構造（ストーリー）— 方法1に基づく抽出</h2>
+
+      <h3>1. 目的（Objective）</h3>
+      <ul>
+        <li>目的a：<span class="filled">マクスウェル電磁気学に見られる「運動する導体と磁石」の非対称性を解消する。</span></li>
+        <li>目的b：<span class="filled">「絶対静止」の観念に依存せず、全ての慣性系で力学・電磁気学の法則が同一の形を保つ原理（相対性原理）を確立する。</span></li>
+        <li>目的c：<span class="filled">光速度不変の原理と相対性原理を両立させる時空の変換則（ローレンツ変換に相当）を導出し、それによって長さ・時間・同時性の相対性を明示する。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>2. 仮説（Hypothesis）</h3>
+      <p class="note">※明示されていない場合は推定</p>
+      <ul>
+        <li>仮説a：<span class="filled">電磁気現象も力学現象と同様に、絶対静止系は存在せず、相対運動のみが重要である（相対性原理の拡張）。</span></li>
+        <li>仮説b：<span class="filled">真空中の光速度は、光源の運動状態に依存せず、すべての慣性系で一定値 V を持つ（光速度不変の原理）。</span></li>
+        <li>仮説c：<span class="filled">上記2つの原理を同時に満たすためには、ガリレイ変換に代わる新しい時空変換（線形変換）が存在し、同時性の概念自体が相対的になる。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>3. 方法・理論構築（Methods — 思考実験と数学的導出）</h3>
+      <ul>
+        <li>方法a：<span class="filled">同時性の操作的定義（光信号を用いた同期法）を導入し、絶対時間を放棄する。</span></li>
+        <li>方法b：<span class="filled">相対性原理と光速度不変を前提に、二つの慣性系 K (静止系) と k (運動系) の間の線形変換を数学的に導出。</span></li>
+        <li>方法c：<span class="filled">変換式を用いて、運動する剛体の長さ（ローレンツ収縮）、時間の遅れ、速度の合成則、電磁場の変換則を導く。</span></li>
+        <li>方法d：<span class="filled">マクスウェル方程式に変換を適用し、その形が不変であることを示す。さらに、電子の力学（縦質量・横質量）を導出。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>4. 結果（Results）</h3>
+      <ul>
+        <li>結果a：<span class="filled">同時性は相対的であり、ある系で同時でも別の系では同時ではない。</span></li>
+        <li>結果b：<span class="filled">運動方向の長さは √(1−v²/V²) 倍に収縮する（ローレンツ収縮）。</span></li>
+        <li>結果c：<span class="filled">運動する時計は遅れ、時間の間隔が伸びる（時間の遅れ）。</span></li>
+        <li>結果d：<span class="filled">速度の合成則が古典論と異なり、光速度を超えられない (u = (v+w)/(1+vw/V²))。</span></li>
+        <li>結果e：<span class="filled">マクスウェル方程式はローレンツ変換下で不変（電磁気学の相対論的形式）。</span></li>
+        <li>結果f：<span class="filled">電子の縦質量は m₀/(1−v²/V²)^{3/2}、横質量は m₀/(1−v²/V²) となり、速度とともに増加する。運動エネルギーは K = m₀V²(1/√(1−v²/V²)−1)。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>5. 検証（目的との対応）</h3>
+      <ul>
+        <li>目的a（非対称性の解消） <span class="arrow">→</span> 結果e（マクスウェル方程式の不変性） <span class="arrow">→</span> <strong>支持</strong>（相対運動のみが本質的で、絶対静止という考えは不要になった）</li>
+        <li>目的b（相対性原理の確立） <span class="arrow">→</span> 結果a〜結果f <span class="arrow">→</span> <strong>支持</strong>（力学だけでなく電磁気学も慣性系間で同一形式）</li>
+        <li>目的c（変換則の導出と時空の相対性） <span class="arrow">→</span> 結果a, b, c <span class="arrow">→</span> <strong>支持</strong>（ローレンツ変換が導出され、同時性・長さ・時間の相対性が示された）</li>
+      </ul>
+
+      <hr>
+
+      <h3>6. 結論（Conclusion）</h3>
+      <ul>
+        <li>結論：<span class="filled">「絶対静止系」は存在せず、すべての慣性系で物理法則は同じ形をとる（相対性原理）。光速度はすべての慣性系で不変である。これらの原理から、時間と空間は絶対的なものではなく、観測者の運動状態に依存する相対的なものである。これにより、電磁気学の非対称性は完全に解消され、力学と光学・電磁気学が統一的に記述される。</span></li>
+        <li>著者の主張の要約：<span class="filled">新しい時空観（のちに特殊相対性理論と呼ばれる）を提唱し、ニュートン力学の絶対時間・絶対空間を放棄することで、電気力学の見かけ上の矛盾を解決した。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>7. 限界・未解決問題（Limitations）</h3>
+      <ul>
+        <li>限界a：<span class="filled">重力現象については扱っていない（後に一般相対性理論へ発展）。</span></li>
+        <li>限界b：<span class="filled">加速度運動する系（非慣性系）への拡張は行われていない。</span></li>
+        <li>限界c：<span class="filled">電子の内部構造や量子効果については考慮されていない（古典的な点電子近似）。</span></li>
+        <li>未解決問題：<span class="filled">重力と慣性力の統一、加速系における時空の記述（→ 一般相対性理論へ）。</span></li>
+      </ul>
+
+      <hr>
+
+      <h3>8. 新規性（Novelty）</h3>
+      <p class="note">※既存研究と何が違うか</p>
+      <ul>
+        <li>新規性：<span class="filled">① 絶対時間を廃し、光信号による同時性の操作的定義を与えた。② 相対性原理を力学から電磁気学に拡張し、光速度不変の原理と矛盾なく統合した。③ ローレンツ変換を「エーテル仮説」なしに、時空の性質として初めて導出した。④ 運動する物体の縦質量と横質量の違いを明確に導き、等価性 E=mc² の基盤を与えた（この論文では明示されていないが直後の別論文で登場）。</span></li>
+        <li>従来との差分：<span class="filled">ローレンツやポアンカレは「エーテル」や「局所時」の概念を用いて変換式を解釈していたが、アインシュタインはエーテルを不要とし、空間と時間の本質的な相対性として再定義した。</span></li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>■ B：図・表の解析（エビデンス）— 方法2に基づく</h2>
+      <p class="note">※本論文には図・表は含まれていない。すべて理論的導出と思考実験による。しかしながら、本質的な「エビデンス」は以下のような数式的結果である。</p>
+
+      <div class="section-box">
+        <h3>【図に準ずる重要結果1】ローレンツ変換と同時性の相対性</h3>
+        <p>A. 対応箇所：<span class="filled">目的c, 仮説b, 方法b, 結果a</span></p>
+        <p>B. 何を証明しようとしているか：<span class="filled">光速度不変と相対性原理から、異なる慣性系の時間と空間の関係はガリレイ変換ではなく、ローレンツ変換で結ばれること。これにより「同時刻」が相対的になる。</span></p>
+        <p>C. 図から分かること：<span class="filled">数式 τ = (t − vx/V²)/√(1−v²/V²) が示すように、ある系で同時 (t₁=t₂) でも x が異なれば τ₁≠τ₂ となる。</span></p>
+        <p>D. 結果への影響：<span class="filled">この変換が論文全体の基盤であり、後の長さ・時間・電磁場・速度合成のすべての結果を導く根幹。</span></p>
+        <p>E. この結果がないと何が崩れるか：<span class="filled">論文の全てが崩壊する。同時性の相対性やローレンツ収縮・時間遅れは導出できず、古典的なエーテル描像に戻る。</span></p>
+      </div>
+
+      <div class="section-box">
+        <h3>【図に準ずる重要結果2】速度の合成則</h3>
+        <p>A. 対応箇所：<span class="filled">目的c, 仮説b, 方法c, 結果d</span></p>
+        <p>B. 何を証明しようとしているか：<span class="filled">古典的な速度の加法則 (u = v + w) は光速度を超えうるが、相対論的な加法則では光速度が不変かつ上限となる。</span></p>
+        <p>C. 図から分かること：<span class="filled">u = (v+w)/(1+vw/V²) であり、w = V のとき u = V となる。光速度はどのように合成しても変わらない。</span></p>
+        <p>D. 結果への影響：<span class="filled">光速度不変の原理と相性が良く、矛盾なく速度の変換が定義できる。</span></p>
+        <p>E. この結果がないと何が崩れるか：<span class="filled">光速度不変と相対性原理の整合性が崩れ、ローレンツ変換の解釈が破綻する。</span></p>
+      </div>
+
+      <div class="section-box">
+        <h3>【図に準ずる重要結果3】縦質量と横質量、運動エネルギー</h3>
+        <p>A. 対応箇所：<span class="filled">目的b, 方法d, 結果f</span></p>
+        <p>B. 何を証明しようとしているか：<span class="filled">電子のような荷電粒子の慣性は速度の向きによって異なり、特に縦方向の加速が困難になる。また、運動エネルギーの相対論的表現が古典極限と一致。</span></p>
+        <p>C. 図から分かること：<span class="filled">m_parallel = m₀/(1−v²/V²)^{3/2}, m_perp = m₀/(1−v²/V²), K = m₀V²(1/√(1−v²/V²)−1)</span></p>
+        <p>D. 結果への影響：<span class="filled">ニュートン力学の質量概念を修正し、速度が光速に近づくにつれて無限大のエネルギーが必要となることを示唆。</span></p>
+        <p>E. この結果がないと何が崩れるか：<span class="filled">相対論的力学の基礎が欠け、後の E=mc² につながらない。</span></p>
+      </div>
+      <p>（総評：図表は存在しないが、各数式が図表の役割を果たし、強い理論的証拠を提供している。）</p>
+    </section>
+
+    <hr>
+
+    <section>
+      <h2>■ C：論文の本質（最重要まとめ）— 方法3に基づく評価</h2>
+
+      <h3>1. この論文は一言で何をしたか</h3>
+      <p>→ <span class="filled">絶対時間を捨て、相対性原理と光速度不変を基礎に新しい時空理論（特殊相対性理論）を構築した。</span></p>
+
+      <h3>2. なぜ重要か</h3>
+      <p>→ <span class="filled">物理学の基礎概念である「時間」「空間」「同時性」を再定義し、力学と電磁気学を統一した。後の一般相対性理論、量子場理論、さらにはGPSなどの実用技術の基盤となった。</span></p>
+
+      <h3>3. どこが一番強い証拠か（キーとなる導出）</h3>
+      <p>→ <span class="filled">光信号による同時性の定義から出発し、ローレンツ変換を「エーテルなし」で導出した点。特に §3 の変換式導出は論理的に最も強固な部分であり、その後のすべての結果（収縮・時間遅れ・速度合成）はこの変換から自然に導かれる。</span></p>
+      <div class="evidence-strong">
+        <strong>証拠評価 (方法3):</strong> 主結果として強固 — 相対性原理と光速度不変の2つの仮定から線形変換を一意に決定しており、矛盾なく実験事実（マイケルソン・モーリー実験など）を説明できる。
+      </div>
+
+      <h3>4. どこが一番怪しいか（弱点）</h3>
+      <p>→ <span class="filled">光速度不変の原理を要請するが、当時はその直接的な実験的検証は完全ではなかった（ただし理論的整合性で補強）。また、剛体や時計の動作原理を詳細にモデル化しておらず、時計の遅れが「あらゆる物理過程」に適用できると一般化している点は哲学的飛躍を含む。しかし結果的に正しかった。</span></p>
+      <div class="evidence-medium">
+        <strong>方法3による弱点評価:</strong> 実験的「排除結果」が当時は少ない。ただし後年の実験（ハーフェレ・キーティングなど）が検証。論文内では仮説の強度に対して検証が理論的整合性のみ。
+      </div>
+
+      <h3>5. 次にやるべき研究は何か</h3>
+      <p>→ <span class="filled">① 重力を取り入れた理論の構築（一般相対性理論）、② 加速系における時空の記述、③ 量子効果と相対性原理の統合（相対論的量子力学）。実際にアインシュタインはその後、一般相対性理論へ進んだ。</span></p>
+
+      <hr>
+
+      <h3>【方法3の視点: AIと人間の読解ループによる結論の強さ評価】</h3>
+      <table border="1" cellpadding="8" style="width:100%; border-collapse: collapse;">
+        <tr style="background:#eef3ff;"><th>結論</th><th>証拠の強さ</th><th>判断理由</th></tr>
+        <tr><td>相対性原理は電磁気学でも成立する</td><td>強</td><td>マクスウェル方程式の形式不変性を直接証明。主結果として複数の変換式が整合。</td></tr>
+        <tr><td>光速度は慣性系間で不変</td><td>強</td><td>仮定として置き、ローレンツ変換を導出。実験と矛盾しない（当時のマイケルソン・モーリー）。</td></tr>
+        <tr><td>同時性は相対的である</td><td>強</td><td>変換式から数学的に導かれ、定義と矛盾しない。</td></tr>
+        <tr><td>運動物体の長さは収縮する</td><td>強</td><td>変換式の直接的な結果で、論理矛盾がない。</td></tr>
+        <tr><td>電子の質量は速度に依存する</td><td>中〜強</td><td>理論的導出は明快だが、当時の実験的検証は限定的。現在は検証済み。</td></tr>
+      </table>
+      <p class="note">※結論の総合評価: 理論の首尾一貫性および後の実験的検証により、本論文の主要な結論は「強」の証拠を持つ。</p>
+    </section>
+
+    <footer>論文分解テンプレート — 方法1・方法2・方法3（AIと人間の読解ループ）に基づき、アインシュタイン(1905)を解析。図表なしだが数式をエビデンスとして扱った。</footer>
+  </main>
+
+<div class="toplinks">
+
+<a href="book121navi.html">🏠 Navi</a>
+
+<a href="book121.html">🚀 中学生向け</a>
+
+<a href="book121jap.html">📘 日本語抄訳</a>
+
+<a href="book121eng.html">🌍 English</a>
+
+<a href="book121contrast.html">⚡ 対比読解</a>
+
+<a href="book121sol.html">🧠 TPAI解析</a>
+
+<a href="book121method.html">📚 方法論</a>
+
+<a href="book121paper.html">🌍原文</a>
+
+</div>
+
+</body>
+</html>

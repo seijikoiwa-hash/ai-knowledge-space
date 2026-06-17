@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>book121 Navi｜アインシュタイン論文ブログ案内</title>
+<style>
+  :root{
+    --bg:#f5efe4;
+    --paper:#fffaf0;
+    --ink:#2f261d;
+    --muted:#6f6256;
+    --line:#c9b89e;
+    --accent:#7b4a22;
+    --accent2:#31445f;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    font-family:"Hiragino Mincho ProN","Yu Mincho",Meiryo,serif;
+    color:var(--ink);
+    background:
+      radial-gradient(circle at 20% 10%, rgba(255,255,255,.75), transparent 28%),
+      linear-gradient(135deg,#efe1cc 0%,#f8f1e7 55%,#ead9bf 100%);
+  }
+  a{color:inherit;text-decoration:none}
+  .page{max-width:1180px;margin:0 auto;padding:28px 18px 52px}
+  header{
+    text-align:center;
+    padding:22px 12px 10px;
+  }
+  .kicker{letter-spacing:.18em;color:var(--accent);font-weight:bold;font-size:.9rem}
+  h1{margin:10px 0 8px;font-size:clamp(2rem,4vw,3.6rem);line-height:1.15}
+  .subtitle{margin:0 auto;max-width:780px;color:var(--muted);font-size:1.05rem;line-height:1.8}
+  .toplinks{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:22px 0 10px}
+  .toplinks a{border:1px solid var(--line);background:rgba(255,250,240,.7);border-radius:999px;padding:8px 14px;font-weight:bold;font-size:.92rem}
+  .toplinks a:hover{background:#fff;transform:translateY(-1px)}
+  .hub{
+    position:relative;
+    min-height:720px;
+    margin-top:20px;
+    border:1px solid rgba(123,74,34,.25);
+    border-radius:30px;
+    background:rgba(255,250,240,.66);
+    box-shadow:0 24px 60px rgba(67,45,22,.16);
+    overflow:hidden;
+  }
+  .hub:before{
+    content:"";
+    position:absolute;inset:18px;
+    border:1px dashed rgba(123,74,34,.25);
+    border-radius:24px;
+    pointer-events:none;
+  }
+  .portrait{
+    position:absolute;
+    left:50%;top:50%;transform:translate(-50%,-50%);
+    width:min(310px,48vw);
+    aspect-ratio:3/4;
+    border-radius:18px;
+    padding:12px;
+    background:#f7eedc;
+    box-shadow:0 18px 42px rgba(0,0,0,.24);
+    border:1px solid #d8c5a8;
+    z-index:2;
+  }
+  .portrait img{width:100%;height:100%;object-fit:cover;border-radius:10px;display:block;filter:sepia(.18)}
+  .portrait figcaption{text-align:center;font-size:.9rem;color:var(--muted);margin-top:8px}
+  .node{
+    position:absolute;
+    width:245px;
+    min-height:118px;
+    padding:16px 16px 14px;
+    background:linear-gradient(180deg,#fffdf7,#f6ead8);
+    border:1px solid var(--line);
+    border-radius:18px;
+    box-shadow:0 12px 28px rgba(62,42,20,.13);
+    transition:.2s ease;
+    z-index:3;
+  }
+  .node:hover{transform:translateY(-4px);box-shadow:0 18px 34px rgba(62,42,20,.22);border-color:var(--accent)}
+  .node h2{margin:0 0 7px;font-size:1.14rem;color:var(--accent2)}
+  .node p{margin:0 0 10px;line-height:1.6;color:var(--muted);font-size:.9rem}
+  .file{display:inline-block;color:#fff;background:var(--accent);border-radius:999px;padding:5px 10px;font-size:.78rem;font-family:Georgia,serif}
+  .paper{left:50%;top:34px;transform:translateX(-50%);width:310px;text-align:center}
+  .eng{left:82px;top:185px}
+  .jap{right:82px;top:185px}
+  .method{left:82px;bottom:188px}
+  .blog{right:82px;bottom:188px}
+  .sol{left:50%;bottom:34px;transform:translateX(-50%);text-align:center}
+  .contrast{right:82px;bottom:34px}
+  .arrow{position:absolute;z-index:1;color:rgba(49,68,95,.35);font-size:2.4rem;font-family:Arial,sans-serif;line-height:1}
+  .a1{left:45%;top:150px;transform:rotate(90deg)}
+  .a2{left:310px;top:250px;transform:rotate(145deg)}
+  .a3{right:310px;top:250px;transform:rotate(35deg)}
+  .a4{left:330px;bottom:255px;transform:rotate(35deg)}
+  .a5{right:330px;bottom:255px;transform:rotate(145deg)}
+  .a6{left:48%;bottom:155px;transform:rotate(90deg)}
+  section.index{margin-top:26px;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+  .index a{background:rgba(255,250,240,.8);border:1px solid var(--line);border-radius:16px;padding:15px;display:block}
+  .index strong{color:var(--accent2)}
+  footer{text-align:center;margin-top:28px;color:var(--muted);font-size:.9rem}
+  @media(max-width:900px){
+    .hub{min-height:auto;padding:24px;display:grid;gap:14px;grid-template-columns:1fr}
+    .hub:before,.arrow{display:none}
+    .portrait,.node,.paper,.eng,.jap,.method,.blog,.sol,.contrast{position:static;transform:none;width:100%;text-align:left}
+    .portrait{max-width:320px;margin:0 auto 10px;aspect-ratio:3/4}
+  }
+</style>
+</head>
+<body>
+<div class="page" id="top">
+  <header>
+    <div class="kicker">BOOK121 NAVIGATION</div>
+    <h1>異分野の論文を読み解く(７)－アインシュタイン</h1>
+    <p class="subtitle">原論文・英訳・日本語訳・TPAI法解析・解釈結果・ブログ・対比ブログへジャンプできます。</p>
+    <nav class="toplinks" aria-label="主要リンク">
+      <a href="book121paper.html">論文</a>
+      <a href="book121eng.html">英訳</a>
+      <a href="book121jap.html">日本語訳</a>
+      <a href="book121method.html">TPAI法適用</a>
+      <a href="book121sol.html">解析結果</a>
+      <a href="book121.html">ブログ</a>
+      <a href="book121contrast.html">対比ブログ</a>
+    </nav>
+  </header>
+
+  <main class="hub" aria-label="ブログナビゲーション図">
+    <figure class="portrait">
+      <img src="einstein.jpg" alt="アインシュタインの写真">
+      <figcaption>Albert Einstein</figcaption>
+    </figure>
+
+    <span class="arrow a1">➜</span><span class="arrow a2">➜</span><span class="arrow a3">➜</span>
+    <span class="arrow a4">➜</span><span class="arrow a5">➜</span><span class="arrow a6">➜</span>
+
+    <a class="node paper" href="book121paper.html" id="paper">
+      <h2>原論文</h2>
+      <p>Zur Elektrodynamik bewegter Körper / von A. Einstein</p>
+      <span class="file">book121paper.html</span>
+    </a>
+
+    <a class="node eng" href="book121eng.html" id="eng">
+      <h2>英訳</h2>
+      <p>原論文の英語訳へ移動します。</p>
+      <span class="file">book121eng.html</span>
+    </a>
+
+    <a class="node jap" href="book121jap.html" id="jap">
+      <h2>日本語訳</h2>
+      <p>原論文の日本語訳へ移動します。</p>
+      <span class="file">book121jap.html</span>
+    </a>
+
+    <a class="node method" href="book121method.html" id="method">
+      <h2>TPAI法適用</h2>
+      <p>論文をTPAI法で読むための方法・手順へ移動します。</p>
+      <span class="file">book121method.html</span>
+    </a>
+
+    <a class="node blog" href="book121.html" id="blog">
+      <h2>ブログ</h2>
+      <p>一般読者向けの解説ブログへ移動します。</p>
+      <span class="file">book121.html</span>
+    </a>
+
+    <a class="node sol" href="book121sol.html" id="sol">
+      <h2>解析結果</h2>
+      <p>TPAI法による解釈・分析結果へ移動します。</p>
+      <span class="file">book121sol.html</span>
+    </a>
+
+    <a class="node contrast" href="book121contrast.html" id="contrast">
+      <h2>対比ブログ</h2>
+      <p>関連文書を対比して読めるページへ移動します。</p>
+      <span class="file">book121contrast.html</span>
+    </a>
+  </main>
+
+  <section class="index" aria-label="リンク一覧">
+    <a href="book121paper.html"><strong>原論文</strong><br>book121paper.html</a>
+    <a href="book121eng.html"><strong>英訳</strong><br>book121eng.html</a>
+    <a href="book121jap.html"><strong>日本語訳</strong><br>book121jap.html</a>
+    <a href="book121method.html"><strong>TPAI法適用</strong><br>book121method.html</a>
+    <a href="book121sol.html"><strong>解析結果</strong><br>book121sol.html</a>
+    <a href="book121.html"><strong>ブログ</strong><br>book121.html</a>
+    <a href="book121contrast.html"><strong>対比ブログ</strong><br>book121contrast.html</a>
+  </section>
+
+<section style="margin-top:40px;padding:32px;background:rgba(255,250,240,.88);border:1px solid #c9b89e;border-radius:24px;line-height:1.95;box-shadow:0 10px 30px rgba(0,0,0,.08);">
+
+  <h2 style="font-size:2.1rem;color:#31445f;margin-top:0;">
+     理系の人間なら一度は読んでみたいアインシュタインの
+    「特殊相対性理論」の原論文（1905年）に挑戦した。 </h2>
+ 
+  <hr style="margin:30px 0;">
+
+  <h2 style="color:#7b4a22;">ブログの作成方法</h2>
+
+  <ol style="padding-left:22px;">
+
+    <li style="margin-bottom:20px;">
+      <strong>論文をネットで探す</strong><br>
+      以下のドイツ語原文を得た。
+      <div style="margin-top:10px;padding:14px;background:#fffaf3;border-radius:14px;border:1px solid #dcc9aa;">
+        論文名：<br>
+        「Zur Elektrodynamik bewegter Körper」<br><br>
+
+        日本語訳：<br>
+        「運動する物体の電気力学について」<br><br>
+
+        英訳：<br>
+        「On the Electrodynamics of Moving Bodies」
+      </div>
+    </li>
+
+    <li style="margin-bottom:20px;">
+      <strong>TPAI法による解析</strong><br>
+      筆者による
+      「TPAI法 - Thinking through academic paper with AI -」
+      を用いて、論文の英訳文を英語で解析し、
+      所定フォーマットへ結果を記入した。
+      <br><br>
+      （アシスト＝AI）
+    </li>
+
+    <li style="margin-bottom:20px;">
+      <strong>ブログ化</strong><br>
+      記入済みフォーマットをベースに、
+      中学生向けのブログを作成した。
+      <br><br>
+      （構成＝筆者、作成＝AI）
+    </li>
+
+    <li style="margin-bottom:10px;">
+      <strong>対比ブログ作成</strong><br>
+      理解を深めるため、
+      ブログ本文と日本語訳文との対比ブログ
+      （book121contrast.html）
+      も作成した。
+    </li>
+
+  </ol>
+
+  <hr style="margin:32px 0;">
+
+  <h2 style="color:#31445f;">結果</h2>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:20px;">
+
+    <div style="background:#fffdf7;border:1px solid #d8c5a8;border-radius:18px;padding:18px;">
+      <strong style="color:#7b4a22;">1. ブログのナビ</strong><br>
+      <span style="color:#666;">book121navi.html</span>
+    </div>
+
+    <div style="background:#fffdf7;border:1px solid #d8c5a8;border-radius:18px;padding:18px;">
+      <strong style="color:#7b4a22;">2. ブログ本文</strong><br>
+      <span style="color:#666;">book121.html</span>
+    </div>
+
+    <div style="background:#fffdf7;border:1px solid #d8c5a8;border-radius:18px;padding:18px;">
+      <strong style="color:#7b4a22;">3. 対比ブログ</strong><br>
+      <span style="color:#666;">book121contrast.html</span>
+    </div>
+
+    <div style="background:#fffdf7;border:1px solid #d8c5a8;border-radius:18px;padding:18px;">
+      <strong style="color:#7b4a22;">4. 添付資料群</strong><br>
+      <span style="color:#666;">
+        book121paper.html<br>
+        book121eng.html<br>
+        book121method.html<br>
+        book121sol.html
+      </span>
+    </div>
+
+  </div>
+
+ </section>
+
+  <footer>
+    <p>各カードをクリックすると対応ファイルへジャンプします。</p>
+  </footer>
+</div>
+</body>
+</html>

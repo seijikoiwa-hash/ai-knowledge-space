@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>チューリング論文：対比読解 — 中学生向け解説 × 原論文 | 相互ジャンプ</title>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" id="MathJax-script" async></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:#eef2fa; font-family:'Helvetica Neue','Hiragino Kaku Gothic ProN','Noto Sans JP','Meiryo','Segoe UI',sans-serif; line-height:1.58; color:#1e2a3e; padding:20px; }
+.compare-header { max-width:1600px; margin:0 auto 20px; text-align:center; background:linear-gradient(135deg,#1e3c72,#2a5298); padding:22px 20px; border-radius:60px; color:white; box-shadow:0 8px 24px rgba(0,0,0,.12); }
+.compare-header h1 { font-size:1.85rem; letter-spacing:-.3px; }
+.compare-header p { margin-top:10px; opacity:.92; font-size:.95rem; }
+.badge-group { display:flex; justify-content:center; gap:12px; flex-wrap:wrap; margin:15px 0 5px; }
+.badge { background:#f4b942; padding:5px 14px; border-radius:40px; font-size:.8rem; font-weight:bold; color:#19345f; }
+.control-bar { max-width:1600px; margin:0 auto 15px; background:#fffaec; border-radius:48px; padding:12px 20px; display:flex; flex-wrap:wrap; justify-content:center; gap:12px; font-weight:bold; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+.control-bar a { background:#1e4a6b; color:white; padding:6px 15px; border-radius:40px; text-decoration:none; font-size:.85rem; transition:.2s; }
+.control-bar a:hover { background:#f4b942; color:#1e2a3e; }
+.compare-container { max-width:1600px; margin:0 auto; display:flex; flex-wrap:wrap; gap:20px; }
+.col { flex:1; min-width:320px; background:#fffef7; border-radius:32px; box-shadow:0 20px 35px rgba(0,0,0,.10); overflow:hidden; display:flex; flex-direction:column; height:85vh; position:relative; }
+.col-header { background:#1e4a6b; padding:14px 20px; color:white; font-weight:bold; font-size:1.12rem; display:flex; justify-content:space-between; gap:8px; align-items:baseline; flex-wrap:wrap; }
+.col-header .sub { font-size:.75rem; background:#f4b942; padding:3px 12px; border-radius:30px; color:#1e2a3e; }
+.scroll-area { flex:1; overflow-y:auto; padding:22px 26px; background:#fefcf8; }
+.jp-content h1 { font-size:1.65rem; text-align:center; margin-bottom:10px; color:#1e3c72; }
+.jp-content .sub { text-align:center; color:#2c5f8a; border-bottom:2px dashed #bdd4e7; padding-bottom:18px; margin-bottom:24px; }
+.jp-content h2, .jp-content h3 { scroll-margin-top:20px; }
+.jp-content h2 { font-size:1.45rem; margin:34px 0 15px; border-left:8px solid #2c7da0; background:#f0f7fc; border-radius:24px; padding:10px 16px; }
+.jp-content h3 { font-size:1.2rem; margin:25px 0 12px; color:#1e4a6b; border-bottom:2px solid #cbdde9; padding-bottom:5px; }
+.jp-content .highlight { background:#fffaec; border-left:6px solid #f4b942; padding:12px 18px; border-radius:18px; margin:20px 0; }
+.jp-content .info-card { background:#f9fafc; border-radius:24px; padding:18px 22px; margin:20px 0; box-shadow:0 2px 6px rgba(0,0,0,.05); border:1px solid #e2edf2; }
+.jp-content .weak-note { background:#ffe8e7; border-left:5px solid #cc5a5a; padding:12px 18px; border-radius:18px; margin:15px 0; }
+.jp-content ul, .jp-content ol { padding-left:1.7rem; margin:12px 0; }
+.jp-content li { margin:8px 0; }
+.jp-content table, .en-content table { width:100%; border-collapse:collapse; margin:20px 0; background:white; border-radius:16px; overflow:hidden; box-shadow:0 1px 3px rgba(0,0,0,.1); }
+.jp-content th,.jp-content td,.en-content th,.en-content td { border:1px solid #cbdbe2; padding:10px; vertical-align:top; }
+.jp-content th,.en-content th { background:#e3f0f7; font-weight:600; }
+.jump-btn { background:#f4b94233; border-radius:30px; padding:2px 12px; font-size:.72rem; font-weight:normal; margin-left:10px; text-decoration:none; color:#8a5a00; border:1px solid #f4b942; white-space:nowrap; }
+.jump-btn:hover { background:#f4b942; color:white; }
+.en-content { font-family:'Georgia','Times New Roman',serif; color:#1e2f3f; }
+.en-content h1 { font-family:'Segoe UI','Helvetica Neue',sans-serif; text-align:center; font-size:1.55rem; border-bottom:2px solid #333; padding-bottom:.3rem; margin-bottom:1rem; }
+.en-content h2, .en-content h3 { font-family:'Segoe UI','Helvetica Neue',sans-serif; scroll-margin-top:20px; font-size:1.35rem; margin-top:2rem; color:#1e4a6b; border-left:5px solid #f4b942; padding-left:15px; }
+.en-content p { margin:1em 0; line-height:1.62; }
+.en-content pre { background:#f0f0e8; padding:.8rem; border-left:4px solid #8b7e66; font-size:.9rem; overflow-x:auto; }
+.en-jump { background:#e9eef3; border-radius:20px; padding:1px 9px; font-size:.72rem; margin-left:10px; text-decoration:none; color:#1e40af; border:1px solid #9bb6d0; font-family:'Helvetica Neue','Meiryo',sans-serif; white-space:nowrap; }
+.en-jump:hover { background:#1e4a6b; color:white; border-color:#1e4a6b; }
+.keyword-highlight { background:#fff0b5; border-radius:12px; padding:1px 4px; font-weight:500; }
+footer { max-width:1600px; margin:28px auto 0; text-align:center; font-size:.8rem; color:#4f6f8f; }
+@media (max-width:850px) { body{padding:12px;} .compare-header{border-radius:32px;} .compare-container{flex-direction:column;} .col{height:auto; min-height:560px;} .scroll-area{max-height:none;} }
+</style>
+</head>
+<body>
+<div class="series-nav">
+  <a href="method1.html">📘 方法論</a>
+  <a href="book122sol.html">🧩 論文分解</a>
+  <a href="book122paper.html">📄 原論文</a>
+  <a href="book122contrast.html">🔁 対比読解</a>
+  <a href="book122.html">🧠 中学生向け解説</a>
+</div>
+
+<div class="compare-header">
+  <h1>🧠 チューリング『On Computable Numbers』— 相互ジャンプ対比読解</h1>
+  <p>左: 中学生向けの日本語解説 ／ 右: Alan Turing 原論文HTML。重要概念ごとに相互ジャンプできます。</p>
+  <div class="badge-group">
+    <span class="badge">🎯 計算可能性</span>
+    <span class="badge">⚙️ チューリングマシン</span>
+    <span class="badge">🌍 万能機械</span>
+    <span class="badge">🌀 対角線論法</span>
+    <span class="badge">⛔ 停止性問題</span>
+    <span class="badge">📐 決定問題</span>
+  </div>
+</div>
+<div class="control-bar">
+  <span>🔁 重要トピックで相互ジャンプ ↓</span>
+  <a href="#jp-objective" onclick="scrollToJp('jp-objective'); return false;">📌 目的</a>
+  <a href="#jp-hypothesis" onclick="scrollToJp('jp-hypothesis'); return false;">📌 仮説</a>
+  <a href="#jp-method" onclick="scrollToJp('jp-method'); return false;">📌 方法</a>
+  <a href="#jp-results" onclick="scrollToJp('jp-results'); return false;">📌 結果</a>
+  <a href="#jp-coreideas" onclick="scrollToJp('jp-coreideas'); return false;">📌 重要アイデア</a>
+  <a href="#en-universal" onclick="scrollToEn('en-universal'); return false;">🇬🇧 Universal Machine</a>
+  <a href="#en-diagonal" onclick="scrollToEn('en-diagonal'); return false;">🇬🇧 Diagonal Process</a>
+  <a href="#en-entscheidungs" onclick="scrollToEn('en-entscheidungs'); return false;">🇬🇧 Entscheidungsproblem</a>
+</div>
+<div class="compare-container">
+  <div class="col">
+    <div class="col-header">🇯🇵 中学生向け解説 <span class="sub">book122.html</span></div>
+    <div class="scroll-area jp-content">
+      
+<h1>🧠 アラン・チューリングの論文<br/>「計算する機械と、解けない問題」</h1>
+<div class="sub">⭐ 中学生でもわかる！ ⭐<br/>『On Computable Numbers』やさしい解説</div>
+ 基本情報をカンタンに 
+<div class="info-card">
+<p>📄 <strong>論文のタイトル</strong> : 「計算可能な数について、しかも Entscheidungsproblem（決定問題）への応用」<br/>
+    👨‍🔬 <strong>書いた人</strong> : アラン・チューリング (天才数学者・コンピューター科学の父)<br/>
+    📅 <strong>発表された年</strong> : 1936年 (今から約90年前！)<br/>
+    🎯 <strong>テーマ</strong> : 「コンピューターで本当にどんな計算でもできるの？」「絶対に解けない問題ってあるの？」を数学的に証明した。</p>
+</div>
+ ========= 1. 目的 (何をしたかったのか) ========= 
+<h2 id="jp-objective">🎯 1. この論文でやりたかったこと (目的) <a class="jump-btn" href="#" onclick="scrollToEn('en-intro'); return false;">📖 原論文へ</a></h2>
+<ul>
+<li>✅ 「計算できる」ってどういう意味？ それをハッキリと定義したかった。</li>
+<li>✅ 「どんな計算でもこなす万能な機械」が作れることを示したかった。</li>
+<li>✅ 「機械でも絶対に答えが出せない問題」が存在することを証明したかった。</li>
+<li>✅ 数学の有名な課題「ヒルベルトの決定問題」が解けないことを示したかった。</li>
+</ul>
+<h2 id="jp-hypothesis">🧩 2. チューリングの「仮説」 (こう考えた) <a class="jump-btn" href="#" onclick="scrollToEn('en-computing'); return false;">📖 原論文へ</a></h2>
+<div class="highlight">
+<p>💡 「人間が‘計算する’ときの作業は、とても単純なルールに分解できるはず」</p>
+<p>👉 細かいルール：<br/>
+      ・“今の状態”を覚えておく (頭の中のモード)<br/>
+      ・一マスずつ記号を見る・書き換える・左右に動く<br/>
+      ・この単純動作の組み合わせで、あらゆる計算ができる！</p>
+</div>
+ ========= 方法 ========= 
+<h2 id="jp-method">⚙️ 3. どうやって調べたの？ (チューリングが考えた「方法」) <a class="jump-btn" href="#" onclick="scrollToEn('en-definitions'); return false;">📖 原論文へ</a></h2>
+<ul>
+<li>📏 <strong>「チューリングマシン」を発明</strong> : 無限に長いテープと、読み書きヘッドと、状態を覚える機械を考えた。これが「コンピューターの原型」。</li>
+<li>🔢 <strong>機械を数字で表すアイデア</strong> : どんな機械も「設計図」→「番号」に変換できる。つまりプログラムに番号をふれる！</li>
+<li>🌍 <strong>万能マシン</strong> : 他の機械の番号を読み込んで、その機械の動作をまねできる「スーパー機械」を作った。</li>
+<li>🎭 <strong>対角線論法というトリック</strong> : 「自分がいま動いているかどうか」を判定する機械があったら、矛盾が起きることを示した。</li>
+<li>📖 <strong>計算を論理の式に変換</strong> : 機械の動きを数学の式に書き換えて、「解けない問題」を論理学の問題に結びつけた。</li>
+</ul>
+ ========= 結果 やさしく ========= 
+<h2 id="jp-results">🔍 4. その結果、何がわかった？ (結果) <a class="jump-btn" href="#" onclick="scrollToEn('en-diagonal'); return false;">📖 原論文へ</a></h2>
+<div class="info-card">
+<p>✨ <strong>チューリングが明らかにしたこと</strong> ✨</p>
+<ul>
+<li>🔹 「計算機械」の定義が完成 → これが今のコンピューターの理論的な土台になった。</li>
+<li>🔹 <strong>万能チューリングマシン</strong> を実際に設計 → どんな計算もソフトウェアを変えればできる「プログラム内蔵方式」の誕生！</li>
+<li>🔹 <strong>「絶対に答えが出せない問題」が存在する</strong> : 例えば「ある機械が永遠に動き続けるか停止するか」を判定するプログラムは作れない (これが“停止性問題”のもと)。</li>
+<li>🔹 ヒルベルトの「決定問題」は解決不可能！どんな機械でも、すべての数学の問題を自動で○×つけすることはできない。</li>
+<li>🔹 円周率πやネイピア数e、代数的な数など、たくさんの数は「計算可能」であることも確認した。</li>
+</ul>
+</div>
+ ========= 検証：目的と結果の対応 ========= 
+<h2 id="jp-verification">✅ 5. 目的はちゃんと達成できた？ <a class="jump-btn" href="#" onclick="scrollToEn('en-entscheidungs'); return false;">📖 原論文へ</a></h2>
+<table>
+<thead><tr><th>やろうとしたこと</th><th>結果</th><th>判定</th></tr></thead>
+<tbody>
+<tr><td>「計算可能」を厳密に定義する</td><td>チューリングマシンで定義できた</td><td>✨ 成功 ✨</td></tr>
+<tr><td>万能な機械を作る</td><td>どんな機械もまねできる万能マシンを設計</td><td>✨ 成功 ✨</td></tr>
+<tr><td>答えが出せない問題があることを示す</td><td>「判定不能」な問題を対角線論法で証明</td><td>✨ 大成功 ✨</td></tr>
+<tr><td>ヒルベルトの決定問題を否定する</td><td>決定問題を解く機械は存在しないと証明</td><td>✨ 成功 ✨</td></tr>
+</tbody>
+</table>
+ ========= 結論 ========= 
+<h2 id="jp-conclusion">🏁 6. 最終的な結論 (つまり何が言いたいのか) <a class="jump-btn" href="#" onclick="scrollToEn('en-appendix'); return false;">📖 原論文へ</a></h2>
+<div class="highlight">
+<p>💎 「計算する」という行為は、単純な機械（チューリングマシン）で完全にモデル化できる。</p>
+<p>💎 その機械をもってしても、<strong>「絶対に答えが出せない問題」が存在する</strong>。</p>
+<p>💎 よって、すべての数学の問題を機械で自動判定することは不可能。 — これが「決定不能の定理」の始まり。</p>
+<p>💎 この考え方が、今のパソコン・スマホの「プログラムで動く仕組み」の理論的な原点になった。</p>
+</div>
+ ========= 新しさ (なにがスゴイの？) ========= 
+<h2 id="jp-impact">🌟 7. 何がそんなにスゴイの？ (新規性・インパクト) <a class="jump-btn" href="#" onclick="scrollToEn('en-universal'); return false;">📖 原論文へ</a></h2>
+<ul>
+<li>⚡ <strong>「コンピューターのアイデア」をはじめて数学的に描き出した</strong>。ソフトウェアとハードウェアを分けて考えた元祖。</li>
+<li>⚡ プログラムを「数字」で表す → 今で言う「ファイルを保存」「プログラムをデータとして扱う」の原点！</li>
+<li>⚡ アラン・チューリングは、「こういう機械なら何でも計算できるけど、できないこともある」と証明した。</li>
+<li>⚡ これがなければ、今の情報社会や「人工知能にも限界がある」という議論も生まれなかったかもしれない。</li>
+</ul>
+ ========= ちょっとだけ弱点 ========= 
+<div class="weak-note">
+<p>⚠️ <strong>中学生向けの正直な「弱点」</strong> ⚠️<br/>
+    この論文は、ものすごく画期的だけど「人間の計算って本当にこの機械で全部カバーできるの？」という部分は、哲学的な議論の余地がある。<br/>
+    でも、今の科学者は「チューリングのアイデアは正しかった」と考えていて、これを<strong>チャーチ＝チューリングのテーゼ</strong>と呼んで大切にしているよ。</p>
+</div>
+ ======== 論文のキモを図解風に (やさしく) ======== 
+<h2 id="jp-coreideas">🧪 6.5 論文の中の重要なアイデアをイラストみたいに解説 <a class="jump-btn" href="#" onclick="scrollToEn('en-universal'); return false;">📖 原論文へ</a></h2>
+<div class="info-card">
+<p>🎨 <strong>① チューリングマシンのイメージ</strong><br/>
+    → 長～い紙テープに0や1を書いていき、ヘッドがルール表にしたがって動く。これだけでどんな複雑な計算もできる！(理論上はね)</p>
+</div>
+<div class="info-card">
+<p>🔢 <strong>② 機械を「番号」にする発明</strong><br/>
+    → それぞれの機械に「記述番号」をふる。つまり「プログラム＝数字」。これで機械を他の機械に読み込ませられる！</p>
+</div>
+<div class="info-card">
+<p>🦾 <strong>③ 万能マシン (Universal Machine)</strong><br/>
+    → 「ある機械の番号」と「その機械への入力」を渡すと、その機械がやる計算を再現してくれる。これこそ「どんなアプリも動くコンピューター」のアイデア！</p>
+</div>
+<div class="info-card">
+<p>🌀 <strong>④ 対角線論法で「解けない問題」を証明</strong><br/>
+    → 「自分が動き続けるか止まるか」を判定する機械があったとすると、ウソの判定をさせて矛盾させる。だから「絶対に判定できない問題」が存在するとわかった。</p>
+</div>
+<div class="info-card">
+<p>📐 <strong>⑤ 数学の決定問題への応用</strong><br/>
+    → 機械の動作を論理の式に置き換えて、「もし決定問題が解けたら、さっきの解けない問題も解けちゃう」ことを示した。結果として「決定問題は解けない！」</p>
+</div>
+ ======== もしもっと知りたい人のために 限界と未来 ======== 
+<h2 id="jp-limits">🔮 8. この論文でわからなかったこと・その後の研究 <a class="jump-btn" href="#" onclick="scrollToEn('en-computable-classes'); return false;">📖 原論文へ</a></h2>
+<ul>
+<li>❓ 「計算の速さ」や「メモリの量」は考えていない → あとから「計算量理論」が発展した。</li>
+<li>❓ 量子コンピューターや並列計算については想定外 → 今でも研究テーマ。</li>
+<li>❓ この論文の後、「計算できないこと」の研究がさらに進み、人工知能の限界、暗号の理論などにつながった。</li>
+</ul>
+ ========= 最終評価 ========= 
+<h2 id="jp-evaluation">⭐ 9. まとめ評価 (中学生ジャッジ!) <a class="jump-btn" href="#" onclick="scrollToEn('en-entscheidungs'); return false;">📖 原論文へ</a></h2>
+<table>
+<thead><tr><th>項目</th><th>評価</th><th>理由</th></tr></thead>
+<tbody>
+<tr><td>わかりやすさ(論文は難しいけど)</td><td>★★★★★</td><td>今のパソコンの基本を考えたスゴイ論文！</td></tr>
+<tr><td>インパクト</td><td>★★★★★</td><td>コンピューター科学の基礎を築いた超大発明</td></tr>
+<tr><td>「へぇ～」度</td><td>★★★★★</td><td>「コンピューターにもできないことがある」って驚き！</td></tr>
+<tr><td>現代へのつながり</td><td>★★★★★</td><td>AIの限界、プログラム理論、暗号、全部ここから</td></tr>
+</tbody>
+</table>
+<div class="strong-badge">🎉 結論: この論文がなければスマホもパソコンも今の形じゃなかったかも！それくらい革命的 🎉</div>
+ おまけ：小話 
+<div class="highlight">
+<p>📣 「チューリングさんはこんなに難しいことを1936年に考えたんだ… すごすぎる！ そして『判定できない問題がある』という発見は、後で『停止性問題』と呼ばれて、プログラミングの授業でも習う重要な話になるよ。」</p>
+</div>
+<footer>
+    🧩 中学生向け解説 | チューリング論文「On Computable Numbers」をやさしく要約<br/>
+    この解説は元の論文の内容をかみくだいたものです。もっと詳しく学びたくなったら「チューリングマシン」「停止性問題」で調べてみよう！
+  </footer>
+
+      <div class="footnote" style="background:#fef6e0; padding:12px; border-radius:18px; margin-top:20px;">
+        ※ 左側は book122.html の内容に、原論文該当箇所への相互ジャンプを追加したものです。
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="col-header">🇬🇧 Alan Turing 原論文 <span class="sub">book122paper.html</span></div>
+    <div class="scroll-area en-content">
+      
+<h1>On Computable Numbers, with an Application to the Entscheidungsproblem</h1>
+<div class="author-date">By A. M. Turing<br/>
+[Received 28 May, 1936. — Read 12 November, 1936.]</div>
+<p id="en-intro"><a class="en-jump" href="#" onclick="scrollToJp('jp-objective'); return false;">🇯🇵 目的へ</a> The "computable" numbers may be described briefly as the real numbers whose expressions as a decimal are calculable by finite means. Although the subject of this paper is ostensibly the computable numbers, it is almost equally easy to define and investigate computable functions of an integral variable or a real or computable variable, computable predicates, and so forth. The fundamental problems involved are, however, the same in each case, and I have chosen the computable numbers for explicit treatment as involving the least cumbrous technique. I hope shortly to give an account of the relations of the computable numbers, functions, and so forth to one another. This will include a development of the theory of functions of a real variable expressed in terms of computable numbers. According to my definition, a number is computable if its decimal can be written down by a machine.</p>
+<p>In §§ 9, 10 I give some arguments with the intention of showing that the computable numbers include all numbers which could naturally be regarded as computable. In particular, I show that certain large classes of numbers are computable. They include, for instance, the real parts of all algebraic numbers, the real parts of the zeros of the Bessel functions, the numbers \( \pi \), \( e \), etc. The computable numbers do not, however, include all definable numbers, and an example is given of a definable number which is not computable.</p>
+<p>Although the class of computable numbers is so great, and in many ways similar to the class of real numbers, it is nevertheless enumerable. In § 8 I examine certain arguments which would seem to prove the contrary. By the correct application of one of these arguments, conclusions are reached which are superficially similar to those of Gödel. These results have valuable applications. In particular, it is shown (§ 11) that the Hilbertian Entscheidungsproblem can have no solution.</p>
+<p>In a recent paper Alonzo Church has introduced an idea of "effective calculability", which is equivalent to my "computability", but is very differently defined. Church also reaches similar conclusions about the Entscheidungsproblem. The proof of equivalence between "computability" and "effective calculability" is outlined in an appendix to the present paper.</p>
+<section class="paper-section">
+<h2 id="en-computing">1. Computing machines. <a class="en-jump" href="#" onclick="scrollToJp('jp-hypothesis'); return false;">🇯🇵 仮説へ</a></h2>
+<p>We have said that the computable numbers are those whose decimals are calculable by finite means. This requires rather more explicit definition. No real attempt will be made to justify the definitions given until we reach § 9. For the present I shall only say that the justification lies in the fact that the human memory is necessarily limited.</p>
+<p>We may compare a man in the process of computing a real number to a machine which is only capable of a finite number of conditions \( q_{1}, q_{2}, \ldots , q_{n} \) which will be called "\( m \)-configurations". The machine is supplied with a "tape" (the analogue of paper) running through it, and divided into sections (called "squares") each capable of bearing a "symbol". At any moment there is just one square, say the \( r \)-th, bearing the symbol \( \mathfrak{S}(r) \) which is "in the machine". We may call this square the "scanned square". The symbol on the scanned square may be called the "scanned symbol". The "scanned symbol" is the only one of which the machine is, so to speak, "directly aware". However, by altering its \( m \)-configuration the machine can effectively remember some of the symbols which it has "seen" (scanned) previously. The possible behaviour of the machine at any moment is determined by the \( m \)-configuration \( q_{n} \) and the scanned symbol \( \mathfrak{S}(r) \). This pair \( q_{n}, \mathfrak{S}(r) \) will be called the "configuration": thus the configuration determines the possible behaviour of the machine. In some of the configurations in which the scanned square is blank (i.e. bears no symbol) the machine writes down a new symbol on the scanned square: in other configurations it erases the scanned symbol. The machine may also change the square which is being scanned, but only by shifting it one place to right or left. In addition to any of these operations the \( m \)-configuration may be changed. Some of the symbols written down will form the sequence of figures which is the decimal of the real number which is being computed. The others are just rough notes to "assist the memory". It will only be these rough notes which will be liable to erasure.</p>
+<p>It is my contention that these operations include all those which are used in the computation of a number. The defence of this contention will be easier when the theory of the machines is familiar to the reader. In the next section I therefore proceed with the development of the theory and assume that it is understood what is meant by "machine", "tape", "scanned", etc.</p>
+</section>
+<section class="paper-section">
+<h2 id="en-definitions">2. Definitions. <a class="en-jump" href="#" onclick="scrollToJp('jp-method'); return false;">🇯🇵 方法へ</a></h2>
+<p><span class="small-caps">Automatic machines.</span> If at each stage the motion of a machine (in the sense of § 1) is completely determined by the configuration, we shall call the machine an "automatic machine" (or \( a \)-machine). For some purposes we might use machines (choice machines or \( c \)-machines) whose motion is only partially determined by the configuration. In this paper I deal only with automatic machines, and will therefore often omit the prefix \( a \).</p>
+<p><span class="small-caps">Computing machines.</span> If an \( a \)-machine prints two kinds of symbols, of which the first kind (called figures) consists entirely of 0 and 1 (the others being called symbols of the second kind), then the machine will be called a computing machine. If the machine is supplied with a blank tape and set in motion, starting from the correct initial \( m \)-configuration, the subsequence of the symbols printed by it which are of the first kind will be called the sequence computed by the machine. The real number whose expression as a binary decimal is obtained by prefacing this sequence by a decimal point is called the number computed by the machine.</p>
+<p><span class="small-caps">Circular and circle‑free machines.</span> If a computing machine never writes down more than a finite number of symbols of the first kind, it will be called circular. Otherwise it is said to be circle‑free. A machine will be circular if it reaches a configuration from which there is no possible move, or if it goes on moving, and possibly printing symbols of the second kind, but cannot print any more symbols of the first kind. The significance of the term "circular" will be explained in § 8.</p>
+<p><span class="small-caps">Computable sequences and numbers.</span> A sequence is said to be computable if it can be computed by a circle‑free machine. A number is computable if it differs by an integer from the number computed by a circle‑free machine.</p>
+</section>
+<section class="paper-section">
+<h2 id="en-examples">3. Examples of computing machines. <a class="en-jump" href="#" onclick="scrollToJp('jp-method'); return false;">🇯🇵 方法へ</a></h2>
+<p><strong>I.</strong> A machine can be constructed to compute the sequence 010101.... The machine is to have the four m‑configurations "\( b \)", "\( c \)", "\( f \)", "\( e \)" and is capable of printing "0" and "1". The behaviour is described in the following table (here "R" means move right, "L" left, "E" erase, "P" prints). The machine starts in m‑configuration \( b \) with a blank tape.</p>
+<table>
+<thead>
+<tr><th colspan="2">Configuration</th><th colspan="2">Behaviour</th></tr>
+<tr><th>m‑config.</th><th>symbol</th><th>operations</th><th>final m‑config.</th></tr>
+</thead>
+<tbody>
+<tr><td>b</td><td>None</td><td>P0, R</td><td>c</td></tr>
+<tr><td>c</td><td>None</td><td>R</td><td>c</td></tr>
+<tr><td>c</td><td>None</td><td>P1, R</td><td>f</td></tr>
+<tr><td>f</td><td>None</td><td>R</td><td>b</td></tr>
+</tbody>
+</table>
+<p>If we allow letters L, R to appear more than once in the operations column we can simplify:</p>
+<table>
+<thead><tr><th>m‑config.</th><th>symbol</th><th>operations</th><th>final m‑config.</th></tr></thead>
+<tbody>
+<tr><td>b</td><td>None</td><td>P0</td><td>b</td></tr>
+<tr><td>b</td><td>0</td><td>R,R,P1</td><td>b</td></tr>
+<tr><td>b</td><td>1</td><td>R,R,P0</td><td>b</td></tr>
+</tbody>
+</table>
+<p><strong>II.</strong> A machine to compute the sequence 001011011101111... is described in the paper with five m‑configurations; the table is omitted here for brevity but follows the same systematic approach.</p>
+</section>
+<section class="paper-section">
+<h2 id="en-skeleton">4. Abbreviated tables. Skeleton tables. <a class="en-jump" href="#" onclick="scrollToJp('jp-method'); return false;">🇯🇵 方法へ</a></h2>
+<p>There are certain types of process used by nearly all machines, such as copying down sequences, comparing sequences, erasing symbols. In skeleton tables we use capital German letters and small Greek letters as variables. For example, if we replace \(\mathbb{C}\) by \(q\), \(\mathfrak{B}\) by \(r\) and \(\alpha\) by a symbol, we obtain a complete table for the m‑configuration \(f(q,r,x)\).</p>
+<p>The only expressions admissible for substitution in an m‑function are the m‑configurations and symbols of the machine. If we do not insist on explicit enumeration we might get an infinity of m‑configurations. Our interpretation rule is: we are given the names of the m‑configurations, mostly expressed in terms of m‑functions, and skeleton tables; the complete table is obtained by repeated substitution.</p>
+</section>
+<section class="paper-section">
+<h2 id="en-enumeration">5. Enumeration of computable sequences. <a class="en-jump" href="#" onclick="scrollToJp('jp-coreideas'); return false;">🇯🇵 番号化へ</a></h2>
+<p>A computable sequence \(\gamma\) is determined by a description of a machine which computes \(\gamma\). We can put the tables into a standard form, number the m‑configurations \(q_1,\dots,q_R\) and symbols \(S_1,\dots,S_m\) (blank = \(S_0\), 0 = \(S_1\), 1 = \(S_2\)). Each line becomes one of the forms: \(q_i S_j S_k L q_m\), \(q_i S_j S_k R q_m\), \(q_i S_j S_k N q_m\). By replacing each symbol with a code (D followed by A repeated i times for \(q_i\), D followed by C repeated j times for \(S_j\)) we obtain the standard description (S.D). Replacing A→1, C→2, D→3, L→4, R→5, N→6, ;→7 gives a description number (D.N) of the machine. To each computable sequence corresponds at least one description number; the computable sequences and numbers are therefore enumerable.</p>
+<p>A number which is a D.N of a circle‑free machine is called <em>satisfactory</em>. In § 8 it is shown that there can be no general process for determining whether a given number is satisfactory.</p>
+</section>
+<section class="paper-section">
+<h2 id="en-universal">6. The universal computing machine. <a class="en-jump" href="#" onclick="scrollToJp('jp-impact'); return false;">🇯🇵 万能機械へ</a></h2>
+<p>It is possible to invent a single machine \(\mathfrak{U}\) which can be used to compute any computable sequence. If \(\mathfrak{U}\) is supplied with a tape on which is written the S.D of some computing machine \(\mathcal{M}\), then \(\mathfrak{U}\) will compute the same sequence as \(\mathcal{M}\). The next section gives the complete table for \(\mathfrak{U}\).</p>
+<p>We can transform the description of complete configurations by replacing each m‑configuration by “D” followed by “A” repeated appropriately, and each symbol by “D” followed by “C” repeated appropriately. In this way we obtain a numerical description number of the complete configuration.</p>
+</section>
+<section class="paper-section">
+<h2 id="en-universal-detail">7. Detailed description of the universal machine. <a class="en-jump" href="#" onclick="scrollToJp('jp-coreideas'); return false;">🇯🇵 重要アイデアへ</a></h2>
+<p>The universal machine uses m‑configurations such as \( \epsilon(\text{anf}) \) etc. Its table (abbreviated) is given in the original paper with skeleton functions. The tape initially bears the S.D of the machine to be simulated, followed by “::”. The machine then interprets the instructions step by step.</p>
+<p><em>Subsidiary skeleton table:</em> (see original for full details). The machine proceeds through “anf”, “fom”, “sim”, “inst” etc., to write down successive complete configurations and extract the figures of the computed sequence.</p>
+</section>
+<section class="paper-section">
+<h2 id="en-diagonal">8. Application of the diagonal process. <a class="en-jump" href="#" onclick="scrollToJp('jp-results'); return false;">🇯🇵 結果へ</a></h2>
+<p>It might be thought that the computable numbers are enumerable, leading to a contradiction via the diagonal argument. The fallacy lies in assuming that the diagonal sequence \(\beta\) (with \(1 - \phi_n(n)\)) is computable. In fact, there is no general process for determining whether a given number is the D.N of a circle‑free machine. By correctly applying the diagonal argument we can show that no such general process exists.</p>
+<p>Suppose there were a machine \(\mathcal{Q}\) that tests whether a D.N is satisfactory. Then we could construct a machine \(\mathcal{M}\) that computes a sequence \(\beta'\) whose \(n\)-th figure is \(\phi_n(n)\). This leads to a contradiction: if \(K\) is the D.N of \(\mathcal{M}\), then \(\mathcal{M}\) must be both circle‑free and circular. Hence \(\mathcal{Q}\) cannot exist. Consequently there is no general process for determining whether a machine ever prints a given symbol (e.g., 0).</p>
+</section>
+<section class="paper-section">
+<h2 id="en-extent">9. The extent of the computable numbers. <a class="en-jump" href="#" onclick="scrollToJp('jp-objective'); return false;">🇯🇵 目的へ</a></h2>
+<p>Arguments are given of three kinds: (a) direct appeal to intuition, (b) equivalence proofs, (c) examples of large computable classes. Computing is done on a one‑dimensional tape with finitely many symbols. The computer’s state of mind is finite, and the simple operations consist of altering a symbol or moving to a nearby square. Any such computation can be mimicked by a Turing machine. Hence all numbers that are intuitively computable are included in our definition.</p>
+<p>Using the Hilbert functional calculus, we can also show that numbers defined by certain axioms are computable. Yet there exist definable numbers (e.g., the sequence \(\delta\) where the \(n\)-th figure is 1 if \(n\) is satisfactory and 0 otherwise) that are not computable.</p>
+</section>
+<section class="paper-section">
+<h2 id="en-computable-classes">10. Examples of large classes of computable numbers. <a class="en-jump" href="#" onclick="scrollToJp('jp-limits'); return false;">🇯🇵 その後へ</a></h2>
+<p>We define computable functions of integral variables. Recursively defined functions of integral variables are computable. Dedekind’s theorem does not hold in the ordinary form for computable reals, but a restricted version holds. Computable convergence is defined, and it is shown that:</p>
+<ul>
+<li>\(\pi\), \(e\), all real algebraic numbers, and the real zeros of Bessel functions are computable.</li>
+<li>The limit of a computably convergent sequence is computable.</li>
+<li>Power series with computable coefficients are computable functions inside their interval of convergence.</li>
+</ul>
+</section>
+<section class="paper-section">
+<h2 id="en-entscheidungs">11. Application to the Entscheidungsproblem. <a class="en-jump" href="#" onclick="scrollToJp('jp-verification'); return false;">🇯🇵 検証へ</a></h2>
+<p>There can be no general process for determining whether a given formula of the functional calculus is provable. The proof constructs, for each Turing machine \(\mathcal{M}\), a formula \(\text{Un}(\mathcal{M})\) which is provable if and only if \(\mathcal{M}\) ever prints the symbol 0. Since the latter is undecidable (by § 8), the Entscheidungsproblem has no solution.</p>
+<p>Lemmas show that if 0 appears then \(\text{Un}(\mathcal{M})\) is provable, and conversely. The formula can be written in a prefix form with quantifiers. This establishes the undecidability result.</p>
+</section>
+<section class="paper-section">
+<h2 id="en-appendix">Appendix. Computability and effective calculability. <a class="en-jump" href="#" onclick="scrollToJp('jp-conclusion'); return false;">🇯🇵 結論へ</a></h2>
+<p>Every \(\lambda\)-definable sequence is computable, and conversely. Outline: Given a \(\lambda\)-definable sequence \(\gamma\) there is a formula \(M_\gamma\) such that \(\{M_\gamma\}(N_n)\) converts to \(N_2\) or \(N_1\) according to the \(n\)-th figure. A machine can be constructed that, supplied with \(M_\gamma\), computes the successive figures by conversion. Conversely, for any computable sequence \(\gamma\) we can build a \(\lambda\)-definable function using the description numbers of complete configurations and the recursion \(\xi(n+1)=\rho_\gamma(\xi(n))\). The details involve constructing a W.F.F. that simulates the machine’s transitions. Hence the class of computable sequences coincides with the class of \(\lambda\)-definable (effectively calculable) sequences.</p>
+</section>
+<hr/>
+<div class="footnote">
+<p><small>Original paper: A. M. Turing, "On Computable Numbers, with an Application to the Entscheidungsproblem", <em>Proceedings of the London Mathematical Society</em>, Series 2, Vol. 42, 1936–37, pp. 230–265. This HTML rendering reproduces the key content, mathematical formulas, and structure. The full tables and skeleton functions are described in the original.</small></p>
+</div>
+
+      <p class="footnote" style="font-size:.82rem; background:#f4f7fb; padding:12px; border-radius:18px;">※ 右側は book122paper.html の本文に、日本語解説側への戻りリンクを追加したものです。</p>
+    </div>
+  </div>
+</div>
+<footer>
+  🔗 相互ジャンプ形式 — 日本語解説 ⇄ 原論文を対比。見出し横のボタンや上部クイックリンクで移動できます。<br>
+  対象: Alan M. Turing, “On Computable Numbers, with an Application to the Entscheidungsproblem” (1936)。
+</footer>
+<script>
+function scrollIn(containerSelector, elementId) {
+  const area = document.querySelector(containerSelector);
+  if (!area) return;
+  let target = document.getElementById(elementId);
+  const fallback = {
+    'en-i-ii':'en-intro', 'en-computing-machine':'en-computing', 'en-v-beauty':'en-diagonal'
+  };
+  if (!target && fallback[elementId]) target = document.getElementById(fallback[elementId]);
+  if (!target) return;
+  const containerRect = area.getBoundingClientRect();
+  const targetRect = target.getBoundingClientRect();
+  const scrollOffset = targetRect.top - containerRect.top + area.scrollTop - 20;
+  area.scrollTo({ top: scrollOffset, behavior: 'smooth' });
+  target.style.transition = 'background 0.3s';
+  target.style.backgroundColor = '#fff0b5';
+  setTimeout(() => { target.style.backgroundColor = ''; }, 900);
+}
+function scrollToJp(elementId) { scrollIn('.col:first-child .scroll-area', elementId); }
+function scrollToEn(elementId) { scrollIn('.col:last-child .scroll-area', elementId); }
+document.querySelectorAll('.control-bar a, .jump-btn, .en-jump').forEach(link => {
+  link.addEventListener('click', function(e) {
+    const onclickAttr = this.getAttribute('onclick') || '';
+    if (onclickAttr.includes('scrollTo')) e.preventDefault();
+  });
+});
+</script>
+<div class="series-nav">
+  <a href="method1.html">📘 方法論</a>
+  <a href="book122sol.html">🧩 論文分解</a>
+  <a href="book122paper.html">📄 原論文</a>
+  <a href="book122contrast.html">🔁 対比読解</a>
+  <a href="book122.html">🧠 中学生向け解説</a>
+</div>
+</body>
+</html>

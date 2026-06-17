@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>アインシュタイン「運動物体の電気力学」対比読解 | 中学生解説 × 原論文抄訳</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #eef2f5;
+            font-family: 'Helvetica Neue', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', 'Segoe UI', sans-serif;
+            line-height: 1.55;
+            color: #1a2a2f;
+            padding: 20px;
+        }
+        .compare-header {
+            max-width: 1600px;
+            margin: 0 auto 20px;
+            text-align: center;
+            background: #0e3b4b;
+            padding: 20px 20px;
+            border-radius: 60px;
+            color: white;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        .compare-header h1 {
+            font-size: 1.8rem;
+            letter-spacing: -0.3px;
+        }
+        .compare-header p {
+            margin-top: 10px;
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        .badge-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 15px 0 5px;
+        }
+        .badge {
+            background: #f4a261;
+            padding: 5px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #0e3b4b;
+        }
+        .control-bar {
+            max-width: 1600px;
+            margin: 0 auto 15px;
+            background: #fff0dd;
+            border-radius: 48px;
+            padding: 12px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .control-bar a {
+            background: #2c6e6e;
+            color: white;
+            padding: 6px 16px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.2s;
+        }
+        .control-bar a:hover {
+            background: #f4a261;
+            color: #0e3b4b;
+        }
+        .compare-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .col {
+            flex: 1;
+            min-width: 320px;
+            background: #fffef7;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 85vh;
+            position: relative;
+        }
+        .col-header {
+            background: #1e5f5f;
+            padding: 14px 20px;
+            color: white;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+        .col-header .sub {
+            font-size: 0.75rem;
+            background: #f4a261;
+            padding: 3px 12px;
+            border-radius: 30px;
+            color: #0e3b4b;
+        }
+        .scroll-area {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px 24px;
+            background: #fefcf6;
+        }
+        /* 左カラム (中学生解説) のスタイル */
+        .easy-content h2, .easy-content h3, .easy-content h4 {
+            scroll-margin-top: 20px;
+        }
+        .easy-content h2 {
+            font-size: 1.7rem;
+            margin: 40px 0 16px;
+            border-left: 8px solid #f4a261;
+            padding-left: 18px;
+            background: linear-gradient(90deg, #fef2e0, transparent);
+        }
+        .easy-content h3 {
+            font-size: 1.4rem;
+            margin: 30px 0 12px;
+            border-bottom: 2px dashed #ffdd99;
+            color: #1e5f5f;
+        }
+        .easy-content .info-box, .easy-content .highlight-yellow, .easy-content .fun-fact {
+            margin: 20px 0;
+            border-radius: 24px;
+            padding: 16px 22px;
+        }
+        .easy-content .info-box {
+            background: #eef4ff;
+            border-left: 6px solid #3b82f6;
+        }
+        .easy-content .highlight-yellow {
+            background: #fff1cf;
+            border-left: 4px solid #f4a261;
+        }
+        .easy-content .fun-fact {
+            background: #e3f2e9;
+            border-left: 5px solid #2e8b57;
+        }
+        .jump-btn {
+            background: #f4a26133;
+            border-radius: 30px;
+            padding: 2px 12px;
+            font-size: 0.7rem;
+            font-weight: normal;
+            margin-left: 12px;
+            text-decoration: none;
+            color: #b45f1b;
+            border: 1px solid #f4a261;
+            transition: 0.1s;
+        }
+        .jump-btn:hover {
+            background: #f4a261;
+            color: white;
+        }
+        /* 右カラム (原論文抄訳) のスタイル */
+        .tech-content {
+            font-family: 'Georgia', 'Times New Roman', 'Hiragino Mincho Pro', serif;
+            color: #1e2f2f;
+        }
+        .tech-content h2 {
+            font-size: 1.6rem;
+            margin-top: 2rem;
+            color: #1e5f5f;
+            border-left: 5px solid #f4a261;
+            padding-left: 15px;
+        }
+        .tech-content h3 {
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            font-style: italic;
+            color: #2c6e6e;
+        }
+        .tech-content p {
+            margin: 1em 0;
+            line-height: 1.6;
+        }
+        .tech-content .math, .tech-content .equation {
+            font-family: monospace;
+            background: #f0f0e8;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+        .tech-content .equation {
+            text-align: center;
+            margin: 1em 0;
+            background: #f9f9f4;
+            padding: 0.5em;
+            border-radius: 6px;
+        }
+        .tech-content .note {
+            background: #eef4ff;
+            padding: 0.8em;
+            border-left: 4px solid #1e3a8a;
+            margin: 1.2em 0;
+            font-size: 0.9rem;
+        }
+        .tech-jump {
+            background: #e9eef3;
+            border-radius: 20px;
+            padding: 0 8px;
+            font-size: 0.7rem;
+            margin-left: 10px;
+            text-decoration: none;
+            color: #1e40af;
+            border: 1px solid #9bb6d0;
+        }
+        .tech-jump:hover {
+            background: #1e5f5f;
+            color: white;
+            border-color: #1e5f5f;
+        }
+        hr {
+            margin: 20px 0;
+        }
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.75rem;
+            color: #4a5b5b;
+        }
+        @media (max-width: 850px) {
+            .col { height: auto; min-height: 500px; }
+            .compare-container { flex-direction: column; }
+        }
+        .keyword-highlight {
+            background: #fff0b5;
+            border-radius: 12px;
+            padding: 1px 4px;
+            font-weight: 500;
+        }
+        .table-simple {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 20px 0;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+        .table-simple th, .table-simple td {
+            border: 1px solid #cbdbe2;
+            padding: 10px 14px;
+            vertical-align: top;
+        }
+        .table-simple th {
+            background: #d9eaf3;
+        }
+        .badge-strong {
+            background: #c8f0e1;
+            color: #06623b;
+            font-weight: bold;
+            padding: 6px 14px;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+<div class="toplinks">
+
+<a href="book121navi.html">🏠 Navi</a>
+
+<a href="book121.html">🚀 中学生向け</a>
+
+<a href="book121jap.html">📘 日本語抄訳</a>
+
+<a href="book121eng.html">🌍 English</a>
+
+<a href="book121contrast.html">⚡ 対比読解</a>
+
+<a href="book121sol.html">🧠 TPAI解析</a>
+
+<a href="book121method.html">📚 方法論</a>
+
+<a href="book121paper.html">🌍 原文</a>
+
+
+</div>
+<div class="compare-header">
+    <h1>⚡ アインシュタイン「運動物体の電気力学」⚡<br>対比読解：中学生解説 × 原論文抄訳</h1>
+    <p>左: だれでもわかる！相対性理論の超入門 ／ 右: 1905年論文「Zur Elektrodynamik bewegter Körper」日本語抄訳（同時性・ローレンツ変換・時間の遅れ・ドップラー効果など）</p>
+    <div class="badge-group">
+        <span class="badge">🕒 同時性の相対性</span>
+        <span class="badge">📏 ローレンツ収縮</span>
+        <span class="badge">⏳ 時間の遅れ</span>
+        <span class="badge">⚡ 光速度不変</span>
+        <span class="badge">💪 E=mc² の萌芽</span>
+        <span class="badge">🌈 ドップラー効果</span>
+    </div>
+</div>
+<div class="control-bar">
+    <span>🔁 重要トピックで相互ジャンプ ↓</span>
+    <a href="#easy-goal">🎯 目標</a>
+    <a href="#easy-hypothesis">💡 仮説</a>
+    <a href="#easy-results">🔍 時間の遅れ・縮み</a>
+    <a href="#easy-conclusion">🏁 最終結論</a>
+    <a href="#tech-sec1">📖 同時性の定義 (§1)</a>
+    <a href="#tech-sec3">📖 ローレンツ変換 (§3)</a>
+    <a href="#tech-sec7">📖 ドップラー効果 (§7)</a>
+    <a href="#tech-sec10">📖 電子の力学 (§10)</a>
+</div>
+<div class="compare-container">
+    <!-- 左カラム: 中学生向け超わかりやすい解説 (book121.html 内容から抽出) -->
+    <div class="col">
+        <div class="col-header">
+            🚀 中学生でもわかる！相対性理論
+            <span class="sub">超訳・図解まんが風解説</span>
+        </div>
+        <div class="scroll-area easy-content">
+            <!-- 以下、book121.html から主要コンテンツを再構成・ID付与 -->
+            <div id="easy-intro">
+                <div class="info-box">
+                    <p>📘 <strong>論文の名前</strong>：「動いている物体の電気力学について」<br>
+                    👨‍🔬 <strong>書いた人</strong>：アルベルト・アインシュタイン（1905年、26歳のとき！）<br>
+                    🧪 <strong>分野</strong>：物理・光・時間・空間<br>
+                    💥 <strong>何をやったの？</strong> 「時間の流れは人によって違う！」「動くと物が縮む！」という世紀の大発見。</p>
+                </div>
+            </div>
+
+            <h2 id="easy-goal">🎯 1. アインシュタインの「目標」 <a class="jump-btn" href="#" data-tech="tech-sec1">📖 原著 §1 (同時性の定義) へ</a> <a class="jump-btn" href="#" data-tech="tech-sec2">📖 §2 (長さの相対性) へ</a></h2>
+            <ul>
+                <li>✅ 当時の物理の「変なギャップ」（磁石が動くかコイルが動くかで説明が違う）を解消したかった。</li>
+                <li>✅ 「絶対に止まっている空間」という考えを捨てて、<strong>「動いているかどうかは見る人の立場による」</strong>ルールを確かめたかった。</li>
+                <li>✅ 光の速さが誰が見ても同じであることと、上のルールを両立させる新しい時間・空間のルールを作りたかった。</li>
+            </ul>
+
+            <h2 id="easy-hypothesis">💡 2. アインシュタインの「仮説」 <a class="jump-btn" href="#" data-tech="tech-sec3">📖 §3 (変換理論) へ</a></h2>
+            <div class="highlight-yellow">
+                <p>⭐ <strong>考えその1</strong> : 物理の法則は、止まっている人も、一定の速さで動いている人も、みんな同じ形であるべき！<br>
+                ⭐ <strong>考えその2</strong> : 光の速さは、誰が測っても同じ (約30万km/秒)。光源が動いていても変わらない。<br>
+                ⭐ <strong>考えその3</strong> : この2つを同時に満たすためには、「時間」と「空間」は今までの常識とはまったく違うものになるはず。</p>
+            </div>
+
+            <h2 id="easy-method">⚙️ 3. どうやって証明したの？（思考実験） <a class="jump-btn" href="#" data-tech="tech-sec1">🗣️ 光を使った同時性の定義</a></h2>
+            <ul>
+                <li>🧠 <strong>「同時」を光で定義</strong> : 遠くの時計を光の信号で合わせるルールを考えた → 「同時刻は立場によって変わる」と気づく。</li>
+                <li>📐 <strong>数学で新しい変換式 (ローレンツ変換)</strong> を導く。</li>
+                <li>📏 その式から「動くと物が縮む」「時間が遅れる」「質量が増える」を計算した。</li>
+                <li>⚡ マクスウェル方程式がどちらの立場でも同じ形になることを確認。</li>
+            </ul>
+
+            <h2 id="easy-results">🔍 4. その結果、何がわかった？ <a class="jump-btn" href="#" data-tech="tech-sec4">📖 §4 (収縮・時間遅れ) へ</a></h2>
+            <div class="fun-fact">
+                <p>🚄 <strong>結果① 同時刻はあいまい！</strong><br>電車の中で「前と後ろで同時に光った」と思っても、ホームの人から見ると「後ろが先に光った」ように見える。</p>
+                <p>📏 <strong>結果② 動くと物が縮む！</strong><br>秒速10万kmのロケットは進行方向に短く見える (ローレンツ収縮)。</p>
+                <p>⏳ <strong>結果③ 動いている時計は遅れる！</strong><br>高速で旅する双子のうち宇宙に行った方が年を取るのが遅い。</p>
+                <p>⚡ <strong>結果④ 光の速さを超えられない</strong><br>光速度がリミット。</p>
+                <p>💪 <strong>結果⑤ 質量は速くなると増える → E=mc² のヒント</strong></p>
+            </div>
+
+            <h2 id="easy-achieved">✅ 5. 目標は達成できた？</h2>
+            <table class="table-simple">
+                <thead><tr><th>目標</th><th>結果</th><th>判定</th></tr></thead>
+                <tbody>
+                    <tr><td>電磁気の非対称性をなくす</td><td>誰が動いてもマクスウェル方程式は同じ形になる</td><td>✨ 大成功 ✨</td></tr>
+                    <tr><td>相対性原理を確立</td><td>等速運動するすべての人は対等</td><td>✨ 大成功 ✨</td></tr>
+                    <tr><td>新しい時空のルール</td><td>ローレンツ変換・時間の遅れ・長さの縮みを証明</td><td>✨ 大成功 ✨</td></tr>
+                </tbody>
+            </table>
+
+            <h2 id="easy-conclusion">🏁 6. 最終結論 <a class="jump-btn" href="#" data-tech="tech-sec3">📖 ローレンツ変換の式を見る</a></h2>
+            <div class="info-box">
+                <p>🌟 「絶対に止まっている空間」なんて存在しない！ すべての等速運動している人は対等。<br>
+                🌟 光の速さはいつでも誰が測っても同じ。<br>
+                🌟 この2つを考えると、時間と空間は「立場によって変わる相対的なもの」になる。<br>
+                🌟 アインシュタインは絶対時間をやぶり、まったく新しい世界の見方を提案。これが<strong>特殊相対性理論</strong>の誕生！</p>
+            </div>
+
+            <h2 id="easy-keyideas">🧠 7. 一番大切なアイデア (同時性の相対性) <a class="jump-btn" href="#" data-tech="tech-sec1">🔁 原著「同時性の定義」と対比</a></h2>
+            <div class="highlight-yellow">
+                <p>🚦 <strong>「同時性の相対性」をイメージ</strong><br>走っている電車の真ん中で光を光らせる。電車の中で見ると前後に同時に届く。でもホームの人が見ると、後ろの壁は光に向かって動いてくるので後ろに先に届く！ → 「同時」は見る人によって違う。</p>
+            </div>
+            <div class="fun-fact">
+                <p>🕰️ <strong>「時間の遅れ」イメージ</strong><br>光時計を動いている宇宙船に置くと、静止している人から見て光が斜めに長く進むので1往復に時間がかかる → 動く時計はゆっくり進む！</p>
+            </div>
+
+            <h2 id="easy-novelty">🌟 8. この論文の新しさ・スゴさ</h2>
+            <ul>
+                <li>⚡ 「エーテル」というムダな考えを捨てた。</li>
+                <li>⚡ 「同時性」を光の往復時間で定義する実用的な方法を初めて使った。</li>
+                <li>⚡ 時間と空間を「時空」という一つのものに統合するきっかけを作った。</li>
+                <li>⚡ この論文がなければGPSもスマホの位置情報も狂う。</li>
+            </ul>
+
+            <h2 id="easy-future">🔮 9. 課題とその後</h2>
+            <ul>
+                <li>❓ 重力がある場合はどうなる？ → 一般相対性理論へ。</li>
+                <li>❓ 加速度運動する人への拡張 → 一般相対性理論。</li>
+            </ul>
+
+            <h2 id="easy-judge">⭐ 10. 中学生ジャッジ！</h2>
+            <div class="badge-strong">🎉 結論: アインシュタインは「絶対時間」を葬り去った天才！この論文がなければ私たちは宇宙を間違って見ていたかも。</div>
+            <div class="fun-fact" style="margin-top: 16px;">
+                📣 名言「想像力は知識よりも重要だ」— この論文も想像力と論理の大冒険でした。
+            </div>
+        </div>
+    </div>
+
+    <!-- 右カラム: 原論文日本語抄訳 (book121jap.html の本質的な内容) -->
+    <div class="col">
+        <div class="col-header">
+            📜 アインシュタイン 「運動物体の電気力学について」
+            <span class="sub">Zur Elektrodynamik bewegter Körper (抄訳・数式含む)</span>
+        </div>
+        <div class="scroll-area tech-content">
+            <div class="note">
+                <strong>編集注：</strong> これはアインシュタインの特殊相対性理論の原論文の一部を日本語翻訳したものです。
+                同時性の定義、ローレンツ変換、長さの収縮、時間の遅れ、速度の加法則、電磁場の変換、ドップラー効果、電子の力学など。
+            </div>
+
+            <h2 id="tech-sec1">§1 同時性の定義 <a class="tech-jump" href="#" data-easy="easy-goal">🇯🇵 目標 / 同時性イメージへ</a> <a class="tech-jump" href="#" data-easy="easy-keyideas">🧠 大切なアイデアへ</a></h2>
+            <p>ニュートン力学の方程式が成り立つような座標系を「静止系」と呼ぶ。時間に関する全ての判断は常に同時事象に関する判断である。空間の点AとBに時計があるとき、光線が時刻 <span class="math">t<sub>A</sub></span> にAからBへ向かい、Bで時刻 <span class="math">t<sub>B</sub></span> に反射され、Aに時刻 <span class="math">t'<sub>A</sub></span> に戻るとする。AとBの時計が同期しているとは、<span class="math">t<sub>B</sub> - t<sub>A</sub> = t'<sub>A</sub> - t<sub>B</sub></span> が成り立つことである。この定義により「同時性」は相対的となる。</p>
+
+            <h2 id="tech-sec2">§2 長さと時間の相対性 <a class="tech-jump" href="#" data-easy="easy-results">🔍 結果(縮み・遅れ)へ</a></h2>
+            <p>相対性原理と光速度不変の原理に基づく。静止した棒を速度 <span class="math">v</span> で動かすと、静止系から見た長さは <span class="math">√(1 - v²/V²)</span> 倍に収縮する。すなわち運動方向の長さだけが短くなる。</p>
+
+            <h2 id="tech-sec3">§3 座標と時間の変換理論 (ローレンツ変換) <a class="tech-jump" href="#" data-easy="easy-hypothesis">💡 仮説・変換式へ</a></h2>
+            <div class="equation">
+                τ = (t - vx / V²) / √(1 - v²/V²)<br>
+                ξ = (x - vt) / √(1 - v²/V²)<br>
+                η = y,  ζ = z
+            </div>
+            <p>これがローレンツ変換。一方の系で同時な二つの事象は、他方の系では一般に同時でない。</p>
+
+            <h2 id="tech-sec4">§4 変換式の物理的意味 <a class="tech-jump" href="#" data-easy="easy-results">⏳ 時間の遅れ・長さの縮み</a></h2>
+            <p>運動系に静止した球は、静止系から見ると回転楕円体（運動方向に収縮）。また運動系の時計の時間間隔 <span class="math">τ</span> は、静止系では <span class="math">t = τ / √(1 - v²/V²)</span> となり、動く時計は遅れる。</p>
+
+            <h2 id="tech-sec5">§5 速度の加法則 <a class="tech-jump" href="#" data-easy="easy-results">⚡ 光速不変の証明</a></h2>
+            <div class="equation">u = (v + w) / (1 + vw / V²)</div>
+            <p>もし <span class="math">w = V</span> (光速度) なら <span class="math">u = V</span> となり、光速度は不変。</p>
+
+            <h2 id="tech-sec6">§6 マクスウェル・ヘルツ方程式の変換 <a class="tech-jump" href="#" data-easy="easy-achieved">✅ 目標達成 (電磁気の統一)</a></h2>
+            <p>電場・磁場成分はローレンツ変換のもとで特定の変換則に従い、マクスウェル方程式は形を保つ（共変性）。</p>
+            <div class="equation">X' = X,  Y' = β(Y - vN/V²),  Z' = β(Z + vM/V²)</div>
+
+            <h2 id="tech-sec7">§7 ドップラー原理と光行差の理論 <a class="tech-jump" href="#" data-easy="easy-novelty">🌈 相対論的ドップラー効果</a></h2>
+            <div class="equation">ν' = ν · (1 - (v/V) cos φ) / √(1 - v²/V²)</div>
+            <p>振動数が観測者の運動によって変わる。これが相対論的ドップラー効果。</p>
+
+            <h2 id="tech-sec8">§8 光線のエネルギーの変換</h2>
+            <div class="equation">E' = E · (1 - (v/V) cos φ) / √(1 - v²/V²)</div>
+            <p>光のエネルギーと振動数は同じ変換則に従う：<span class="math">E'/E = ν'/ν</span>。</p>
+
+            <h2 id="tech-sec9">§9 対流電流を含むマクスウェル方程式の変換</h2>
+            <p>電荷密度・電流密度も変換され、連続の方程式は保存される。</p>
+
+            <h2 id="tech-sec10">§10 ゆっくり加速される電子の力学 <a class="tech-jump" href="#" data-easy="easy-results">💪 質量増加・運動エネルギー</a></h2>
+            <div class="equation">
+                縦質量 m<sub>∥</sub> = m<sub>0</sub> / (1 - v²/V²)^{3/2}<br>
+                横質量 m<sub>⊥</sub> = m<sub>0</sub> / (1 - v²/V²)<br>
+                運動エネルギー K = m<sub>0</sub> V² [ 1/√(1 - v²/V²) - 1 ]
+            </div>
+            <p>低速では古典的な運動エネルギーに一致。有名な <span class="math">E=mc²</span> の原型がここに現れる。</p>
+            <footer style="font-size:0.7rem; border-top:1px solid #ccc; margin-top:20px; padding-top:10px;">
+                出典：A. Einstein, "Zur Elektrodynamik bewegter Körper", Annalen der Physik, 17, 891 (1905). 日本語抄訳。
+            </footer>
+        </div>
+    </div>
+</div>
+<footer>
+    🔗 相互ジャンプ形式 — 左：中学生向け超解説 / 右：アインシュタイン論文の日本語抄訳（数式・厳密表現）。<br>
+    見出し横のボタンや上部リンクで対応する概念を対比できます。「同時性」「時間の遅れ」「ローレンツ変換」「ドップラー効果」「電子の質量」など。
+</footer>
+
+<script>
+    // 左カラム (easy) 内の特定IDへスクロール
+    function scrollToEasy(elementId) {
+        const leftCol = document.querySelector('.col:first-child .scroll-area');
+        if (!leftCol) return;
+        const target = document.getElementById(elementId);
+        if (!target) return;
+        const containerRect = leftCol.getBoundingClientRect();
+        const targetRect = target.getBoundingClientRect();
+        const scrollOffset = targetRect.top - containerRect.top + leftCol.scrollTop - 20;
+        leftCol.scrollTo({ top: scrollOffset, behavior: 'smooth' });
+        target.style.transition = 'background 0.3s';
+        target.style.backgroundColor = '#fff0b5';
+        setTimeout(() => { target.style.backgroundColor = ''; }, 800);
+    }
+
+    // 右カラム (技術/原論文) 内の特定IDへスクロール
+    function scrollToTech(elementId) {
+        const rightCol = document.querySelector('.col:last-child .scroll-area');
+        if (!rightCol) return;
+        let target = document.getElementById(elementId);
+        if (!target) {
+            // フォールバック: そのままID試行
+            target = document.getElementById(elementId);
+        }
+        if (!target) return;
+        const containerRect = rightCol.getBoundingClientRect();
+        const targetRect = target.getBoundingClientRect();
+        const scrollOffset = targetRect.top - containerRect.top + rightCol.scrollTop - 20;
+        rightCol.scrollTo({ top: scrollOffset, behavior: 'smooth' });
+        target.style.transition = 'background 0.3s';
+        target.style.backgroundColor = '#fff0b5';
+        setTimeout(() => { target.style.backgroundColor = ''; }, 800);
+    }
+
+    // 左カラムのジャンプボタン (.jump-btn) を処理 (右カラムへ)
+    document.querySelectorAll('.jump-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const techTarget = btn.getAttribute('data-tech');
+            if (techTarget) {
+                scrollToTech(techTarget);
+            }
+        });
+    });
+
+    // 右カラムのジャンプボタン (.tech-jump) を処理 (左カラムへ)
+    document.querySelectorAll('.tech-jump').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const easyTarget = btn.getAttribute('data-easy');
+            if (easyTarget) {
+                scrollToEasy(easyTarget);
+            }
+        });
+    });
+
+    // 上部コントロールバーのリンク対応 (両方に対応)
+    const controlLinks = document.querySelectorAll('.control-bar a');
+    controlLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const href = link.getAttribute('href');
+            if (href && href.startsWith('#easy-')) {
+                const id = href.substring(1);
+                scrollToEasy(id);
+            } else if (href && href.startsWith('#tech-')) {
+                const id = href.substring(1);
+                scrollToTech(id);
+            }
+        });
+    });
+</script>
+<div class="toplinks">
+
+<a href="book121navi.html">🏠 Navi</a>
+
+<a href="book121.html">🚀 中学生向け</a>
+
+<a href="book121jap.html">📘 日本語抄訳</a>
+
+<a href="book121eng.html">🌍 English</a>
+
+<a href="book121contrast.html">⚡ 対比読解</a>
+
+<a href="book121sol.html">🧠 TPAI解析</a>
+
+<a href="book121method.html">📚 方法論</a>
+
+</div>
+</body>
+</html>

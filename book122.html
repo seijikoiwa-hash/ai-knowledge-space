@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>チューリング論文を中学生でもわかるように解説｜計算する機械と「解けない問題」</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Hiragino Sans', 'Meiryo', 'Yu Gothic', sans-serif;
+      background: #eef2fa;
+      color: #1e2a3e;
+      line-height: 1.7;
+      padding: 20px;
+    }
+    .paper-box {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 32px;
+      box-shadow: 0 20px 35px -10px rgba(0,0,0,0.15);
+      overflow: hidden;
+      padding: 30px 35px 50px;
+    }
+    h1 {
+      font-size: 1.9rem;
+      text-align: center;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      margin-bottom: 10px;
+    }
+    .sub {
+      text-align: center;
+      font-size: 1rem;
+      color: #2c5f8a;
+      border-bottom: 2px dashed #bdd4e7;
+      padding-bottom: 20px;
+      margin-bottom: 25px;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 35px;
+      margin-bottom: 15px;
+      padding-left: 14px;
+      border-left: 8px solid #2c7da0;
+      background: #f0f7fc;
+      border-radius: 30px;
+      padding: 10px 18px;
+    }
+    h3 {
+      font-size: 1.25rem;
+      margin: 25px 0 12px 0;
+      color: #1e4a6b;
+      border-bottom: 2px solid #cbdde9;
+      padding-bottom: 5px;
+    }
+    .highlight {
+      background: #fffaec;
+      border-left: 6px solid #f4b942;
+      padding: 12px 18px;
+      border-radius: 18px;
+      margin: 20px 0;
+    }
+    .info-card {
+      background: #f9fafc;
+      border-radius: 24px;
+      padding: 18px 22px;
+      margin: 20px 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      border: 1px solid #e2edf2;
+    }
+    ul, ol {
+      padding-left: 1.7rem;
+      margin: 12px 0;
+    }
+    li {
+      margin: 8px 0;
+    }
+    .strong-badge {
+      background: #d1fae5;
+      color: #0d5e2e;
+      font-weight: bold;
+      padding: 8px 14px;
+      border-radius: 40px;
+      display: inline-block;
+      margin: 8px 0;
+    }
+    .weak-note {
+      background: #ffe8e7;
+      border-left: 5px solid #cc5a5a;
+      padding: 12px 18px;
+      border-radius: 18px;
+      margin: 15px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #cbdbe2;
+      padding: 12px;
+      vertical-align: top;
+    }
+    th {
+      background: #e3f0f7;
+      font-weight: 600;
+    }
+    .simple-icon {
+      font-size: 1.2rem;
+      margin-right: 6px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 48px;
+      padding-top: 20px;
+      border-top: 1px solid #cde0ec;
+      color: #4f6f8f;
+      font-size: 0.85rem;
+    }
+    @media (max-width: 650px) {
+      .paper-box {
+        padding: 20px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="series-nav">
+  <a href="method1.html">📘 方法論</a>
+  <a href="book122sol.html">🧩 論文分解</a>
+  <a href="book122paper.html">📄 原論文</a>
+  <a href="book122contrast.html">🔁 対比読解</a>
+  <a href="book122.html">🧠 中学生向け解説</a>
+</div>
+<div class="paper-box">
+  <h1>🧠 アラン・チューリングの論文<br>「計算する機械と、解けない問題」</h1>
+  <div class="sub">⭐ 中学生でもわかる！ ⭐<br>『On Computable Numbers』やさしい解説</div>
+
+  <!-- 基本情報をカンタンに -->
+  <div class="info-card">
+    <p>📄 <strong>論文のタイトル</strong> : 「計算可能な数について、しかも Entscheidungsproblem（決定問題）への応用」<br>
+    👨‍🔬 <strong>書いた人</strong> : アラン・チューリング (天才数学者・コンピューター科学の父)<br>
+    📅 <strong>発表された年</strong> : 1936年 (今から約90年前！)<br>
+    🎯 <strong>テーマ</strong> : 「コンピューターで本当にどんな計算でもできるの？」「絶対に解けない問題ってあるの？」を数学的に証明した。</p>
+  </div>
+
+  <!-- ========= 1. 目的 (何をしたかったのか) ========= -->
+  <h2>🎯 1. この論文でやりたかったこと (目的)</h2>
+  <ul>
+    <li>✅ 「計算できる」ってどういう意味？ それをハッキリと定義したかった。</li>
+    <li>✅ 「どんな計算でもこなす万能な機械」が作れることを示したかった。</li>
+    <li>✅ 「機械でも絶対に答えが出せない問題」が存在することを証明したかった。</li>
+    <li>✅ 数学の有名な課題「ヒルベルトの決定問題」が解けないことを示したかった。</li>
+  </ul>
+
+  <h2>🧩 2. チューリングの「仮説」 (こう考えた)</h2>
+  <div class="highlight">
+    <p>💡 「人間が‘計算する’ときの作業は、とても単純なルールに分解できるはず」</p>
+    <p>👉 細かいルール：<br>
+    &nbsp;&nbsp;・“今の状態”を覚えておく (頭の中のモード)<br>
+    &nbsp;&nbsp;・一マスずつ記号を見る・書き換える・左右に動く<br>
+    &nbsp;&nbsp;・この単純動作の組み合わせで、あらゆる計算ができる！</p>
+  </div>
+
+  <!-- ========= 方法 ========= -->
+  <h2>⚙️ 3. どうやって調べたの？ (チューリングが考えた「方法」)</h2>
+  <ul>
+    <li>📏 <strong>「チューリングマシン」を発明</strong> : 無限に長いテープと、読み書きヘッドと、状態を覚える機械を考えた。これが「コンピューターの原型」。</li>
+    <li>🔢 <strong>機械を数字で表すアイデア</strong> : どんな機械も「設計図」→「番号」に変換できる。つまりプログラムに番号をふれる！</li>
+    <li>🌍 <strong>万能マシン</strong> : 他の機械の番号を読み込んで、その機械の動作をまねできる「スーパー機械」を作った。</li>
+    <li>🎭 <strong>対角線論法というトリック</strong> : 「自分がいま動いているかどうか」を判定する機械があったら、矛盾が起きることを示した。</li>
+    <li>📖 <strong>計算を論理の式に変換</strong> : 機械の動きを数学の式に書き換えて、「解けない問題」を論理学の問題に結びつけた。</li>
+  </ul>
+
+  <!-- ========= 結果 やさしく ========= -->
+  <h2>🔍 4. その結果、何がわかった？ (結果)</h2>
+  <div class="info-card">
+    <p>✨ <strong>チューリングが明らかにしたこと</strong> ✨</p>
+    <ul>
+      <li>🔹 「計算機械」の定義が完成 → これが今のコンピューターの理論的な土台になった。</li>
+      <li>🔹 <strong>万能チューリングマシン</strong> を実際に設計 → どんな計算もソフトウェアを変えればできる「プログラム内蔵方式」の誕生！</li>
+      <li>🔹 <strong>「絶対に答えが出せない問題」が存在する</strong> : 例えば「ある機械が永遠に動き続けるか停止するか」を判定するプログラムは作れない (これが“停止性問題”のもと)。</li>
+      <li>🔹 ヒルベルトの「決定問題」は解決不可能！どんな機械でも、すべての数学の問題を自動で○×つけすることはできない。</li>
+      <li>🔹 円周率πやネイピア数e、代数的な数など、たくさんの数は「計算可能」であることも確認した。</li>
+    </ul>
+  </div>
+
+  <!-- ========= 検証：目的と結果の対応 ========= -->
+  <h2>✅ 5. 目的はちゃんと達成できた？</h2>
+  <table>
+    <thead><tr><th>やろうとしたこと</th><th>結果</th><th>判定</th></tr></thead>
+    <tbody>
+      <tr><td>「計算可能」を厳密に定義する</td><td>チューリングマシンで定義できた</td><td>✨ 成功 ✨</td></tr>
+      <tr><td>万能な機械を作る</td><td>どんな機械もまねできる万能マシンを設計</td><td>✨ 成功 ✨</td></tr>
+      <tr><td>答えが出せない問題があることを示す</td><td>「判定不能」な問題を対角線論法で証明</td><td>✨ 大成功 ✨</td></tr>
+      <tr><td>ヒルベルトの決定問題を否定する</td><td>決定問題を解く機械は存在しないと証明</td><td>✨ 成功 ✨</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ========= 結論 ========= -->
+  <h2>🏁 6. 最終的な結論 (つまり何が言いたいのか)</h2>
+  <div class="highlight">
+    <p>💎 「計算する」という行為は、単純な機械（チューリングマシン）で完全にモデル化できる。</p>
+    <p>💎 その機械をもってしても、<strong>「絶対に答えが出せない問題」が存在する</strong>。</p>
+    <p>💎 よって、すべての数学の問題を機械で自動判定することは不可能。 — これが「決定不能の定理」の始まり。</p>
+    <p>💎 この考え方が、今のパソコン・スマホの「プログラムで動く仕組み」の理論的な原点になった。</p>
+  </div>
+
+  <!-- ========= 新しさ (なにがスゴイの？) ========= -->
+  <h2>🌟 7. 何がそんなにスゴイの？ (新規性・インパクト)</h2>
+  <ul>
+    <li>⚡ <strong>「コンピューターのアイデア」をはじめて数学的に描き出した</strong>。ソフトウェアとハードウェアを分けて考えた元祖。</li>
+    <li>⚡ プログラムを「数字」で表す → 今で言う「ファイルを保存」「プログラムをデータとして扱う」の原点！</li>
+    <li>⚡ アラン・チューリングは、「こういう機械なら何でも計算できるけど、できないこともある」と証明した。</li>
+    <li>⚡ これがなければ、今の情報社会や「人工知能にも限界がある」という議論も生まれなかったかもしれない。</li>
+  </ul>
+
+  <!-- ========= ちょっとだけ弱点 ========= -->
+  <div class="weak-note">
+    <p>⚠️ <strong>中学生向けの正直な「弱点」</strong> ⚠️<br>
+    この論文は、ものすごく画期的だけど「人間の計算って本当にこの機械で全部カバーできるの？」という部分は、哲学的な議論の余地がある。<br>
+    でも、今の科学者は「チューリングのアイデアは正しかった」と考えていて、これを<strong>チャーチ＝チューリングのテーゼ</strong>と呼んで大切にしているよ。</p>
+  </div>
+
+  <!-- ======== 論文のキモを図解風に (やさしく) ======== -->
+  <h2>🧪 6.5 論文の中の重要なアイデアをイラストみたいに解説</h2>
+  <div class="info-card">
+    <p>🎨 <strong>① チューリングマシンのイメージ</strong><br>
+    → 長～い紙テープに0や1を書いていき、ヘッドがルール表にしたがって動く。これだけでどんな複雑な計算もできる！(理論上はね)</p>
+  </div>
+  <div class="info-card">
+    <p>🔢 <strong>② 機械を「番号」にする発明</strong><br>
+    → それぞれの機械に「記述番号」をふる。つまり「プログラム＝数字」。これで機械を他の機械に読み込ませられる！</p>
+  </div>
+  <div class="info-card">
+    <p>🦾 <strong>③ 万能マシン (Universal Machine)</strong><br>
+    → 「ある機械の番号」と「その機械への入力」を渡すと、その機械がやる計算を再現してくれる。これこそ「どんなアプリも動くコンピューター」のアイデア！</p>
+  </div>
+  <div class="info-card">
+    <p>🌀 <strong>④ 対角線論法で「解けない問題」を証明</strong><br>
+    → 「自分が動き続けるか止まるか」を判定する機械があったとすると、ウソの判定をさせて矛盾させる。だから「絶対に判定できない問題」が存在するとわかった。</p>
+  </div>
+  <div class="info-card">
+    <p>📐 <strong>⑤ 数学の決定問題への応用</strong><br>
+    → 機械の動作を論理の式に置き換えて、「もし決定問題が解けたら、さっきの解けない問題も解けちゃう」ことを示した。結果として「決定問題は解けない！」</p>
+  </div>
+
+  <!-- ======== もしもっと知りたい人のために 限界と未来 ======== -->
+  <h2>🔮 8. この論文でわからなかったこと・その後の研究</h2>
+  <ul>
+    <li>❓ 「計算の速さ」や「メモリの量」は考えていない → あとから「計算量理論」が発展した。</li>
+    <li>❓ 量子コンピューターや並列計算については想定外 → 今でも研究テーマ。</li>
+    <li>❓ この論文の後、「計算できないこと」の研究がさらに進み、人工知能の限界、暗号の理論などにつながった。</li>
+  </ul>
+
+  <!-- ========= 最終評価 ========= -->
+  <h2>⭐ 9. まとめ評価 (中学生ジャッジ!)</h2>
+  <table>
+    <thead><tr><th>項目</th><th>評価</th><th>理由</th></tr></thead>
+    <tbody>
+      <tr><td>わかりやすさ(論文は難しいけど)</td><td>★★★★★</td><td>今のパソコンの基本を考えたスゴイ論文！</td></tr>
+      <tr><td>インパクト</td><td>★★★★★</td><td>コンピューター科学の基礎を築いた超大発明</td></tr>
+      <tr><td>「へぇ～」度</td><td>★★★★★</td><td>「コンピューターにもできないことがある」って驚き！</td></tr>
+      <tr><td>現代へのつながり</td><td>★★★★★</td><td>AIの限界、プログラム理論、暗号、全部ここから</td></tr>
+    </tbody>
+  </table>
+  <div class="strong-badge">🎉 結論: この論文がなければスマホもパソコンも今の形じゃなかったかも！それくらい革命的 🎉</div>
+
+  <!-- おまけ：小話 -->
+  <div class="highlight">
+    <p>📣 「チューリングさんはこんなに難しいことを1936年に考えたんだ… すごすぎる！ そして『判定できない問題がある』という発見は、後で『停止性問題』と呼ばれて、プログラミングの授業でも習う重要な話になるよ。」</p>
+  </div>
+
+  <footer>
+    🧩 中学生向け解説 | チューリング論文「On Computable Numbers」をやさしく要約<br>
+    この解説は元の論文の内容をかみくだいたものです。もっと詳しく学びたくなったら「チューリングマシン」「停止性問題」で調べてみよう！
+  </footer>
+</div>
+<div class="series-nav">
+  <a href="method1.html">📘 方法論</a>
+  <a href="book122sol.html">🧩 論文分解</a>
+  <a href="book122paper.html">📄 原論文</a>
+  <a href="book122contrast.html">🔁 対比読解</a>
+  <a href="book122.html">🧠 中学生向け解説</a>
+</div>
+</body>
+</html>
