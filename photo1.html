@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>写真集１｜徒然ブログ</title>
+
+  <style>
+    body {
+      font-family: "Yu Mincho","Hiragino Mincho ProN","MS Mincho",serif;
+      margin: 0;
+      padding: 40px;
+      line-height: 1.9;
+      background: linear-gradient(to bottom, #f9fafb, #eef2f7);
+      color: #222;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      background: #ffffff;
+      padding: 40px 50px 50px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    }
+
+    h1 {
+      font-size: 30px;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .note {
+      font-size: 15px;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, #ccc, #eee, #ccc);
+      margin: 28px 0 36px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 36px;
+    }
+
+    .photo-box {
+      background: #fafafa;
+      border-radius: 16px;
+      padding: 16px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+
+    .photo-box img {
+      width: 100%;
+      display: block;
+    }
+
+    /* 写真の形 */
+    .soft img { border-radius: 36px; }
+
+    .round img {
+      clip-path: circle(50% at 50% 50%);
+    }
+
+    .hex img {
+      clip-path: polygon(
+        25% 0%, 75% 0%,
+        100% 50%,
+        75% 100%, 25% 100%,
+        0% 50%
+      );
+    }
+
+    .caption {
+      font-size: 15px;
+      color: #333;
+      margin-top: 14px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .date {
+      font-size: 13px;
+      color: #777;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .comment {
+      font-size: 14px;
+      color: #444;
+      margin-top: 10px;
+      padding: 12px 14px;
+      background: #ffffff;
+      border-left: 4px solid #cbd5e1;
+      line-height: 1.7;
+    }
+
+    .back {
+      margin-top: 48px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .back a {
+      text-decoration: none;
+      color: #1a56db;
+      margin: 0 12px;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+
+<h1>写真集 1</h1>
+<p class="note">
+管理人：つねちゃん<br>
+スマートフォンで切り取った、日々の断片。
+</p>
+
+<div class="divider"></div>
+
+<div class="gallery">
+
+  <!-- p1_003 ～ p1_014（imagesフォルダ） -->
+
+  <div class="photo-box">
+    <img src="images/p1_003.jpg" alt="東京タワー">
+    <div class="caption">見上げる東京タワー</div>
+    <div class="date">2025年1月26日</div>
+    <div class="comment">足元から見上げると、いつもの塔が少し違って見えた。</div>
+  </div>
+
+  <div class="photo-box soft">
+    <img src="images/p1_004.jpg" alt="富士山">
+    <div class="caption">冬晴れの街と富士山</div>
+    <div class="date">2025年1月26日</div>
+    <div class="comment">街の向こうに、揺るがない白さが静かにあった。</div>
+  </div>
+
+  <div class="photo-box hex">
+    <img src="images/p1_005.jpg" alt="山寺">
+    <div class="caption">緑に包まれた山寺</div>
+    <div class="date">2025年6月25日</div>
+    <div class="comment">岩と木と建物が、同じ時間を生きているようだった。</div>
+  </div>
+
+  <div class="photo-box round">
+    <img src="images/p1_006.jpg" alt="朝の月">
+    <div class="caption">朝の月</div>
+    <div class="date">2025年12月17日</div>
+    <div class="comment">夜が去ったあとも、月だけがしばらく空に残っていた。</div>
+  </div>
+
+  <div class="photo-box hex">
+    <img src="images/p1_007.jpg" alt="花火">
+    <div class="caption">夏の花火</div>
+    <div class="date">2025年8月2日</div>
+    <div class="comment">一瞬だけ、空が記憶を持ったように光った。</div>
+  </div>
+
+  <div class="photo-box round">
+    <img src="images/p1_008.jpg" alt="おでこの怪我">
+    <div class="caption">がんばった証</div>
+    <div class="date">2025年11月7日</div>
+    <div class="comment">痛みも涙も、今日の出来事。それも大切な一枚。</div>
+  </div>
+
+  <div class="photo-box hex">
+    <img src="images/p1_009.jpg" alt="八ケ崎 紫の花">
+    <div class="caption">春の紫、ふわり</div>
+    <div class="date">2022年5月8日（八ケ崎）</div>
+    <div class="comment">近所の春が、ここにあった。</div>
+  </div>
+
+  <div class="photo-box soft">
+    <img src="images/p1_010.jpg" alt="八ケ崎 黄色の花">
+    <div class="caption">黄色の元気</div>
+    <div class="date">2022年5月8日（八ケ崎）</div>
+    <div class="comment">花は、ちいさな太陽。</div>
+  </div>
+
+  <div class="photo-box">
+    <img src="images/p1_011.jpg" alt="小海駅">
+    <div class="caption">旅の途中、小海駅</div>
+    <div class="date">2022年7月3日</div>
+    <div class="comment">次の景色へ、深呼吸。</div>
+  </div>
+
+  <div class="photo-box round">
+    <img src="images/p1_012.jpg" alt="江戸川">
+    <div class="caption">江戸川の菜の花</div>
+    <div class="date">2022年3月30日</div>
+    <div class="comment">橋の下にも、季節が広がる。</div>
+  </div>
+
+  <div class="photo-box hex">
+    <img src="images/p1_013.jpg" alt="野辺山駅">
+    <div class="caption">空が高い、野辺山駅</div>
+    <div class="date">2022年7月3日</div>
+    <div class="comment">駅が、景色の一部だった。</div>
+  </div>
+
+  <div class="photo-box soft">
+    <img src="images/p1_014.jpg" alt="佐久平駅">
+    <div class="caption">佐久平、広い空の駅前</div>
+    <div class="date">2022年7月3日</div>
+    <div class="comment">旅の終わりと始まりが同居する。</div>
+  </div>
+
+  <!-- 追加写真 p1_015 ～ p1_017（HTMLと同じ階層） -->
+
+  <div class="photo-box">
+    <img src="p1_015.jpg" alt="霧の朝">
+    <div class="caption">霧に沈む朝</div>
+    <div class="comment">音が遠くなり、街が一枚の写真になった。</div>
+  </div>
+
+  <div class="photo-box soft">
+    <img src="p1_016.jpg" alt="夕暮れの公園">
+    <div class="caption">公園の帰り道</div>
+    <div class="comment">小さな足音と、冬の空気。</div>
+  </div>
+
+  <div class="photo-box hex">
+    <img src="p1_017.jpg" alt="年末の食卓">
+    <div class="caption">年末の食卓</div>
+    <div class="comment">並んだ皿が、一年の終わりを語っていた。</div>
+  </div>
+
+</div>
+
+<div class="back">
+  <a href="index2.html">← 写真展示コーナーへ戻る</a>｜
+  <a href="index.html">徒然ブログ 表紙へ</a>
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PCR反応の解説図</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --card: #ffffff;
+      --ink: #18324a;
+      --sub: #4b6478;
+      --line: #d8e2ea;
+      --accent: #2f80ed;
+      --accent2: #27ae60;
+      --accent3: #eb5757;
+      --shadow: 0 10px 30px rgba(24, 50, 74, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Yu Gothic", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      background: linear-gradient(180deg, #f8fbff 0%, #eef4fa 100%);
+      color: var(--ink);
+      line-height: 1.7;
+    }
+    header {
+      padding: 32px 20px 16px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+    }
+    .lead {
+      max-width: 900px;
+      margin: 0 auto;
+      color: var(--sub);
+      font-size: 1.05rem;
+    }
+    main {
+      width: min(1180px, calc(100% - 24px));
+      margin: 0 auto 40px;
+      display: grid;
+      grid-template-columns: 1.35fr 0.9fr;
+      gap: 18px;
+    }
+    .panel, .info {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+    .panel { padding: 18px; }
+    .info {
+      padding: 18px;
+      position: sticky;
+      top: 14px;
+      align-self: start;
+      min-height: 680px;
+    }
+    .diagram-wrap {
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      background:
+        radial-gradient(circle at 20% 10%, #ffffff 0, #f7fbff 28%, #eef5fb 65%, #e7f0f8 100%);
+      border: 1px solid var(--line);
+      min-height: 760px;
+    }
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .hotspot {
+      cursor: pointer;
+      transition: transform .15s ease, filter .15s ease;
+    }
+    .hotspot:hover .glow,
+    .hotspot.active .glow {
+      opacity: 1;
+    }
+    .hotspot:hover,
+    .hotspot.active {
+      filter: drop-shadow(0 10px 18px rgba(47, 128, 237, .25));
+    }
+    .glow {
+      opacity: 0;
+      transition: opacity .15s ease;
+    }
+    .label {
+      font-size: 20px;
+      font-weight: 700;
+      fill: #17324a;
+    }
+    .small {
+      font-size: 15px;
+      fill: #4b6478;
+      font-weight: 600;
+    }
+    .badge {
+      display: inline-block;
+      background: #edf5ff;
+      color: var(--accent);
+      border: 1px solid #d4e7ff;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: .9rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .info h2 {
+      margin: 0 0 8px;
+      font-size: 1.45rem;
+    }
+    .info h3 {
+      margin: 18px 0 8px;
+      font-size: 1.05rem;
+    }
+    .info p { margin: 0 0 10px; }
+    .key {
+      margin-top: 14px;
+      display: grid;
+      gap: 10px;
+    }
+    .key-item {
+      background: #f8fbff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 14px 0 8px;
+    }
+    button {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      padding: 10px 14px;
+      border-radius: 12px;
+      font: inherit;
+      cursor: pointer;
+      box-shadow: 0 3px 10px rgba(24, 50, 74, .04);
+    }
+    button:hover { border-color: #b9cfde; }
+    button.primary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+    .footer-note {
+      margin-top: 18px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--line);
+      color: var(--sub);
+      font-size: .95rem;
+    }
+    .mini {
+      display: inline-flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .mini span {
+      font-size: .88rem;
+      border-radius: 999px;
+      padding: 4px 10px;
+      border: 1px solid var(--line);
+      background: #fafcff;
+    }
+    .caption {
+      color: var(--sub);
+      font-size: .95rem;
+      margin-top: 10px;
+    }
+    @media (max-width: 960px) {
+      main { grid-template-columns: 1fr; }
+      .info { position: static; min-height: auto; }
+      .diagram-wrap { min-height: 540px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PCR反応解説図</h1>
+    <p class="lead">図の中の青い場所をクリックすると、<strong>PCRの本質</strong>が順番に理解できるように設計した教材です。<br>見るべき核心は <strong>①プライマーが範囲を決める ②温度を変えてコピーする ③2<sup>n</sup>で爆発的に増える</strong> の3点です。</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <div class="diagram-wrap">
+        <svg viewBox="0 0 1200 820" aria-label="PCRのクリック図">
+          <defs>
+            <linearGradient id="dnaBlue" x1="0" x2="1">
+              <stop offset="0%" stop-color="#2f80ed"/>
+              <stop offset="100%" stop-color="#56ccf2"/>
+            </linearGradient>
+            <linearGradient id="dnaGreen" x1="0" x2="1">
+              <stop offset="0%" stop-color="#27ae60"/>
+              <stop offset="100%" stop-color="#6fcf97"/>
+            </linearGradient>
+            <linearGradient id="dnaRed" x1="0" x2="1">
+              <stop offset="0%" stop-color="#eb5757"/>
+              <stop offset="100%" stop-color="#f2994a"/>
+            </linearGradient>
+            <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8 z" fill="#2f80ed" />
+            </marker>
+          </defs>
+
+          <text x="60" y="52" class="label">① 長いDNAの中から、増やす場所だけを決める</text>
+          <text x="60" y="82" class="small">プライマーが「ここからここまでをコピーする」と指定する</text>
+
+          <line x1="95" y1="160" x2="1080" y2="160" stroke="#5f7890" stroke-width="6" stroke-linecap="round"/>
+          <line x1="95" y1="220" x2="1080" y2="220" stroke="#5f7890" stroke-width="6" stroke-linecap="round"/>
+          <text x="62" y="167" class="small">5'</text>
+          <text x="1090" y="167" class="small">3'</text>
+          <text x="62" y="227" class="small">3'</text>
+          <text x="1090" y="227" class="small">5'</text>
+
+          <g id="rangeHotspot" class="hotspot" tabindex="0" role="button" aria-label="プライマーと増幅範囲">
+            <rect class="glow" x="272" y="118" width="430" height="145" rx="22" fill="rgba(47,128,237,.10)" stroke="#2f80ed" stroke-width="3"/>
+            <rect x="300" y="138" width="26" height="42" rx="8" fill="url(#dnaGreen)"/>
+            <rect x="648" y="200" width="26" height="42" rx="8" fill="url(#dnaRed)"/>
+            <line x1="325" y1="160" x2="640" y2="160" stroke="#2f80ed" stroke-width="10" stroke-linecap="round"/>
+            <line x1="334" y1="182" x2="334" y2="198" stroke="#2f80ed" stroke-width="4" marker-end="url(#arrowBlue)"/>
+            <line x1="640" y1="182" x2="640" y2="198" stroke="#2f80ed" stroke-width="4" marker-end="url(#arrowBlue)"/>
+            <text x="354" y="144" class="small">Forward primer</text>
+            <text x="535" y="256" class="small">Reverse primer</text>
+            <text x="385" y="188" class="label" style="font-size:26px; fill:#2f80ed;">PCRで増える範囲</text>
+          </g>
+
+          <line x1="80" y1="300" x2="1120" y2="300" stroke="#d8e2ea" stroke-width="3" stroke-dasharray="10 10"/>
+
+          <text x="60" y="346" class="label">② 温度を変えて、DNAを何度もコピーする</text>
+          <text x="60" y="376" class="small">PCRは 変性 → アニーリング → 伸長 を1セットとしてくり返す</text>
+
+          <g id="denatureHotspot" class="hotspot" tabindex="0" role="button" aria-label="変性">
+            <rect class="glow" x="78" y="406" width="280" height="170" rx="24" fill="rgba(235,87,87,.10)" stroke="#eb5757" stroke-width="3"/>
+            <rect x="86" y="414" width="264" height="154" rx="24" fill="#fff" stroke="#e7eef5"/>
+            <text x="112" y="452" class="label" style="fill:#eb5757;">95℃ 変性</text>
+            <text x="112" y="486" class="small">2本鎖DNAが</text>
+            <text x="112" y="514" class="small">1本ずつに分かれる</text>
+            <line x1="125" y1="540" x2="300" y2="540" stroke="#5f7890" stroke-width="6" stroke-linecap="round"/>
+            <line x1="125" y1="560" x2="300" y2="560" stroke="#5f7890" stroke-width="6" stroke-linecap="round"/>
+            <path d="M180 528 q-18 -30 -40 -30" fill="none" stroke="#eb5757" stroke-width="4"/>
+            <path d="M245 528 q18 -30 40 -30" fill="none" stroke="#eb5757" stroke-width="4"/>
+          </g>
+
+          <g id="annealHotspot" class="hotspot" tabindex="0" role="button" aria-label="アニーリング">
+            <rect class="glow" x="458" y="406" width="280" height="170" rx="24" fill="rgba(39,174,96,.10)" stroke="#27ae60" stroke-width="3"/>
+            <rect x="466" y="414" width="264" height="154" rx="24" fill="#fff" stroke="#e7eef5"/>
+            <text x="486" y="452" class="label" style="fill:#27ae60;">50〜65℃ アニーリング</text>
+            <text x="486" y="486" class="small">プライマーが</text>
+            <text x="486" y="514" class="small">目的の位置にくっつく</text>
+            <line x1="496" y1="548" x2="670" y2="548" stroke="#5f7890" stroke-width="6" stroke-linecap="round"/>
+            <rect x="512" y="528" width="18" height="20" rx="4" fill="url(#dnaGreen)"/>
+            <rect x="640" y="548" width="18" height="20" rx="4" fill="url(#dnaRed)"/>
+          </g>
+
+          <g id="extendHotspot" class="hotspot" tabindex="0" role="button" aria-label="伸長">
+            <rect class="glow" x="838" y="406" width="280" height="170" rx="24" fill="rgba(47,128,237,.10)" stroke="#2f80ed" stroke-width="3"/>
+            <rect x="846" y="414" width="264" height="154" rx="24" fill="#fff" stroke="#e7eef5"/>
+            <text x="870" y="452" class="label" style="fill:#2f80ed;">72℃ 伸長</text>
+            <text x="870" y="486" class="small">DNAポリメラーゼが</text>
+            <text x="870" y="514" class="small">端から新しいDNAを作る</text>
+            <line x1="876" y1="548" x2="1050" y2="548" stroke="#5f7890" stroke-width="6" stroke-linecap="round"/>
+            <line x1="900" y1="528" x2="1026" y2="528" stroke="#2f80ed" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="905" cy="528" r="11" fill="#f2994a"/>
+          </g>
+
+          <line x1="80" y1="612" x2="1120" y2="612" stroke="#d8e2ea" stroke-width="3" stroke-dasharray="10 10"/>
+
+          <text x="60" y="658" class="label">③ これをくり返すと、2本 → 4本 → 8本 → 16本 … と爆発的に増える</text>
+          <text x="60" y="690" class="small">PCRの本当のすごさは、1サイクルごとに約2倍ずつ増えること</text>
+
+          <g id="growthHotspot" class="hotspot" tabindex="0" role="button" aria-label="2のn乗の増幅">
+            <rect class="glow" x="96" y="714" width="1000" height="72" rx="22" fill="rgba(47,128,237,.10)" stroke="#2f80ed" stroke-width="3"/>
+            <g fill="#2f80ed">
+              <circle cx="140" cy="750" r="11"/>
+              <circle cx="220" cy="750" r="11"/>
+              <circle cx="240" cy="750" r="11"/>
+              <circle cx="330" cy="750" r="11"/>
+              <circle cx="350" cy="750" r="11"/>
+              <circle cx="370" cy="750" r="11"/>
+              <circle cx="390" cy="750" r="11"/>
+              <circle cx="495" cy="750" r="11"/>
+              <circle cx="515" cy="750" r="11"/>
+              <circle cx="535" cy="750" r="11"/>
+              <circle cx="555" cy="750" r="11"/>
+              <circle cx="575" cy="750" r="11"/>
+              <circle cx="595" cy="750" r="11"/>
+              <circle cx="615" cy="750" r="11"/>
+              <circle cx="635" cy="750" r="11"/>
+            </g>
+            <text x="126" y="784" class="small">1本</text>
+            <text x="205" y="784" class="small">2本</text>
+            <text x="327" y="784" class="small">4本</text>
+            <text x="492" y="784" class="small">8本</text>
+            <text x="742" y="752" class="label" style="fill:#2f80ed; font-size:25px;">20回で約100万本、30回で約10億本</text>
+          </g>
+        </svg>
+      </div>
+      <p class="caption">使い方：まず「PCRで増える範囲」をクリックし、その後に「95℃変性 → アニーリング → 72℃伸長 → 2<sup>n</sup>増幅」の順で読むと、最も自然に理解できます。</p>
+    </section>
+
+    <aside class="info" id="infoPanel">
+      <div class="badge">クリック解説</div>
+      <h2 id="infoTitle">PCRは何をしているのか？</h2>
+      <p id="infoBody">PCRは、長いDNAの中から<strong>ほしい部分だけ</strong>を選び、その部分を<strong>何度もコピー</strong>して、最後に<strong>大量に増やす</strong>技術です。図の青い場所をクリックすると、意味が右側に出ます。</p>
+
+      <div class="controls">
+        <button class="primary" id="playBtn">順番に見る</button>
+        <button id="resetBtn">最初に戻す</button>
+      </div>
+
+      <div class="key" id="keyPoints">
+        <div class="key-item"><strong>核心1</strong><br>プライマーが、どこを増やすかを決める。</div>
+        <div class="key-item"><strong>核心2</strong><br>温度を変えると、DNAは分かれ、プライマーがつき、コピーが進む。</div>
+        <div class="key-item"><strong>核心3</strong><br>1回で終わらず、同じことを何十回もくり返すから大量に増える。</div>
+      </div>
+
+      <h3>学習のコツ</h3>
+      <p>「PCRはDNAを1本ずつ手で複写する技術」ではありません。<strong>反応条件を作って、DNA自身に大量コピーを起こさせる技術</strong>だと考えると本質がつかみやすくなります。</p>
+
+      <div class="mini">
+        <span>プライマー</span>
+        <span>温度サイクル</span>
+        <span>DNAポリメラーゼ</span>
+        <span>2ⁿ増幅</span>
+      </div>
+
+      <div class="footer-note">
+        授業では、この図のあとに「電気泳動」と「PCR反応液」を続けると、実験の全体像まで自然につながります。
+      </div>
+    </aside>
+  </main>
+
+  <script>
+    const steps = {
+      rangeHotspot: {
+        title: '① プライマーが、コピーする範囲を決める',
+        body: 'PCRでは、長いDNAを全部増やすのではありません。短い目印DNAであるプライマーを2本使って、「この始まり」と「この終わり」を指定します。つまり、PCRの精度の核心は、プライマーが正しい場所に結合することです。',
+        points: [
+          'Forward primer は片方の鎖の出発点を決める。',
+          'Reverse primer は反対側の鎖の終点側を決める。',
+          'この2本に挟まれた領域が、くり返し増えていく。'
+        ]
+      },
+      denatureHotspot: {
+        title: '②-1 95℃：変性',
+        body: 'DNAはふだん2本鎖ですが、高温にすると2本がほどけて1本ずつになります。これが変性です。コピーを始めるには、まず本を開くようにDNAを開かなければなりません。',
+        points: [
+          '高温で水素結合が切れる。',
+          '2本鎖DNAが1本鎖DNAになる。',
+          'コピーの準備段階。'
+        ]
+      },
+      annealHotspot: {
+        title: '②-2 50〜65℃：アニーリング',
+        body: '温度を少し下げると、プライマーが相補的な配列に結合します。ここで目的以外の場所にくっつくと失敗しやすくなるため、温度条件はPCRの成否を大きく左右します。',
+        points: [
+          'プライマーは相補的な配列を探して結合する。',
+          '低すぎる温度では、間違った場所にもつきやすい。',
+          '高すぎる温度では、プライマーがつけない。'
+        ]
+      },
+      extendHotspot: {
+        title: '②-3 72℃：伸長',
+        body: 'DNAポリメラーゼが、プライマーの先から新しいDNA鎖を作ります。PCRでは耐熱性のTaqポリメラーゼなどが使われ、高温サイクルの中でも働けます。ここで実際のコピーが進みます。',
+        points: [
+          'ポリメラーゼはプライマーの先端から合成を始める。',
+          'DNAは材料となる塩基をつなげて伸びていく。',
+          '耐熱酵素の発見がPCR普及の大きな鍵になった。'
+        ]
+      },
+      growthHotspot: {
+        title: '③ 2ⁿ増幅：PCRの本当の魔法',
+        body: 'PCRは1回だけでは終わりません。変性→アニーリング→伸長を1サイクルとして何十回もくり返します。理想的には1回ごとにDNA量が約2倍になるため、20回で約100万倍、30回で約10億倍に達します。',
+        points: [
+          '1 → 2 → 4 → 8 → 16 … と増える。',
+          '少ないDNAでも検出可能になる。',
+          '医学・法医学・進化研究を変えた理由がここにある。'
+        ]
+      }
+    };
+
+    const order = ['rangeHotspot', 'denatureHotspot', 'annealHotspot', 'extendHotspot', 'growthHotspot'];
+    const titleEl = document.getElementById('infoTitle');
+    const bodyEl = document.getElementById('infoBody');
+    const keyEl = document.getElementById('keyPoints');
+    let timer = null;
+    let stepIndex = -1;
+
+    function renderStep(id) {
+      document.querySelectorAll('.hotspot').forEach(el => el.classList.remove('active'));
+      const target = document.getElementById(id);
+      if (target) target.classList.add('active');
+      const data = steps[id];
+      titleEl.textContent = data.title;
+      bodyEl.innerHTML = data.body;
+      keyEl.innerHTML = data.points.map(p => `<div class="key-item">${p}</div>`).join('');
+    }
+
+    order.forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener('click', () => {
+        stopPlay();
+        renderStep(id);
+      });
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          stopPlay();
+          renderStep(id);
+        }
+      });
+    });
+
+    function stopPlay() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+      document.getElementById('playBtn').textContent = '順番に見る';
+    }
+
+    document.getElementById('playBtn').addEventListener('click', () => {
+      if (timer) {
+        stopPlay();
+        return;
+      }
+      stepIndex = -1;
+      document.getElementById('playBtn').textContent = '停止';
+      timer = setInterval(() => {
+        stepIndex += 1;
+        if (stepIndex >= order.length) {
+          stopPlay();
+          return;
+        }
+        renderStep(order[stepIndex]);
+      }, 2200);
+      renderStep(order[0]);
+      stepIndex = 0;
+    });
+
+    document.getElementById('resetBtn').addEventListener('click', () => {
+      stopPlay();
+      document.querySelectorAll('.hotspot').forEach(el => el.classList.remove('active'));
+      titleEl.textContent = 'PCRは何をしているのか？';
+      bodyEl.innerHTML = 'PCRは、長いDNAの中から<strong>ほしい部分だけ</strong>を選び、その部分を<strong>何度もコピー</strong>して、最後に<strong>大量に増やす</strong>技術です。図の青い場所をクリックすると、意味が右側に出ます。';
+      keyEl.innerHTML = `
+        <div class="key-item"><strong>核心1</strong><br>プライマーが、どこを増やすかを決める。</div>
+        <div class="key-item"><strong>核心2</strong><br>温度を変えると、DNAは分かれ、プライマーがつき、コピーが進む。</div>
+        <div class="key-item"><strong>核心3</strong><br>1回で終わらず、同じことを何十回もくり返すから大量に増える。</div>
+      `;
+    });
+  </script>
+</body>
+</html>
