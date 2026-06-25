@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技術から見たAI研究史｜生成AIをつくる6つのピース</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+            background: #f0f4f8;
+            color: #1e2b3c;
+            padding: 2rem 1rem;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0f3a6d;
+            border-bottom: 4px solid #3b82f6;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .intro {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 2rem;
+            background: #e0f2fe;
+            padding: 1.5rem;
+            border-radius: 16px;
+        }
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #1e3a8a;
+            margin: 2.5rem 0 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .step-number {
+            background: #3b82f6;
+            color: white;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+        ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
+        }
+        .connection-arrow {
+            text-align: center;
+            font-size: 2rem;
+            color: #94a3b8;
+            margin: 1rem 0;
+        }
+        .summary-box {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .summary-box h3 {
+            color: #0f3a6d;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+        @media (max-width: 600px) {
+            .container { padding: 1.5rem; }
+            h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="series-nav">
+<a href="book141navi.html">🏠 総合ナビ</a> |
+<a href="book141general.html">📘 総合解説</a> |
+<a href="book141tec.html">⚙️ 技術編</a> |
+<a href="book141theory.html">⚙️ 理論編</a> |
+<a href="book141qa.html">❓ 論文Q&amp;A</a>|
+<a href="book141ai.html">🤖 生成AI</a> |
+<a href="book141qa.html">❓ 論文Q&amp;A</a>
+<a href="book122.html">🧠 チューリング解説</a>
+</div>
+
+<div class="container">
+    <h1>🧩 生成AIをつくる6つのピース</h1>
+    
+    <div class="intro">
+        <p>ChatGPTや画像生成AIなど、まるで人間のように考えているような「生成AI」。実は、ある日突然魔法のように生まれたわけではありません。</p>
+        <p>これまでに研究されてきた<strong>6つの重要な技術（ピース）</strong>が、パズルのように組み合わさってできているのです。それぞれのピースがどのようにつながって生成AIになったのか、進化の歴史を見ていきましょう！</p>
+    </div>
+
+    <h2><span class="step-number">1</span> 自然界のすごい仕組み「脳とニューロン」</h2>
+    <p>すべての始まりは、私たち人間の「脳」です。人間の大脳は、考える・話す・記憶するといった高度な知能を担当しています。</p>
+    <ul>
+        <li>脳の中には「ニューロン（神経細胞）」という小さな細胞が約860億個もあり、ネットワークを作っています。</li>
+        <li>ニューロンは「信号を受信し、計算し、発火して、次へ伝達する」というリレーを繰り返すことで、情報を処理しています。</li>
+    </ul>
+
+    <div class="connection-arrow">⬇️ この仕組みをコンピュータで作れないか？</div>
+
+    <h2><span class="step-number">2</span> コンピュータで脳を真似た「ニューラルネットワーク」</h2>
+    <p>科学者たちは、脳のニューロンの仕組みを数学の計算（数式）に置き換えて、コンピュータ上で再現しようとしました。これが「ニューラルネットワーク」です。</p>
+    <ul>
+        <li>データを受け取る「入力層」、計算をする「隠れ層」、答えを出す「出力層」の3つの層が基本になっています。</li>
+        <li>ニューロン同士のつながりの強さを「重み」という数値で表し、これを調整することで学習します。</li>
+    </ul>
+
+    <div class="connection-arrow">⬇️ 最初は何ができるようになったの？</div>
+
+    <h2><span class="step-number">3</span> AIの最初のテスト「手書き数字認識」</h2>
+    <p>ニューラルネットワークを使って最初に挑戦した有名な課題が、画像に書かれた手書きの数字（0〜9）をコンピュータに当てさせる「手書き数字認識」です。</p>
+    <ul>
+        <li>「MNIST（エムニスト）」という70,000枚の数字画像データを使ってAIに練習させました。</li>
+        <li>AIは画像の中の線や曲がり方の特徴を学び、「これは3らしい」というルールを覚えることに成功しました。これが今のAI技術の大きな第一歩です。</li>
+    </ul>
+
+    <div class="connection-arrow">⬇️ でも、どうやってAIは「間違い」を直して賢くなるの？</div>
+
+    <h2><span class="step-number">4</span> 間違いから学ぶ仕組み「誤差逆伝播法」</h2>
+    <p>AIが学習するためには「自分がどこを間違えたか」を知り、内部の設定（重み）を修正する必要があります。そのための計算方法が「誤差逆伝播法（バックプロパゲーション）」です。</p>
+    <ul>
+        <li>AIが出した答えと正解の「ズレ（誤差）」を計算し、それを出力側から入力側へ「逆向き」に伝えます。</li>
+        <li>これにより、数千万もの「重み」をどこをどれくらい直せばいいか、一気に計算して修正できるようになりました。</li>
+    </ul>
+
+    <div class="connection-arrow">⬇️ コンピュータが進化して、もっと大規模になった！</div>
+
+    <h2><span class="step-number">5</span> データから自力で学ぶ「深層学習（ディープラーニング）」</h2>
+    <p>コンピュータの性能が上がり、インターネットで大量のデータが集まるようになると、ニューラルネットワークの「隠れ層」を何段も深く重ねることができるようになりました。これが「深層学習」です。</p>
+    <ul>
+        <li>人間が細かくルールを教えなくても、AIが大量のデータの中から「特徴（パターンのようなもの）」を自分で発見できるようになりました。</li>
+        <li>浅い層で「線」を、深い層で「顔」や「全体」を理解するというように、複雑なものを判断できるようになりました。</li>
+    </ul>
+
+    <div class="connection-arrow">⬇️ 最後に、言葉を自在に操るための大革命が起きた！</div>
+
+    <h2><span class="step-number">6</span> 生成AIの心臓部「Transformer」</h2>
+    <p>2017年、AIが長い文章を効率よく理解するための画期的な仕組み「Transformer（トランスフォーマー）」が発明されました。</p>
+    <ul>
+        <li>従来のAIのように単語を順番に処理するのではなく、すべての単語を「同時」に処理できます。</li>
+        <li>「アテンション（注意機構）」という技術を使い、文章の中で「どの単語とどの単語が関係しているか」を直接計算して注目できるようになりました。</li>
+    </ul>
+
+    <div class="summary-box">
+        <h3>✨ すべてがつながって「生成AI」へ</h3>
+        <p>人間の脳をヒントにした<strong>ニューラルネットワーク</strong>が、<strong>誤差逆伝播法</strong>によって間違いから学ぶ力を得ました。</p>
+        <p><strong>手書き数字認識</strong>から始まった技術は、層を深くした<strong>深層学習</strong>へと進化し、最後に<strong>Transformer</strong>という強力なエンジンを手に入れたことで、今のChatGPTのような「生成AI」が誕生したのです。</p>
+    </div>
+
+</div>
+<div class="series-nav">
+<div class="series-nav">
+<a href="book141navi.html">🏠 総合ナビ</a> |
+<a href="book141general.html">📘 総合解説</a> |
+<a href="book141tec.html">⚙️ 技術編</a> |
+<a href="book141theory.html">⚙️ 理論編</a> |
+<a href="book141qa.html">❓ 論文Q&amp;A</a>|
+<a href="book141ai.html">🤖 生成AI</a> |
+<a href="book122.html">🧠 チューリング解説</a>
+</div>
+
+</body>
+</html>

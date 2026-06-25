@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>「脳」と「ニューロン（神経細胞）」｜中1向け解説</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+            background: #f5f9ff;
+            color: #1e2b3c;
+            padding: 2rem 1rem;
+            line-height: 1.7;
+        }
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            padding: 2rem 2rem 3rem;
+            box-shadow: 0 20px 40px -12px rgba(0,20,40,0.2);
+        }
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            border-left: 8px solid #8b5cf6;
+            padding-left: 1.2rem;
+            margin-bottom: 1.8rem;
+            color: #0b1f33;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        h1 small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #7c3aed;
+            background: #ede9fe;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+        }
+        h2 {
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin: 2.2rem 0 1rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 3px solid #d0e0ff;
+            color: #0a2647;
+        }
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 1.6rem 0 0.6rem;
+            color: #1e3a6b;
+            display: inline-block;
+            background: #ede9fe;
+            padding: 0.2rem 1rem 0.2rem 0.8rem;
+            border-radius: 0 20px 20px 0;
+        }
+        p {
+            margin: 0.9rem 0;
+        }
+        .highlight-box {
+            background: #f5f3ff;
+            border-radius: 28px;
+            padding: 1.6rem 2rem;
+            margin: 1.8rem 0;
+            border: 1px solid #c7dfff;
+        }
+        .highlight-box strong {
+            color: #5b21b6;
+        }
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+        .card {
+            background: #fafcff;
+            border-radius: 20px;
+            padding: 1.2rem 1.5rem;
+            border: 1px solid #e2edfd;
+            box-shadow: 0 4px 8px rgba(0, 30, 60, 0.04);
+        }
+        .card h4 {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #5b21b6;
+            margin-bottom: 0.4rem;
+        }
+        .table-wrap {
+            overflow-x: auto;
+            margin: 1.2rem 0;
+            border-radius: 20px;
+            border: 1px solid #dbe7f5;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.98rem;
+            background: white;
+        }
+        th {
+            background: #ede9fe;
+            font-weight: 600;
+            padding: 0.7rem 0.8rem;
+            text-align: left;
+        }
+        td {
+            padding: 0.7rem 0.8rem;
+            border-bottom: 1px solid #e6edf8;
+        }
+        .badge {
+            background: #5b21b6;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            display: inline-block;
+            margin-right: 0.3rem;
+        }
+        .flow {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 0.3rem 0.8rem;
+            justify-content: center;
+            background: #f2f8ff;
+            border-radius: 60px;
+            padding: 0.8rem 1.8rem;
+            margin: 1.2rem 0;
+            border: 1px dashed #7c3aed;
+        }
+        .flow-arrow {
+            font-size: 1.6rem;
+            color: #7c3aed;
+            font-weight: 300;
+        }
+        .footnote {
+            background: #f2f6fd;
+            padding: 1.4rem 2rem;
+            border-radius: 28px;
+            margin-top: 2rem;
+            border-left: 6px solid #8b5cf6;
+        }
+        .footnote p {
+            margin: 0.3rem 0;
+        }
+        hr {
+            border: none;
+            border-top: 2px dotted #c7d9f0;
+            margin: 2rem 0;
+        }
+        .example {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            border: 1px solid #e2e8f0;
+            margin: 1rem 0;
+        }
+        .example b {
+            color: #5b21b6;
+        }
+        @media (max-width: 650px) {
+            .grid-2col {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 1.9rem;
+            }
+            .container {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="series-nav">
+<a href="book141navi.html">🏠 総合ナビ</a> |
+<a href="book141general.html">📘 総合解説</a> |
+<a href="book141ai.html">🤖 生成AI</a> |
+<a href="book141tec.html">⚙️ 技術編</a> |
+<a href="book141theory.html">📜 理論編</a>
+<a href="book141qa.html">❓ 論文Q&amp;A</a>
+</div>
+<div class="container">
+
+    <h1>
+        🧠 「脳」と「ニューロン（神経細胞）」
+        <small>中学1年生向け</small>
+    </h1>
+
+    <p style="font-size: 1.2rem; font-weight: 500; color: #1d3a6b;">
+        AI（人工知能）の「深層学習」は、<strong>人間の脳の仕組み</strong>を真似て作られました。
+        その中心にあるのが「<strong>ニューロン（神経細胞）</strong>」です。
+    </p>
+
+    <div class="highlight-box">
+        <p><strong>💡 一言でいうと</strong>  「脳」は約 <strong>860億個</strong> ものニューロンがネットワークを作って動いています。
+        このネットワークこそが、私たちが<strong>考えたり、覚えたり、判断したり</strong>する仕組みの正体です。</p>
+    </div>
+
+    <!-- 1. 脳の全体像 -->
+    <h2>1. 脳ってどんなもの？</h2>
+    <p>人間の脳は、体重の約 <strong>2%</strong> しかありませんが、全身のエネルギーを <strong>20%</strong> も使う「超エネルギー消費器官」です。</p>
+    <ul>
+        <li><strong>大脳</strong>：考える・話す・記憶するなど、<strong>高度な知能</strong>を担当。</li>
+        <li><strong>小脳</strong>：体のバランスや<strong>運動</strong>を調整。</li>
+        <li><strong>脳幹</strong>：呼吸や心拍など、<strong>生命維持</strong>に必要な機能を担当。</li>
+    </ul>
+    <p>AIの深層学習は、特に <strong>「大脳」の情報処理の仕組み</strong> を参考にしています。</p>
+
+    <!-- 2. ニューロン（神経細胞）とは -->
+    <h2>2. ニューロン（神経細胞）とは</h2>
+    <p>脳を構成する <strong>基本単位</strong> がニューロンです。形は木の枝のように複雑で、以下のパーツがあります。</p>
+
+    <div class="table-wrap">
+        <table>
+            <tr><th>パーツ</th><th>役割（わかりやすい言い方）</th></tr>
+            <tr><td><b>樹状突起</b></td><td>「📡 アンテナ」：他のニューロンから<strong>信号を受け取る</strong></td></tr>
+            <tr><td><b>細胞体（ソーマ）</b></td><td>「🧮 計算機」：受け取った信号を<strong>合計して判断</strong></td></tr>
+            <tr><td><b>軸索</b></td><td>「🔌 ケーブル」：信号を<strong>遠くへ伝える</strong></td></tr>
+            <tr><td><b>シナプス</b></td><td>「🤝 接続点」：次のニューロンへ<strong>信号を渡す</strong></td></tr>
+        </table>
+    </div>
+
+    <div class="example">
+        <p><b>📖 身近な例え</b>  「<strong>電話網</strong>」をイメージしてください。</p>
+        <ul>
+            <li>樹状突起 = 電話の<strong>受話器</strong>（相手の声を受け取る）</li>
+            <li>細胞体 = 交換機（内容を<strong>判断</strong>する）</li>
+            <li>軸索 = 電話線（<strong>伝える</strong>）</li>
+            <li>シナプス = 相手の電話機（<strong>渡す</strong>）</li>
+        </ul>
+        <p>この「<strong>受け取って → 判断して → 伝えて → 渡す</strong>」の流れが、脳の情報処理の基本です。</p>
+    </div>
+
+    <!-- 3. ニューロンの働き（信号の流れ） -->
+    <h2>3. ニューロンの働き ― 信号の流れ</h2>
+    <p>ニューロンは <strong>電気信号</strong> と <strong>化学物質（神経伝達物質）</strong> を使って情報を伝えます。</p>
+
+    <div class="flow">
+        <span class="badge">①受信</span>
+        <span class="flow-arrow">→</span>
+        <span class="badge" style="background:#7c3aed;">②統合（計算）</span>
+        <span class="flow-arrow">→</span>
+        <span class="badge" style="background:#7c3aed;">③発火（判断）</span>
+        <span class="flow-arrow">→</span>
+        <span class="badge">④伝達</span>
+    </div>
+
+    <ul>
+        <li><strong>① 受信</strong>：樹状突起で他のニューロンからの信号を受け取る。</li>
+        <li><strong>② 統合（計算）</strong>：細胞体で、受け取った信号の <strong>「強さ」を合計</strong> する。</li>
+        <li><strong>③ 発火（判断）</strong>：合計がある <strong>閾値（しきい値）</strong> を超えたら、<strong>「発火」</strong> して軸索に信号を流す。</li>
+        <li><strong>④ 伝達</strong>：軸索を通ってシナプスへ。シナプスで <strong>神経伝達物質</strong> を放出し、次のニューロンに信号を渡す。</li>
+    </ul>
+
+    <div class="example">
+        <p><b>📖 身近な例え（お風呂の蛇口）</b></p>
+        <ul>
+            <li>樹状突起 = 蛇口から<strong>水が入ってくる</strong>パイプ</li>
+            <li>細胞体 = お風呂の<strong>タンク</strong>（水が溜まる）</li>
+            <li>発火 = タンクが<strong>満杯</strong>になって水があふれる</li>
+            <li>軸索・シナプス = あふれた水が<strong>次のタンク</strong>に流れていく</li>
+        </ul>
+        <p>「信号の強さ」=「水の量」、「閾値」=「タンクの満杯ライン」と考えるとイメージしやすいです。</p>
+    </div>
+
+    <!-- 4. シナプス可塑性（学習の鍵） -->
+    <h2>4. 学習の鍵：「シナプス可塑性」</h2>
+    <p>脳が <strong>学習</strong> できるのは、シナプスのつながりが <strong>変化（可塑性）</strong> するからです。</p>
+    <ul>
+        <li><strong>使うと強くなる</strong>：繰り返し使われるシナプスは <strong>強化</strong> される。</li>
+        <li><strong>使わないと弱くなる</strong>：あまり使われないシナプスは <strong>弱くなったり消えたり</strong> する。</li>
+    </ul>
+    <p>これが「<strong>習うより慣れろ</strong>」の科学的な正体です。例えば、<strong>ピアノの練習</strong>を繰り返すと、指を動かすためのシナプスが強化され、スムーズに弾けるようになります。</p>
+
+    <!-- 5. ニューラルネットワーク（神経回路網） -->
+    <h2>5. ニューラルネットワーク（神経回路網）</h2>
+    <p>ニューロン同士が <strong>複雑に結びついたネットワーク</strong> を「ニューラルネットワーク」と呼びます。</p>
+    <ul>
+        <li>約 <strong>860億個</strong> のニューロンが、<strong>100兆個</strong> 以上のシナプスで結ばれている。</li>
+        <li>このネットワークが <strong>階層構造</strong> になっており、単純な特徴 → 複雑な特徴 を処理する。</li>
+    </ul>
+    <p>例えば、<strong>顔認識</strong> の場合：</p>
+    <ul>
+        <li>最初の層：<strong>明るさ・線</strong> などの単純な情報を処理</li>
+        <li>中盤の層：<strong>目・鼻・口</strong> などのパーツを認識</li>
+        <li>最後の層：<strong>「これはAさんだ」</strong> と総合判断</li>
+    </ul>
+    <p>AIの「<strong>深層学習</strong>」は、この <strong>階層的なニューラルネットワーク</strong> をコンピュータ上で再現したものです。</p>
+
+    <!-- 6. 脳とAIの共通点・違い -->
+    <h2>6. 脳とAIの共通点・違い</h2>
+    <div class="table-wrap">
+        <table>
+            <tr><th>項目</th><th>人間の脳</th><th>AI（深層学習）</th></tr>
+            <tr><td><b>基本単位</b></td><td>ニューロン（生体）</td><td>人工ニューロン（数式）</td></tr>
+            <tr><td><b>学習方法</b></td><td>シナプスの強化・弱化</td><td>重み（パラメータ）の調整</td></tr>
+            <tr><td><b>エネルギー</b></td><td>約20W（とても省エネ）</td><td>GPUで数百〜数千W（非常に消費大）</td></tr>
+            <tr><td><b>並列処理</b></td><td>超並列（860億ニューロン）</td><td>GPUで並列処理（規模はもっと大きい）</td></tr>
+            <tr><td><b>柔軟性</b></td><td>非常に高い（状況に応じて適応）</td><td>学習データに依存（タスクごとに調整）</td></tr>
+        </table>
+    </div>
+
+    <!-- 7. なぜAIは脳を真似るのか？ -->
+    <h2>7. なぜAIは脳を真似るのか？</h2>
+    <ul>
+        <li><strong>脳は「汎用的」</strong>：同じ脳で、言語・計算・芸術・運動など、<strong>あらゆるタスク</strong> をこなせる。</li>
+        <li><strong>脳は「適応的」</strong>：新しい環境や状況に <strong>柔軟に対応</strong> できる。</li>
+        <li><strong>脳は「省エネ」</strong>：20Wでこれだけの処理ができるのは驚異的。</li>
+    </ul>
+    <p>AI研究者は「<strong>このすごい仕組みをコンピュータでも再現したい</strong>」と考え、脳の構造を模倣しました。その結果が <strong>「ニューラルネットワーク」</strong> であり、現在の生成AIの基盤になっています。</p>
+
+    <!-- 8. まとめ -->
+    <hr>
+    <div class="footnote">
+        <h3 style="background: none; padding: 0; margin: 0 0 0.4rem; color: #5b21b6;">🎯 まとめ</h3>
+        <p><strong>脳はニューロンという細胞がネットワークを作り、電気信号と化学物質で情報を処理しています。</strong></p>
+        <ul>
+            <li>ニューロンは <strong>「受信 → 計算 → 発火 → 伝達」</strong> のサイクルで動く。</li>
+            <li>シナプスのつながりが <strong>学習によって変化（可塑性）</strong> するのが「覚える」仕組み。</li>
+            <li>AIの <strong>深層学習（ディープラーニング）</strong> は、この脳の仕組みを <strong>数学的に模倣</strong> したもの。</li>
+        </ul>
+        <p style="margin-top: 0.5rem; font-size: 0.95rem;">🧠 脳の理解は、AIの理解の <strong>第一歩</strong> です。次のステップでは、このニューロンを <strong>数式で表現</strong> する「人工ニューロン」について学びます。</p>
+    </div>
+
+    <p style="text-align: right; color: #3d5e8c; font-size: 0.9rem; border-top: 1px solid #d2e0f5; padding-top: 1.8rem; margin-top: 0.8rem;">
+        📘 「脳」と「ニューロン（神経細胞）」・中学1年生向け解説
+    </p>
+
+</div>
+<div class="series-nav">
+<a href="book141navi.html">🏠 総合ナビ</a> |
+<a href="book141general.html">📘 総合解説</a> |
+<a href="book141ai.html">🤖 生成AI</a> |
+<a href="book141tec.html">⚙️ 技術編</a> |
+<a href="book141theory.html">📜 理論編</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ニューラルネットワーク 〜中学1年生向け解説〜</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+            background: #f5f9fe;
+            color: #1e293b;
+            line-height: 1.7;
+            padding: 2rem 1rem;
+        }
+        .book {
+            max-width: 820px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 40px -12px rgba(0,20,40,0.25);
+            padding: 2.5rem 2.2rem;
+            transition: 0.2s;
+        }
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #0b2b4a;
+            border-left: 8px solid #3b82f6;
+            padding-left: 1.2rem;
+            margin-top: 0.2rem;
+            margin-bottom: 0.6rem;
+        }
+        .subhead {
+            font-size: 1.1rem;
+            color: #475569;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            border-bottom: 2px dashed #dbeafe;
+            padding-bottom: 0.8rem;
+        }
+        h2 {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #1e3a5f;
+            margin-top: 2.4rem;
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.3rem;
+            border-bottom: 4px solid #bfdbfe;
+            display: inline-block;
+        }
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1e4a7a;
+            margin-top: 1.8rem;
+            margin-bottom: 0.4rem;
+        }
+        p {
+            margin-bottom: 0.9rem;
+        }
+        .highlight-box {
+            background: #eef6ff;
+            border-radius: 20px;
+            padding: 1.2rem 1.6rem;
+            margin: 1.4rem 0;
+            border-left: 6px solid #2563eb;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 1.2rem 1.5rem;
+            margin: 1.2rem 0;
+            border: 1px solid #e2e8f0;
+        }
+        .comparison-grid .col {
+            background: white;
+            border-radius: 16px;
+            padding: 0.8rem 1.2rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .comparison-grid .col h4 {
+            font-size: 1rem;
+            color: #1e3a5f;
+            border-bottom: 2px solid #dbeafe;
+            padding-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
+        }
+        .comparison-grid .col ul {
+            list-style: none;
+            padding: 0;
+            font-size: 0.95rem;
+        }
+        .comparison-grid .col li {
+            padding: 0.25rem 0;
+            border-bottom: 1px dashed #eef2f6;
+        }
+        .comparison-grid .col li:last-child {
+            border-bottom: none;
+        }
+        .formula {
+            background: #0b1e2e;
+            color: #d9e6f2;
+            padding: 0.8rem 1.2rem;
+            border-radius: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 1.3rem;
+            text-align: center;
+            margin: 1.4rem 0;
+            letter-spacing: 0.5px;
+        }
+        .badge {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            margin-right: 0.4rem;
+        }
+        .layer-card {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem 1.2rem;
+            background: #f1f5f9;
+            border-radius: 40px;
+            padding: 1rem 1.6rem;
+            margin: 1.2rem 0;
+        }
+        .layer-item {
+            background: white;
+            border-radius: 60px;
+            padding: 0.3rem 1.2rem;
+            font-weight: 600;
+            color: #0b2b4a;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            border: 1px solid #dbeafe;
+        }
+        .layer-item small {
+            font-weight: 400;
+            color: #475569;
+        }
+        .emoji-big {
+            font-size: 1.2rem;
+            margin-right: 0.2rem;
+        }
+        .footer-note {
+            margin-top: 2.5rem;
+            background: #e6f0fa;
+            border-radius: 40px;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #1e3a5f;
+            border: 1px solid #bed9f7;
+        }
+        hr {
+            border: none;
+            border-top: 2px dotted #cbd5e1;
+            margin: 2rem 0 1rem;
+        }
+        @media (max-width: 600px) {
+            .book { padding: 1.5rem; }
+            h1 { font-size: 1.8rem; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .layer-card { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+<div class="series-nav">
+<a href="book141navi.html">🏠 総合ナビ</a> |
+<a href="book141general.html">📘 総合解説</a> |
+<a href="book141ai.html">🤖 生成AI</a> |
+<a href="book141tec.html">⚙️ 技術編</a> |
+<a href="book141theory.html">📜 理論編</a>　|
+<a href="book141qa.html">❓ 論文Q&amp;A</a>
+<a href="book122.html">🧠 チューリング解説</a>　
+</div>
+<div class="book" id="book141neuron">
+    <h1>🧠 ニューラルネットワーク</h1>
+    <div class="subhead">〜 中学1年生でもわかる！AIのしくみ 〜</div>
+
+    <!-- はじめに -->
+    <p><span class="badge">はじめに</span> <strong>ニューラルネットワーク</strong> とは、人間の脳の仕組み（ニューロンのネットワーク）をコンピューターの上で再現しようとする計算モデルです。今の AI や <strong>深層学習（ディープラーニング）</strong> の土台になっている、とっても大切な技術なんだ！</p>
+
+    <div class="highlight-box">
+        <p><strong>✨ ポイント：</strong> ニューラルネットワークは「<strong>人工の脳みそ</strong>」のようなもの。画像認識・翻訳・文章生成など、すごいことができます。</p>
+    </div>
+
+    <!-- 1. 基本構造 -->
+    <h2>1. ニューラルネットワークの形</h2>
+    <p>ニューラルネットワークは、<strong>「ノード（人工ニューロン）」</strong>がいくつかの<strong>層（レイヤー）</strong>に分かれてつながっています。基本はこの３つの層からできています。</p>
+
+    <div class="layer-card">
+        <span class="layer-item">📥 入力層 <small>(データの入り口)</small></span>
+        <span class="layer-item">🧠 隠れ層 <small>(計算・学習の心臓部)</small></span>
+        <span class="layer-item">📤 出力層 <small>(予測結果の出口)</small></span>
+    </div>
+
+    <p><strong>入力層</strong>：画像の数字やテキストの数値など、外からデータを受け取る場所。<br>
+    <strong>隠れ層</strong>：データの特徴を分析し、計算をする「脳みそ」の部分。これが何層も重なると <strong>「深層学習」</strong> と呼ばれます。<br>
+    <strong>出力層</strong>：「この画像は 95％ の確率で猫です」といった答えを出す出口。</p>
+
+    <!-- 2. 脳との比較 -->
+    <h2>2. 脳のニューロンと人工ニューロン</h2>
+    <div class="comparison-grid">
+        <div class="col">
+            <h4>🧬 本物の脳</h4>
+            <ul>
+                <li>📡 樹状突起 … 情報を受け取る</li>
+                <li>⚡ シナプス … 情報の「重要度」を調整</li>
+                <li>🧪 細胞体 … 信号を合計する</li>
+                <li>⚡ 軸索 … 次のニューロンへ出力</li>
+            </ul>
+        </div>
+        <div class="col">
+            <h4>💻 人工ニューラルネット</h4>
+            <ul>
+                <li>📥 入力値 (x) … データを受け取る</li>
+                <li>⚖️ 重み (w) … 「重要度」をかける</li>
+                <li>➕ 総和 (Σ) + バイアス (b) … 合計して調整</li>
+                <li>🔥 活性化関数 … 出力を決める</li>
+            </ul>
+        </div>
+    </div>
+    <p>本物の脳は電気信号と化学物質で動きますが、コンピューターの中ではすべて <strong>数式</strong> で計算されています。下の式は、1つの人工ニューロンの計算を表しています。</p>
+    <div class="formula">
+        y = f( Σ wᵢ xᵢ + b )
+    </div>
+
+    <!-- 3. 学習とは？ -->
+    <h2>3. AIが「学習する」ってどういうこと？</h2>
+    <p>ニューラルネットワークのいちばんすごいところは、<strong>データから自動でルールを学ぶ（学習する）</strong> ことです。</p>
+    <p>最初は「重み（重要度）」がわからないので、でたらめな予測しかできません。でも、たくさんのデータを使って次のサイクルをくり返すと、どんどん賢くなります。</p>
+
+    <div style="background: #f1f5f9; border-radius: 24px; padding: 1rem 1.8rem; margin: 1rem 0;">
+        <p><strong>1. 順伝播（フォワードプロパゲーション）</strong><br>データを入力して、今の設定で予測を出す。</p>
+        <p><strong>2. 誤差の計算</strong><br>予測と正解をくらべて、「どれくらい間違っているか」を計算。</p>
+        <p><strong>3. 逆伝播（バックプロパゲーション）</strong><br>誤差を減らすために、出力層から入力層に向かって重みを逆方向に調整。</p>
+        <p><strong>4. パラメータ更新</strong><br>重みとバイアスを少しだけ修正（<strong>勾配降下法</strong>）。</p>
+    </div>
+    <p>このサイクルを何万回・何百万回もくり返すことで、AIが最適な「ネットワークの結びつき」を自分で作り上げていくのです！</p>
+
+    <!-- 4. なぜ今？ -->
+    <h2>4. なぜ今、注目されているの？</h2>
+    <p>ニューラルネットワークのアイデア自体は 1940年代からありましたが、当時はコンピューターの性能が低くて十分なデータを処理できませんでした。</p>
+    <p>ところが近年、<strong>GPUなどの計算能力の向上</strong> と <strong>インターネットによるビッグデータの普及</strong> で、隠れ層を何層も重ねた <strong>「ディープラーニング（深層学習）」</strong> が可能になりました。ChatGPT や自動運転技術も、このニューラルネットワークが超大規模に発達した結果なんだよ！</p>
+
+    <!-- 5. 種類 -->
+    <h2>5. いろいろなニューラルネットワーク</h2>
+    <p>「ニューラルネットワーク」は総称で、構造によっていくつかの種類があります。</p>
+    <ul style="padding-left: 1.5rem; margin-bottom: 1.2rem;">
+        <li><strong>FNN（フィードフォワード型）</strong> … 情報が一方向に流れる、シンプルな構造。分類・回帰に使われる。</li>
+        <li><strong>CNN（畳み込みニューラルネットワーク）</strong> … 画像の特徴をとらえるのが得意。画像認識・物体検出に。</li>
+        <li><strong>RNN（再帰型ニューラルネットワーク）</strong> … 過去の情報を「記憶」できる。音声認識・時系列予測に。</li>
+        <li><strong>Transformer（トランスフォーマー）</strong> … 並列処理で長い文章を扱える。GPTなどの大規模言語モデルの基盤。</li>
+        <li><strong>GAN（生成敵対的ネットワーク）</strong> … 生成器と識別器が競い合い、新しいデータを生成。画像生成など。</li>
+    </ul>
+
+    <!-- 6. 課題と限界 -->
+    <h2>6. どんな課題があるの？</h2>
+    <ul style="padding-left: 1.5rem; margin-bottom: 1rem;">
+        <li><strong>大量のデータが必要</strong> … 従来の機械学習よりはるかに多くのデータがいる。</li>
+        <li><strong>計算コストが高い</strong> … 学習には GPU などの高性能ハードウェアが必須。</li>
+        <li><strong>ブラックボックス問題</strong> … 「なぜそう判断したのか」を説明するのが難しい。</li>
+        <li><strong>過学習（オーバーフィッティング）</strong> … 訓練データにだけ合いすぎて、新しいデータで性能が落ちることがある。</li>
+        <li><strong>ハイパーパラメータ調整</strong> … 層の数や学習率など、人間が設定すべき値が多くて大変。</li>
+    </ul>
+
+    <!-- 7. 例え話 -->
+    <h2>7. 会社の組織に例えてみよう！</h2>
+    <div class="highlight-box">
+        <p><strong>🏢 会社の組織</strong></p>
+        <p>📥 <strong>入力層</strong> ＝ 現場社員（生の情報を受け取る）<br>
+        🧠 <strong>隠れ層</strong> ＝ 中間管理職（情報を整理・解釈して上司に伝える）… これが何層にも重なる<br>
+        📤 <strong>出力層</strong> ＝ 社長（最終判断を下す）<br>
+        ⚖️ <strong>重み</strong> ＝ 「どの部署の意見を重視するか」という信頼度<br>
+        📚 <strong>学習</strong> ＝ 成功・失敗のフィードバックをもとに、各管理職の「判断の仕方」を調整していくプロセス</p>
+    </div>
+
+    <!-- 8. 脳 vs 人工 -->
+    <h2>8. 脳のニューロン vs 人工ニューラルネットワーク</h2>
+    <div style="overflow-x: auto;">
+        <table style="width:100%; border-collapse: collapse; background: #f8fafc; border-radius: 20px; font-size:0.95rem;">
+            <thead>
+                <tr style="background: #dbeafe; border-radius: 20px;">
+                    <th style="padding: 0.6rem 0.8rem; text-align: left;">🔬 生物の脳</th>
+                    <th style="padding: 0.6rem 0.8rem; text-align: left;">💻 人工ニューラルネット</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td style="padding: 0.5rem 0.8rem; border-bottom:1px solid #e2e8f0;">構成単位：生物学的ニューロン</td><td style="padding: 0.5rem 0.8rem; border-bottom:1px solid #e2e8f0;">数学的な人工ニューロン（ノード）</td></tr>
+                <tr><td style="padding: 0.5rem 0.8rem; border-bottom:1px solid #e2e8f0;">接続：シナプス（物理的・化学的）</td><td style="padding: 0.5rem 0.8rem; border-bottom:1px solid #e2e8f0;">重み（数値パラメータ）</td></tr>
+                <tr><td style="padding: 0.5rem 0.8rem; border-bottom:1px solid #e2e8f0;">学習方法：シナプス強化・刈り込み</td><td style="padding: 0.5rem 0.8rem; border-bottom:1px solid #e2e8f0;">逆伝播 + 勾配降下法</td></tr>
+                <tr><td style="padding: 0.5rem 0.8rem; border-bottom:1px solid #e2e8f0;">信号：電気パルス（発火頻度）</td><td style="padding: 0.5rem 0.8rem; border-bottom:1px solid #e2e8f0;">実数値（連続的な数値）</td></tr>
+                <tr><td style="padding: 0.5rem 0.8rem;">消費電力：約 20W（省エネ！）</td><td style="padding: 0.5rem 0.8rem;">数 kW 〜 MW（電力をたくさん使う）</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 9. まとめ -->
+    <h2>9. まとめ</h2>
+    <div style="background: #e6f0fa; border-radius: 30px; padding: 1.2rem 1.8rem; margin-top: 0.6rem;">
+        <p><strong>🧠 ニューラルネットワークとは、</strong> 「脳のニューロンからアイデアを得た、多数の計算ユニットが層状に接続された数学的モデル」です。</p>
+        <p>単純な「たし算」と「活性化関数」のくり返しが、<strong>層を深くし、数を増やすことで</strong>、画像認識や自然言語処理といった人間レベルの能力を実現します。</p>
+        <p>そして、その「深い」ネットワークこそが <strong>深層学習（Deep Learning）</strong> であり、今の AI ブームの原動力なのです！</p>
+    </div>
+
+    <!-- 10. 図解のおすすめ -->
+    <h2>10. もっと知りたい人のために</h2>
+    <p>授業や自主学習におすすめの図解キーワード：</p>
+    <ul style="padding-left: 1.5rem;">
+        <li><strong>3層ニューラルネットワークの構造図</strong>（入力層・隠れ層・出力層を丸と線で示したもの）</li>
+        <li><strong>1つの人工ニューロンの拡大図</strong>（x, w, Σ, f, y の対応図）</li>
+        <li><strong>脳のニューロンと人工ニューロンを並べた比較図</strong></li>
+    </ul>
+    <p style="margin-top: 0.4rem;">🔍 検索キーワード： <code>neural network architecture diagram</code> ・ <code>artificial neuron vs biological neuron</code> ・ <code>perceptron model</code></p>
+
+    <hr>
+
+    <!-- 生成AIとのつながり -->
+    <h2>📌 生成AIとニューラルネットワーク</h2>
+    <p>ChatGPT などの <strong>生成AI</strong> は、このニューラルネットワーク（特に Transformer という種類）をものすごく大規模にしたものです。手書き数字の認識から始まった技術が、今では文章や画像を生成するまでに進化しました。</p>
+    <div class="footer-note">
+        <p><strong>📖 この記事は「book141neuron.html」として出力されました。</strong><br>
+        中学1年生の皆さんも、ニューラルネットワークの基本をつかめば、AIの未来がもっと身近に感じられるはず！</p>
+    </div>
+
+</div>
+<div class="series-nav">
+<a href="book141navi.html">🏠 総合ナビ</a> |
+<a href="book141general.html">📘 総合解説</a> |
+<a href="book141ai.html">🤖 生成AI</a> |
+<a href="book141tec.html">⚙️ 技術編</a> |
+<a href="book141theory.html">📜 理論編</a>
+<a href="book141qa.html">❓ 論文Q&amp;A</a>
+<a href="book122.html">🧠 チューリング解説</a>
+</div>
+</body>
+</html>

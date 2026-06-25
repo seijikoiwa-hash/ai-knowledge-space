@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>理論からみたAI研究史ー５つの論文をベースにしたTPAI法による解析ー</title>
+<style>
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    line-height: 1.9;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fafafa;
+  }
+  h1 {
+    font-size: 1.8rem;
+    text-align: center;
+    border-bottom: 2px solid #222;
+    padding-bottom: 15px;
+    margin-bottom: 40px;
+  }
+  h2 {
+    font-size: 1.3rem;
+    color: #0056b3;
+    border-left: 5px solid #0056b3;
+    padding-left: 12px;
+    margin-top: 45px;
+    margin-bottom: 15px;
+  }
+  p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+  .paper-title {
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .footnote-container {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  .footnote {
+    font-size: 0.9rem;
+    color: #444;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+  a {
+    color: #0056b3;
+    text-decoration: none;
+  }
+  sup {
+    font-size: 0.8em;
+    font-weight: bold;
+  }
+  .emphasis {
+    background: #fff8df;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  /* 画像レイアウト用の追加スタイル */
+  figure {
+    margin: 0;
+    padding: 0;
+  }
+  figcaption {
+    font-size: 0.9rem;
+    color: #666;
+    text-align: center;
+    margin-top: 5px;
+    line-height: 1.4;
+  }
+  .image-right {
+    float: right;
+    margin: 10px 0 20px 20px;
+    max-width: 40%;
+    clear: right;
+  }
+  .image-right img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  .image-center {
+    display: block;
+    margin: 20px auto;
+    max-width: 80%;
+    text-align: center;
+  }
+  .image-center img {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+</style>
+</head>
+<body>
+<div class="series-nav">
+
+<div class="series-nav" aria-label="book141シリーズ相互リンク">
+<a href="book141navi.html">🏠 総合ナビ</a> |
+<a href="book141general.html">📘 総合解説</a> |
+<a href="book141tec.html">⚙️ 技術編</a> |
+<a href="book141theory.html">⚙️ 理論編</a> |
+<a href="book141qa.html">❓ 論文Q&amp;A</a>|
+<a href="book141ai.html">🤖 生成AI</a> |
+<a href="book141qa.html">❓ 論文Q&amp;A</a>
+<a href="book122.html">🧠 チューリング解説</a>
+</div>
+<div class="series-nav">
+  <a href="book141paper11.html">① ニューロン</a>
+  <a href="book141paper22.html">② チューリング</a>
+  <a href="book141paper33.html">③ 誤差逆伝播</a>
+  <a href="book141paper44.html">④ AlexNet</a>
+  <a href="book141paper55.html">⑤ Transformer</a>
+</div>
+
+<h1>理論からみたAI研究史<br>ー５つの論文をベースにしたTPAI法による解析ー</h1>
+<h2>AI研究史 年表</h2>
+
+<table style="width:100%; border-collapse:collapse; margin:20px 0; background:#fff;">
+  <tr style="background:#e8f1ff;">
+    <th style="border:1px solid #999; padding:10px;">年</th>
+    <th style="border:1px solid #999; padding:10px;">出来事</th>
+  </tr>
+  <tr>
+    <td style="border:1px solid #999; padding:10px; text-align:center;">1943</td>
+    <td style="border:1px solid #999; padding:10px;">ニューロンモデル（McCulloch & Pitts）</td>
+  </tr>
+  <tr>
+    <td style="border:1px solid #999; padding:10px; text-align:center;">1950</td>
+    <td style="border:1px solid #999; padding:10px;">チューリングテスト（Alan Turing）</td>
+  </tr>
+  <tr>
+    <td style="border:1px solid #999; padding:10px; text-align:center;">1986</td>
+    <td style="border:1px solid #999; padding:10px;">誤差逆伝播法（Rumelhart ら）</td>
+  </tr>
+  <tr>
+    <td style="border:1px solid #999; padding:10px; text-align:center;">2012</td>
+    <td style="border:1px solid #999; padding:10px;">AlexNet（深層学習ブーム）</td>
+  </tr>
+  <tr>
+    <td style="border:1px solid #999; padding:10px; text-align:center;">2017</td>
+    <td style="border:1px solid #999; padding:10px;">Transformer</td>
+  </tr>
+  <tr>
+    <td style="border:1px solid #999; padding:10px; text-align:center;">2022</td>
+    <td style="border:1px solid #999; padding:10px;">ChatGPT公開</td>
+  </tr>
+</table>
+
+<p>AI（人工知能）は、ある日突然生まれたわけではありません。天才たちのひらめきと、いくつもの画期的な発見が積み重なって進化してきました。ここでは、AIの歴史を大きく動かした5つの重要な論文を順番に読み解いていきます。それぞれの論文がどのような問題を解決し、どのような新しい考え方を生み出したのかを、わかりやすくたどっていきましょう。</p>
+
+<figure class="image-center">
+  <img src="image_0.png" alt="コンピュータに向かう男性（ジョン・マッカーシー）">
+  <figcaption>人工知能（Artificial Intelligence, AI）」という言葉を生み出した人物ジョン・マッカーシー</figcaption>
+</figure>
+
+<h2>1. AIの原点世界初の人工ニューロンの誕生（1943年）</h2>
+<span class="paper-title">論文：『A Logical Calculus of the Ideas Immanent in Nervous Activity』（ウォーレン・マカロック、ウォルター・ピッツ）</span>
+
+<figure class="image-right">
+  <img src="image_7.png" alt="ニューロンと論理回路の模式図">
+  <figcaption>ニューロンを論理回路として考える</figcaption>
+</figure>
+
+<p>AI研究の出発点の一つは、「脳の神経細胞を、計算する部品として考えられないか」という問いでした。1943年、マカロックとピッツは、神経細胞（ニューロン<sup><a href="#fn1" id="ref1">*1</a></sup>）の働きを、数学と論理で表す画期的な論文を発表しました。彼らは、ニューロンを「発火する／発火しない」という二つの状態で考えました。つまり、電気のスイッチのように、オンかオフかで表せると考えたのです。</p>
+
+<p>この考え方のすごいところは、ニューロンのつながりを組み合わせると、論理回路のように働くことを示した点にあります。たとえば、「AまたはBなら反応する」「AとBの両方がそろったら反応する」「ある入力が来たら反応を止める」といった仕組みを、神経細胞のつながりとして表現できると考えました。これは、現在のコンピュータで使われるAND、OR、NOTのような論理演算とよく似ています。</p>
+
+<p>マカロックとピッツの論文は、脳を単なる生物の器官としてではなく、「情報を処理する計算システム」として見る道を開きました。もちろん、本物の脳はもっと複雑で、感情、記憶、学習、化学物質なども深く関係しています。しかし、「ニューロンの集まりが論理的な計算を行える」という発想は、後のニューラルネットワーク、深層学習、そして生成AIへとつながる大きな第一歩でした。AIの歴史は、ここから「脳のしくみを計算でまねる」という長い旅を始めたのです。</p>
+
+<h2>2. AIの「計算する脳」を設計した原点（1936年）</h2>
+<span class="paper-title">論文：『計算可能数について』（アラン・チューリング）</span>
+
+<figure class="image-right">
+  <img src="image_5.png" alt="アラン・チューリングの肖像画">
+  <figcaption>アラン・チューリング</figcaption>
+</figure>
+<p>※年代順ではチューリングの研究（1936年）が先ですが、AIの仕組みを理解しやすくするため、人工ニューロンの後に紹介します。</p>
+<p>まだコンピュータという機械が存在しなかった時代に、チューリングは「計算するとはどういうことか」を数学的に証明しました。彼は、手順さえ決まっていればどんな計算でもできる「万能機械<sup><a href="#fn2" id="ref2">*2</a></sup>」というアイデアを思いつきました。この機械は、紙テープに書かれた記号を読み書きしながら、決められたルールに従って動作するという、とてもシンプルなものでした。しかし、このシンプルな発想こそが、現在のすべてのコンピュータやAIの理論的な土台となっています。チューリングはさらに、「どんなに工夫しても絶対に解けない問題が存在する」ことも証明し、計算という行為の限界を初めて明らかにしました。この研究がなければ、私たちが今日使っているコンピュータやスマートフォンも、そしてAIも存在しなかったと言っても過言ではありません。</p>
+
+<h2>3. AIが自ら学ぶ法則の発見（1986年）</h2>
+<span class="paper-title">論文：『誤差逆伝播法による学習』（ラメルハートら）</span>
+
+<figure class="image-right">
+  <img src="image_9.png" alt="ラメルハート">
+  <figcaption>誤差逆伝播法（Backpropagation）を広く普及させたラメルハート</figcaption>
+</figure>
+
+<p>AIが賢くなるためには、失敗から学ぶ必要があります。この論文では、AIが出した答えと正解とのズレを計算し、自分で自分を修正していく「バックプロパゲーション<sup><a href="#fn3" id="ref3">*3</a></sup>」という仕組みが発表されました。これにより、AIは人間の手を借りずに、データの中から自ら法則を見つけ出せるようになりました。それまでのAIは、人間が「これは丸い」「これは赤い」といった特徴を一つ一つ教え込む必要がありましたが、この新しい学習方法のおかげで、AI自身がデータの特徴を発見できるようになったのです。これはまるで、子供が自分で経験から学んでいくように、AIが自律的に成長できる道を開いた画期的な瞬間でした。現在のAIが画像や音声を認識できるのも、この「誤差逆伝播法」という強力な学習ルールがあるからこそです。</p>
+
+<h2>4. 人間の目を超えた「ディープラーニング」の爆発（2012年）</h2>
+<span class="paper-title">論文：『深層CNNによるImageNet画像分類』（クリジェフスキーら）</span>
+
+<figure class="image-right">
+  <img src="image_3.png" alt="クリジェフスキー">
+  <figcaption>クリジェフスキー</figcaption>
+</figure>
+
+<p>AIが画像に何が写っているかを当てる大会で、「AlexNet（アレックスネット）」というAIが圧倒的な成績で優勝しました。膨大なデータと強力な計算機（GPU<sup><a href="#fn4" id="ref4">*4</a></sup>）を使い、脳の神経を真似たネットワークを深く何層にも重ねる「ディープラーニング<sup><a href="#fn5" id="ref5">*5</a></sup>」の威力が世界中に証明された歴史的な瞬間です。この勝利は、従来の手法と比べて誤差率を約10ポイントも改善するという、まさに革命的とも言える結果でした。それまで画像認識の分野では、人間が手作業で設計した特徴量が主流でしたが、AlexNetはデータから特徴を自動で学び取るディープラーニングのアプローチが圧倒的に優れていることを実証しました。この衝撃的な結果をきっかけに、世界中の研究者や企業がディープラーニングに注目し始め、現在のAIブームの火付け役となりました。</p>
+
+<h2>5. 言葉を自由にあやつる魔法「Transformer」（2017年）</h2>
+<span class="paper-title">論文：『Attention Is All You Need』（ヴァスワニら）</span>
+
+<figure class="image-center">
+  <img src="image_4.png" alt="Transformerアーキテクチャの図解">
+  <figcaption>Transformerモデルのアーキテクチャ図（論文『Attention Is All You Need』より）</figcaption>
+</figure>
+<figure class="image-right">
+  <img src="image_8.png" alt="ニューロンと論理回路の模式図">
+  <figcaption>Transformerアーキテクチャの共同考案者アシシュ・ヴァスワニ</figcaption>
+</figure>
+
+<p>現在の対話型AIが言葉をなめらかに話せるのは、この論文のおかげです。文章を読み解くときに「いま、どの言葉に一番注目するべきか」をAIに判断させる「注意機構（Attention）<sup><a href="#fn6" id="ref6">*6</a></sup>」という仕組みが発明されました。これにより、AIは長い文章でも文脈を深く理解できるようになりました。それまでのAIは、文章を前から順番に処理するしかなく、長い文章では最初の方の内容を忘れてしまうという弱点がありました。しかしTransformerは、文章中すべての単語を同時に分析し、互いの関係性を把握することができるため、どんなに長い文章でも正確に意味を捉えられます。この革新的な仕組みは、現在のChatGPTをはじめとする多くの高性能な対話型AIの基盤技術となっており、AIが人間のように流暢に言葉を操ることを可能にした、まさに現代の魔法と言えるでしょう。</p>
+
+<figure class="image-center">
+  <img src="image_1.png" alt="アシシュ・ヴァスワニ">
+  <figcaption>現代の生成AI技術：様々なモデルと用途</figcaption>
+</figure>
+
+<div class="footnote-container">
+  <div class="footnote" id="fn1"><a href="#ref1">*1</a> <b>ニューロン</b>：脳や神経をつくる細胞のことです。情報を受け取り、一定の条件を満たすと電気信号を出します。マカロックとピッツは、この働きを「発火する／しない」という二値のしくみとして考えました。</div>
+  <div class="footnote" id="fn2"><a href="#ref2">*2</a> <b>万能機械（チューリングマシン）</b>：テープに書かれた記号を読み書きして、どんな計算でも手順通りに実行できる架空の機械のこと。この機械で「計算できる」ことを「計算可能」と定義しました。</div>
+  <div class="footnote" id="fn3"><a href="#ref3">*3</a> <b>バックプロパゲーション（誤差逆伝播法）</b>：AIが間違えたときに、「どこを直せば正解に近づくか」を計算し、AIの内部の数値を少しずつ調整する学習方法です。答えのズレ（誤差）をネットワークの後ろから前に向かって伝えながら、重み（重要度）を少しずつ修正していきます。</div>
+  <div class="footnote" id="fn4"><a href="#ref4">*4</a> <b>GPU</b>：もともとはゲームのきれいな映像を描くための部品ですが、一度にたくさんの計算をするのが得意なため、AIを賢くするための学習に欠かせないものになりました。現在のAI研究には何百台ものGPUが使われることもあります。</div>
+  <div class="footnote" id="fn5"><a href="#ref5">*5</a> <b>ディープラーニング（深層学習）</b>：人間の脳の神経のつながりを真似たネットワークを、何層にも深く重ねて学習させる技術です。層が深いほど複雑なパターンを学ぶことができます。</div>
+  <div class="footnote" id="fn6"><a href="#ref6">*6</a> <b>注意機構（Attention）</b>：文章を読んだり翻訳したりするときに、「他のどの単語に注目すれば意味が正しく伝わるか」に絞って計算する仕組みのことです。これにより、長い文章でも重要な情報を見逃さずに処理できるようになりました。</div>
+</div>
+<div class="series-nav">
+<a href="book141navi.html">🏠 総合ナビ</a> |
+<a href="book141general.html">📘 総合解説</a> |
+<a href="book141tec.html">⚙️ 技術編</a> |
+<a href="book141theory.html">⚙️ 理論編</a> |
+<a href="book141qa.html">❓ 論文Q&amp;A</a>|
+<a href="book141ai.html">🤖 生成AI</a> |
+<a href="book141qa.html">❓ 論文Q&amp;A</a>
+<a href="book122.html">🧠 チューリング解説</a>
+</div>
+<div class="series-nav">
+  <a href="book141theory.html">📖 理論編</a>
+  <a href="book141paper11.html">① ニューロン</a>
+  <a href="book141paper22.html">② チューリング</a>
+  <a href="book141paper33.html">③ 誤差逆伝播</a>
+  <a href="book141paper44.html">④ AlexNet</a>
+  <a href="book141paper55.html">⑤ Transformer</a>
+</div>
+
+</body>
+</html>

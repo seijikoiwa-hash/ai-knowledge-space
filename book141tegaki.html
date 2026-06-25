@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>手書き数字認識</title>
+<style>
+body{
+    font-family:"Hiragino Sans","Yu Gothic",sans-serif;
+    line-height:1.9;
+    max-width:1000px;
+    margin:auto;
+    padding:20px;
+    color:#222;
+    background:#fafafa;
+}
+h1{
+    text-align:center;
+    color:#0b5394;
+    border-bottom:3px solid #0b5394;
+    padding-bottom:10px;
+}
+h2{
+    color:#134f5c;
+    margin-top:40px;
+    border-left:8px solid #6fa8dc;
+    padding-left:10px;
+}
+figure{
+    text-align:center;
+    margin:30px auto;
+}
+img{
+    max-width:100%;
+    height:auto;
+    border:1px solid #ccc;
+}
+figcaption{
+    font-size:0.9em;
+    color:#555;
+}
+.point{
+    background:#eef7ff;
+    padding:15px;
+    border-left:5px solid #3d85c6;
+    margin:20px 0;
+}
+</style>
+</head>
+<body>
+<div class="series-nav">
+<a href="book141navi.html">🏠 総合ナビ</a> |
+<a href="book141general.html">📘 総合解説</a> |
+<a href="book141tec.html">⚙️ 技術編</a> |
+<a href="book141theory.html">⚙️ 理論編</a> |
+<a href="book141qa.html">❓ 論文Q&amp;A</a>|
+<a href="book141ai.html">🤖 生成AI</a> |
+<a href="book122.html">🧠 チューリング解説</a>
+
+</div>
+
+<h1>手書き数字認識</h1>
+
+<p>
+みなさんは、紙に「5」や「8」と書いたことがありますね。
+人によって数字の形は少しずつ違います。
+それでも人間は簡単に数字を読むことができます。
+では、コンピュータはどうでしょうか。
+コンピュータに手書きの数字を見せて、
+「これは何の数字ですか？」と当てさせる技術を
+<strong>手書き数字認識</strong>といいます。
+</p>
+
+<figure>
+<img src="tegaki.jpeg" alt="手書き数字の例">
+<figcaption>さまざまな人が書いた手書き数字</figcaption>
+</figure>
+
+<h2>なぜ難しいの？</h2>
+
+<p>
+人間が書く数字は、一人ひとり形が違います。
+同じ「7」でも太さや傾きが違い、
+「9」や「4」も人によって書き方が変わります。
+</p>
+
+<p>
+人間ならすぐに分かりますが、
+コンピュータにとっては別の絵に見えることがあります。
+そのため、多くの数字を見て学習する必要があります。
+</p>
+
+<div class="point">
+<b>ポイント</b><br>
+コンピュータは数字の意味を知らず、
+画像の特徴を学習して判断しています。
+</div>
+
+<h2>MNIST（エムニスト）とは？</h2>
+
+<p>
+手書き数字認識で最も有名な教材が
+<strong>MNISTデータセット</strong>です。
+これは世界中の研究者が利用している
+「手書き数字の問題集」です。
+</p>
+
+<ul>
+<li>0～9の数字画像が70,000枚</li>
+<li>1枚の大きさは28×28ピクセル</li>
+<li>学習用60,000枚</li>
+<li>テスト用10,000枚</li>
+</ul>
+
+<p>
+AIの世界では、
+「まずMNISTを解いてみよう」
+というほど有名な教材です。
+そのため機械学習の「Hello World」とも呼ばれています。
+</p>
+
+<figure>
+<img src="tegaki3.jpeg" alt="MNISTデータセット">
+<figcaption>MNISTデータセットの例</figcaption>
+</figure>
+
+<h2>AIはどうやって数字を見分けるの？</h2>
+
+<p>
+まず、数字の画像をAIに見せます。
+AIは画像の中の線や曲がり方などの特徴を調べます。
+</p>
+
+<p>
+たくさんの数字を学習すると、
+「この形は8らしい」
+「この形は3らしい」
+というルールを少しずつ覚えていきます。
+</p>
+
+<p>
+この学習を行うのが
+<strong>ニューラルネットワーク</strong>です。
+これは人間の脳の神経細胞（ニューロン）の働きを
+まねした仕組みです。
+</p>
+
+<h2>誤差逆伝播法との関係</h2>
+
+<p>
+AIは最初から正解できるわけではありません。
+間違えるたびに、
+「どこが悪かったのか」を調べます。
+</p>
+
+<p>
+そして内部の設定を少しずつ修正します。
+この修正方法を
+<strong>誤差逆伝播法（Backpropagation）</strong>
+といいます。
+</p>
+
+<figure>
+<img src="tegaki1.jpeg" alt="誤差逆伝播法">
+<figcaption>誤差を逆向きに伝えて学習する仕組み</figcaption>
+</figure>
+
+<p>
+この方法によってAIは何万回も練習し、
+だんだん数字を正しく読めるようになります。
+</p>
+
+<h2>歴史を変えたLeNet</h2>
+
+<p>
+1990年代、
+研究者のヤン・ルカン博士は
+<strong>LeNet（ルネット）</strong>
+というニューラルネットワークを開発しました。
+</p>
+
+<p>
+LeNetは手書き数字認識で大成功を収め、
+現在の深層学習（Deep Learning）の基礎になりました。
+</p>
+
+<p>
+今日の画像認識AIや生成AIも、
+この流れの上に発展しています。
+</p>
+
+<h2>どこで使われているの？</h2>
+
+<ul>
+<li>郵便番号の自動読み取り</li>
+<li>銀行の書類処理</li>
+<li>アンケートの集計</li>
+<li>タブレットで書いた文字の認識</li>
+<li>スマートフォンの手書き入力</li>
+</ul>
+
+<p>
+私たちの身近なところで、
+手書き数字認識の技術は活躍しています。
+</p>
+
+<h2>まとめ</h2>
+
+<div class="point">
+<ul>
+<li>手書き数字認識はAIの代表的な入門課題</li>
+<li>MNISTは70,000枚の数字画像を集めた有名なデータセット</li>
+<li>ニューラルネットワークが数字の特徴を学習する</li>
+<li>誤差逆伝播法によって学習を繰り返す</li>
+<li>この技術は現在の深層学習や生成AIにつながっている</li>
+</ul>
+</div>
+
+<p>
+手書き数字認識は、一見すると小さな技術に見えます。
+しかし実は、
+現在の生成AIへと続く大きな第一歩でした。
+数字を見分ける技術から始まったAIは、
+今では文章を書き、画像を作り、
+人間と会話できるまで進化しています。
+</p>
+<div class="series-nav">
+<a href="book141navi.html">🏠 総合ナビ</a> |
+<a href="book141general.html">📘 総合解説</a> |
+<a href="book141tec.html">⚙️ 技術編</a> |
+<a href="book141theory.html">⚙️ 理論編</a> |
+<a href="book141qa.html">❓ 論文Q&amp;A</a>|
+<a href="book141ai.html">🤖 生成AI</a> |
+<a href="book122.html">🧠 チューリング解説</a>
+
+</div>
+
+</body>
+</html>
